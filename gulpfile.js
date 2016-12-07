@@ -7,6 +7,6 @@ gulp.task('connect', function () {
     connect.server({
         hostname: '0.0.0.0',
         port: 9000,
-        base: 'drupal-8.2.3'
+        base: 'drupal-8.2.4'
     });
 });
