@@ -1,1 +1,0 @@
-mysql -u root -ptoor < db.sql
