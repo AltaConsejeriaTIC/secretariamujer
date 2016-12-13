@@ -2,3 +2,5 @@ node_modules
 .*
 **/drupal-8.2.4/sites/default
 !**/drupal-8.2.4/sites/default/settings.php
+
+app/builds/*
