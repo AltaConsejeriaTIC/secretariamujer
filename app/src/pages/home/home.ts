@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 
 import { NavController } from 'ionic-angular';
+import { AdminAPI } from  '../../providers/admin-api'
+
 
 @Component({
   selector: 'page-home',
@@ -9,7 +11,7 @@ import { NavController } from 'ionic-angular';
 export class HomePage {
   map: any;
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public adminApi:AdminAPI) {
 
   }
 
@@ -525,6 +527,11 @@ export class HomePage {
       ],
       map: this.map
     });
+
+    this.adminApi.outputPrint();
+    this.adminApi.loginAsAppUser();
+
+
 
     google.maps.event.addListenerOnce(this.map, 'idle', () => {
       mapEle.classList.add('show-map');
