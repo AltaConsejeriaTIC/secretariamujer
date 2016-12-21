@@ -1,5 +1,5 @@
-import { HomePage }                      from './home';
-let instance: HomePage = null;
+import { MapPage }                      from './map';
+let instance: MapPage = null;
 
 describe('dummy set test', () => {
 

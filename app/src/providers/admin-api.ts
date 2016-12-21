@@ -26,7 +26,7 @@ export class AdminAPI {
     this.http.post('http://192.168.88.246/admin/user/login?_format=json', body).map(res => res.json())
       .subscribe(res => {
           console.log("lo que respondio", res);
-          this.registerUser();
+          //this.registerUser();
         },
         err => {
           console.log("hubo un error 2", err)
