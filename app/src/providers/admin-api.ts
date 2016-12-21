@@ -61,7 +61,7 @@ export class AdminAPI {
     let headers = new Headers({'Content-Type': 'application/json', 'Authorization':'Basic '+'YXBwOmFwcA=='});
     let options = new RequestOptions({headers: headers});
 
-    this.http.post('http://localhost/admin/entity/user?_format=json', body, options).map(res => res.json())
+    this.http.post('http://192.168.88.245:9000/entity/user?_format=json', body, options).map(res => res.json())
       .subscribe(data => {
           console.log("lo que recibio al crear usuario", data)
           this.alertCreator.showSimpleAlert('Exito','Usuario registrado');

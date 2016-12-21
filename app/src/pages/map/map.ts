@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 import { NavController } from 'ionic-angular';
 import { AdminAPI } from  '../../providers/admin-api'
-import { Geolocation } from 'ionic-native';
+import { MapServices } from  '../../providers/map-services'
 
 
 
@@ -13,7 +13,7 @@ import { Geolocation } from 'ionic-native';
 export class MapPage {
   map: any;
 
-  constructor(public navCtrl: NavController, public adminApi:AdminAPI) {
+  constructor(public navCtrl: NavController, public adminApi:AdminAPI, public mapService:MapServices) {
 
   }
 
@@ -24,18 +24,8 @@ export class MapPage {
       zoom: 12
     });
 
-    Geolocation.getCurrentPosition().then((position) => {
-    
-      let userLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-      let userMarker= new google.maps.Marker({
-        map: this.map,
-        animation: google.maps.Animation.DROP,
-        position: userLatLng
-      });
+    this.mapService.getUserLocation(this.map);
 
-    }, (err) => {
-      console.log('hubo un error en la posciione del ussuriao', err);
-    });
 
     var heatmap = new google.maps.visualization.HeatmapLayer({
       data: [
@@ -542,11 +532,6 @@ export class MapPage {
       ],
       map: this.map
     });
-
-    this.adminApi.outputPrint();
-    this.adminApi.loginAsAppUser();
-
-
 
     google.maps.event.addListenerOnce(this.map, 'idle', () => {
       mapEle.classList.add('show-map');
