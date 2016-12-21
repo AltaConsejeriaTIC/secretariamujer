@@ -26,7 +26,7 @@ export class AdminAPI {
     this.http.post('http://192.168.88.246/admin/user/login?_format=json', body).map(res => res.json())
       .subscribe(res => {
           console.log("lo que respondio", res);
-          this.getusers();
+          this.registerUser();
         },
         err => {
           console.log("hubo un error 2", err)
@@ -43,7 +43,30 @@ export class AdminAPI {
         },
         err => {
           console.log("hubo un error en get users", err)
-        })
+        });
   }
+
+  registerUser(){
+    let body = JSON.stringify({
+      "name":[{"value":"t"}],
+      "mail":[{"value":"t@t.tt"}],
+      "roles":[{"target_id":"authenticated"}],
+      "status": [{"value": true}],
+      "pass":"t",
+      "field_cellphone":"313246545"
+    });
+
+    let headers = new Headers({'Content-Type': 'application/json', 'Authorization':'Basic '+'YXBwOmFwcA=='});
+    let options = new RequestOptions({headers: headers});
+
+    this.http.post('http://localhost/admin/entity/user?_format=json', body, options).map(res => res.json())
+      .subscribe(data => {
+          console.log("lo que recibio al crear usuario", data)
+        },
+        err => {
+          console.log("hubo un error en crear usuario", err)
+        });
+  }
+
 
 }
