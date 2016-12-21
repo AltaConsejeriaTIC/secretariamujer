@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Http, Headers, RequestOptions} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {User} from '../entity/user';
-
+import {AlertCreator} from  './alert-creator'
 
 /*
  Generated class for the AdminAPI provider.
@@ -13,7 +13,7 @@ import {User} from '../entity/user';
 @Injectable()
 export class AdminAPI {
 
-  constructor(public http: Http) {
+  constructor(public http: Http, public alertCreator:AlertCreator) {
   }
 
   outputPrint() {
@@ -64,11 +64,19 @@ export class AdminAPI {
     this.http.post('http://localhost/admin/entity/user?_format=json', body, options).map(res => res.json())
       .subscribe(data => {
           console.log("lo que recibio al crear usuario", data)
+          this.alertCreator.showSimpleAlert('Exito','Usuario registrado');
         },
         err => {
-          console.log("hubo un error en crear usuario", err)
+          console.log("hubo un error en crear usuario", err);
+          console.log(err.json());
+          this.proccessEmailError(err.json());
+
         });
   }
 
+  proccessEmailError(error:any){
+    let split=error.message.indexOf("The email address");
+    split>=0 ? this.alertCreator.showSimpleAlert('Error','El correo ya existe'): '';
+  }
 
 }

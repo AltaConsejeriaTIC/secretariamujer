@@ -4,6 +4,8 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { MapPage } from '../pages/map/map';
 import { AdminAPI } from  '../providers/admin-api'
+import { AlertCreator } from  '../providers/alert-creator'
+
 
 @NgModule({
   declarations: [
@@ -20,6 +22,6 @@ import { AdminAPI } from  '../providers/admin-api'
     HomePage,
     MapPage
   ],
-  providers: [AdminAPI,{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [AdminAPI,AlertCreator,{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
 export class AppModule {}
