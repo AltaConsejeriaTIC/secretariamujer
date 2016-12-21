@@ -15,6 +15,22 @@
 
 <ion-content padding>
 
+  <form (ngSubmit)="registerForm()">
+    <ion-item>
+      <ion-label>Nombre</ion-label>
+      <ion-input type="text" [(ngModel)]="user.name" name="name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>email</ion-label>
+      <ion-input type="text" [(ngModel)]="user.email" name="email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Contraseña</ion-label>
+      <ion-input type="password" [(ngModel)]="user.pass" name="pass"></ion-input>
+    </ion-item>
+    <button ion-button type="submit" block>Registrarse</button>
+  </form>
+
   <button ion-button (click)="goToMapPage()">ir al mapa</button>
 
 </ion-content>

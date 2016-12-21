@@ -1,6 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Http, Headers, RequestOptions} from '@angular/http';
 import 'rxjs/add/operator/map';
+import {User} from '../entity/user';
+
 
 /*
  Generated class for the AdminAPI provider.
@@ -46,13 +48,13 @@ export class AdminAPI {
         });
   }
 
-  registerUser(){
+  registerUser(user:User){
     let body = JSON.stringify({
-      "name":[{"value":"t"}],
-      "mail":[{"value":"t@t.tt"}],
+      "name":[{"value":user.name}],
+      "mail":[{"value":user.email}],
       "roles":[{"target_id":"authenticated"}],
       "status": [{"value": true}],
-      "pass":"t",
+      "pass":user.pass,
       "field_cellphone":"313246545"
     });
 
