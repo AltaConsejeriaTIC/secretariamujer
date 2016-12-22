@@ -23,10 +23,6 @@ export class MapServices {
     });
   }
 
-  private onMapClick() {
-
-  }
-
   getUserLocation():any{
     return Geolocation.getCurrentPosition();
   }
