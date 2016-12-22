@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Geolocation } from 'ionic-native';
 
@@ -15,7 +14,7 @@ export class MapServices {
 
 
 
-  constructor(public http: Http) {
+  constructor() {
   }
 
   buildMap(element:any){
@@ -46,5 +45,9 @@ export class MapServices {
   clearMarker(markers:any[]){
     markers[1].setMap(null);
     markers.pop();
+  }
+
+  dummy(){
+    return 3;
   }
 }

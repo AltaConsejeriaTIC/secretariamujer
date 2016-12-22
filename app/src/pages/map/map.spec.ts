@@ -37,5 +37,5 @@ describe('MapPage tests', () => {
     mapPage=fixture.componentInstance;
   });
 
-  it('true is true', () =>  expect(2).toBe(mapPage.dummyFunctionToTest()));
+  it('testing MapPage component', () =>  expect(2).toBe(mapPage.dummyFunctionToTest()));
 });
