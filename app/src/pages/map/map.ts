@@ -18,14 +18,15 @@ export class MapPage {
   }
 
   ionViewDidLoad() {
-    let mapEle = document.getElementById('map');
-    this.map = new google.maps.Map(mapEle, {
-      center: {lat: 4.649594, lng: -74.1149021},
-      zoom: 12
+    let mapElement = document.getElementById('map');
+    this.map = this.mapService.buildMap(mapElement);
+
+    let userPositionPromise=this.mapService.getUserLocation();
+    userPositionPromise.then((position) => {
+      this.drawUserPosition(position);
+    }, (err) => {
+      console.log('hubo un error en la posciione del ussuriao', err);
     });
-
-    this.mapService.getUserLocation(this.map);
-
 
     var heatmap = new google.maps.visualization.HeatmapLayer({
       data: [
@@ -534,11 +535,17 @@ export class MapPage {
     });
 
     google.maps.event.addListenerOnce(this.map, 'idle', () => {
-      mapEle.classList.add('show-map');
-      google.maps.event.trigger(mapEle, 'resize');
+      mapElement.classList.add('show-map');
+      google.maps.event.trigger(mapElement, 'resize');
     });
 
   }
+
+  private drawUserPosition(position: any) {
+    let userPosition = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+    this.mapService.drawMarker(this.map,userPosition);
+  }
+
 
   dummyFunctionToTest(){
     return 2;

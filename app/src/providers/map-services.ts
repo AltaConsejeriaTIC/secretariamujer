@@ -17,17 +17,22 @@ export class MapServices {
     console.log('Hello MapServices Provider');
   }
 
-  getUserLocation(map:any){
-    Geolocation.getCurrentPosition().then((position) => {
-      let userLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-      let userMarker= new google.maps.Marker({
-        map: map,
-        animation: google.maps.Animation.DROP,
-        position: userLatLng
-      });
+  buildMap(element:any){
+    return new google.maps.Map(element, {
+      center: {lat: 4.649594, lng: -74.1149021},
+      zoom: 12
+    });
+  }
 
-    }, (err) => {
-      console.log('hubo un error en la posciione del ussuriao', err);
+  getUserLocation():any{
+    return Geolocation.getCurrentPosition();
+  }
+
+  drawMarker(map:any, position:any){
+    new google.maps.Marker({
+      map: map,
+      animation: google.maps.Animation.DROP,
+      position: position
     });
   }
 
