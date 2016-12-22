@@ -20,6 +20,10 @@ export class MapPage {
   ionViewDidLoad() {
     let mapElement = document.getElementById('map');
     this.map = this.mapService.buildMap(mapElement);
+    this.map.addListener('click',(event)=>{
+      this.mapService.drawMarker(this.map,event.latLng);
+    });
+
 
     let userPositionPromise=this.mapService.getUserLocation();
     userPositionPromise.then((position) => {
@@ -542,7 +546,7 @@ export class MapPage {
   }
 
   private drawUserPosition(position: any) {
-    let userPosition = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+    let userPosition = this.mapService.convertToLatLng(position);
     this.mapService.drawMarker(this.map,userPosition);
   }
 

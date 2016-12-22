@@ -14,7 +14,6 @@ import { Geolocation } from 'ionic-native';
 export class MapServices {
 
   constructor(public http: Http) {
-    console.log('Hello MapServices Provider');
   }
 
   buildMap(element:any){
@@ -24,8 +23,16 @@ export class MapServices {
     });
   }
 
+  private onMapClick() {
+
+  }
+
   getUserLocation():any{
     return Geolocation.getCurrentPosition();
+  }
+
+  convertToLatLng(position:any){
+    return new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
   }
 
   drawMarker(map:any, position:any){
