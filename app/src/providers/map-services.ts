@@ -13,6 +13,8 @@ import { Geolocation } from 'ionic-native';
 @Injectable()
 export class MapServices {
 
+
+
   constructor(public http: Http) {
   }
 
@@ -31,12 +33,18 @@ export class MapServices {
     return new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
   }
 
-  drawMarker(map:any, position:any){
-    new google.maps.Marker({
+  drawMarker(map:any, position:any, markers:any[]){
+    let marker=new google.maps.Marker({
       map: map,
       animation: google.maps.Animation.DROP,
-      position: position
+      position: position,
+      draggable:true
     });
+    markers.push(marker);
   }
 
+  clearMarker(markers:any[]){
+    markers[1].setMap(null);
+    markers.pop();
+  }
 }

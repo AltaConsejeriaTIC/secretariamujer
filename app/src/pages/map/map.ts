@@ -12,6 +12,7 @@ import { MapServices } from  '../../providers/map-services'
 })
 export class MapPage {
   map: any;
+  markers:any[]=[];
 
   constructor(public navCtrl: NavController, public adminApi:AdminAPI, public mapService:MapServices) {
 
@@ -21,7 +22,10 @@ export class MapPage {
     let mapElement = document.getElementById('map');
     this.map = this.mapService.buildMap(mapElement);
     this.map.addListener('click',(event)=>{
-      this.mapService.drawMarker(this.map,event.latLng);
+      if(this.markers.length>1){
+          this.mapService.clearMarker(this.markers);
+      }
+        this.mapService.drawMarker(this.map,event.latLng, this.markers);
     });
 
 
@@ -547,7 +551,7 @@ export class MapPage {
 
   private drawUserPosition(position: any) {
     let userPosition = this.mapService.convertToLatLng(position);
-    this.mapService.drawMarker(this.map,userPosition);
+    this.mapService.drawMarker(this.map,userPosition, this.markers);
   }
 
 
