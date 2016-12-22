@@ -540,4 +540,8 @@ export class MapPage {
 
   }
 
+  dummyFunctionToTest(){
+    return 2;
+  }
+
 }

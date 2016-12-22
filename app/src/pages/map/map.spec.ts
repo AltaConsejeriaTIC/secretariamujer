@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { By }              from '@angular/platform-browser';
 import { DebugElement }    from '@angular/core';
 import { MapPage } from './map';
@@ -16,10 +16,9 @@ describe('MapPage tests', () => {
 
   let mapPage: MapPage;
   let fixture : ComponentFixture<MapPage>;
-  let de:      DebugElement;
-  let el:      HTMLElement;
 
-  beforeEach(()=>{
+
+  beforeEach(async(()=>{
     TestBed.configureTestingModule({
       declarations: [MapPage],
       providers: [
@@ -31,10 +30,13 @@ describe('MapPage tests', () => {
         IonicModule,
         ReactiveFormsModule,
       ],
-    });
+    }).compileComponents();
+  }));
+
+  beforeEach(()=>{
     fixture=TestBed.createComponent(MapPage);
     mapPage=fixture.componentInstance;
   });
 
-  it('true is true', () => expect(true).toBe(true));
+  it('true is true', () =>  expect(2).toBe(mapPage.dummyFunctionToTest()));
 });
