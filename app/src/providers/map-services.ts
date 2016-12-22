@@ -12,8 +12,6 @@ import { Geolocation } from 'ionic-native';
 @Injectable()
 export class MapServices {
 
-
-
   constructor() {
   }
 
@@ -45,9 +43,5 @@ export class MapServices {
   clearMarker(markers:any[]){
     markers[1].setMap(null);
     markers.pop();
-  }
-
-  dummy(){
-    return 3;
   }
 }

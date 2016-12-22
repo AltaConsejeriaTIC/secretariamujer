@@ -17,9 +17,16 @@ describe('MapService test',()=>{
   beforeEach(inject([MapServices],s=>{
     mapService=s;
   }));
-
-
-  it('testing MapServices provider',()=>{
-      expect(mapService.dummy()).toBe(3);
+  
+  it('clearmarker should set markers array length to one',()=>{
+      let markers:any[]=[];
+      let marker={
+        setMap:function(x){}
+      };
+      markers.push(marker);
+      markers.push(marker);
+      mapService.clearMarker(markers);
+      expect(markers.length).toBe(1);
   });
+
 });
