@@ -4,7 +4,6 @@ import { DebugElement }    from '@angular/core';
 import { MapPage } from './map';
 import { App, MenuController, NavController, Platform, Config, Keyboard, Form, IonicModule }  from 'ionic-angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { App, MenuController, NavController, Platform, Config, Keyboard, Form, IonicModule }  from 'ionic-angular';
 import { ConfigMock } from '../../mocks';
 import { AdminAPI } from  '../../providers/admin-api'
 import { MapServices } from  '../../providers/map-services'
