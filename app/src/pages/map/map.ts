@@ -8,7 +8,7 @@ import { MapServices } from  '../../providers/map-services'
 
 @Component({
   selector: 'page-home',
-  templateUrl: 'map.html'
+  templateUrl: './map.html'
 })
 export class MapPage {
   map: any;

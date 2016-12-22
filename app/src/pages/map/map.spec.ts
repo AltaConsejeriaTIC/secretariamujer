@@ -1,10 +1,40 @@
-import { MapPage }                      from './map';
-let instance: MapPage = null;
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By }              from '@angular/platform-browser';
+import { DebugElement }    from '@angular/core';
+import { MapPage } from './map';
+import { App, MenuController, NavController, Platform, Config, Keyboard, Form, IonicModule }  from 'ionic-angular';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { App, MenuController, NavController, Platform, Config, Keyboard, Form, IonicModule }  from 'ionic-angular';
+import { ConfigMock } from '../../mocks';
+import { AdminAPI } from  '../../providers/admin-api'
+import { MapServices } from  '../../providers/map-services'
+import { AlertCreator } from  '../../providers/alert-creator'
+import {AlertController} from "ionic-angular";
 
-describe('dummy set test', () => {
 
-  it('dummy test', () => {
-    expect(2).toEqual(2);
+describe('MapPage tests', () => {
+
+  let mapPage: MapPage;
+  let fixture : ComponentFixture<MapPage>;
+  let de:      DebugElement;
+  let el:      HTMLElement;
+
+  beforeEach(()=>{
+    TestBed.configureTestingModule({
+      declarations: [MapPage],
+      providers: [
+        App, Platform, Form, Keyboard, MenuController, NavController,AdminAPI,MapServices,AlertCreator,AlertController,
+        {provide: Config, useClass: ConfigMock}
+      ],
+      imports: [
+        FormsModule,
+        IonicModule,
+        ReactiveFormsModule,
+      ],
+    });
+    fixture=TestBed.createComponent(MapPage);
+    mapPage=fixture.componentInstance;
   });
 
+  it('true is true', () => expect(true).toBe(true));
 });
