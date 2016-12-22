@@ -1,5 +1,5 @@
-**/drupal/sites/default
-!**/drupal/sites/default/settings.php
+administrator/drupal/sites/default/
+!administrator/drupal/sites/default/settings.php
 
 node_modules
 
