@@ -3,7 +3,7 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { MapPage } from '../pages/map/map';
-import { AdminAPI } from  '../providers/admin-api'
+import { UserDAO } from  '../providers/user-dao'
 import { AlertCreator } from  '../providers/alert-creator'
 import { MapServices } from  '../providers/map-services'
 
@@ -24,6 +24,6 @@ import { MapServices } from  '../providers/map-services'
     HomePage,
     MapPage
   ],
-  providers: [AdminAPI,AlertCreator, MapServices, {provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [UserDAO,AlertCreator, MapServices, {provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
 export class AppModule {}

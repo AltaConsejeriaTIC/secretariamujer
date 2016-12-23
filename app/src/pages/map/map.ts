@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import { NavController } from 'ionic-angular';
-import { AdminAPI } from  '../../providers/admin-api'
+import { UserDAO } from  '../../providers/user-dao'
 import { MapServices } from  '../../providers/map-services'
 
 
@@ -14,7 +14,7 @@ export class MapPage {
   map: any;
   markers:any[]=[];
 
-  constructor(public navCtrl: NavController, public adminApi:AdminAPI, public mapService:MapServices) {
+  constructor(public navCtrl: NavController, public adminApi:UserDAO, public mapService:MapServices) {
 
   }
 

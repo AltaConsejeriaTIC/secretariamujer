@@ -5,7 +5,7 @@ import { MapPage } from './map';
 import { App, MenuController, NavController, Platform, Config, Keyboard, Form, IonicModule }  from 'ionic-angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ConfigMock } from '../../mocks';
-import { AdminAPI } from  '../../providers/admin-api'
+import { UserDAO } from  '../../providers/user-dao'
 import { MapServices } from  '../../providers/map-services'
 import { AlertCreator } from  '../../providers/alert-creator'
 import {AlertController} from "ionic-angular";
@@ -21,7 +21,7 @@ describe('MapPage tests', () => {
     TestBed.configureTestingModule({
       declarations: [MapPage],
       providers: [
-        App, Platform, Form, Keyboard, MenuController, NavController,AdminAPI,MapServices,AlertCreator,AlertController,
+        App, Platform, Form, Keyboard, MenuController, NavController,UserDAO,MapServices,AlertCreator,AlertController,
         {provide: Config, useClass: ConfigMock}
       ],
       imports: [

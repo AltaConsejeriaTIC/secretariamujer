@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
 import {MapPage} from "../map/map";
 import {Validators, FormBuilder} from '@angular/forms';
-import {AdminAPI} from  '../../providers/admin-api'
+import {UserDAO} from  '../../providers/user-dao'
 import {User} from '../../entity/user';
 
 @Component({
@@ -15,7 +15,7 @@ export class HomePage {
 
   user: User;
 
-  constructor(public navCtrl: NavController, private formBuilder: FormBuilder, public adminApi: AdminAPI) {
+  constructor(public navCtrl: NavController, private formBuilder: FormBuilder, public adminApi: UserDAO) {
     this.user = {name: '', pass: null, email:''};
   }
 
@@ -24,7 +24,9 @@ export class HomePage {
 
   registerForm() {
     console.log(this.user);
-    this.adminApi.registerUser(this.user)
+    this.adminApi.create(this.user).map(res=>res.json()).subscribe(response=>{
+      console.log(response);
+    },err=>{});
   }
 
   goToMapPage() {
