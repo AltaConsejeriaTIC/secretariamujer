@@ -17,7 +17,15 @@ describe('MapService test',()=>{
   beforeEach(inject([MapServices],s=>{
     mapService=s;
   }));
-  
+
+    it('drawMarker should increase by 1 the markers array',()=>{
+        let markers:any[]=[];
+        let map:any;
+        let position:any;
+        mapService.drawMarker(map,position,markers);
+        expect(markers.length).toBe(1);
+      });
+
   it('clearmarker should set markers array length to one',()=>{
       let markers:any[]=[];
       let marker={

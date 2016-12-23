@@ -13,6 +13,8 @@ module.exports = function (config) {
       require('angular-cli/plugins/karma')
     ],
     files: [
+      'https://maps.googleapis.com/maps/api/js?sensor=false',
+      './src/maps.googleapis.com-maps-api.js',
       { pattern: './src/test.ts', watched: false }
     ],
     preprocessors: {
