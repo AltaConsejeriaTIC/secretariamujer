@@ -60,6 +60,6 @@ describe('UserDAO tests', () => {
 
   it('should create function return an Observable type',()=>{
     let isObservable = userDAO.create(user) instanceof Observable;
-    expect(isObservable).toBe(true));
+    expect(isObservable).toBe(true);
   });
 });

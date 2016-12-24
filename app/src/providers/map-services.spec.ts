@@ -35,7 +35,7 @@ describe('MapService test', () => {
         longitude:1
       }
     };
-    expect(mapService.convertToLatLng(position).length).toBe(2);
+    expect(mapService.convertToLatLng(position)[0]).toBe(1);
   });
 
   it('drawMarker should increase by 1 the markers array', () => {

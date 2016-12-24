@@ -16,6 +16,19 @@ describe('MapPage tests', () => {
   let mapPage: MapPage;
   let fixture : ComponentFixture<MapPage>;
   let mapServices: MapServices;
+  let marker = {
+    setMap: function (x) {
+    }
+  };
+  let event={
+    latLng:1
+  };
+  let position={
+    coords:{
+      latitude:1,
+      longitude:1
+    }
+  };
 
 
   beforeEach(async(()=>{
@@ -39,17 +52,25 @@ describe('MapPage tests', () => {
   });
   beforeEach(inject([MapServices], _mapServices => {
     mapServices=_mapServices;
-  }));
-
-  it('drawUserPosition should call convertToLatLng() and drawMarker() from MapServices', () => {
-    let position={
-      coords:{
-        latitude:1,
-        longitude:1
-      }
-    };
+    spyOn(mapServices,'buildMap');
+    spyOn(mapServices,'clearMarker');
     spyOn(mapServices,'convertToLatLng');
     spyOn(mapServices,'drawMarker');
+  }));
+
+  it('createMap should call buildMap() from MapServices', () => {
+    mapPage.createMap();
+    expect(mapServices.buildMap).toHaveBeenCalled();
+  });
+
+  it('drawEventMarker should clear last marker if there are more than 1 marker on the map', () => {
+    mapPage.markers.push(marker);
+    mapPage.markers.push(marker);
+    mapPage.drawEventMarker(event);
+    expect(mapServices.clearMarker).toHaveBeenCalled();
+  });
+
+  it('drawUserPosition should call convertToLatLng() and drawMarker() from MapServices', () => {
     mapPage.drawUserPosition(position);
     expect(mapServices.convertToLatLng).toHaveBeenCalled();
     expect(mapServices.drawMarker).toHaveBeenCalled();

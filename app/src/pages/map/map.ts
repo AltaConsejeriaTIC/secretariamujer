@@ -12,20 +12,15 @@ import { MapServices } from  '../../providers/map-services'
 export class MapPage {
   map:any;
   markers:any[] = [];
+  mapElement : any;
 
   constructor(public navCtrl:NavController, public adminApi:UserDAO, public mapService:MapServices) {
-
   }
 
   ionViewDidLoad() {
-    let mapElement = document.getElementById('map');
-    this.map = this.mapService.buildMap(mapElement);
-    this.map.addListener('click', (event)=> {
-      if (this.markers.length > 1) {
-        this.mapService.clearMarker(this.markers);
-      }
-      this.mapService.drawMarker(this.map, event.latLng, this.markers);
-    });
+    this.mapElement = document.getElementById('map');
+    this.createMap();
+    this.addMapOnClickListener();
 
 
     let userPositionPromise = this.mapService.getUserLocation();
@@ -542,10 +537,27 @@ export class MapPage {
     });
 
     google.maps.event.addListenerOnce(this.map, 'idle', () => {
-      mapElement.classList.add('show-map');
-      google.maps.event.trigger(mapElement, 'resize');
+      this.mapElement.classList.add('show-map');
+      google.maps.event.trigger(this.mapElement, 'resize');
     });
 
+  }
+
+  createMap() {
+    this.map = this.mapService.buildMap(this.mapElement);
+  }
+
+  addMapOnClickListener() {
+    this.map.addListener('click', (event)=> {
+      this.drawEventMarker(event);
+    });
+  }
+
+  drawEventMarker(event:any){
+    if (this.markers.length > 1) {
+      this.mapService.clearMarker(this.markers);
+    }
+    this.mapService.drawMarker(this.map, event.latLng, this.markers);
   }
 
   drawUserPosition(position:any) {
