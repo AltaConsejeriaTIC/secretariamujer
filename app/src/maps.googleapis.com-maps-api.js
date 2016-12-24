@@ -10,8 +10,8 @@ var google = {
           return [lat, lng];
         },
       Map: function(obj){
-
-          },
+          return {Map:'map'}
+      },
       Animation : function(){},
       MapTypeId: {ROADMAP: true},
       places: {

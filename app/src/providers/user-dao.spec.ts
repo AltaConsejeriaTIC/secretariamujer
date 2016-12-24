@@ -35,7 +35,7 @@ describe('UserDAO tests', () => {
       }],
       "name": [
         {
-          "value": "test name"
+          "value": user.name
         }
       ],
       "mail": [
