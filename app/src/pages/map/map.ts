@@ -5,31 +5,30 @@ import { UserDAO } from  '../../providers/user-dao'
 import { MapServices } from  '../../providers/map-services'
 
 
-
 @Component({
   selector: 'page-home',
   templateUrl: './map.html'
 })
 export class MapPage {
-  map: any;
-  markers:any[]=[];
+  map:any;
+  markers:any[] = [];
 
-  constructor(public navCtrl: NavController, public adminApi:UserDAO, public mapService:MapServices) {
+  constructor(public navCtrl:NavController, public adminApi:UserDAO, public mapService:MapServices) {
 
   }
 
   ionViewDidLoad() {
     let mapElement = document.getElementById('map');
     this.map = this.mapService.buildMap(mapElement);
-    this.map.addListener('click',(event)=>{
-      if(this.markers.length>1){
-          this.mapService.clearMarker(this.markers);
+    this.map.addListener('click', (event)=> {
+      if (this.markers.length > 1) {
+        this.mapService.clearMarker(this.markers);
       }
-        this.mapService.drawMarker(this.map,event.latLng, this.markers);
+      this.mapService.drawMarker(this.map, event.latLng, this.markers);
     });
 
 
-    let userPositionPromise=this.mapService.getUserLocation();
+    let userPositionPromise = this.mapService.getUserLocation();
     userPositionPromise.then((position) => {
       this.drawUserPosition(position);
     }, (err) => {
@@ -549,14 +548,9 @@ export class MapPage {
 
   }
 
-  private drawUserPosition(position: any) {
+  drawUserPosition(position:any) {
     let userPosition = this.mapService.convertToLatLng(position);
-    this.mapService.drawMarker(this.map,userPosition, this.markers);
-  }
-
-
-  dummyFunctionToTest(){
-    return 2;
+    this.mapService.drawMarker(this.map, userPosition, this.markers);
   }
 
 }

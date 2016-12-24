@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, async } from '@angular/core/testing';
+import { ComponentFixture, TestBed, async, inject } from '@angular/core/testing';
 import { By }              from '@angular/platform-browser';
 import { DebugElement }    from '@angular/core';
 import { MapPage } from './map';
@@ -15,13 +15,14 @@ describe('MapPage tests', () => {
 
   let mapPage: MapPage;
   let fixture : ComponentFixture<MapPage>;
+  let mapServices: MapServices;
 
 
   beforeEach(async(()=>{
     TestBed.configureTestingModule({
       declarations: [MapPage],
       providers: [
-        App, Platform, Form, Keyboard, MenuController, NavController,UserDAO,MapServices,AlertCreator,AlertController,
+        App, Platform, Form, Keyboard, MenuController, NavController,UserDAO,MapServices,AlertCreator,AlertController,MapServices,
         {provide: Config, useClass: ConfigMock}
       ],
       imports: [
@@ -36,6 +37,21 @@ describe('MapPage tests', () => {
     fixture=TestBed.createComponent(MapPage);
     mapPage=fixture.componentInstance;
   });
+  beforeEach(inject([MapServices], _mapServices => {
+    mapServices=_mapServices;
+  }));
 
-  it('testing MapPage component', () =>  expect(2).toBe(mapPage.dummyFunctionToTest()));
+  it('drawUserPosition should call convertToLatLng() and drawMarker() from MapServices', () => {
+    let position={
+      coords:{
+        latitude:1,
+        longitude:1
+      }
+    };
+    spyOn(mapServices,'convertToLatLng');
+    spyOn(mapServices,'drawMarker');
+    mapPage.drawUserPosition(position);
+    expect(mapServices.convertToLatLng).toHaveBeenCalled();
+    expect(mapServices.drawMarker).toHaveBeenCalled();
+  });
 });
