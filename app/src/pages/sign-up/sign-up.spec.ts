@@ -9,6 +9,11 @@ describe('SignUpPage tests', () => {
   let signUpPage: SignUpPage;
   let fixture: ComponentFixture<SignUpPage>;
   let userDAO: UserDAO;
+  let user = {
+    name: 'test name',
+    pass: 12456,
+    email: 'test@testname.com'
+  };
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -33,7 +38,8 @@ describe('SignUpPage tests', () => {
   }));
 
   it('should test that signUp function calls create function from UserDAO', () => {
-    spyOn(userDAO, 'create');
+    spyOn(userDAO, 'create').and.callThrough();
+    signUpPage.user=user;
     signUpPage.signUp();
     expect(userDAO.create).toHaveBeenCalled();
   });

@@ -14,7 +14,6 @@ import {AlertController} from "ionic-angular";
 export class AlertCreator {
 
   constructor(public http: Http, private alertCtrl: AlertController) {
-    console.log('Hello AlertCreator Provider');
   }
 
   showSimpleAlert(title:string, message:string){

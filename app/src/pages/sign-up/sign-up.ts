@@ -11,14 +11,16 @@ export class SignUpPage {
 
   user:User;
 
-  constructor(public navCtrl: NavController, public adminApi : UserDAO) {
+  constructor(public navCtrl: NavController, public userDAO : UserDAO) {
   }
 
   ionViewDidLoad() {
   }
 
   signUp(){
-    this.adminApi.create(this.user);
+    this.userDAO.create(this.user).map(res=>res.json()).subscribe(response=>{
+      console.log(response);
+    },err=>{});
   }
 
 

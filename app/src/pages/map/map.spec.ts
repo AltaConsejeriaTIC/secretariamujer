@@ -52,24 +52,22 @@ describe('MapPage tests', () => {
   });
   beforeEach(inject([MapServices], _mapServices => {
     mapServices=_mapServices;
-    spyOn(mapServices,'buildMap');
-    spyOn(mapServices,'clearMarker');
-    spyOn(mapServices,'convertToLatLng');
-    spyOn(mapServices,'drawMarker');
-    spyOn(mapServices,'getUserLocation').and.callThrough();
   }));
 
   it('createMap should call buildMap() from MapServices', () => {
+    spyOn(mapServices,'buildMap');
     mapPage.createMap();
     expect(mapServices.buildMap).toHaveBeenCalled();
   });
 
   it('getUserPosition should call getUserLocation() from MapServices', () => {
+    spyOn(mapServices,'getUserLocation').and.callThrough();
     mapPage.getUserPosition();
     expect(mapServices.getUserLocation() instanceof Promise).toBe(true);
   });
 
   it('drawEventMarker should clear last marker if there are more than 1 marker on the map', () => {
+    spyOn(mapServices,'clearMarker');
     mapPage.markers.push(marker);
     mapPage.markers.push(marker);
     mapPage.drawEventMarker(event);
@@ -77,6 +75,8 @@ describe('MapPage tests', () => {
   });
 
   it('drawUserPosition should call convertToLatLng() and drawMarker() from MapServices', () => {
+    spyOn(mapServices,'convertToLatLng');
+    spyOn(mapServices,'drawMarker');
     mapPage.drawUserPosition(position);
     expect(mapServices.convertToLatLng).toHaveBeenCalled();
     expect(mapServices.drawMarker).toHaveBeenCalled();
