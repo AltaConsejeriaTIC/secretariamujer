@@ -21,14 +21,7 @@ export class MapPage {
     this.mapElement = document.getElementById('map');
     this.createMap();
     this.addMapOnClickListener();
-
-
-    let userPositionPromise = this.mapService.getUserLocation();
-    userPositionPromise.then((position) => {
-      this.drawUserPosition(position);
-    }, (err) => {
-      console.log('hubo un error en la posciione del ussuriao', err);
-    });
+    this.getUserPosition();
 
     var heatmap = new google.maps.visualization.HeatmapLayer({
       data: [
@@ -558,6 +551,15 @@ export class MapPage {
       this.mapService.clearMarker(this.markers);
     }
     this.mapService.drawMarker(this.map, event.latLng, this.markers);
+  }
+
+  getUserPosition(){
+    this.mapService.getUserLocation().then((position) => {
+      this.drawUserPosition(position);
+    }, (err) => {
+      console.log('hubo un error en la posciione del ussuriao', err);
+    });
+
   }
 
   drawUserPosition(position:any) {

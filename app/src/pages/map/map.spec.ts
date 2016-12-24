@@ -56,11 +56,17 @@ describe('MapPage tests', () => {
     spyOn(mapServices,'clearMarker');
     spyOn(mapServices,'convertToLatLng');
     spyOn(mapServices,'drawMarker');
+    spyOn(mapServices,'getUserLocation').and.callThrough();
   }));
 
   it('createMap should call buildMap() from MapServices', () => {
     mapPage.createMap();
     expect(mapServices.buildMap).toHaveBeenCalled();
+  });
+
+  it('getUserPosition should call getUserLocation() from MapServices', () => {
+    mapPage.getUserPosition();
+    expect(mapServices.getUserLocation() instanceof Promise).toBe(true);
   });
 
   it('drawEventMarker should clear last marker if there are more than 1 marker on the map', () => {

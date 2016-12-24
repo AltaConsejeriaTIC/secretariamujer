@@ -32,16 +32,7 @@ describe('SignUpPage tests', () => {
     userDAO = _userDAO;
   }));
 
-
-  it('should exists', () => {
-    expect(signUpPage).toBeDefined();
-  });
-
-  it('should test that signUp function exists', () => {
-    expect(signUpPage.signUp).toBeDefined();
-  });
-
-  it('should test that signUp function calls the api for register user', () => {
+  it('should test that signUp function calls create function from UserDAO', () => {
     spyOn(userDAO, 'create');
     signUpPage.signUp();
     expect(userDAO.create).toHaveBeenCalled();
