@@ -26,7 +26,7 @@ export class HomePage {
     console.log(this.user);
     this.adminApi.create(this.user).map(res=>res.json()).subscribe(response=>{
       console.log(response);
-    },err=>{});
+    },err=>{console.log(err)});
   }
 
   goToMapPage() {
