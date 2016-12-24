@@ -7,9 +7,10 @@ import {Observable} from "rxjs";
 @Injectable()
 export class UserDAO {
 
-  constructor(public http: Http) {}
+  constructor(public http:Http) {
+  }
 
-create(user: User): Observable<Response> {
+  create(user:User):Observable<Response> {
     let body = JSON.stringify({
       "name": [{"value": user.name}],
       "mail": [{"value": user.email}],
@@ -22,7 +23,7 @@ create(user: User): Observable<Response> {
     let headers = new Headers({'Content-Type': 'application/json', 'Authorization': 'Basic ' + 'YXBwOmFwcA=='});
     let options = new RequestOptions({headers: headers});
 
-     return this.http.post('http://192.168.88.245:9000/entity/user?_format=json', body, options);
+    return this.http.post('http://192.168.88.245:9000/entity/user?_format=json', body, options);
   }
 
 }

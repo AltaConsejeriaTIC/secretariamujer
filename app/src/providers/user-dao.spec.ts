@@ -2,10 +2,16 @@ import {TestBed, inject, async} from "@angular/core/testing";
 import {HttpModule, XHRBackend, Response, ResponseOptions} from "@angular/http";
 import {MockBackend} from '@angular/http/testing';
 import {UserDAO} from "./user-dao";
+import {Observable} from "rxjs/Observable";
 
 
-describe('MockBackend: LanguagesServiceHttp', () => {
+describe('UserDAO tests', () => {
   let mockbackend, userDAO;
+  let user = {
+    name: 'test name',
+    pass: 12456,
+    email: 'test@testname.com'
+  };
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -14,7 +20,7 @@ describe('MockBackend: LanguagesServiceHttp', () => {
         UserDAO,
         { provide: XHRBackend, useClass: MockBackend }
       ]
-    })
+    });
   });
 
   beforeEach(inject([UserDAO, XHRBackend], (_UserDAO, _mockbackend) => {
@@ -46,14 +52,14 @@ describe('MockBackend: LanguagesServiceHttp', () => {
     mockbackend.connections.subscribe(connection => {
       connection.mockRespond(new Response(new ResponseOptions({body: JSON.stringify(response)})));
     });
-    let user = {
-      name: 'test name',
-      pass: 12456,
-      email: 'test@testname.com'
-    };
+
     userDAO.create(user).map(res=>res.json()).subscribe(response => {
-      console.log("la respuesta es", response);
       expect(response.name[0].value).toBe("test name");
     });
   }));
+
+  it('should create function return an Observable type',()=>{
+    let isObservable = userDAO.create(user) instanceof Observable;
+    expect(isObservable).toBe(true));
+  });
 });

@@ -8,7 +8,7 @@ import {AlertController} from 'ionic-angular';
 describe('SignUpPage tests', () => {
   let signUpPage: SignUpPage;
   let fixture: ComponentFixture<SignUpPage>;
-  let adminApi: UserDAO;
+  let userDAO: UserDAO;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -28,8 +28,8 @@ describe('SignUpPage tests', () => {
     signUpPage = fixture.componentInstance;
   });
 
-  beforeEach(inject([UserDAO], _adminApi => {
-    adminApi = _adminApi;
+  beforeEach(inject([UserDAO], _userDAO => {
+    userDAO = _userDAO;
   }));
 
 
@@ -42,9 +42,9 @@ describe('SignUpPage tests', () => {
   });
 
   it('should test that signUp function calls the api for register user', () => {
-    spyOn(adminApi, 'create');
+    spyOn(userDAO, 'create');
     signUpPage.signUp();
-    expect(adminApi.create).toHaveBeenCalled();
+    expect(userDAO.create).toHaveBeenCalled();
   });
 
 });
