@@ -42,7 +42,7 @@ describe('MapService test', () => {
     let markers: any[] = [];
     let map: any;
     let position: any;
-    mapService.drawMarker(map, position, markers);
+    mapService.drawMarker(map, position, markers,true);
     expect(markers.length).toBe(1);
   });
 

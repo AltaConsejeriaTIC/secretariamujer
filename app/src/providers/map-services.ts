@@ -30,12 +30,12 @@ export class MapServices {
     return new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
   }
 
-  drawMarker(map:any, position:any, markers:any[]){
+  drawMarker(map:any, position:any, markers:any[], isDraggable:boolean){
     let marker=new google.maps.Marker({
       map: map,
       animation: google.maps.Animation.DROP,
       position: position,
-      draggable:true
+      draggable:isDraggable
     });
     markers.push(marker);
   }

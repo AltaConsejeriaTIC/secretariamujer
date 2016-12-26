@@ -550,7 +550,7 @@ export class MapPage {
     if (this.markers.length > 1) {
       this.mapService.clearMarker(this.markers);
     }
-    this.mapService.drawMarker(this.map, event.latLng, this.markers);
+    this.mapService.drawMarker(this.map, event.latLng, this.markers, true);
   }
 
   getUserPosition(){
@@ -564,7 +564,7 @@ export class MapPage {
 
   drawUserPosition(position:any) {
     let userPosition = this.mapService.convertToLatLng(position);
-    this.mapService.drawMarker(this.map, userPosition, this.markers);
+    this.mapService.drawMarker(this.map, userPosition, this.markers, false);
   }
 
 }
