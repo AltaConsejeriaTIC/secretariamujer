@@ -38,11 +38,11 @@ describe('MapService test', () => {
     expect(mapService.convertToLatLng(position)[0]).toBe(1);
   });
 
-  it('drawMarker should increase by 1 the markers array', () => {
+  it('drawEventMarker should increase by 1 the markers array', () => {
     let markers: any[] = [];
     let map: any;
     let position: any;
-    mapService.drawMarker(map, position, markers,true);
+    mapService.drawEventMarker(map, position, markers);
     expect(markers.length).toBe(1);
   });
 

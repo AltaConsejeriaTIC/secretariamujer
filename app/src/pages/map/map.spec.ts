@@ -76,9 +76,9 @@ describe('MapPage tests', () => {
 
   it('drawUserPosition should call convertToLatLng() and drawMarker() from MapServices', () => {
     spyOn(mapServices,'convertToLatLng');
-    spyOn(mapServices,'drawMarker');
+    spyOn(mapServices,'drawUserPositionMarker');
     mapPage.drawUserPosition(position);
     expect(mapServices.convertToLatLng).toHaveBeenCalled();
-    expect(mapServices.drawMarker).toHaveBeenCalled();
+    expect(mapServices.drawUserPositionMarker).toHaveBeenCalled();
   });
 });
