@@ -8,4 +8,5 @@
 
 <ion-content>
   <div id="map"></div>
+  <button ion-button (click)="registerEvent()" [disabled]="!isEventPinOnMap()">Registrar Evento</button>
 </ion-content>

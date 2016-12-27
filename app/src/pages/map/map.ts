@@ -41,7 +41,7 @@ export class MapPage {
   }
 
   drawEventMarker(event:any){
-    if (this.markers.length > 0) {
+    if (this.isEventPinOnMap()) {
       this.mapService.clearMarker(this.markers);
     }
     this.mapService.drawEventMarker(this.map, event.latLng, this.markers);
@@ -59,6 +59,14 @@ export class MapPage {
   drawUserPosition(position:any) {
     let userPosition = this.mapService.convertToLatLng(position);
     this.mapService.drawUserPositionMarker(this.map, userPosition);
+  }
+
+  isEventPinOnMap(){
+    return this.markers.length > 0;
+  }
+
+  registerEvent(){
+    console.log("presiono el boton de registrar evento")
   }
 
 }

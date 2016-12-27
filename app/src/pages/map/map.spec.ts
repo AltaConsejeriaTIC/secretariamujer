@@ -81,4 +81,14 @@ describe('MapPage tests', () => {
     expect(mapServices.convertToLatLng).toHaveBeenCalled();
     expect(mapServices.drawUserPositionMarker).toHaveBeenCalled();
   });
+
+  it('registerEvent should be defined', () => {
+    expect(mapPage.registerEvent).toBeDefined();
+  });
+
+  it('isEventPinOnMap should return true if event pin is already on map', () => {
+    mapPage.markers.push(marker);
+    expect(mapPage.isEventPinOnMap()).toBe(true);
+  });
+
 });
