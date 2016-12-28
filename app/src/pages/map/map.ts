@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 
-import { NavController } from 'ionic-angular';
+import { NavController Platform} from 'ionic-angular';
 import { UserDAO } from  '../../providers/user-dao'
 import { MapServices } from  '../../providers/map-services'
 import {EventsServices} from "../../providers/events-services";
 import {AlertCreator} from "../../providers/alert-creator";
+import { Diagnostic } from 'ionic-native';
+
 
 
 @Component({
@@ -23,7 +25,7 @@ export class MapPage {
     this.mapElement = document.getElementById('map');
     this.createMap();
     this.addMapOnClickListener();
-    this.getUserPosition();
+    this.isGPSEnabled();
 
     google.maps.event.addListenerOnce(this.map, 'idle', () => {
       this.mapElement.classList.add('show-map');
@@ -47,6 +49,22 @@ export class MapPage {
       this.mapService.clearMarker(this.markers);
     }
     this.mapService.drawEventMarker(this.map, event.latLng, this.markers);
+  }
+
+  isGPSEnabled(){
+    Diagnostic.isLocationEnabled().then((res)=>{
+      this.checkUserPosition(res);
+    }).catch((err)=>{
+      this.alertCreator.showSimpleAlert("error",err);
+    });
+  }
+
+  checkUserPosition(isEnabled:boolean){
+    if(isEnabled){
+      this.getUserPosition();
+    }else{
+      this.alertCreator.showSimpleAlert('Error','Por favor activa el GPS');
+    }
   }
 
   getUserPosition(){

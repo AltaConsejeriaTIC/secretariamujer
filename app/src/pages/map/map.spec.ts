@@ -10,6 +10,8 @@ import { MapServices } from  '../../providers/map-services'
 import { AlertCreator } from  '../../providers/alert-creator'
 import {AlertController} from "ionic-angular";
 import {EventsServices} from "../../providers/events-services";
+import { Diagnostic } from 'ionic-native';
+
 
 
 describe('MapPage tests', () => {
@@ -18,6 +20,8 @@ describe('MapPage tests', () => {
   let fixture : ComponentFixture<MapPage>;
   let mapServices: MapServices;
   let eventsServices : EventsServices;
+  let alertCreator:AlertCreator;
+
   let marker = {
     setMap: function (x) {
     }
@@ -32,12 +36,11 @@ describe('MapPage tests', () => {
     }
   };
 
-
   beforeEach(async(()=>{
     TestBed.configureTestingModule({
       declarations: [MapPage],
       providers: [
-        App, Platform, Form, Keyboard, MenuController, NavController,UserDAO,MapServices,AlertCreator,AlertController,MapServices,EventsServices,
+        App, Platform, Form, Keyboard, MenuController, NavController,UserDAO,MapServices,AlertCreator,AlertController,MapServices,EventsServices,Diagnostic,
         {provide: Config, useClass: ConfigMock}
       ],
       imports: [
@@ -52,10 +55,13 @@ describe('MapPage tests', () => {
     fixture=TestBed.createComponent(MapPage);
     mapPage=fixture.componentInstance;
   });
-  beforeEach(inject([MapServices, EventsServices], (_mapServices, _eventsServices) => {
+
+  beforeEach(inject([MapServices, EventsServices, AlertCreator], (_mapServices, _eventsServices, _alertCreator) => {
     mapServices=_mapServices;
     eventsServices=_eventsServices;
+    alertCreator=_alertCreator;
   }));
+
 
   it('createMap should call buildMap() from MapServices', () => {
     spyOn(mapServices,'buildMap');
@@ -100,4 +106,25 @@ describe('MapPage tests', () => {
     expect(eventsServices.registerEvent).toHaveBeenCalled();
   });
 
+  it('checkIfGPSEnabled should be defined', () => {
+    expect(mapPage.isGPSEnabled).toBeDefined();
+  });
+
+  it('isGPSEnabled should call isLocationEnabled()', () => {
+    spyOn(Diagnostic,'isLocationEnabled').and.callThrough();
+    mapPage.isGPSEnabled();
+    expect(Diagnostic.isLocationEnabled).toHaveBeenCalled();
+  });
+
+  it('checkUserPosition should call getUserPosition() if gps is enabled', () => {
+    spyOn(mapPage,'getUserPosition').and.callThrough();
+    mapPage.checkUserPosition(true);
+    expect(mapPage.getUserPosition).toHaveBeenCalled();
+  });
+
+  it('checkUserPosition should call showSimpleAlert() from AlertCreator if gps is not enabled', () => {
+    spyOn(alertCreator,'showSimpleAlert');
+    mapPage.checkUserPosition(false);
+    expect(alertCreator.showSimpleAlert).toHaveBeenCalled();
+  });
 });
