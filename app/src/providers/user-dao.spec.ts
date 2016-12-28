@@ -28,7 +28,7 @@ describe('UserDAO tests', () => {
     mockbackend = _mockbackend;
   }));
 
-  it('should return mocked response (async)', async(() => {
+  it('should return mocked response for createUser (async)', async(() => {
     let response = {
       "uid": [{
         "value": "444"

@@ -4,6 +4,7 @@ import { NavController } from 'ionic-angular';
 import { UserDAO } from  '../../providers/user-dao'
 import { MapServices } from  '../../providers/map-services'
 import {EventsServices} from "../../providers/events-services";
+import {AlertCreator} from "../../providers/alert-creator";
 
 
 @Component({
@@ -15,7 +16,7 @@ export class MapPage {
   markers:any[] = [];
   mapElement : any;
 
-  constructor(public navCtrl:NavController, public adminApi:UserDAO, public mapService:MapServices, public eventsServices: EventsServices) {
+  constructor(public navCtrl:NavController, public adminApi:UserDAO, public mapService:MapServices, public eventsServices: EventsServices, public alertCreator: AlertCreator) {
   }
 
   ionViewDidLoad() {
@@ -67,7 +68,11 @@ export class MapPage {
   }
 
   registerEvent(){
-    this.eventsServices.registerEvent();
+    this.eventsServices.registerEvent().map(res=>res.json()).subscribe(response=>{
+      this.alertCreator.showSimpleAlert('Exito','Se ha registrado el evento');
+    },err=>{
+      this.alertCreator.showSimpleAlert('Error','Ha habido un error por favor intentalo más tarde');
+    });
   }
 
 }
