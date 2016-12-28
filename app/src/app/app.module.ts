@@ -6,6 +6,7 @@ import { MapPage } from '../pages/map/map';
 import { UserDAO } from  '../providers/user-dao'
 import { AlertCreator } from  '../providers/alert-creator'
 import { MapServices } from  '../providers/map-services'
+import {EventsServices} from "../providers/events-services";
 
 
 
@@ -24,6 +25,6 @@ import { MapServices } from  '../providers/map-services'
     HomePage,
     MapPage
   ],
-  providers: [UserDAO,AlertCreator, MapServices, {provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [UserDAO,AlertCreator, MapServices, EventsServices, {provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
 export class AppModule {}
