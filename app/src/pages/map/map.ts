@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { NavController Platform} from 'ionic-angular';
+import { NavController, Platform} from 'ionic-angular';
 import { UserDAO } from  '../../providers/user-dao'
 import { MapServices } from  '../../providers/map-services'
 import {EventsServices} from "../../providers/events-services";
