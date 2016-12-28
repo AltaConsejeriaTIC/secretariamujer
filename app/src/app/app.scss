@@ -1,6 +1,10 @@
 // http://ionicframework.com/docs/v2/theming/
 
-$backgroundPurple:   #664ba8
+$backgroundPurple:   #664ba8;
+
+.content-background-color{
+  background-color: $backgroundPurple;
+}
 
 
 // App Global Sass
