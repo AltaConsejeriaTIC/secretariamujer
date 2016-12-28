@@ -8,6 +8,8 @@ import { AlertCreator } from  '../providers/alert-creator'
 import { MapServices } from  '../providers/map-services'
 import {EventsServices} from "../providers/events-services";
 import {Home2Page} from "../pages/home2/home2";
+import {RequiredInfoFormPage} from "../pages/required-info-form/required-info-form";
+
 
 
 
@@ -16,6 +18,7 @@ import {Home2Page} from "../pages/home2/home2";
     MyApp,
     HomePage,
     Home2Page,
+    RequiredInfoFormPage,
     MapPage
   ],
   imports: [
@@ -26,6 +29,7 @@ import {Home2Page} from "../pages/home2/home2";
     MyApp,
     HomePage,
     Home2Page,
+    RequiredInfoFormPage,
     MapPage
   ],
   providers: [UserDAO,AlertCreator, MapServices, EventsServices, {provide: ErrorHandler, useClass: IonicErrorHandler}]

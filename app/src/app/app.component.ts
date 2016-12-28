@@ -9,7 +9,7 @@ import {Home2Page} from "../pages/home2/home2";
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage = Home2Page;
+  rootPage = HomePage;
 
   constructor(platform: Platform) {
     platform.ready().then(() => {

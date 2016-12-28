@@ -4,6 +4,8 @@ import {MapPage} from "../map/map";
 import {Validators, FormBuilder} from '@angular/forms';
 import {UserDAO} from  '../../providers/user-dao'
 import {User} from '../../entity/user';
+import {RequiredInfoFormPage} from "../required-info-form/required-info-form";
+import {Home2Page} from "../home2/home2";
 
 @Component({
   selector: 'page-home',
@@ -33,4 +35,11 @@ export class HomePage {
     this.navCtrl.push(MapPage)
   }
 
+  goToRequredInfoForm(){
+    this.navCtrl.push(RequiredInfoFormPage)
+  }
+
+  goToHome2Form(){
+    this.navCtrl.push(Home2Page)
+  }
 }
