@@ -28,7 +28,7 @@ describe('EventsServices test', () => {
     expect(isObservable).toBe(true);
   });
 
-  it('should return mocked response for registerEvent (async)', async(() => {
+  xit('should return mocked response for registerEvent (async)', async(() => {
     let response = {
       "response":"ok"
     };

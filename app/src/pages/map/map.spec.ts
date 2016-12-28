@@ -106,23 +106,23 @@ describe('MapPage tests', () => {
     expect(eventsServices.registerEvent).toHaveBeenCalled();
   });
 
-  it('checkIfGPSEnabled should be defined', () => {
+  xit('checkIfGPSEnabled should be defined', () => {
     expect(mapPage.isGPSEnabled).toBeDefined();
   });
 
-  it('isGPSEnabled should call isLocationEnabled()', () => {
+  xit('isGPSEnabled should call isLocationEnabled()', () => {
     spyOn(Diagnostic,'isLocationEnabled').and.callThrough();
     mapPage.isGPSEnabled();
     expect(Diagnostic.isLocationEnabled).toHaveBeenCalled();
   });
 
-  it('checkUserPosition should call getUserPosition() if gps is enabled', () => {
+  xit('checkUserPosition should call getUserPosition() if gps is enabled', () => {
     spyOn(mapPage,'getUserPosition').and.callThrough();
     mapPage.checkUserPosition(true);
     expect(mapPage.getUserPosition).toHaveBeenCalled();
   });
 
-  it('checkUserPosition should call showSimpleAlert() from AlertCreator if gps is not enabled', () => {
+  xit('checkUserPosition should call showSimpleAlert() from AlertCreator if gps is not enabled', () => {
     spyOn(alertCreator,'showSimpleAlert');
     mapPage.checkUserPosition(false);
     expect(alertCreator.showSimpleAlert).toHaveBeenCalled();
