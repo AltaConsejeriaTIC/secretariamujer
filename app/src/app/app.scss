@@ -29,14 +29,30 @@ $placeholderInputColor : #9e8cc6;
   border-radius: 5px;
 }
 
-.input-placeholder-color{
-  color: $placeholderInputColor;
+.input-color{
+  color: white;
 }
 
 .app-button{
   color: white;
   font-weight: bold;
 }
+
+
+.text-input::-moz-placeholder {
+  color: $placeholderInputColor;
+}
+
+.text-input:-ms-input-placeholder {
+  color: $placeholderInputColor;
+}
+
+.text-input::-webkit-input-placeholder {
+  text-indent: 0;
+  color: $placeholderInputColor;
+}
+
+
 
 // App Global Sass
 // --------------------------------------------------
