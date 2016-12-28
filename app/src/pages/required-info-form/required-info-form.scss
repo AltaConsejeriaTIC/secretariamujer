@@ -2,8 +2,11 @@ page-required-info-form {
   background-color: $backgroundPurple
 }
 
-#required-info-col, ion-row{
+#required-info-col ion-row{
   margin-top: 5%;
+}
 
+#required-info-register-button-container button{
+  width: 100%;
 }
 
