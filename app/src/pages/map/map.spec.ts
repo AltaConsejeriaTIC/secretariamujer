@@ -9,6 +9,7 @@ import { UserDAO } from  '../../providers/user-dao'
 import { MapServices } from  '../../providers/map-services'
 import { AlertCreator } from  '../../providers/alert-creator'
 import {AlertController} from "ionic-angular";
+import {EventsServices} from "../../providers/events-services";
 
 
 describe('MapPage tests', () => {
@@ -16,6 +17,7 @@ describe('MapPage tests', () => {
   let mapPage: MapPage;
   let fixture : ComponentFixture<MapPage>;
   let mapServices: MapServices;
+  let eventsServices : EventsServices;
   let marker = {
     setMap: function (x) {
     }
@@ -35,7 +37,7 @@ describe('MapPage tests', () => {
     TestBed.configureTestingModule({
       declarations: [MapPage],
       providers: [
-        App, Platform, Form, Keyboard, MenuController, NavController,UserDAO,MapServices,AlertCreator,AlertController,MapServices,
+        App, Platform, Form, Keyboard, MenuController, NavController,UserDAO,MapServices,AlertCreator,AlertController,MapServices,EventsServices,
         {provide: Config, useClass: ConfigMock}
       ],
       imports: [
@@ -50,8 +52,9 @@ describe('MapPage tests', () => {
     fixture=TestBed.createComponent(MapPage);
     mapPage=fixture.componentInstance;
   });
-  beforeEach(inject([MapServices], _mapServices => {
+  beforeEach(inject([MapServices, EventsServices], (_mapServices, _eventsServices) => {
     mapServices=_mapServices;
+    eventsServices=_eventsServices;
   }));
 
   it('createMap should call buildMap() from MapServices', () => {
@@ -89,6 +92,12 @@ describe('MapPage tests', () => {
   it('isEventPinOnMap should return true if event pin is already on map', () => {
     mapPage.markers.push(marker);
     expect(mapPage.isEventPinOnMap()).toBe(true);
+  });
+
+  it('registerEvent should call registerEvent() from EventsServices', () => {
+    spyOn(eventsServices,'registerEvent').and.callThrough();
+    mapPage.registerEvent();
+    expect(eventsServices.registerEvent).toHaveBeenCalled();
   });
 
 });

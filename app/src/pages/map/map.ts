@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { UserDAO } from  '../../providers/user-dao'
 import { MapServices } from  '../../providers/map-services'
+import {EventsServices} from "../../providers/events-services";
 
 
 @Component({
@@ -14,7 +15,7 @@ export class MapPage {
   markers:any[] = [];
   mapElement : any;
 
-  constructor(public navCtrl:NavController, public adminApi:UserDAO, public mapService:MapServices) {
+  constructor(public navCtrl:NavController, public adminApi:UserDAO, public mapService:MapServices, public eventsServices: EventsServices) {
   }
 
   ionViewDidLoad() {
@@ -66,7 +67,7 @@ export class MapPage {
   }
 
   registerEvent(){
-    console.log("presiono el boton de registrar evento")
+    this.eventsServices.registerEvent();
   }
 
 }
