@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import {RequiredInfoFormPage} from "../required-info-form/required-info-form";
 
 /*
   Generated class for the Home2 page.
@@ -9,7 +10,7 @@ import { NavController } from 'ionic-angular';
 */
 @Component({
   selector: 'page-home2',
-  templateUrl: 'home2.html'
+  templateUrl: './home2.html'
 })
 export class Home2Page {
 
@@ -27,5 +28,7 @@ export class Home2Page {
 
   }
 
-
+  goToRequiredInfoForm(){
+    this.navCtrl.push(RequiredInfoFormPage);
+  }
 }
