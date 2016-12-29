@@ -10,10 +10,9 @@ page-home2{
 
 .button-small{
   line-height: 45px ;
-  min-height: 24px ;
+  min-height: 50px ;
   text-transform: lowercase;
   text-transform: capitalize;
-  background-color: #664ba8;
   border-width: 1px;
   border-style: solid;
   border-color: white;
@@ -21,32 +20,40 @@ page-home2{
   font-weight: bold;
   font-size: large;
 
-
-  color: white;
-  align-items: center !important;
   width: 70% !important;
-
-}
-
-.small_button:hover{
-  background-color: #664ba8 !important;
 }
 
 .button1 {
-
   position: relative;
   top: 115px;
-  left: 15%; /*(100%-60%)/2*/
+  left: 15%;
+}
 
+.button1:active {
+  background-color: white !important;
+  color : black  !important;
 }
 
 .button2{
   position: relative;
   top: 165px;
-  left: 15%; /*(100%-60%)/2*/
-
+  left: 15%;
 }
 
+.button2:active {
+  background-color: white !important;
+  color : black !important;
+}
+
+.img {
+  position: absolute;
+  left: 10%;
+  top: 120px;
+  z-index: -1;
+  width: 80%;
+  height: 120px;
+
+}
 
 
 
