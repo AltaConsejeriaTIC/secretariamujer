@@ -10,6 +10,10 @@ export class UserDAO {
   constructor(public http:Http) {
   }
 
+  saveRequiredInfo(){
+
+  }
+
   create(user:User):Observable<Response> {
     let body = JSON.stringify({
       "name": [{"value": user.name}],

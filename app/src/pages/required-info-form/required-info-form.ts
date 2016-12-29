@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import {User} from '../../entity/user';
 import {AlertCreator} from "../../providers/alert-creator";
+import {UserDAO} from "../../providers/user-dao";
 
 
 @Component({
@@ -12,7 +13,7 @@ export class RequiredInfoFormPage {
 
   user:User;
 
-  constructor(public navCtrl: NavController, public alertCreator:AlertCreator) {
+  constructor(public navCtrl: NavController, public alertCreator:AlertCreator, public userDAO:UserDAO) {
     this.user = {name: null, pass: null, email:null};
   }
 
@@ -23,7 +24,16 @@ export class RequiredInfoFormPage {
   checkInputValues(){
     let isUserNameEmpty=this.validateEmptyField(this.user.name);
     let isPassEmpty=this.validateEmptyField(this.user.pass);
+    let isPassCorrect:boolean;
     this.throwMessageIfEmptyField(isUserNameEmpty, isPassEmpty);
+
+    if(!isPassEmpty){
+      isPassCorrect=this.isPassValueOnlyNumber();
+    }
+
+    if(isPassCorrect){
+      this.saveRequiredInfo();
+    }
   }
 
   validateEmptyField(input):boolean{
@@ -40,10 +50,15 @@ export class RequiredInfoFormPage {
     }
   }
 
-  checkPassValueIsOnlyNumber(){
+  isPassValueOnlyNumber(){
     if(!this.user.pass.match(/^[0-9]*$/)){
       this.alertCreator.showSimpleAlert('Error','El PIN sólo puede contener números');
-    }
+      return false;
+    }else{return true;}
+  }
+
+  saveRequiredInfo(){
+    this.userDAO.saveRequiredInfo();
   }
 
 

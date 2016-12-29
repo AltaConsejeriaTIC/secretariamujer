@@ -62,4 +62,9 @@ describe('UserDAO tests', () => {
     let isObservable = userDAO.create(user) instanceof Observable;
     expect(isObservable).toBe(true);
   });
+
+  it('saveRequiredInfo should be defined',()=>{
+    expect(userDAO.saveRequiredInfo).toBeDefined();
+  });
+
 });

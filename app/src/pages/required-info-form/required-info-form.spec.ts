@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ConfigMock } from '../../mocks';
 import { AlertCreator } from  '../../providers/alert-creator'
 import {AlertController} from "ionic-angular";
+import {UserDAO} from "../../providers/user-dao";
 
 
 
@@ -17,13 +18,14 @@ describe('RequiredInfoFormPage tests', () => {
   let requiredInfoFormPage: RequiredInfoFormPage;
   let fixture : ComponentFixture<RequiredInfoFormPage>;
   let alertCreator: AlertCreator;
+  let userDAO: UserDAO;
 
 
   beforeEach(async(()=>{
     TestBed.configureTestingModule({
       declarations: [RequiredInfoFormPage],
       providers: [
-        App, Platform, Form, Keyboard, MenuController, NavController,AlertCreator,AlertController,RequiredInfoFormPage,
+        App, Platform, Form, Keyboard, MenuController, NavController,AlertCreator,AlertController,RequiredInfoFormPage,UserDAO,
         {provide: Config, useClass: ConfigMock}
       ],
       imports: [
@@ -39,8 +41,9 @@ describe('RequiredInfoFormPage tests', () => {
     requiredInfoFormPage=fixture.componentInstance;
   });
 
-  beforeEach(inject([AlertCreator], (_alertCreator) => {
+  beforeEach(inject([AlertCreator, UserDAO], (_alertCreator, _userDAO) => {
     alertCreator=_alertCreator;
+    userDAO=_userDAO;
   }));
 
   it('validateEmptyField should return true if field is empty', () => {
@@ -58,11 +61,26 @@ describe('RequiredInfoFormPage tests', () => {
     expect(alertCreator.showSimpleAlert).toHaveBeenCalled();
   });
 
-  it('checkPassValueIsOnlyNumber should call showSimpleAlert from AlertCreator if input contains characters different from numbers', () => {
+  it('isPassValueOnlyNumber should call showSimpleAlert from AlertCreator if input contains characters different from numbers and return false', () => {
     spyOn(alertCreator,'showSimpleAlert');
     requiredInfoFormPage.user.pass='123!';
-    requiredInfoFormPage.checkPassValueIsOnlyNumber();
+    requiredInfoFormPage.isPassValueOnlyNumber();
+    expect(requiredInfoFormPage.isPassValueOnlyNumber()).toBe(false);
     expect(alertCreator.showSimpleAlert).toHaveBeenCalled();
+  });
+
+  it('saveRequiredInfo should call saveRequiredInfo from userDAO', () => {
+    spyOn(userDAO,'saveRequiredInfo');
+    requiredInfoFormPage.saveRequiredInfo();
+    expect(userDAO.saveRequiredInfo).toHaveBeenCalled();
+  });
+
+  it('correct data should call saveRequiredInfo from userDAO', () => {
+    spyOn(userDAO,'saveRequiredInfo');
+    requiredInfoFormPage.user.name="name";
+    requiredInfoFormPage.user.pass='1234';
+    requiredInfoFormPage.checkInputValues();
+    expect(userDAO.saveRequiredInfo).toHaveBeenCalled();
   });
 
 });
