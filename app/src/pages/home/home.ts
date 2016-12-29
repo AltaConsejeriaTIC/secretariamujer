@@ -6,6 +6,8 @@ import {UserDAO} from  '../../providers/user-dao'
 import {User} from '../../entity/user';
 import {RequiredInfoFormPage} from "../required-info-form/required-info-form";
 import {Home2Page} from "../home2/home2";
+import {AlertCreator} from "../../providers/alert-creator";
+
 
 @Component({
   selector: 'page-home',
@@ -17,7 +19,7 @@ export class HomePage {
 
   user: User;
 
-  constructor(public navCtrl: NavController, private formBuilder: FormBuilder, public adminApi: UserDAO) {
+  constructor(public navCtrl: NavController, private formBuilder: FormBuilder, public adminApi: UserDAO, public alertCreator:AlertCreator) {
     this.user = {name: '', pass: null, email:''};
   }
 
@@ -27,8 +29,10 @@ export class HomePage {
   registerForm() {
     console.log(this.user);
     this.adminApi.create(this.user).map(res=>res.json()).subscribe(response=>{
-      console.log(response);
-    },err=>{console.log(err)});
+      this.alertCreator.showSimpleAlert('Exito','El usuario se ha registrado correctamente');
+    },err=>{
+      this.alertCreator.showSimpleAlert('Error','Ha habido un error por favor inténtalo nuevamente');
+    });
   }
 
   goToMapPage() {
