@@ -67,6 +67,7 @@ export class MapPage {
     }
   }
 
+
   getUserPosition(){
     this.mapService.getUserLocation().then((position) => {
       this.drawUserPosition(position);
@@ -92,5 +93,6 @@ export class MapPage {
       //this.alertCreator.showSimpleAlert('Error','Ha habido un error por favor intentalo más tarde');
     });
   }
+
 
 }
