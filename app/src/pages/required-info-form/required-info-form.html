@@ -9,17 +9,17 @@
         </ion-row>
 
         <ion-row>
-          <ion-input text-center class="input-border input-color" type="tel" placeholder="1234" maxlength="4"></ion-input>
+          <ion-input text-center [(ngModel)]="user.pass" class="input-border input-color" type="tel" placeholder="1234" maxlength="4"></ion-input>
         </ion-row>
 
         <ion-row>
-          <ion-input text-center type="text" class="input-border input-color" placeholder="Tu nombre en la aplicación"></ion-input>
+          <ion-input text-center [(ngModel)]="user.name" type="text" class="input-border input-color" placeholder="Tu nombre en la aplicación"></ion-input>
         </ion-row>
 
         <ion-row id="required-info-register-button-container">
           <ion-col width-10></ion-col>
           <ion-col width-80>
-            <button class="app-button" ion-button color="light" outline>Regístrate</button>
+            <button (click)="checkInputValues()" class="app-button" ion-button color="light" outline>Regístrate</button>
           </ion-col>
         </ion-row>
       </ion-col>
