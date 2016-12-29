@@ -5,10 +5,11 @@ page-home2{
 
 .large_button {
   line-height: 20vh ;
-  width: 50%;
+
 }
-.small_button{
-  line-height: 5px ;
+
+.button-small{
+  line-height: 45px ;
   min-height: 24px ;
   text-transform: lowercase;
   text-transform: capitalize;
@@ -18,21 +19,34 @@ page-home2{
   border-color: white;
   border-radius: 5px;
   font-weight: bold;
+  font-size: large;
+
+
+  color: white;
+  align-items: center !important;
+  width: 70% !important;
+
 }
 
 .small_button:hover{
   background-color: #664ba8 !important;
 }
 
-.saveButton1 {
+.button1 {
 
   position: relative;
-  top: 310px;
-  left: 85px;
+  top: 115px;
+  left: 15%; /*(100%-60%)/2*/
+
 }
 
-.saveButton2 {
+.button2{
   position: relative;
-  top: 360px;
-  left: 85px;
+  top: 165px;
+  left: 15%; /*(100%-60%)/2*/
+
 }
+
+
+
+
