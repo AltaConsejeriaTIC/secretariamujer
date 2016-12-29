@@ -89,7 +89,7 @@ export class MapPage {
     this.eventsServices.registerEvent().map(res=>res.json()).subscribe(response=>{
       this.alertCreator.showSimpleAlert('Exito','Se ha registrado el evento');
     },err=>{
-      this.alertCreator.showSimpleAlert('Error','Ha habido un error por favor intentalo más tarde');
+      //this.alertCreator.showSimpleAlert('Error','Ha habido un error por favor intentalo más tarde');
     });
   }
 

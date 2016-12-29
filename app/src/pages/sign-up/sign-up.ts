@@ -24,7 +24,7 @@ export class SignUpPage {
     this.userDAO.create(this.user).map(res=>res.json()).subscribe(response=>{
       this.alertCreator.showSimpleAlert('Exito','El usuario ha sido creado');
     },err=>{
-      this.alertCreator.showSimpleAlert('Error','Ha ocurrido un error vuelve a intentarlo');
+      //this.alertCreator.showSimpleAlert('Error','Ha ocurrido un error vuelve a intentarlo');
     });
   }
 

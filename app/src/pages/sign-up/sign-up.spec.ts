@@ -37,7 +37,7 @@ describe('SignUpPage tests', () => {
     userDAO = _userDAO;
   }));
 
-  xit('should test that signUp function calls create function from UserDAO', () => {
+  it('should test that signUp function calls create function from UserDAO', () => {
     spyOn(userDAO, 'create').and.callThrough();
     signUpPage.user=user;
     signUpPage.signUp();
