@@ -12,7 +12,7 @@ import {AlertController} from "ionic-angular";
 
 
 
-describe('MapPage tests', () => {
+describe('RequiredInfoFormPage tests', () => {
 
   let requiredInfoFormPage: RequiredInfoFormPage;
   let fixture : ComponentFixture<RequiredInfoFormPage>;
@@ -43,20 +43,24 @@ describe('MapPage tests', () => {
     alertCreator=_alertCreator;
   }));
 
-  it('checkInputValues should be defined', () => {
-    expect(requiredInfoFormPage.checkInputValues).toBeDefined();
+  it('validateEmptyField should return true if field is empty', () => {
+    requiredInfoFormPage.user.name=null;
+    expect(requiredInfoFormPage.validateEmptyField(requiredInfoFormPage.user.name)).toBe(true);
   });
 
-  it('checkPassValue should call showSimpleAlert from AlertCreator if input is empty', () => {
+  it('throwMessageIfEmptyField should call showSimpleAlert from AlertCreator if any field is empty', () => {
     spyOn(alertCreator,'showSimpleAlert');
-    requiredInfoFormPage.user.pass=null;
-    requiredInfoFormPage.checkPassValue();
+    requiredInfoFormPage.throwMessageIfEmptyField(true,true);
+    expect(alertCreator.showSimpleAlert).toHaveBeenCalled();
+    requiredInfoFormPage.throwMessageIfEmptyField(true,false);
+    expect(alertCreator.showSimpleAlert).toHaveBeenCalled();
+    requiredInfoFormPage.throwMessageIfEmptyField(false,true);
     expect(alertCreator.showSimpleAlert).toHaveBeenCalled();
   });
 
   it('checkPassValueIsOnlyNumber should call showSimpleAlert from AlertCreator if input contains characters different from numbers', () => {
     spyOn(alertCreator,'showSimpleAlert');
-    requiredInfoFormPage.user.pass='123A';
+    requiredInfoFormPage.user.pass='123!';
     requiredInfoFormPage.checkPassValueIsOnlyNumber();
     expect(alertCreator.showSimpleAlert).toHaveBeenCalled();
   });

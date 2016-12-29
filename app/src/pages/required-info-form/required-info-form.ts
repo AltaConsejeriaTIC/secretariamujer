@@ -13,7 +13,7 @@ export class RequiredInfoFormPage {
   user:User;
 
   constructor(public navCtrl: NavController, public alertCreator:AlertCreator) {
-    this.user = {name: '', pass: null, email:''};
+    this.user = {name: null, pass: null, email:null};
   }
 
   ionViewDidLoad() {
@@ -21,14 +21,22 @@ export class RequiredInfoFormPage {
   }
 
   checkInputValues(){
-    this.checkPassValue();
+    let isUserNameEmpty=this.validateEmptyField(this.user.name);
+    let isPassEmpty=this.validateEmptyField(this.user.pass);
+    this.throwMessageIfEmptyField(isUserNameEmpty, isPassEmpty);
   }
 
-  checkPassValue(){
-    if(this.user.pass){
-      this.checkPassValueIsOnlyNumber();
-    }else{
-      this.alertCreator.showSimpleAlert('Error','Por favor ingresa un PIN')
+  validateEmptyField(input):boolean{
+    return !input;
+  }
+
+  throwMessageIfEmptyField(isUserNameEmpty:boolean, isPassEmpty:boolean){
+    if(isUserNameEmpty && isPassEmpty){
+      this.alertCreator.showSimpleAlert('Error','Por favor llena los campos antes de continuar');
+    }else if (isUserNameEmpty){
+      this.alertCreator.showSimpleAlert('Error','Por favor ingresa un nombre de usuario');
+    }else if(isPassEmpty){
+      this.alertCreator.showSimpleAlert('Error','Por favor ingresa un PIN de 4 dígitos');
     }
   }
 
@@ -37,5 +45,6 @@ export class RequiredInfoFormPage {
       this.alertCreator.showSimpleAlert('Error','El PIN sólo puede contener números');
     }
   }
+
 
 }
