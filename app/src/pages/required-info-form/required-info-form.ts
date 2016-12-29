@@ -58,7 +58,7 @@ export class RequiredInfoFormPage {
   }
 
   saveRequiredInfo(){
-    this.userDAO.saveRequiredInfo();
+    this.userDAO.saveRequiredInfo(this.user.name, this.user.pass);
   }
 
 

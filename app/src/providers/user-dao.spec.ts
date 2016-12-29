@@ -3,6 +3,7 @@ import {HttpModule, XHRBackend, Response, ResponseOptions} from "@angular/http";
 import {MockBackend} from '@angular/http/testing';
 import {UserDAO} from "./user-dao";
 import {Observable} from "rxjs/Observable";
+import {User} from "../entity/user";
 
 
 describe('UserDAO tests', () => {
@@ -63,8 +64,11 @@ describe('UserDAO tests', () => {
     expect(isObservable).toBe(true);
   });
 
-  it('saveRequiredInfo should be defined',()=>{
-    expect(userDAO.saveRequiredInfo).toBeDefined();
+  it('saveRequiredInfo set user name and pass values',()=>{
+    userDAO.user=user;
+    userDAO.saveRequiredInfo('name','123');
+    expect(userDAO.user.name).toBe('name');
+    expect(userDAO.user.pass).toBe('123');
   });
 
 });

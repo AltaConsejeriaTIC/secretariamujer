@@ -7,14 +7,21 @@ import {Observable} from "rxjs";
 @Injectable()
 export class UserDAO {
 
-  constructor(public http:Http) {
+  user: User = {
+    name: null,
+    pass: null,
+    email: null
+  };
+
+  constructor(public http: Http) {
   }
 
-  saveRequiredInfo(){
-
+  saveRequiredInfo(name: string, pass: string) {
+    this.user.name = name;
+    this.user.pass = pass;
   }
 
-  create(user:User):Observable<Response> {
+  create(user: User): Observable<Response> {
     let body = JSON.stringify({
       "name": [{"value": user.name}],
       "mail": [{"value": user.email}],
