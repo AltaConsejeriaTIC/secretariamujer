@@ -1,13 +1,10 @@
 page-home2{
   background-color: $backgroundPurple
-
 }
 
 .large_button {
   line-height: 20vh ;
-
 }
-
 .button-small{
   line-height: 45px ;
   min-height: 50px ;
@@ -19,7 +16,6 @@ page-home2{
   border-radius: 5px;
   font-weight: bold;
   font-size: large;
-
   width: 70% !important;
 }
 
@@ -29,27 +25,16 @@ page-home2{
   left: 15%;
 }
 
-.button1:active {
-  background-color: white !important;
-  color : black  !important;
-}
-
 .button2{
   position: relative;
   top: 165px;
   left: 15%;
 }
 
-.button2:active {
-  background-color: white !important;
-  color : black !important;
-}
-
 .img {
   position: absolute;
   left: 10%;
   top: 120px;
-  z-index: -1;
   width: 80%;
   height: 120px;
 

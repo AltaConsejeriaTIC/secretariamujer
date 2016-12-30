@@ -59,6 +59,11 @@ $placeholderInputColor: #9e8cc6;
   padding: 0px !important;
 }
 
+ button:active {
+  background-color: white !important;
+  color : $backgroundPurple  !important;
+}
+
 // App Global Sass
 // --------------------------------------------------
 // Put style rules here that you want to apply globally. These
