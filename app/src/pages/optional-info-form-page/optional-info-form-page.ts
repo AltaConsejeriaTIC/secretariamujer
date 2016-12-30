@@ -9,7 +9,7 @@ import { NavController } from 'ionic-angular';
 */
 @Component({
   selector: 'page-optional-info-form-page',
-  templateUrl: 'optional-info-form-page.html'
+  templateUrl: './optional-info-form-page.html'
 })
 export class OptionalInfoFormPagePage {
 

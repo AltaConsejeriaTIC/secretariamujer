@@ -74,13 +74,4 @@ describe('RequiredInfoFormPage tests', () => {
     requiredInfoFormPage.saveRequiredInfo();
     expect(userDAO.saveRequiredInfo).toHaveBeenCalled();
   });
-
-  it('correct data should call saveRequiredInfo from userDAO', () => {
-    spyOn(userDAO,'saveRequiredInfo');
-    requiredInfoFormPage.user.name="name";
-    requiredInfoFormPage.user.pass='1234';
-    requiredInfoFormPage.checkInputValues();
-    expect(userDAO.saveRequiredInfo).toHaveBeenCalled();
-  });
-
 });

@@ -25,7 +25,7 @@ export class RequiredInfoFormPage {
   checkInputValues(){
     let isUserNameEmpty=this.validateEmptyField(this.user.name);
     let isPassEmpty=this.validateEmptyField(this.user.pass);
-    let isPassCorrect:boolean;
+    let isPassCorrect:boolean=false;
     this.throwMessageIfEmptyField(isUserNameEmpty, isPassEmpty);
 
     if(!isPassEmpty){
@@ -47,14 +47,14 @@ export class RequiredInfoFormPage {
       this.alertCreator.showSimpleAlert('Error','Por favor llena los campos antes de continuar');
     }else if (isUserNameEmpty){
       this.alertCreator.showSimpleAlert('Error','Por favor ingresa un nombre de usuario');
-    }else if(isPassEmpty || this.user.pass.length!=4){
+    }else if(isPassEmpty){
       this.alertCreator.showSimpleAlert('Error','Por favor ingresa un PIN de 4 dígitos');
     }
   }
 
   isPassValueOnlyNumber(){
-    if(!this.user.pass.match(/^[0-9]*$/)){
-      this.alertCreator.showSimpleAlert('Error','El PIN sólo puede contener números');
+    if((!this.user.pass.match(/^[0-9]*$/))|| (this.user.pass.length!=4)){
+      this.alertCreator.showSimpleAlert('Error','El PIN sólo puede contener números y debe ser de 4 dígitos');
       return false;
     }else{return true;}
   }
