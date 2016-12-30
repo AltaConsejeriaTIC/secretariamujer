@@ -47,4 +47,11 @@ describe('RequiredInfoFormPage tests', () => {
     optionalInfoFormPage.saveOptionalInfo();
     expect(userDAO.saveOptionalInfo).toHaveBeenCalled();
   });
+
+  it('createUser should call create from UserDAO', () => {
+    spyOn(userDAO,'create');
+    optionalInfoFormPage.createUser();
+    expect(userDAO.create).toHaveBeenCalled();
+  });
+
 });

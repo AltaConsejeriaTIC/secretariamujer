@@ -25,7 +25,7 @@ export class UserDAO {
 
   create(user: User): Observable<Response> {
     let body = JSON.stringify({
-      "name": [{"value": user.name}],
+      "name": [{"value": user.username+Math.floor(Date.now() / 1000)}],
       "mail": [{"value": user.email}],
       "roles": [{"target_id": "authenticated"}],
       "status": [{"value": true}],
