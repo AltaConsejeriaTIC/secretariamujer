@@ -11,7 +11,7 @@ import {AlertCreator} from "../../providers/alert-creator";
 
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: './home.html'
 })
 
 
@@ -20,7 +20,7 @@ export class HomePage {
   user: User;
 
   constructor(public navCtrl: NavController, private formBuilder: FormBuilder, public adminApi: UserDAO, public alertCreator:AlertCreator) {
-    this.user = {name: '', pass: null, email:''};
+    this.user = {pass: null, username: null, name: null, email:null, phone:null};
   }
 
   ionViewDidLoad() {

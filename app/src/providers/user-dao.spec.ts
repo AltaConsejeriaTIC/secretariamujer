@@ -7,11 +7,7 @@ import {Observable} from "rxjs/Observable";
 
 describe('UserDAO tests', () => {
   let mockbackend, userDAO;
-  let user = {
-    name: 'test name',
-    pass: 12456,
-    email: 'test@testname.com'
-  };
+  let user = {pass: '1234', username: 'testusername', name: 'testname', email:'testemail', phone:'testphone'};
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -54,7 +50,7 @@ describe('UserDAO tests', () => {
     });
 
     userDAO.create(user).map(res=>res.json()).subscribe(response => {
-      expect(response.name[0].value).toBe("test name");
+      expect(response.name[0].value).toBe("testname");
     });
   }));
 

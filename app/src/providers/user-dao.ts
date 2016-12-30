@@ -7,11 +7,7 @@ import {Observable} from "rxjs";
 @Injectable()
 export class UserDAO {
 
-  user: User = {
-    name: null,
-    pass: null,
-    email: null
-  };
+  user: User =  {pass: null, username: null, name: null, email:null, phone:null};
 
   constructor(public http: Http) {
   }

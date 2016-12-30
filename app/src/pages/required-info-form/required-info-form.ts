@@ -15,7 +15,7 @@ export class RequiredInfoFormPage {
   user:User;
 
   constructor(public navCtrl: NavController, public alertCreator:AlertCreator, public userDAO:UserDAO) {
-    this.user = {name: null, pass: null, email:null};
+    this.user = {pass: null, username: null, name: null, email:null, phone:null};
   }
 
   ionViewDidLoad() {
@@ -23,7 +23,7 @@ export class RequiredInfoFormPage {
   }
 
   checkInputValues(){
-    let isUserNameEmpty=this.validateEmptyField(this.user.name);
+    let isUserNameEmpty=this.validateEmptyField(this.user.username);
     let isPassEmpty=this.validateEmptyField(this.user.pass);
     let isPassCorrect:boolean=false;
     this.throwMessageIfEmptyField(isUserNameEmpty, isPassEmpty);
@@ -60,7 +60,7 @@ export class RequiredInfoFormPage {
   }
 
   saveRequiredInfo(){
-    this.userDAO.saveRequiredInfo(this.user.name, this.user.pass);
+    this.userDAO.saveRequiredInfo(this.user.username, this.user.pass);
   }
 
 

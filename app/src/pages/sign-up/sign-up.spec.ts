@@ -9,11 +9,8 @@ describe('SignUpPage tests', () => {
   let signUpPage: SignUpPage;
   let fixture: ComponentFixture<SignUpPage>;
   let userDAO: UserDAO;
-  let user = {
-    name: 'test name',
-    pass: '12456',
-    email: 'test@testname.com'
-  };
+  let user = {pass: '1234', username: 'testusername', name: 'testname', email:'testemail', phone:'testphone'};
+
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
