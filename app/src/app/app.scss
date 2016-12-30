@@ -40,6 +40,13 @@ $placeholderInputColor: #9e8cc6;
 .app-button {
   color: white;
   font-weight: bold;
+  border: 1px solid white;
+}
+
+.disabled-button{
+  color: $placeholderInputColor;
+  font-weight: bold;
+  border: 1px solid $placeholderInputColor;
 }
 
 .text-input::-moz-placeholder {
