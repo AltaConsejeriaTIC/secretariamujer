@@ -59,11 +59,21 @@ describe('UserDAO tests', () => {
     expect(isObservable).toBe(true);
   });
 
-  it('saveRequiredInfo set user name and pass values',()=>{
+  it('saveRequiredInfo should set user name and pass values',()=>{
     userDAO.user=user;
     userDAO.saveRequiredInfo('name','123');
-    expect(userDAO.user.name).toBe('name');
+    expect(userDAO.user.username).toBe('name');
     expect(userDAO.user.pass).toBe('123');
   });
+
+  it('saveOptionalInfo should set user name, email and phone values',()=>{
+    userDAO.user=user;
+    userDAO.saveOptionalInfo('testname','testemail', 'testphone1');
+    expect(userDAO.user.name).toBe('testname');
+    expect(userDAO.user.email).toBe('testemail');
+    expect(userDAO.user.phone).toBe('testphone1');
+
+  });
+
 
 });

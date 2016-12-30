@@ -12,9 +12,15 @@ export class UserDAO {
   constructor(public http: Http) {
   }
 
-  saveRequiredInfo(name: string, pass: string) {
-    this.user.name = name;
+  saveRequiredInfo(username: string, pass: string) {
+    this.user.username = username;
     this.user.pass = pass;
+  }
+
+  saveOptionalInfo(name: string, email:string, phone:string){
+    this.user.name=name;
+    this.user.email=email;
+    this.user.phone=phone;
   }
 
   create(user: User): Observable<Response> {

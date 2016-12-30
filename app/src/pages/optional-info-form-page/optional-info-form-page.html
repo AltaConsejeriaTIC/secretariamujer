@@ -28,7 +28,7 @@
 
           </ion-col>
           <ion-col width-45 class="no-padding">
-            <button [ngClass]="{'app-button': user.name || user.email || user.phone, 'disabled-button': !user.name && !user.email && !user.phone}" ion-button outline>Finalizar</button>
+            <button (click)="saveOptionalInfo()" [ngClass]="{'app-button': user.name || user.email || user.phone, 'disabled-button': !user.name && !user.email && !user.phone}" ion-button outline>Finalizar</button>
           </ion-col>
         </ion-row>
 
