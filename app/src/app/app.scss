@@ -1,43 +1,46 @@
 // http://ionicframework.com/docs/v2/theming/
 
-$backgroundPurple:   #664ba8;
-$placeholderInputColor : #9e8cc6;
+$backgroundPurple: #664ba8;
+$placeholderInputColor: #9e8cc6;
 
-.content-background-color{
+.content-background-color {
   background-color: $backgroundPurple;
 }
 
-.full-height-ion-grid{
+.full-height-ion-grid {
   height: 100%;
 }
 
-.flex-1{
-  flex:1;
+.flex-1 {
+  flex: 1;
 }
 
-.flex-2{
+.flex-2 {
   flex: 2;
 }
 
-.app-subtitle{
+.flex-5 {
+  flex: 5;
+}
+
+.app-subtitle {
   color: white;
   font-weight: bold;
 }
 
-.input-border{
-  border:1px solid white;
+.input-border {
+  border: 1px solid white;
   border-radius: 5px;
 }
 
-.input-color{
+.input-color {
   color: white;
 }
 
-.app-button{
+.app-button {
   color: white;
   font-weight: bold;
 }
-
 
 .text-input::-moz-placeholder {
   color: $placeholderInputColor;
@@ -50,6 +53,10 @@ $placeholderInputColor : #9e8cc6;
 .text-input::-webkit-input-placeholder {
   text-indent: 0;
   color: $placeholderInputColor;
+}
+
+.no-padding {
+  padding: 0px !important;
 }
 
 // App Global Sass

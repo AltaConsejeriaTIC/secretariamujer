@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import {User} from '../../entity/user';
 import {AlertCreator} from "../../providers/alert-creator";
 import {UserDAO} from "../../providers/user-dao";
+import {OptionalInfoFormPagePage} from "../optional-info-form-page/optional-info-form-page";
 
 
 @Component({
@@ -33,6 +34,7 @@ export class RequiredInfoFormPage {
 
     if(isPassCorrect){
       this.saveRequiredInfo();
+      this.navCtrl.push(OptionalInfoFormPagePage);
     }
   }
 
