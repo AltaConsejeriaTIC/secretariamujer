@@ -9,7 +9,7 @@ import {AlertController} from "ionic-angular";
 import {UserDAO} from "../../providers/user-dao";
 import {OptionalInfoFormPagePage} from "./optional-info-form-page";
 
-describe('RequiredInfoFormPage tests', () => {
+describe('OptionalInfoFormPage tests', () => {
 
   let optionalInfoFormPage: OptionalInfoFormPagePage;
   let fixture : ComponentFixture<OptionalInfoFormPagePage>;
@@ -44,7 +44,7 @@ describe('RequiredInfoFormPage tests', () => {
 
   it('saveOptionalInfo should call saveOptionalInfo from UserDAO and create from UserDAO', () => {
     spyOn(userDAO,'saveOptionalInfo');
-    spyOn(userDAO,'create');
+    spyOn(userDAO,'create').and.callThrough();
     optionalInfoFormPage.saveOptionalInfo();
     expect(userDAO.saveOptionalInfo).toHaveBeenCalled();
     expect(userDAO.create).toHaveBeenCalled();
@@ -52,7 +52,7 @@ describe('RequiredInfoFormPage tests', () => {
   });
 
   it('createUser should call create from UserDAO', () => {
-    spyOn(userDAO,'create');
+    spyOn(userDAO,'create').and.callThrough();
     optionalInfoFormPage.createUser();
     expect(userDAO.create).toHaveBeenCalled();
   });

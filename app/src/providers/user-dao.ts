@@ -24,7 +24,6 @@ export class UserDAO {
   }
 
   create(): Observable<Response> {
-    console.log("el usuario registrado es", this.user);
     let encodedUserName=this.encodeUsername();
     let encodedEmail=this.encodeEmail();
 
@@ -34,7 +33,9 @@ export class UserDAO {
       "roles": [{"target_id": "authenticated"}],
       "status": [{"value": true}],
       "pass": this.user.pass,
-      "field_cellphone": "313246545"
+      "field_cellphone": this.user.phone,
+      "field_password":this.user.pass,
+      "field_full_name":this.user.name
     });
 
     let headers = new Headers({'Content-Type': 'application/json', 'Authorization': 'Basic ' + 'YXBwOmFwcA=='});
