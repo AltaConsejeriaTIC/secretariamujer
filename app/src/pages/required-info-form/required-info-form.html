@@ -19,7 +19,7 @@
         <ion-row id="required-info-register-button-container">
           <ion-col width-10></ion-col>
           <ion-col width-80>
-            <button (click)="checkInputValues()" class="app-button" ion-button color="light" outline>Regístrate</button>
+            <button (click)="checkInputValues()"[ngClass]="{'app-button': user.pass && user.username, 'disabled-button': !user.pass || !user.username}" ion-button color="light" outline>Regístrate</button>
           </ion-col>
         </ion-row>
       </ion-col>
