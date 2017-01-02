@@ -9,6 +9,8 @@ import {EventsServices} from "../providers/events-services";
 import {HomePage} from "../pages/home/home";
 import {RequiredInfoFormPage} from "../pages/required-info-form/required-info-form";
 import {OptionalInfoFormPagePage} from "../pages/optional-info-form-page/optional-info-form-page";
+import {TestPage} from "../pages/test-page/test-page";
+import {TestsService} from "../providers/tests-service";
 
 
 
@@ -19,6 +21,7 @@ import {OptionalInfoFormPagePage} from "../pages/optional-info-form-page/optiona
     HomePage,
     RequiredInfoFormPage,
     OptionalInfoFormPagePage,
+    TestPage,
     MapPage
   ],
   imports: [
@@ -30,8 +33,9 @@ import {OptionalInfoFormPagePage} from "../pages/optional-info-form-page/optiona
     HomePage,
     RequiredInfoFormPage,
     OptionalInfoFormPagePage,
+    TestPage,
     MapPage
   ],
-  providers: [UserDAO,AlertCreator, MapServices, EventsServices, {provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [UserDAO,AlertCreator, MapServices, EventsServices, TestsService,{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
 export class AppModule {}
