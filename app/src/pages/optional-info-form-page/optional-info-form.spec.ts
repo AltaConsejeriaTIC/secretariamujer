@@ -42,10 +42,13 @@ describe('RequiredInfoFormPage tests', () => {
     userDAO=_userDAO;
   }));
 
-  it('saveOptionalInfo should call saveOptionalInfo from UserDAO', () => {
+  it('saveOptionalInfo should call saveOptionalInfo from UserDAO and create from UserDAO', () => {
     spyOn(userDAO,'saveOptionalInfo');
+    spyOn(userDAO,'create');
     optionalInfoFormPage.saveOptionalInfo();
     expect(userDAO.saveOptionalInfo).toHaveBeenCalled();
+    expect(userDAO.create).toHaveBeenCalled();
+
   });
 
   it('createUser should call create from UserDAO', () => {

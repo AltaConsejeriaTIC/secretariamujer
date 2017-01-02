@@ -27,12 +27,11 @@ export class HomePage {
   }
 
   registerForm() {
-    console.log(this.user);
-    this.adminApi.create(this.user).map(res=>res.json()).subscribe(response=>{
+/*    this.adminApi.create(this.user).map(res=>res.json()).subscribe(response=>{
       this.alertCreator.showSimpleAlert('Exito','El usuario se ha registrado correctamente');
     },err=>{
       this.alertCreator.showSimpleAlert('Error','Ha habido un error por favor inténtalo nuevamente');
-    });
+    });*/
   }
 
   goToMapPage() {

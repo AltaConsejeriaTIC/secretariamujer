@@ -49,13 +49,14 @@ describe('UserDAO tests', () => {
       connection.mockRespond(new Response(new ResponseOptions({body: JSON.stringify(response)})));
     });
 
-    userDAO.create(user).map(res=>res.json()).subscribe(response => {
+    userDAO.user=user;
+    userDAO.create().map(res=>res.json()).subscribe(response => {
       expect(response.name[0].value).toBe("testname");
     });
   }));
 
   it('should create function return an Observable type',()=>{
-    let isObservable = userDAO.create(user) instanceof Observable;
+    let isObservable = userDAO.create() instanceof Observable;
     expect(isObservable).toBe(true);
   });
 
@@ -72,8 +73,21 @@ describe('UserDAO tests', () => {
     expect(userDAO.user.name).toBe('testname');
     expect(userDAO.user.email).toBe('testemail');
     expect(userDAO.user.phone).toBe('testphone1');
-
   });
 
+  it('encodeUsername should return the username plus a code number',()=>{
+    userDAO.user=user;
+    let usernameEncoded=userDAO.encodeUsername();
+    expect(usernameEncoded).not.toBe(userDAO.user.username);
+    expect(usernameEncoded.indexOf(userDAO.user.username)).toBeGreaterThan(-1);
+  });
+
+  it('encodeEmail should return the email plus a code number if user does not fill that field',()=>{
+    userDAO.user=user;
+    userDAO.user.email=null;
+    let userEmailEncoded=userDAO.encodeEmail();
+    expect(userEmailEncoded).not.toBe(userDAO.user.email);
+    expect(userEmailEncoded.indexOf('@noregistra.com')).toBeGreaterThan(-1);
+  });
 
 });

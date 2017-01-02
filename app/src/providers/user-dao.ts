@@ -23,13 +23,17 @@ export class UserDAO {
     this.user.phone=phone;
   }
 
-  create(user: User): Observable<Response> {
+  create(): Observable<Response> {
+    console.log("el usuario registrado es", this.user);
+    let encodedUserName=this.encodeUsername();
+    let encodedEmail=this.encodeEmail();
+
     let body = JSON.stringify({
-      "name": [{"value": user.username+Math.floor(Date.now() / 1000)}],
-      "mail": [{"value": user.email}],
+      "name": [{"value": encodedUserName}],
+      "mail": [{"value": encodedEmail }],
       "roles": [{"target_id": "authenticated"}],
       "status": [{"value": true}],
-      "pass": user.pass,
+      "pass": this.user.pass,
       "field_cellphone": "313246545"
     });
 
@@ -37,6 +41,18 @@ export class UserDAO {
     let options = new RequestOptions({headers: headers});
 
     return this.http.post('http://192.168.88.245:9000/entity/user?_format=json', body, options);
+  }
+
+  encodeUsername():string{
+    return this.user.username+Math.floor(Date.now() / 1000);
+  }
+
+  encodeEmail():string{
+    if(!this.user.email){
+      return Math.floor(Date.now() / 1000)+'@noregistra.com';
+    }else{
+      return this.user.email;
+    }
   }
 
 }

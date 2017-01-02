@@ -20,9 +20,10 @@ export class OptionalInfoFormPagePage {
 
   saveOptionalInfo(){
     this.userDAO.saveOptionalInfo(this.user.name,this.user.email,this.user.phone);
+    this.createUser();
   }
 
   createUser(){
-    this.userDAO.create(this.user);
+    this.userDAO.create();
   }
 }
