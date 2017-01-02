@@ -32,7 +32,7 @@ export class RequiredInfoFormPage {
       isPassCorrect=this.isPassValueOnlyNumber();
     }
 
-    if(isPassCorrect){
+    if(isPassCorrect && !isUserNameEmpty){
       this.saveRequiredInfo();
       this.navCtrl.push(OptionalInfoFormPagePage);
     }

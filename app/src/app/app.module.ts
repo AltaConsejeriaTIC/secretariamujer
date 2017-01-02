@@ -1,13 +1,12 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
 import { MapPage } from '../pages/map/map';
 import { UserDAO } from  '../providers/user-dao'
 import { AlertCreator } from  '../providers/alert-creator'
 import { MapServices } from  '../providers/map-services'
 import {EventsServices} from "../providers/events-services";
-import {Home2Page} from "../pages/home2/home2";
+import {HomePage} from "../pages/home/home";
 import {RequiredInfoFormPage} from "../pages/required-info-form/required-info-form";
 import {OptionalInfoFormPagePage} from "../pages/optional-info-form-page/optional-info-form-page";
 
@@ -18,7 +17,6 @@ import {OptionalInfoFormPagePage} from "../pages/optional-info-form-page/optiona
   declarations: [
     MyApp,
     HomePage,
-    Home2Page,
     RequiredInfoFormPage,
     OptionalInfoFormPagePage,
     MapPage
@@ -30,7 +28,6 @@ import {OptionalInfoFormPagePage} from "../pages/optional-info-form-page/optiona
   entryComponents: [
     MyApp,
     HomePage,
-    Home2Page,
     RequiredInfoFormPage,
     OptionalInfoFormPagePage,
     MapPage

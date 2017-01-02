@@ -1,3 +1,53 @@
-page-home {
+page-home2{
+  background-color: $backgroundPurple
+}
+
+.large_button {
+  line-height: 20vh ;
+}
+.button-small{
+  line-height: 45px ;
+  min-height: 50px ;
+  text-transform: lowercase;
+  text-transform: capitalize;
+  border-width: 1px;
+  border-style: solid;
+  border-color: white;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: large;
+  width: 70% !important;
+}
+
+.button1 {
+  position: relative;
+  top: 115px;
+  left: 15%;
+}
+
+.button2{
+  position: relative;
+  top: 165px;
+  left: 15%;
+}
+
+.img {
+  position: absolute;
+  left: 10%;
+  top: 120px;
+  width: 80%;
+  height: 120px;
 
 }
+
+.line-wrapper{
+  background-color: white;
+  height: 1px;
+  width: 70%;
+  position: relative;
+  top: 140px;
+  left: 15%;
+}
+
+
+

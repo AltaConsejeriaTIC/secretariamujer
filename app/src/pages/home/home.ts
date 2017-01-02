@@ -1,48 +1,34 @@
-import {Component} from '@angular/core';
-import {NavController} from 'ionic-angular';
-import {MapPage} from "../map/map";
-import {Validators, FormBuilder} from '@angular/forms';
-import {UserDAO} from  '../../providers/user-dao'
-import {User} from '../../entity/user';
+import { Component } from '@angular/core';
+import { NavController } from 'ionic-angular';
 import {RequiredInfoFormPage} from "../required-info-form/required-info-form";
-import {Home2Page} from "../home2/home2";
-import {AlertCreator} from "../../providers/alert-creator";
 
+/*
+  Generated class for the Home2 page.
 
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+*/
 @Component({
-  selector: 'page-home',
+  selector: 'page-home2',
   templateUrl: './home.html'
 })
-
-
 export class HomePage {
 
-  user: User;
-
-  constructor(public navCtrl: NavController, private formBuilder: FormBuilder, public adminApi: UserDAO, public alertCreator:AlertCreator) {
-    this.user = {pass: null, username: null, name: null, email:null, phone:null};
-  }
+  constructor(public navCtrl: NavController) {}
 
   ionViewDidLoad() {
+    console.log('Hello HomePage Page');
   }
 
   registerForm() {
-/*    this.adminApi.create(this.user).map(res=>res.json()).subscribe(response=>{
-      this.alertCreator.showSimpleAlert('Exito','El usuario se ha registrado correctamente');
-    },err=>{
-      this.alertCreator.showSimpleAlert('Error','Ha habido un error por favor inténtalo nuevamente');
-    });*/
+    console.log("se esta registrando");
   }
 
-  goToMapPage() {
-    this.navCtrl.push(MapPage)
+  goToSignInPage(){
+
   }
 
-  goToRequredInfoForm(){
-    this.navCtrl.push(RequiredInfoFormPage)
-  }
-
-  goToHome2Form(){
-    this.navCtrl.push(Home2Page)
+  goToRequiredInfoForm(){
+    this.navCtrl.push(RequiredInfoFormPage);
   }
 }
