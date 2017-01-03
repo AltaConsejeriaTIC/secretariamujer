@@ -2,8 +2,7 @@
   <ion-grid class="full-height-ion-grid">
     <ion-row class="flex-1"></ion-row>
     <ion-row class="flex-2">
-      <ion-col width-10></ion-col>
-      <ion-col id="required-info-col" width-80>
+      <ion-col id="required-info-col" offset-10 width-80>
         <ion-row>
           <ion-label text-center class="app-subtitle">Crea tu PIN de 4 dígitos</ion-label>
         </ion-row>
@@ -21,10 +20,7 @@
           <ion-col width-45 class="no-padding">
             <button (click)="goBack()" class="app-button" ion-button outline>Atrás</button>
           </ion-col>
-          <ion-col width-10>
-
-          </ion-col>
-          <ion-col width-45 class="no-padding">
+          <ion-col offset-10 width-45 class="no-padding">
             <button (click)="checkInputValues()" [ngClass]="{'app-button': user.pass && user.username, 'disabled-button': !user.pass || !user.username}" ion-button outline>Continuar</button>
           </ion-col>
 

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import {RequiredInfoFormPage} from "../required-info-form/required-info-form";
+import {MenuPage} from "../menu/menu";
 
 /*
   Generated class for the Home2 page.
@@ -25,7 +26,7 @@ export class HomePage {
   }
 
   goToSignInPage(){
-
+    this.navCtrl.push(MenuPage);
   }
 
   goToRequiredInfoForm(){

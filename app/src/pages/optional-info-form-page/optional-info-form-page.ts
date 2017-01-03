@@ -4,6 +4,7 @@ import {User} from "../../entity/user";
 import {UserDAO} from "../../providers/user-dao";
 import {AlertCreator} from "../../providers/alert-creator";
 import {TestPage} from "../test-page/test-page";
+import {MenuPage} from "../menu/menu";
 
 @Component({
   selector: 'page-optional-info-form-page',
@@ -36,6 +37,6 @@ export class OptionalInfoFormPagePage {
   }
 
   goToTestPage() {
-    this.navCtrl.push(TestPage);
+    this.navCtrl.push(MenuPage);
   }
 }

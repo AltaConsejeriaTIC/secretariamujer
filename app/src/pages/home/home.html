@@ -20,11 +20,10 @@
 
 
     <ion-row id="required-info-register-button-container">
-      <ion-col width-10></ion-col>
-      <ion-col  width-80>
+      <ion-col offset-10 width-80>
         <button ion-button (click)="goToRequiredInfoForm()" class="button1 large_button button-small " color="light" outline>Regístrate</button>
         <div class="line-wrapper"></div>
-        <button ion-button class="button2 large_button button-small " color="light" outline>Iniciar Sesión</button>
+        <button ion-button (click)="goToSignInPage()" class="button2 large_button button-small " color="light" outline>Iniciar Sesión</button>
 
       </ion-col>
     </ion-row>
