@@ -63,5 +63,9 @@ export class RequiredInfoFormPage {
     this.userDAO.saveRequiredInfo(this.user.username, this.user.pass);
   }
 
+  goBack(){
+    this.navCtrl.pop();
+  }
+
 
 }
