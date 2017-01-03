@@ -25,7 +25,9 @@ import {TestsService} from "../providers/tests-service";
     MapPage
   ],
   imports: [
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp,{
+      backButtonText:''
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
