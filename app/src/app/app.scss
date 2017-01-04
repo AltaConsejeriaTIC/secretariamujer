@@ -11,6 +11,10 @@ $placeholderInputColor: #9e8cc6;
   height: 100%;
 }
 
+.display-flex{
+  display: flex;
+}
+
 .flex-1 {
   flex: 1;
 }
@@ -23,8 +27,16 @@ $placeholderInputColor: #9e8cc6;
   flex: 5;
 }
 
+.center-vertically{
+  align-items: center;
+}
+
 .justify-center-row{
   justify-content: center;
+}
+
+.justify-horizontally-right{
+  justify-content: flex-end;
 }
 
 .center-vertically-column-content{

@@ -18,16 +18,16 @@
         <div *ngIf="isShowingTip">
             <ion-row>
               <ion-col width-66>
-                <ion-row>
-                  <img  src="../../assets/img/menu-icons/Mapa_Pictograma.png">
+                <ion-row class="justify-center-row">
+                  <img  src="../../assets/img/menu-icons/Info_Pictograma.png">
                 </ion-row>
 
-                <ion-row >
-                  <ion-label>Mapas y Rutas</ion-label>
+                <ion-row class="justify-center-row">
+                  <ion-label class="menu-option-label">Mapas y Rutas</ion-label>
                 </ion-row>
               </ion-col>
 
-              <ion-col width-33>
+              <ion-col width-33 class="display-flex center-vertically justify-horizontally-right">
                 <img (click)="showTip()" src="../../assets/img/menu-icons/Atras-10.png">
               </ion-col>
             </ion-row>
