@@ -13,10 +13,16 @@ import { NavController } from 'ionic-angular';
 })
 export class MenuPage {
 
+  isShowingTip:boolean=false;
   constructor(public navCtrl: NavController) {}
 
   ionViewDidLoad() {
     console.log('Hello MenuPage Page');
+  }
+
+  showTip(){
+    this.isShowingTip=!(this.isShowingTip);
+    console.log("esta mostrando tip");
   }
 
 }

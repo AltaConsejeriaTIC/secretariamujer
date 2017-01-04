@@ -2,29 +2,61 @@
   <ion-grid class="full-height-ion-grid no-padding">
 
     <ion-row class="flex-1 option-menu-row">
-      <ion-col offset-33 width-33 class="align-center-row-container">
-        <ion-row class="flex-1 justify-center-row">
-          <img src="../../assets/img/menu-icons/Info_Pictograma.png">
-        </ion-row>
+      <ion-col [ngClass]="{'offset-33 custom-width-33': !isShowingTip, 'custom-width-50':isShowingTip}">
 
-        <ion-row class="flex-1 justify-center-row">
-          <ion-label class="menu-option-label">Información</ion-label>
-        </ion-row>
+        <div *ngIf="!isShowingTip">
+          <ion-row class="justify-center-row menu-icon-margin-container">
+            <img class="menu-row-icon-size" src="../../assets/img/menu-icons/Info_Pictograma.png">
+          </ion-row>
+
+          <ion-row class="justify-center-row">
+            <ion-label class="menu-option-label">Información</ion-label>
+          </ion-row>
+        </div>
+
+
+        <div *ngIf="isShowingTip">
+            <ion-row>
+              <ion-col width-66>
+                <ion-row>
+                  <img  src="../../assets/img/menu-icons/Mapa_Pictograma.png">
+                </ion-row>
+
+                <ion-row >
+                  <ion-label>Mapas y Rutas</ion-label>
+                </ion-row>
+              </ion-col>
+
+              <ion-col width-33>
+                <img (click)="showTip()" src="../../assets/img/menu-icons/Atras-10.png">
+              </ion-col>
+            </ion-row>
+
+        </div>
+
+
+      </ion-col >
+
+      <ion-col [ngClass]="{'custom-width-33': !isShowingTip, 'custom-width-50 tip-container-color':isShowingTip}">
+
+        <div *ngIf="!isShowingTip">
+          <ion-row class="menu-arrow-container-margin">
+            <img (click)="showTip()" src="../../assets/img/menu-icons/Flecha_Pictograma.png">
+          </ion-row>
+        </div>
+
+
+
 
       </ion-col>
 
-      <ion-col width-33 class="center-vertically-column-content">
-        <ion-row class="menu-arrow-container-margin">
-          <img src="../../assets/img/menu-icons/Flecha_Pictograma.png">
-        </ion-row>
-      </ion-col>
     </ion-row>
 
     <ion-row class="flex-1 option-menu-row">
       <ion-col offset-33 width-33 class="align-center-row-container">
 
-        <ion-row class="justify-center-row">
-          <img src="../../assets/img/menu-icons/Mapa_Pictograma.png">
+        <ion-row class="justify-center-row menu-icon-margin-container">
+          <img class="menu-row-icon-size" src="../../assets/img/menu-icons/Mapa_Pictograma.png">
         </ion-row>
 
         <ion-row class="justify-center-row">
@@ -43,8 +75,8 @@
     <ion-row class="flex-1 option-menu-row">
       <ion-col offset-33 width-33 class="align-center-row-container">
 
-        <ion-row class="justify-center-row">
-          <img src="../../assets/img/menu-icons/Test_Pictograma.png">
+        <ion-row class="justify-center-row menu-icon-margin-container">
+          <img class="menu-row-icon-size" src="../../assets/img/menu-icons/Test_Pictograma.png">
         </ion-row>
 
         <ion-row class="justify-center-row">
@@ -62,8 +94,8 @@
     <ion-row class="flex-1 option-menu-row">
       <ion-col offset-33 width-33 class="align-center-row-container">
 
-        <ion-row class="justify-center-row">
-          <img src="../../assets/img/menu-icons/Configuracion_Pictograma.png">
+        <ion-row class="justify-center-row menu-icon-margin-container">
+          <img class="menu-row-icon-size" src="../../assets/img/menu-icons/Configuracion_Pictograma.png">
         </ion-row>
 
         <ion-row class="justify-center-row">

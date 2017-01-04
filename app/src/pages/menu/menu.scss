@@ -23,3 +23,34 @@ page-menu {
 .menu-arrow-container-margin{
   margin-left: 60% !important;
 }
+
+.menu-row-icon-size{
+  height: 4em;
+  width: 4em;
+}
+
+.menu-icon-margin-container{
+  margin-top: 10%;
+}
+
+.offset-33{
+  margin-left: 33.3333%;
+}
+
+.custom-width-33{
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 33.3333%;
+  max-width: 33.3333%;
+}
+
+.custom-width-50{
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 50%;
+  max-width: 50%;
+}
+
+.tip-container-color{
+  background-color: white;
+}
