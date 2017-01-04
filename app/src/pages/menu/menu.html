@@ -18,7 +18,7 @@
         <div *ngIf="isShowingTip">
             <ion-row>
               <ion-col width-66>
-                <ion-row class="justify-center-row">
+                <ion-row>
                   <img  src="../../assets/img/menu-icons/Info_Pictograma.png">
                 </ion-row>
 
@@ -37,17 +37,11 @@
 
       </ion-col >
 
-      <ion-col [ngClass]="{'custom-width-33': !isShowingTip, 'custom-width-50 tip-container-color':isShowingTip}">
+      <ion-col [ngClass]="{'custom-width-33 display-flex center-vertically justify-horizontally-right column-arrow-show-tip-right-padding': !isShowingTip, 'custom-width-50 tip-container-color':isShowingTip}">
 
         <div *ngIf="!isShowingTip">
-          <ion-row class="menu-arrow-container-margin">
             <img (click)="showTip()" src="../../assets/img/menu-icons/Flecha_Pictograma.png">
-          </ion-row>
         </div>
-
-
-
-
       </ion-col>
 
     </ion-row>
