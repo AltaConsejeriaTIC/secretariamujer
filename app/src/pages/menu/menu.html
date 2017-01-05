@@ -2,11 +2,12 @@
   <ion-grid class="full-height-ion-grid no-padding">
 
     <ion-row class="flex-1 option-menu-row">
-      <ion-col [ngClass]="{'offset-33 custom-width-33  column-center-content-horizontally': !isShowingTip, 'custom-width-50 display-flex':isShowingTip}">
+      <ion-col
+        [ngClass]="{'offset-33 custom-width-33  column-center-content-horizontally': !isShowingTip, 'custom-width-50 display-flex':isShowingTip}">
 
         <div *ngIf="!isShowingTip">
           <ion-row class="justify-center-row menu-icon-margin-container">
-            <img  src="../../assets/img/menu-icons/Info_Pictograma.png">
+            <img src="../../assets/img/menu-icons/Info_Pictograma.png">
           </ion-row>
 
           <ion-row class="justify-center-row">
@@ -14,95 +15,159 @@
           </ion-row>
         </div>
 
+        <ion-row *ngIf="isShowingTip">
+          <ion-col width-80>
+            <ion-col class="column-center-content-horizontally">
+              <img src="../../assets/img/menu-icons/Info_Pictograma.png">
+            </ion-col>
 
-            <ion-row *ngIf="isShowingTip">
-              <ion-col width-66>
-                <ion-col class="column-center-content-horizontally">
-                  <img  src="../../assets/img/menu-icons/Info_Pictograma.png">
-                </ion-col>
+            <ion-col class="justify-center-row column-center-content-horizontally">
+              <ion-label class="menu-option-label">Información</ion-label>
+            </ion-col>
+          </ion-col>
 
-                <ion-col class="justify-center-row column-center-content-horizontally">
-                  <ion-label class="menu-option-label">Información</ion-label>
-                </ion-col>
-              </ion-col>
+          <ion-col width-20 class="display-flex center-vertically justify-horizontally-right">
+            <img (click)="showTip()" src="../../assets/img/menu-icons/Atras-10.png">
+          </ion-col>
+        </ion-row>
 
-              <ion-col width-33 class="display-flex center-vertically justify-horizontally-right">
-                <img (click)="showTip()" src="../../assets/img/menu-icons/Atras-10.png">
-              </ion-col>
-            </ion-row>
-
-
-
-
-      </ion-col >
+      </ion-col>
 
       <ion-col [ngClass]="{'custom-width-33 display-flex center-vertically justify-horizontally-right column-arrow-show-tip-right-padding': !isShowingTip, 'custom-width-50 tip-container-color':isShowingTip}">
 
         <div *ngIf="!isShowingTip">
-            <img (click)="showTip()" src="../../assets/img/menu-icons/Flecha_Pictograma.png">
+          <img (click)="showTip()" src="../../assets/img/menu-icons/Flecha_Pictograma.png">
         </div>
       </ion-col>
 
     </ion-row>
 
     <ion-row class="flex-1 option-menu-row">
-      <ion-col offset-33 width-33 class="align-center-row-container">
+      <ion-col
+        [ngClass]="{'offset-33 custom-width-33  column-center-content-horizontally': !isShowingTip, 'custom-width-50 display-flex':isShowingTip}">
 
-        <ion-row class="justify-center-row menu-icon-margin-container">
-          <img class="menu-row-icon-size" src="../../assets/img/menu-icons/Mapa_Pictograma.png">
+        <div *ngIf="!isShowingTip">
+          <ion-row class="justify-center-row menu-icon-margin-container">
+            <img src="../../assets/img/menu-icons/Mapa_Pictograma.png">
+          </ion-row>
+
+          <ion-row class="justify-center-row">
+            <ion-label class="menu-option-label">Mapas y Rutas</ion-label>
+          </ion-row>
+        </div>
+
+        <ion-row *ngIf="isShowingTip">
+          <ion-col width-80>
+            <ion-col class="column-center-content-horizontally">
+              <img src="../../assets/img/menu-icons/Mapa_Pictograma.png">
+            </ion-col>
+
+            <ion-col class="justify-center-row column-center-content-horizontally">
+              <ion-label class="menu-option-label">Mapas y Rutas</ion-label>
+            </ion-col>
+          </ion-col>
+
+          <ion-col width-20 class="display-flex center-vertically justify-horizontally-right">
+            <img (click)="showTip()" src="../../assets/img/menu-icons/Atras-10.png">
+          </ion-col>
         </ion-row>
 
-        <ion-row class="justify-center-row">
-          <ion-label class="menu-option-label">Mapas y Rutas</ion-label>
-        </ion-row>
-
-      </ion-col >
-
-      <ion-col width-33 class="center-vertically-column-content">
-        <ion-row class="menu-arrow-container-margin">
-          <img src="../../assets/img/menu-icons/Flecha_Pictograma.png">
-        </ion-row>
       </ion-col>
+
+      <ion-col
+        [ngClass]="{'custom-width-33 display-flex center-vertically justify-horizontally-right column-arrow-show-tip-right-padding': !isShowingTip, 'custom-width-50 tip-container-color':isShowingTip}">
+
+        <div *ngIf="!isShowingTip">
+          <img (click)="showTip()" src="../../assets/img/menu-icons/Flecha_Pictograma.png">
+        </div>
+      </ion-col>
+
     </ion-row>
 
     <ion-row class="flex-1 option-menu-row">
-      <ion-col offset-33 width-33 class="align-center-row-container">
+      <ion-col
+        [ngClass]="{'offset-33 custom-width-33  column-center-content-horizontally': !isShowingTip, 'custom-width-50 display-flex':isShowingTip}">
 
-        <ion-row class="justify-center-row menu-icon-margin-container">
-          <img class="menu-row-icon-size" src="../../assets/img/menu-icons/Test_Pictograma.png">
+        <div *ngIf="!isShowingTip">
+          <ion-row class="justify-center-row menu-icon-margin-container">
+            <img src="../../assets/img/menu-icons/Test_Pictograma.png">
+          </ion-row>
+
+          <ion-row class="justify-center-row">
+            <ion-label class="menu-option-label">Test y Tips</ion-label>
+          </ion-row>
+        </div>
+
+        <ion-row *ngIf="isShowingTip">
+          <ion-col width-80>
+            <ion-col class="column-center-content-horizontally">
+              <img src="../../assets/img/menu-icons/Test_Pictograma.png">
+            </ion-col>
+
+            <ion-col class="justify-center-row column-center-content-horizontally">
+              <ion-label class="menu-option-label">Test y Tips</ion-label>
+            </ion-col>
+          </ion-col>
+
+          <ion-col width-20 class="display-flex center-vertically justify-horizontally-right">
+            <img (click)="showTip()" src="../../assets/img/menu-icons/Atras-10.png">
+          </ion-col>
         </ion-row>
 
-        <ion-row class="justify-center-row">
-          <ion-label class="menu-option-label">Test y Tips</ion-label>
-        </ion-row>
       </ion-col>
 
-      <ion-col width-33 class="center-vertically-column-content">
-        <ion-row class="menu-arrow-container-margin">
-          <img src="../../assets/img/menu-icons/Flecha_Pictograma.png">
-        </ion-row>
+      <ion-col
+        [ngClass]="{'custom-width-33 display-flex center-vertically justify-horizontally-right column-arrow-show-tip-right-padding': !isShowingTip, 'custom-width-50 tip-container-color':isShowingTip}">
+
+        <div *ngIf="!isShowingTip">
+          <img (click)="showTip()" src="../../assets/img/menu-icons/Flecha_Pictograma.png">
+        </div>
       </ion-col>
+
     </ion-row>
 
     <ion-row class="flex-1 option-menu-row">
-      <ion-col offset-33 width-33 class="align-center-row-container">
+      <ion-col
+        [ngClass]="{'offset-33 custom-width-33  column-center-content-horizontally': !isShowingTip, 'custom-width-50 display-flex':isShowingTip}">
 
-        <ion-row class="justify-center-row menu-icon-margin-container">
-          <img class="menu-row-icon-size" src="../../assets/img/menu-icons/Configuracion_Pictograma.png">
-        </ion-row>
+        <div *ngIf="!isShowingTip">
+          <ion-row class="justify-center-row menu-icon-margin-container">
+            <img src="../../assets/img/menu-icons/Configuracion_Pictograma.png">
+          </ion-row>
 
-        <ion-row class="justify-center-row">
-          <ion-label class="menu-option-label">Configuración</ion-label>
+          <ion-row class="justify-center-row">
+            <ion-label class="menu-option-label">Configuración</ion-label>
+          </ion-row>
+        </div>
+
+        <ion-row *ngIf="isShowingTip">
+          <ion-col width-80>
+            <ion-col class="column-center-content-horizontally">
+              <img src="../../assets/img/menu-icons/Configuracion_Pictograma.png">
+            </ion-col>
+
+            <ion-col class="justify-center-row column-center-content-horizontally">
+              <ion-label class="menu-option-label">Configuración</ion-label>
+            </ion-col>
+          </ion-col>
+
+          <ion-col width-20 class="display-flex center-vertically justify-horizontally-right">
+            <img (click)="showTip()" src="../../assets/img/menu-icons/Atras-10.png">
+          </ion-col>
         </ion-row>
 
       </ion-col>
 
-      <ion-col width-33 class="center-vertically-column-content">
-        <ion-row class="menu-arrow-container-margin">
-          <img src="../../assets/img/menu-icons/Flecha_Pictograma.png">
-        </ion-row>
+      <ion-col
+        [ngClass]="{'custom-width-33 display-flex center-vertically justify-horizontally-right column-arrow-show-tip-right-padding': !isShowingTip, 'custom-width-50 tip-container-color':isShowingTip}">
+
+        <div *ngIf="!isShowingTip">
+          <img (click)="showTip()" src="../../assets/img/menu-icons/Flecha_Pictograma.png">
+        </div>
       </ion-col>
+
     </ion-row>
+
 
     <ion-row class="flex-1 special-menu-row">
 
