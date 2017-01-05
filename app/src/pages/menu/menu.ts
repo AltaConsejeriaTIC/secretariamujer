@@ -13,16 +13,32 @@ import { NavController } from 'ionic-angular';
 })
 export class MenuPage {
 
-  isShowingTip:boolean=false;
+  isShowingInfoHint:boolean=false;
+  isShowingMapAndRoutesHint:boolean=false;
+  isShowingTestAndTipsHint:boolean=false;
+  isShowingConfigHint:boolean=false;
+
   constructor(public navCtrl: NavController) {}
 
   ionViewDidLoad() {
     console.log('Hello MenuPage Page');
   }
 
-  showTip(){
-    this.isShowingTip=!(this.isShowingTip);
-    console.log("esta mostrando tip");
+  toggleHint(hint:string){
+    switch (hint){
+      case 'infoHint':
+        this.isShowingInfoHint=!(this.isShowingInfoHint);
+        break;
+      case 'MapAndRoutesHint':
+        this.isShowingMapAndRoutesHint=!(this.isShowingMapAndRoutesHint);
+        break;
+      case 'TestAndTips':
+        this.isShowingTestAndTipsHint=!(this.isShowingTestAndTipsHint);
+        break;
+      case 'ConfigHint':
+        this.isShowingConfigHint=!(this.isShowingConfigHint);
+        break;
+    }
   }
 
 }
