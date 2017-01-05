@@ -66,4 +66,27 @@ page-menu {
   color: #5393cd;
 }
 
+.menu-separator-container{
+  height: 100%;
+  width: 2px;
+  padding: 5% 0 5% 0;
+}
+
+.menu-separator{
+  background-color: white;
+  height: 100%;
+  width: 100%
+}
+
+.special-row-icon-container{
+  height: 50%;
+  justify-content: center;
+}
+
+.special-row-icon-container-text{
+  height: 25%;
+  justify-content: center;
+  align-items: center;
+}
+
 

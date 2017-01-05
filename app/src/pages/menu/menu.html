@@ -43,7 +43,33 @@
 
 
     <ion-row class="flex-1 special-menu-row">
+      <ion-col width-49 (click)="makePhoneCall()">
+        <ion-row class="special-row-icon-container">
+          <img src="../../assets/img/menu-icons/Icono_Blanco-05.png">
+        </ion-row>
+        <ion-row class="special-row-icon-container-text">
+          <ion-label class="menu-option-label no-margin">Llamar</ion-label>
+        </ion-row>
+        <ion-row class="special-row-icon-container-text align-start-vertically">
+          <ion-label class="menu-option-label no-margin ">123</ion-label>
+        </ion-row>
+      </ion-col>
+      <div class="menu-separator-container">
+        <div class="menu-separator"></div>
+      </div>
 
+
+      <ion-col width-50 (click)="sendMessage()">
+        <ion-row class="special-row-icon-container">
+          <img src="../../assets/img/menu-icons/mail_icon.png">
+        </ion-row>
+        <ion-row class="special-row-icon-container-text">
+          <ion-label class="menu-option-label no-margin">Enviar</ion-label>
+        </ion-row>
+        <ion-row class="special-row-icon-container-text align-start-vertically">
+          <ion-label class="menu-option-label no-margin">Mensaje</ion-label>
+        </ion-row>
+      </ion-col>
     </ion-row>
 
   </ion-grid>

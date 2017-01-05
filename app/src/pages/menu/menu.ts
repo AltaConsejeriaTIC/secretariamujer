@@ -59,4 +59,12 @@ export class MenuPage {
     this.menuOptions[index].isShowingHint=!this.menuOptions[index].isShowingHint;
   }
 
+  makePhoneCall(){
+    this.alertCreator.showSimpleAlert("Info","Hacer llamada esta en desarrollo");
+  }
+
+  sendMessage(){
+    this.alertCreator.showSimpleAlert("Info","Enviar mensaje esta en desarrollo");
+  }
+
 }

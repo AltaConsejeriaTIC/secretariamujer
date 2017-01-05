@@ -48,6 +48,10 @@ $placeholderInputColor: #9e8cc6;
   font-weight: bold;
 }
 
+.align-start-vertically{
+  align-items: flex-start !important;
+}
+
 .input-border {
   border: 1px solid white;
   border-radius: 5px;
@@ -80,6 +84,10 @@ $placeholderInputColor: #9e8cc6;
 .text-input::-webkit-input-placeholder {
   text-indent: 0;
   color: $placeholderInputColor;
+}
+
+.no-margin{
+  margin: 0px !important;
 }
 
 .no-padding {
