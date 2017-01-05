@@ -1,13 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import {AlertCreator} from "../../providers/alert-creator";
+import {TestPage} from "../test-page/test-page";
 
-/*
-  Generated class for the Menu page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-menu',
   templateUrl: './menu.html'
@@ -42,7 +37,7 @@ export class MenuPage {
         menuIcon:'../../assets/img/menu-icons/Test_Pictograma.png',
         menuHint:'¿Cómo puedo saber si estoy en una situación violenta?',
         goPage:function(){
-          alertCreator.showSimpleAlert("Info","Ir a la página de test y tips esta en desarrollo");
+          navCtrl.push(TestPage);
         }
       },
       {

@@ -29,6 +29,7 @@ export class OptionalInfoFormPagePage {
   createUser() {
     this.userDAO.create().map(res => res.json()).subscribe(response => {
       this.alertCreator.showSimpleAlert('Exito', 'El usuario ha sido creado');
+      this.goToTestPage();
     }, err => {
       //console.log("ocurrio un error", err);
       //this.alertCreator.showSimpleAlert('Error','Ha ocurrido un error vuelve a intentarlo');
