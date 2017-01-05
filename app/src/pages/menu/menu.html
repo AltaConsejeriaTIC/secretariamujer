@@ -4,7 +4,7 @@
     <ion-row *ngFor="let menuOption of menuOptions; let id = index" class="flex-1 option-menu-row">
       <ion-col [ngClass]="{'offset-33 custom-width-33  column-center-content-horizontally': !menuOption.isShowingHint, 'custom-width-50 display-flex':menuOption.isShowingHint}">
 
-        <div *ngIf="!menuOption.isShowingHint">
+        <div (click)="menuOption.goPage()" *ngIf="!menuOption.isShowingHint">
           <ion-row class="justify-center-row menu-icon-margin-container">
             <img src="{{menuOption.menuIcon}}">
           </ion-row>
@@ -16,7 +16,7 @@
 
         <ion-row *ngIf="menuOption.isShowingHint">
           <ion-col width-80>
-            <ion-col class="column-center-content-horizontally">
+            <ion-col (click)="menuOption.goPage()" class="column-center-content-horizontally">
               <img src="{{menuOption.menuIcon}}">
             </ion-col>
 

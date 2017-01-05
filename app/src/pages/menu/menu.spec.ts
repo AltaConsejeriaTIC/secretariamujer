@@ -2,10 +2,14 @@ import { ComponentFixture, TestBed, async, inject } from '@angular/core/testing'
 import { By }              from '@angular/platform-browser';
 import { DebugElement }    from '@angular/core';
 import { RequiredInfoFormPage } from './required-info-form';
-import { App, MenuController, NavController, Platform, Config, Keyboard, Form, IonicModule }  from 'ionic-angular';
+import {
+  App, MenuController, NavController, Platform, Config, Keyboard, Form, IonicModule,
+  AlertController
+}  from 'ionic-angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ConfigMock } from '../../mocks';
 import {MenuPage} from "./menu";
+import {AlertCreator} from "../../providers/alert-creator";
 
 
 describe('MenuPage tests', () => {
@@ -18,7 +22,7 @@ describe('MenuPage tests', () => {
     TestBed.configureTestingModule({
       declarations: [MenuPage],
       providers: [
-        App, Platform, Form, Keyboard, MenuController, NavController,
+        App, Platform, Form, Keyboard, MenuController, NavController, AlertCreator,AlertController,
         {provide: Config, useClass: ConfigMock}
       ],
       imports: [
