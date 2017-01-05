@@ -34,15 +34,12 @@ describe('MenuPage tests', () => {
     menuPage=fixture.componentInstance;
   });
 
-  it('toggleHint should toggle the input variable', () => {
-    menuPage.toggleHint('infoHint');
-    menuPage.toggleHint('MapAndRoutesHint');
-    menuPage.toggleHint('TestAndTips');
-    menuPage.toggleHint('ConfigHint');
-    expect(menuPage.isShowingInfoHint).toBe(true);
-    expect(menuPage.isShowingMapAndRoutesHint).toBe(true);
-    expect(menuPage.isShowingTestAndTipsHint).toBe(true);
-    expect(menuPage.isShowingConfigHint).toBe(true);
+  it('toggleHint should toggle isShowingHint field of menuOptions in the specified index ', () => {
+    menuPage.toggleisShowingHintParameter(0);
+    expect(menuPage.menuOptions[0].isShowingHint).toBe(true);
+    menuPage.toggleisShowingHintParameter(0);
+    expect(menuPage.menuOptions[0].isShowingHint).toBe(false);
+
   });
 
 });

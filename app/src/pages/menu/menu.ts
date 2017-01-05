@@ -13,32 +13,41 @@ import { NavController } from 'ionic-angular';
 })
 export class MenuPage {
 
-  isShowingInfoHint:boolean=false;
-  isShowingMapAndRoutesHint:boolean=false;
-  isShowingTestAndTipsHint:boolean=false;
-  isShowingConfigHint:boolean=false;
+  menuOptions=[
+    {
+      isShowingHint:false,
+      menuLabel:'Información',
+      menuIcon:'../../assets/img/menu-icons/Info_Pictograma.png',
+      menuHint:'¿Qué debo saber si me encuentro en una situación violenta?'
+    },
+    {
+      isShowingHint:false,
+      menuLabel:'Mapas y rutas',
+      menuIcon:'../../assets/img/menu-icons/Mapa_Pictograma.png',
+      menuHint:'¿A dónde puedo ir si estoy en una situación violenta?'
+    },
+    {
+      isShowingHint:false,
+      menuLabel:'Test y Tips',
+      menuIcon:'../../assets/img/menu-icons/Test_Pictograma.png',
+      menuHint:'¿Cómo puedo saber si estoy en una situación violenta?'
+    },
+    {
+      isShowingHint:false,
+      menuLabel:'Configuración',
+      menuIcon:'../../assets/img/menu-icons/Configuracion_Pictograma.png',
+      menuHint:'¿A quién puedo dar aviso si me encuentro en riesgo?'
+    }
+  ];
+
 
   constructor(public navCtrl: NavController) {}
 
   ionViewDidLoad() {
-    console.log('Hello MenuPage Page');
   }
 
-  toggleHint(hint:string){
-    switch (hint){
-      case 'infoHint':
-        this.isShowingInfoHint=!(this.isShowingInfoHint);
-        break;
-      case 'MapAndRoutesHint':
-        this.isShowingMapAndRoutesHint=!(this.isShowingMapAndRoutesHint);
-        break;
-      case 'TestAndTips':
-        this.isShowingTestAndTipsHint=!(this.isShowingTestAndTipsHint);
-        break;
-      case 'ConfigHint':
-        this.isShowingConfigHint=!(this.isShowingConfigHint);
-        break;
-    }
+  toggleisShowingHintParameter(index){
+    this.menuOptions[index].isShowingHint=!this.menuOptions[index].isShowingHint;
   }
 
 }

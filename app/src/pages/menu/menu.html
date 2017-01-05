@@ -1,160 +1,44 @@
 <ion-content>
   <ion-grid class="full-height-ion-grid no-padding">
 
-    <ion-row class="flex-1 option-menu-row">
-      <ion-col
-        [ngClass]="{'offset-33 custom-width-33  column-center-content-horizontally': !isShowingInfoHint, 'custom-width-50 display-flex':isShowingInfoHint}">
+    <ion-row *ngFor="let menuOption of menuOptions; let id = index" class="flex-1 option-menu-row">
+      <ion-col [ngClass]="{'offset-33 custom-width-33  column-center-content-horizontally': !menuOption.isShowingHint, 'custom-width-50 display-flex':menuOption.isShowingHint}">
 
-        <div *ngIf="!isShowingInfoHint">
+        <div *ngIf="!menuOption.isShowingHint">
           <ion-row class="justify-center-row menu-icon-margin-container">
-            <img src="../../assets/img/menu-icons/Info_Pictograma.png">
+            <img src="{{menuOption.menuIcon}}">
           </ion-row>
 
           <ion-row class="justify-center-row">
-            <ion-label class="menu-option-label">Información</ion-label>
+            <ion-label class="menu-option-label">{{menuOption.menuLabel}}</ion-label>
           </ion-row>
         </div>
 
-        <ion-row *ngIf="isShowingInfoHint">
+        <ion-row *ngIf="menuOption.isShowingHint">
           <ion-col width-80>
             <ion-col class="column-center-content-horizontally">
-              <img src="../../assets/img/menu-icons/Info_Pictograma.png">
+              <img src="{{menuOption.menuIcon}}">
             </ion-col>
 
             <ion-col class="justify-center-row column-center-content-horizontally">
-              <ion-label class="menu-option-label">Información</ion-label>
+              <ion-label class="menu-option-label">{{menuOption.menuLabel}}</ion-label>
             </ion-col>
           </ion-col>
 
           <ion-col width-20 class="display-flex center-vertically justify-horizontally-right">
-            <img (click)="toggleHint('infoHint')" src="../../assets/img/menu-icons/Atras-10.png">
+            <img (click)="toggleisShowingHintParameter(id)" src="../../assets/img/menu-icons/Atras-10.png">
           </ion-col>
         </ion-row>
 
       </ion-col>
 
-      <ion-col [ngClass]="{'custom-width-33 display-flex center-vertically justify-horizontally-right column-arrow-show-tip-right-padding': !isShowingInfoHint, 'custom-width-50 tip-container-color column-center-content-horizontally':isShowingInfoHint}">
-        <img *ngIf="!isShowingInfoHint" (click)="toggleHint('infoHint')" src="../../assets/img/menu-icons/Flecha_Pictograma.png">
-        <ion-label *ngIf="isShowingInfoHint" text-wrap class="wrap-text-override center-menu-tip-text">¿Qué debo saber si me encuentro en una situación violenta?</ion-label>
+      <ion-col [ngClass]="{'custom-width-33 display-flex center-vertically justify-horizontally-right column-arrow-show-tip-right-padding': !menuOption.isShowingHint, 'custom-width-50 tip-container-color column-center-content-horizontally':menuOption.isShowingHint}">
+        <img *ngIf="!menuOption.isShowingHint" (click)="toggleisShowingHintParameter(id)"
+             src="../../assets/img/menu-icons/Flecha_Pictograma.png">
+        <ion-label *ngIf="menuOption.isShowingHint" text-wrap class="wrap-text-override center-menu-tip-text">
+          {{menuOption.menuHint}}
+        </ion-label>
       </ion-col>
-
-    </ion-row>
-
-    <ion-row class="flex-1 option-menu-row">
-      <ion-col
-        [ngClass]="{'offset-33 custom-width-33  column-center-content-horizontally': !isShowingMapAndRoutesHint, 'custom-width-50 display-flex':isShowingMapAndRoutesHint}">
-
-        <div *ngIf="!isShowingMapAndRoutesHint">
-          <ion-row class="justify-center-row menu-icon-margin-container">
-            <img src="../../assets/img/menu-icons/Mapa_Pictograma.png">
-          </ion-row>
-
-          <ion-row class="justify-center-row">
-            <ion-label class="menu-option-label">Mapas y Rutas</ion-label>
-          </ion-row>
-        </div>
-
-        <ion-row *ngIf="isShowingMapAndRoutesHint">
-          <ion-col width-80>
-            <ion-col class="column-center-content-horizontally">
-              <img src="../../assets/img/menu-icons/Mapa_Pictograma.png">
-            </ion-col>
-
-            <ion-col class="justify-center-row column-center-content-horizontally">
-              <ion-label class="menu-option-label">Mapas y Rutas</ion-label>
-            </ion-col>
-          </ion-col>
-
-          <ion-col width-20 class="display-flex center-vertically justify-horizontally-right">
-            <img (click)="toggleHint('MapAndRoutesHint')" src="../../assets/img/menu-icons/Atras-10.png">
-          </ion-col>
-        </ion-row>
-
-      </ion-col>
-
-      <ion-col [ngClass]="{'custom-width-33 display-flex center-vertically justify-horizontally-right column-arrow-show-tip-right-padding': !isShowingMapAndRoutesHint, 'custom-width-50 tip-container-color column-center-content-horizontally':isShowingMapAndRoutesHint}">
-        <img *ngIf="!isShowingMapAndRoutesHint" (click)="toggleHint('MapAndRoutesHint')" src="../../assets/img/menu-icons/Flecha_Pictograma.png">
-        <ion-label *ngIf="isShowingMapAndRoutesHint" text-wrap class="wrap-text-override center-menu-tip-text">¿A dónde puedo ir si estoy en una situación violenta?</ion-label>
-      </ion-col>
-
-    </ion-row>
-
-    <ion-row class="flex-1 option-menu-row">
-      <ion-col
-        [ngClass]="{'offset-33 custom-width-33  column-center-content-horizontally': !isShowingTestAndTipsHint, 'custom-width-50 display-flex':isShowingTestAndTipsHint}">
-
-        <div *ngIf="!isShowingTestAndTipsHint">
-          <ion-row class="justify-center-row menu-icon-margin-container">
-            <img src="../../assets/img/menu-icons/Test_Pictograma.png">
-          </ion-row>
-
-          <ion-row class="justify-center-row">
-            <ion-label class="menu-option-label">Test y Tips</ion-label>
-          </ion-row>
-        </div>
-
-        <ion-row *ngIf="isShowingTestAndTipsHint">
-          <ion-col width-80>
-            <ion-col class="column-center-content-horizontally">
-              <img src="../../assets/img/menu-icons/Test_Pictograma.png">
-            </ion-col>
-
-            <ion-col class="justify-center-row column-center-content-horizontally">
-              <ion-label class="menu-option-label">Test y Tips</ion-label>
-            </ion-col>
-          </ion-col>
-
-          <ion-col width-20 class="display-flex center-vertically justify-horizontally-right">
-            <img (click)="toggleHint('TestAndTips')" src="../../assets/img/menu-icons/Atras-10.png">
-          </ion-col>
-        </ion-row>
-
-      </ion-col>
-
-      <ion-col [ngClass]="{'custom-width-33 display-flex center-vertically justify-horizontally-right column-arrow-show-tip-right-padding': !isShowingTestAndTipsHint, 'custom-width-50 tip-container-color column-center-content-horizontally':isShowingTestAndTipsHint}">
-        <img *ngIf="!isShowingTestAndTipsHint" (click)="toggleHint('TestAndTips')" src="../../assets/img/menu-icons/Flecha_Pictograma.png">
-        <ion-label *ngIf="isShowingTestAndTipsHint" text-wrap class="wrap-text-override center-menu-tip-text">¿Cómo puedo saber si estoy en una situación violenta?</ion-label>
-      </ion-col>
-
-    </ion-row>
-
-    <ion-row class="flex-1 option-menu-row">
-      <ion-col
-        [ngClass]="{'offset-33 custom-width-33  column-center-content-horizontally': !isShowingConfigHint, 'custom-width-50 display-flex':isShowingConfigHint}">
-
-        <div *ngIf="!isShowingConfigHint">
-          <ion-row class="justify-center-row menu-icon-margin-container">
-            <img src="../../assets/img/menu-icons/Configuracion_Pictograma.png">
-          </ion-row>
-
-          <ion-row class="justify-center-row">
-            <ion-label class="menu-option-label">Configuración</ion-label>
-          </ion-row>
-        </div>
-
-        <ion-row *ngIf="isShowingConfigHint">
-          <ion-col width-80>
-            <ion-col class="column-center-content-horizontally">
-              <img src="../../assets/img/menu-icons/Configuracion_Pictograma.png">
-            </ion-col>
-
-            <ion-col class="justify-center-row column-center-content-horizontally">
-              <ion-label class="menu-option-label">Configuración</ion-label>
-            </ion-col>
-          </ion-col>
-
-          <ion-col width-20 class="display-flex center-vertically justify-horizontally-right">
-            <img (click)="toggleHint('ConfigHint')" src="../../assets/img/menu-icons/Atras-10.png">
-          </ion-col>
-        </ion-row>
-
-      </ion-col>
-
-      <ion-col [ngClass]="{'custom-width-33 display-flex center-vertically justify-horizontally-right column-arrow-show-tip-right-padding': !isShowingConfigHint, 'custom-width-50 tip-container-color column-center-content-horizontally':isShowingConfigHint}">
-        <img *ngIf="!isShowingConfigHint" (click)="toggleHint('ConfigHint')" src="../../assets/img/menu-icons/Flecha_Pictograma.png">
-        <ion-label *ngIf="isShowingConfigHint" text-wrap class="wrap-text-override center-menu-tip-text">¿A quién puedo dar aviso si me encuentro en riesgo?</ion-label>
-      </ion-col>
-
     </ion-row>
 
 
