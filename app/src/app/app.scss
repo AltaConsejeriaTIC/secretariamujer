@@ -86,6 +86,10 @@ $placeholderInputColor: #9e8cc6;
   padding: 0px !important;
 }
 
+.wrap-text-override{
+  white-space: inherit;
+}
+
  button:active {
   background-color: white !important;
   color : $backgroundPurple  !important;

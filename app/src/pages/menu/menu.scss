@@ -16,10 +16,6 @@ page-menu {
   color: #f2f2f2;
 }
 
-.align-center-row-container{
-  align-self: center;
-}
-
 .menu-arrow-container-margin{
   margin-left: 60% !important;
 }
@@ -62,6 +58,12 @@ page-menu {
 .column-center-content-horizontally{
   display: flex;
   justify-content: center;
+}
+
+.center-menu-tip-text{
+  display: flex;
+  align-items: center;
+  color: #5393cd;
 }
 
 
