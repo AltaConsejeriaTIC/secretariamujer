@@ -43,7 +43,6 @@ describe('MenuPage tests', () => {
     expect(menuPage.menuOptions[0].isShowingHint).toBe(true);
     menuPage.toggleisShowingHintParameter(1);
     expect(menuPage.menuOptions[0].isShowingHint).toBe(false);
-
   });
 
 });

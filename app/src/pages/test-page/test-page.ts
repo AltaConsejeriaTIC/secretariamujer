@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {NavController} from 'ionic-angular';
 import {TestsService} from "../../providers/tests-service";
 import {AlertCreator} from "../../providers/alert-creator";
 
@@ -9,39 +9,52 @@ import {AlertCreator} from "../../providers/alert-creator";
 })
 export class TestPage {
 
-  constructor(public navCtrl: NavController, public testService: TestsService, public alertCreator:AlertCreator) {}
+  questionsObject;
+  currentQuestion: number = 0;
+  questionsNumber: number;
+  buttonText: string = "Siguiente";
 
-  questions:any=[
-    {
-      "title": "",
-      "field_testdescription": "testDescripcionPregunta2",
-      "field_answer1": "a",
-      "field_answer2": "b",
-      "field_answer3": "c",
-      "field_answer4": "d",
-      "field_answer5": "e",
-      "field_answer6": "f"
-    },
-  ];
-  currentQuestion:any;
-  contador=0;
+  constructor(public navCtrl: NavController, public testService: TestsService, public alertCreator: AlertCreator) {
+    this.questionsObject = [
+      {
+        "title": "",
+        "field_testdescription": "testDescripcionPregunta2",
+        "field_answer1": "a",
+        "field_answer2": "b",
+        "field_answer3": "c",
+        "field_answer4": "d",
+        "field_answer5": "e",
+        "field_answer6": "f"
+      },
+    ];
+  }
 
   ionViewDidLoad() {
     this.loadQuestions();
   }
 
-  loadQuestions(){
+  loadQuestions() {
     this.testService.getTestQuestions().map(res => res.json()).subscribe(response => {
-      console.log("la respuesta",response);
-      this.questions=response;
+      console.log("la respuesta", response);
+      this.questionsObject = response;
+      this.questionsNumber = (this.questionsObject.length - 1);
     }, err => {
-      console.log("el error",err)
+      console.log("el error", err)
 
     });
   }
 
-  siguiente(){
-    this.contador=this.contador+1;
+  nextQuestion() {
+    if (this.buttonText == 'Siguiente') {
+      this.currentQuestion = this.currentQuestion + 1;
+    }
+    this.changeButtonNameIfIsLastQuestion();
+  }
+
+  changeButtonNameIfIsLastQuestion() {
+    if (this.currentQuestion == this.questionsNumber) {
+      this.buttonText = 'Finalizar';
+    }
   }
 
 }

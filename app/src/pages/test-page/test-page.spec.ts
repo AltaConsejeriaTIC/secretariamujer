@@ -47,5 +47,17 @@ describe('TestPage tests', () => {
     expect(testService.getTestQuestions).toHaveBeenCalled();
   });
 
+  it('nextQuestion should increment currentQuestion by 1 if currentQuestion is lower than questionsNumber', () => {
+    testPage.nextQuestion();
+    expect(testPage.currentQuestion).toBe(1);
+  });
+
+  it('changeButtonNameIfIsLastQuestion should change button text if currentQuestion is equal to questionsNumber', () => {
+    testPage.currentQuestion=1;
+    testPage.questionsNumber=1;
+    testPage.changeButtonNameIfIsLastQuestion();
+    expect(testPage.buttonText).toBe("Finalizar");
+  });
+
 });
 
