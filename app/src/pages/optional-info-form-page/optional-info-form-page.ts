@@ -21,9 +21,22 @@ export class OptionalInfoFormPagePage {
 
   }
 
+  checkFields(){
+    if(this.isValidEmail()){
+      this.saveOptionalInfo();
+    }else{
+      this.alertCreator.showSimpleAlert('Error', 'Verifica que el correo sea correcto');
+    }
+  }
   saveOptionalInfo() {
     this.userDAO.saveOptionalInfo(this.user.name, this.user.email, this.user.phone);
     this.createUser();
+  }
+
+  isValidEmail(){
+    let hasAtSymbol=this.user.email.indexOf('@');
+    let hasDomain=this.user.email.indexOf('.com');
+    return ((hasAtSymbol>-1)&& (hasDomain>-1));
   }
 
   createUser() {
@@ -31,8 +44,7 @@ export class OptionalInfoFormPagePage {
       this.alertCreator.showSimpleAlert('Exito', 'El usuario ha sido creado');
       this.goToTestPage();
     }, err => {
-      //console.log("ocurrio un error", err);
-      //this.alertCreator.showSimpleAlert('Error','Ha ocurrido un error vuelve a intentarlo');
+      console.log("ocurrio un error", err);
     });
     ;
   }
@@ -40,4 +52,5 @@ export class OptionalInfoFormPagePage {
   goToTestPage() {
     this.navCtrl.push(MenuPage);
   }
+
 }

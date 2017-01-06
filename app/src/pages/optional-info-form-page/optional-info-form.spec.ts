@@ -42,13 +42,31 @@ describe('OptionalInfoFormPage tests', () => {
     userDAO=_userDAO;
   }));
 
+  it('checkFields should call saveOptionalInfo if email is correct', () => {
+    spyOn(optionalInfoFormPage,'saveOptionalInfo');
+    optionalInfoFormPage.user.email='test@test.com';
+    optionalInfoFormPage.checkFields();
+    expect(optionalInfoFormPage.saveOptionalInfo).toHaveBeenCalled();
+  });
+
+  it('checkFields should call showSimpleAlert from AlertCreator if email is incorrect', () => {
+    spyOn(alertCreator,'showSimpleAlert');
+    optionalInfoFormPage.user.email='test';
+    optionalInfoFormPage.checkFields();
+    expect(alertCreator.showSimpleAlert).toHaveBeenCalled();
+  });
+
   it('saveOptionalInfo should call saveOptionalInfo from UserDAO and create from UserDAO', () => {
     spyOn(userDAO,'saveOptionalInfo');
     spyOn(userDAO,'create').and.callThrough();
     optionalInfoFormPage.saveOptionalInfo();
     expect(userDAO.saveOptionalInfo).toHaveBeenCalled();
     expect(userDAO.create).toHaveBeenCalled();
+  });
 
+  it('isValidEmail should return true if email has @ and .com', () => {
+    optionalInfoFormPage.user.email='test@test.com';
+    expect(optionalInfoFormPage.isValidEmail()).toBe(true);
   });
 
   it('createUser should call create from UserDAO', () => {
