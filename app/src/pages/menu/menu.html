@@ -26,7 +26,7 @@
           </ion-col>
 
           <ion-col width-20 class="display-flex center-vertically justify-horizontally-right">
-            <img (click)="toggleisShowingHintParameter(id)" src="../../assets/img/menu-icons/Atras-10.png">
+            <img (click)="toggleisShowingHintParameter(id)" src="assets/img/menu-icons/Atras-10.png">
           </ion-col>
         </ion-row>
 
@@ -35,7 +35,7 @@
       <ion-col
         [ngClass]="{'custom-width-33 display-flex center-vertically justify-horizontally-right column-arrow-show-tip-right-padding': !menuOption.isShowingHint, 'custom-width-50 tip-container-color column-center-content-horizontally':menuOption.isShowingHint}">
         <img *ngIf="!menuOption.isShowingHint" (click)="toggleisShowingHintParameter(id)"
-             src="../../assets/img/menu-icons/Flecha_Pictograma.png">
+             src="assets/img/menu-icons/Flecha_Pictograma.png">
         <ion-label *ngIf="menuOption.isShowingHint" text-wrap class="wrap-text-override center-menu-tip-text">
           {{menuOption.menuHint}}
         </ion-label>
@@ -46,7 +46,7 @@
     <ion-row class="flex-1 special-menu-row">
       <ion-col width-49 (click)="makePhoneCall()">
         <ion-row class="special-row-icon-container">
-          <img src="../../assets/img/menu-icons/Icono_Blanco-05.png">
+          <img src="assets/img/menu-icons/Icono_Blanco-05.png">
         </ion-row>
         <ion-row class="special-row-icon-container-text">
           <ion-label class="menu-option-label no-margin">Llamar</ion-label>
@@ -62,7 +62,7 @@
 
       <ion-col width-50 (click)="sendMessage()">
         <ion-row class="special-row-icon-container">
-          <img src="../../assets/img/menu-icons/mail_icon.png">
+          <img src="assets/img/menu-icons/mail_icon.png">
         </ion-row>
         <ion-row class="special-row-icon-container-text">
           <ion-label class="menu-option-label no-margin">Enviar</ion-label>
