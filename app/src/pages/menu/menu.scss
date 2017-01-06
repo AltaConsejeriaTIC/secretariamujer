@@ -89,4 +89,12 @@ page-menu {
   align-items: center;
 }
 
+#menu-page-content ion-row:active{
+  background-color: white;
+}
+
+#menu-page-content ion-row:active #pepe{
+    background: url("../../assets/img/menu-icons/Info_pictograma_Azul.png") left top no-repeat;
+}
+
 

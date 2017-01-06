@@ -1,12 +1,12 @@
-<ion-content>
+<ion-content id="menu-page-content">
   <ion-grid class="full-height-ion-grid no-padding">
 
     <ion-row *ngFor="let menuOption of menuOptions; let id = index" class="flex-1 option-menu-row">
       <ion-col
         [ngClass]="{'offset-33 custom-width-33': !menuOption.isShowingHint, 'custom-width-50 display-flex':menuOption.isShowingHint}">
 
-        <ion-row (click)="menuOption.goPage()" *ngIf="!menuOption.isShowingHint" class="justify-center-row menu-icon-padding-container" style="height: 60%; align-items: center">
-          <img src="{{menuOption.menuIcon}}">
+        <ion-row id="infoIcon" (click)="menuOption.goPage()" *ngIf="!menuOption.isShowingHint" class="justify-center-row menu-icon-padding-container" style="height: 60%; align-items: center">
+          <img id="pepe" src="{{menuOption.menuIcon}}">
         </ion-row>
 
         <ion-row (click)="menuOption.goPage()" *ngIf="!menuOption.isShowingHint" class="justify-center-row" style="height: 40%;  align-items: center ">
