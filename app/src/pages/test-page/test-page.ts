@@ -14,17 +14,23 @@ export class TestPage {
   questionsNumber: number;
   buttonText: string = "Siguiente";
 
+  answerCheckBoxArray:Array<boolean>=[false,false,false,false,false,false];
+
+  userAnswersObject;
+
+
+
   constructor(public navCtrl: NavController, public testService: TestsService, public alertCreator: AlertCreator) {
     this.questionsObject = [
       {
         "title": "",
-        "field_testdescription": "testDescripcionPregunta2",
-        "field_answer1": "a",
-        "field_answer2": "b",
-        "field_answer3": "c",
-        "field_answer4": "d",
-        "field_answer5": "e",
-        "field_answer6": "f"
+        "field_testdescription": "",
+        "field_answer1": "",
+        "field_answer2": "",
+        "field_answer3": "",
+        "field_answer4": "",
+        "field_answer5": "",
+        "field_answer6": ""
       },
     ];
   }
@@ -45,10 +51,22 @@ export class TestPage {
   }
 
   nextQuestion() {
+    this.addUserAnswers();
+
     if (this.buttonText == 'Siguiente') {
       this.currentQuestion = this.currentQuestion + 1;
     }
     this.changeButtonNameIfIsLastQuestion();
+  }
+
+  addUserAnswers(){
+    let currentQuestionUserAnswers=[];
+    for(let i=0; i<this.answerCheckBoxArray.length;i++){
+      if(this.answerCheckBoxArray[i]==true){
+        currentQuestionUserAnswers.push(i);
+      }
+    }
+    console.log("las respuestas", currentQuestionUserAnswers);
   }
 
   changeButtonNameIfIsLastQuestion() {
