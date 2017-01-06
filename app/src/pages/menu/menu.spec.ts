@@ -38,10 +38,10 @@ describe('MenuPage tests', () => {
     menuPage=fixture.componentInstance;
   });
 
-  it('toggleHint should toggle isShowingHint field of menuOptions in the specified index ', () => {
+  it('toggleHint should toggle isShowingHint field of menuOptions in the specified index and set the other indexes to false', () => {
     menuPage.toggleisShowingHintParameter(0);
     expect(menuPage.menuOptions[0].isShowingHint).toBe(true);
-    menuPage.toggleisShowingHintParameter(0);
+    menuPage.toggleisShowingHintParameter(1);
     expect(menuPage.menuOptions[0].isShowingHint).toBe(false);
 
   });

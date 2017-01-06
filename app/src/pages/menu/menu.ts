@@ -56,7 +56,13 @@ export class MenuPage {
   }
 
   toggleisShowingHintParameter(index){
-    this.menuOptions[index].isShowingHint=!this.menuOptions[index].isShowingHint;
+    for(let i=0; i<this.menuOptions.length; i++){
+      if(index==i){
+        this.menuOptions[index].isShowingHint=!this.menuOptions[index].isShowingHint;
+      }else{
+        this.menuOptions[i].isShowingHint=false;
+      }
+    }
   }
 
   makePhoneCall(){
