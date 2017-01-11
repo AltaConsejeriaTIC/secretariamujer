@@ -24,7 +24,7 @@ export class MenuPage {
       },
       {
         isShowingHint:false,
-        menuLabel:'Mapas y rutas',
+        menuLabel:'Mapas',
         menuIcon:'assets/img/menu-icons/Mapa_Pictograma.png',
         menuHint:'¿A dónde puedo ir si estoy en una situación violenta?',
         goPage:function(){
@@ -33,7 +33,7 @@ export class MenuPage {
       },
       {
         isShowingHint:false,
-        menuLabel:'Test y Tips',
+        menuLabel:'Test / Tips y rutas',
         menuIcon:'assets/img/menu-icons/Test_Pictograma.png',
         menuHint:'¿Cómo puedo saber si estoy en una situación violenta?',
         goPage:function(){
