@@ -39,7 +39,6 @@ export class TestPage {
       this.questionsNumber = (this.questionsObject.length - 1);
     }, err => {
       console.log("el error", err)
-
     });
   }
 
@@ -48,6 +47,8 @@ export class TestPage {
 
     if (this.buttonText == 'Siguiente') {
       this.currentQuestion = this.currentQuestion + 1;
+    }else{
+      console.log("el total de respuestas",this.testService.getTotalUserAnswers());
     }
     this.changeButtonNameIfIsLastQuestion();
   }
