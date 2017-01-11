@@ -14,7 +14,7 @@ export class TestPage {
   questionsNumber: number;
   buttonText: string = "Siguiente";
 
-  answerCheckBoxArray:Array<boolean>=[false,false,false,false,false,false];
+  answerCheckBoxArray:Array<boolean>=[false,false,false];
 
 
   constructor(public navCtrl: NavController, public testService: TestsService, public alertCreator: AlertCreator) {
@@ -25,9 +25,6 @@ export class TestPage {
         "field_answer1": "",
         "field_answer2": "",
         "field_answer3": "",
-        "field_answer4": "",
-        "field_answer5": "",
-        "field_answer6": ""
       },
     ];
   }
@@ -62,7 +59,7 @@ export class TestPage {
   }
 
   resetAnswerCheckBoxArray(){
-    this.answerCheckBoxArray=[false,false,false,false,false,false];
+    this.answerCheckBoxArray=[false,false,false];
   }
 
   changeButtonNameIfIsLastQuestion() {

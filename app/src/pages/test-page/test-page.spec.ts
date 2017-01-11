@@ -66,7 +66,7 @@ describe('TestPage tests', () => {
   });
 
   it('resetAnswerCheckBoxArray should set answer array back to all false', () => {
-    testPage.answerCheckBoxArray=[false,false,true,false,false,false];
+    testPage.answerCheckBoxArray=[false,false,true];
     testPage.resetAnswerCheckBoxArray();
     expect(testPage.answerCheckBoxArray[2]).toBe(false);
   });
