@@ -59,5 +59,17 @@ describe('TestPage tests', () => {
     expect(testPage.buttonText).toBe("Finalizar");
   });
 
+  it('addCurrentQuestionUserAnswers should call addCurrentQuestionUserAnswers from testService', () => {
+    spyOn(testService,'addCurrentQuestionUserAnswers').and.callThrough();
+    testPage.nextQuestion();
+    expect(testService.addCurrentQuestionUserAnswers).toHaveBeenCalled();
+  });
+
+  it('resetAnswerCheckBoxArray should set answer array back to all false', () => {
+    testPage.answerCheckBoxArray=[false,false,true,false,false,false];
+    testPage.resetAnswerCheckBoxArray();
+    expect(testPage.answerCheckBoxArray[2]).toBe(false);
+  });
+
 });
 

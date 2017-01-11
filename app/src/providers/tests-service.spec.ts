@@ -59,5 +59,19 @@ describe('testsService tests', () => {
     expect(isObservable).toBe(true);
   });
 
+  it('addCurrentQuestionAnswersToTotalUserAnswers should add current question answers to totalUserAnswers',()=>{
+    let currentQuestionUserAnswers=[1,2];
+    testsService.addCurrentQuestionAnswersToTotalUserAnswers(currentQuestionUserAnswers);
+    expect(testsService.totalUserAnswers.length).toBe(1);
+    expect(testsService.totalUserAnswers[0]).toEqual([1,2]);
+  });
+
+  it('getTotalUserAnswers should return totalUserAnswers array',()=>{
+    let currentQuestionUserAnswers=[1,2];
+    testsService.addCurrentQuestionAnswersToTotalUserAnswers(currentQuestionUserAnswers);
+    let totalUserAnswers=testsService.getTotalUserAnswers();
+    expect(totalUserAnswers.length).toBe(1);
+  });
+
 });
 

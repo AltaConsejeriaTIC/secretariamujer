@@ -16,9 +16,6 @@ export class TestPage {
 
   answerCheckBoxArray:Array<boolean>=[false,false,false,false,false,false];
 
-  userAnswersObject;
-
-
 
   constructor(public navCtrl: NavController, public testService: TestsService, public alertCreator: AlertCreator) {
     this.questionsObject = [
@@ -51,7 +48,7 @@ export class TestPage {
   }
 
   nextQuestion() {
-    this.addUserAnswers();
+    this.addCurrentQuestionUserAnswers();
 
     if (this.buttonText == 'Siguiente') {
       this.currentQuestion = this.currentQuestion + 1;
@@ -59,14 +56,13 @@ export class TestPage {
     this.changeButtonNameIfIsLastQuestion();
   }
 
-  addUserAnswers(){
-    let currentQuestionUserAnswers=[];
-    for(let i=0; i<this.answerCheckBoxArray.length;i++){
-      if(this.answerCheckBoxArray[i]==true){
-        currentQuestionUserAnswers.push(i);
-      }
-    }
-    console.log("las respuestas", currentQuestionUserAnswers);
+  addCurrentQuestionUserAnswers(){
+    this.testService.addCurrentQuestionUserAnswers(this.answerCheckBoxArray);
+    this.resetAnswerCheckBoxArray();
+  }
+
+  resetAnswerCheckBoxArray(){
+    this.answerCheckBoxArray=[false,false,false,false,false,false];
   }
 
   changeButtonNameIfIsLastQuestion() {
