@@ -13,20 +13,20 @@
       <ion-label>{{questionsObject[currentQuestion].title}}</ion-label>
     </ion-row>
     <ion-row class="flex-1">
-      <ion-label>{{questionsObject[currentQuestion].field_testdescription}}</ion-label>
+      <ion-label>{{questionsObject[currentQuestion].field_pregunta_violencia_economi}}</ion-label>
     </ion-row>
 
     <ion-row class="flex-1">
       <ion-checkbox color="dark"  [(ngModel)]="answerCheckBoxArray[0]"></ion-checkbox>
-      <ion-label>{{questionsObject[currentQuestion].field_answer1}}</ion-label>
+      <ion-label>{{questionsObject[currentQuestion].field_respuesta_1_violencia_econ}}</ion-label>
     </ion-row>
     <ion-row class="flex-1">
       <ion-checkbox color="dark"  [(ngModel)]="answerCheckBoxArray[1]"></ion-checkbox>
-      <ion-label>{{questionsObject[currentQuestion].field_answer2}}</ion-label>
+      <ion-label>{{questionsObject[currentQuestion].field_respuesta_2_violencia_econ}}</ion-label>
     </ion-row>
     <ion-row class="flex-1">
       <ion-checkbox color="dark"  [(ngModel)]="answerCheckBoxArray[2]"></ion-checkbox>
-      <ion-label>{{questionsObject[currentQuestion].field_answer3}}</ion-label>
+      <ion-label>{{questionsObject[currentQuestion].field_respuesta_3_violencia_econ}}</ion-label>
     </ion-row>
     <ion-row class="flex-1">
       <button (click)="nextQuestion()">{{buttonText}}</button>

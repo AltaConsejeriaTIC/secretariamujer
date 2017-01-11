@@ -12,7 +12,7 @@ export class TestsService {
   }
 
   getTestQuestions():Observable<Response>{
-    return  this.http.get('http://192.168.88.245:9000/order-test-questions?_format=json')
+    return  this.http.get('http://192.168.88.120:9000/preguntas-violencia-economica?_format=json')
   }
 
   addCurrentQuestionUserAnswers(answerCheckBoxArray){

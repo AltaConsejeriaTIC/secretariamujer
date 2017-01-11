@@ -20,11 +20,10 @@ export class TestPage {
   constructor(public navCtrl: NavController, public testService: TestsService, public alertCreator: AlertCreator) {
     this.questionsObject = [
       {
-        "title": "",
-        "field_testdescription": "",
-        "field_answer1": "",
-        "field_answer2": "",
-        "field_answer3": "",
+        "field_pregunta_violencia_economi": "",
+        "field_respuesta_1_violencia_econ": "",
+        "field_respuesta_2_violencia_econ": "",
+        "field_respuesta_3_violencia_econ": "",
       },
     ];
   }
