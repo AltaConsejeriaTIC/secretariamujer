@@ -60,6 +60,7 @@ describe('TestPage tests', () => {
 
   it('nextQuestion should call getTotalUserAnswers from TestService if current question is equal than questionnumber', () => {
     spyOn(testService,'getTotalUserAnswers').and.callThrough();
+    spyOn(alertCreator,'showSimpleAlert');
     testPage.currentQuestion=1;
     testPage.questionsNumber=1;
     testPage.nextQuestion();
