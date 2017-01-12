@@ -12,6 +12,7 @@ import {OptionalInfoFormPagePage} from "../pages/optional-info-form-page/optiona
 import {TestPage} from "../pages/test-page/test-page";
 import {TestsService} from "../providers/tests-service";
 import {MenuPage} from "../pages/menu/menu";
+import {WelcomeTestPage} from "../pages/welcome-test/welcome-test";
 
 
 
@@ -23,6 +24,7 @@ import {MenuPage} from "../pages/menu/menu";
     RequiredInfoFormPage,
     OptionalInfoFormPagePage,
     MenuPage,
+    WelcomeTestPage,
     TestPage,
     MapPage
   ],
@@ -38,6 +40,7 @@ import {MenuPage} from "../pages/menu/menu";
     RequiredInfoFormPage,
     OptionalInfoFormPagePage,
     MenuPage,
+    WelcomeTestPage,
     TestPage,
     MapPage
   ],

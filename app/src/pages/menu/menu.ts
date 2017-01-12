@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import {AlertCreator} from "../../providers/alert-creator";
-import {TestPage} from "../test-page/test-page";
+import {WelcomeTestPage} from "../welcome-test/welcome-test";
 
 @Component({
   selector: 'page-menu',
@@ -37,7 +37,7 @@ export class MenuPage {
         menuIcon:'assets/img/menu-icons/Test_Pictograma.png',
         menuHint:'¿Cómo puedo saber si estoy en una situación violenta?',
         goPage:function(){
-          navCtrl.push(TestPage);
+          navCtrl.push(WelcomeTestPage);
         }
       },
       {
