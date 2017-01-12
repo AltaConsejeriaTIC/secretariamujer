@@ -12,10 +12,6 @@ export class TestPage {
   questionsObject;
   currentQuestion: number = 0;
   questionsNumber: number;
-  buttonText: string = "Siguiente";
-
-  answerCheckBoxArray:Array<boolean>=[false,false,false];
-
 
   constructor(public navCtrl: NavController, public testService: TestsService, public alertCreator: AlertCreator) {
     this.questionsObject = [
@@ -42,30 +38,17 @@ export class TestPage {
     });
   }
 
-  nextQuestion() {
-    this.addCurrentQuestionUserAnswers();
+  answerCurrentQuestion(answer:string){
+    this.testService.addCurrentQuestionAnswerToTotalUserAnswers(answer);
+    this.nextQuestion();
+  }
 
-    if (this.buttonText == 'Siguiente') {
-      this.currentQuestion = this.currentQuestion + 1;
+  nextQuestion(){
+    if(this.currentQuestion==this.questionsNumber){
+      let totalAnswers=this.testService.getTotalUserAnswers();
+      console.log("finalizar",totalAnswers);
     }else{
-      console.log("el total de respuestas",this.testService.getTotalUserAnswers());
-    }
-    this.changeButtonNameIfIsLastQuestion();
-  }
-
-  addCurrentQuestionUserAnswers(){
-    this.testService.addCurrentQuestionUserAnswers(this.answerCheckBoxArray);
-    this.resetAnswerCheckBoxArray();
-  }
-
-  resetAnswerCheckBoxArray(){
-    this.answerCheckBoxArray=[false,false,false];
-  }
-
-  changeButtonNameIfIsLastQuestion() {
-    if (this.currentQuestion == this.questionsNumber) {
-      this.buttonText = 'Finalizar';
+      this.currentQuestion++;
     }
   }
-
 }

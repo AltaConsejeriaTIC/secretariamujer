@@ -47,28 +47,23 @@ describe('TestPage tests', () => {
     expect(testService.getTestQuestions).toHaveBeenCalled();
   });
 
-  it('nextQuestion should increment currentQuestion by 1 if currentQuestion is lower than questionsNumber', () => {
-    testPage.nextQuestion();
-    expect(testPage.currentQuestion).toBe(1);
+  it('answerCurrentQuestion should call addCurrentQuestionAnswerToTotalUserAnswers from TestsService', () => {
+    spyOn(testService,'addCurrentQuestionAnswerToTotalUserAnswers').and.callThrough();
+    testPage.answerCurrentQuestion('yes');
+    expect(testService.addCurrentQuestionAnswerToTotalUserAnswers).toHaveBeenCalled();
   });
 
-  it('changeButtonNameIfIsLastQuestion should change button text if currentQuestion is equal to questionsNumber', () => {
+  it('nextQuestion should add by 1 current question variable if current question is different than questionnumber', () => {
+    testPage.nextQuestion();
+    expect(testPage.currentQuestion).toEqual(1);
+  });
+
+  it('nextQuestion should call getTotalUserAnswers from TestService if current question is equal than questionnumber', () => {
+    spyOn(testService,'getTotalUserAnswers').and.callThrough();
     testPage.currentQuestion=1;
     testPage.questionsNumber=1;
-    testPage.changeButtonNameIfIsLastQuestion();
-    expect(testPage.buttonText).toBe("Finalizar");
-  });
-
-  it('addCurrentQuestionUserAnswers should call addCurrentQuestionUserAnswers from testService', () => {
-    spyOn(testService,'addCurrentQuestionUserAnswers').and.callThrough();
     testPage.nextQuestion();
-    expect(testService.addCurrentQuestionUserAnswers).toHaveBeenCalled();
-  });
-
-  it('resetAnswerCheckBoxArray should set answer array back to all false', () => {
-    testPage.answerCheckBoxArray=[false,false,true];
-    testPage.resetAnswerCheckBoxArray();
-    expect(testPage.answerCheckBoxArray[2]).toBe(false);
+    expect(testService.getTotalUserAnswers).toHaveBeenCalled();
   });
 
 });

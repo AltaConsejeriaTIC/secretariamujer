@@ -6,7 +6,7 @@ import {Observable} from "rxjs";
 @Injectable()
 export class TestsService {
 
-  totalUserAnswers:number[][]=[];
+  totalUserAnswers:number[]=[];
 
   constructor(public http: Http) {
   }
@@ -15,17 +15,7 @@ export class TestsService {
     return  this.http.get('http://192.168.88.120:9000/preguntas-violencia-economica?_format=json')
   }
 
-  addCurrentQuestionUserAnswers(answerCheckBoxArray){
-    let currentQuestionUserAnswers=[];
-    for(let i=0; i<answerCheckBoxArray.length;i++){
-      if(answerCheckBoxArray[i]==true){
-        currentQuestionUserAnswers.push(i);
-      }
-    }
-    this.addCurrentQuestionAnswersToTotalUserAnswers(currentQuestionUserAnswers);
-  }
-
-  addCurrentQuestionAnswersToTotalUserAnswers(currentQuestionUserAnswers){
+  addCurrentQuestionAnswerToTotalUserAnswers(currentQuestionUserAnswers){
     this.totalUserAnswers.push(currentQuestionUserAnswers);
   }
 
