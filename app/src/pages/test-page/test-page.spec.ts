@@ -67,5 +67,14 @@ describe('TestPage tests', () => {
     expect(testService.getResults).toHaveBeenCalled();
   });
 
+  it('nextQuestion should set isTestComplete to true if test was completed', () => {
+    spyOn(testService,'getResults').and.callThrough();
+    spyOn(alertCreator,'showSimpleAlert');
+    testPage.currentQuestion=1;
+    testPage.questionsNumber=1;
+    testPage.nextQuestion();
+    expect(testPage.isTestComplete).toBe(true);
+  });
+
 });
 

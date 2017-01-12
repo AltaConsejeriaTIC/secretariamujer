@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {NavController} from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 import {TestsService} from "../../providers/tests-service";
 import {AlertCreator} from "../../providers/alert-creator";
 
@@ -12,6 +12,7 @@ export class TestPage {
   questionsObject;
   currentQuestion: number = 0;
   questionsNumber: number;
+  isTestComplete:boolean=false;
 
   constructor(public navCtrl: NavController, public testService: TestsService, public alertCreator: AlertCreator) {
     this.questionsObject = [
@@ -47,6 +48,7 @@ export class TestPage {
     if(this.currentQuestion==this.questionsNumber){
       let message='sufre ud de violencia economica: '+this.testService.getResults();
       this.alertCreator.showSimpleAlert('respuestas',message);
+      this.isTestComplete=true;
     }else{
       this.currentQuestion++;
     }

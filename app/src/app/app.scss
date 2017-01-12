@@ -2,6 +2,7 @@
 
 $backgroundPurple: #664ba8;
 $placeholderInputColor: #9e8cc6;
+$headerBackgroundColor: #5393cd;
 
 .content-background-color {
   background-color: $backgroundPurple;
@@ -102,6 +103,10 @@ $placeholderInputColor: #9e8cc6;
   background-color: white !important;
   color : $backgroundPurple  !important;
 }
+
+ .header-color{
+   background-color: $headerBackgroundColor !important;
+ }
 
 // App Global Sass
 // --------------------------------------------------

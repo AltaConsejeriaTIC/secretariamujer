@@ -1,14 +1,15 @@
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>testPage</ion-title>
+  <ion-navbar hideBackButton class="header-color">
+    <ion-buttons left>
+      <button ion-button navPop icon-only>
+        <ion-icon ios="ios-home" md="md-arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
-
 </ion-header>
 
-
 <ion-content padding>
-  <ion-grid class="full-height-ion-grid no-padding">
+  <ion-grid padding *ngIf="!isTestComplete"  class="full-height-ion-grid no-padding">
     <ion-row class="flex-1">
       <ion-label>{{questionsObject[currentQuestion].title}}</ion-label>
     </ion-row>
@@ -20,7 +21,11 @@
     <button (click)="answerCurrentQuestion('yes')" ion-button>{{questionsObject[currentQuestion].field_respuesta_1_violencia_econ}}</button>
     <button (click)="answerCurrentQuestion('no')" ion-button>{{questionsObject[currentQuestion].field_respuesta_2_violencia_econ}}</button>
     <button (click)="answerCurrentQuestion('maybe')" ion-button>{{questionsObject[currentQuestion].field_respuesta_3_violencia_econ}}</button>
-
-
   </ion-grid>
+
+  <ion-grid *ngIf="isTestComplete" class="full-height-ion-grid no-padding">
+    <button ion-button>ver tips</button>
+    <button ion-button>ver rutas</button>
+  </ion-grid>
+  
 </ion-content>
