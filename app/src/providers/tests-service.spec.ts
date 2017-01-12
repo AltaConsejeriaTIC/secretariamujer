@@ -72,6 +72,24 @@ describe('testsService tests', () => {
     let totalUserAnswers=testsService.getTotalUserAnswers();
     expect(totalUserAnswers.length).toBe(1);
   });
-  
+
+  it('countAnswers should add answer to corresponding option',()=>{
+    testsService.totalUserAnswers=['yes','no','no'];
+    testsService.countAnswers();
+    expect(testsService.countedAnswers).toEqual({
+      yesAnswers:1,
+      noAnswers:2
+    });
+  });
+
+  it('calculatePercentages should set yes and no percentages',()=>{
+    testsService.totalUserAnswers=['yes','no','no', 'yes'];
+    testsService.countAnswers();
+    testsService.calculatePercentages();
+    expect(testsService.yesPercentage).toEqual(50);
+    expect(testsService.noPercentage).toEqual(50);
+
+  });
+
 });
 
