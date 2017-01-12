@@ -32,7 +32,7 @@ export class TestsService {
   getResults(){
     this.countAnswers();
     this.calculatePercentages();
-
+    return (this.yesPercentage>=this.noPercentage ? 'yes':'no');
   }
 
   countAnswers(){

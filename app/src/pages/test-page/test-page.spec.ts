@@ -58,13 +58,13 @@ describe('TestPage tests', () => {
     expect(testPage.currentQuestion).toEqual(1);
   });
 
-  it('nextQuestion should call getTotalUserAnswers from TestService if current question is equal than questionnumber', () => {
-    spyOn(testService,'getTotalUserAnswers').and.callThrough();
+  it('nextQuestion should call getResults from TestService if current question is equal than questionnumber', () => {
+    spyOn(testService,'getResults').and.callThrough();
     spyOn(alertCreator,'showSimpleAlert');
     testPage.currentQuestion=1;
     testPage.questionsNumber=1;
     testPage.nextQuestion();
-    expect(testService.getTotalUserAnswers).toHaveBeenCalled();
+    expect(testService.getResults).toHaveBeenCalled();
   });
 
 });

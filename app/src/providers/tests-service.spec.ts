@@ -88,7 +88,11 @@ describe('testsService tests', () => {
     testsService.calculatePercentages();
     expect(testsService.yesPercentage).toEqual(50);
     expect(testsService.noPercentage).toEqual(50);
+  });
 
+  it('getResults should return the greater percentage option',()=>{
+    testsService.totalUserAnswers=['yes','no','yes', 'yes'];
+    expect(testsService.getResults()).toBe('yes');
   });
 
 });
