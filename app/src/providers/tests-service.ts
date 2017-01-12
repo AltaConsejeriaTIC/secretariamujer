@@ -6,7 +6,7 @@ import {Observable} from "rxjs";
 @Injectable()
 export class TestsService {
 
-  totalUserAnswers:number[]=[];
+  totalUserAnswers:string[]=[];
 
   constructor(public http: Http) {
   }
@@ -21,6 +21,19 @@ export class TestsService {
 
   getTotalUserAnswers(){
     return this.totalUserAnswers;
+  }
+
+  getResults(){
+    let yesOrMaybeCounter:number=0;
+    let noCounter:number=0;
+
+    for(let i=0; this.totalUserAnswers.length<=i; i++){
+      if(this.totalUserAnswers[i]=='yes' || this.totalUserAnswers[i]=='maybe'){
+        yesOrMaybeCounter++;
+      }else{
+        noCounter++;
+      }
+    }
   }
 
 }
