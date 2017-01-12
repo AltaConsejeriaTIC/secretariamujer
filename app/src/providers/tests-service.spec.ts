@@ -24,7 +24,7 @@ describe('testsService tests', () => {
     mockbackend = _mockbackend;
   }));
 
-  /*it('should return mocked response for getTestQuestions (async)', async(() => {
+  it('should return mocked response for getTestQuestions (async)', async(() => {
     let response = [
       {
         "body": "añadir pregunta 3",
@@ -52,7 +52,7 @@ describe('testsService tests', () => {
     testsService.getTestQuestions().map(res=>res.json()).subscribe(response => {
       expect(response[0].body).toBe("añadir pregunta 3");
     });
-  }));*/
+  }));
 
   it('should getTestQuestions function return an Observable type',()=>{
     let isObservable = testsService.getTestQuestions() instanceof Observable;
@@ -72,11 +72,6 @@ describe('testsService tests', () => {
     let totalUserAnswers=testsService.getTotalUserAnswers();
     expect(totalUserAnswers.length).toBe(1);
   });
-
-  it('calculateResults should return the most common answer',()=>{
-    let results=testsService.getResults();
-    expect(results).toBe({yes:100});
-  });
-
+  
 });
 
