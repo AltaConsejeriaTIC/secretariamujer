@@ -7,6 +7,12 @@ import {Observable} from "rxjs";
 export class TestsService {
 
   totalUserAnswers:string[]=[];
+  countedAnswers={
+    yesAnswers:0,
+    noAnswers:0
+  };
+  yesPercentage:number;
+  noPercentage:number;
 
   constructor(public http: Http) {
   }
@@ -24,16 +30,28 @@ export class TestsService {
   }
 
   getResults(){
-    let yesOrMaybeCounter:number=0;
-    let noCounter:number=0;
+    this.countAnswers();
+    this.calculatePercentages();
 
-    for(let i=0; this.totalUserAnswers.length<=i; i++){
-      if(this.totalUserAnswers[i]=='yes' || this.totalUserAnswers[i]=='maybe'){
-        yesOrMaybeCounter++;
-      }else{
-        noCounter++;
-      }
+  }
+
+  countAnswers(){
+    for(let i=0; i<this.totalUserAnswers.length; i++){
+      this.addAnswerToCorrespondingOption(i);
     }
+  }
+
+  addAnswerToCorrespondingOption(counter:number){
+    if(this.totalUserAnswers[counter]=='yes' || this.totalUserAnswers[counter]=='maybe'){
+      this.countedAnswers.yesAnswers++;
+    }else{
+      this.countedAnswers.noAnswers++;
+    }
+  }
+
+  calculatePercentages(){
+    this.yesPercentage=(this.countedAnswers.yesAnswers*100)/this.totalUserAnswers.length;
+    this.noPercentage=(this.countedAnswers.noAnswers*100)/this.totalUserAnswers.length;
   }
 
 }
