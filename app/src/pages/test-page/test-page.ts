@@ -46,6 +46,8 @@ export class TestPage {
   nextQuestion(){
     if(this.currentQuestion==this.questionsNumber){
       let totalAnswers=this.testService.getTotalUserAnswers();
+      let messsage='las respuestas'+totalAnswers;
+      this.alertCreator.showSimpleAlert('respuestas',messsage);
       console.log("finalizar",totalAnswers);
     }else{
       this.currentQuestion++;
