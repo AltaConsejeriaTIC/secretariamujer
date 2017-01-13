@@ -1,17 +1,6 @@
 <?php
 
 /**
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
- * 
  * @file
  * Drupal site-specific configuration file.
  *
@@ -296,7 +285,7 @@ $config_directories = array();
  *   $settings['hash_salt'] = file_get_contents('/home/example/salt.txt');
  * @endcode
  */
-$settings['hash_salt'] = '-oy52IlQDSpNXUgGyyVjS_dz1cBZlKx-zNCL6Se2lcL1b9PIG5DrRxX-v0I27wt1MVKf0NdQfg';
+$settings['hash_salt'] = 'dWRzz5BKYSSkD7cU8Pjq_vjaQFdGKRSdt9yLkKuJYSupS23BsntJe8Wvkf1TpkBlr8WKl7TgVw';
 
 /**
  * Deployment identifier.
@@ -775,4 +764,4 @@ $databases['default']['default'] = array (
   'driver' => 'mysql',
 );
 $settings['install_profile'] = 'standard';
-$config_directories['sync'] = 'sites/default/files/config_OqKV4ATa6n_iJqbFMMQWVvbvBjuBqNdEgpM9PMpu1-ULwnoEUVBhSJ3agZytBUJ8b7k-UCWlsQ/sync';
+$config_directories['sync'] = 'sites/default/files/config_TrqnH54Sq8_Ke9Fw7WO1BgSESjUcu5NzupKS6upUU4rRupj4FeWuFMTEtLEJAKzqWnPIE46bSg/sync';
