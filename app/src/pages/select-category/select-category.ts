@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import {SelectCategoryService} from "../../providers/select-category-service";
 
 /*
   Generated class for the SelectCategory page.
@@ -9,14 +10,18 @@ import { NavController } from 'ionic-angular';
 */
 @Component({
   selector: 'page-select-category',
-  templateUrl: 'select-category.html'
+  templateUrl: './select-category.html'
 })
 export class SelectCategoryPage {
 
-  constructor(public navCtrl: NavController) {}
+  categories:string[];
+
+  constructor(public navCtrl: NavController, public selectCategoryService:SelectCategoryService) {
+    this.categories=['','','',''];
+  }
 
   ionViewDidLoad() {
-    console.log('Hello SelectCategoryPage Page');
+    this.categories=this.selectCategoryService.getCategories();
   }
 
 }
