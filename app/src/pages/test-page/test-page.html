@@ -4,13 +4,13 @@
       <ion-label>{{questionsObject[currentQuestion].title}}</ion-label>
     </ion-row>
     <ion-row class="flex-1">
-      <ion-label>{{questionsObject[currentQuestion].field_pregunta_violencia_economi}}</ion-label>
+      <ion-label>{{questionsObject[currentQuestion].pregunta}}</ion-label>
     </ion-row>
 
 
-    <button (click)="answerCurrentQuestion('yes')" ion-button>{{questionsObject[currentQuestion].field_respuesta_1_violencia_econ}}</button>
-    <button (click)="answerCurrentQuestion('no')" ion-button>{{questionsObject[currentQuestion].field_respuesta_2_violencia_econ}}</button>
-    <button (click)="answerCurrentQuestion('maybe')" ion-button>{{questionsObject[currentQuestion].field_respuesta_3_violencia_econ}}</button>
+    <button (click)="answerCurrentQuestion('yes')" ion-button>{{questionsObject[currentQuestion].respuesta1}}</button>
+    <button (click)="answerCurrentQuestion('no')" ion-button>{{questionsObject[currentQuestion].respuesta2}}</button>
+    <button (click)="answerCurrentQuestion('maybe')" ion-button>{{questionsObject[currentQuestion].respuesta3}}</button>
   </ion-grid>
 
   <ion-grid *ngIf="isTestComplete" class="full-height-ion-grid no-padding">

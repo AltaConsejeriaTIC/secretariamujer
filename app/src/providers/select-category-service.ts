@@ -68,6 +68,8 @@ export class SelectCategoryService {
     }
   ];
 
+  selectedCategoryId:number;
+
   constructor() {
 
   }
@@ -102,6 +104,14 @@ export class SelectCategoryService {
 
   getCategories() {
     return this.categories;
+  }
+
+  setSelectedCategoryId(categoryId){
+    this.selectedCategoryId=categoryId;
+  }
+
+  getSelectedCategoryId(){
+    return this.selectedCategoryId;
   }
 
 }

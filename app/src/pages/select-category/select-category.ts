@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import {SelectCategoryService} from "../../providers/select-category-service";
 import {category} from "../../entity/category";
+import {TestPage} from "../test-page/test-page";
 
 /*
   Generated class for the SelectCategory page.
@@ -25,8 +26,9 @@ export class SelectCategoryPage {
     this.categories=this.selectCategoryService.getCategories();
   }
 
-  selectCategory(category:string){
-      console.log(category)
+  selectCategory(categoryId:number){
+    this.selectCategoryService.setSelectedCategoryId(categoryId);
+    this.navCtrl.push(TestPage);
   }
 
 }

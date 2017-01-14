@@ -53,5 +53,10 @@ describe('selectCategoryService tests', () => {
     ]);
   });
 
+  it('setSelectedCategoryId and getSelectedCategoryId should set and get SelectedCategoryId',()=>{
+    testSelectCategoryService.setSelectedCategoryId(3);
+    expect(testSelectCategoryService.getSelectedCategoryId()).toBe(3);
+  });
+
 });
 
