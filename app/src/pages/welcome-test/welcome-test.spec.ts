@@ -40,11 +40,11 @@ describe('WelcomeTestPage tests', () => {
     testNavController=_navController;
   }));
 
-  it('goToTestPage should call setCategories from SelectCategoryService', () => {
-    spyOn(testSelectCategoryService,'setCategories').and.callThrough();
+  it('goToTestPage should call setCategory from SelectCategoryService', () => {
+    spyOn(testSelectCategoryService,'setCategory').and.callThrough();
     spyOn(testNavController,'push');
     testWelcomePage.goToTestSelectTestCategory();
-    expect(testSelectCategoryService.setCategories).toHaveBeenCalled();
+    expect(testSelectCategoryService.setCategory).toHaveBeenCalled();
   });
 
 });

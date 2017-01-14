@@ -16,7 +16,7 @@ export class WelcomeTestPage {
   }
 
   goToTestSelectTestCategory(){
-    this.selectCategoyService.setCategories(['Violencia Económica','Violencia Físca','Violencia Psicológica','Violencia Sexual']);
+    this.selectCategoyService.setCategory('tests');
     this.navCtrl.push(SelectCategoryPage);
   }
 

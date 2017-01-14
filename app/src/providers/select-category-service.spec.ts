@@ -19,16 +19,38 @@ describe('selectCategoryService tests', () => {
     testSelectCategoryService = _SelectCategoryService;
   }));
 
-  it('setCategories should set 4 categories in categories Array',()=>{
-    let categories=['1','2','3','4'];
-    testSelectCategoryService.setCategories(categories);
+  it('fillCategoriesWithEmptyObjects should return an array of 4 elements and empty',()=>{
+    expect(testSelectCategoryService.fillCategoriesWithEmptyObjects().length).toBe(4);
+    expect(testSelectCategoryService.fillCategoriesWithEmptyObjects()[0].category).toEqual('');
+    expect(testSelectCategoryService.fillCategoriesWithEmptyObjects()[0].RESTAddress).toEqual('');
+
+  });
+
+  it('setCategory should set categories object',()=>{
+    testSelectCategoryService.setCategory('tests');
     expect(testSelectCategoryService.categories.length).toBe(4);
   });
 
   it('getCategories should return categories array',()=>{
-    let categories=['4','3','2','1'];
-    testSelectCategoryService.setCategories(categories);
-    expect(testSelectCategoryService.getCategories()).toEqual(['4','3','2','1']);
+    testSelectCategoryService.setCategory('tests');
+    expect(testSelectCategoryService.getCategories()).toEqual([
+      {
+        category: 'Violencia Económica',
+        RESTAddress: 'preguntas-violencia-economica'
+      },
+      {
+        category: 'Violencia Físca',
+        RESTAddress: 'preguntas-violencia-fisica'
+      },
+      {
+        category: 'Violencia Psicológica',
+        RESTAddress: 'preguntas-violencia-psicologica'
+      },
+      {
+        category: 'Violencia Sexual',
+        RESTAddress: 'preguntas-violencia-sexual'
+      }
+    ]);
   });
 
 });
