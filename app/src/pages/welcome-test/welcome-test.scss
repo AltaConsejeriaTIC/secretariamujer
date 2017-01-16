@@ -2,22 +2,21 @@ page-welcome-test {
 
 }
 
-.custom-header{
+.custom-header {
   height: 50px;
   width: 100%;
   background-color: #5393cd;
 }
 
-.welcome-info{
+.welcome-info {
   margin-top: 35px;
 }
 
 .welcome-info p {
   text-align: center;
-  font-family: Open-Sans,'Monospace';
 }
 
-.margin-between-phrase{
+.margin-between-phrase {
   margin-top: 15px;
 }
 
@@ -28,5 +27,4 @@ page-welcome-test {
   height: 40px;
   margin-bottom: 15px;
   background: #d85662;
-  font-family: $font-family-base;
 }

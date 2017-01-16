@@ -1,10 +1,10 @@
-import { NgModule, ErrorHandler } from '@angular/core';
-import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
-import { MyApp } from './app.component';
-import { MapPage } from '../pages/map/map';
-import { UserDAO } from  '../providers/user-dao'
-import { AlertCreator } from  '../providers/alert-creator'
-import { MapServices } from  '../providers/map-services'
+import {NgModule, ErrorHandler} from '@angular/core';
+import {IonicApp, IonicModule, IonicErrorHandler} from 'ionic-angular';
+import {MyApp} from './app.component';
+import {MapPage} from '../pages/map/map';
+import {UserDAO} from  '../providers/user-dao'
+import {AlertCreator} from  '../providers/alert-creator'
+import {MapServices} from  '../providers/map-services'
 import {EventsServices} from "../providers/events-services";
 import {HomePage} from "../pages/home/home";
 import {RequiredInfoFormPage} from "../pages/required-info-form/required-info-form";
@@ -15,8 +15,6 @@ import {MenuPage} from "../pages/menu/menu";
 import {WelcomeTestPage} from "../pages/welcome-test/welcome-test";
 import {SelectCategoryPage} from "../pages/select-category/select-category";
 import {SelectCategoryService} from "../providers/select-category-service";
-
-
 
 
 @NgModule({
@@ -32,8 +30,9 @@ import {SelectCategoryService} from "../providers/select-category-service";
     MapPage
   ],
   imports: [
-    IonicModule.forRoot(MyApp,{
-      backButtonText:''
+    IonicModule.forRoot(MyApp, {
+      backButtonText: '',
+      backButtonIcon: 'md-arrow-dropleft'
     })
   ],
   bootstrap: [IonicApp],
@@ -48,6 +47,10 @@ import {SelectCategoryService} from "../providers/select-category-service";
     TestPage,
     MapPage
   ],
-  providers: [UserDAO,AlertCreator, MapServices, EventsServices, TestsService,SelectCategoryService,{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [UserDAO, AlertCreator, MapServices, EventsServices, TestsService, SelectCategoryService, {
+    provide: ErrorHandler,
+    useClass: IonicErrorHandler
+  }]
 })
-export class AppModule {}
+export class AppModule {
+}
