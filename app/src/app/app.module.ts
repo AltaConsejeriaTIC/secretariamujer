@@ -33,7 +33,8 @@ import {SelectCategoryService} from "../providers/select-category-service";
   ],
   imports: [
     IonicModule.forRoot(MyApp,{
-      backButtonText:''
+      backButtonText:'',
+      backButtonIcon:'md-arrow-dropleft'
     })
   ],
   bootstrap: [IonicApp],
