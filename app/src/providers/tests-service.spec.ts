@@ -3,25 +3,28 @@ import {HttpModule, XHRBackend, Response, ResponseOptions} from "@angular/http";
 import {MockBackend} from '@angular/http/testing';
 import {Observable} from "rxjs/Observable";
 import {TestsService} from "./tests-service";
+import {SelectCategoryService} from "./select-category-service";
 
 
 describe('testsService tests', () => {
   let mockbackend;
   let testsService:TestsService;
+  let testSelectCategoryService:SelectCategoryService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [ HttpModule ],
       providers: [
-        TestsService,
+        TestsService,SelectCategoryService,
         { provide: XHRBackend, useClass: MockBackend }
       ]
     });
   });
 
-  beforeEach(inject([TestsService, XHRBackend], (_TestsService, _mockbackend) => {
+  beforeEach(inject([TestsService, XHRBackend, SelectCategoryService], (_TestsService, _mockbackend, _SelectCategoryService) => {
     testsService = _TestsService;
     mockbackend = _mockbackend;
+    testSelectCategoryService=_SelectCategoryService;
   }));
 
   it('should return mocked response for getTestQuestions (async)', async(() => {
@@ -45,6 +48,10 @@ describe('testsService tests', () => {
         "field_answer6": "la respuesta numero 6"
       },
     ];
+
+    testSelectCategoryService.setCategory('tests');
+    testSelectCategoryService.setSelectedCategoryId(1);
+
     mockbackend.connections.subscribe(connection => {
       connection.mockRespond(new Response(new ResponseOptions({body: JSON.stringify(response)})));
     });
@@ -55,6 +62,8 @@ describe('testsService tests', () => {
   }));
 
   it('should getTestQuestions function return an Observable type',()=>{
+    testSelectCategoryService.setCategory('tests');
+    testSelectCategoryService.setSelectedCategoryId(1);
     let isObservable = testsService.getTestQuestions() instanceof Observable;
     expect(isObservable).toBe(true);
   });

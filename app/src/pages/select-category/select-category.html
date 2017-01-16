@@ -1,0 +1,17 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>selectCategory</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-row *ngFor="let category of categories; let id = index">
+    <button ion-button (click)="selectCategory(id)">{{category.category}}</button>
+  </ion-row>
+
+</ion-content>

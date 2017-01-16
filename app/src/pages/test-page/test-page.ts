@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {NavController} from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 import {TestsService} from "../../providers/tests-service";
 import {AlertCreator} from "../../providers/alert-creator";
 
@@ -12,14 +12,15 @@ export class TestPage {
   questionsObject;
   currentQuestion: number = 0;
   questionsNumber: number;
+  isTestComplete:boolean=false;
 
   constructor(public navCtrl: NavController, public testService: TestsService, public alertCreator: AlertCreator) {
     this.questionsObject = [
       {
-        "field_pregunta_violencia_economi": "",
-        "field_respuesta_1_violencia_econ": "",
-        "field_respuesta_2_violencia_econ": "",
-        "field_respuesta_3_violencia_econ": "",
+        "pregunta": "",
+        "respuesta1": "",
+        "respuesta2": "",
+        "respuesta3": "",
       },
     ];
   }
@@ -45,8 +46,9 @@ export class TestPage {
 
   nextQuestion(){
     if(this.currentQuestion==this.questionsNumber){
-      let message='sufre ud de violencia economica: '+this.testService.getResults();
+      let message='sufre ud de esta clase de violencia: '+this.testService.getResults();
       this.alertCreator.showSimpleAlert('respuestas',message);
+      this.isTestComplete=true;
     }else{
       this.currentQuestion++;
     }

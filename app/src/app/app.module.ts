@@ -13,6 +13,8 @@ import {TestPage} from "../pages/test-page/test-page";
 import {TestsService} from "../providers/tests-service";
 import {MenuPage} from "../pages/menu/menu";
 import {WelcomeTestPage} from "../pages/welcome-test/welcome-test";
+import {SelectCategoryPage} from "../pages/select-category/select-category";
+import {SelectCategoryService} from "../providers/select-category-service";
 
 
 
@@ -25,6 +27,7 @@ import {WelcomeTestPage} from "../pages/welcome-test/welcome-test";
     OptionalInfoFormPagePage,
     MenuPage,
     WelcomeTestPage,
+    SelectCategoryPage,
     TestPage,
     MapPage
   ],
@@ -41,9 +44,10 @@ import {WelcomeTestPage} from "../pages/welcome-test/welcome-test";
     OptionalInfoFormPagePage,
     MenuPage,
     WelcomeTestPage,
+    SelectCategoryPage,
     TestPage,
     MapPage
   ],
-  providers: [UserDAO,AlertCreator, MapServices, EventsServices, TestsService,{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [UserDAO,AlertCreator, MapServices, EventsServices, TestsService,SelectCategoryService,{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
 export class AppModule {}
