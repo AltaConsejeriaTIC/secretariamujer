@@ -10,6 +10,7 @@ import {AlertCreator} from "../../providers/alert-creator";
 export class TestPage {
 
   questionsObject;
+  categoryTitle;
   currentQuestion: number = 0;
   questionsNumber: number;
   isTestComplete:boolean=false;
@@ -23,6 +24,8 @@ export class TestPage {
         "respuesta3": "",
       },
     ];
+
+    this.categoryTitle = this.testService.getNameCategoryById();
   }
 
   ionViewDidLoad() {

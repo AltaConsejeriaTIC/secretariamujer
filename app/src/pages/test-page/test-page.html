@@ -1,7 +1,13 @@
-<ion-content padding>
+<ion-header >
+  <ion-navbar text-right>
+    <label>Test / Tips y Rutas</label>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="header-color">
   <ion-grid padding *ngIf="!isTestComplete"  class="full-height-ion-grid no-padding">
     <ion-row class="flex-1">
-      <ion-label>{{questionsObject[currentQuestion].title}}</ion-label>
+      <ion-label>{{categoryTitle}}</ion-label>
     </ion-row>
     <ion-row class="flex-1">
       <ion-label>{{questionsObject[currentQuestion].pregunta}}</ion-label>
