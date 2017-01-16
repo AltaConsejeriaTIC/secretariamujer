@@ -3,6 +3,7 @@
 $backgroundPurple: #664ba8;
 $placeholderInputColor: #9e8cc6;
 $headerBackgroundColor: #5393cd;
+$font-family-base: 'Open-Sans';
 
 .content-background-color {
   background-color: $backgroundPurple;
@@ -103,7 +104,14 @@ $headerBackgroundColor: #5393cd;
   background-color: white !important;
   color : $backgroundPurple  !important;
 }
- 
+
+@font-face {
+  font-family: 'Open-Sans';
+  src: url('../assets/fonts/opensans/OpenSans-Bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 // App Global Sass
 // --------------------------------------------------
 // Put style rules here that you want to apply globally. These

@@ -1,3 +1,32 @@
 page-welcome-test {
 
 }
+
+.custom-header{
+  height: 50px;
+  width: 100%;
+  background-color: #5393cd;
+}
+
+.welcome-info{
+  margin-top: 35px;
+}
+
+.welcome-info p {
+  text-align: center;
+  font-family: Open-Sans,'Monospace';
+}
+
+.margin-between-phrase{
+  margin-top: 15px;
+}
+
+.welcome-button {
+  display: block;
+  width: 200px;
+  margin: auto;
+  height: 40px;
+  margin-bottom: 15px;
+  background: #d85662;
+  font-family: $font-family-base;
+}
