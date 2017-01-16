@@ -1,19 +1,17 @@
 // http://ionicframework.com/docs/v2/theming/
 
-$backgroundPurple: #664ba8;
-$placeholderInputColor: #9e8cc6;
-$headerBackgroundColor: #5393cd;
-$font-family-base: 'Open-Sans';
-
-.content-background-color {
-  background-color: $backgroundPurple;
+@font-face {
+  font-family: 'Open-Sans';
+  src: url('../assets/fonts/opensans/OpenSans-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 
 .full-height-ion-grid {
   height: 100%;
 }
 
-.display-flex{
+.display-flex {
   display: flex;
 }
 
@@ -29,19 +27,19 @@ $font-family-base: 'Open-Sans';
   flex: 5;
 }
 
-.center-vertically{
+.center-vertically {
   align-items: center;
 }
 
-.justify-center-row{
+.justify-center-row {
   justify-content: center;
 }
 
-.justify-horizontally-right{
+.justify-horizontally-right {
   justify-content: flex-end;
 }
 
-.center-vertically-column-content{
+.center-vertically-column-content {
   align-self: center;
 }
 
@@ -50,7 +48,7 @@ $font-family-base: 'Open-Sans';
   font-weight: bold;
 }
 
-.align-start-vertically{
+.align-start-vertically {
   align-items: flex-start !important;
 }
 
@@ -69,7 +67,7 @@ $font-family-base: 'Open-Sans';
   border: 1px solid white;
 }
 
-.disabled-button{
+.disabled-button {
   color: $placeholderInputColor;
   font-weight: bold;
   border: 1px solid $placeholderInputColor;
@@ -88,7 +86,7 @@ $font-family-base: 'Open-Sans';
   color: $placeholderInputColor;
 }
 
-.no-margin{
+.no-margin {
   margin: 0px !important;
 }
 
@@ -96,20 +94,15 @@ $font-family-base: 'Open-Sans';
   padding: 0px !important;
 }
 
-.wrap-text-override{
+.wrap-text-override {
   white-space: inherit;
 }
 
- button:active {
+button:active {
   background-color: white !important;
+  /*
   color : $backgroundPurple  !important;
-}
-
-@font-face {
-  font-family: 'Open-Sans';
-  src: url('../assets/fonts/opensans/OpenSans-Bold.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
+  */
 }
 
 // App Global Sass

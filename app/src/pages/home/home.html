@@ -6,27 +6,25 @@
 -->
 
 
-<ion-content class="content-background-color">
-
+<ion-content class="content-purple">
   <ion-grid class="full-height-ion-grid ">
-
     <ion-row class="flex-1">
-
-      <img class="img" src="assets/img/sofia-image.png" alt="your image"  >
-
+      <img class="img" src="assets/img/sofia-image.png" alt="your image">
     </ion-row>
 
     <ion-row class="flex-2">
+      <ion-row id="required-info-register-button-container">
+        <ion-col offset-10 width-80>
+          <button ion-button (click)="goToRequiredInfoForm()" class="button1 large_button button-small " color="light"
+                  outline>Regístrate
+          </button>
+          <div class="line-wrapper"></div>
+          <button ion-button (click)="goToSignInPage()" class="button2 large_button button-small " color="light"
+                  outline>Iniciar Sesión
+          </button>
 
-
-    <ion-row id="required-info-register-button-container">
-      <ion-col offset-10 width-80>
-        <button ion-button (click)="goToRequiredInfoForm()" class="button1 large_button button-small " color="light" outline>Regístrate</button>
-        <div class="line-wrapper"></div>
-        <button ion-button (click)="goToSignInPage()" class="button2 large_button button-small " color="light" outline>Iniciar Sesión</button>
-
-      </ion-col>
-    </ion-row>
+        </ion-col>
+      </ion-row>
 
     </ion-row>
   </ion-grid>

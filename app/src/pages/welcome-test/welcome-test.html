@@ -4,27 +4,26 @@
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-
+<ion-header>
+  <ion-navbar text-right>
+    <label>Test / Tips y Rutas</label>
+  </ion-navbar>
+</ion-header>
 
 <ion-content>
-
-  <div class="custom-header">
-    <span></span>
-    <label>Test / Tips y Rutas</label>
-  </div>
   <div class="welcome-info">
-      <p>
-          Bienvenida Yabushita Mai
-      </p>
-      <p class="margin-between-phrase">
-        A continuación Sofía quisiera realizarte una serie de preguntas para conocerte un poco más
-      </p>
+    <p>
+      Bienvenida Yabushita Mai
+    </p>
+    <p class="margin-between-phrase">
+      A continuación Sofía quisiera realizarte una serie de preguntas para conocerte un poco más
+    </p>
     <p class="margin-between-phrase">
       Espero puedas ayudarnos.
     </p>
   </div>
   <button class="welcome-button" (click)="goToTestSelectTestCategory()">Empezar test</button>
-  <button class="welcome-button" (click)="goToTips()" >Ver tips</button>
+  <button class="welcome-button" (click)="goToTips()">Ver tips</button>
   <button class="welcome-button" (click)="goToRoutes()">Ver rutas</button>
 
 </ion-content>

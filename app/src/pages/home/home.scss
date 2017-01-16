@@ -1,5 +1,9 @@
 page-home2{
-  background-color: $backgroundPurple
+
+}
+
+.content-purple {
+  background-color: map_get($colors, backgroundPurple);
 }
 
 .large_button {
