@@ -5,10 +5,44 @@
 </ion-header>
 
 <ion-content class="content-blue">
-
   <div class="header-separator"></div>
 
-  <div class="welcome-info">
+  <ion-grid class="full-height-ion-grid" no-padding	>
+    <ion-row class="flex-1" style="background-color: green">
+      <ion-col offset-10 width-80 style="margin: auto">
+        <ion-row class="flex-1"  style="background-color: red; justify-content: center" text-center>
+          <p>Bienvenida Yabushita Mai</p>
+        </ion-row>
+        <ion-row class="flex-1"  style="background-color: red; justify-content: center" text-center>
+          <p>A continuación Sofía quisiera realizarte una serie de preguntas para conocerte un poco más</p>
+        </ion-row>
+        <ion-row class="flex-1"  style="background-color: red; justify-content: center" text-center>
+          <p> Espero puedas ayudarnos.</p>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+    <ion-row class="flex-1" style="background-color: blue">
+      <ion-col offset-20 width-60 class="welcome-test-button-section" style="margin: auto">
+        <ion-row style="justify-content: center" text-center>
+          <button (click)="goToTestSelectTestCategory()">Empezar test</button>
+        </ion-row>
+        <ion-row style="justify-content: center" text-center>
+          <div class="between-button-separator-container">
+            <div class="between-buttons-separator"></div><p class="text-between-separators">ó</p><div class="between-buttons-separator"></div>
+          </div>
+        </ion-row>
+        <ion-row style="justify-content: center" text-center>
+          <button (click)="goToTips()">Ver tips</button>
+        </ion-row>
+        <ion-row style="justify-content: center" text-center>
+          <button (click)="goToRoutes()">Ver rutas</button>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+ <!-- <div class="welcome-info">
     <p>
       Bienvenida Yabushita Mai
     </p>
@@ -26,5 +60,5 @@
     </div>
     <button (click)="goToTips()">Ver tips</button>
     <button (click)="goToRoutes()">Ver rutas</button>
-  </div>
+  </div> -->
 </ion-content>
