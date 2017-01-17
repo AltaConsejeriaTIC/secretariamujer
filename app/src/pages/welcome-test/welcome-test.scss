@@ -1,4 +1,4 @@
-page-welcome-test label{
+page-welcome-test label, p{
   color: map_get($colors, SofiaAppWhite);
 }
 
@@ -14,11 +14,14 @@ page-welcome-test label{
 
 .welcome-info p {
   text-align: center;
-  color: map_get($colors, SofiaAppWhite);;
 }
 
 .margin-between-phrase {
   margin-top: 15px;
+}
+
+.welcome-test-button-section{
+  margin-top: 45px;
 }
 
 .welcome-test-button-section button {
@@ -39,4 +42,23 @@ page-welcome-test label{
   height: 1.5px;
   width: 100%;
   background-color: map_get($colors, SofiaAppWhite);
+}
+
+.between-button-separator-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.between-buttons-separator{
+  display: inline-block;
+  height: 1px;
+  background-color: map_get($colors, SofiaAppWhite);
+  width: 92px;
+}
+
+.text-between-separators{
+  display: inline-block;
+  margin: 0 5px 0 5px !important;
 }
