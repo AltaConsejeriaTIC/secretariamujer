@@ -1,14 +1,13 @@
 <ion-header>
-  <ion-navbar text-right>
+  <ion-navbar text-right color="SofiaAppBlue">
     <label>Test / Tips y Rutas</label>
   </ion-navbar>
-  <button ion-button icon-left>
-    <ion-icon name="icon-envelope"></ion-icon>
-    Left Icon
-  </button>
 </ion-header>
 
-<ion-content>
+<ion-content class="content-blue">
+
+  <div class="header-separator"></div>
+
   <div class="welcome-info">
     <p>
       Bienvenida Yabushita Mai
@@ -20,8 +19,9 @@
       Espero puedas ayudarnos.
     </p>
   </div>
-  <button class="welcome-button" (click)="goToTestSelectTestCategory()">Empezar test</button>
-  <button class="welcome-button" (click)="goToTips()">Ver tips</button>
-  <button class="welcome-button" (click)="goToRoutes()">Ver rutas</button>
-
+  <div class="welcome-test-button-section">
+    <button (click)="goToTestSelectTestCategory()">Empezar test</button>
+    <button (click)="goToTips()">Ver tips</button>
+    <button (click)="goToRoutes()">Ver rutas</button>
+  </div>
 </ion-content>
