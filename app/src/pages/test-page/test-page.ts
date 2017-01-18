@@ -75,6 +75,7 @@ export class TestPage {
       let message='sufre ud de esta clase de violencia: '+this.testService.getResults();
       this.alertCreator.showSimpleAlert('respuestas',message);
       this.isTestComplete=true;
+      this.testService.resetValues();
     }else{
       this.currentQuestion++;
     }

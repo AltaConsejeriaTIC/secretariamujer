@@ -59,6 +59,17 @@ export class TestsService {
   getNameCategoryById(): string{
     return this.selectCategoryService.getCategories()[this.selectCategoryService.getSelectedCategoryId()].category;
   }
+
+  resetValues(){
+    this.totalUserAnswers=[];
+    this.countedAnswers={
+      yesAnswers:0,
+      noAnswers:0
+    };
+    this.yesPercentage=0;
+    this.noPercentage=0;
+  }
+
 }
 
 

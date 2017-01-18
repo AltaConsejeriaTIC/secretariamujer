@@ -110,5 +110,17 @@ describe('testsService tests', () => {
     expect(testsService.getNameCategoryById()).toEqual('Violencia Económica');
   });
 
+  it('resetValues should reset totalUserAnswers array, countedAnswers object, yesPercentage and noPercentage',()=>{
+    testsService.resetValues();
+    expect(testsService.totalUserAnswers).toEqual([]);
+    expect(testsService.countedAnswers).toEqual({
+      yesAnswers:0,
+      noAnswers:0
+    });
+    expect(testsService.yesPercentage).toEqual(0);
+    expect(testsService.noPercentage).toEqual(0);
+
+  });
+
 });
 

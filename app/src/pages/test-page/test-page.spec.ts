@@ -106,5 +106,16 @@ describe('TestPage tests', () => {
     expect(testPage.answerCheckBoxArray[1]).toEqual(false);
     expect(testPage.answerCheckBoxArray[2]).toEqual(false);
   });
+
+  it('nextQuestion should call resetValues from TestService  when test is finished', () => {
+    spyOn(testService,'resetValues');
+    spyOn(testService,'getResults').and.callThrough();
+    spyOn(alertCreator,'showSimpleAlert');
+    testPage.currentQuestion=1;
+    testPage.questionsNumber=1;
+    testPage.nextQuestion();
+    expect(testService.resetValues).toHaveBeenCalled();
+  });
+
 });
 
