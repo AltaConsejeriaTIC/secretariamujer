@@ -25,7 +25,8 @@ $colors: (
   dark: #222,
   backgroundPurple: #664ba8,
   SofiaAppWhite: #f2f2f2,
-  SofiaAppRedButton: #d85662
+  SofiaAppRedButton: #d85662,
+  SofiaAppDarkBlue: #346999,
 );
 
 $font-family-base: 'Open-Sans';
@@ -35,6 +36,7 @@ $font-family-wp-base: 'Open-Sans';
 $backgroundPurple: #664ba8;
 $placeholderInputColor: #9e8cc6;
 $headerBackgroundColor: #5393cd;
+$toolbar-background: $headerBackgroundColor;
 
 // App iOS Variables
 // --------------------------------------------------

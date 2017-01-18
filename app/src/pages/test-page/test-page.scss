@@ -1,2 +1,55 @@
-page-test-page {
+.test-header {
+  height: 9vh;
+}
+
+.test-header label {
+  color: map_get($colors, SofiaAppWhite);
+}
+
+.header-color {
+  background-color: $headerBackgroundColor;
+}
+
+.test-question {
+  height: 42vh;
+  width: 100%;
+  display: table;
+}
+
+.test-question > * {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.test-question .category-title {
+  font-style: italic;
+  font-size: 19px;
+  font-weight: 800;
+  margin: 13px 0 0;
+}
+
+.test-view {
+  height: 91vh;
+  margin-top: 9vh;
+}
+
+.test-view * {
+  color: white;
+}
+
+.test-view ion-label {
+  white-space: pre-line;
+}
+
+.test-options-container {
+  background: map_get($colors, SofiaAppDarkBlue);
+}
+
+.test-options {
+  height: 50vh;
+}
+
+.test-options > * {
+  min-height: 65px;
+  background: map_get($colors, SofiaAppDarkBlue);
 }

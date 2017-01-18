@@ -56,4 +56,9 @@ export class TestsService {
     this.noPercentage=(this.countedAnswers.noAnswers*100)/this.totalUserAnswers.length;
   }
 
+  getNameCategoryById(): string{
+    return this.selectCategoryService.getCategories()[this.selectCategoryService.getSelectedCategoryId()].category;
+  }
 }
+
+
