@@ -76,9 +76,53 @@ page-welcome-test label, p{
 }
 
 @media (min-width: 480px) and (max-width: 767px) {
+  .test-info-section p {
+    font-size: 24px !important;
+  }
 
+  .text-between-separators{
+    font-size: 20px !important;
+  }
+
+  .welcome-test-button-section button{
+    width: 291px;
+    height: 60px;
+    margin-bottom: 30px;
+    font-size: 26px;
+    font-weight: bold;
+  }
+
+  .between-button-separator-container{
+    margin-bottom: 30px;
+  }
+
+  .between-buttons-separator{
+    width: 134px;
+  }
 }
 
 @media (min-width: 768px) {
+  .test-info-section p {
+    font-size: 28px !important;
+  }
 
+  .text-between-separators{
+    font-size: 20px !important;
+  }
+
+  .welcome-test-button-section button{
+    width: 342px;
+    height: 70px;
+    margin-bottom: 38px;
+    font-size: 26px;
+    font-weight: bold;
+  }
+
+  .between-button-separator-container{
+    margin-bottom: 38px;
+  }
+
+  .between-buttons-separator{
+    width: 159px;
+  }
 }
