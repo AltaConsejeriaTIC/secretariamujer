@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import { NavController } from 'ionic-angular';
 import {TestsService} from "../../providers/tests-service";
 import {AlertCreator} from "../../providers/alert-creator";
+import {MenuPage} from "../menu/menu";
 
 @Component({
   selector: 'page-test-page',
@@ -16,7 +17,7 @@ export class TestPage {
   isTestComplete:boolean=false;
   answerCheckBoxArray:boolean[];
 
-  constructor(public navCtrl: NavController, public testService: TestsService, public alertCreator: AlertCreator) {
+  constructor(public navController: NavController, public testService: TestsService, public alertCreator: AlertCreator) {
     this.questionsObject = [
       {
         "pregunta": "",
@@ -79,5 +80,9 @@ export class TestPage {
     }else{
       this.currentQuestion++;
     }
+  }
+
+  goToMenuPage() {
+    this.navController.push(MenuPage);
   }
 }
