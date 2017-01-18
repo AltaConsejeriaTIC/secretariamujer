@@ -7,45 +7,85 @@
     <label class="header-title">Test / Tips y Rutas</label>
   </ion-navbar>
 </ion-header>
-
+<ion-content>
   <ion-grid padding *ngIf="!isTestComplete"  class="full-height-ion-grid no-padding test-view">
     <div class="test-question" padding>
-        <div>
-            <ion-row text-center>
-              <ion-label class="test-category-title">{{categoryTitle}}</ion-label>
-            </ion-row>
-            <ion-row text-center>
-              <ion-label class="test-counter">{{(currentQuestion + 1) + "/" + (questionsNumber+1)}}</ion-label>
-            </ion-row>
-            <ion-row text-center>
-              <ion-label class="test-question-text" >{{questionsObject[currentQuestion].pregunta}}</ion-label>
-            </ion-row>
-        </div>
+      <div>
+        <ion-row text-center>
+          <ion-label class="test-category-title">{{categoryTitle}}</ion-label>
+        </ion-row>
+        <ion-row text-center>
+          <ion-label class="test-counter">{{(currentQuestion + 1) + "/" + (questionsNumber+1)}}</ion-label>
+        </ion-row>
+        <ion-row text-center>
+          <ion-label class="test-question-text" >{{questionsObject[currentQuestion].pregunta}}</ion-label>
+        </ion-row>
+      </div>
     </div>
 
     <ion-content class="test-options-container" no-padding>
-        <div class="test-options">
-          <ion-row (click)="setCheckBoxArray(0)">
-            <ion-checkbox mode="md" (click)="setCheckBoxArray(0)" [(ngModel)]="answerCheckBoxArray[0]" ></ion-checkbox>
-            <ion-label>{{questionsObject[currentQuestion].respuesta1}}</ion-label>
-          </ion-row>
-          <ion-row (click)="setCheckBoxArray(1)" >
-            <ion-checkbox  mode="md" (click)="setCheckBoxArray(1)" [(ngModel)]="answerCheckBoxArray[1]" ></ion-checkbox>
-            <ion-label>{{questionsObject[currentQuestion].respuesta2}}</ion-label>
-          </ion-row>
-          <ion-row (click)="setCheckBoxArray(2)">
-            <ion-checkbox  mode="md" (click)="setCheckBoxArray(2)" [(ngModel)]="answerCheckBoxArray[2]" ></ion-checkbox>
-            <ion-label>{{questionsObject[currentQuestion].respuesta3}}</ion-label>
-          </ion-row>
-          <ion-row (click)="answerCurrentQuestion()">
-            <button class="next-question">Siguiente</button>
-          </ion-row>
-        </div>
+      <div class="test-options">
+        <ion-row (click)="setCheckBoxArray(0)">
+          <ion-checkbox mode="md" (click)="setCheckBoxArray(0)" [(ngModel)]="answerCheckBoxArray[0]" ></ion-checkbox>
+          <ion-label>{{questionsObject[currentQuestion].respuesta1}}</ion-label>
+        </ion-row>
+        <ion-row (click)="setCheckBoxArray(1)" >
+          <ion-checkbox  mode="md" (click)="setCheckBoxArray(1)" [(ngModel)]="answerCheckBoxArray[1]" ></ion-checkbox>
+          <ion-label>{{questionsObject[currentQuestion].respuesta2}}</ion-label>
+        </ion-row>
+        <ion-row (click)="setCheckBoxArray(2)">
+          <ion-checkbox  mode="md" (click)="setCheckBoxArray(2)" [(ngModel)]="answerCheckBoxArray[2]" ></ion-checkbox>
+          <ion-label>{{questionsObject[currentQuestion].respuesta3}}</ion-label>
+        </ion-row>
+        <ion-row (click)="answerCurrentQuestion()">
+          <button class="next-question">Siguiente</button>
+        </ion-row>
+      </div>
 
     </ion-content>
   </ion-grid>
 
-  <ion-grid *ngIf="isTestComplete" class="full-height-ion-grid no-padding">
-    <button ion-button>ver tips</button>
-    <button ion-button>ver rutas</button>
+
+  <ion-grid *ngIf="isTestComplete" class="height-100 no-padding content-blue">
+    <ion-row class="flex-1">
+      <ion-col offset-10="5%" width-90 class="welcome-test-button-section end-test-thanks">
+        <ion-row class="flex-1 justify-center-row">
+          <p no-margin>Gracias Yabushita Mai</p>
+        </ion-row>
+        <ion-row class="flex-1 justify-center-row">
+          <p no-margin>por realizar este Test</p>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+    <ion-row class="flex-1">
+      <ion-col offset-10="5%" width-90 class="welcome-test-button-section end-test-advice">
+        <ion-row class="flex-1 justify-center-row">
+          <p no-margin>Al parecer Sofía cree que</p>
+        </ion-row>
+        <ion-row class="flex-1 justify-center-row">
+          <p no-margin>estas siendo victima de</p>
+        </ion-row>
+        <ion-row class="flex-1 justify-center-row">
+          <p no-margin>Violencia psicologica y tiene</p>
+        </ion-row>
+        <ion-row class="flex-1 justify-center-row">
+          <p no-margin>unos consejos para tí</p>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+    <ion-row class="flex-1">
+      <ion-col offset-10="5%" width-90 class="welcome-test-button-section ">
+        <ion-row style="justify-content: center" text-center>
+          <button ion-button outline color="light" (click)="goToTips()">Ver tips</button>
+        </ion-row>
+        <ion-row style="justify-content: center" text-center>
+          <button ion-button outline color="light" (click)="goToRoutes()">Rutas de atención</button>
+        </ion-row>
+      </ion-col>
+    </ion-row>
   </ion-grid>
+
+</ion-content>
+
+
+

@@ -115,6 +115,10 @@ page-test-page {
     font-size: 14px;
   }
 
+  .end-test-thanks p{
+    font-weight: bold;
+  }
+
   @media (max-width: 479px) {
     .test-options ion-label,
     .test-header label {
@@ -128,6 +132,17 @@ page-test-page {
     .test-question .test-category-title {
       font-size: 19px;
     }
+
+    .end-test-thanks p{
+      font-size: 18px;
+    }
+
+    .end-test-advice p{
+      font-size: 14px;
+    }
+
+
+
   }
 
   @media (min-width: 480px) and (max-width: 767px) {
@@ -143,6 +158,15 @@ page-test-page {
     .test-question .test-category-title {
       font-size: 28px;
     }
+
+    .end-test-thanks p{
+      font-size: 28px;
+    }
+
+    .end-test-advice p{
+      font-size: 22px;
+    }
+
   }
 
   @media (min-width: 768px) {
@@ -158,5 +182,15 @@ page-test-page {
     .test-question .test-category-title {
       font-size: 32px;
     }
+
+    .end-test-thanks p{
+      font-size: 33px;
+    }
+
+    .end-test-advice p{
+      font-size: 26px;
+    }
+
+
   }
 }

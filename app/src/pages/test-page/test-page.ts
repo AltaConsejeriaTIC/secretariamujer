@@ -85,4 +85,13 @@ export class TestPage {
   goToMenuPage() {
     this.navController.push(MenuPage);
   }
+
+  goToTips() {
+
+  }
+
+  goToRoutes() {
+
+  }
+
 }
