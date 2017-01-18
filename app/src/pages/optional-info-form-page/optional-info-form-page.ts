@@ -3,7 +3,6 @@ import {NavController} from 'ionic-angular';
 import {User} from "../../entity/user";
 import {UserDAO} from "../../providers/user-dao";
 import {AlertCreator} from "../../providers/alert-creator";
-import {TestPage} from "../test-page/test-page";
 import {MenuPage} from "../menu/menu";
 
 @Component({
@@ -21,22 +20,23 @@ export class OptionalInfoFormPagePage {
 
   }
 
-  checkFields(){
-    if(this.isValidEmail()){
+  checkFields() {
+    if (this.isValidEmail()) {
       this.saveOptionalInfo();
-    }else{
+    } else {
       this.alertCreator.showSimpleAlert('Error', 'Verifica que el correo sea correcto');
     }
   }
+
   saveOptionalInfo() {
     this.userDAO.saveOptionalInfo(this.user.name, this.user.email, this.user.phone);
     this.createUser();
   }
 
-  isValidEmail(){
-    let hasAtSymbol=this.user.email.indexOf('@');
-    let hasDomain=this.user.email.indexOf('.com');
-    return ((hasAtSymbol>-1)&& (hasDomain>-1));
+  isValidEmail() {
+    let hasAtSymbol = this.user.email.indexOf('@');
+    let hasDomain = this.user.email.indexOf('.com');
+    return ((hasAtSymbol > -1) && (hasDomain > -1));
   }
 
   createUser() {

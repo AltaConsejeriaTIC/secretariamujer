@@ -7,6 +7,10 @@
   font-style: normal;
 }
 
+.header-ios {
+  border-bottom: #f2f2f2 3px groove;
+}
+
 .option-1 {
   background-color: #d85662;
 }
@@ -112,13 +116,6 @@
 
 .wrap-text-override {
   white-space: inherit;
-}
-
-button:active {
-  background-color: white !important;
-  /*
-  color : $backgroundPurple  !important;
-  */
 }
 
 // App Global Sass

@@ -10,11 +10,9 @@ import {MenuPage} from "../menu/menu";
 })
 export class SelectCategoryPage {
   constructor(public navController: NavController, public selectCategoryService: SelectCategoryService) {
-
   }
 
   ionViewDidLoad() {
-
   }
 
   selectCategory(categoryId: number) {

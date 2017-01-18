@@ -1,10 +1,10 @@
-<ion-header>
+<ion-header mode="md">
   <ion-navbar hideBackButton>
-    <button ion-button icon-only (click)="goToMenuPage()">
+    <button ion-button icon-only menuToggle (click)="goToMenuPage()">
       <ion-icon name="menu"></ion-icon>
     </button>
 
-    <ion-title>Test / Tips y Rutas</ion-title>
+    <label class="header-title">Test / Tips y Rutas</label>
   </ion-navbar>
 </ion-header>
 
@@ -12,9 +12,10 @@
 <ion-content>
   <ion-grid class="height-100" no-padding>
     <ion-row class="section-header">
-      <ion-col text-center>
+      <ion-col>
         <ion-label class="title">Empezar Test</ion-label>
-        <ion-label class="description">Por favor selecciona una categoría</ion-label>
+        <ion-label class="description">Por favor selecciona</ion-label>
+        <ion-label class="description">una categoría</ion-label>
       </ion-col>
     </ion-row>
     <ion-row (click)="selectCategory(0)" class="option-1">
