@@ -90,4 +90,9 @@ describe('UserDAO tests', () => {
     expect(userEmailEncoded.indexOf('@noregistra.com')).toBeGreaterThan(-1);
   });
 
+  it('getUsername should return user username',()=>{
+    userDAO.user.username='Pepe';
+    expect(userDAO.getUsername()).toEqual('Pepe');
+  });
+
 });

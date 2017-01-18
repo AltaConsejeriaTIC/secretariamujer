@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import {TestsService} from "../../providers/tests-service";
 import {AlertCreator} from "../../providers/alert-creator";
 import {MenuPage} from "../menu/menu";
+import {UserDAO} from "../../providers/user-dao";
 
 @Component({
   selector: 'page-test-page',
@@ -16,8 +17,9 @@ export class TestPage {
   questionsNumber: number;
   isTestComplete:boolean=false;
   answerCheckBoxArray:boolean[];
+  userName:string;
 
-  constructor(public navController: NavController, public testService: TestsService, public alertCreator: AlertCreator) {
+  constructor(public navController: NavController, public testService: TestsService, public alertCreator: AlertCreator, public userDAO:UserDAO) {
     this.questionsObject = [
       {
         "pregunta": "",
@@ -26,7 +28,7 @@ export class TestPage {
         "respuesta3": "",
       },
     ];
-
+    this.userName=this.userDAO.getUsername() || "Yabushita Mai";
     this.clearCheckboxArray();
   }
 

@@ -3,6 +3,7 @@ import {NavController} from 'ionic-angular';
 import {SelectCategoryService} from "../../providers/select-category-service";
 import {SelectCategoryPage} from "../select-category/select-category";
 import {MenuPage} from "../menu/menu";
+import {UserDAO} from "../../providers/user-dao";
 
 @Component({
   selector: 'page-welcome-test',
@@ -10,7 +11,10 @@ import {MenuPage} from "../menu/menu";
 })
 export class WelcomeTestPage {
 
-  constructor(public navController: NavController, public selectCategoyService: SelectCategoryService) {
+  userName:string;
+
+  constructor(public navController: NavController, public selectCategoyService: SelectCategoryService, public userDAO:UserDAO) {
+    this.userName=this.userDAO.getUsername() || "Yabushita Mai";
   }
 
   ionViewDidLoad() {

@@ -56,4 +56,8 @@ export class UserDAO {
     }
   }
 
+  getUsername():string{
+    return this.user.username;
+  }
+
 }

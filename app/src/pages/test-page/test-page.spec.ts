@@ -7,6 +7,7 @@ import {AlertController} from "ionic-angular";
 import {TestPage} from "./test-page";
 import {TestsService} from "../../providers/tests-service";
 import {SelectCategoryService} from "../../providers/select-category-service";
+import {UserDAO} from "../../providers/user-dao";
 
 
 describe('TestPage tests', () => {
@@ -22,7 +23,7 @@ describe('TestPage tests', () => {
     TestBed.configureTestingModule({
       declarations: [TestPage],
       providers: [
-        App, Platform, Form, Keyboard, MenuController, NavController,AlertCreator,AlertController,TestPage,TestsService,SelectCategoryService,
+        App, Platform, Form, Keyboard, MenuController, NavController,AlertCreator,AlertController,TestPage,TestsService,SelectCategoryService,UserDAO,
         {provide: Config, useClass: ConfigMock}
       ],
       imports: [
