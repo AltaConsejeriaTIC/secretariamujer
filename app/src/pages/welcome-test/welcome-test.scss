@@ -8,6 +8,10 @@ page-welcome-test label, p{
   background-color: #5393cd;
 }
 
+.height-welcome-page-grid{
+  height: 95%;
+}
+
 .welcome-info {
   margin-top: 35px;
 }
@@ -21,21 +25,19 @@ page-welcome-test label, p{
 }
 
 .welcome-test-button-section{
-  margin-top: 45px;
+  margin: auto !important;
 }
 
 .welcome-test-button-section button {
   display: block;
   width: 200px;
-  margin: auto;
   height: 40px;
   margin-bottom: 15px;
-  background: map_get($colors, SofiaAppRedButton);
   color: map_get($colors, SofiaAppWhite);
 }
 
 .content-blue {
-  background-color: map_get($colors, SofiaAppBlue);
+  background-color: map_get($colors, primary);
 }
 
 .header-separator{
