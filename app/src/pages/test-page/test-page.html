@@ -1,5 +1,5 @@
 <ion-content padding>
-  <ion-grid padding *ngIf="!isTestComplete"  class="full-height-ion-grid no-padding">
+  <ion-grid padding *ngIf="!isTestComplete"  class="height-100 no-padding">
     <ion-row class="flex-1">
       <ion-label>{{questionsObject[currentQuestion].title}}</ion-label>
     </ion-row>
@@ -13,7 +13,7 @@
     <button (click)="answerCurrentQuestion('maybe')" ion-button>{{questionsObject[currentQuestion].respuesta3}}</button>
   </ion-grid>
 
-  <ion-grid *ngIf="isTestComplete" class="full-height-ion-grid no-padding">
+  <ion-grid *ngIf="isTestComplete" class="height-100 no-padding">
     <button ion-button>ver tips</button>
     <button ion-button>ver rutas</button>
   </ion-grid>

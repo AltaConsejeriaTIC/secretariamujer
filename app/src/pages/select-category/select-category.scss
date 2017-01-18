@@ -1,6 +1,30 @@
 page-select-category {
-  .title-section {
-    background: red;
-  }
+  .content {
+    background-color: map_get($colors, primary);
 
+    .section-header {
+      flex: 1;
+
+      .title {
+        font-size: 19px;
+        font-weight: bold;
+        color: #f2f2f2; 
+      }
+
+      .description {
+        font-size: 13px;
+        font-weight: 500;
+        color: #f2f2f2;
+      }
+    }
+
+    [class^="option-"] {
+      font-size: 17px;
+      font-weight: bold;
+      color: #f2f2f2;
+      align-items: center;
+      text-align: center;
+      flex: 1;
+    }
+  }
 }

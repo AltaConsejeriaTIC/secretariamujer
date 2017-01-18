@@ -9,20 +9,34 @@
 </ion-header>
 
 
-<ion-content padding>
-  <ion-row>
-    <ion-col text-center>
-      <label class="title-section">Empezar Test</label>
-    </ion-col>
-  </ion-row>
-  <ion-row text-center>
-    <ion-col text-center>
-      <label class="description">Por favor selecciona una categoría</label>
-    </ion-col>
-  </ion-row>
-
-  <ion-row *ngFor="let category of categories; let id = index">
-    <button ion-button (click)="selectCategory(id)">{{category.category}}</button>
-  </ion-row>
+<ion-content>
+  <ion-grid class="height-100" no-padding>
+    <ion-row class="section-header">
+      <ion-col text-center>
+        <ion-label class="title">Empezar Test</ion-label>
+        <ion-label class="description">Por favor selecciona una categoría</ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row (click)="selectCategory(0)" class="option-1">
+      <ion-col>
+        <ion-label>{{categories[0].category}}</ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row (click)="selectCategory(1)" class="option-2">
+      <ion-col>
+        <label>{{categories[1].category}}</label>
+      </ion-col>
+    </ion-row>
+    <ion-row (click)="selectCategory(2)" class="option-3">
+      <ion-col>
+        <label>{{categories[2].category}}</label>
+      </ion-col>
+    </ion-row>
+    <ion-row (click)="selectCategory(0)" class="option-4">
+      <ion-col>
+        <label>{{categories[3].category}}</label>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
 </ion-content>

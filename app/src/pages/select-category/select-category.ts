@@ -3,6 +3,7 @@ import {NavController} from 'ionic-angular';
 import {SelectCategoryService} from "../../providers/select-category-service";
 import {category} from "../../entity/category";
 import {TestPage} from "../test-page/test-page";
+import {MenuPage} from "../menu/menu";
 
 @Component({
   selector: 'page-select-category',
@@ -10,9 +11,26 @@ import {TestPage} from "../test-page/test-page";
 })
 export class SelectCategoryPage {
 
-  categories: category[] = [];
+  categories: category[] = [
+    {
+      category: 'Violencia Económica',
+      RESTAddress: 'preguntas-violencia-economica'
+    },
+    {
+      category: 'Violencia Físca',
+      RESTAddress: 'preguntas-violencia-fisica'
+    },
+    {
+      category: 'Violencia Psicológica',
+      RESTAddress: 'preguntas-violencia-psicologica'
+    },
+    {
+      category: 'Violencia Sexual',
+      RESTAddress: 'preguntas-violencia-sexual'
+    }
+  ];
 
-  constructor(public navCtrl: NavController, public selectCategoryService: SelectCategoryService) {
+  constructor(public navController: NavController, public selectCategoryService: SelectCategoryService) {
     this.categories = this.selectCategoryService.fillCategoriesWithEmptyObjects();
   }
 
@@ -22,10 +40,10 @@ export class SelectCategoryPage {
 
   selectCategory(categoryId: number) {
     this.selectCategoryService.setSelectedCategoryId(categoryId);
-    this.navCtrl.push(TestPage);
+    this.navController.push(TestPage);
   }
 
   goToMenuPage() {
-    alert('sucess');
+    this.navController.push(MenuPage);
   }
 }
