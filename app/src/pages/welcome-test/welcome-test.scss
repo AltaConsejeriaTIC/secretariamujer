@@ -73,6 +73,10 @@ page-welcome-test label, p{
     width: 92px;
   }
 
+  .welcome-page-title{
+    font-size: 13px;
+  }
+
 }
 
 @media (min-width: 480px) and (max-width: 767px) {
@@ -99,6 +103,10 @@ page-welcome-test label, p{
   .between-buttons-separator{
     width: 134px;
   }
+
+  .welcome-page-title{
+    font-size: 20px;
+  }
 }
 
 @media (min-width: 768px) {
@@ -124,5 +132,9 @@ page-welcome-test label, p{
 
   .between-buttons-separator{
     width: 159px;
+  }
+
+  .welcome-page-title{
+    font-size: 24px;
   }
 }
