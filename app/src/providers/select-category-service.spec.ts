@@ -1,6 +1,4 @@
-import {TestBed, inject, async} from "@angular/core/testing";
-import {Observable} from "rxjs/Observable";
-import {TestsService} from "./tests-service";
+import {TestBed, inject} from "@angular/core/testing";
 import {SelectCategoryService} from "./select-category-service";
 
 

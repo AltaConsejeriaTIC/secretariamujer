@@ -1,4 +1,4 @@
-import {ComponentFixture, TestBed, async, inject} from '@angular/core/testing';
+import {TestBed, async, inject} from '@angular/core/testing';
 import {HttpModule, XHRBackend, Response, ResponseOptions} from '@angular/http';
 import {EventsServices} from './events-services';
 import {MockBackend} from '@angular/http/testing';

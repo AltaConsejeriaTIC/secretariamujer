@@ -1,12 +1,11 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
-import { NavController, Platform} from 'ionic-angular';
-import { UserDAO } from  '../../providers/user-dao'
-import { MapServices } from  '../../providers/map-services'
+import {NavController} from 'ionic-angular';
+import {UserDAO} from  '../../providers/user-dao'
+import {MapServices} from  '../../providers/map-services'
 import {EventsServices} from "../../providers/events-services";
 import {AlertCreator} from "../../providers/alert-creator";
-import { Diagnostic } from 'ionic-native';
-
+import {Diagnostic} from 'ionic-native';
 
 
 @Component({
@@ -14,11 +13,11 @@ import { Diagnostic } from 'ionic-native';
   templateUrl: './map.html'
 })
 export class MapPage {
-  map:any;
-  markers:any[] = [];
-  mapElement : any;
+  map: any;
+  markers: any[] = [];
+  mapElement: any;
 
-  constructor(public navCtrl:NavController, public adminApi:UserDAO, public mapService:MapServices, public eventsServices: EventsServices, public alertCreator: AlertCreator) {
+  constructor(public navCtrl: NavController, public adminApi: UserDAO, public mapService: MapServices, public eventsServices: EventsServices, public alertCreator: AlertCreator) {
   }
 
   ionViewDidLoad() {
@@ -39,36 +38,36 @@ export class MapPage {
   }
 
   addMapOnClickListener() {
-    this.map.addListener('click', (event)=> {
+    this.map.addListener('click', (event) => {
       this.drawEventMarker(event);
     });
   }
 
-  drawEventMarker(event:any){
+  drawEventMarker(event: any) {
     if (this.isEventPinOnMap()) {
       this.mapService.clearMarker(this.markers);
     }
     this.mapService.drawEventMarker(this.map, event.latLng, this.markers);
   }
 
-  isGPSEnabled(){
-    Diagnostic.isLocationEnabled().then((res)=>{
+  isGPSEnabled() {
+    Diagnostic.isLocationEnabled().then((res) => {
       this.checkUserPosition(res);
-    }).catch((err)=>{
-      this.alertCreator.showSimpleAlert("error",err);
+    }).catch((err) => {
+      this.alertCreator.showSimpleAlert("error", err);
     });
   }
 
-  checkUserPosition(isEnabled:boolean){
-    if(isEnabled){
+  checkUserPosition(isEnabled: boolean) {
+    if (isEnabled) {
       this.getUserPosition();
-    }else{
-      this.alertCreator.showSimpleAlert('Error','Por favor activa el GPS');
+    } else {
+      this.alertCreator.showSimpleAlert('Error', 'Por favor activa el GPS');
     }
   }
 
 
-  getUserPosition(){
+  getUserPosition() {
     this.mapService.getUserLocation().then((position) => {
       this.drawUserPosition(position);
     }, (err) => {
@@ -77,19 +76,19 @@ export class MapPage {
 
   }
 
-  drawUserPosition(position:any) {
+  drawUserPosition(position: any) {
     let userPosition = this.mapService.convertToLatLng(position);
     this.mapService.drawUserPositionMarker(this.map, userPosition);
   }
 
-  isEventPinOnMap(){
+  isEventPinOnMap() {
     return this.markers.length > 0;
   }
 
-  registerEvent(){
-    this.eventsServices.registerEvent().map(res=>res.json()).subscribe(response=>{
-      this.alertCreator.showSimpleAlert('Exito','Se ha registrado el evento');
-    },err=>{
+  registerEvent() {
+    this.eventsServices.registerEvent().map(res => res.json()).subscribe(response => {
+      this.alertCreator.showSimpleAlert('Exito', 'Se ha registrado el evento');
+    }, err => {
       //this.alertCreator.showSimpleAlert('Error','Ha habido un error por favor intentalo más tarde');
     });
   }

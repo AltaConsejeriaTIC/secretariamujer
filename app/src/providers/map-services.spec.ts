@@ -1,4 +1,4 @@
-import {ComponentFixture, TestBed, async, inject} from '@angular/core/testing';
+import {TestBed, inject} from '@angular/core/testing';
 import {HttpModule} from '@angular/http';
 import {MapServices} from './map-services';
 
@@ -19,9 +19,9 @@ describe('MapService test', () => {
   }));
 
   it('buildMap should return a map instance', () => {
-    let element:any;
-    let mapInstance=mapService.buildMap(element);
-    expect(mapInstance).toEqual({Map:'map'});
+    let element: any;
+    let mapInstance = mapService.buildMap(element);
+    expect(mapInstance).toEqual({Map: 'map'});
   });
 
   it('getUserLocation should return a promise type', () => {
@@ -29,10 +29,10 @@ describe('MapService test', () => {
   });
 
   it('convertToLatLng should return an array', () => {
-    let position={
-      coords:{
-        latitude:1,
-        longitude:1
+    let position = {
+      coords: {
+        latitude: 1,
+        longitude: 1
       }
     };
     expect(mapService.convertToLatLng(position)[0]).toBe(1);

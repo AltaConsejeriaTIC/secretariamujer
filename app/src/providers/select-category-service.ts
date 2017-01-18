@@ -2,19 +2,13 @@ import {Injectable} from '@angular/core';
 import 'rxjs/add/operator/map';
 import {category} from "../entity/category";
 
-/*
- Generated class for the SelectCategoryService provider.
-
- See https://angular.io/docs/ts/latest/guide/dependency-injection.html
- for more info on providers and Angular 2 DI.
- */
 @Injectable()
 export class SelectCategoryService {
-  categories:category[];
-  testCategories:category[] = [
+  categories: category[];
+  testCategories: category[] = [
     {
-    category: 'Violencia Económica',
-    RESTAddress: 'preguntas-violencia-economica'
+      category: 'Violencia Económica',
+      RESTAddress: 'preguntas-violencia-economica'
     },
     {
       category: 'Violencia Físca',
@@ -30,7 +24,7 @@ export class SelectCategoryService {
     }
   ];
 
-  tipsCategories:category[]  = [
+  tipsCategories: category[] = [
     {
       category: 'Violencia Económica',
       RESTAddress: 'el que sea'
@@ -49,7 +43,7 @@ export class SelectCategoryService {
     }
   ];
 
-  routesCategories:category[] =[
+  routesCategories: category[] = [
     {
       category: 'Medidas de protección',
       RESTAddress: 'el que sea'
@@ -68,19 +62,19 @@ export class SelectCategoryService {
     }
   ];
 
-  selectedCategoryId:number;
+  selectedCategoryId: number;
 
   constructor() {
 
   }
 
-  fillCategoriesWithEmptyObjects(){
-    let emptyObject={
+  fillCategoriesWithEmptyObjects() {
+    let emptyObject = {
       category: '',
       RESTAddress: ''
     };
-    let emptyCategoriesArray:category[]=[];
-    for(let i=0; i<4; i++){
+    let emptyCategoriesArray: category[] = [];
+    for (let i = 0; i < 4; i++) {
       emptyCategoriesArray.push(emptyObject);
     }
     return emptyCategoriesArray;
@@ -106,11 +100,11 @@ export class SelectCategoryService {
     return this.categories;
   }
 
-  setSelectedCategoryId(categoryId){
-    this.selectedCategoryId=categoryId;
+  setSelectedCategoryId(categoryId) {
+    this.selectedCategoryId = categoryId;
   }
 
-  getSelectedCategoryId(){
+  getSelectedCategoryId() {
     return this.selectedCategoryId;
   }
 
