@@ -34,7 +34,7 @@
             <ion-checkbox color="dark" [(ngModel)]="answerCheckBoxArray[2]" ></ion-checkbox>
             <button ion-button>{{questionsObject[currentQuestion].respuesta3}}</button>
           </ion-row>
-          <ion-row (click)="answerCurrentQuestion()" [disabled]="true">
+          <ion-row (click)="answerCurrentQuestion()">
             <button ion-button>siguiente</button>
           </ion-row>
         </div>
