@@ -104,5 +104,11 @@ describe('testsService tests', () => {
     expect(testsService.getResults()).toBe('yes');
   });
 
+  it('getNameCategoryById should return the category name',()=>{
+    testSelectCategoryService.setCategory('tests');
+    testSelectCategoryService.setSelectedCategoryId(0);
+    expect(testsService.getNameCategoryById()).toEqual('Violencia Económica');
+  });
+
 });
 

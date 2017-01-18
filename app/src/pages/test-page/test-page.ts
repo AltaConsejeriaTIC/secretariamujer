@@ -14,6 +14,7 @@ export class TestPage {
   currentQuestion: number = 0;
   questionsNumber: number;
   isTestComplete:boolean=false;
+  answerCheckBoxArray:boolean[];
 
   constructor(public navCtrl: NavController, public testService: TestsService, public alertCreator: AlertCreator) {
     this.questionsObject = [
@@ -25,10 +26,11 @@ export class TestPage {
       },
     ];
 
-    this.categoryTitle = this.testService.getNameCategoryById();
+    this.clearCheckboxArray();
   }
 
   ionViewDidLoad() {
+    this.categoryTitle = this.testService.getNameCategoryById();
     this.loadQuestions();
   }
 
@@ -42,9 +44,30 @@ export class TestPage {
     });
   }
 
-  answerCurrentQuestion(answer:string){
+  answerCurrentQuestion(){
+    let answer=this.getAnswer();
     this.testService.addCurrentQuestionAnswerToTotalUserAnswers(answer);
+    this.clearCheckboxArray();
     this.nextQuestion();
+  }
+
+  getAnswer():string{
+    if(this.answerCheckBoxArray[0]){
+      return 'yes';
+    }else if( this.answerCheckBoxArray[1]) {
+      return 'no';
+    }else if(this.answerCheckBoxArray[2]) {
+      return 'maybe';
+    }
+  }
+
+  clearCheckboxArray(){
+    this.answerCheckBoxArray=[false,false,false];
+  }
+
+  setCheckBoxArray(checkBoxIndex:number){
+    this.clearCheckboxArray();
+    this.answerCheckBoxArray[checkBoxIndex]=true;
   }
 
   nextQuestion(){

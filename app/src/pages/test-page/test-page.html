@@ -1,27 +1,48 @@
-<ion-header >
+<ion-header class="test-header">
   <ion-navbar text-right>
     <label>Test / Tips y Rutas</label>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding class="header-color">
-  <ion-grid padding *ngIf="!isTestComplete"  class="full-height-ion-grid no-padding">
-    <ion-row class="flex-1">
-      <ion-label>{{categoryTitle}}</ion-label>
-    </ion-row>
-    <ion-row class="flex-1">
-      <ion-label>{{questionsObject[currentQuestion].pregunta}}</ion-label>
-    </ion-row>
+<!--<ion-content class="">-->
+  <ion-grid padding *ngIf="!isTestComplete"  class="full-height-ion-grid no-padding header-color test-view">
+    <div class="test-question" padding>
+        <div>
+            <ion-row text-center>
+              <ion-label class="category-title"  >{{categoryTitle}}</ion-label>
+            </ion-row>
+            <ion-row class="" text-center>
+              <ion-label >{{(currentQuestion + 1) + "/" + (questionsNumber+1)}}</ion-label>
+            </ion-row>
+            <ion-row class="" text-center>
+              <ion-label>{{questionsObject[currentQuestion].pregunta}}</ion-label>
+            </ion-row>
+        </div>
+    </div>
 
+    <ion-content class="test-options-container">
+        <div class="test-options">
+          <ion-row (click)="setCheckBoxArray(0)">
+            <ion-checkbox color="dark" [(ngModel)]="answerCheckBoxArray[0]" ></ion-checkbox>
+            <button ion-button>{{questionsObject[currentQuestion].respuesta1}}</button>
+          </ion-row>
+          <ion-row (click)="setCheckBoxArray(1)" >
+            <ion-checkbox color="dark" [(ngModel)]="answerCheckBoxArray[1]" ></ion-checkbox>
+            <button ion-button>{{questionsObject[currentQuestion].respuesta2}}</button>
+          </ion-row>
+          <ion-row (click)="setCheckBoxArray(2)">
+            <ion-checkbox color="dark" [(ngModel)]="answerCheckBoxArray[2]" ></ion-checkbox>
+            <button ion-button>{{questionsObject[currentQuestion].respuesta3}}</button>
+          </ion-row>
+          <ion-row (click)="answerCurrentQuestion()" [disabled]="true">
+            <button ion-button>siguiente</button>
+          </ion-row>
+        </div>
 
-    <button (click)="answerCurrentQuestion('yes')" ion-button>{{questionsObject[currentQuestion].respuesta1}}</button>
-    <button (click)="answerCurrentQuestion('no')" ion-button>{{questionsObject[currentQuestion].respuesta2}}</button>
-    <button (click)="answerCurrentQuestion('maybe')" ion-button>{{questionsObject[currentQuestion].respuesta3}}</button>
+    </ion-content>
   </ion-grid>
 
   <ion-grid *ngIf="isTestComplete" class="full-height-ion-grid no-padding">
     <button ion-button>ver tips</button>
     <button ion-button>ver rutas</button>
   </ion-grid>
-
-</ion-content>

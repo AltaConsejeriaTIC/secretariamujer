@@ -54,7 +54,7 @@ describe('TestPage tests', () => {
 
   it('answerCurrentQuestion should call addCurrentQuestionAnswerToTotalUserAnswers from TestsService', () => {
     spyOn(testService,'addCurrentQuestionAnswerToTotalUserAnswers').and.callThrough();
-    testPage.answerCurrentQuestion('yes');
+    testPage.answerCurrentQuestion();
     expect(testService.addCurrentQuestionAnswerToTotalUserAnswers).toHaveBeenCalled();
   });
 
@@ -80,6 +80,31 @@ describe('TestPage tests', () => {
     testPage.nextQuestion();
     expect(testPage.isTestComplete).toBe(true);
   });
+  it('getAnswer should return yes if 1st checkbox is true, no if 2nd checkbox is true and maybe if 3rd checkbox is true', () => {
+     testPage.answerCheckBoxArray=[true,false,false];
+     testPage.getAnswer();
+     expect(testPage.getAnswer()).toEqual('yes');
+     testPage.answerCheckBoxArray=[false,true,false];
+     testPage.getAnswer();
+     expect(testPage.getAnswer()).toEqual('no');
+     testPage.answerCheckBoxArray=[false,false,true];
+     testPage.getAnswer();
+     expect(testPage.getAnswer()).toEqual('maybe');
+   });
 
+  it('setCheckBoxArray should set only 1 checkbox as true', () => {
+      testPage.setCheckBoxArray(2);
+      expect(testPage.answerCheckBoxArray[0]).toEqual(false);
+      expect(testPage.answerCheckBoxArray[1]).toEqual(false);
+      expect(testPage.answerCheckBoxArray[2]).toEqual(true);
+  });
+
+  it('clearCheckboxArray should set all clearCheckboxArray values to false', () => {
+    testPage.clearCheckboxArray();
+    expect(testPage.answerCheckBoxArray.length).toEqual(3);
+    expect(testPage.answerCheckBoxArray[0]).toEqual(false);
+    expect(testPage.answerCheckBoxArray[1]).toEqual(false);
+    expect(testPage.answerCheckBoxArray[2]).toEqual(false);
+  });
 });
 
