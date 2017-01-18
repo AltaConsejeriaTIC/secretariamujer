@@ -12,27 +12,12 @@ page-welcome-test label, p{
   height: 95%;
 }
 
-.welcome-info {
-  margin-top: 35px;
-}
-
-.welcome-info p {
-  text-align: center;
-}
-
-.margin-between-phrase {
-  margin-top: 15px;
-}
-
 .welcome-test-button-section{
   margin: auto !important;
 }
 
 .welcome-test-button-section button {
   display: block;
-  width: 200px;
-  height: 40px;
-  margin-bottom: 15px;
   color: map_get($colors, SofiaAppWhite);
 }
 
@@ -50,17 +35,50 @@ page-welcome-test label, p{
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 15px;
 }
 
 .between-buttons-separator{
   display: inline-block;
   height: 1px;
   background-color: map_get($colors, SofiaAppWhite);
-  width: 92px;
 }
 
 .text-between-separators{
   display: inline-block;
   margin: 0 5px 0 5px !important;
+}
+
+@media (max-width: 479px) {
+  .test-info-section p {
+    font-size: 16px !important;
+  }
+
+  .text-between-separators{
+    font-size: 13px !important;
+  }
+
+  .welcome-test-button-section button{
+    width: 200px;
+    height: 40px;
+    margin-bottom: 15px;
+    font-size: 17px;
+    font-weight: bold;
+  }
+
+  .between-button-separator-container{
+    margin-bottom: 15px;
+  }
+
+  .between-buttons-separator{
+    width: 92px;
+  }
+
+}
+
+@media (min-width: 480px) and (max-width: 767px) {
+
+}
+
+@media (min-width: 768px) {
+
 }
