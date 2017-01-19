@@ -1,13 +1,13 @@
 <ion-header>
-  <ion-navbar hideBackButton color="primary" text-right>
-    <ion-buttons start>
-      <button ion-button icon-only (click)="goToMenuPage()">
-        <ion-icon name="menu"></ion-icon>
-      </button>
-    </ion-buttons>
-    <label class="welcome-page-title">Test / Tips y Rutas</label>
+  <ion-navbar hideBackButton>
+    <button ion-button icon-only menuToggle (click)="goToMenuPage()">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+
+    <label class="header-title">Test / Tips y Rutas</label>
   </ion-navbar>
 </ion-header>
+
 
 <ion-content class="content-blue">
   <ion-grid class="height-welcome-page-grid" no-padding	>

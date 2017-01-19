@@ -2,6 +2,19 @@ page-welcome-test label, p{
   color: map_get($colors, SofiaAppWhite);
 }
 
+page-welcome-test{
+  .header {
+    .header-title {
+      float: right;
+      margin: 14px 5px;
+      font-size: 17px;
+      color: #f2f2f2;
+      font-weight: bold;
+    }
+
+  }
+}
+
 .custom-header {
   height: 50px;
   width: 100%;
