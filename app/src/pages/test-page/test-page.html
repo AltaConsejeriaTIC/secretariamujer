@@ -40,8 +40,8 @@
           <ion-checkbox  mode="md" (click)="setCheckBoxArray(2)" [(ngModel)]="answerCheckBoxArray[2]" ></ion-checkbox>
           <ion-label>{{questionsObject[currentQuestion].respuesta3}}</ion-label>
         </ion-row>
-        <ion-row (click)="answerCurrentQuestion()">
-          <button class="next-question">Siguiente</button>
+        <ion-row>
+          <button [class]="buttonClass" (click)="answerCurrentQuestion()">Siguiente</button>
         </ion-row>
       </div>
 

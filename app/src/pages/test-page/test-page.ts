@@ -20,6 +20,8 @@ export class TestPage {
   resultTipFirstPhrase: string;
   resultTipThirdPhrase: string;
   resultTipFourthPhrase: string;
+  buttonEnabled:boolean=false;
+  buttonClass:string="next-question unabled-button";
 
   constructor(public platform: Platform, private nav: Nav, public navController: NavController, public testService: TestsService, public alertCreator: AlertCreator, public userDAO: UserDAO) {
     this.questionsObject = [
@@ -56,11 +58,19 @@ export class TestPage {
     });
   }
 
-  answerCurrentQuestion() {
-    let answer = this.getAnswer();
-    this.testService.addCurrentQuestionAnswerToTotalUserAnswers(answer);
-    this.clearCheckboxArray();
-    this.nextQuestion();
+  answerCurrentQuestion(){
+    if (this.buttonEnabled && (this.answerCheckBoxArray[0] || this.answerCheckBoxArray[1] || this.answerCheckBoxArray[2])) {
+      let answer = this.getAnswer();
+      this.testService.addCurrentQuestionAnswerToTotalUserAnswers(answer);
+      this.clearCheckboxArray();
+      this.nextQuestion();
+      this.setAnswerButtonState(false);
+    }
+  }
+
+  setAnswerButtonState(enable:boolean){
+      this.buttonEnabled = enable;
+      this.buttonClass= (enable)? "next-question" : "next-question unabled-button";
   }
 
   getAnswer(): string {
@@ -78,8 +88,11 @@ export class TestPage {
   }
 
   setCheckBoxArray(checkBoxIndex: number) {
-    this.clearCheckboxArray();
-    this.answerCheckBoxArray[checkBoxIndex] = true;
+    for(let i=0; i<this.answerCheckBoxArray.length; i++){
+      this.answerCheckBoxArray[i] = (i!=checkBoxIndex)? false : this.answerCheckBoxArray[i];
+    }
+    this.answerCheckBoxArray[checkBoxIndex]=!this.answerCheckBoxArray[checkBoxIndex];
+    this.setAnswerButtonState(this.answerCheckBoxArray[checkBoxIndex]);
   }
 
   nextQuestion() {
