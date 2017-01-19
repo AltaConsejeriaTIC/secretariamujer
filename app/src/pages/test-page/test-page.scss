@@ -1,7 +1,6 @@
 page-test-page {
-
-  .test-header, .test-header ion-navbar {
-    height: 9vh;
+  >ion-content {
+    background-color: $headerBackgroundColor !important;
   }
 
   .test-header {
@@ -38,30 +37,10 @@ page-test-page {
     }
 
   }
-    /*.test-question {
-      height: 42vh;
-      width: 100%;
-      display: table;
-    }
 
-    .test-question > * {
-      display: table-cell;
-      vertical-align: middle;
-    }
-
-    .test-question .test-category-title {
-      font-style: italic;
-      font-weight: 800;
-      margin: 13px 0 0;
-    }
-
-    .test-question .test-counter {
-      margin: 0;
-    }
-  */
-    .test-question-text {
-      margin: 20px 0 13px;
-    }
+  .test-question-text {
+     margin: 20px auto 13px;
+  }
 
   .test-options-container .scroll-content {
     padding: 0;
@@ -71,14 +50,14 @@ page-test-page {
     height: 91vh;
     margin-top: 9vh;
     background-color: $headerBackgroundColor;
-  }
 
-  .test-view * {
-    color: white;
-  }
+    * {
+      color: white;
+    }
 
-  .test-view ion-label {
-    white-space: pre-line;
+    ion-label {
+      white-space: pre-line;
+    }
   }
 
   .test-options-container {
@@ -87,32 +66,33 @@ page-test-page {
 
   .test-options {
     height: 49vh;
+
+    > * {
+      min-height: 12vh;
+      background: map_get($colors, SofiaAppDarkBlue);
+      align-items: center;
+      justify-content: center;
+    }
+
+    > *:not(:last-child) {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    ion-label {
+      margin: 15px 0 15px 15px;
+    }
+
+    .next-question {
+      border-radius: 10px;
+      background: transparent;
+      border: 2px solid white;
+      font-size: 14px;
+    }
   }
 
-  .test-options > * {
-    min-height: 65px;
-    background: map_get($colors, SofiaAppDarkBlue);
-    align-items: center;
-    justify-content: center;
-  }
-
-  .test-options > *:not(:last-child) {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-  }
-
-  .test-options ion-label {
-    max-width: 222px;
-    margin: 0 0 0 15px;
-
-  }
-
-  .test-options .next-question {
-    height: 45px;
-    width: 171px;
-    border-radius: 10px;
-    background: transparent;
-    border: 2px solid white;
-    font-size: 14px;
+  ion-checkbox .checkbox-icon {
+    min-width: 20px;
+    min-height: 20px;
   }
 
   .end-test-thanks p{
@@ -124,11 +104,13 @@ page-test-page {
     .test-header label {
       font-size: 13px;
     }
+
     .test-options .next-question,
     .test-question .test-counter,
     .test-question-text {
       font-size: 14px;
     }
+
     .test-question .test-category-title {
       font-size: 19px;
     }
@@ -141,8 +123,22 @@ page-test-page {
       font-size: 14px;
     }
 
+    .test-options ion-label {
+      max-width: 222px;
+    }
 
+    .test-question-text {
+      max-width: 269px;
+    }
 
+    .test-options .next-question {
+      height: 37px;
+      width: 114px;
+    }
+
+    .test-header, .test-header ion-navbar {
+      height: 50px;
+    }
   }
 
   @media (min-width: 480px) and (max-width: 767px) {
@@ -150,11 +146,13 @@ page-test-page {
     .test-header label {
       font-size: 20px;
     }
+
     .test-options .next-question,
     .test-question .test-counter,
     .test-question-text {
       font-size: 22px;
     }
+
     .test-question .test-category-title {
       font-size: 28px;
     }
@@ -167,6 +165,22 @@ page-test-page {
       font-size: 22px;
     }
 
+    .test-options ion-label {
+      max-width: 329px;
+    }
+
+    .test-question-text {
+      max-width: 406px;
+    }
+
+    .test-options .next-question {
+      height: 60px;
+      width: 171px;
+    }
+
+    .test-header, .test-header ion-navbar {
+      height: 76px;
+    }
   }
 
   @media (min-width: 768px) {
@@ -174,11 +188,13 @@ page-test-page {
     .test-header label {
       font-size: 24px;
     }
+
     .test-options .next-question,
     .test-question .test-counter,
     .test-question-text {
       font-size: 26px;
     }
+
     .test-question .test-category-title {
       font-size: 32px;
     }
@@ -191,6 +207,21 @@ page-test-page {
       font-size: 26px;
     }
 
+    .test-options ion-label {
+      max-width: 394px;
+    }
 
+    .test-question-text {
+      max-width: 486px;
+    }
+
+    .test-options .next-question {
+      height: 67px;
+      width: 207px;
+    }
+
+    .test-header, .test-header ion-navbar {
+      height: 90px;
+    }
   }
 }
