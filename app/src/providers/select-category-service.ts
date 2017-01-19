@@ -46,19 +46,19 @@ export class SelectCategoryService {
   routesCategories: category[] = [
     {
       category: 'Medidas de protección',
-      RESTAddress: 'el que sea'
+      RESTAddress: 'restmedidadeproteccion'
     },
     {
       category: 'Salud',
-      RESTAddress: 'el que sea'
+      RESTAddress: 'restsalud'
     },
     {
       category: 'Justicia',
-      RESTAddress: 'el que sea'
+      RESTAddress: 'restjusticia'
     },
     {
       category: 'Información',
-      RESTAddress: 'el que sea'
+      RESTAddress: 'restinformacion'
     }
   ];
 
