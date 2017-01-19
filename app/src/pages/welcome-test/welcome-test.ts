@@ -35,7 +35,7 @@ export class WelcomeTestPage {
   }
 
   goToMenuPage() {
-    this.navController.push(MenuPage);
+    this.navController.pop();
   }
 
 }

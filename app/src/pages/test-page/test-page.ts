@@ -1,8 +1,7 @@
 import {Component} from '@angular/core';
-import { NavController } from 'ionic-angular';
+import {NavController, Platform, Nav} from 'ionic-angular';
 import {TestsService} from "../../providers/tests-service";
 import {AlertCreator} from "../../providers/alert-creator";
-import {MenuPage} from "../menu/menu";
 import {UserDAO} from "../../providers/user-dao";
 
 @Component({
@@ -15,14 +14,14 @@ export class TestPage {
   categoryTitle;
   currentQuestion: number = 0;
   questionsNumber: number;
-  isTestComplete:boolean=false;
-  answerCheckBoxArray:boolean[];
-  userName:string;
-  resultTipFirstPhrase:string;
-  resultTipThirdPhrase:string;
-  resultTipFourthPhrase:string;
+  isTestComplete: boolean = false;
+  answerCheckBoxArray: boolean[];
+  userName: string;
+  resultTipFirstPhrase: string;
+  resultTipThirdPhrase: string;
+  resultTipFourthPhrase: string;
 
-  constructor(public navController: NavController, public testService: TestsService, public alertCreator: AlertCreator, public userDAO:UserDAO) {
+  constructor(public platform: Platform, private nav: Nav, public navController: NavController, public testService: TestsService, public alertCreator: AlertCreator, public userDAO: UserDAO) {
     this.questionsObject = [
       {
         "pregunta": "",
@@ -31,8 +30,15 @@ export class TestPage {
         "respuesta3": "",
       },
     ];
-    this.userName=this.userDAO.getUsername() || "Yabushita Mai";
+    this.userName = this.userDAO.getUsername() || "Yabushita Mai";
     this.clearCheckboxArray();
+    this.platform.registerBackButtonAction(() => {
+      this.navController.popToRoot();
+    });
+  }
+
+  ionViewWillEnter() {
+    this.nav.swipeBackEnabled = false;
   }
 
   ionViewDidLoad() {
@@ -50,56 +56,56 @@ export class TestPage {
     });
   }
 
-  answerCurrentQuestion(){
-    let answer=this.getAnswer();
+  answerCurrentQuestion() {
+    let answer = this.getAnswer();
     this.testService.addCurrentQuestionAnswerToTotalUserAnswers(answer);
     this.clearCheckboxArray();
     this.nextQuestion();
   }
 
-  getAnswer():string{
-    if(this.answerCheckBoxArray[0]){
+  getAnswer(): string {
+    if (this.answerCheckBoxArray[0]) {
       return 'yes';
-    }else if( this.answerCheckBoxArray[1]) {
+    } else if (this.answerCheckBoxArray[1]) {
       return 'no';
-    }else if(this.answerCheckBoxArray[2]) {
+    } else if (this.answerCheckBoxArray[2]) {
       return 'maybe';
     }
   }
 
-  clearCheckboxArray(){
-    this.answerCheckBoxArray=[false,false,false];
+  clearCheckboxArray() {
+    this.answerCheckBoxArray = [false, false, false];
   }
 
-  setCheckBoxArray(checkBoxIndex:number){
+  setCheckBoxArray(checkBoxIndex: number) {
     this.clearCheckboxArray();
-    this.answerCheckBoxArray[checkBoxIndex]=true;
+    this.answerCheckBoxArray[checkBoxIndex] = true;
   }
 
-  nextQuestion(){
-    if(this.currentQuestion==this.questionsNumber){
+  nextQuestion() {
+    if (this.currentQuestion == this.questionsNumber) {
       this.setResultTipsMessages(this.testService.getResults());
-      this.isTestComplete=true;
+      this.isTestComplete = true;
       this.testService.resetValues();
-    }else{
+    } else {
       this.currentQuestion++;
     }
   }
 
-  setResultTipsMessages(result:string){
-    if(result=='yes'){
-      this.resultTipFirstPhrase='Al parecer Sofía cree que';
-      this.resultTipThirdPhrase='y tiene';
-      this.resultTipFourthPhrase='unos consejos para tí'
-    }else if(result=='no'){
-      this.resultTipFirstPhrase='Al parecer Sofía no cree que';
-      this.resultTipThirdPhrase='pero';
-      this.resultTipFourthPhrase='tiene unos consejos para tí'
+  setResultTipsMessages(result: string) {
+    if (result == 'yes') {
+      this.resultTipFirstPhrase = 'Al parecer Sofía cree que';
+      this.resultTipThirdPhrase = 'y tiene';
+      this.resultTipFourthPhrase = 'unos consejos para tí'
+    } else if (result == 'no') {
+      this.resultTipFirstPhrase = 'Al parecer Sofía no cree que';
+      this.resultTipThirdPhrase = 'pero';
+      this.resultTipFourthPhrase = 'tiene unos consejos para tí'
     }
   }
 
   goToMenuPage() {
-    this.navController.push(MenuPage);
+    this.navController.popToRoot();
   }
 
   goToTips() {
