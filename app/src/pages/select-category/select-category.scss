@@ -11,6 +11,22 @@ page-select-category {
 
   }
 
+  .option-1 {
+    background-color: #d85662;
+  }
+
+  .option-2 {
+    background-color: #b25279;
+  }
+
+  .option-3 {
+    background-color: #8c4f91;
+  }
+
+  .option-4 {
+    background-color: #664ba8;
+  }
+
   .content {
     background-color: map_get($colors, primary);
 
