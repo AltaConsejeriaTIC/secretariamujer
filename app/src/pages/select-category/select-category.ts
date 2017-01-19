@@ -21,6 +21,6 @@ export class SelectCategoryPage {
   }
 
   goToMenuPage() {
-    this.navController.push(MenuPage);
+    this.navController.popToRoot();
   }
 }

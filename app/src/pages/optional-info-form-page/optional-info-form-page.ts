@@ -50,7 +50,7 @@ export class OptionalInfoFormPagePage {
   }
 
   goToTestPage() {
-    this.navCtrl.push(MenuPage);
+    this.navCtrl.setRoot(MenuPage);
   }
 
 }

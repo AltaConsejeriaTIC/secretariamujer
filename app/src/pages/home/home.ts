@@ -26,7 +26,8 @@ export class HomePage {
   }
 
   goToSignInPage(){
-    this.navCtrl.push(MenuPage);
+    //this.navCtrl.push(MenuPage);
+    this.navCtrl.setRoot(MenuPage);
   }
 
   goToRequiredInfoForm(){
