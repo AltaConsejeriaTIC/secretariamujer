@@ -66,7 +66,6 @@ describe('TestPage tests', () => {
 
   it('nextQuestion should call getResults from TestService if current question is equal than questionnumber', () => {
     spyOn(testService,'getResults').and.callThrough();
-    spyOn(alertCreator,'showSimpleAlert');
     testPage.currentQuestion=1;
     testPage.questionsNumber=1;
     testPage.nextQuestion();
@@ -75,7 +74,6 @@ describe('TestPage tests', () => {
 
   it('nextQuestion should set isTestComplete to true if test was completed', () => {
     spyOn(testService,'getResults').and.callThrough();
-    spyOn(alertCreator,'showSimpleAlert');
     testPage.currentQuestion=1;
     testPage.questionsNumber=1;
     testPage.nextQuestion();
@@ -111,11 +109,21 @@ describe('TestPage tests', () => {
   it('nextQuestion should call resetValues from TestService  when test is finished', () => {
     spyOn(testService,'resetValues');
     spyOn(testService,'getResults').and.callThrough();
-    spyOn(alertCreator,'showSimpleAlert');
     testPage.currentQuestion=1;
     testPage.questionsNumber=1;
     testPage.nextQuestion();
     expect(testService.resetValues).toHaveBeenCalled();
+  });
+
+  it('setResultTipsMessages should set messages according to yes or no result', () => {
+    testPage.setResultTipsMessages('yes');
+    expect(testPage.resultTipFirstPhrase).toEqual('Al parecer Sofía cree que');
+    expect(testPage.resultTipThirdPhrase).toEqual('y tiene');
+    expect(testPage.resultTipFourthPhrase).toEqual('unos consejos para tí');
+    testPage.setResultTipsMessages('no');
+    expect(testPage.resultTipFirstPhrase).toEqual('Al parecer Sofía no cree que');
+    expect(testPage.resultTipThirdPhrase).toEqual('pero');
+    expect(testPage.resultTipFourthPhrase).toEqual('tiene unos consejos para tí');
   });
 
 });

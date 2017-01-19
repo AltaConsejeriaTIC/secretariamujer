@@ -18,6 +18,9 @@ export class TestPage {
   isTestComplete:boolean=false;
   answerCheckBoxArray:boolean[];
   userName:string;
+  resultTipFirstPhrase:string;
+  resultTipThirdPhrase:string;
+  resultTipFourthPhrase:string;
 
   constructor(public navController: NavController, public testService: TestsService, public alertCreator: AlertCreator, public userDAO:UserDAO) {
     this.questionsObject = [
@@ -75,12 +78,23 @@ export class TestPage {
 
   nextQuestion(){
     if(this.currentQuestion==this.questionsNumber){
-      let message='sufre ud de esta clase de violencia: '+this.testService.getResults();
-      this.alertCreator.showSimpleAlert('respuestas',message);
+      this.setResultTipsMessages(this.testService.getResults());
       this.isTestComplete=true;
       this.testService.resetValues();
     }else{
       this.currentQuestion++;
+    }
+  }
+
+  setResultTipsMessages(result:string){
+    if(result=='yes'){
+      this.resultTipFirstPhrase='Al parecer Sofía cree que';
+      this.resultTipThirdPhrase='y tiene';
+      this.resultTipFourthPhrase='unos consejos para tí'
+    }else if(result=='no'){
+      this.resultTipFirstPhrase='Al parecer Sofía no cree que';
+      this.resultTipThirdPhrase='pero';
+      this.resultTipFourthPhrase='tiene unos consejos para tí'
     }
   }
 
