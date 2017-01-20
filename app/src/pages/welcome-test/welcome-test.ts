@@ -1,8 +1,7 @@
 import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
 import {SelectCategoryService} from "../../providers/select-category-service";
-import {SelectCategoryPage} from "../select-category/select-category";
-import {MenuPage} from "../menu/menu";
+import {SelectTestCategoryPage} from "../select-test-category/select-test-category";
 import {UserDAO} from "../../providers/user-dao";
 import {AttentionRoutesPage} from "../attention-routes/attention-routes";
 
@@ -12,10 +11,10 @@ import {AttentionRoutesPage} from "../attention-routes/attention-routes";
 })
 export class WelcomeTestPage {
 
-  userName:string;
+  userName: string;
 
-  constructor(public navController: NavController, public selectCategoyService: SelectCategoryService, public userDAO:UserDAO) {
-    this.userName=this.userDAO.getUsername() || "Yabushita Mai";
+  constructor(public navController: NavController, public selectCategoyService: SelectCategoryService, public userDAO: UserDAO) {
+    this.userName = this.userDAO.getUsername() || "Yabushita Mai";
   }
 
   ionViewDidLoad() {
@@ -24,7 +23,7 @@ export class WelcomeTestPage {
 
   goToTestSelectTestCategory() {
     this.selectCategoyService.setCategory('tests');
-    this.navController.push(SelectCategoryPage);
+    this.navController.push(SelectTestCategoryPage);
   }
 
   goToTips() {

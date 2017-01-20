@@ -13,7 +13,7 @@ import {TestPage} from "../pages/test-page/test-page";
 import {TestsService} from "../providers/tests-service";
 import {MenuPage} from "../pages/menu/menu";
 import {WelcomeTestPage} from "../pages/welcome-test/welcome-test";
-import {SelectCategoryPage} from "../pages/select-category/select-category";
+import {SelectTestCategoryPage} from "../pages/select-test-category/select-test-category";
 import {SelectCategoryService} from "../providers/select-category-service";
 import {AttentionRoutesPage} from "../pages/attention-routes/attention-routes";
 
@@ -26,7 +26,7 @@ import {AttentionRoutesPage} from "../pages/attention-routes/attention-routes";
     OptionalInfoFormPagePage,
     MenuPage,
     WelcomeTestPage,
-    SelectCategoryPage,
+    SelectTestCategoryPage,
     TestPage,
     MapPage,
     AttentionRoutesPage
@@ -45,7 +45,7 @@ import {AttentionRoutesPage} from "../pages/attention-routes/attention-routes";
     OptionalInfoFormPagePage,
     MenuPage,
     WelcomeTestPage,
-    SelectCategoryPage,
+    SelectTestCategoryPage,
     TestPage,
     MapPage,
     AttentionRoutesPage

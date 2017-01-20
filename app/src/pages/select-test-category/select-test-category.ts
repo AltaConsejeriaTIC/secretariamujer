@@ -3,28 +3,26 @@ import {NavController} from 'ionic-angular';
 import {SelectCategoryService} from "../../providers/select-category-service";
 import {TestPage} from "../test-page/test-page";
 
-
-enum VIOLENCE_CATEGORIES {
-  ECONOMICAL = 0,
-  PHYSICAL = 1,
-  PSYCOLOGICAL = 2,
-  SEXUAL = 3
-}
-
 @Component({
-  selector: 'page-select-category',
-  templateUrl: './select-category.html'
+  selector: 'page-select-test-category',
+  templateUrl: './select-test-category.html'
 })
-export class SelectCategoryPage {
-  TEST_CATEGORIES = VIOLENCE_CATEGORIES;
+export class SelectTestCategoryPage {
+  testCategories: TestCategory[];
 
   constructor(public navController: NavController, public selectCategoryService: SelectCategoryService) {
+    this.testCategories = [
+      {id: 0, labels: ['Violencia', 'Económica'], class: 'option-0'},
+      {id: 1, labels: ['Violencia', 'Física'], class: 'option-1'},
+      {id: 2, labels: ['Violencia', 'Psicológica'], class: 'option-2'},
+      {id: 3, labels: ['Violencia', 'Sexual'], class: 'option-3'}
+    ];
   }
 
   ionViewDidLoad() {
   }
 
-  beginTest(categoryId: VIOLENCE_CATEGORIES) {
+  beginTest(categoryId: number) {
     this.selectCategoryService.setSelectedCategoryId(categoryId);
     this.showTestPage();
   }

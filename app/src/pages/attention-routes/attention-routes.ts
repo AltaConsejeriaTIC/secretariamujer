@@ -7,27 +7,14 @@ import {NavController} from 'ionic-angular';
 })
 export class AttentionRoutesPage {
 
-  routes: any[];
+  attentionRoutes: AttentionRoute[];
 
   constructor(public navController: NavController) {
-    this.routes = [
-      {
-        id: 0,
-        labels: ['Medidas', 'de Protección'],
-        class: 'option-0'
-      }, {
-        id: 1,
-        labels: ['Salud'],
-        class: 'option-1'
-      }, {
-        id: 2,
-        labels: ['Justicia'],
-        class: 'option-2'
-      }, {
-        id: 3,
-        labels: ['Información'],
-        class: 'option-3'
-      }
+    this.attentionRoutes = [
+      {id: 0, labels: ['Medidas', 'de Protección'], class: 'option-0'},
+      {id: 1, labels: ['Salud'], class: 'option-1'},
+      {id: 2, labels: ['Justicia'], class: 'option-2'},
+      {id: 3, labels: ['Información'], class: 'option-3'}
     ]
   }
 
