@@ -15,6 +15,7 @@ import {MenuPage} from "../pages/menu/menu";
 import {WelcomeTestPage} from "../pages/welcome-test/welcome-test";
 import {SelectCategoryPage} from "../pages/select-category/select-category";
 import {SelectCategoryService} from "../providers/select-category-service";
+import {AttentionRoutesPage} from "../pages/attention-routes/attention-routes";
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import {SelectCategoryService} from "../providers/select-category-service";
     WelcomeTestPage,
     SelectCategoryPage,
     TestPage,
-    MapPage
+    MapPage,
+    AttentionRoutesPage
   ],
   imports: [
     IonicModule.forRoot(MyApp, {
@@ -45,7 +47,8 @@ import {SelectCategoryService} from "../providers/select-category-service";
     WelcomeTestPage,
     SelectCategoryPage,
     TestPage,
-    MapPage
+    MapPage,
+    AttentionRoutesPage
   ],
   providers: [UserDAO, AlertCreator, MapServices, EventsServices, TestsService, SelectCategoryService, {
     provide: ErrorHandler,

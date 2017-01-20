@@ -4,6 +4,7 @@ import {SelectCategoryService} from "../../providers/select-category-service";
 import {SelectCategoryPage} from "../select-category/select-category";
 import {MenuPage} from "../menu/menu";
 import {UserDAO} from "../../providers/user-dao";
+import {AttentionRoutesPage} from "../attention-routes/attention-routes";
 
 @Component({
   selector: 'page-welcome-test',
@@ -31,7 +32,7 @@ export class WelcomeTestPage {
   }
 
   goToRoutes() {
-
+    this.navController.push(AttentionRoutesPage);
   }
 
   goToMenuPage() {
