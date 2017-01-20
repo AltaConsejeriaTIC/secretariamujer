@@ -3,7 +3,7 @@ import {NavController} from 'ionic-angular';
 
 @Component({
   selector: 'page-attention-routes',
-  templateUrl: 'attention-routes.html'
+  templateUrl: './attention-routes.html'
 })
 export class AttentionRoutesPage {
 
