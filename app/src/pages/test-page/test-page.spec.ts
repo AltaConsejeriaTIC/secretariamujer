@@ -62,6 +62,7 @@ describe('TestPage tests', () => {
   it('answerCurrentQuestion should call addCurrentQuestionAnswerToTotalUserAnswers from TestsService', () => {
     spyOn(testService,'addCurrentQuestionAnswerToTotalUserAnswers').and.callThrough();
     testPage.buttonEnabled=true;
+    testPage.answerCheckBoxArray[0]=true;
     testPage.answerCurrentQuestion();
     expect(testService.addCurrentQuestionAnswerToTotalUserAnswers).toHaveBeenCalled();
   });
