@@ -9,6 +9,39 @@ page-select-category {
     }
   }
 
+  .content {
+    background-color: map_get($colors, primary);
+
+    ion-label {
+      margin: 0;
+    }
+
+    .section-header {
+      flex: 1;
+      align-items: center;
+      text-align: center;
+
+      .title {
+        font-weight: bold;
+        color: #f2f2f2;
+        margin-bottom: 5px;
+      }
+
+      .description {
+        font-weight: 500;
+        color: #f2f2f2;
+      }
+    }
+
+    [class^="option-"] {
+      font-weight: bold;
+      color: #f2f2f2;
+      align-items: center;
+      text-align: center;
+      flex: 1;
+    }
+  }
+
   .option-0 {
     background-color: #d85662;
   }
@@ -28,39 +61,21 @@ page-select-category {
     box-shadow: inset 0px 4px 4px 0px rgba(0, 0, 0, 0.14);
   }
 
-  .content {
-    background-color: map_get($colors, primary);
+  @media (max-width: 479px) {
+    .content {
+      .section-header {
+        .title {
+          font-size: 19px;
+        }
 
-    ion-label {
-      margin: 0;
-    }
-
-    .section-header {
-      flex: 1;
-      align-items: center;
-      text-align: center;
-
-      .title {
-        font-size: 19px;
-        font-weight: bold;
-        color: #f2f2f2;
-        margin-bottom: 5px;
+        .description {
+          font-size: 13px;
+        }
       }
 
-      .description {
-        font-size: 13px;
-        font-weight: 500;
-        color: #f2f2f2;
+      [class^="option-"] {
+        font-size: 17px;
       }
-    }
-
-    [class^="option-"] {
-      font-size: 17px;
-      font-weight: bold;
-      color: #f2f2f2;
-      align-items: center;
-      text-align: center;
-      flex: 1;
     }
   }
 
@@ -78,7 +93,6 @@ page-select-category {
 
       [class^="option-"] {
         font-size: 26px;
-        font-weight: bold;
       }
     }
   }
@@ -97,7 +111,6 @@ page-select-category {
 
       [class^="option-"] {
         font-size: 31px;
-        font-weight: bold;
       }
     }
   }
