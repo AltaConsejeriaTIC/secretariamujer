@@ -1,8 +1,7 @@
-import {Component, Injectable} from '@angular/core';
+import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
 import {SelectCategoryService} from "../../providers/select-category-service";
 import {TestPage} from "../test-page/test-page";
-import {MenuPage} from "../menu/menu";
 
 
 enum VIOLENCE_CATEGORIES {
