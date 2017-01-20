@@ -1,5 +1,4 @@
 page-select-category {
-
   .header {
     .header-title {
       float: right;
@@ -17,14 +16,17 @@ page-select-category {
 
   .option-1 {
     background-color: #b25279;
+    box-shadow: inset 0px 4px 4px 0px rgba(0, 0, 0, 0.14);
   }
 
   .option-2 {
     background-color: #8c4f91;
+    box-shadow: inset 0px 4px 4px 0px rgba(0, 0, 0, 0.14);
   }
 
   .option-3 {
     background-color: #664ba8;
+    box-shadow: inset 0px 4px 4px 0px rgba(0, 0, 0, 0.14);
   }
 
   .content {
@@ -62,4 +64,43 @@ page-select-category {
       flex: 1;
     }
   }
+
+  @media (min-width: 480px) and (max-width: 767px) {
+    .content {
+      .section-header {
+        .title {
+          font-size: 28px;
+        }
+
+        .description {
+          font-size: 20px;
+        }
+      }
+
+      [class^="option-"] {
+        font-size: 26px;
+        font-weight: bold;
+      }
+    }
+  }
+
+  @media (min-width: 768px) {
+    .content {
+      .section-header {
+        .title {
+          font-size: 33px;
+        }
+
+        .description {
+          font-size: 24px;
+        }
+      }
+
+      [class^="option-"] {
+        font-size: 31px;
+        font-weight: bold;
+      }
+    }
+  }
+
 }
