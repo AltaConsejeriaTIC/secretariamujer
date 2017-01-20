@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {NavController} from 'ionic-angular';
 import {AlertCreator} from "../../providers/alert-creator";
 import {WelcomeTestPage} from "../welcome-test/welcome-test";
 
@@ -9,44 +9,44 @@ import {WelcomeTestPage} from "../welcome-test/welcome-test";
 })
 export class MenuPage {
 
-  menuOptions;
+  menuOptions: any[];
 
-  constructor(public navCtrl: NavController, public alertCreator:AlertCreator) {
-    this.menuOptions=[
+  constructor(public navController: NavController, public alertCreator: AlertCreator) {
+    this.menuOptions = [
       {
-        isShowingHint:false,
-        menuLabel:'Información',
-        menuIcon:'assets/img/menu-icons/Info_Pictograma.png',
-        menuHint:'¿Qué debo saber si me encuentro en una situación violenta?',
-        goPage:function(){
-         alertCreator.showSimpleAlert("Info","Ir a la página de info está en desarrollo");
+        isShowingHint: false,
+        label: 'Información',
+        icon: 'home',
+        hint: '¿Qué debo saber si me encuentro en una situación violenta?',
+        goPage: function () {
+          alertCreator.showSimpleAlert("Info", "Ir a la página de info está en desarrollo");
         }
       },
       {
-        isShowingHint:false,
-        menuLabel:'Mapas',
-        menuIcon:'assets/img/menu-icons/Mapa_Pictograma.png',
-        menuHint:'¿A dónde puedo ir si estoy en una situación violenta?',
-        goPage:function(){
-          alertCreator.showSimpleAlert("Info","Ir a la página de Mapas y rutas esta en desarrollo");
+        isShowingHint: false,
+        label: 'Mapas',
+        icon: 'compass',
+        hint: '¿A dónde puedo ir si estoy en una situación violenta?',
+        goPage: function () {
+          alertCreator.showSimpleAlert("Info", "Ir a la página de Mapas y rutas esta en desarrollo");
         }
       },
       {
-        isShowingHint:false,
-        menuLabel:'Test / Tips y rutas',
-        menuIcon:'assets/img/menu-icons/Test_Pictograma.png',
-        menuHint:'¿Cómo puedo saber si estoy en una situación violenta?',
-        goPage:function(){
-          navCtrl.push(WelcomeTestPage);
+        isShowingHint: false,
+        label: 'Test / Tips y rutas',
+        icon: 'checkmark-circle',
+        hint: '¿Cómo puedo saber si estoy en una situación violenta?',
+        goPage: function () {
+          navController.push(WelcomeTestPage);
         }
       },
       {
-        isShowingHint:false,
-        menuLabel:'Configuración',
-        menuIcon:'assets/img/menu-icons/Configuracion_Pictograma.png',
-        menuHint:'¿A quién puedo dar aviso si me encuentro en riesgo?',
-        goPage:function(){
-          alertCreator.showSimpleAlert("Info","Ir a la página de Configuracion esta en desarrollo");
+        isShowingHint: false,
+        label: 'Configuración',
+        icon: 'cog',
+        hint: '¿A quién puedo dar aviso si me encuentro en riesgo?',
+        goPage: function () {
+          alertCreator.showSimpleAlert("Info", "Ir a la página de Configuracion esta en desarrollo");
         }
       }
     ];
@@ -55,22 +55,22 @@ export class MenuPage {
   ionViewDidLoad() {
   }
 
-  toggleisShowingHintParameter(index){
-    for(let i=0; i<this.menuOptions.length; i++){
-      if(index==i){
-        this.menuOptions[index].isShowingHint=!this.menuOptions[index].isShowingHint;
-      }else{
-        this.menuOptions[i].isShowingHint=false;
+  toggleisShowingHintParameter(index) {
+    for (let i = 0; i < this.menuOptions.length; i++) {
+      if (index == i) {
+        this.menuOptions[index].isShowingHint = !this.menuOptions[index].isShowingHint;
+      } else {
+        this.menuOptions[i].isShowingHint = false;
       }
     }
   }
 
-  makePhoneCall(){
-    this.alertCreator.showSimpleAlert("Info","Hacer llamada esta en desarrollo");
+  makePhoneCall() {
+    this.alertCreator.showSimpleAlert("Info", "Hacer llamada esta en desarrollo");
   }
 
-  sendMessage(){
-    this.alertCreator.showSimpleAlert("Info","Enviar mensaje esta en desarrollo");
+  sendMessage() {
+    this.alertCreator.showSimpleAlert("Info", "Enviar mensaje esta en desarrollo");
   }
 
 }

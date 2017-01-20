@@ -1,27 +1,31 @@
 <ion-content id="menu-page-content">
   <ion-grid class="height-100 no-padding">
 
-    <ion-row *ngFor="let menuOption of menuOptions; let id = index" class="flex-1 option-menu-row">
+    <ion-row *ngFor="let menuOption of menuOptions; let id = index" class="flex-1 option-menu-row option">
       <ion-col
         [ngClass]="{'offset-33 custom-width-33': !menuOption.isShowingHint, 'custom-width-50 display-flex':menuOption.isShowingHint}">
 
-        <ion-row id="infoIcon" (click)="menuOption.goPage()" *ngIf="!menuOption.isShowingHint" class="justify-center-row menu-icon-padding-container" style="height: 60%; align-items: center">
-          <img id="pepe" src="{{menuOption.menuIcon}}">
+        <ion-row (click)="menuOption.goPage()" *ngIf="!menuOption.isShowingHint"
+                 class="justify-center-row menu-icon-padding-container" style="height: 60%; align-items: center">
+          <ion-icon name="{{menuOption.icon}}"></ion-icon>
         </ion-row>
 
-        <ion-row (click)="menuOption.goPage()" *ngIf="!menuOption.isShowingHint" class="justify-center-row" style="height: 40%;  align-items: center ">
-          <ion-label class="menu-option-label">{{menuOption.menuLabel}}</ion-label>
+        <ion-row (click)="menuOption.goPage()" *ngIf="!menuOption.isShowingHint" class="justify-center-row"
+                 style="height: 40%;  align-items: center ">
+          <ion-label class="menu-option-label">{{menuOption.label}}</ion-label>
         </ion-row>
 
         <ion-row *ngIf="menuOption.isShowingHint">
           <ion-col width-80>
 
-            <ion-row (click)="menuOption.goPage()" *ngIf="menuOption.isShowingHint" class="justify-center-row menu-icon-padding-container" style="height: 60%; align-items: center">
-              <img src="{{menuOption.menuIcon}}">
+            <ion-row (click)="menuOption.goPage()" *ngIf="menuOption.isShowingHint"
+                     class="justify-center-row menu-icon-padding-container" style="height: 60%; align-items: center">
+              <ion-icon name="{{menuOption.icon}}"></ion-icon>
             </ion-row>
 
-            <ion-row (click)="menuOption.goPage()" *ngIf="menuOption.isShowingHint" style="height: 40%;  align-items: center ">
-              <ion-label class="menu-option-label">{{menuOption.menuLabel}}</ion-label>
+            <ion-row (click)="menuOption.goPage()" *ngIf="menuOption.isShowingHint"
+                     style="height: 40%;  align-items: center ">
+              <ion-label class="menu-option-label">{{menuOption.label}}</ion-label>
             </ion-row>
           </ion-col>
 
@@ -37,7 +41,7 @@
         <img *ngIf="!menuOption.isShowingHint" (click)="toggleisShowingHintParameter(id)"
              src="assets/img/menu-icons/Flecha_Pictograma.png">
         <ion-label *ngIf="menuOption.isShowingHint" text-wrap class="wrap-text-override center-menu-tip-text">
-          {{menuOption.menuHint}}
+          {{menuOption.hint}}
         </ion-label>
       </ion-col>
     </ion-row>
@@ -46,7 +50,7 @@
     <ion-row class="flex-1 special-menu-row">
       <ion-col width-49 (click)="makePhoneCall()">
         <ion-row class="special-row-icon-container">
-          <img src="assets/img/menu-icons/Icono_Blanco-05.png">
+          <ion-icon name="call"></ion-icon>
         </ion-row>
         <ion-row class="special-row-icon-container-text">
           <ion-label class="menu-option-label no-margin">Llamar</ion-label>
@@ -62,7 +66,7 @@
 
       <ion-col width-50 (click)="sendMessage()">
         <ion-row class="special-row-icon-container">
-          <img src="assets/img/menu-icons/mail_icon.png">
+          <ion-icon name="mail"></ion-icon>
         </ion-row>
         <ion-row class="special-row-icon-container-text">
           <ion-label class="menu-option-label no-margin">Enviar</ion-label>
