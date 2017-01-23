@@ -63,6 +63,10 @@ page-attention-routes-location {
     background-color: #1b676b;
   }
 
+  .location-name{
+    font-weight: bold;
+  }
+
   @media (max-width: 479px) {
     [class^="background-subheader-option-"] {
       height: 50px;
