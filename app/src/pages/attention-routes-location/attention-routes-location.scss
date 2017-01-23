@@ -11,6 +11,7 @@ page-attention-routes-location {
 
   ion-label {
     margin: 0;
+    color: map_get($colors,SofiaAppWhite);
   }
 
   .section-header {
@@ -34,16 +35,32 @@ page-attention-routes-location {
     background-color: #518c2f;
   }
 
+  .background-subheader-option-0{
+    background-color: #64a53c;
+  }
+
   .background-option-1{
     background-color: #3b753b;
+  }
+
+  .background-subheader-option-1{
+    background-color: #4c904c;
   }
 
   .background-option-2{
     background-color: #266146;
   }
 
+  .background-subheader-option-2{
+    background-color: #3f8654;
+  }
+
   .background-option-3{
     background-color: #124c4f;
+  }
+
+  .background-subheader-option-3{
+    background-color: #1b676b;
   }
 
   @media (max-width: 479px) {
