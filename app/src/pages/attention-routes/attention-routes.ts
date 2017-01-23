@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
+import {AttentionRoutesLocationPage} from "../attention-routes-location/attention-routes-location";
 
 @Component({
   selector: 'page-attention-routes',
@@ -22,7 +23,7 @@ export class AttentionRoutesPage {
   }
 
   goToRoute(routeId: number) {
-
+    this.navController.push(AttentionRoutesLocationPage)
   }
 
   goToMenuPage() {

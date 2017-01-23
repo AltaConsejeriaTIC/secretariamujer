@@ -16,6 +16,7 @@ import {WelcomeTestPage} from "../pages/welcome-test/welcome-test";
 import {SelectTestCategoryPage} from "../pages/select-test-category/select-test-category";
 import {SelectCategoryService} from "../providers/select-category-service";
 import {AttentionRoutesPage} from "../pages/attention-routes/attention-routes";
+import {AttentionRoutesLocationPage} from "../pages/attention-routes-location/attention-routes-location";
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import {AttentionRoutesPage} from "../pages/attention-routes/attention-routes";
     SelectTestCategoryPage,
     TestPage,
     MapPage,
-    AttentionRoutesPage
+    AttentionRoutesPage,
+    AttentionRoutesLocationPage
   ],
   imports: [
     IonicModule.forRoot(MyApp, {
@@ -48,7 +50,8 @@ import {AttentionRoutesPage} from "../pages/attention-routes/attention-routes";
     SelectTestCategoryPage,
     TestPage,
     MapPage,
-    AttentionRoutesPage
+    AttentionRoutesPage,
+    AttentionRoutesLocationPage
   ],
   providers: [UserDAO, AlertCreator, MapServices, EventsServices, TestsService, SelectCategoryService, {
     provide: ErrorHandler,
