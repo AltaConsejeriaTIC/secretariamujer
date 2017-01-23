@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import {NavController, NavParams} from 'ionic-angular';
 
 @Component({
   selector: 'page-attention-routes-location',
@@ -7,9 +7,15 @@ import { NavController } from 'ionic-angular';
 })
 export class AttentionRoutesLocationPage {
 
-  constructor(public navCtrl: NavController) {}
+  attentionRoute:AttentionRoute;
+
+  constructor(public navCtrl: NavController, public navparams:NavParams) {
+
+  }
 
   ionViewDidLoad() {
+    this.attentionRoute=this.navparams.get('attentionRoute');
+    console.log("lo que le llega", this.attentionRoute);
   }
 
   goToMenuPage() {

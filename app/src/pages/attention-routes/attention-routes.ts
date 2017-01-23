@@ -23,7 +23,7 @@ export class AttentionRoutesPage {
   }
 
   goToRoute(routeId: number) {
-    this.navController.push(AttentionRoutesLocationPage)
+    this.navController.push(AttentionRoutesLocationPage,{attentionRoute:this.attentionRoutes[routeId]});
   }
 
   goToMenuPage() {

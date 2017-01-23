@@ -24,4 +24,29 @@ page-attention-routes-location {
       margin-bottom: 5px;
     }
   }
+
+
+  .select-location-sub-header{
+
+  }
+
+
+  @media (max-width: 479px) {
+    .select-location-sub-header{
+      height: 50px;
+    }
+  }
+
+  @media (min-width: 480px) and (max-width: 767px) {
+    .select-location-sub-header{
+
+    }
+  }
+
+  @media (min-width: 768px) {
+    .select-location-sub-header{
+
+    }
+  }
+
 }
