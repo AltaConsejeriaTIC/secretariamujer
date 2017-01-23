@@ -6,6 +6,7 @@ import {
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ConfigMock} from '../../mocks';
 import {RoutesDetailsPage} from "./routes-details";
+import {Http} from "@angular/http";
 
 
 describe('RoutesDetailsPage tests', () => {
@@ -25,7 +26,7 @@ describe('RoutesDetailsPage tests', () => {
     TestBed.configureTestingModule({
       declarations: [RoutesDetailsPage],
       providers: [
-        App, Platform, Form, Keyboard, MenuController, NavController,
+        App, Platform, Form, Keyboard, MenuController, NavController, Http,
         {provide: Config, useClass: ConfigMock}, {provide: NavParams, useValue: stubNavParams}
       ],
       imports: [
@@ -40,6 +41,8 @@ describe('RoutesDetailsPage tests', () => {
     fixture = TestBed.createComponent(RoutesDetailsPage);
     routesDetailsPage = fixture.componentInstance;
   });
+
+
 
 });
 
