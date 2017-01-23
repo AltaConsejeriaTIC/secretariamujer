@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
 import {AlertCreator} from "../../providers/alert-creator";
 import {WelcomeTestPage} from "../welcome-test/welcome-test";
+import {CallNumber} from 'ionic-native';
 
 @Component({
   selector: 'page-menu',
@@ -66,7 +67,12 @@ export class MenuPage {
   }
 
   makePhoneCall() {
-    this.alertCreator.showSimpleAlert("Info", "Hacer llamada esta en desarrollo");
+    CallNumber.callNumber('123', true)
+      .then(() => {
+      })
+      .catch(() => {
+        this.alertCreator.showSimpleAlert("Error", "No es posible hacer la llamada en este momento");
+      });
   }
 
   sendMessage() {
