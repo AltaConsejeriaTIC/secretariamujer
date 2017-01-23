@@ -1,4 +1,4 @@
-interface TestCategory {
+export interface TestCategory {
   id: number,
   labels: string[],
   class: string

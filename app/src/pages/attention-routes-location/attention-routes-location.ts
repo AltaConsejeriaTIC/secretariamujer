@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
+import {AttentionRoute} from "../../entity/attention-route";
 
 @Component({
   selector: 'page-attention-routes-location',

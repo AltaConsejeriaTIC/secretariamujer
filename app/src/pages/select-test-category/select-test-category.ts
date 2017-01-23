@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
 import {SelectCategoryService} from "../../providers/select-category-service";
 import {TestPage} from "../test-page/test-page";
+import { TestCategory } from "../../entity/test-categories"
 
 @Component({
   selector: 'page-select-test-category',
