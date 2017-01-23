@@ -47,6 +47,10 @@ export class AttentionRoutesLocationPage {
     console.log("para armar la url", this.attentionRoute.RESTAddres+"/"+this.locations[index]);
   }
 
+  goBackPage(){
+    this.navCtrl.pop();
+  }
+
   goToMenuPage() {
     this.navCtrl.popToRoot();
   }
