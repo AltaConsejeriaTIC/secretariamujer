@@ -26,6 +26,10 @@ page-attention-routes-location {
     }
   }
 
+  .location-name{
+    font-weight: bold;
+  }
+
   .location-row{
     border-bottom: 1px solid rgba(242,242,242,0.2);
     align-items: center;
@@ -67,9 +71,6 @@ page-attention-routes-location {
     background-color: #1b676b;
   }
 
-  .location-name{
-    font-weight: bold;
-  }
 
   @media (max-width: 479px) {
     [class^="background-subheader-option-"] {
@@ -79,17 +80,61 @@ page-attention-routes-location {
     .location-row{
       height: 50px;
     }
+
+    .location-name{
+      font-size: 14px;
+    }
+
+    .location-label{
+      font-size: 14px;
+    }
+
+    .location-row-margin{
+      margin-left: 35px;
+    }
   }
 
   @media (min-width: 480px) and (max-width: 767px) {
-    .select-location-sub-header{
+    [class^="background-subheader-option-"] {
+      height: 75px;
+    }
 
+    .location-row{
+      height: 91px;
+    }
+
+    .location-name{
+      font-size: 22px;
+    }
+
+    .location-label{
+      font-size: 22px;
+    }
+
+    .location-row-margin{
+      margin-left: 56px;
     }
   }
 
   @media (min-width: 768px) {
-    .select-location-sub-header{
+    [class^="background-subheader-option-"] {
+      height: 90px;
+    }
 
+    .location-row{
+      height: 110px;
+    }
+
+    .location-name{
+      font-size: 26px;
+    }
+
+    .location-label{
+      font-size: 26px;
+    }
+
+    .location-row-margin{
+      margin-left: 70px;
     }
   }
 

@@ -15,9 +15,9 @@
       <label class="location-name" *ngFor="let label of attentionRoute.labels">{{label}}&nbsp;</label>
     </ion-row>
     <ion-row class="location-row" *ngFor="let location of locations; let id = index" (click)="goToRouteDetail(id)">
-      <ion-col>
+      <ion-col class="location-row-margin">
         <ion-row>
-          <label>Localidad</label>
+          <label class="location-label">Localidad</label>
         </ion-row>
         <ion-row>
           <label class="location-name">{{location}}</label>
