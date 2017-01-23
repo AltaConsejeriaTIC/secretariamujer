@@ -45,8 +45,7 @@ export class AttentionRoutesLocationPage {
   }
 
   goToRouteDetail(index:number){
-    let RESTAddres="/"+this.attentionRoute.RESTAddres+"/"+this.locations[index];
-    this.navCtrl.push(RoutesDetailsPage,{RESTAddres:RESTAddres});
+    this.navCtrl.push(RoutesDetailsPage,{location:this.locations[index], attentionRoute:this.attentionRoute});
   }
 
   goBackPage(){

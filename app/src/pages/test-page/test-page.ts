@@ -3,6 +3,7 @@ import {NavController, Platform, Nav} from 'ionic-angular';
 import {TestsService} from "../../providers/tests-service";
 import {AlertCreator} from "../../providers/alert-creator";
 import {UserDAO} from "../../providers/user-dao";
+import {AttentionRoutesPage} from "../attention-routes/attention-routes";
 
 @Component({
   selector: 'page-test-page',
@@ -126,7 +127,7 @@ export class TestPage {
   }
 
   goToRoutes() {
-
+    this.navController.push(AttentionRoutesPage);
   }
 
 }
