@@ -1,0 +1,28 @@
+page-routes-details {
+  .header {
+    .header-title {
+      float: right;
+      margin: 14px 5px;
+      font-size: 17px;
+      color: #f2f2f2;
+      font-weight: bold;
+    }
+  }
+
+  label {
+    margin: 0;
+    color: map_get($colors,SofiaAppWhite);
+  }
+
+  .section-header {
+    flex: 1;
+    align-items: center;
+    text-align: center;
+
+    .title {
+      font-weight: bold;
+      color: #f2f2f2;
+      margin-bottom: 5px;
+    }
+  }
+}
