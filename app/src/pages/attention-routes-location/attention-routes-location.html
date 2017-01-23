@@ -14,7 +14,7 @@
     <ion-row [class]="subheaderBacgroundColor[attentionRoute.id]">
       <label class="location-name" *ngFor="let label of attentionRoute.labels">{{label}}&nbsp;</label>
     </ion-row>
-    <ion-row class="location-row" *ngFor="let location of locations">
+    <ion-row class="location-row" *ngFor="let location of locations; let id = index" (click)="goToRouteDetail(id)">
       <ion-col>
         <ion-row>
           <label>Localidad</label>
