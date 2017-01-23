@@ -10,7 +10,7 @@
 
 </ion-header>
 
-<ion-content>
+<ion-content no-bounce>
   <ion-grid padding *ngIf="!isTestComplete"  class="full-height-ion-grid no-padding test-view">
     <div class="test-question" padding>
       <div>
@@ -26,7 +26,7 @@
       </div>
     </div>
 
-    <ion-content class="test-options-container" no-padding>
+    <ion-content class="test-options-container" no-padding no-bounce>
       <div class="test-options">
         <ion-row (click)="setCheckBoxArray(0)">
           <ion-checkbox mode="md" (click)="setCheckBoxArray(0)" [(ngModel)]="answerCheckBoxArray[0]" ></ion-checkbox>
