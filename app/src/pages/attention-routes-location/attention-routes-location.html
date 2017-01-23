@@ -10,9 +10,19 @@
 
 
 <ion-content no-bounce [class]="backgroundColor[attentionRoute.id]">
-  <ion-grid class="height-100" no-padding>
-    <ion-row class="select-location-sub-header" [class]="subheaderBacgroundColor[attentionRoute.id]">
-      <ion-label>{{subheaderTitle}}</ion-label>
+  <ion-grid no-padding>
+    <ion-row [class]="subheaderBacgroundColor[attentionRoute.id]">
+      <label *ngFor="let label of attentionRoute.labels">{{label}}&nbsp;</label>
+    </ion-row>
+    <ion-row class="location-row" *ngFor="let location of locations">
+      <ion-col>
+        <ion-row>
+          <label>Localidad</label>
+        </ion-row>
+        <ion-row>
+          <label>{{location}}</label>
+        </ion-row>
+      </ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>

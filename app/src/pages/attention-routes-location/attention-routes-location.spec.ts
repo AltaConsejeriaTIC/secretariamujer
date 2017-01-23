@@ -41,9 +41,5 @@ describe('AttentionRoutesLocationPage tests', () => {
     attentionRoutesLocation = fixture.componentInstance;
   });
 
-  it('setSubheaderTitle should set subheaderTitle using 2 strings if option is protection measures', () => {
-    expect(attentionRoutesLocation.subheaderTitle).toEqual('Medidas de Protección');
-  });
-
 });
 

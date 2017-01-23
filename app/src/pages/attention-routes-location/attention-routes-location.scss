@@ -9,7 +9,7 @@ page-attention-routes-location {
     }
   }
 
-  ion-label {
+  label {
     margin: 0;
     color: map_get($colors,SofiaAppWhite);
   }
@@ -26,9 +26,9 @@ page-attention-routes-location {
     }
   }
 
-
-  .select-location-sub-header{
-
+  .location-row{
+    border-bottom: 1px solid rgba(242,242,242,0.2);
+    align-items: center;
   }
 
   .background-option-0{
@@ -64,7 +64,11 @@ page-attention-routes-location {
   }
 
   @media (max-width: 479px) {
-    .select-location-sub-header{
+    [class^="background-subheader-option-"] {
+      height: 50px;
+    }
+
+    .location-row{
       height: 50px;
     }
   }
