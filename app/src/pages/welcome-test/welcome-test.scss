@@ -1,153 +1,136 @@
-page-welcome-test label, p{
-  color: map_get($colors, SofiaAppWhite);
-}
+page-welcome-test {
 
-page-welcome-test{
-  .header {
-    .header-title {
-      float: right;
-      margin: 14px 5px;
+  page-welcome-test label, p{
+    color: map_get($colors, SofiaAppWhite);
+  }
+
+  .custom-header {
+    height: 50px;
+    width: 100%;
+    background-color: #5393cd;
+  }
+
+  .height-welcome-page-grid {
+    height: 95%;
+  }
+
+  .welcome-test-button-section {
+    margin: auto !important;
+  }
+
+  .welcome-test-button-section button {
+    display: block;
+    color: map_get($colors, SofiaAppWhite);
+  }
+
+  .content-blue {
+    background-color: map_get($colors, primary);
+  }
+
+  .between-button-separator-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .between-buttons-separator {
+    display: inline-block;
+    height: 1px;
+    background-color: map_get($colors, SofiaAppWhite);
+  }
+
+  .text-between-separators {
+    display: inline-block;
+    margin: 0 5px 0 5px !important;
+  }
+
+  @media (max-width: 479px) {
+    .test-info-section p {
+      font-size: 16px !important;
+    }
+
+    .text-between-separators {
+      font-size: 13px !important;
+    }
+
+    .welcome-test-button-section button {
+      width: 200px;
+      height: 40px;
+      margin-bottom: 15px;
       font-size: 17px;
-      color: #f2f2f2;
       font-weight: bold;
     }
 
-  }
-}
+    .between-button-separator-container {
+      margin-bottom: 15px;
+    }
 
-.custom-header {
-  height: 50px;
-  width: 100%;
-  background-color: #5393cd;
-}
+    .between-buttons-separator {
+      width: 92px;
+    }
 
-.height-welcome-page-grid{
-  height: 95%;
-}
-
-.welcome-test-button-section{
-  margin: auto !important;
-}
-
-.welcome-test-button-section button {
-  display: block;
-  color: map_get($colors, SofiaAppWhite);
-}
-
-.content-blue {
-  background-color: map_get($colors, primary);
-}
-
-.header-separator{
-  height: 1.5px;
-  width: 100%;
-  background-color: map_get($colors, SofiaAppWhite);
-}
-
-.between-button-separator-container{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.between-buttons-separator{
-  display: inline-block;
-  height: 1px;
-  background-color: map_get($colors, SofiaAppWhite);
-}
-
-.text-between-separators{
-  display: inline-block;
-  margin: 0 5px 0 5px !important;
-}
-
-@media (max-width: 479px) {
-  .test-info-section p {
-    font-size: 16px !important;
+    .welcome-page-title {
+      font-size: 13px;
+    }
   }
 
-  .text-between-separators{
-    font-size: 13px !important;
+  @media (min-width: 480px) and (max-width: 767px) {
+    .test-info-section p {
+      font-size: 24px !important;
+    }
+
+    .text-between-separators {
+      font-size: 20px !important;
+    }
+
+    .welcome-test-button-section button {
+      width: 291px;
+      height: 60px;
+      margin-bottom: 30px;
+      font-size: 26px;
+      font-weight: bold;
+    }
+
+    .between-button-separator-container {
+      margin-bottom: 30px;
+    }
+
+    .between-buttons-separator {
+      width: 134px;
+    }
+
+    .welcome-page-title {
+      font-size: 20px;
+    }
   }
 
-  .welcome-test-button-section button{
-    width: 200px;
-    height: 40px;
-    margin-bottom: 15px;
-    font-size: 17px;
-    font-weight: bold;
-  }
+  @media (min-width: 768px) {
+    .test-info-section p {
+      font-size: 28px !important;
+    }
 
-  .between-button-separator-container{
-    margin-bottom: 15px;
-  }
+    .text-between-separators {
+      font-size: 20px !important;
+    }
 
-  .between-buttons-separator{
-    width: 92px;
-  }
+    .welcome-test-button-section button {
+      width: 342px;
+      height: 70px;
+      margin-bottom: 38px;
+      font-size: 26px;
+      font-weight: bold;
+    }
 
-  .welcome-page-title{
-    font-size: 13px;
-  }
+    .between-button-separator-container {
+      margin-bottom: 38px;
+    }
 
-}
+    .between-buttons-separator {
+      width: 159px;
+    }
 
-@media (min-width: 480px) and (max-width: 767px) {
-  .test-info-section p {
-    font-size: 24px !important;
-  }
-
-  .text-between-separators{
-    font-size: 20px !important;
-  }
-
-  .welcome-test-button-section button{
-    width: 291px;
-    height: 60px;
-    margin-bottom: 30px;
-    font-size: 26px;
-    font-weight: bold;
-  }
-
-  .between-button-separator-container{
-    margin-bottom: 30px;
-  }
-
-  .between-buttons-separator{
-    width: 134px;
-  }
-
-  .welcome-page-title{
-    font-size: 20px;
-  }
-}
-
-@media (min-width: 768px) {
-  .test-info-section p {
-    font-size: 28px !important;
-  }
-
-  .text-between-separators{
-    font-size: 20px !important;
-  }
-
-  .welcome-test-button-section button{
-    width: 342px;
-    height: 70px;
-    margin-bottom: 38px;
-    font-size: 26px;
-    font-weight: bold;
-  }
-
-  .between-button-separator-container{
-    margin-bottom: 38px;
-  }
-
-  .between-buttons-separator{
-    width: 159px;
-  }
-
-  .welcome-page-title{
-    font-size: 24px;
+    .welcome-page-title {
+      font-size: 24px;
+    }
   }
 }

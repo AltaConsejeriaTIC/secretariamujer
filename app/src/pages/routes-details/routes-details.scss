@@ -1,14 +1,4 @@
 page-routes-details {
-  .header {
-    .header-title {
-      float: right;
-      margin: 14px 5px;
-      font-size: 17px;
-      color: #f2f2f2;
-      font-weight: bold;
-    }
-  }
-
   label {
     margin: 0;
   }
@@ -90,6 +80,10 @@ page-routes-details {
     align-items: center;
   }
 
+  .info-col-container{
+    border-bottom: 1px solid map_get($colors,SofiaAppGrayFont);
+  }
+
   @media (max-width: 479px) {
     [class^="background-subheader-option-"] {
       height: 50px;
@@ -157,6 +151,7 @@ page-routes-details {
       flex-basis: 21px;
       max-width: 21px;
     }
+
   }
 
   @media (min-width: 480px) and (max-width: 767px) {
@@ -277,6 +272,7 @@ page-routes-details {
     .info-col-container{
       flex-basis: 472px;
       max-width: 472px;
+      border-bottom: 2px solid map_get($colors,SofiaAppGrayFont);
     }
 
     .data-col-container{

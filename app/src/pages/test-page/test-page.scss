@@ -1,19 +1,6 @@
 page-test-page {
   >ion-content {
-    background-color: $headerBackgroundColor !important;
-  }
-
-  .test-header {
-    ion-navbar {
-      min-height: 0;
-    }
-
-    label {
-      color: map_get($colors, SofiaAppWhite);
-      float: right;
-      margin: 14px 5px;
-      font-weight: bold;
-    }
+    background-color: map_get($colors, primary) !important;
   }
 
   .test-question {
@@ -49,7 +36,7 @@ page-test-page {
   .test-view {
     height: 91vh;
     margin-top: 9vh;
-    background-color: $headerBackgroundColor;
+    background-color: map_get($colors, primary);
 
     * {
       color: white;
@@ -100,13 +87,17 @@ page-test-page {
     min-height: 20px;
   }
 
-  .end-test-thanks p{
+  .end-test-thanks p {
     font-weight: bold;
   }
 
+  .end-test-thanks p,
+  .end-test-advice p {
+    color: map_get($colors, SofiaAppWhite);
+  }
+
   @media (max-width: 479px) {
-    .test-options ion-label,
-    .test-header label {
+    .test-options ion-label {
       font-size: 13px;
     }
 
@@ -140,15 +131,10 @@ page-test-page {
       height: 37px;
       width: 114px;
     }
-
-    .test-header, .test-header ion-navbar {
-      height: 50px;
-    }
   }
 
   @media (min-width: 480px) and (max-width: 767px) {
-    .test-options ion-label,
-    .test-header label {
+    .test-options ion-label {
       font-size: 20px;
     }
 
@@ -182,15 +168,10 @@ page-test-page {
       height: 60px;
       width: 171px;
     }
-
-    .test-header, .test-header ion-navbar {
-      height: 76px;
-    }
   }
 
   @media (min-width: 768px) {
-    .test-options ion-label,
-    .test-header label {
+    .test-options ion-label {
       font-size: 24px;
     }
 
@@ -223,10 +204,6 @@ page-test-page {
     .test-options .next-question {
       height: 67px;
       width: 207px;
-    }
-
-    .test-header, .test-header ion-navbar {
-      height: 90px;
     }
   }
 }

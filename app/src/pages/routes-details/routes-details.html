@@ -1,11 +1,11 @@
-<ion-header>
-  <ion-navbar hideBackButton>
+<ion-header mode="ios">
+  <ion-navbar hideBackButton text-right>
     <button ion-button icon-only menuToggle (click)="goToMenuPage()">
       <ion-icon name="menu"></ion-icon>
     </button>
-
     <label class="header-title">Test / Tips y Rutas</label>
   </ion-navbar>
+  <div class="header-separator"></div>
 </ion-header>
 
 
@@ -26,56 +26,63 @@
               <label [class]="nameColor[attentionRoute.id]">{{routeDetail.title}}</label>
             </ion-row>
 
-            <ion-row class="info-margin-bottom">
-              <ion-col class="icon-container" no-padding>
-                <ion-icon class="icons-color" name="icon-pin"></ion-icon>
-              </ion-col>
-              <ion-col no-padding>
-                <ion-row>
-                  <label class="info-labels">{{routeDetail.address}}</label>
-                </ion-row>
-                <ion-row>
-                  <label class="info-labels">{{routeDetail.neighbourhood}}</label>
-                </ion-row>
-              </ion-col>
-            </ion-row>
+            <ion-col no-padding>
+              <ion-row class="info-margin-bottom">
+                <ion-col class="icon-container" no-padding>
+                  <ion-icon class="icons-color" name="icon-pin"></ion-icon>
+                </ion-col>
+                <ion-col no-padding>
+                  <ion-row>
+                    <label class="info-labels">{{routeDetail.address}}</label>
+                  </ion-row>
+                  <ion-row>
+                    <label class="info-labels">{{routeDetail.neighbourhood}}</label>
+                  </ion-row>
+                </ion-col>
+              </ion-row>
 
-            <ion-row class="info-margin-bottom">
-              <ion-col class="icon-container" no-padding>
-                <ion-icon class="icons-color" name="icon-email"></ion-icon>
-              </ion-col>
-              <ion-col no-padding>
-                <ion-row>
-                  <label class="info-labels">{{routeDetail.email}}</label>
-                </ion-row>
-              </ion-col>
-            </ion-row>
+              <ion-row class="info-margin-bottom">
+                <ion-col class="icon-container" no-padding>
+                  <ion-icon class="icons-color" name="icon-email"></ion-icon>
+                </ion-col>
+                <ion-col no-padding>
+                  <ion-row>
+                    <label class="info-labels">{{routeDetail.email}}</label>
+                  </ion-row>
+                </ion-col>
+              </ion-row>
 
-            <ion-row class="info-margin-bottom">
-              <ion-col class="icon-container" no-padding>
-                <ion-icon class="icons-color" name="icon-clock"></ion-icon>
-              </ion-col>
-              <ion-col no-padding>
-                <ion-row>
-                  <label class="info-labels">{{routeDetail.schedule}}</label>
-                </ion-row>
-              </ion-col>
-            </ion-row>
+              <ion-row class="info-margin-bottom">
+                <ion-col class="icon-container" no-padding>
+                  <ion-icon class="icons-color" name="icon-clock"></ion-icon>
+                </ion-col>
+                <ion-col no-padding>
+                  <ion-row>
+                    <label class="info-labels">{{routeDetail.schedule}}</label>
+                  </ion-row>
+                </ion-col>
+              </ion-row>
 
-            <ion-row class="phone-info-margin-bottom">
-              <ion-col class="icon-container" no-padding>
-                <ion-icon class="icons-color" name="icon-phone"></ion-icon>
-              </ion-col>
-              <ion-col no-padding>
-                <ion-row>
-                  <label class="info-labels">{{routeDetail.phone}}</label>
-                </ion-row>
-              </ion-col>
-            </ion-row>
+              <ion-row class="phone-info-margin-bottom">
+                <ion-col class="icon-container" no-padding>
+                  <ion-icon class="icons-color" name="icon-phone"></ion-icon>
+                </ion-col>
+                <ion-col no-padding>
+                  <ion-row>
+                    <label class="info-labels">{{routeDetail.phone}}</label>
+                  </ion-row>
+                </ion-col>
+              </ion-row>
+            </ion-col>
+
+
 
           </ion-col>
 
-          <ion-col no-padding style="background-color: red; height: 50px">
+          <ion-col no-padding style="flex-basis: 1px; max-width: 1px; height: 122px; background-color: blue"></ion-col>
+
+
+          <ion-col no-padding style="background-color: red;">
 
           </ion-col>
         </ion-row>
