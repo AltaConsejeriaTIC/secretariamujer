@@ -20,6 +20,7 @@ import {AttentionRoutesLocationPage} from "../pages/attention-routes-location/at
 import {RoutesDetailsPage} from "../pages/routes-details/routes-details";
 import {ContactPage} from "../pages/contact/contact";
 import {SelectTipsCategoryPage} from "../pages/select-tips-category/select-tips-category";
+import {ContactDAO} from "../providers/contact-dao";
 
 
 @NgModule({
@@ -62,7 +63,7 @@ import {SelectTipsCategoryPage} from "../pages/select-tips-category/select-tips-
     ContactPage,
     SelectTipsCategoryPage
   ],
-  providers: [UserDAO, AlertCreator, MapServices, EventsServices, TestsService, SelectCategoryService, {
+  providers: [UserDAO, AlertCreator, MapServices, EventsServices, TestsService, SelectCategoryService, ContactDAO, {
     provide: ErrorHandler,
     useClass: IonicErrorHandler
   }]

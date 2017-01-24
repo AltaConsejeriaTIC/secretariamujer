@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
 import {Contacts, Contact, IContactProperties} from 'ionic-native';
+import {ContactDAO} from "../../providers/contact-dao";
 
 @Component({
   selector: 'page-contact',
@@ -10,7 +11,7 @@ import {Contacts, Contact, IContactProperties} from 'ionic-native';
 export class ContactPage {
   contacts: IContactProperties[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private contactDAO: ContactDAO) {
     this.contacts = [{}, {}, {}];
   }
 
@@ -19,11 +20,8 @@ export class ContactPage {
 
   openContactList(index: number) {
     Contacts.pickContact().then((contact: Contact) => {
-      alert(contact.displayName);
-      alert(contact.phoneNumbers[0].value);
-      alert(contact.phoneNumbers[1].value);
-      alert(index);
       this.contacts[index] = contact;
+      this.contactDAO.saveContact(contact);
     });
   }
 }
