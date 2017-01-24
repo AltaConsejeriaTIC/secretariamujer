@@ -16,43 +16,40 @@
       <label class="location-name location-title-margin" *ngFor="let label of attentionRoute.labels">{{label}}&nbsp;</label>
     </ion-row>
 
-    <ion-col *ngFor="let routeDetail of routesDetails" no-padding>
-      <ion-row>
-        <ion-col style="flex-basis: 59% !important; max-width: 59% !important"  no-padding>
-          <ion-row class="route-name-row">
-            <label [class]="nameColor[attentionRoute.id]">{{routeDetail.title}}</label>
-          </ion-row>
-        </ion-col>
-      </ion-row>
-      <ion-row>
+    <ion-row *ngFor="let routeDetail of routesDetails" no-padding>
+      <ion-col class="left-margin-col" no-padding></ion-col>
 
-        <ion-col class="info-section" no-padding>
+      <ion-col class="info-col-container" no-padding>
+        <ion-row>
+          <ion-col no-padding class="data-col-container">
+            <ion-row class="route-title-container">
+              <label [class]="nameColor[attentionRoute.id]">{{routeDetail.title}}</label>
+            </ion-row>
+            <ion-row class="info-margin-bottom" style="background-color: aqua;">
+              <label class="info-labels">{{routeDetail.address}}</label>
+            </ion-row>
 
-          <ion-row style="background-color: green; margin-bottom: 14px">
-            <label>{{routeDetail.address}}</label>
-          </ion-row>
+            <ion-row class="info-margin-bottom" style="background-color: aqua;">
+              <label class="info-labels">{{routeDetail.email}}</label>
+            </ion-row>
 
-          <ion-row style="background-color: green; margin-bottom: 14px">
-            <label>{{routeDetail.email}}</label>
-          </ion-row>
+            <ion-row class="info-margin-bottom" style="background-color: aqua;">
+              <label class="info-labels">{{routeDetail.schedule}}</label>
+            </ion-row>
 
-          <ion-row style="background-color: green; margin-bottom: 14px">
-            <label>{{routeDetail.schedule}}</label>
-          </ion-row>
+            <ion-row class="phone-info-margin-bottom" style="background-color: aqua;">
+              <label class="info-labels">{{routeDetail.phone}}</label>
+            </ion-row>
+          </ion-col>
 
-          <ion-row style="background-color: green; margin-bottom: 28px">
-            <label>{{routeDetail.phone}}</label>
-          </ion-row>
+          <ion-col no-padding style="background-color: red; height: 50px">
 
-        </ion-col>
-        <div style="display: inline-block; width: 1px; height: 122px; background-color: purple"></div>
+          </ion-col>
+        </ion-row>
+      </ion-col>
 
+      <ion-col class="right-margin-col" no-padding></ion-col>
+    </ion-row>
 
-        <ion-col style="background-color: red; height: 100px;" no-padding>
-
-        </ion-col>
-      </ion-row>
-
-    </ion-col>
   </ion-grid>
 </ion-content>
