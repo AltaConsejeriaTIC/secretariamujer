@@ -26,6 +26,10 @@ page-routes-details {
     }
   }
 
+  .icon-back{
+   color: white;
+  }
+
   .background-subheader-option-0{
     background-color: #64a53c;
   }
@@ -83,6 +87,11 @@ page-routes-details {
     .location-row-margin{
       margin-left: 35px;
     }
+
+    .icon-back{
+      font-size: 20px;
+    }
+
   }
 
   @media (min-width: 480px) and (max-width: 767px) {
@@ -101,6 +110,10 @@ page-routes-details {
 
     .location-row-margin{
       margin-left: 56px;
+    }
+
+    .icon-back{
+      font-size: 30px;
     }
   }
 
@@ -121,6 +134,11 @@ page-routes-details {
     .location-row-margin{
       margin-left: 70px;
     }
+
+    .icon-back{
+      font-size: 35px;
+    }
+
   }
 
 }

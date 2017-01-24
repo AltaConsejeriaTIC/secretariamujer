@@ -1,10 +1,9 @@
 @font-face {
-  font-family: 'icomoon';
-  src: url('../assets/fonts/envelope/icomoon.ttf') format('truetype');
+  font-family: 'icons';
+  src: url('../assets/fonts/icons/icons.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
-
 [class^="icon-"],
 [class*=" icon-"],
 [class^="ion-ios-icon"],
@@ -12,7 +11,7 @@
 [class^="ion-md-icon"],
 [class*="ion-md-icon"] {
   @extend .ion;
-  font-family: 'icomoon' !important;
+  font-family: 'icons' !important;
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -20,7 +19,6 @@
   text-transform: none;
   line-height: 1;
 }
-
 @mixin createIcon($arg, $val) {
   .ion-ios-#{$arg}:before,
   .ion-ios-#{$arg}-circle:before,
@@ -31,8 +29,19 @@
   .ion-md-#{$arg}-circle-outline:before,
   .ion-md-#{$arg}-outline:before {
     content: $val;
-    font-size: 26px;
   }
 }
+@include createIcon(icon-pin, '\e900');
+@include createIcon(icon-email, '\e901');
+@include createIcon(icon-clock, '\e902');
+@include createIcon(icon-phone, '\e903');
+@include createIcon(icon-info, '\e904');
+@include createIcon(icon-conf, '\e905');
+@include createIcon(icon-map, '\e906');
+@include createIcon(icon-test, '\e907');
+@include createIcon(icon-download, '\e908');
+@include createIcon(icon-msj, '\e909');
+@include createIcon(icon-sofia, '\e90a');
+@include createIcon(icon-sofia, '\e90a');
+@include createIcon(icon-fill-back-arrow, '\e90c');
 
-@include createIcon(icon-envelope, '\e900');

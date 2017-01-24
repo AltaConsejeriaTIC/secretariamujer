@@ -26,6 +26,10 @@ page-attention-routes-location {
     }
   }
 
+  .icon-back{
+    color: white;
+  }
+
   .location-name{
     font-weight: bold;
   }
@@ -97,6 +101,11 @@ page-attention-routes-location {
     .location-row-margin{
       margin-left: 35px;
     }
+
+    .icon-back{
+      font-size: 20px;
+    }
+
   }
 
   @media (min-width: 480px) and (max-width: 767px) {
@@ -123,6 +132,10 @@ page-attention-routes-location {
 
     .location-row-margin{
       margin-left: 56px;
+    }
+
+    .icon-back{
+      font-size: 30px;
     }
   }
 
@@ -151,6 +164,11 @@ page-attention-routes-location {
     .location-row-margin{
       margin-left: 70px;
     }
+
+    .icon-back{
+      font-size: 35px;
+    }
+
   }
 
 }
