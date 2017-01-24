@@ -81,6 +81,15 @@ page-routes-details {
     color: map_get($colors,SofiaAppGrayFont);
   }
 
+  .icons-color{
+    color: map_get($colors,SofiaAppGrayFont);
+  }
+
+  .icon-container{
+    display: flex;
+    align-items: center;
+  }
+
   @media (max-width: 479px) {
     [class^="background-subheader-option-"] {
       height: 50px;
@@ -142,6 +151,11 @@ page-routes-details {
 
     .info-labels{
       font-size: 12px;
+    }
+
+    .icon-container{
+      flex-basis: 21px;
+      max-width: 21px;
     }
   }
 
@@ -208,6 +222,11 @@ page-routes-details {
       font-size: 17px;
     }
 
+    .icon-container{
+      flex-basis: 32px;
+      max-width: 32px;
+    }
+
   }
 
   @media (min-width: 768px) {
@@ -271,6 +290,11 @@ page-routes-details {
 
     .info-labels{
       font-size: 17px;
+    }
+
+    .icon-container{
+      flex-basis: 40px;
+      max-width: 40px;
     }
 
   }
