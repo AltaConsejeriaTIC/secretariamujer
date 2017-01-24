@@ -15,8 +15,21 @@
       <ion-icon class="go-back-icon-margin icon-back" name="icon-fill-back-arrow" (click)="goBackPage()" ></ion-icon>
       <label class="location-name location-title-margin" *ngFor="let label of attentionRoute.labels">{{label}}&nbsp;</label>
     </ion-row>
-    <ion-row *ngFor="let routeDetail of routesDetails">
-      <label [class]="nameColor[attentionRoute.id]">{{routeDetail.title}}</label>
-    </ion-row>
+
+    <ion-col *ngFor="let routeDetail of routesDetails" no-padding>
+      <ion-row class="route-name-row">
+        <label [class]="nameColor[attentionRoute.id]">{{routeDetail.title}}</label>
+      </ion-row>
+      <ion-row>
+        <ion-col class="info-section" style="background-color: blue; height: 100px; " no-padding>
+
+        </ion-col>
+
+        <ion-col style="background-color: red; height: 100px;" no-padding>
+
+        </ion-col>
+      </ion-row>
+
+    </ion-col>
   </ion-grid>
 </ion-content>

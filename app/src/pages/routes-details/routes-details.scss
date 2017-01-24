@@ -32,18 +32,22 @@ page-routes-details {
 
   .background-subheader-option-0{
     background-color: #64a53c;
+    box-shadow:  0px 4px 4px 0px rgba(0, 0, 0, 0.14);
   }
 
   .background-subheader-option-1{
     background-color: #4c904c;
+    box-shadow:  0px 4px 4px 0px rgba(0, 0, 0, 0.14);
   }
 
   .background-subheader-option-2{
     background-color: #3f8654;
+    box-shadow:  0px 4px 4px 0px rgba(0, 0, 0, 0.14);
   }
 
   .background-subheader-option-3{
     background-color: #1b676b;
+    box-shadow:  0px 4px 4px 0px rgba(0, 0, 0, 0.14);
   }
 
   .color-0{
@@ -70,6 +74,11 @@ page-routes-details {
     background-color: map_get($colors,SofiaAppBeige);
   }
 
+  .info-section{
+    flex-basis: 71% !important;
+    max-width: 71% !important
+  }
+
   @media (max-width: 479px) {
     [class^="background-subheader-option-"] {
       height: 50px;
@@ -90,6 +99,16 @@ page-routes-details {
 
     .icon-back{
       font-size: 20px;
+    }
+
+    .route-name-row{
+      margin: 17px 93px 14px 36px;
+    }
+
+    [class^="color-"] {
+      font-size: 16px;
+      font-weight: bold;
+      font-style: italic;
     }
 
   }
@@ -115,6 +134,17 @@ page-routes-details {
     .icon-back{
       font-size: 30px;
     }
+
+    .route-name-row{
+      margin: 17px 137px 22px 56px;
+    }
+
+    [class^="color-"] {
+      font-size: 24px;
+      font-weight: bold;
+      font-style: italic;
+    }
+
   }
 
   @media (min-width: 768px) {
@@ -137,6 +167,21 @@ page-routes-details {
 
     .icon-back{
       font-size: 35px;
+    }
+
+    .route-name-row{
+      margin-left: 1px;
+      margin-right: 1px;
+    }
+
+    .route-name-row{
+      margin: 34px 137px 26px 56px;
+    }
+
+    [class^="color-"] {
+      font-size: 24px;
+      font-weight: bold;
+      font-style: italic;
     }
 
   }
