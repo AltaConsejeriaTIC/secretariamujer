@@ -36,7 +36,7 @@ $font-family-md-base: 'Open-Sans';
 $font-family-wp-base: 'Open-Sans';
 $backgroundPurple: #664ba8;
 $placeholderInputColor: #9e8cc6;
-$headerBackgroundColor: #5393cd;
+$headerBackgroundColor: map_get($colors, primary);
 $toolbar-background: $headerBackgroundColor;
 $toolbar-ios-title-text-align: right;
 $checkbox-md-icon-size: 4vw;

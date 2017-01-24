@@ -1,77 +1,65 @@
 page-menu {
 
   .option-menu-row {
-    background-color: #5393cd;
+    background-color: map_get($colors, primary);
 
   }
 
   .special-menu-row {
-    background-color: #d85662;
+    background-color: map_get($colors, SofiaAppRedButton);
   }
 
-  .menu-option-label {
+  .menu-option-label, .truncate-text {
     text-align: center;
-    color: #f2f2f2;
+    color: map_get($colors, SofiaAppWhite);
   }
 
-  .menu-arrow-container-margin {
-    margin-left: 60% !important;
+  #option-row {
+    display: table;
+    height: 20vh;
   }
 
-  .menu-row-icon-size {
-    height: 4em;
-    width: 4em;
+  #group-icon {
+    display: table-cell;
+    vertical-align: middle;
   }
 
-  .menu-icon-padding-container {
-    padding-top: 10%;
+  #menu-arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
-  .offset-33 {
-    margin-left: 33.3333%;
+  .menu-arrow-big {
+    width: 15vw;
   }
 
-  .custom-width-33 {
-    flex-grow: 0;
-    flex-shrink: 0;
-    flex-basis: 33.3333%;
-    max-width: 33.3333%;
+  .menu-arrow-small {
+    width: 10vw;
   }
 
-  .custom-width-50 {
-    flex-grow: 0;
-    flex-shrink: 0;
-    flex-basis: 50%;
-    max-width: 50%;
+  .item-hint {
+    background: map_get($colors, SofiaAppWhite);
+    height: 20vh;
   }
 
-  .tip-container-color {
-    background-color: white;
-  }
-
-  .column-arrow-show-tip-right-padding {
-    padding-right: 5% !important;
-  }
-
-  .column-center-content-horizontally {
+  .center-menu-tip-text  {
     display: flex;
     justify-content: center;
   }
 
   .center-menu-tip-text {
-    display: flex;
-    align-items: center;
-    color: #5393cd;
+    color: map_get($colors, primary);
   }
 
   .menu-separator-container {
     height: 100%;
     width: 2px;
-    padding: 5% 0 5% 0;
+    padding: 2vh 0;
   }
 
   .menu-separator {
-    background-color: white;
+    background-color: map_get($colors, SofiaAppWhite);
     height: 100%;
     width: 100%
   }
@@ -88,22 +76,63 @@ page-menu {
   }
 
   .content {
-    .option, .special-menu-row {
-      ion-icon {
-        color: white;
+    .special-menu-row {
+      .second-line {
+        line-height: 120%;
       }
     }
   }
+
+  .truncate-text {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 35vw;
+  }
+
+  .phone-icon, .mail-icon {
+    margin: auto;
+  }
+
+  .content {
+    .option, .special-menu-row {
+      ion-icon {
+        color: map_get($colors, SofiaAppWhite);
+      }
+
+      .wrap-text-override {
+        margin: auto;
+      }
+
+      .wrap-text-override ion-label {
+        margin: 0;
+      }
+    }
+  }
+
 
   @media (max-width: 479px) {
     .content {
       .option, .special-menu-row {
         ion-icon {
-          font-size: 40px;
+          font-size: 38px;
         }
 
-        ion-label {
+        .mail-icon {
+          font-size: 29px;
+        }
+
+        #menu-arrow {
+          font-size: 15px;
+        }
+
+        .menu-option-label, .truncate-text {
           font-size: 17px;
+          margin: 0;
+        }
+
+        .wrap-text-override {
+          font-size: 13px;
         }
       }
     }
@@ -113,11 +142,23 @@ page-menu {
     .content {
       .option, .special-menu-row {
         ion-icon {
-          font-size: 50px;
+          font-size: 56px;
         }
 
-        ion-label {
+        .mail-icon {
+          font-size: 42px;
+        }
+
+        #menu-arrow {
+          font-size: 25px;
+        }
+
+        .menu-option-label, .truncate-text {
           font-size: 26px;
+        }
+
+        .wrap-text-override {
+          font-size: 18px;
         }
       }
     }
@@ -127,11 +168,23 @@ page-menu {
     .content {
       .option, .special-menu-row {
         ion-icon {
-          font-size: 70px;
+          font-size: 67px;
         }
 
-        ion-label {
+        .mail-icon {
+          font-size: 50px;
+        }
+
+        #menu-arrow {
           font-size: 30px;
+        }
+
+        .menu-option-label, .truncate-text {
+          font-size: 30px;
+        }
+
+        .wrap-text-override {
+          font-size: 26px;
         }
       }
     }

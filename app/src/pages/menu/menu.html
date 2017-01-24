@@ -2,61 +2,38 @@
   <ion-grid class="height-100 no-padding">
 
     <ion-row *ngFor="let menuOption of menuOptions; let id = index" class="flex-1 option-menu-row option">
-      <ion-col
-        [ngClass]="{'offset-33 custom-width-33': !menuOption.isShowingHint, 'custom-width-50 display-flex':menuOption.isShowingHint}">
-
-        <ion-row (click)="menuOption.goPage()" *ngIf="!menuOption.isShowingHint"
-                 class="justify-center-row menu-icon-padding-container" style="height: 60%; align-items: center">
-          <ion-icon name="{{menuOption.icon}}"></ion-icon>
-        </ion-row>
-
-        <ion-row (click)="menuOption.goPage()" *ngIf="!menuOption.isShowingHint" class="justify-center-row"
-                 style="height: 40%;  align-items: center ">
-          <ion-label class="menu-option-label">{{menuOption.label}}</ion-label>
-        </ion-row>
-
-        <ion-row *ngIf="menuOption.isShowingHint">
-          <ion-col width-80>
-
-            <ion-row (click)="menuOption.goPage()" *ngIf="menuOption.isShowingHint"
-                     class="justify-center-row menu-icon-padding-container" style="height: 60%; align-items: center">
+      <ion-col id="option-row" [@iconGroup]="hintState[id]" (click)="menuOption.goPage()">
+        <div id="group-icon">
+            <ion-row class="justify-center-row menu-icon-padding-container">
               <ion-icon name="{{menuOption.icon}}"></ion-icon>
             </ion-row>
 
-            <ion-row (click)="menuOption.goPage()" *ngIf="menuOption.isShowingHint"
-                     style="height: 40%;  align-items: center ">
-              <ion-label class="menu-option-label">{{menuOption.label}}</ion-label>
+            <ion-row class="justify-center-row">
+              <ion-label [ngClass]="{'menu-option-label': !menuOption.isShowingHint, 'truncate-text':menuOption.isShowingHint}">{{menuOption.label}}</ion-label>
             </ion-row>
-          </ion-col>
-
-          <ion-col width-20 class="display-flex center-vertically justify-horizontally-right">
-            <img (click)="toggleisShowingHintParameter(id)" src="assets/img/menu-icons/Atras-10.png">
-          </ion-col>
-        </ion-row>
-
+        </div>
       </ion-col>
-
-      <ion-col
-        [ngClass]="{'custom-width-33 display-flex center-vertically justify-horizontally-right column-arrow-show-tip-right-padding': !menuOption.isShowingHint, 'custom-width-50 tip-container-color column-center-content-horizontally':menuOption.isShowingHint}">
-        <img *ngIf="!menuOption.isShowingHint" (click)="toggleisShowingHintParameter(id)"
-             src="assets/img/menu-icons/Flecha_Pictograma.png">
-        <ion-label *ngIf="menuOption.isShowingHint" text-wrap class="wrap-text-override center-menu-tip-text">
-          {{menuOption.hint}}
-        </ion-label>
-      </ion-col>
+      <ion-icon id="menu-arrow" [name]="arrowIcon[id]" (click)="toggleisShowingHintParameter(id)" [ngClass]="{'menu-arrow-big': !menuOption.isShowingHint, 'menu-arrow-small':menuOption.isShowingHint}"></ion-icon>
+      <ion-row class="item-hint" [@menuItemHint]="hintState[id]">
+        <div class="wrap-text-override">
+          <ion-label *ngFor="let hint of menuOption.hint;" text-wrap class="center-menu-tip-text">
+            {{hint}}
+          </ion-label>
+        </div>
+      </ion-row>
     </ion-row>
 
 
     <ion-row class="flex-1 special-menu-row">
       <ion-col width-49 (click)="makePhoneCall()">
         <ion-row class="special-row-icon-container">
-          <ion-icon name="call"></ion-icon>
+          <ion-icon class="phone-icon" name="icon-phone"></ion-icon>
         </ion-row>
         <ion-row class="special-row-icon-container-text">
           <ion-label class="menu-option-label no-margin">Llamar</ion-label>
         </ion-row>
         <ion-row class="special-row-icon-container-text align-start-vertically">
-          <ion-label class="menu-option-label no-margin ">123</ion-label>
+          <ion-label class="menu-option-label no-margin second-line">123</ion-label>
         </ion-row>
       </ion-col>
       <div class="menu-separator-container">
@@ -66,13 +43,13 @@
 
       <ion-col width-50 (click)="sendMessage()">
         <ion-row class="special-row-icon-container">
-          <ion-icon name="mail"></ion-icon>
+          <ion-icon class="mail-icon" name="icon-msj"></ion-icon>
         </ion-row>
         <ion-row class="special-row-icon-container-text">
           <ion-label class="menu-option-label no-margin">Enviar</ion-label>
         </ion-row>
         <ion-row class="special-row-icon-container-text align-start-vertically">
-          <ion-label class="menu-option-label no-margin">Mensaje</ion-label>
+          <ion-label class="menu-option-label no-margin second-line">Mensaje</ion-label>
         </ion-row>
       </ion-col>
     </ion-row>
