@@ -18,6 +18,7 @@ import {SelectCategoryService} from "../providers/select-category-service";
 import {AttentionRoutesPage} from "../pages/attention-routes/attention-routes";
 import {AttentionRoutesLocationPage} from "../pages/attention-routes-location/attention-routes-location";
 import {RoutesDetailsPage} from "../pages/routes-details/routes-details";
+import {SelectTipsCategoryPage} from "../pages/select-tips-category/select-tips-category";
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import {RoutesDetailsPage} from "../pages/routes-details/routes-details";
     MapPage,
     AttentionRoutesPage,
     AttentionRoutesLocationPage,
-    RoutesDetailsPage
+    RoutesDetailsPage,
+    SelectTipsCategoryPage
   ],
   imports: [
     IonicModule.forRoot(MyApp, {
@@ -54,7 +56,8 @@ import {RoutesDetailsPage} from "../pages/routes-details/routes-details";
     MapPage,
     AttentionRoutesPage,
     AttentionRoutesLocationPage,
-    RoutesDetailsPage
+    RoutesDetailsPage,
+    SelectTipsCategoryPage
   ],
   providers: [UserDAO, AlertCreator, MapServices, EventsServices, TestsService, SelectCategoryService, {
     provide: ErrorHandler,

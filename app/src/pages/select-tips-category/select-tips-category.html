@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar hideBackButton>
+    <button ion-button icon-only menuToggle (click)="goToMenuPage()">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+
+    <label class="header-title">Test / Tips y Rutas</label>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content no-bounce>
+  <ion-grid class="height-100" no-padding>
+    <ion-row class="section-header">
+      <ion-col>
+        <ion-label class="title">Ver Tips</ion-label>
+        <ion-label class="description">Por favor selecciona</ion-label>
+        <ion-label class="description">una categoría</ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngFor="let category of tipsCategories;" (click)="showTipsByCategory(category.id)" [class]="category.class">
+      <ion-col>
+        <ion-label *ngFor="let label of category.labels">{{label}}</ion-label>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
