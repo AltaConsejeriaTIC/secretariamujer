@@ -41,7 +41,7 @@ describe('WelcomeTestPage tests', () => {
     testNavController=_navController;
   }));
 
-  it('goToTestPage should call setCategory from SelectCategoryService', () => {
+  it('goToContactPage should call setCategory from SelectCategoryService', () => {
     spyOn(testSelectCategoryService,'setCategory').and.callThrough();
     spyOn(testNavController,'push');
     testWelcomePage.goToTestSelectTestCategory();

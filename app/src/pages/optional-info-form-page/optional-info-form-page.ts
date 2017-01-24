@@ -3,7 +3,7 @@ import {NavController} from 'ionic-angular';
 import {User} from "../../entity/user";
 import {UserDAO} from "../../providers/user-dao";
 import {AlertCreator} from "../../providers/alert-creator";
-import {MenuPage} from "../menu/menu";
+import {ContactPage} from "../contact/contact";
 
 @Component({
   selector: 'page-optional-info-form-page',
@@ -41,16 +41,16 @@ export class OptionalInfoFormPagePage {
 
   createUser() {
     this.userDAO.create().map(res => res.json()).subscribe(response => {
-      this.alertCreator.showSimpleAlert('Exito', 'El usuario ha sido creado');
-      this.goToTestPage();
+      this.alertCreator.showCofirmationMessage('Cuenta', 'Tu cuenta ha sido creada', () => {
+        this.goToContactPage()
+      });
     }, err => {
       console.log("ocurrio un error", err);
     });
-    ;
   }
 
-  goToTestPage() {
-    this.navCtrl.setRoot(MenuPage);
+  goToContactPage() {
+    this.navCtrl.setRoot(ContactPage);
   }
 
 }

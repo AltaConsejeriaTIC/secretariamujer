@@ -8,15 +8,18 @@
         </ion-row>
 
         <ion-row>
-          <ion-input text-center [(ngModel)]="user.name"  class="input-border input-color no-padding" type="text" placeholder="Tu nombre & apellido"></ion-input>
+          <ion-input text-center [(ngModel)]="user.name" class="input-border input-color no-padding" type="text"
+                     placeholder="Tu nombre & apellido"></ion-input>
         </ion-row>
 
         <ion-row>
-          <ion-input text-center [(ngModel)]="user.email" class="input-border input-color no-padding" type="email" placeholder="Tu correo electrónico"></ion-input>
+          <ion-input text-center [(ngModel)]="user.email" class="input-border input-color no-padding" type="email"
+                     placeholder="Tu correo electrónico"></ion-input>
         </ion-row>
 
         <ion-row>
-          <ion-input text-center [(ngModel)]="user.phone" class="input-border input-color no-padding" type="tel" placeholder="Tu teléfono móvil"></ion-input>
+          <ion-input text-center [(ngModel)]="user.phone" class="input-border input-color no-padding" type="tel"
+                     placeholder="Tu teléfono móvil"></ion-input>
         </ion-row>
 
         <ion-row id="optional-info-register-button-container" class="button-section-margin">
@@ -25,7 +28,10 @@
           </ion-col>
 
           <ion-col offset-10 width-45 class="no-padding">
-            <button (click)="checkFields()" [ngClass]="{'app-button': user.name || user.email || user.phone, 'disabled-button': !user.name && !user.email && !user.phone}" ion-button outline>Finalizar</button>
+            <button (click)="checkFields()"
+                    [ngClass]="{'app-button': user.name || user.email || user.phone, 'disabled-button': !user.name && !user.email && !user.phone}"
+                    ion-button outline>Continuar
+            </button>
           </ion-col>
         </ion-row>
 
