@@ -17,13 +17,36 @@
     </ion-row>
 
     <ion-col *ngFor="let routeDetail of routesDetails" no-padding>
-      <ion-row class="route-name-row">
-        <label [class]="nameColor[attentionRoute.id]">{{routeDetail.title}}</label>
+      <ion-row>
+        <ion-col style="flex-basis: 59% !important; max-width: 59% !important"  no-padding>
+          <ion-row class="route-name-row">
+            <label [class]="nameColor[attentionRoute.id]">{{routeDetail.title}}</label>
+          </ion-row>
+        </ion-col>
       </ion-row>
       <ion-row>
-        <ion-col class="info-section" style="background-color: blue; height: 100px; " no-padding>
+
+        <ion-col class="info-section" no-padding>
+
+          <ion-row style="background-color: green; margin-bottom: 14px">
+            <label>{{routeDetail.address}}</label>
+          </ion-row>
+
+          <ion-row style="background-color: green; margin-bottom: 14px">
+            <label>{{routeDetail.email}}</label>
+          </ion-row>
+
+          <ion-row style="background-color: green; margin-bottom: 14px">
+            <label>{{routeDetail.schedule}}</label>
+          </ion-row>
+
+          <ion-row style="background-color: green; margin-bottom: 28px">
+            <label>{{routeDetail.phone}}</label>
+          </ion-row>
 
         </ion-col>
+        <div style="display: inline-block; width: 1px; height: 122px; background-color: purple"></div>
+
 
         <ion-col style="background-color: red; height: 100px;" no-padding>
 
