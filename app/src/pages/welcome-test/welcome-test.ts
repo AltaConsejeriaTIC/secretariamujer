@@ -4,6 +4,7 @@ import {SelectCategoryService} from "../../providers/select-category-service";
 import {SelectTestCategoryPage} from "../select-test-category/select-test-category";
 import {UserDAO} from "../../providers/user-dao";
 import {AttentionRoutesPage} from "../attention-routes/attention-routes";
+import {SelectTipsCategoryPage} from "../select-tips-category/select-tips-category";
 
 @Component({
   selector: 'page-welcome-test',
@@ -27,7 +28,7 @@ export class WelcomeTestPage {
   }
 
   goToTips() {
-
+    this.navController.push(SelectTipsCategoryPage);
   }
 
   goToRoutes() {

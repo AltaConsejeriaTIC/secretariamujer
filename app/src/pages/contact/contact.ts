@@ -1,22 +1,29 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {NavController, NavParams} from 'ionic-angular';
+import {Contacts, Contact, IContactProperties} from 'ionic-native';
 
-/*
-  Generated class for the Contact page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-contact',
   templateUrl: 'contact.html'
 })
+
 export class ContactPage {
+  contacts: IContactProperties[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ContactPage');
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.contacts = [{}, {}, {}];
   }
 
+  ionViewDidLoad() {
+  }
+
+  openContactList(index: number) {
+    Contacts.pickContact().then((contact: Contact) => {
+      alert(contact.displayName);
+      alert(contact.phoneNumbers[0].value);
+      alert(contact.phoneNumbers[1].value);
+      alert(index);
+      this.contacts[index] = contact;
+    });
+  }
 }

@@ -12,6 +12,7 @@ page-menu {
   .menu-option-label, .truncate-text {
     text-align: center;
     color: map_get($colors, SofiaAppWhite);
+    margin: 1.5vh 0 0;
   }
 
   #option-row {
@@ -128,7 +129,6 @@ page-menu {
 
         .menu-option-label, .truncate-text {
           font-size: 17px;
-          margin: 0;
         }
 
         .wrap-text-override {
