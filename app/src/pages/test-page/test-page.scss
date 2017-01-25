@@ -73,7 +73,6 @@ page-test-page {
       border-radius: 10px;
       background: transparent;
       border: 2px solid white;
-      font-size: 14px;
     }
 
     .unabled-button {
@@ -94,6 +93,14 @@ page-test-page {
   .end-test-thanks p,
   .end-test-advice p {
     color: map_get($colors, SofiaAppWhite);
+  }
+
+  .thanks-container {
+    margin: 8vh 0 0;
+  }
+
+  .welcome-test-button-section button {
+    font-weight: bold;
   }
 
   @media (max-width: 479px) {
@@ -130,6 +137,12 @@ page-test-page {
     .test-options .next-question {
       height: 37px;
       width: 114px;
+    }
+
+    .welcome-test-button-section button {
+      height: 40px;
+      width: 200px;
+      font-size: 17px;
     }
   }
 
@@ -168,6 +181,12 @@ page-test-page {
       height: 60px;
       width: 171px;
     }
+
+    .welcome-test-button-section button {
+      height: 60px;
+      width: 291px;
+      font-size: 26px;
+    }
   }
 
   @media (min-width: 768px) {
@@ -204,6 +223,12 @@ page-test-page {
     .test-options .next-question {
       height: 67px;
       width: 207px;
+    }
+
+    .welcome-test-button-section button {
+      height: 70px;
+      width: 342px;
+      font-size: 30px;
     }
   }
 }

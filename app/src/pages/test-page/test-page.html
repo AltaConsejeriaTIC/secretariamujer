@@ -48,8 +48,8 @@
 
 
   <ion-grid *ngIf="isTestComplete" class="height-100 no-padding content-blue">
-    <ion-row class="flex-1">
-      <ion-col offset-10="5%" width-90 class="welcome-test-button-section end-test-thanks">
+    <ion-row class="flex-1 thanks-container">
+      <ion-col class="welcome-test-button-section end-test-thanks">
         <ion-row class="flex-1 justify-center-row">
           <p no-margin>Gracias {{userName}}</p>
         </ion-row>
@@ -59,7 +59,7 @@
       </ion-col>
     </ion-row>
     <ion-row class="flex-1">
-      <ion-col offset-10="5%" width-90 class="welcome-test-button-section end-test-advice">
+      <ion-col class="welcome-test-button-section end-test-advice">
         <ion-row class="flex-1 justify-center-row">
           <p no-margin>{{resultTipFirstPhrase}}</p>
         </ion-row>
@@ -75,7 +75,7 @@
       </ion-col>
     </ion-row>
     <ion-row class="flex-1">
-      <ion-col offset-10="5%" width-90 class="welcome-test-button-section ">
+      <ion-col class="welcome-test-button-section ">
         <ion-row style="justify-content: center" text-center>
           <button ion-button outline color="light" (click)="goToTips()">Ver tips</button>
         </ion-row>
