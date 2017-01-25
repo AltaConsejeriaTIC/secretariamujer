@@ -20,11 +20,13 @@
       <ion-col class="left-margin-col" no-padding></ion-col>
 
       <ion-col class="info-col-container" no-padding>
+        <ion-row class="route-title-container">
+          <label [class]="nameColor[attentionRoute.id]">{{routeDetail.title}}</label>
+        </ion-row>
         <ion-row>
+
           <ion-col no-padding class="data-col-container">
-            <ion-row class="route-title-container">
-              <label [class]="nameColor[attentionRoute.id]">{{routeDetail.title}}</label>
-            </ion-row>
+
 
 
             <ion-row>
@@ -86,8 +88,16 @@
 
 
 
-          <ion-col no-padding style="background-color: red;">
-
+          <ion-col class="download-col-container" no-padding style="background-color: red;">
+            <ion-row>
+              <ion-icon name="icon-download"></ion-icon>
+            </ion-row>
+            <ion-row>
+              <label>Descargas</label>
+            </ion-row>
+            <ion-row>
+              <label>documentos</label>
+            </ion-row>
           </ion-col>
         </ion-row>
       </ion-col>

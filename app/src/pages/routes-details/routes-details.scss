@@ -90,6 +90,16 @@ page-routes-details {
     max-width: 1px !important;
   }
 
+  .download-col-container{
+    justify-content: center;
+    align-items: center;
+    padding-top: 60px;
+  }
+
+  .download-col-container ion-row{
+    justify-content: center;
+  }
+
   @media (max-width: 479px) {
     [class^="background-subheader-option-"] {
       height: 50px;
@@ -141,8 +151,8 @@ page-routes-details {
     }
 
     .data-col-container{
-      flex-basis: 191px;
-      max-width: 191px;
+      flex-basis: 195px;
+      max-width: 195px;
     }
 
     .route-title-container{
