@@ -21,6 +21,7 @@ import {RoutesDetailsPage} from "../pages/routes-details/routes-details";
 import {ContactPage} from "../pages/contact/contact";
 import {SelectTipsCategoryPage} from "../pages/select-tips-category/select-tips-category";
 import {ContactDAO} from "../providers/contact-dao";
+import {Storage} from '@ionic/storage';
 
 
 @NgModule({
@@ -63,7 +64,7 @@ import {ContactDAO} from "../providers/contact-dao";
     ContactPage,
     SelectTipsCategoryPage
   ],
-  providers: [UserDAO, AlertCreator, MapServices, EventsServices, TestsService, SelectCategoryService, ContactDAO, {
+  providers: [UserDAO, AlertCreator, MapServices, EventsServices, TestsService, SelectCategoryService, ContactDAO, Storage, {
     provide: ErrorHandler,
     useClass: IonicErrorHandler
   }]
