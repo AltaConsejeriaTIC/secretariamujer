@@ -8,18 +8,15 @@
   <div class="header-separator"></div>
 </ion-header>
 
-<ion-content no-bounce>
+
+<ion-content no-bounce [class]="tipsClass">
   <ion-grid class="height-100" no-padding>
-    <ion-row class="section-header">
+    <ion-row class="tips-name">
       <ion-col>
-        <ion-label class="title">Rutas de Atención</ion-label>
-        <ion-label class="description">Por favor selecciona</ion-label>
-        <ion-label class="description">una categoría</ion-label>
+        icon
       </ion-col>
-    </ion-row>
-    <ion-row *ngFor="let route of attentionRoutes;" (click)="goToRoute(route.id)" [class]="route.class">
       <ion-col>
-        <ion-label *ngFor="let label of route.labels">{{label}}</ion-label>
+        text
       </ion-col>
     </ion-row>
   </ion-grid>
