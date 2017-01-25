@@ -33,6 +33,15 @@ ion-header {
     margin: 14px 4vw 14px 0 !important;
     font-weight: bold;
   }
+
+  [name^="icon-go-menu"] {
+    margin-left: 4vw;
+    padding: 0 !important;
+  }
+
+  .bar-buttons {
+    margin: 0;
+  }
 }
 
 @media (max-width: 479px) {
@@ -42,6 +51,10 @@ ion-header {
 
   ion-header, ion-header ion-navbar {
     height: 50px;
+  }
+
+  ion-header [name^="icon-go-menu"] {
+    font-size: 19px !important;
   }
 }
 
@@ -53,6 +66,10 @@ ion-header {
   ion-header, ion-header ion-navbar {
     height: 76px;
   }
+
+  ion-header [name^="icon-go-menu"] {
+    font-size: 25px !important;
+  }
 }
 
 @media (min-width: 768px) {
@@ -62,6 +79,10 @@ ion-header {
 
   ion-header, ion-header ion-navbar {
     height: 90px;
+  }
+
+  ion-header [name^="icon-go-menu"] {
+    font-size: 35px !important;
   }
 }
 
