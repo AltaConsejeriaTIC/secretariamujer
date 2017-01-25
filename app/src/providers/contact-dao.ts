@@ -1,19 +1,22 @@
 import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
-import {Contact} from 'ionic-native';
-import {SecureStorage} from 'ionic-native';
+import {Contact, SecureStorage} from 'ionic-native';
+import {Storage} from '@ionic/storage';
 
 
 @Injectable()
 export class ContactDAO {
-  constructor(public http: Http, private secureStorage: SecureStorage) {
-    this.secureStorage.create('SofiApp').then(() => console.log('Storage is ready!'),
-      error => console.log(error)
-    );
+  secureStorage: SecureStorage;
+
+  constructor(public http: Http) {
+    this.secureStorage = new SecureStorage();
   }
 
   saveContact(contact: Contact) {
+    this.secureStorage.create('SofiApp').then(() => alert('Storage is ready!'),
+      error => alert(error)
+    );
     alert(contact.displayName);
   }
 }

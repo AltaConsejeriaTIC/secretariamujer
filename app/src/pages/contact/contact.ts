@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
-import {Contacts, Contact, IContactProperties} from 'ionic-native';
+import {Contacts, Contact, IContactProperties, SecureStorage} from 'ionic-native';
 import {ContactDAO} from "../../providers/contact-dao";
 
 @Component({
@@ -16,6 +16,10 @@ export class ContactPage {
   }
 
   ionViewDidLoad() {
+  /*  let secureStorage: SecureStorage = new SecureStorage();
+    secureStorage.create('SofiApp').then(() => alert('Storage is ready!'),
+      error => console.log(error)
+    );*/
   }
 
   openContactList(index: number) {

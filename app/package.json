@@ -49,7 +49,10 @@
     "cordova-plugin-whitelist",
     "cordova-plugin-statusbar",
     "cordova-plugin-splashscreen",
-    "ionic-plugin-keyboard"
+    "ionic-plugin-keyboard",
+    "call-number",
+    "cordova-plugin-contacts",
+    "cordova-plugin-secure-storage"
   ],
   "cordovaPlatforms": [],
   "description": "Aplicación contra el maltrado de mujeres"
