@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import {SelectCategoryService} from "../../providers/select-category-service";
-import {TestCategory } from "../../entity/test-categories"
+import {TestCategory } from "../../entity/test-categories";
+import {TipsPage} from "../tips-page/tips-page";
 
 @Component({
   selector: 'page-select-tips-category',
@@ -24,7 +25,11 @@ export class SelectTipsCategoryPage {
 
   showTipsByCategory(categoryId: number) {
     this.selectCategoryService.setSelectedCategoryId(categoryId);
-    /*this.showTestPage();*/
+    this.showTipsPage();
+  }
+
+  private showTipsPage() {
+    this.navController.push(TipsPage);
   }
 
   goToMenuPage() {
