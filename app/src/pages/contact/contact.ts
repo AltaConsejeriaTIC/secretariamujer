@@ -5,7 +5,7 @@ import {ContactDAO} from "../../providers/contact-dao";
 
 @Component({
   selector: 'page-contact',
-  templateUrl: 'contact.html'
+  templateUrl: './contact.html'
 })
 
 export class ContactPage {

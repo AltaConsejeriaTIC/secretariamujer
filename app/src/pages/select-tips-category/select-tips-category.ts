@@ -5,7 +5,7 @@ import {TestCategory } from "../../entity/test-categories"
 
 @Component({
   selector: 'page-select-tips-category',
-  templateUrl: 'select-tips-category.html'
+  templateUrl: './select-tips-category.html'
 })
 export class SelectTipsCategoryPage {
   tipsCategories: TestCategory[];
