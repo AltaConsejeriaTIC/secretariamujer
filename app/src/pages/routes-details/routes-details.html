@@ -12,8 +12,9 @@
 <ion-content no-bounce class="routes-details-background">
   <ion-grid no-padding>
     <ion-row [class]="subheaderBackgroundColor[attentionRoute.id]">
-      <ion-icon class="go-back-icon-margin icon-back" name="icon-fill-back-arrow" (click)="goBackPage()" ></ion-icon>
-      <label class="location-name location-title-margin" *ngFor="let label of attentionRoute.labels">{{label}}&nbsp;</label>
+      <ion-icon class="go-back-icon-margin icon-back" name="icon-fill-back-arrow" (click)="goBackPage()"></ion-icon>
+      <label class="location-name location-title-margin"
+             *ngFor="let label of attentionRoute.labels">{{label}}&nbsp;</label>
     </ion-row>
 
     <ion-row *ngFor="let routeDetail of routesDetails;" no-padding>
@@ -26,7 +27,6 @@
         <ion-row>
 
           <ion-col no-padding class="data-col-container">
-
 
 
             <ion-row>
@@ -82,21 +82,18 @@
             </ion-row>
 
 
-
-
           </ion-col>
 
 
-
-          <ion-col class="download-col-container" no-padding style="background-color: red;">
+          <ion-col class="download-col-container" no-padding>
             <ion-row>
-              <ion-icon name="icon-download"></ion-icon>
+              <ion-icon class="icons-color icon-download-size" name="icon-download"></ion-icon>
+            </ion-row>
+            <ion-row class="download-labels-margin">
+              <label class="info-labels download-labels">Descargas</label>
             </ion-row>
             <ion-row>
-              <label>Descargas</label>
-            </ion-row>
-            <ion-row>
-              <label>documentos</label>
+              <label class="info-labels download-labels">documentos</label>
             </ion-row>
           </ion-col>
         </ion-row>

@@ -100,6 +100,10 @@ page-routes-details {
     justify-content: center;
   }
 
+  .download-labels{
+    font-style: italic;
+  }
+
   @media (max-width: 479px) {
     [class^="background-subheader-option-"] {
       height: 50px;
@@ -170,6 +174,22 @@ page-routes-details {
 
     .vertical-separator{
       height: 122px;
+    }
+
+    .download-labels{
+      font-size: 10px;
+    }
+
+    .download-col-container{
+      padding-top: 30px;
+    }
+
+    .download-labels-margin{
+      margin-top: 4px !important;
+    }
+
+    .icon-download-size{
+      font-size: 27px !important;
     }
 
   }
@@ -244,6 +264,20 @@ page-routes-details {
 
     .vertical-separator{
       height: 184px;
+    }
+
+    .download-labels{
+      font-size: 15px;
+    }
+
+
+
+    .download-labels-margin{
+      margin-top: 4px !important;
+    }
+
+    .icon-download-size{
+      font-size: 40px !important;
     }
 
   }
@@ -321,6 +355,22 @@ page-routes-details {
       height: 222px;
       flex-basis: 2px !important;
       max-width: 2px !important;
+    }
+
+    .download-labels{
+      font-size: 13px;
+    }
+
+    .download-col-container{
+      padding-top: 65px;
+    }
+
+    .download-labels-margin{
+      margin-top: 4px !important;
+    }
+
+    .icon-download-size{
+      font-size: 45px !important;
     }
 
   }
