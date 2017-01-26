@@ -90,6 +90,10 @@ page-routes-details {
     max-width: 1px !important;
   }
 
+  .icon-download-size{
+    color: #8A8A8A;
+  }
+
   .download-col-container{
     justify-content: center;
     align-items: center;
@@ -98,6 +102,10 @@ page-routes-details {
 
   .download-col-container ion-row{
     justify-content: center;
+  }
+
+  .download-labels{
+    font-style: italic;
   }
 
   @media (max-width: 479px) {
@@ -133,13 +141,13 @@ page-routes-details {
     }
 
     .right-margin-col{
-      flex-basis: 20px;
-      max-width: 20px;
+      flex-basis: 6.2%;
+      max-width: 6.2%;
     }
 
     .left-margin-col{
-      flex-basis: 36px;
-      max-width: 36px;
+      flex-basis: 11.2%;
+      max-width: 11.2%;
     }
 
     .info-margin-bottom{
@@ -151,8 +159,8 @@ page-routes-details {
     }
 
     .data-col-container{
-      flex-basis: 195px;
-      max-width: 195px;
+      flex-basis: 73.5%;
+      max-width: 73.5%;;
     }
 
     .route-title-container{
@@ -170,6 +178,38 @@ page-routes-details {
 
     .vertical-separator{
       height: 122px;
+    }
+
+    .pin-icon-size{
+      font-size: 18px;
+    }
+
+    .email-icon-size{
+      font-size: 15px !important;
+    }
+
+    .clock-icon-size{
+      font-size: 14px !important;
+    }
+
+    .phone-icon-size{
+      font-size: 16px !important;
+    }
+
+    .download-labels{
+      font-size: 10px;
+    }
+
+    .download-col-container{
+      padding-top: 30px;
+    }
+
+    .download-labels-margin{
+      margin-top: 4px !important;
+    }
+
+    .icon-download-size{
+      font-size: 27px !important;
     }
 
   }
@@ -225,8 +265,8 @@ page-routes-details {
     }
 
     .data-col-container{
-      flex-basis: 287px;
-      max-width: 287px;
+      flex-basis: 73.5%;
+      max-width: 73.5%;;
     }
 
     .route-title-container{
@@ -244,6 +284,34 @@ page-routes-details {
 
     .vertical-separator{
       height: 184px;
+    }
+
+    .pin-icon-size{
+      font-size: 24px;
+    }
+
+    .email-icon-size{
+      font-size: 21px !important;
+    }
+
+    .clock-icon-size{
+      font-size: 19px !important;
+    }
+
+    .phone-icon-size{
+      font-size: 22px !important;
+    }
+
+    .download-labels{
+      font-size: 15px;
+    }
+
+    .download-labels-margin{
+      margin-top: 4px !important;
+    }
+
+    .icon-download-size{
+      font-size: 40px !important;
     }
 
   }
@@ -321,6 +389,38 @@ page-routes-details {
       height: 222px;
       flex-basis: 2px !important;
       max-width: 2px !important;
+    }
+
+    .download-labels{
+      font-size: 13px;
+    }
+
+    .download-col-container{
+      padding-top: 65px;
+    }
+
+    .download-labels-margin{
+      margin-top: 4px !important;
+    }
+
+    .icon-download-size{
+      font-size: 45px !important;
+    }
+
+    .pin-icon-size{
+      font-size: 24px;
+    }
+
+    .email-icon-size{
+      font-size: 21px !important;
+    }
+
+    .clock-icon-size{
+      font-size: 19px !important;
+    }
+
+    .phone-icon-size{
+      font-size: 22px !important;
     }
 
   }

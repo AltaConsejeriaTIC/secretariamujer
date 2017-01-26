@@ -13,10 +13,10 @@ export class AttentionRoutesPage {
 
   constructor(public navController: NavController) {
     this.attentionRoutes = [
-      {id: 0, labels: ['Medidas', 'de Protección'], class: 'option-0', RESTAddres:'protection_measures_routes_rest'},
-      {id: 1, labels: ['Salud'], class: 'option-1', RESTAddres:'health_routes_rest'},
-      {id: 2, labels: ['Justicia'], class: 'option-2', RESTAddres:'justice_routes_rest'},
-      {id: 3, labels: ['Información'], class: 'option-3', RESTAddres:'info_routes_rest'}
+      {id: 0, labels: ['Información'], class: 'option-0', RESTAddres:'info_routes_rest'},
+      {id: 1, labels: ['Medidas', 'de Protección'], class: 'option-1', RESTAddres:'protection_measures_routes_rest'},
+      {id: 2, labels: ['Salud'] , class: 'option-2', RESTAddres:'health_routes_rest'},
+      {id: 3, labels: ['Justicia'], class: 'option-3', RESTAddres:'justice_routes_rest'}
     ]
   }
 
@@ -31,3 +31,5 @@ export class AttentionRoutesPage {
     this.navController.popToRoot();
   }
 }
+
+
