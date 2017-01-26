@@ -24,6 +24,7 @@ import {ContactDAO} from "../providers/contact-dao";
 import {Storage} from '@ionic/storage';
 import {TipsPage} from "../pages/tips-page/tips-page";
 import {ContactAdapter} from "../providers/contact-adapter";
+import {ErrorFactory} from "../providers/error-factory";
 
 @NgModule({
   declarations: [
@@ -69,7 +70,7 @@ import {ContactAdapter} from "../providers/contact-adapter";
     TipsPage
   ],
   providers: [UserDAO, AlertCreator, MapServices, EventsServices, TestsService, SelectCategoryService, ContactDAO,
-    ContactAdapter, Storage,
+    ContactAdapter, Storage, ErrorFactory,
     {
       provide: ErrorHandler,
       useClass: IonicErrorHandler

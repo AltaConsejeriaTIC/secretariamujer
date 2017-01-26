@@ -1,10 +1,11 @@
 import {Component} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
-import {Contacts, Contact} from 'ionic-native';
+import {Contacts, Contact, IContactProperties} from 'ionic-native';
 import {ContactDAO} from "../../providers/contact-dao";
 import {MenuPage} from "../menu/menu";
 import {IContact} from "../../entity/contact";
 import {ContactAdapter} from "../../providers/contact-adapter";
+import {AlertCreator} from "../../providers/alert-creator";
 
 
 const MAX_CONTACTS = 5;
@@ -17,7 +18,8 @@ const MAX_CONTACTS = 5;
 export class ContactPage {
   contacts: IContact[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private contactAdapter: ContactAdapter, private contactDAO: ContactDAO) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private contactAdapter: ContactAdapter,
+              private contactDAO: ContactDAO, private alertCreator: AlertCreator) {
     this.initContacts();
   }
 
@@ -31,20 +33,17 @@ export class ContactPage {
 
   openContactList(index: number) {
     Contacts.pickContact().then((contactProperties: Contact) => {
-      this.contacts[index] = this.contactAdapter.createContact(contactProperties);
+      this.contacts[index] = this.contactAdapter.parseContact(contactProperties);
       this.contactDAO.saveContacts(this.contacts);
+    }).catch(error => {
+      this.handleError(error);
     });
-    //this.contacts[index].name = 'zumbambico' + index;
-    //this.contactDAO.saveContacts(this.contacts);
   }
 
 
   initContacts() {
     this.contacts = new Array<IContact>(MAX_CONTACTS);
-
-    for (let i = 0; i < MAX_CONTACTS; i++) {
-      this.contacts[i] = <IContact>{};
-    }
+    this.contacts.fill({name: '', phoneNumbers: []});
   }
 
   parseContacts(contacts: any[]) {
@@ -55,5 +54,23 @@ export class ContactPage {
 
   goToMenuPage() {
     this.navCtrl.setRoot(MenuPage);
+  }
+
+  handleError(error) {
+    switch ((<Error>error).name) {
+      case 'InvalidContactPhoneNumberError':
+        this.alertCreator.showCofirmationMessage('Contacto No Permitido', 'El contacto seleccionado no tiene ningun numero de telefono. Por favor seleccione otro');
+        break;
+      case 'InvalidContactNameError':
+        this.alertCreator.showCofirmationMessage('Contacto Sin Nombre', 'El contacto seleccionado no tiene nombre. Se guardara con el numero del telefono');
+        break;
+    }
+  }
+
+}
+
+export class InvalidContactError extends Error {
+  constructor(message?: string) {
+    super(message);
   }
 }
