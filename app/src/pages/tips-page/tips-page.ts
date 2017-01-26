@@ -10,6 +10,8 @@ export class TipsPage {
   tipsClass:string = "";
   tipsArrayByCategory: any[];
   categoryTitle:string = "";
+  isTipVisible:boolean[]= [];
+  arrowIconArray:string[]= [];
 
   constructor(public navController: NavController, public navParams: NavParams) {
     this.tipsArrayByCategory = [
@@ -39,6 +41,29 @@ export class TipsPage {
   ionViewDidLoad() {
     this.tipsClass = "economic-violence-style";
     this.categoryTitle = "Violencia Económica";
+    this.setInitialTipState();
+  }
+
+  setInitialTipState() {
+    for (let i = 0; i < this.tipsArrayByCategory.length; i++) {
+      this.isTipVisible.push(false);
+      this.arrowIconArray.push("icon-border-down-arrow");
+    }
+  }
+
+  toggleisShowingTipParameter(index) {
+    for (let i = 0; i < this.tipsArrayByCategory.length; i++) {
+      this.isTipVisible[i] = (index == i)? !this.isTipVisible[index] : false;
+      this.setTipState(i, this.isTipVisible[i]);
+    }
+  }
+
+  setTipState(tipNumber, tipState) {
+    this.arrowIconArray[tipNumber] = (tipState)? "icon-fill-up-arrow" : "icon-border-down-arrow";
+  }
+
+  goBackPage(){
+    this.navController.pop();
   }
 
   goToMenuPage() {
