@@ -61,9 +61,6 @@ export class ContactPage {
       case 'InvalidContactPhoneNumberError':
         this.alertCreator.showCofirmationMessage('Contacto No Permitido', 'El contacto seleccionado no tiene ningun numero de telefono. Por favor seleccione otro');
         break;
-      case 'InvalidContactNameError':
-        this.alertCreator.showCofirmationMessage('Contacto Sin Nombre', 'El contacto seleccionado no tiene nombre. Se guardara con el numero del telefono');
-        break;
     }
   }
 

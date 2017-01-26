@@ -22,7 +22,7 @@ export class ContactAdapter {
     if (contactProperties.name != null) {
       return contactProperties.displayName;
     } else {
-      throw this.errorFactory.createError('InvalidContactNameError');
+      return this.parsePhoneNumbers(contactProperties)[0];
     }
   }
 
