@@ -1,10 +1,114 @@
 page-tips-page {
-  .tips-name {
-    height: 10vh;
+
+  ion-icon, ion-label {
+    color: map_get($colors, SofiaAppWhite);
   }
+
+  .icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  ion-label {
+    font-weight: bold;
+  }
+
+  .tips-name {
+    height: 12vh;
+
+    .category-title {
+      display: flex;
+      align-items: center;
+    }
+
+    ion-label {
+      margin: auto;
+    }
+  }
+
+  .tips-item {
+    height: 19vh;
+    border-bottom: 1px solid rgba(242, 242, 242, 0.2);
+
+    .text-container {
+      display: flex;
+      align-items: center;
+    }
+
+    ion-label {
+      white-space: normal;
+      margin: auto 0 auto 11vw;
+    }
+  }
+
   .economic-violence-style {
+
+    background: $economicViolenceTips;
+
     .tips-name {
-      background: #d85662;
+      background: $economicViolenceTitleBackground;
+    }
+
+    .tips-item {
+      background: $economicViolenceTips;
+    }
+  }
+
+  @media (max-width: 479px) {
+    .tips-name {
+      ion-label {
+        font-size: 14px;
+      }
+    }
+
+    .tips-item {
+      ion-label {
+        font-size: 16px;
+        max-width: 54vw;
+      }
+    }
+
+    ion-icon {
+      font-size: 15px;
+    }
+  }
+
+  @media (min-width: 480px) and (max-width: 767px) {
+    .tips-name {
+      ion-label {
+        font-size: 22px;
+      }
+    }
+
+    .tips-item {
+      ion-label {
+        font-size: 24px;
+        max-width: 52vw;
+      }
+    }
+
+    ion-icon {
+      font-size: 25px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .tips-name {
+      ion-label {
+        font-size: 26px;
+      }
+    }
+
+    .tips-item {
+      ion-label {
+        font-size: 29px;
+        max-width: 40vw;
+      }
+    }
+
+    ion-icon {
+      font-size: 30px;
     }
   }
 }

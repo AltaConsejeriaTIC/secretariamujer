@@ -10,13 +10,25 @@
 
 
 <ion-content no-bounce [class]="tipsClass">
-  <ion-grid class="height-100" no-padding>
+  <ion-grid no-padding>
     <ion-row class="tips-name">
-      <ion-col>
-        icon
+      <ion-col width-20 class="icon-container">
+        <ion-icon name="icon-fill-back-arrow"></ion-icon>
       </ion-col>
-      <ion-col>
-        text
+      <ion-col width-80 class="category-title">
+        <ion-label>
+          {{categoryTitle}}
+        </ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngFor="let tip of tipsArrayByCategory; let id = index" class="tips-item">
+      <ion-col width-80 class="text-container">
+        <ion-label>
+          {{tip.title}}
+        </ion-label>
+      </ion-col>
+      <ion-col width-20 class="icon-container">
+        <ion-icon name="icon-border-down-arrow"></ion-icon>
       </ion-col>
     </ion-row>
   </ion-grid>
