@@ -1,4 +1,5 @@
-export interface Contact {
+export interface IContact {
   name: string,
-  phoneNumbers: number[]
+  phoneNumbers: string[]
 }
+

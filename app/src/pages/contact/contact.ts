@@ -1,8 +1,10 @@
 import {Component} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
-import {IContactProperties} from 'ionic-native';
+import {Contacts, Contact} from 'ionic-native';
 import {ContactDAO} from "../../providers/contact-dao";
 import {MenuPage} from "../menu/menu";
+import {IContact} from "../../entity/contact";
+import {ContactAdapter} from "../../providers/contact-adapter";
 
 
 const MAX_CONTACTS = 5;
@@ -13,9 +15,9 @@ const MAX_CONTACTS = 5;
   templateUrl: './contact.html'
 })
 export class ContactPage {
-  contacts: IContactProperties[];
+  contacts: IContact[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private contactDAO: ContactDAO) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private contactAdapter: ContactAdapter, private contactDAO: ContactDAO) {
     this.initContacts();
   }
 
@@ -28,20 +30,20 @@ export class ContactPage {
   }
 
   openContactList(index: number) {
-    /*Contacts.pickContact().then((contact: Contact) => {
-     this.contacts[index] = {'displayName': contact.displayName, 'phoneNumbers': contact.phoneNumbers};
-     this.contactDAO.saveContacts(this.contacts);
-     });*/
-    this.contacts[index] = {displayName: 'Zumbambico' + index};
-    this.contactDAO.saveContacts(this.contacts);
+    Contacts.pickContact().then((contactProperties: Contact) => {
+      this.contacts[index] = this.contactAdapter.createContact(contactProperties);
+      this.contactDAO.saveContacts(this.contacts);
+    });
+    //this.contacts[index].name = 'zumbambico' + index;
+    //this.contactDAO.saveContacts(this.contacts);
   }
 
 
   initContacts() {
-    this.contacts = new Array<{displayName: '', 'phoneNumbers': Array<number>}>();
+    this.contacts = new Array<IContact>(MAX_CONTACTS);
 
     for (let i = 0; i < MAX_CONTACTS; i++) {
-      this.contacts[i] = {displayName: '', 'phoneNumbers': []};
+      this.contacts[i] = <IContact>{};
     }
   }
 
