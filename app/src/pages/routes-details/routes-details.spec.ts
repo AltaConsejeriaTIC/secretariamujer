@@ -6,7 +6,9 @@ import {
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ConfigMock} from '../../mocks';
 import {RoutesDetailsPage} from "./routes-details";
-import {Http} from "@angular/http";
+import {Http, ConnectionBackend} from "@angular/http";
+import {HttpModule, XHRBackend, Response, ResponseOptions} from "@angular/http";
+import {MockBackend} from '@angular/http/testing';
 
 
 describe('RoutesDetailsPage tests', () => {
@@ -27,12 +29,14 @@ describe('RoutesDetailsPage tests', () => {
       declarations: [RoutesDetailsPage],
       providers: [
         App, Platform, Form, Keyboard, MenuController, NavController, Http,
-        {provide: Config, useClass: ConfigMock}, {provide: NavParams, useValue: stubNavParams}
+        {provide: Config, useClass: ConfigMock}, {provide: NavParams, useValue: stubNavParams},
+        {provide: XHRBackend, useClass: MockBackend }, {provide: ConnectionBackend, useClass: MockBackend}
       ],
       imports: [
         FormsModule,
         IonicModule,
         ReactiveFormsModule,
+        HttpModule
       ],
     }).compileComponents();
   }));
@@ -40,6 +44,15 @@ describe('RoutesDetailsPage tests', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(RoutesDetailsPage);
     routesDetailsPage = fixture.componentInstance;
+  });
+
+
+  it('downloadFile should be defined', () => {
+    expect(routesDetailsPage.downloadFile).toBeDefined();
+  });
+
+  it('downloadFile should ', () => {
+    expect(routesDetailsPage.downloadFile).toBeDefined();
   });
 
 
