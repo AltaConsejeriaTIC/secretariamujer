@@ -24,7 +24,7 @@ import {ContactDAO} from "../providers/contact-dao";
 import {Storage} from '@ionic/storage';
 import {TipsPage} from "../pages/tips-page/tips-page";
 import {ContactAdapter} from "../providers/contact-adapter";
-import {ErrorFactory} from "../providers/error-factory";
+import {ErrorFactory} from "../providers/factory/error-factory";
 import {ContactFactory} from "../providers/factory/contact-factory";
 
 @NgModule({
