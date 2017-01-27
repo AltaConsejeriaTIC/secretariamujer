@@ -64,6 +64,45 @@ page-tips-page {
     }
   }
 
+  .physical-violence-style {
+
+    background: $physicalViolenceTips;
+
+    .tips-name {
+      background: $physicalViolenceTitleBackground;
+    }
+
+    .tips-item {
+      background: $physicalViolenceTips;
+    }
+  }
+
+  .psychological-violence-style {
+
+    background: $psychologicalViolenceTips;
+
+    .tips-name {
+      background: $psychologicalViolenceTitleBackground;
+    }
+
+    .tips-item {
+      background: $psychologicalViolenceTips;
+    }
+  }
+
+  .sexual-violence-style {
+
+    background: $sexualViolenceTips;
+
+    .tips-name {
+      background: $sexualViolenceTitleBackground;
+    }
+
+    .tips-item {
+      background: $sexualViolenceTips;
+    }
+  }
+
   @media (max-width: 479px) {
     .tips-name {
       height: 12vh;
