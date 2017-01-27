@@ -12,4 +12,8 @@ export class ErrorFactory {
 
     return error;
   }
+
+  fireError(errorName: string, errorMessage?: string) {
+    throw this.createError(errorName, errorMessage);
+  }
 }
