@@ -12,7 +12,7 @@
 <ion-content no-bounce [class]="tipsClass">
   <ion-grid no-padding>
     <ion-row class="tips-name">
-      <ion-col width-20 class="icon-container">
+      <ion-col width-20 class="icon-container" (click)="goBackPage()">
         <ion-icon name="icon-fill-back-arrow"></ion-icon>
       </ion-col>
       <ion-col width-80 class="category-title">
@@ -21,15 +21,23 @@
         </ion-label>
       </ion-col>
     </ion-row>
-    <ion-row *ngFor="let tip of tipsArrayByCategory; let id = index" class="tips-item">
-      <ion-col width-80 class="text-container">
-        <ion-label>
-          {{tip.title}}
-        </ion-label>
-      </ion-col>
-      <ion-col width-20 class="icon-container">
-        <ion-icon name="icon-border-down-arrow"></ion-icon>
-      </ion-col>
-    </ion-row>
+    <div *ngFor="let tip of tipsArrayByCategory; let id = index">
+      <ion-row class="tips-item tip-item-{{id}}" (click)="toggleisShowingTipParameter(id)">
+        <ion-col width-80 class="text-container">
+          <ion-label>
+            {{tip.title}}
+          </ion-label>
+        </ion-col>
+        <ion-col width-20 class="icon-container">
+          <ion-icon [name]="arrowIconArray[id]"></ion-icon>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="tip-description" *ngIf="isTipVisible[id]">
+        <p>
+          {{tip.description}}
+        </p>
+      </ion-row>
+    </div>
   </ion-grid>
 </ion-content>

@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
-import 'rxjs/add/operator/map';
-import {Contact, IContactProperties} from 'ionic-native';
 import {Storage} from '@ionic/storage';
+import {IContact} from "../entity/contact";
 
 
 @Injectable()
@@ -11,11 +10,11 @@ export class ContactDAO {
   constructor(private storage: Storage) {
   }
 
-  getContacts(): Promise<IContactProperties[]> {
+  getContacts(): Promise<IContact[]> {
     return this.storage.get('UserContacts');
   }
 
-  saveContacts(contact: IContactProperties[]) {
-    this.storage.set('UserContacts', contact);
+  saveContacts(contacts: IContact[]) {
+    this.storage.set('UserContacts', contacts);
   }
 }

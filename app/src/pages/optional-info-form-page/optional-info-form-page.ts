@@ -3,7 +3,7 @@ import {NavController} from 'ionic-angular';
 import {User} from "../../entity/user";
 import {UserDAO} from "../../providers/user-dao";
 import {AlertCreator} from "../../providers/alert-creator";
-import {ContactPage} from "../contact/contact";
+import {ContactSelectionPage} from "../contact-selection/contact-selection";
 
 @Component({
   selector: 'page-optional-info-form-page',
@@ -50,7 +50,7 @@ export class OptionalInfoFormPagePage {
   }
 
   goToContactPage() {
-    this.navCtrl.setRoot(ContactPage);
+    this.navCtrl.setRoot(ContactSelectionPage);
   }
 
 }

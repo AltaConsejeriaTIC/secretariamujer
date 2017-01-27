@@ -19,7 +19,7 @@ export class AlertCreator {
     alert.present();
   }
 
-  showCofirmationMessage(title: string, message: string, successHandler: any) {
+  showCofirmationMessage(title: string, message: string, successHandler?: any) {
     let alert = this.alertCtrl.create({
       title: title,
       subTitle: message,

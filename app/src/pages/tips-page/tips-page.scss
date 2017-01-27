@@ -15,8 +15,6 @@ page-tips-page {
   }
 
   .tips-name {
-    height: 12vh;
-
     .category-title {
       display: flex;
       align-items: center;
@@ -28,7 +26,6 @@ page-tips-page {
   }
 
   .tips-item {
-    height: 19vh;
     border-bottom: 1px solid rgba(242, 242, 242, 0.2);
 
     .text-container {
@@ -39,6 +36,18 @@ page-tips-page {
     ion-label {
       white-space: normal;
       margin: auto 0 auto 11vw;
+    }
+  }
+
+  .tip-item-0 {
+    box-shadow: inset 0px 4px 4px 0px rgba(0, 0, 0, 0.14);
+  }
+
+  .tip-description {
+    background: #fbfaf0;
+
+    p {
+      margin: 4vh 12vw;
     }
   }
 
@@ -55,14 +64,57 @@ page-tips-page {
     }
   }
 
+  .physical-violence-style {
+
+    background: $physicalViolenceTips;
+
+    .tips-name {
+      background: $physicalViolenceTitleBackground;
+    }
+
+    .tips-item {
+      background: $physicalViolenceTips;
+    }
+  }
+
+  .psychological-violence-style {
+
+    background: $psychologicalViolenceTips;
+
+    .tips-name {
+      background: $psychologicalViolenceTitleBackground;
+    }
+
+    .tips-item {
+      background: $psychologicalViolenceTips;
+    }
+  }
+
+  .sexual-violence-style {
+
+    background: $sexualViolenceTips;
+
+    .tips-name {
+      background: $sexualViolenceTitleBackground;
+    }
+
+    .tips-item {
+      background: $sexualViolenceTips;
+    }
+  }
+
   @media (max-width: 479px) {
     .tips-name {
+      height: 12vh;
+
       ion-label {
         font-size: 14px;
       }
     }
 
     .tips-item {
+      height: 19vh;
+
       ion-label {
         font-size: 16px;
         max-width: 54vw;
@@ -72,16 +124,26 @@ page-tips-page {
     ion-icon {
       font-size: 15px;
     }
+
+    .tip-description {
+      p {
+        font-size: 13px;
+      }
+    }
   }
 
   @media (min-width: 480px) and (max-width: 767px) {
     .tips-name {
+      height: 9vh;
+
       ion-label {
         font-size: 22px;
       }
     }
 
     .tips-item {
+      height: 15vh;
+
       ion-label {
         font-size: 24px;
         max-width: 52vw;
@@ -91,16 +153,26 @@ page-tips-page {
     ion-icon {
       font-size: 25px;
     }
+
+    .tip-description {
+      p {
+        font-size: 20px;
+      }
+    }
   }
 
   @media (min-width: 768px) {
     .tips-name {
+      height: 9vh;
+
       ion-label {
         font-size: 26px;
       }
     }
 
     .tips-item {
+      height: 16vh;
+
       ion-label {
         font-size: 29px;
         max-width: 40vw;
@@ -109,6 +181,12 @@ page-tips-page {
 
     ion-icon {
       font-size: 30px;
+    }
+
+    .tip-description {
+      p {
+        font-size: 24px;
+      }
     }
   }
 }

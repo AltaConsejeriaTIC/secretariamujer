@@ -1,22 +1,34 @@
 import {Injectable} from '@angular/core';
 import {IContactProperties} from "ionic-native";
 import {IContact} from "../entity/contact";
+import {ErrorFactory} from "./factory/error-factory";
+import {ContactFactory} from "./factory/contact-factory";
 
 @Injectable()
 export class ContactAdapter {
-  constructor() {
-
+  constructor(private errorFactory: ErrorFactory, private contactFactory: ContactFactory) {
   }
 
-  createContact(contactProperties: IContactProperties): IContact {
-    let contact: IContact;
+  parseContact(contactProperties: IContactProperties): IContact {
+    let name = this.parseName(contactProperties);
+    let phoneNumber = this.parsePhoneNumber(contactProperties);
 
-    contact.name = contactProperties.displayName;
+    return this.contactFactory.createContact(name, phoneNumber);
+  }
 
-    for (let phoneNumber of contactProperties.phoneNumbers) {
-      contact.phoneNumbers.push(phoneNumber.value);
+  parseName(contactProperties) {
+    return contactProperties.displayName != null ? contactProperties.displayName : this.parsePhoneNumber(contactProperties);
+  }
+
+  parsePhoneNumber(contactProperties): string {
+    let phoneNumber: string;
+
+    if (contactProperties.phoneNumber != null) {
+      phoneNumber = contactProperties.phoneNumber[0].value;
+    } else {
+      throw this.errorFactory.createError('InvalidContactPhoneNumberError');
     }
 
-    return contact;
+    return phoneNumber;
   }
 }

@@ -18,12 +18,14 @@ import {SelectCategoryService} from "../providers/select-category-service";
 import {AttentionRoutesPage} from "../pages/attention-routes/attention-routes";
 import {AttentionRoutesLocationPage} from "../pages/attention-routes-location/attention-routes-location";
 import {RoutesDetailsPage} from "../pages/routes-details/routes-details";
-import {ContactPage} from "../pages/contact/contact";
+import {ContactSelectionPage} from "../pages/contact-selection/contact-selection";
 import {SelectTipsCategoryPage} from "../pages/select-tips-category/select-tips-category";
 import {ContactDAO} from "../providers/contact-dao";
 import {Storage} from '@ionic/storage';
 import {TipsPage} from "../pages/tips-page/tips-page";
 import {ContactAdapter} from "../providers/contact-adapter";
+import {ErrorFactory} from "../providers/factory/error-factory";
+import {ContactFactory} from "../providers/factory/contact-factory";
 
 @NgModule({
   declarations: [
@@ -39,7 +41,7 @@ import {ContactAdapter} from "../providers/contact-adapter";
     AttentionRoutesPage,
     AttentionRoutesLocationPage,
     RoutesDetailsPage,
-    ContactPage,
+    ContactSelectionPage,
     SelectTipsCategoryPage,
     TipsPage
 
@@ -64,12 +66,12 @@ import {ContactAdapter} from "../providers/contact-adapter";
     AttentionRoutesPage,
     AttentionRoutesLocationPage,
     RoutesDetailsPage,
-    ContactPage,
+    ContactSelectionPage,
     SelectTipsCategoryPage,
     TipsPage
   ],
   providers: [UserDAO, AlertCreator, MapServices, EventsServices, TestsService, SelectCategoryService, ContactDAO,
-    ContactAdapter, Storage,
+    ContactAdapter, Storage, ErrorFactory, ContactFactory,
     {
       provide: ErrorHandler,
       useClass: IonicErrorHandler
