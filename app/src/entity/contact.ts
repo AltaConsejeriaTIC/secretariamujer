@@ -4,20 +4,11 @@ export interface IContact {
 }
 
 export class Contact implements IContact {
-  name: string;
   phoneNumbers: string[];
+  name: string;
 
-  constructor() {
+  constructor(name?: string, phoneNumbers?: string[]) {
+    this.name = name;
+    this.phoneNumbers = phoneNumbers;
   }
-}
-
-export class ContactFactory {
-  constructor(){
-
-  }
-
-  createContact(){
-    return new Contact();
-  }
-
 }

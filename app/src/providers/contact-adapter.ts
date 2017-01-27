@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {IContactProperties} from "ionic-native";
 import {IContact} from "../entity/contact";
-import {InvalidContactError} from "../pages/contact/contact";
 import {ErrorFactory} from "./error-factory";
 
 @Injectable()
@@ -19,11 +18,7 @@ export class ContactAdapter {
   }
 
   parseName(contactProperties) {
-    if (contactProperties.name != null) {
-      return contactProperties.displayName;
-    } else {
-      return this.parsePhoneNumbers(contactProperties)[0];
-    }
+    return contactProperties.displayName != null ? contactProperties.displayName : this.parsePhoneNumbers(contactProperties)[0];
   }
 
   parsePhoneNumbers(contactProperties): string[] {

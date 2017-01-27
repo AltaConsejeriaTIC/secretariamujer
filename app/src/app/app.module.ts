@@ -25,6 +25,7 @@ import {Storage} from '@ionic/storage';
 import {TipsPage} from "../pages/tips-page/tips-page";
 import {ContactAdapter} from "../providers/contact-adapter";
 import {ErrorFactory} from "../providers/error-factory";
+import {ContactFactory} from "../providers/factory/contact-factory";
 
 @NgModule({
   declarations: [
@@ -70,7 +71,7 @@ import {ErrorFactory} from "../providers/error-factory";
     TipsPage
   ],
   providers: [UserDAO, AlertCreator, MapServices, EventsServices, TestsService, SelectCategoryService, ContactDAO,
-    ContactAdapter, Storage, ErrorFactory,
+    ContactAdapter, Storage, ErrorFactory, ContactFactory,
     {
       provide: ErrorHandler,
       useClass: IonicErrorHandler
