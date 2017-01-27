@@ -37,7 +37,7 @@ export class TipsPage {
 
   getTips(){
     let RESTAddress=this.selectedTipCategory.RESTAddres;
-    this.http.get('http://192.168.88.152:9000/'+RESTAddress+'?_format=json').map(res => res.json()).subscribe(response => {
+    this.http.get('http://192.168.88.245:9000/'+RESTAddress+'?_format=json').map(res => res.json()).subscribe(response => {
       this.tipsArrayByCategory=response;
       this.setInitialTipState();
       console.log("la respuesta", this.tipsArrayByCategory);
