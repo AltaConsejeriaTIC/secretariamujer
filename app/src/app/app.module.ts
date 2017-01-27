@@ -18,7 +18,7 @@ import {SelectCategoryService} from "../providers/select-category-service";
 import {AttentionRoutesPage} from "../pages/attention-routes/attention-routes";
 import {AttentionRoutesLocationPage} from "../pages/attention-routes-location/attention-routes-location";
 import {RoutesDetailsPage} from "../pages/routes-details/routes-details";
-import {ContactPage} from "../pages/contact/contact";
+import {ContactSelectionPage} from "../pages/contact-selection/contact-selection";
 import {SelectTipsCategoryPage} from "../pages/select-tips-category/select-tips-category";
 import {ContactDAO} from "../providers/contact-dao";
 import {Storage} from '@ionic/storage';
@@ -41,7 +41,7 @@ import {ContactFactory} from "../providers/factory/contact-factory";
     AttentionRoutesPage,
     AttentionRoutesLocationPage,
     RoutesDetailsPage,
-    ContactPage,
+    ContactSelectionPage,
     SelectTipsCategoryPage,
     TipsPage
 
@@ -66,7 +66,7 @@ import {ContactFactory} from "../providers/factory/contact-factory";
     AttentionRoutesPage,
     AttentionRoutesLocationPage,
     RoutesDetailsPage,
-    ContactPage,
+    ContactSelectionPage,
     SelectTipsCategoryPage,
     TipsPage
   ],

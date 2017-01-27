@@ -13,10 +13,10 @@ const MAX_CONTACTS = 5;
 
 
 @Component({
-  selector: 'page-contact',
-  templateUrl: './contact.html'
+  selector: 'page-contact-selection',
+  templateUrl: 'contact-selection.html'
 })
-export class ContactPage {
+export class ContactSelectionPage {
   contacts: IContact[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private contactAdapter: ContactAdapter,
