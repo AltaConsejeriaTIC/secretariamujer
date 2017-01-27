@@ -11,7 +11,9 @@ describe('ErrorFactory tests', () => {
   });
 
   it('fireError should fire a error with a given name and message', () => {
-    expect(errorFactory.fireError()).toThrowError();
+    expect(() => {
+      errorFactory.fireError('ErrorDummy')
+    }).toThrowError();
   });
 
 });
