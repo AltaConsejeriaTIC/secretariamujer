@@ -27,7 +27,7 @@ export class RoutesDetailsPage {
 
   getRoutes(){
     let RESTAddress=this.attentionRoute.RESTAddres+"/"+this.location;
-    this.http.get('http://192.168.88.147:9000/'+RESTAddress+'?_format=json').map(res => res.json()).subscribe(response => {
+    this.http.get('http://192.168.88.245:9000/'+RESTAddress+'?_format=json').map(res => res.json()).subscribe(response => {
       this.routesDetails=response;
       console.log("la respuesta", this.routesDetails);
     }, err => {
