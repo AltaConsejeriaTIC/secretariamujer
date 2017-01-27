@@ -6,7 +6,7 @@ export class ContactFactory {
   constructor() {
   }
 
-  createContact(name?: string, phoneNumbers?: string[]): IContact {
-    return new Contact(name, phoneNumbers);
+  createContact(name?: string, phoneNumber?: string): IContact {
+    return new Contact(name, phoneNumber);
   }
 }

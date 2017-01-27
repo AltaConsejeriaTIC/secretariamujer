@@ -1,14 +1,14 @@
 export interface IContact {
   name: string,
-  phoneNumbers: string[]
+  phoneNumber: string
 }
 
 export class Contact implements IContact {
-  phoneNumbers: string[];
+  phoneNumber: string;
   name: string;
 
-  constructor(name?: string, phoneNumbers?: string[]) {
+  constructor(name?: string, phoneNumber?: string) {
     this.name = name;
-    this.phoneNumbers = phoneNumbers;
+    this.phoneNumber = phoneNumber;
   }
 }

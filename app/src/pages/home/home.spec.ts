@@ -10,7 +10,6 @@ describe('RequiredInfoFormPage tests', () => {
   let home2Page: HomePage;
   let fixture: ComponentFixture<HomePage>;
 
-
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [HomePage],
