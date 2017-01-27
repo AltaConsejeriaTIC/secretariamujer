@@ -42,5 +42,8 @@ export class RoutesDetailsPage {
   goToMenuPage() {
     this.navCtrl.popToRoot();
   }
+  downloadFile(){
+
+  }
 
 }
