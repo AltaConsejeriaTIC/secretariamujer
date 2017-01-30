@@ -23,6 +23,9 @@ describe('RoutesDetailsPage tests', () => {
       }
     }
   };
+  let stubAlertCreator={
+    showSimpleAlert:()=>{}
+  };
 
 
   beforeEach(async(() => {
@@ -32,7 +35,7 @@ describe('RoutesDetailsPage tests', () => {
         App, Platform, Form, Keyboard, MenuController, NavController, Http,
         {provide: Config, useClass: ConfigMock}, {provide: NavParams, useValue: stubNavParams},
         {provide: XHRBackend, useClass: MockBackend }, {provide: ConnectionBackend, useClass: MockBackend},
-        {provide: AlertCreator, useClass: ConfigMock}
+        {provide: AlertCreator, useValue: stubAlertCreator}
       ],
       imports: [
         FormsModule,
@@ -49,15 +52,33 @@ describe('RoutesDetailsPage tests', () => {
   });
 
 
-  it('downloadFile should be defined', () => {
-    expect(routesDetailsPage.downloadFileListener).toBeDefined();
+  it('downloadFile should call showNoFileAlert if route has no url File', () => {
+    routesDetailsPage.routesDetails=[{
+      email: "",
+      address: "",
+      schedule: "",
+      phone: "",
+      location: "",
+      file:""
+    }];
+    spyOn(routesDetailsPage,'showNoFileAlert');
+    routesDetailsPage.downloadFileListener(0);
+    expect(routesDetailsPage.showNoFileAlert).toHaveBeenCalled();
   });
 
-  it('downloadFile should ', () => {
-    expect(routesDetailsPage.downloadFileListener).toBeDefined();
+  it('downloadFile should call openBrowser if route has url File', () => {
+    routesDetailsPage.routesDetails=[{
+      email: "",
+      address: "",
+      schedule: "",
+      phone: "",
+      location: "",
+      file:"http://test.com"
+    }];
+    spyOn(routesDetailsPage,'openBrowser');
+    routesDetailsPage.downloadFileListener(0);
+    expect(routesDetailsPage.openBrowser).toHaveBeenCalled();
   });
-
-
 
 });
 
