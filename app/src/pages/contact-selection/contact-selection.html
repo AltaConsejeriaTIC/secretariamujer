@@ -2,22 +2,20 @@
   <ion-grid>
     <ion-row>
       <ion-col>
-        <p>Agrega tus contactos de emergencia</p>
+        <p class="contact-selection-title">Agrega tus contactos de emergencia</p>
       </ion-col>
     </ion-row>
-    <ion-row *ngFor="let contact of contacts; let index = index;">
-      <ion-col width-20>
-        <button ion-button (click)="openContactList(index)">
+    <ion-row *ngFor="let contact of contacts; let index = index;" class="justify-center-row contact-row">
+        <button ion-button (click)="openContactList(index)" class="add-button">
           <ion-icon name="add"></ion-icon>
         </button>
-      </ion-col>
-      <ion-col center class="contact-name">
-        <label ion-text>{{contact.name}}</label>
+      <ion-col center [class]="contact.name != null ? 'contact-name enabled' : 'contact-name disabled'">
+        <label ion-text>{{contact.name != null ? contact.name : 'Agregar Contacto'}}</label>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col text-center>
-        <button ion-button (click)="goToMenuPage()">Finalizar</button>
+        <button class="finish-button" ion-button (click)="goToMenuPage()">Finalizar</button>
       </ion-col>
     </ion-row>
   </ion-grid>

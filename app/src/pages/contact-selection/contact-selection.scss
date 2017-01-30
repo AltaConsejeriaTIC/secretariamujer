@@ -1,3 +1,170 @@
-page-contact {
+page-contact-selection {
+  ion-content {
+    background: map_get($colors, backgroundPurple) !important;
 
+    p, label, .finish-button {
+      color: map_get($colors, SofiaAppWhite);
+      font-weight: bold;
+    }
+
+    .contact-selection-title {
+      text-align: center;
+    }
+    .add-button, .finish-button {
+      background: transparent;
+      border: 2px solid map_get($colors, SofiaAppWhite);
+    }
+
+    .enabled, .disabled {
+      background: transparent;
+    }
+
+    .enabled {
+      border: 2px solid map_get($colors, SofiaAppWhite);
+    }
+
+    .disabled {
+      border: 2px solid rgba(242, 242, 242, 0.4);
+    }
+
+    .disabled label {
+      color: rgba(242, 242, 242, 0.4);
+    }
+
+    .add-button {
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+      margin: 0 -0.3vw 0 0;
+      padding: 0;
+    }
+
+    .contact-name {
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+      align-items: center;
+      display: flex;
+      border-left-width: 0px;
+    }
+
+    .contact-name  label {
+      margin-left: 2vw;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .finish-button {
+      border-radius: 10px;
+      margin: 4vh 0 0;
+    }
+
+    .contact-row {
+      margin: 0 0 4vh;
+    }
+  }
+
+  @media (max-width: 479px) {
+    .contact-selection-title {
+      margin: 15vh 0 4vh;
+    }
+
+    .contact-selection-title {
+      font-size: 13px;
+    }
+
+    .contact-name {
+      max-width: 183px;
+    }
+
+    .contact-name label {
+      font-size: 16px;
+      max-width: 170px;
+    }
+
+    .finish-button, .add-button {
+      font-size: 18px;
+    }
+
+    .add-button {
+      width: 40px;
+    }
+
+    .finish-button {
+      width: 200px;
+    }
+
+    .add-button, .contact-name, .finish-button {
+      height: 40px;
+    }
+  }
+
+  @media (min-width: 480px) and (max-width: 767px) {
+    .contact-selection-title {
+      margin: 20vh 0 4vh;
+    }
+
+    .contact-selection-title {
+      font-size: 18px;
+    }
+
+    .contact-name {
+      max-width: 250px;
+    }
+
+    .contact-name label {
+      font-size: 22px;
+      max-width: 230px;
+    }
+
+    .finish-button, .add-button {
+      font-size: 26px;
+    }
+
+    .add-button {
+      width: 56px;
+    }
+
+    .finish-button {
+      width: 272px;
+    }
+
+    .add-button, .contact-name, .finish-button {
+      height: 56px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .contact-selection-title {
+      margin: 21vh 0 4vh;
+    }
+
+    .contact-selection-title {
+      font-size: 23px;
+    }
+
+    .contact-name {
+      max-width: 311px;
+    }
+
+    .contact-name label {
+      font-size: 27px;
+      max-width: 300px;
+    }
+
+    .finish-button, .add-button {
+      font-size: 32px;
+    }
+
+    .add-button {
+      width: 70px;
+    }
+
+    .finish-button {
+      width: 340px;
+    }
+
+    .add-button, .contact-name, .finish-button {
+      height: 70px;
+    }
+  }
 }
