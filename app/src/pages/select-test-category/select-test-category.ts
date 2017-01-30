@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
-import {SelectCategoryService} from "../../providers/select-category-service";
 import {TestPage} from "../test-page/test-page";
 import { TestCategory } from "../../entity/test-categories"
 
@@ -11,7 +10,7 @@ import { TestCategory } from "../../entity/test-categories"
 export class SelectTestCategoryPage {
   testCategories: TestCategory[];
 
-  constructor(public navController: NavController, public selectCategoryService: SelectCategoryService) {
+  constructor(public navController: NavController) {
     this.testCategories = [
       {id: 0, labels: ['Violencia', 'Económica'], class: 'option-0', RESTAddress:'preguntas-violencia-economica'},
       {id: 1, labels: ['Violencia', 'Física'], class: 'option-1', RESTAddress:'preguntas-violencia-fisica'},

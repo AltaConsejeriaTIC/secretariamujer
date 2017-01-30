@@ -9,7 +9,6 @@ import {AlertCreator} from  '../../providers/alert-creator'
 import {AlertController} from "ionic-angular";
 import {TestPage} from "./test-page";
 import {TestsService} from "../../providers/tests-service";
-import {SelectCategoryService} from "../../providers/select-category-service";
 import {UserDAO} from "../../providers/user-dao";
 
 
@@ -19,7 +18,6 @@ describe('TestPage tests', () => {
   let fixture: ComponentFixture<TestPage>;
   let alertCreator: AlertCreator;
   let testService: TestsService;
-  let testSelectCategoryService: SelectCategoryService;
   let stubNavParams={
     get:()=>{
       return{
@@ -35,7 +33,7 @@ describe('TestPage tests', () => {
       declarations: [TestPage],
       providers: [
         App, Platform, Form, Keyboard, MenuController, NavController, AlertCreator, AlertController, TestPage,
-        TestsService, SelectCategoryService, UserDAO,
+        TestsService, UserDAO,
         {
           provide: Config, useClass: ConfigMock
         },
@@ -56,16 +54,13 @@ describe('TestPage tests', () => {
     testPage = fixture.componentInstance;
   });
 
-  beforeEach(inject([AlertCreator, TestsService, SelectCategoryService], (_alertCreator, _testService, _SelectCategoryService) => {
+  beforeEach(inject([AlertCreator, TestsService], (_alertCreator, _testService) => {
     alertCreator = _alertCreator;
     testService = _testService;
-    testSelectCategoryService = _SelectCategoryService;
   }));
 
   it('loadQuestions should call getTestQuestions from TestsService', () => {
     spyOn(testService, 'getTestQuestions').and.callThrough();
-    testSelectCategoryService.setCategory('tests');
-    testSelectCategoryService.setSelectedCategoryId(1);
     testPage.loadQuestions();
     expect(testService.getTestQuestions).toHaveBeenCalled();
   });

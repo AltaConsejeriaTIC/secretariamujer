@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import {Http, Response} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {Observable} from "rxjs";
-import {SelectCategoryService} from "./select-category-service";
 
 @Injectable()
 export class TestsService {
@@ -15,11 +14,11 @@ export class TestsService {
   yesPercentage:number;
   noPercentage:number;
 
-  constructor(public http: Http, public selectCategoryService:SelectCategoryService) {
+  constructor(public http: Http) {
   }
 
   getTestQuestions(RESTAddress):Observable<Response>{
-    return  this.http.get('http://192.168.88.245:9000/'+RESTAddress+'?_format=json')
+    return  this.http.get('http://192.168.0.13:9000/'+RESTAddress+'?_format=json')
   }
 
   addCurrentQuestionAnswerToTotalUserAnswers(currentQuestionUserAnswers){
