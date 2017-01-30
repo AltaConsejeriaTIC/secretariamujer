@@ -3,6 +3,7 @@ import {NavController} from 'ionic-angular';
 import {AlertCreator} from "../../providers/alert-creator";
 import {WelcomeTestPage} from "../welcome-test/welcome-test";
 import {CallNumber} from 'ionic-native';
+import {SettingsPage} from "../settings-page/settings-page";
 
 @Component({
   selector: 'page-menu',
@@ -64,7 +65,7 @@ export class MenuPage {
         icon: 'icon-conf',
         hint:  ['¿A quién puedo dar', 'aviso si me encuentro', 'en riesgo?'],
         goPage: function () {
-          alertCreator.showSimpleAlert("Info", "Ir a la página de Configuracion esta en desarrollo");
+          navController.push(SettingsPage);
         }
       }
     ];
