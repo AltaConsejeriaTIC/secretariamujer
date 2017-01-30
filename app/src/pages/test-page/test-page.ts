@@ -135,7 +135,7 @@ export class TestPage {
   }
 
   goToTips() {
-    this.navController.push(TipsPage)
+    this.navController.push(TipsPage, {selectedTipCategory:this.navParams.get('selectedTipCategory')});
   }
 
   goToRoutes() {
