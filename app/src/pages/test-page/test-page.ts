@@ -1,9 +1,11 @@
 import {Component} from '@angular/core';
-import {NavController, Platform, Nav} from 'ionic-angular';
+import {NavController, Platform, Nav, NavParams} from 'ionic-angular';
 import {TestsService} from "../../providers/tests-service";
 import {AlertCreator} from "../../providers/alert-creator";
 import {UserDAO} from "../../providers/user-dao";
 import {AttentionRoutesPage} from "../attention-routes/attention-routes";
+import {TipsPage} from "../tips-page/tips-page";
+import {TestCategory} from "../../entity/test-categories";
 
 @Component({
   selector: 'page-test-page',
@@ -23,8 +25,9 @@ export class TestPage {
   resultTipFourthPhrase: string;
   buttonEnabled:boolean=false;
   buttonClass:string="next-question unabled-button";
+  selectedTestCategory:TestCategory;
 
-  constructor(public platform: Platform, private nav: Nav, public navController: NavController, public testService: TestsService, public alertCreator: AlertCreator, public userDAO: UserDAO) {
+  constructor(public platform: Platform, private nav: Nav, public navController: NavController, public navParams:NavParams, public testService: TestsService, public alertCreator: AlertCreator, public userDAO: UserDAO) {
     this.questionsObject = [
       {
         "pregunta": "",
@@ -33,6 +36,8 @@ export class TestPage {
         "respuesta3": "",
       },
     ];
+    this.selectedTestCategory=this.navParams.get('selectedTestCategory');
+    this.categoryTitle = this.getCategoryname();
     this.userName = this.userDAO.getUsername() || "Yabushita Mai";
     this.clearCheckboxArray();
     this.platform.registerBackButtonAction(() => {
@@ -45,12 +50,19 @@ export class TestPage {
   }
 
   ionViewDidLoad() {
-    this.categoryTitle = this.testService.getNameCategoryById();
     this.loadQuestions();
   }
 
+  getCategoryname(){
+    let categoryTitle = "";
+    for (let i = 0; i < this.selectedTestCategory.labels.length; i++) {
+      categoryTitle += this.selectedTestCategory.labels[i] + " ";
+    }
+    return categoryTitle;
+  }
+
   loadQuestions() {
-    this.testService.getTestQuestions().map(res => res.json()).subscribe(response => {
+    this.testService.getTestQuestions(this.selectedTestCategory.RESTAddress).map(res => res.json()).subscribe(response => {
       console.log("la respuesta", response);
       this.questionsObject = response;
       this.questionsNumber = (this.questionsObject.length - 1);
@@ -123,7 +135,7 @@ export class TestPage {
   }
 
   goToTips() {
-
+    this.navController.push(TipsPage, {selectedTipCategory:this.navParams.get('selectedTipCategory')});
   }
 
   goToRoutes() {

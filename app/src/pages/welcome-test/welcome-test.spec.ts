@@ -3,14 +3,12 @@ import { App, MenuController, NavController, Platform, Config, Keyboard, Form, I
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ConfigMock } from '../../mocks';
 import {WelcomeTestPage} from "./welcome-test";
-import {SelectCategoryService} from "../../providers/select-category-service";
 import {UserDAO} from "../../providers/user-dao";
 
 describe('WelcomeTestPage tests', () => {
 
   let testWelcomePage: WelcomeTestPage;
   let fixture : ComponentFixture<TestPage>;
-  let testSelectCategoryService:SelectCategoryService;
   let testNavController:NavController;
   let stubNavController = {push: (page) => {}};
 
@@ -19,7 +17,7 @@ describe('WelcomeTestPage tests', () => {
     TestBed.configureTestingModule({
       declarations: [WelcomeTestPage],
       providers: [
-        App, Platform, Form, Keyboard, MenuController,WelcomeTestPage,SelectCategoryService,UserDAO,
+        App, Platform, Form, Keyboard, MenuController,WelcomeTestPage,UserDAO,
         {provide: Config, useClass: ConfigMock},{provide:NavController, useValue:stubNavController}
       ],
       imports: [
@@ -35,18 +33,10 @@ describe('WelcomeTestPage tests', () => {
     testWelcomePage=fixture.componentInstance;
   });
 
-  beforeEach(inject([WelcomeTestPage, SelectCategoryService, NavController], (_welcomeTestPage, _selectCategoryService,_navController) => {
+  beforeEach(inject([WelcomeTestPage, NavController], (_welcomeTestPage,_navController) => {
     testWelcomePage=_welcomeTestPage;
-    testSelectCategoryService=_selectCategoryService;
     testNavController=_navController;
   }));
-
-  it('goToContactPage should call setCategory from SelectCategoryService', () => {
-    spyOn(testSelectCategoryService,'setCategory').and.callThrough();
-    spyOn(testNavController,'push');
-    testWelcomePage.goToTestSelectTestCategory();
-    expect(testSelectCategoryService.setCategory).toHaveBeenCalled();
-  });
 
 });
 

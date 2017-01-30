@@ -14,7 +14,6 @@ import {TestsService} from "../providers/tests-service";
 import {MenuPage} from "../pages/menu/menu";
 import {WelcomeTestPage} from "../pages/welcome-test/welcome-test";
 import {SelectTestCategoryPage} from "../pages/select-test-category/select-test-category";
-import {SelectCategoryService} from "../providers/select-category-service";
 import {AttentionRoutesPage} from "../pages/attention-routes/attention-routes";
 import {AttentionRoutesLocationPage} from "../pages/attention-routes-location/attention-routes-location";
 import {RoutesDetailsPage} from "../pages/routes-details/routes-details";
@@ -70,7 +69,7 @@ import {ContactFactory} from "../providers/factory/contact-factory";
     SelectTipsCategoryPage,
     TipsPage
   ],
-  providers: [UserDAO, AlertCreator, MapServices, EventsServices, TestsService, SelectCategoryService, ContactDAO,
+  providers: [UserDAO, AlertCreator, MapServices, EventsServices, TestsService, ContactDAO,
     ContactAdapter, Storage, ErrorFactory, ContactFactory,
     {
       provide: ErrorHandler,

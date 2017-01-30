@@ -1,12 +1,14 @@
 import {ComponentFixture, TestBed, async, inject} from '@angular/core/testing';
-import {App, MenuController, NavController, Platform, Config, Keyboard, Form, IonicModule, Nav}  from 'ionic-angular';
+import {
+  App, MenuController, NavController, Platform, Config, Keyboard, Form, IonicModule, Nav,
+  NavParams
+}  from 'ionic-angular';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ConfigMock, NavMock} from '../../mocks';
 import {AlertCreator} from  '../../providers/alert-creator'
 import {AlertController} from "ionic-angular";
 import {TestPage} from "./test-page";
 import {TestsService} from "../../providers/tests-service";
-import {SelectCategoryService} from "../../providers/select-category-service";
 import {UserDAO} from "../../providers/user-dao";
 
 
@@ -16,7 +18,14 @@ describe('TestPage tests', () => {
   let fixture: ComponentFixture<TestPage>;
   let alertCreator: AlertCreator;
   let testService: TestsService;
-  let testSelectCategoryService: SelectCategoryService;
+  let stubNavParams={
+    get:()=>{
+      return{
+        id:0,
+        labels:['Violencia', "Económica"]
+      }
+    }
+  };
 
 
   beforeEach(async(() => {
@@ -24,13 +33,13 @@ describe('TestPage tests', () => {
       declarations: [TestPage],
       providers: [
         App, Platform, Form, Keyboard, MenuController, NavController, AlertCreator, AlertController, TestPage,
-        TestsService, SelectCategoryService, UserDAO,
+        TestsService, UserDAO,
         {
           provide: Config, useClass: ConfigMock
         },
         {
           provide: Nav, useClass: NavMock
-        }
+        },{provide: NavParams, useValue: stubNavParams},
       ],
       imports: [
         FormsModule,
@@ -45,16 +54,13 @@ describe('TestPage tests', () => {
     testPage = fixture.componentInstance;
   });
 
-  beforeEach(inject([AlertCreator, TestsService, SelectCategoryService], (_alertCreator, _testService, _SelectCategoryService) => {
+  beforeEach(inject([AlertCreator, TestsService], (_alertCreator, _testService) => {
     alertCreator = _alertCreator;
     testService = _testService;
-    testSelectCategoryService = _SelectCategoryService;
   }));
 
   it('loadQuestions should call getTestQuestions from TestsService', () => {
     spyOn(testService, 'getTestQuestions').and.callThrough();
-    testSelectCategoryService.setCategory('tests');
-    testSelectCategoryService.setSelectedCategoryId(1);
     testPage.loadQuestions();
     expect(testService.getTestQuestions).toHaveBeenCalled();
   });

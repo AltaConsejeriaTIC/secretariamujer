@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import {Http, Response} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {Observable} from "rxjs";
-import {SelectCategoryService} from "./select-category-service";
 
 @Injectable()
 export class TestsService {
@@ -15,11 +14,10 @@ export class TestsService {
   yesPercentage:number;
   noPercentage:number;
 
-  constructor(public http: Http, public selectCategoryService:SelectCategoryService) {
+  constructor(public http: Http) {
   }
 
-  getTestQuestions():Observable<Response>{
-    let RESTAddress=this.selectCategoryService.getCategories()[this.selectCategoryService.getSelectedCategoryId()].RESTAddress;
+  getTestQuestions(RESTAddress):Observable<Response>{
     return  this.http.get('http://192.168.88.245:9000/'+RESTAddress+'?_format=json')
   }
 
@@ -54,10 +52,6 @@ export class TestsService {
   calculatePercentages(){
     this.yesPercentage=(this.countedAnswers.yesAnswers*100)/this.totalUserAnswers.length;
     this.noPercentage=(this.countedAnswers.noAnswers*100)/this.totalUserAnswers.length;
-  }
-
-  getNameCategoryById(): string{
-    return this.selectCategoryService.getCategories()[this.selectCategoryService.getSelectedCategoryId()].category;
   }
 
   resetValues(){

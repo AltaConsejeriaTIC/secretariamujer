@@ -9,7 +9,7 @@ import {AlertCreator} from "../../providers/alert-creator";
 import {ContactFactory} from "../../providers/factory/contact-factory";
 
 
-const MAX_CONTACTS = 5;
+const MAX_CONTACTS = 3;
 
 
 @Component({
