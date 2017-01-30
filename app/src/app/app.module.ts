@@ -25,6 +25,7 @@ import {TipsPage} from "../pages/tips-page/tips-page";
 import {ContactAdapter} from "../providers/contact-adapter";
 import {ErrorFactory} from "../providers/factory/error-factory";
 import {ContactFactory} from "../providers/factory/contact-factory";
+import {SettingsPage} from "../pages/settings-page/settings-page";
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import {ContactFactory} from "../providers/factory/contact-factory";
     RoutesDetailsPage,
     ContactSelectionPage,
     SelectTipsCategoryPage,
-    TipsPage
+    TipsPage,
+    SettingsPage
 
   ],
   imports: [
@@ -67,7 +69,8 @@ import {ContactFactory} from "../providers/factory/contact-factory";
     RoutesDetailsPage,
     ContactSelectionPage,
     SelectTipsCategoryPage,
-    TipsPage
+    TipsPage,
+    SettingsPage
   ],
   providers: [UserDAO, AlertCreator, MapServices, EventsServices, TestsService, ContactDAO,
     ContactAdapter, Storage, ErrorFactory, ContactFactory,

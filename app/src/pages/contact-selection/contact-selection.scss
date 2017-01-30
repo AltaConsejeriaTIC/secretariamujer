@@ -61,6 +61,10 @@ page-contact-selection {
     .contact-row {
       margin: 0 0 4vh;
     }
+
+    ion-icon:before {
+      font-weight: bold !important;
+    }
   }
 
   @media (max-width: 479px) {
