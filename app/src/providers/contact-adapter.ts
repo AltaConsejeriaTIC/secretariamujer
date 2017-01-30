@@ -23,8 +23,8 @@ export class ContactAdapter {
   parsePhoneNumber(contactProperties): string {
     let phoneNumber: string;
 
-    if (contactProperties.phoneNumber != null) {
-      phoneNumber = contactProperties.phoneNumber[0].value;
+    if (contactProperties.phoneNumbers != null) {
+      phoneNumber = contactProperties.phoneNumbers[0].value;
     } else {
       throw this.errorFactory.createError('InvalidContactPhoneNumberError');
     }
