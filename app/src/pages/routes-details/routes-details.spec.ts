@@ -9,6 +9,7 @@ import {RoutesDetailsPage} from "./routes-details";
 import {Http, ConnectionBackend} from "@angular/http";
 import {HttpModule, XHRBackend, Response, ResponseOptions} from "@angular/http";
 import {MockBackend} from '@angular/http/testing';
+import {AlertCreator} from "../../providers/alert-creator";
 
 
 describe('RoutesDetailsPage tests', () => {
@@ -30,7 +31,8 @@ describe('RoutesDetailsPage tests', () => {
       providers: [
         App, Platform, Form, Keyboard, MenuController, NavController, Http,
         {provide: Config, useClass: ConfigMock}, {provide: NavParams, useValue: stubNavParams},
-        {provide: XHRBackend, useClass: MockBackend }, {provide: ConnectionBackend, useClass: MockBackend}
+        {provide: XHRBackend, useClass: MockBackend }, {provide: ConnectionBackend, useClass: MockBackend},
+        {provide: AlertCreator, useClass: ConfigMock}
       ],
       imports: [
         FormsModule,

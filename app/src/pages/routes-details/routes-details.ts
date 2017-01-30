@@ -3,6 +3,8 @@ import {NavController, NavParams} from 'ionic-angular';
 import {AttentionRoute} from "../../entity/attention-route";
 import {Http} from "@angular/http";
 import {RouteInfo} from "../../entity/route-info";
+import {InAppBrowser} from "ionic-native"
+import {AlertCreator} from "../../providers/alert-creator";
 
 @Component({
   selector: 'page-routes-details',
@@ -16,7 +18,7 @@ export class RoutesDetailsPage {
   nameColor:string[]=['color-0','color-1','color-2','color-3'];
   routesDetails:RouteInfo[];
 
-  constructor(public navCtrl: NavController, public navParams:NavParams, public http: Http) {
+  constructor(public navCtrl: NavController, public navParams:NavParams, public http: Http, public alertCreator: AlertCreator) {
     this.location=this.navParams.get('location');
     this.attentionRoute=this.navParams.get('attentionRoute');
   }
@@ -42,8 +44,22 @@ export class RoutesDetailsPage {
   goToMenuPage() {
     this.navCtrl.popToRoot();
   }
-  downloadFile(){
 
+  downloadFileListener(id:number){
+    if(this.routesDetails[id].file==""){
+      this.showNoFileAlert();
+    }else{
+      this.openBrowser(id);
+    }
+  }
+
+  showNoFileAlert(){
+    this.alertCreator.showSimpleAlert('Info','No hay archivos para descargar');
+  }
+
+  openBrowser(id:number){
+    let url= "http://192.168.88.245:9000"+this.routesDetails[id].file;
+    let browser= new InAppBrowser(url, "_system", "location=true");
   }
 
 }

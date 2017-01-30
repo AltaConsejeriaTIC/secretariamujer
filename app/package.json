@@ -56,7 +56,8 @@
     "ionic-plugin-keyboard",
     "call-number",
     "cordova-plugin-contacts",
-    "cordova-sqlite-storage"
+    "cordova-sqlite-storage",
+    "cordova-plugin-inappbrowser"
   ],
   "cordovaPlatforms": [],
   "description": "Aplicación contra el maltrado de mujeres"

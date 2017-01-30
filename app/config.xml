@@ -38,4 +38,5 @@
     <plugin name="call-number" spec="~0.0.2" />
     <plugin name="cordova-plugin-contacts" spec="~2.2.1" />
     <plugin name="cordova-sqlite-storage" spec="~2.0.1" />
+    <plugin name="cordova-plugin-inappbrowser" spec="~1.6.1" />
 </widget>

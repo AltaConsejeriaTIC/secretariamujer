@@ -3,5 +3,6 @@ export interface RouteInfo {
   address: string,
   schedule: string,
   phone: string,
-  location: string
+  location: string,
+  file:string
 }
