@@ -41,7 +41,7 @@ export class ContactSelectionPage {
     });
   }
 
-  openContactList(index: number) {
+  selectContactFromDevice(index: number) {
     Contacts.pickContact().then((contactProperties: Contact) => {
       this.contacts[index] = this.contactAdapter.parseContact(contactProperties);
       this.contactDAO.saveContacts(this.contacts);

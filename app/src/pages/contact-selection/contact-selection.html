@@ -7,7 +7,7 @@
     </ion-row>
     <ion-row *ngFor="let contact of contacts; let index = index;">
       <ion-col width-20>
-        <button ion-button (click)="openContactList(index)">
+        <button ion-button (click)="selectContactFromDevice(index)">
           <ion-icon name="add"></ion-icon>
         </button>
       </ion-col>
