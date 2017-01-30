@@ -9,6 +9,8 @@ import {AlertCreator} from "../../providers/alert-creator";
 import {ContactSelectionPage} from "./contact-selection";
 import {ContactAdapter} from "../../providers/contact-adapter";
 import {ContactFactory} from "../../providers/factory/contact-factory";
+import {ErrorFactory} from "../../providers/factory/error-factory";
+import {ContactDAO} from "../../providers/contact-dao";
 
 
 describe('ContactSelection tests', () => {
@@ -21,13 +23,17 @@ describe('ContactSelection tests', () => {
       declarations: [ContactSelectionPage],
       providers: [
         App, Platform, Form, Keyboard, MenuController, NavController, AlertCreator, AlertController, ContactAdapter,
-        ContactFactory,
+        ContactFactory, ErrorFactory,
         {
           provide: Config,
           useClass: ConfigMock
         },
         {
           provide: NavParams,
+          useClass: ConfigMock
+        },
+        {
+          provide: ContactDAO,
           useClass: ConfigMock
         },
 

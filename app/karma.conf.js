@@ -8,14 +8,18 @@ module.exports = function (config) {
     plugins: [
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
+      //require('karma-phantomjs-launcher'),
       require('karma-remap-istanbul'),
       require('karma-mocha-reporter'),
       require('angular-cli/plugins/karma')
     ],
+    phantomJsLauncher: {
+      exitOnResourceError: true
+    },
     files: [
       'https://maps.googleapis.com/maps/api/js?sensor=false',
       './src/maps.googleapis.com-maps-api.js',
-      { pattern: './src/test.ts', watched: false }
+      {pattern: './src/test.ts', watched: false}
     ],
     preprocessors: {
       './src/test.ts': ['angular-cli']
@@ -31,14 +35,14 @@ module.exports = function (config) {
       environment: 'dev'
     },
     reporters: [
-      'mocha', 'karma-remap-istanbul'
+      'mocha', 'karma-remap-istanbul'//, 'dots'
     ],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome'],
+    browsers: ['Chrome'], //'PhantomJS'
     singleRun: false,
-    mime: { 'text/x-typescript': ['ts', 'tsx'] } // https://github.com/lathonez/clicker/issues/178
+    mime: {'text/x-typescript': ['ts', 'tsx']}
   });
 };
