@@ -50,11 +50,11 @@ describe('RoutesDetailsPage tests', () => {
 
 
   it('downloadFile should be defined', () => {
-    expect(routesDetailsPage.downloadFile).toBeDefined();
+    expect(routesDetailsPage.downloadFileListener).toBeDefined();
   });
 
   it('downloadFile should ', () => {
-    expect(routesDetailsPage.downloadFile).toBeDefined();
+    expect(routesDetailsPage.downloadFileListener).toBeDefined();
   });
 
 
