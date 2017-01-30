@@ -18,7 +18,7 @@ export class TestsService {
   }
 
   getTestQuestions(RESTAddress):Observable<Response>{
-    return  this.http.get('http://192.168.0.13:9000/'+RESTAddress+'?_format=json')
+    return  this.http.get('http://192.168.88.245:9000/'+RESTAddress+'?_format=json')
   }
 
   addCurrentQuestionAnswerToTotalUserAnswers(currentQuestionUserAnswers){
