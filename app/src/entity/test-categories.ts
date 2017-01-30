@@ -1,5 +1,6 @@
 export interface TestCategory {
   id: number,
   labels: string[],
-  class: string
+  class: string,
+  RESTAddress:string
 }

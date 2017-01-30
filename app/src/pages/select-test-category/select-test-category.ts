@@ -13,10 +13,10 @@ export class SelectTestCategoryPage {
 
   constructor(public navController: NavController, public selectCategoryService: SelectCategoryService) {
     this.testCategories = [
-      {id: 0, labels: ['Violencia', 'Económica'], class: 'option-0'},
-      {id: 1, labels: ['Violencia', 'Física'], class: 'option-1'},
-      {id: 2, labels: ['Violencia', 'Psicológica'], class: 'option-2'},
-      {id: 3, labels: ['Violencia', 'Sexual'], class: 'option-3'}
+      {id: 0, labels: ['Violencia', 'Económica'], class: 'option-0', RESTAddress:'preguntas-violencia-economica'},
+      {id: 1, labels: ['Violencia', 'Física'], class: 'option-1', RESTAddress:'preguntas-violencia-fisica'},
+      {id: 2, labels: ['Violencia', 'Psicológica'], class: 'option-2', RESTAddress:'preguntas-violencia-psicologica'},
+      {id: 3, labels: ['Violencia', 'Sexual'], class: 'option-3', RESTAddress:'preguntas-violencia-sexual'}
     ];
   }
 
@@ -24,12 +24,7 @@ export class SelectTestCategoryPage {
   }
 
   beginTest(categoryId: number) {
-    this.selectCategoryService.setSelectedCategoryId(categoryId);
-    this.showTestPage();
-  }
-
-  private showTestPage() {
-    this.navController.push(TestPage);
+    this.navController.push(TestPage,{selectedTestCategory:this.testCategories[categoryId]});
   }
 
   goToMenuPage() {

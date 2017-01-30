@@ -1,5 +1,8 @@
 import {ComponentFixture, TestBed, async, inject} from '@angular/core/testing';
-import {App, MenuController, NavController, Platform, Config, Keyboard, Form, IonicModule, Nav}  from 'ionic-angular';
+import {
+  App, MenuController, NavController, Platform, Config, Keyboard, Form, IonicModule, Nav,
+  NavParams
+}  from 'ionic-angular';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ConfigMock, NavMock} from '../../mocks';
 import {AlertCreator} from  '../../providers/alert-creator'
@@ -17,6 +20,14 @@ describe('TestPage tests', () => {
   let alertCreator: AlertCreator;
   let testService: TestsService;
   let testSelectCategoryService: SelectCategoryService;
+  let stubNavParams={
+    get:()=>{
+      return{
+        id:0,
+        labels:['Violencia', "Económica"]
+      }
+    }
+  };
 
 
   beforeEach(async(() => {
@@ -30,7 +41,7 @@ describe('TestPage tests', () => {
         },
         {
           provide: Nav, useClass: NavMock
-        }
+        },{provide: NavParams, useValue: stubNavParams},
       ],
       imports: [
         FormsModule,

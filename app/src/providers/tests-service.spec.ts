@@ -104,12 +104,6 @@ describe('testsService tests', () => {
     expect(testsService.getResults()).toBe('yes');
   });
 
-  it('getNameCategoryById should return the category name',()=>{
-    testSelectCategoryService.setCategory('tests');
-    testSelectCategoryService.setSelectedCategoryId(0);
-    expect(testsService.getNameCategoryById()).toEqual('Violencia Económica');
-  });
-
   it('resetValues should reset totalUserAnswers array, countedAnswers object, yesPercentage and noPercentage',()=>{
     testsService.resetValues();
     expect(testsService.totalUserAnswers).toEqual([]);
