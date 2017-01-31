@@ -1,13 +1,13 @@
 import {ComponentFixture, TestBed, async} from '@angular/core/testing';
 import {
   App, MenuController, NavController, Platform, Config, Keyboard, Form, IonicModule,
-  NavParams
+  NavParams, LoadingController
 }  from 'ionic-angular';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {ConfigMock} from '../../mocks';
+import {ConfigMock, LoadingControllerMock, LoadingMock} from '../../mocks';
 import {RoutesDetailsPage} from "./routes-details";
 import {Http, ConnectionBackend} from "@angular/http";
-import {HttpModule, XHRBackend, Response, ResponseOptions} from "@angular/http";
+import {HttpModule, XHRBackend} from "@angular/http";
 import {MockBackend} from '@angular/http/testing';
 import {AlertCreator} from "../../providers/alert-creator";
 
@@ -35,7 +35,7 @@ describe('RoutesDetailsPage tests', () => {
         App, Platform, Form, Keyboard, MenuController, NavController, Http,
         {provide: Config, useClass: ConfigMock}, {provide: NavParams, useValue: stubNavParams},
         {provide: XHRBackend, useClass: MockBackend }, {provide: ConnectionBackend, useClass: MockBackend},
-        {provide: AlertCreator, useValue: stubAlertCreator}
+        {provide: AlertCreator, useValue: stubAlertCreator},{provide: LoadingController, useClass: LoadingControllerMock}
       ],
       imports: [
         FormsModule,

@@ -61,3 +61,35 @@ export class MenuMock {
     });
   }
 }
+
+export class LoadingControllerMock{
+  public create():any{
+    return {
+      present:()=>{}
+    }
+  }
+
+  public present():any{
+    return ''
+  }
+
+  public dismiss():any{
+    return ''
+  }
+
+}
+
+export class LoadingMock{
+  public create():any{
+    return ''
+  }
+
+  public present():any{
+    return ''
+  }
+
+  public dismiss():any{
+    return ''
+  }
+
+}
