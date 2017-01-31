@@ -50,30 +50,54 @@ page-settings-page {
   @media (max-width: 479px) {
     .user-name-data {
       ion-icon {
-        font-size: 50px;
-      }
-
-      .user-nickname {
-        font-size: 18px;
-      }
-
-      .user-name {
-        font-size: 14px;
+        font-size: 53px;
       }
     }
 
-    .settings-item {
-      .text-container ion-label {
-        font-size: 16px;
-      }
+    .user-name-data .user-nickname,
+    .settings-item .text-container ion-label {
+      font-size: 16px;
+    }
+
+    .user-name-data .user-name,
+    .settings-item .icon-container > ion-icon {
+      font-size: 15px;
     }
   }
 
   @media (min-width: 480px) and (max-width: 767px) {
+    .user-name-data {
+      ion-icon {
+        font-size: 78px;
+      }
+    }
 
+    .user-name-data .user-nickname,
+    .settings-item .text-container ion-label {
+      font-size: 26px;
+    }
+
+    .user-name-data .user-name,
+    .settings-item .icon-container > ion-icon {
+      font-size: 22px;
+    }
   }
 
   @media (min-width: 768px) {
+    .user-name-data {
+      ion-icon {
+        font-size: 85px;
+      }
+    }
 
+    .user-name-data .user-nickname {
+      font-size: 29px;
+    }
+
+    .user-name-data .user-name,
+    .settings-item .text-container ion-label,
+    .settings-item .icon-container > ion-icon {
+      font-size: 24px;
+    }
   }
 }
