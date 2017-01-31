@@ -3,38 +3,43 @@
     <ion-row class="flex-1"></ion-row>
     <ion-row class="flex-5">
       <ion-col id="optional-info-col" offset-10 width-80>
-        <ion-row>
-          <ion-label text-center class="app-subtitle">Completa tus datos</ion-label>
-        </ion-row>
 
-        <ion-row>
-          <ion-input text-center [(ngModel)]="user.name" class="input-border input-color no-padding" type="text"
-                     placeholder="Tu nombre & apellido"></ion-input>
-        </ion-row>
+        <form [formGroup]="optionalInfoForm" novalidate>
+          <ion-row>
+            <ion-label text-center class="app-subtitle">Completa tus datos</ion-label>
+          </ion-row>
 
-        <ion-row>
-          <ion-input text-center [(ngModel)]="user.email" class="input-border input-color no-padding" type="email"
-                     placeholder="Tu correo electrónico"></ion-input>
-        </ion-row>
+          <ion-row>
+            <ion-input text-center class="input-border input-color no-padding" type="text"
+                       placeholder="Tu nombre & apellido" formControlName="name"></ion-input>
+          </ion-row>
 
-        <ion-row>
-          <ion-input text-center [(ngModel)]="user.phone" class="input-border input-color no-padding" type="tel"
-                     placeholder="Tu teléfono móvil"></ion-input>
-        </ion-row>
+          <ion-row>
+            <ion-input text-center [(ngModel)]="user.email" class="input-border input-color no-padding" type="email"
+                       placeholder="Tu correo electrónico" formControlName="email"></ion-input>
+          </ion-row>
 
-        <ion-row id="optional-info-register-button-container" class="button-section-margin">
-          <ion-col width-45 class="no-padding">
-            <button (click)="saveUser()" class="app-button" ion-button outline>Omitir</button>
-          </ion-col>
+          <ion-row>
+            <ion-input text-center [(ngModel)]="user.phone" class="input-border input-color no-padding" type="tel"
+                       placeholder="Tu teléfono móvil" formControlName="phone"></ion-input>
+          </ion-row>
 
-          <ion-col offset-10 width-45 class="no-padding">
-            <button (click)="saveUser()"
-                    [ngClass]="{'app-button': user.name || user.email || user.phone, 'disabled-button': !user.name && !user.email && !user.phone}"
-                    ion-button outline>Continuar
-            </button>
-          </ion-col>
-        </ion-row>
+          <ion-row id="optional-info-register-button-container" class="button-section-margin">
+            <ion-col width-45 class="no-padding">
+              <button (click)="saveUser()" class="app-button" ion-button outline>Omitir</button>
+            </ion-col>
 
+            <ion-col offset-10 width-45 class="no-padding">
+              <div [hidden]="optionalInfoForm.controls.name.valid">
+                invalid name {{optionalInfoForm.value.name}}
+              </div>
+              <button (click)="saveUser()"
+                      [ngClass]="{'app-button': user.name || user.email || user.phone, 'disabled-button': !user.name && !user.email && !user.phone}"
+                      ion-button outline>Continuar
+              </button>
+            </ion-col>
+          </ion-row>
+        </form>
       </ion-col>
     </ion-row>
 

@@ -8,6 +8,7 @@ import {UserDAO} from "../../providers/user-dao";
 import {OptionalInfoFormPagePage} from "./optional-info-form-page";
 import {Observable} from "rxjs";
 import {User} from "../../entity/user";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 describe('OptionalInfoFormPage tests', () => {
 
@@ -28,12 +29,18 @@ describe('OptionalInfoFormPage tests', () => {
     }
   };
 
+  let mockAlertCreator={
+    showSimpleAlert:()=>{
+
+    }
+  }
+
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [OptionalInfoFormPagePage],
       providers: [
-        App, Platform, Form, Keyboard, MenuController, NavController, AlertCreator, AlertController, OptionalInfoFormPagePage,
+        App, Platform, Form, Keyboard, MenuController, NavController, AlertController, OptionalInfoFormPagePage,
         {
           provide: Config,
           useClass: ConfigMock
@@ -41,6 +48,10 @@ describe('OptionalInfoFormPage tests', () => {
         {
           provide: UserDAO,
           useValue: mockUserDAO
+        },
+        {
+          provide: AlertCreator,
+          useValue: mockAlertCreator
         }
       ],
       imports: [
@@ -82,8 +93,14 @@ describe('OptionalInfoFormPage tests', () => {
    expect(alertCreator.showSimpleAlert).toHaveBeenCalled();
    });*/
 
-  it('isValidEmail should return true if email has @ and .com', () => {
+  it('isValidEmail should return true if the email is valid', () => {
+    optionalInfoFormPage.optionalInfoForm.controls['email'].setValue('a@bc.com');
     expect(optionalInfoFormPage.isValidEmail(user)).toBe(true);
+  });
+
+  it('isValidEmail should return false if the email is invalid', () => {
+    optionalInfoFormPage.optionalInfoForm.controls['email'].setValue('a@b');
+    expect(optionalInfoFormPage.isValidEmail(user)).toBe(false);
   });
 
   it('saveUser should call create from UserDAO', () => {

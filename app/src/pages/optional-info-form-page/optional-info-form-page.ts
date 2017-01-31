@@ -4,6 +4,7 @@ import {User} from "../../entity/user";
 import {UserDAO} from "../../providers/user-dao";
 import {AlertCreator} from "../../providers/alert-creator";
 import {ContactSelectionPage} from "../contact-selection/contact-selection";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'page-optional-info-form-page',
@@ -11,9 +12,16 @@ import {ContactSelectionPage} from "../contact-selection/contact-selection";
 })
 export class OptionalInfoFormPagePage {
   user: User;
+  optionalInfoForm: FormGroup;
 
-  constructor(public navCtrl: NavController, public userDAO: UserDAO, public alertCreator: AlertCreator) {
+  constructor(public navCtrl: NavController, public userDAO: UserDAO, public alertCreator: AlertCreator, private  formBuilder: FormBuilder) {
     this.user = {pass: '', username: '', name: '', email: '', phone: ''};
+
+    this.optionalInfoForm = formBuilder.group({
+      name: ['', Validators.compose([Validators.pattern('[a-zA-Z ]*')])],
+      email: ['', Validators.compose([Validators.pattern('(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*$)')])],
+      phone: ['', Validators.compose([Validators.pattern('\d*'), Validators.maxLength(10)])]
+    });
   }
 
   ionViewDidLoad() {
@@ -25,15 +33,11 @@ export class OptionalInfoFormPagePage {
   }
 
   isValidEmail(user: User): boolean {
-    let hasAtSymbol = user.email.indexOf('@');
-    let hasDomain = user.email.indexOf('.com');
-    let isValidEmail = ((hasAtSymbol > -1) && (hasDomain > -1));
-
-    if (!isValidEmail) {
+    if (!this.optionalInfoForm.controls['email'].valid) {
       this.alertCreator.showSimpleAlert('Error', 'Verifica que el correo sea correcto');
     }
 
-    return isValidEmail;
+    return this.optionalInfoForm.controls['email'].valid;
   }
 
   isUserDataValid(user: User): boolean {

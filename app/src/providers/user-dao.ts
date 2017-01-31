@@ -45,7 +45,7 @@ export class UserDAO {
     let headers = new Headers({'Content-Type': 'application/json', 'Authorization': 'Basic ' + 'YXBwOmFwcA=='});
     let options = new RequestOptions({headers: headers});
 
-    return this.http.post('http://192.168.88.128:9000/entity/user?_format=json', body, options);
+    return this.http.post('http://192.168.88.245:9000/entity/user?_format=json', body, options);
   }
 
   encodeUsername(): string {
