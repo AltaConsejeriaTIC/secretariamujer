@@ -53,11 +53,12 @@
         </ion-col>
       </ion-row>
 
-      <ion-row class="pin-change-settings" *ngIf="isOptionVisible[1]">
-        <p>
-          Cambiar PIN
-        </p>
-      </ion-row>
+      <div class="pin-change-settings" *ngIf="isOptionVisible[1]">
+        <ion-label text-center class="instruction-text">
+          Ingresa tu pin de 4 dígitos
+        </ion-label>
+        <ion-input text-center class="pin-input" type="tel" placeholder="1234" maxlength="4"></ion-input>
+      </div>
     </div>
     <div>
       <ion-row class="settings-item">

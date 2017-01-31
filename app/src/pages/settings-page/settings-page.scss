@@ -63,6 +63,45 @@ page-settings-page {
     }
   }
 
+  .pin-change-settings {
+    background: map_get($colors, primary) !important;
+
+    ion-label, ion-input {
+      color: map_get($colors, SofiaAppWhite);
+    }
+
+    .instruction-text {
+      margin: 0;
+      padding: 5% 5% 0;
+      font-weight: bold;
+    }
+
+    .pin-input {
+      font-weight: bold;
+      border-bottom: 2px solid white;
+      margin: 0 30vw 5vh;
+      display: inline-block;
+      width: 40vw;
+    }
+
+    input {
+      margin: 10px 8px 5px 8px;
+    }
+  }
+
+  .text-input::-moz-placeholder {
+    color: rgba(242, 242, 242, 0.2);
+  }
+
+  .text-input:-ms-input-placeholder {
+    color: rgba(242, 242, 242, 0.2);
+  }
+
+  .text-input::-webkit-input-placeholder {
+    text-indent: 0;
+    color: rgba(242, 242, 242, 0.2);
+  }
+
   @media (max-width: 479px) {
     .user-name-data {
       ion-icon {
@@ -85,6 +124,16 @@ page-settings-page {
 
       ion-grid > ion-row {
         margin: 0 0 20px !important;
+      }
+    }
+
+    .pin-change-settings {
+      .instruction-text {
+        font-size: 12px;
+      }
+
+      .pin-input {
+        font-size: 17px;
       }
     }
   }
@@ -113,6 +162,16 @@ page-settings-page {
         margin: 0 0 28px !important;
       }
     }
+
+    .pin-change-settings {
+      .instruction-text {
+        font-size: 18px;
+      }
+
+      .pin-input {
+        font-size: 26px;
+      }
+    }
   }
 
   @media (min-width: 768px) {
@@ -137,6 +196,16 @@ page-settings-page {
 
       ion-grid > ion-row {
         margin: 0 0 36px !important;
+      }
+    }
+
+    .pin-change-settings {
+      .instruction-text {
+        font-size: 20px;
+      }
+
+      .pin-input {
+        font-size: 29px;
       }
     }
   }
