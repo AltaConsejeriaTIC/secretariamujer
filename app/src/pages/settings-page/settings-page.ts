@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import {UserDAO} from "../../providers/user-dao";
 
 const SETTINGS_SLIDE_ITEMS = 3;
 
@@ -11,8 +12,13 @@ export class SettingsPage {
 
   arrowIconArray:string[]= [];
   isOptionVisible:boolean[]=[];
+  usernameInfo:string
+  nameInfo:string;
 
-  constructor(public navController: NavController) {}
+  constructor(public navController: NavController, public userDAO: UserDAO) {
+    this.usernameInfo = this.userDAO.getUsername() || "Yabushita Mai";
+    this.nameInfo = this.userDAO.getName() || "Anónima";
+  }
 
   ionViewDidLoad() {
     this.setInitialIconState();

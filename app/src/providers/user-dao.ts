@@ -64,4 +64,8 @@ export class UserDAO {
     return this.user.username;
   }
 
+  getName(): string {
+    return this.user.name;
+  }
+
 }

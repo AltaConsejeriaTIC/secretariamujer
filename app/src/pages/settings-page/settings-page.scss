@@ -15,11 +15,11 @@ page-settings-page {
       margin: auto;
     }
 
-    .user-nickname {
+    .name-info {
       font-weight: bold;
     }
 
-    .user-nickname, .user-name {
+    .name-info, .username-info {
       margin: 0;
     }
   }
@@ -54,12 +54,12 @@ page-settings-page {
       }
     }
 
-    .user-name-data .user-nickname,
+    .user-name-data .name-info,
     .settings-item .text-container ion-label {
       font-size: 16px;
     }
 
-    .user-name-data .user-name,
+    .user-name-data .username-info,
     .settings-item .icon-container > ion-icon {
       font-size: 15px;
     }
@@ -72,12 +72,12 @@ page-settings-page {
       }
     }
 
-    .user-name-data .user-nickname,
+    .user-name-data .name-info,
     .settings-item .text-container ion-label {
       font-size: 26px;
     }
 
-    .user-name-data .user-name,
+    .user-name-data .username-info,
     .settings-item .icon-container > ion-icon {
       font-size: 22px;
     }
@@ -90,11 +90,11 @@ page-settings-page {
       }
     }
 
-    .user-name-data .user-nickname {
+    .user-name-data .name-info {
       font-size: 29px;
     }
 
-    .user-name-data .user-name,
+    .user-name-data .username-info,
     .settings-item .text-container ion-label,
     .settings-item .icon-container > ion-icon {
       font-size: 24px;
