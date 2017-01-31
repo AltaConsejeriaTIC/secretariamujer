@@ -1,3 +1,78 @@
 page-settings-page {
+  .user-name-data {
+    background: map_get($colors, primary);
+    height: 18vh;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 
+    ion-label, ion-icon {
+      color: map_get($colors, SofiaAppWhite);
+    }
+
+    .icon-container {
+      display: flex;
+    }
+
+    .data-container {
+      margin: auto;
+    }
+
+    .user-nickname {
+      font-weight: bold;
+    }
+
+    .user-nickname, .user-name {
+      margin: 0;
+    }
+  }
+
+  .settings-item {
+    height: 10vh;
+
+    ion-label, .icon-container ion-icon {
+      color: map_get($colors, primary);
+    }
+
+    .text-container, .icon-container, .toggle-container {
+      display: flex;
+    }
+
+    .text-container ion-label {
+      margin: 0 0 0 2vw;
+      font-weight: bold;
+    }
+
+    .toggle-container{
+      margin-right: 5vw;
+    }
+  }
+
+  @media (max-width: 479px) {
+    .user-name-data {
+      ion-icon {
+        font-size: 50px;
+      }
+
+      .user-nickname {
+        font-size: 18px;
+      }
+
+      .user-name {
+        font-size: 14px;
+      }
+    }
+
+    .settings-item {
+      .text-container ion-label {
+        font-size: 16px;
+      }
+    }
+  }
+
+  @media (min-width: 480px) and (max-width: 767px) {
+
+  }
+
+  @media (min-width: 768px) {
+
+  }
 }
