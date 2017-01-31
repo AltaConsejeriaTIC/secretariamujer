@@ -47,6 +47,22 @@ page-settings-page {
     }
   }
 
+  page-contact-selection {
+    width: 100%;
+
+    ion-grid > ion-row:first-child, ion-grid > ion-row:last-child {
+      display: none;
+    }
+
+    ion-content {
+      background: map_get($colors, primary) !important;
+    }
+
+    ion-grid > ion-row:nth-child(4) {
+      margin: 0 !important;
+    }
+  }
+
   @media (max-width: 479px) {
     .user-name-data {
       ion-icon {
@@ -62,6 +78,14 @@ page-settings-page {
     .user-name-data .username-info,
     .settings-item .icon-container > ion-icon {
       font-size: 15px;
+    }
+
+    page-contact-selection {
+      height: 215px;
+
+      ion-grid > ion-row {
+        margin: 0 0 20px !important;
+      }
     }
   }
 
@@ -81,6 +105,14 @@ page-settings-page {
     .settings-item .icon-container > ion-icon {
       font-size: 22px;
     }
+
+    page-contact-selection {
+      height: 280px;
+
+      ion-grid > ion-row {
+        margin: 0 0 28px !important;
+      }
+    }
   }
 
   @media (min-width: 768px) {
@@ -98,6 +130,14 @@ page-settings-page {
     .settings-item .text-container ion-label,
     .settings-item .icon-container > ion-icon {
       font-size: 24px;
+    }
+
+    page-contact-selection {
+      height: 335px;
+
+      ion-grid > ion-row {
+        margin: 0 0 36px !important;
+      }
     }
   }
 }
