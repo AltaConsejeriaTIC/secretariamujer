@@ -27,6 +27,8 @@ export class UserDAO {
     let encodedUserName = this.encodeUsername();
     let encodedEmail = this.encodeEmail();
 
+    let contacts={"contact1":{"name":"brayan1","phoneNumber":"789"}, "contact2":{"name":"kevin1","phoneNumber":"321"} }
+
     let body = JSON.stringify({
       "name": [{"value": encodedUserName}],
       "mail": [{"value": encodedEmail}],
@@ -35,13 +37,15 @@ export class UserDAO {
       "pass": this.user.pass,
       "field_cellphone": this.user.phone,
       "field_password": this.user.pass,
-      "field_full_name": this.user.name
+      "field_full_name": this.user.name,
+      //"field_contacts": [{"contact1":{"name":"brayan","phoneNumber":"789"}, "contact2":{"name":"kevin","phoneNumber":"321"} }]
+      "field_contacts": JSON.stringify(contacts)
     });
 
     let headers = new Headers({'Content-Type': 'application/json', 'Authorization': 'Basic ' + 'YXBwOmFwcA=='});
     let options = new RequestOptions({headers: headers});
 
-    return this.http.post('http://192.168.88.245:9000/entity/user?_format=json', body, options);
+    return this.http.post('http://192.168.88.128:9000/entity/user?_format=json', body, options);
   }
 
   encodeUsername(): string {

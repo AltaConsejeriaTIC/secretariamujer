@@ -13,7 +13,7 @@ export class OptionalInfoFormPagePage {
   user: User;
 
   constructor(public navCtrl: NavController, public userDAO: UserDAO, public alertCreator: AlertCreator) {
-    this.user = {pass: null, username: null, name: null, email: null, phone: null};
+    this.user = {pass: '', username: '', name: '', email: '', phone: ''};
   }
 
   ionViewDidLoad() {
