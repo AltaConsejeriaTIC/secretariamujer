@@ -2,7 +2,6 @@ page-settings-page {
   .user-name-data {
     background: map_get($colors, primary);
     height: 18vh;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 
     ion-label, ion-icon {
       color: map_get($colors, SofiaAppWhite);
@@ -27,6 +26,8 @@ page-settings-page {
 
   .settings-item {
     height: 10vh;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+
 
     ion-label, .icon-container ion-icon {
       color: map_get($colors, primary);
