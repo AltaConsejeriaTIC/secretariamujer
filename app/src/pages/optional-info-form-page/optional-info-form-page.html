@@ -24,11 +24,11 @@
 
         <ion-row id="optional-info-register-button-container" class="button-section-margin">
           <ion-col width-45 class="no-padding">
-            <button (click)="createUser()" class="app-button" ion-button outline>Omitir</button>
+            <button (click)="saveUser()" class="app-button" ion-button outline>Omitir</button>
           </ion-col>
 
           <ion-col offset-10 width-45 class="no-padding">
-            <button (click)="checkFields()"
+            <button (click)="saveUser()"
                     [ngClass]="{'app-button': user.name || user.email || user.phone, 'disabled-button': !user.name && !user.email && !user.phone}"
                     ion-button outline>Continuar
             </button>

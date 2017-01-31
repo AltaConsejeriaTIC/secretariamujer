@@ -24,7 +24,7 @@ describe('UserDAO tests', () => {
     mockbackend = _mockbackend;
   }));
 
-  it('should return mocked response for createUser (async)', async(() => {
+  it('should return mocked response for saveUser (async)', async(() => {
     let response = {
       "uid": [{
         "value": "444"
@@ -67,12 +67,11 @@ describe('UserDAO tests', () => {
     expect(userDAO.user.pass).toBe('123');
   });
 
-  it('saveOptionalInfo should set user name, email and phone values',()=>{
-    userDAO.user=user;
-    userDAO.saveOptionalInfo('testname','testemail', 'testphone1');
-    expect(userDAO.user.name).toBe('testname');
-    expect(userDAO.user.email).toBe('testemail');
-    expect(userDAO.user.phone).toBe('testphone1');
+  it('setOptionalInfo should set user name, email and phone values',()=>{
+    userDAO.setOptionalInfo(user);
+    expect(userDAO.user.name).toBe(user.name);
+    expect(userDAO.user.email).toBe(user.email);
+    expect(userDAO.user.phone).toBe(user.phone);
   });
 
   it('encodeUsername should return the username plus a code number',()=>{

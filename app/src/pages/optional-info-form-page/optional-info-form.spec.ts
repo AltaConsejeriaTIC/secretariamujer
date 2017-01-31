@@ -6,6 +6,8 @@ import {AlertCreator} from  '../../providers/alert-creator'
 import {AlertController} from "ionic-angular";
 import {UserDAO} from "../../providers/user-dao";
 import {OptionalInfoFormPagePage} from "./optional-info-form-page";
+import {Observable} from "rxjs";
+import {User} from "../../entity/user";
 
 describe('OptionalInfoFormPage tests', () => {
 
@@ -13,14 +15,33 @@ describe('OptionalInfoFormPage tests', () => {
   let fixture: ComponentFixture<OptionalInfoFormPagePage>;
   let alertCreator: AlertCreator;
   let userDAO: UserDAO;
+  let user: User;
+  let mockUserDAO = {
+    saveOptionalInfo: () => {
+
+    },
+    create: () => {
+      return Observable.of(new Object());
+    },
+    setOptionalInfo: () => {
+
+    }
+  };
 
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [OptionalInfoFormPagePage],
       providers: [
-        App, Platform, Form, Keyboard, MenuController, NavController, AlertCreator, AlertController, OptionalInfoFormPagePage, UserDAO,
-        {provide: Config, useClass: ConfigMock}
+        App, Platform, Form, Keyboard, MenuController, NavController, AlertCreator, AlertController, OptionalInfoFormPagePage,
+        {
+          provide: Config,
+          useClass: ConfigMock
+        },
+        {
+          provide: UserDAO,
+          useValue: mockUserDAO
+        }
       ],
       imports: [
         FormsModule,
@@ -38,38 +59,37 @@ describe('OptionalInfoFormPage tests', () => {
   beforeEach(inject([AlertCreator, UserDAO], (_alertCreator, _userDAO) => {
     alertCreator = _alertCreator;
     userDAO = _userDAO;
+
+    user = {
+      email: 'test@test.com',
+      phone: '3132456545',
+      pass: '1215',
+      username: 'user123',
+      name: 'Juan Valdez'
+    };
+
   }));
 
-  it('checkFields should call saveOptionalInfo if email is correct', () => {
-    spyOn(optionalInfoFormPage, 'saveOptionalInfo');
-    optionalInfoFormPage.user.email = 'test@test.com';
-    optionalInfoFormPage.checkFields();
-    expect(optionalInfoFormPage.saveOptionalInfo).toHaveBeenCalled();
-  });
+  /*it('checkFields should call setOptionalInfo if email is correct', () => {
+   spyOn(optionalInfoFormPage, 'setOptionalInfo');
+   optionalInfoFormPage.user.email = 'test@test.com';
+   expect(optionalInfoFormPage.setOptionalInfo).toHaveBeenCalled();
+   });
 
-  it('checkFields should call showSimpleAlert from AlertCreator if email is incorrect', () => {
-    spyOn(alertCreator, 'showSimpleAlert');
-    optionalInfoFormPage.user.email = 'test';
-    optionalInfoFormPage.checkFields();
-    expect(alertCreator.showSimpleAlert).toHaveBeenCalled();
-  });
-
-  it('saveOptionalInfo should call saveOptionalInfo from UserDAO and create from UserDAO', () => {
-    spyOn(userDAO, 'saveOptionalInfo');
-    spyOn(userDAO, 'create').and.callThrough();
-    optionalInfoFormPage.saveOptionalInfo();
-    expect(userDAO.saveOptionalInfo).toHaveBeenCalled();
-    expect(userDAO.create).toHaveBeenCalled();
-  });
+   it('checkFields should call showSimpleAlert from AlertCreator if email is incorrect', () => {
+   spyOn(alertCreator, 'showSimpleAlert');
+   optionalInfoFormPage.user.email = 'test';
+   expect(alertCreator.showSimpleAlert).toHaveBeenCalled();
+   });*/
 
   it('isValidEmail should return true if email has @ and .com', () => {
-    optionalInfoFormPage.user.email = 'test@test.com';
-    expect(optionalInfoFormPage.isValidEmail()).toBe(true);
+    expect(optionalInfoFormPage.isValidEmail(user)).toBe(true);
   });
 
-  it('createUser should call create from UserDAO', () => {
+  it('saveUser should call create from UserDAO', () => {
+    optionalInfoFormPage.user = user;
     spyOn(userDAO, 'create').and.callThrough();
-    optionalInfoFormPage.createUser();
+    optionalInfoFormPage.saveUser();
     expect(userDAO.create).toHaveBeenCalled();
   });
 

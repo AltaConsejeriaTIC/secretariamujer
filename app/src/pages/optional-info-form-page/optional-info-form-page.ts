@@ -20,33 +20,37 @@ export class OptionalInfoFormPagePage {
 
   }
 
-  checkFields() {
-    if (this.isValidEmail()) {
-      this.saveOptionalInfo();
-    } else {
+  saveOptionalInfo() {
+    this.saveUser();
+  }
+
+  isValidEmail(user: User): boolean {
+    let hasAtSymbol = user.email.indexOf('@');
+    let hasDomain = user.email.indexOf('.com');
+    let isValidEmail = ((hasAtSymbol > -1) && (hasDomain > -1));
+
+    if (!isValidEmail) {
       this.alertCreator.showSimpleAlert('Error', 'Verifica que el correo sea correcto');
     }
+
+    return isValidEmail;
   }
 
-  saveOptionalInfo() {
-    this.userDAO.saveOptionalInfo(this.user.name, this.user.email, this.user.phone);
-    this.createUser();
+  isUserDataValid(user: User): boolean {
+    return this.isValidEmail(user);
   }
 
-  isValidEmail() {
-    let hasAtSymbol = this.user.email.indexOf('@');
-    let hasDomain = this.user.email.indexOf('.com');
-    return ((hasAtSymbol > -1) && (hasDomain > -1));
-  }
-
-  createUser() {
-    this.userDAO.create().map(res => res.json()).subscribe(response => {
-      this.alertCreator.showCofirmationMessage('Cuenta', 'Tu cuenta ha sido creada', () => {
-        this.goToContactPage()
+  saveUser() {
+    if (this.isUserDataValid(this.user)) {
+      this.userDAO.setOptionalInfo(this.user);
+      this.userDAO.create().map(res => res.json()).subscribe(response => {
+        this.alertCreator.showCofirmationMessage('Cuenta', 'Tu cuenta ha sido creada', () => {
+          this.goToContactPage()
+        });
+      }, err => {
+        console.log("ocurrio un error", err);
       });
-    }, err => {
-      console.log("ocurrio un error", err);
-    });
+    }
   }
 
   goToContactPage() {
