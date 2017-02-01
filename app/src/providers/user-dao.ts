@@ -1,15 +1,16 @@
 import {Injectable} from '@angular/core';
 import {Http, Headers, RequestOptions, Response} from '@angular/http';
 import 'rxjs/add/operator/map';
-import {User} from '../entity/user';
+import {IUser, User} from '../entity/user';
 import {Observable} from "rxjs";
 
 @Injectable()
 export class UserDAO {
 
-  user: User = {pass: null, username: null, name: null, email: null, phone: null};
+  user: IUser;
 
   constructor(public http: Http) {
+    this.user = new User();
   }
 
   saveRequiredInfo(username: string, pass: string) {
@@ -17,7 +18,7 @@ export class UserDAO {
     this.user.pass = pass;
   }
 
-  setOptionalInfo(user: User) {
+  setOptionalInfo(user: IUser) {
     this.user.name = user.name;
     this.user.email = user.email;
     this.user.phone = user.phone;
@@ -27,7 +28,10 @@ export class UserDAO {
     let encodedUserName = this.encodeUsername();
     let encodedEmail = this.encodeEmail();
 
-    let contacts={"contact1":{"name":"brayan1","phoneNumber":"789"}, "contact2":{"name":"kevin1","phoneNumber":"321"} }
+    let contacts = {
+      "contact1": {"name": "brayan1", "phoneNumber": "789"},
+      "contact2": {"name": "kevin1", "phoneNumber": "321"}
+    };
 
     let body = JSON.stringify({
       "name": [{"value": encodedUserName}],

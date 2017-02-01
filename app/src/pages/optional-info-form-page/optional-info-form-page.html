@@ -15,12 +15,12 @@
           </ion-row>
 
           <ion-row>
-            <ion-input text-center [(ngModel)]="user.email" class="input-border input-color no-padding" type="email"
+            <ion-input text-center class="input-border input-color no-padding" type="email"
                        placeholder="Tu correo electrónico" formControlName="email"></ion-input>
           </ion-row>
 
           <ion-row>
-            <ion-input text-center [(ngModel)]="user.phone" class="input-border input-color no-padding" type="tel"
+            <ion-input text-center class="input-border input-color no-padding" type="tel"
                        placeholder="Tu teléfono móvil" formControlName="phone"></ion-input>
           </ion-row>
 
@@ -30,11 +30,8 @@
             </ion-col>
 
             <ion-col offset-10 width-45 class="no-padding">
-              <div [hidden]="optionalInfoForm.controls.name.valid">
-                invalid name {{optionalInfoForm.value.name}}
-              </div>
               <button (click)="saveUser()"
-                      [ngClass]="{'app-button': user.name || user.email || user.phone, 'disabled-button': !user.name && !user.email && !user.phone}"
+                      [ngClass]="{'app-button': canUserContinue(), 'disabled-button': !canUserContinue()}"
                       ion-button outline>Continuar
               </button>
             </ion-col>

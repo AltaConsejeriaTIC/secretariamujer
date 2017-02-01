@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import {User} from '../../entity/user';
+import {IUser} from '../../entity/user';
 import {AlertCreator} from "../../providers/alert-creator";
 import {UserDAO} from "../../providers/user-dao";
 import {OptionalInfoFormPagePage} from "../optional-info-form-page/optional-info-form-page";
@@ -12,7 +12,7 @@ import {OptionalInfoFormPagePage} from "../optional-info-form-page/optional-info
 })
 export class RequiredInfoFormPage {
 
-  user:User;
+  user:IUser;
 
   constructor(public navCtrl: NavController, public alertCreator:AlertCreator, public userDAO:UserDAO) {
     this.user = {pass: null, username: null, name: null, email:null, phone:null};

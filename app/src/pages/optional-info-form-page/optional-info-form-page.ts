@@ -1,52 +1,65 @@
 import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
-import {User} from "../../entity/user";
+import {IUser, User} from "../../entity/user";
 import {UserDAO} from "../../providers/user-dao";
 import {AlertCreator} from "../../providers/alert-creator";
 import {ContactSelectionPage} from "../contact-selection/contact-selection";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators, AbstractControl} from "@angular/forms";
 
 @Component({
   selector: 'page-optional-info-form-page',
   templateUrl: './optional-info-form-page.html'
 })
 export class OptionalInfoFormPagePage {
-  user: User;
   optionalInfoForm: FormGroup;
 
-  constructor(public navCtrl: NavController, public userDAO: UserDAO, public alertCreator: AlertCreator, private  formBuilder: FormBuilder) {
-    this.user = {pass: '', username: '', name: '', email: '', phone: ''};
+  constructor(public navCtrl: NavController, public userDAO: UserDAO, public alertCreator: AlertCreator,
+              private  formBuilder: FormBuilder) {
+    this.createForm(formBuilder);
+  }
 
+  private createForm(formBuilder: FormBuilder) {
     this.optionalInfoForm = formBuilder.group({
       name: ['', Validators.compose([Validators.pattern('[a-zA-Z ]*')])],
       email: ['', Validators.compose([Validators.pattern('(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*$)')])],
-      phone: ['', Validators.compose([Validators.pattern('\d*'), Validators.maxLength(10)])]
+      phone: ['', Validators.compose([Validators.pattern('[0-9]*'), Validators.maxLength(10)])]
     });
   }
 
   ionViewDidLoad() {
-
   }
 
-  saveOptionalInfo() {
-    this.saveUser();
+  isUserDataValid(): boolean {
+    let isDataValid: boolean = this.isValidName() && this.isValidEmail() && this.isValidPhone();
+
+    return isDataValid;
   }
 
-  isValidEmail(user: User): boolean {
-    if (!this.optionalInfoForm.controls['email'].valid) {
-      this.alertCreator.showSimpleAlert('Error', 'Verifica que el correo sea correcto');
+  isValidPhone() {
+    return this.isValidField(this.optionalInfoForm.controls['phone'], 'Verifica que el teléfono sea correcto');
+  }
+
+  isValidEmail() {
+    return this.isValidField(this.optionalInfoForm.controls['email'], 'Verifica que el correo sea correcto');
+  }
+
+  isValidName() {
+    return this.isValidField(this.optionalInfoForm.controls['name'], 'Verifica que el nombre sea correcto');
+  }
+
+  isValidField(field: AbstractControl, message: string) {
+    let isValid = field.valid;
+
+    if (!isValid) {
+      this.alertCreator.showSimpleAlert('Error', message);
     }
 
-    return this.optionalInfoForm.controls['email'].valid;
-  }
-
-  isUserDataValid(user: User): boolean {
-    return this.isValidEmail(user);
+    return isValid;
   }
 
   saveUser() {
-    if (this.isUserDataValid(this.user)) {
-      this.userDAO.setOptionalInfo(this.user);
+    if (this.isUserDataValid()) {
+      this.updateUserInDAO();
       this.userDAO.create().map(res => res.json()).subscribe(response => {
         this.alertCreator.showCofirmationMessage('Cuenta', 'Tu cuenta ha sido creada', () => {
           this.goToContactPage()
@@ -57,8 +70,18 @@ export class OptionalInfoFormPagePage {
     }
   }
 
+  updateUserInDAO() {
+    let user = new User(this.optionalInfoForm.controls['name'].value, this.optionalInfoForm.controls['email'].value,
+      this.optionalInfoForm.controls['phone'].value);
+    this.userDAO.setOptionalInfo(user);
+  }
+
   goToContactPage() {
     this.navCtrl.setRoot(ContactSelectionPage);
+  }
+
+  canUserContinue(): boolean {
+    return this.optionalInfoForm.controls['name'].valid && this.optionalInfoForm.controls['email'].valid && this.optionalInfoForm.controls['phone'].valid;
   }
 
 }

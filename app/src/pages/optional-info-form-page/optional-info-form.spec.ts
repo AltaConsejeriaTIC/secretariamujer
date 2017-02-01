@@ -7,7 +7,7 @@ import {AlertController} from "ionic-angular";
 import {UserDAO} from "../../providers/user-dao";
 import {OptionalInfoFormPagePage} from "./optional-info-form-page";
 import {Observable} from "rxjs";
-import {User} from "../../entity/user";
+import {IUser} from "../../entity/user";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 describe('OptionalInfoFormPage tests', () => {
@@ -16,7 +16,7 @@ describe('OptionalInfoFormPage tests', () => {
   let fixture: ComponentFixture<OptionalInfoFormPagePage>;
   let alertCreator: AlertCreator;
   let userDAO: UserDAO;
-  let user: User;
+  let user: IUser;
   let mockUserDAO = {
     saveOptionalInfo: () => {
 
@@ -93,14 +93,24 @@ describe('OptionalInfoFormPage tests', () => {
    expect(alertCreator.showSimpleAlert).toHaveBeenCalled();
    });*/
 
-  it('isValidEmail should return true if the email is valid', () => {
-    optionalInfoFormPage.optionalInfoForm.controls['email'].setValue('a@bc.com');
-    expect(optionalInfoFormPage.isValidEmail(user)).toBe(true);
+  it('isValidName should return true if the name is valid', () => {
+    optionalInfoFormPage.optionalInfoForm.controls['name'].setValue('name');
+    expect(optionalInfoFormPage.isValidName()).toBe(true);
   });
 
-  it('isValidEmail should return false if the email is invalid', () => {
+  it('isValidEmail should return true if the email is valid', () => {
+    optionalInfoFormPage.optionalInfoForm.controls['email'].setValue('a@bc.com');
+    expect(optionalInfoFormPage.isValidName(user)).toBe(true);
+  });
+
+  it('isValidPhone should return true if the phone is valid', () => {
+    optionalInfoFormPage.optionalInfoForm.controls['phone'].setValue('a@bc.com');
+    expect(optionalInfoFormPage.isValidName(user)).toBe(true);
+  });
+
+  it('isValidName should return false if the email is invalid', () => {
     optionalInfoFormPage.optionalInfoForm.controls['email'].setValue('a@b');
-    expect(optionalInfoFormPage.isValidEmail(user)).toBe(false);
+    expect(optionalInfoFormPage.isValidName(user)).toBe(false);
   });
 
   it('saveUser should call create from UserDAO', () => {
