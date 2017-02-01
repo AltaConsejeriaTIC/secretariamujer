@@ -72,4 +72,8 @@ export class UserDAO {
     return this.user.name;
   }
 
+  getPass(): string {
+    return this.user.pass;
+  }
+
 }
