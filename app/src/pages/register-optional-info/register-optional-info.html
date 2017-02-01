@@ -32,6 +32,7 @@
             <ion-col offset-10 width-45 class="no-padding">
               <button (click)="saveUser()"
                       [ngClass]="{'app-button': canUserContinue(), 'disabled-button': !canUserContinue()}"
+                      [disabled]="canUserContinue()"
                       ion-button outline>Continuar
               </button>
             </ion-col>
