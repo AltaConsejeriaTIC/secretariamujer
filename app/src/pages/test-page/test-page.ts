@@ -67,7 +67,7 @@ export class TestPage {
       this.questionsObject = response;
       this.questionsNumber = (this.questionsObject.length - 1);
     }, err => {
-      console.log("el error", err)
+      console.log("el error", err.toString())
     });
   }
 

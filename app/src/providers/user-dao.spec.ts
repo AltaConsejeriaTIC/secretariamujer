@@ -1,20 +1,24 @@
 import {TestBed, inject, async} from "@angular/core/testing";
-import {HttpModule, XHRBackend, Response, ResponseOptions} from "@angular/http";
+import {HttpModule, XHRBackend, Response, ResponseOptions, ConnectionBackend} from "@angular/http";
 import {MockBackend} from '@angular/http/testing';
 import {UserDAO} from "./user-dao";
 import {Observable} from "rxjs/Observable";
+import {User} from "../entity/user";
+import {Contact} from "../entity/contact";
 
 
 describe('UserDAO tests', () => {
   let mockbackend, userDAO;
-  let user = {pass: '1234', username: 'testusername', name: 'testname', email:'testemail', phone:'testphone'};
+  let user = new User('Julio Zorra', 'juliozorra@gmail.com', '3124569878', 'julio3456', '1234');
+
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [ HttpModule ],
+      imports: [HttpModule],
       providers: [
         UserDAO,
-        { provide: XHRBackend, useClass: MockBackend }
+        ConnectionBackend,
+        {provide: XHRBackend, useClass: MockBackend}
       ]
     });
   });
@@ -49,49 +53,50 @@ describe('UserDAO tests', () => {
       connection.mockRespond(new Response(new ResponseOptions({body: JSON.stringify(response)})));
     });
 
-    userDAO.user=user;
-    userDAO.create().map(res=>res.json()).subscribe(response => {
-      expect(response.name[0].value).toBe("testname");
+    userDAO.user = user;
+    userDAO.create().map(res => res.json()).subscribe(response => {
+      expect(response.name[0].value).toBe(user.name);
     });
   }));
 
-  it('should create function return an Observable type',()=>{
+  it('should create function return an Observable type', () => {
     let isObservable = userDAO.create() instanceof Observable;
     expect(isObservable).toBe(true);
   });
 
-  it('saveRequiredInfo should set user name and pass values',()=>{
-    userDAO.user=user;
-    userDAO.saveRequiredInfo('name','123');
+  it('saveRequiredInfo should set user name and pass values', () => {
+    userDAO.user = user;
+    userDAO.saveRequiredInfo('name', '123');
     expect(userDAO.user.username).toBe('name');
     expect(userDAO.user.pass).toBe('123');
   });
 
-  it('setOptionalInfo should set user name, email and phone values',()=>{
+  it('setOptionalInfo should set user name, email and phone values', () => {
     userDAO.setOptionalInfo(user);
     expect(userDAO.user.name).toBe(user.name);
     expect(userDAO.user.email).toBe(user.email);
     expect(userDAO.user.phone).toBe(user.phone);
   });
 
-  it('encodeUsername should return the username plus a code number',()=>{
-    userDAO.user=user;
-    let usernameEncoded=userDAO.encodeUsername();
-    expect(usernameEncoded).not.toBe(userDAO.user.username);
-    expect(usernameEncoded.indexOf(userDAO.user.username)).toBeGreaterThan(-1);
-  });
 
-  it('encodeEmail should return the email plus a code number if user does not fill that field',()=>{
-    userDAO.user=user;
-    userDAO.user.email=null;
-    let userEmailEncoded=userDAO.encodeEmail();
-    expect(userEmailEncoded).not.toBe(userDAO.user.email);
-    expect(userEmailEncoded.indexOf('@noregistra.com')).toBeGreaterThan(-1);
-  });
-
-  it('getUsername should return user username',()=>{
-    userDAO.user.username='Pepe';
+  it('getUsername should return user username', () => {
+    userDAO.user.username = 'Pepe';
     expect(userDAO.getUsername()).toEqual('Pepe');
   });
+
+  it('createHttpBody should create the body of the request according to the user info', () => {
+    user = new User('Julio Zorra', 'juliozorra@gmail.com', '3124569878', 'julio3456', '1234', [new Contact('brayan', '123')]);
+    let expectedUser = JSON.parse(userDAO.createHttpBody(user));
+
+    expect(expectedUser.name[0].value).toEqual(user.username);
+    expect(expectedUser.field_full_name).toEqual(user.name);
+    expect(expectedUser.field_password).toEqual(user.pass);
+    expect(expectedUser.mail[0].value).toEqual(user.email);
+    expect(expectedUser.field_cellphone).toEqual(user.phone);
+    expect(expectedUser.roles[0].target_id).toEqual("authenticated");
+    expect(expectedUser.field_contacts[0].name).toEqual(user.contacts[0].name);
+    expect(expectedUser.field_contacts[0].phoneNumber).toEqual(user.contacts[0].phoneNumber);
+  });
+
 
 });

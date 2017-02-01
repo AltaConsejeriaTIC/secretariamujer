@@ -25,8 +25,6 @@ export class UserDAO {
   }
 
   create(): Observable<Response> {
-    let encodedUserName = this.encodeUsername();
-    let encodedEmail = this.encodeEmail();
 
     let contacts = {
       "contact1": {"name": "brayan1", "phoneNumber": "789"},
@@ -34,8 +32,8 @@ export class UserDAO {
     };
 
     let body = JSON.stringify({
-      "name": [{"value": encodedUserName}],
-      "mail": [{"value": encodedEmail}],
+      "name": [{"value": this.user.username}],
+      "mail": [{"value": this.user.email}],
       "roles": [{"target_id": "authenticated"}],
       "status": [{"value": true}],
       "pass": this.user.pass,
@@ -52,17 +50,6 @@ export class UserDAO {
     return this.http.post('http://192.168.88.245:9000/entity/user?_format=json', body, options);
   }
 
-  encodeUsername(): string {
-    return this.user.username + Math.floor(Date.now() / 1000);
-  }
-
-  encodeEmail(): string {
-    if (!this.user.email) {
-      return Math.floor(Date.now() / 1000) + '@noregistra.com';
-    } else {
-      return this.user.email;
-    }
-  }
 
   getUsername(): string {
     return this.user.username;
@@ -76,4 +63,37 @@ export class UserDAO {
     return this.user.pass;
   }
 
+  update() {
+
+
+  }
+
+  createHttpBody(user: User) {
+    let body = JSON.stringify({
+      "name": [{"value": user.username}],
+      "mail": [{"value": user.email}],
+      "roles": [{"target_id": "authenticated"}],
+      "status": [{"value": true}],
+      "pass": user.pass,
+      "field_cellphone": user.phone,
+      "field_password": user.pass,
+      "field_full_name": user.name,
+      "field_contacts": user.contacts
+    });
+
+    return body;
+  }
+
+
+  encodeUsername(user: User): string {
+    return user.username + Math.floor(Date.now() / 1000);
+  }
+
+  encodeEmail(user: User): string {
+    if (!user.email) {
+      return Math.floor(Date.now() / 1000) + '@noregistra.com';
+    } else {
+      return this.user.email;
+    }
+  }
 }

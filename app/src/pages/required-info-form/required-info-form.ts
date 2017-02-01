@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-import {IUser} from '../../entity/user';
+import {Component} from '@angular/core';
+import {NavController} from 'ionic-angular';
+import {IUser, User} from '../../entity/user';
 import {AlertCreator} from "../../providers/alert-creator";
 import {UserDAO} from "../../providers/user-dao";
 import {RegisterOptionalInfoPage} from "../register-optional-info/register-optional-info";
@@ -12,58 +12,60 @@ import {RegisterOptionalInfoPage} from "../register-optional-info/register-optio
 })
 export class RequiredInfoFormPage {
 
-  user:IUser;
+  user: IUser;
 
-  constructor(public navCtrl: NavController, public alertCreator:AlertCreator, public userDAO:UserDAO) {
-    this.user = {pass: null, username: null, name: null, email:null, phone:null};
+  constructor(public navCtrl: NavController, public alertCreator: AlertCreator, public userDAO: UserDAO) {
+    this.user = new User();
   }
 
   ionViewDidLoad() {
 
   }
 
-  checkInputValues(){
-    let isUserNameEmpty=this.validateEmptyField(this.user.username);
-    let isPassEmpty=this.validateEmptyField(this.user.pass);
-    let isPassCorrect:boolean=false;
+  checkInputValues() {
+    let isUserNameEmpty = this.validateEmptyField(this.user.username);
+    let isPassEmpty = this.validateEmptyField(this.user.pass);
+    let isPassCorrect: boolean = false;
     this.throwMessageIfEmptyField(isUserNameEmpty, isPassEmpty);
 
-    if(!isPassEmpty){
-      isPassCorrect=this.isPassValueOnlyNumber();
+    if (!isPassEmpty) {
+      isPassCorrect = this.isPassValueOnlyNumber();
     }
 
-    if(isPassCorrect && !isUserNameEmpty){
+    if (isPassCorrect && !isUserNameEmpty) {
       this.saveRequiredInfo();
       this.navCtrl.push(RegisterOptionalInfoPage);
     }
   }
 
-  validateEmptyField(input):boolean{
+  validateEmptyField(input): boolean {
     return !input;
   }
 
-  throwMessageIfEmptyField(isUserNameEmpty:boolean, isPassEmpty:boolean){
-    if(isUserNameEmpty && isPassEmpty){
-      this.alertCreator.showSimpleAlert('Error','Por favor llena los campos antes de continuar');
-    }else if (isUserNameEmpty){
-      this.alertCreator.showSimpleAlert('Error','Por favor ingresa un nombre de usuario');
-    }else if(isPassEmpty){
-      this.alertCreator.showSimpleAlert('Error','Por favor ingresa un PIN de 4 dígitos');
+  throwMessageIfEmptyField(isUserNameEmpty: boolean, isPassEmpty: boolean) {
+    if (isUserNameEmpty && isPassEmpty) {
+      this.alertCreator.showSimpleAlert('Error', 'Por favor llena los campos antes de continuar');
+    } else if (isUserNameEmpty) {
+      this.alertCreator.showSimpleAlert('Error', 'Por favor ingresa un nombre de usuario');
+    } else if (isPassEmpty) {
+      this.alertCreator.showSimpleAlert('Error', 'Por favor ingresa un PIN de 4 dígitos');
     }
   }
 
-  isPassValueOnlyNumber(){
-    if((!this.user.pass.match(/^[0-9]*$/))|| (this.user.pass.length!=4)){
-      this.alertCreator.showSimpleAlert('Error','El PIN sólo puede contener números y debe ser de 4 dígitos');
+  isPassValueOnlyNumber() {
+    if ((!this.user.pass.match(/^[0-9]*$/)) || (this.user.pass.length != 4)) {
+      this.alertCreator.showSimpleAlert('Error', 'El PIN sólo puede contener números y debe ser de 4 dígitos');
       return false;
-    }else{return true;}
+    } else {
+      return true;
+    }
   }
 
-  saveRequiredInfo(){
+  saveRequiredInfo() {
     this.userDAO.saveRequiredInfo(this.user.username, this.user.pass);
   }
 
-  goBack(){
+  goBack() {
     this.navCtrl.pop();
   }
 
