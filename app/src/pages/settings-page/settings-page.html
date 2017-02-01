@@ -55,9 +55,9 @@
 
       <div class="pin-change-settings" *ngIf="isOptionVisible[1]">
         <ion-label text-center class="instruction-text">
-          Ingresa tu pin de 4 dígitos
+          {{instructionText}}
         </ion-label>
-        <ion-input text-center class="pin-input" type="tel" placeholder="1234" maxlength="4"></ion-input>
+        <ion-input text-center class="pin-input" type="tel" placeholder="1234" maxlength="4" [(ngModel)]="inputPin" (input)='changePin()'></ion-input>
       </div>
     </div>
     <div>
