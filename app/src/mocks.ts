@@ -1,3 +1,9 @@
+import {UserDAO} from "./providers/user-dao";
+import {Observable} from "rxjs";
+import {Contact} from "./entity/contact";
+import {User} from "./entity/user";
+import {Response, ResponseOptions} from "@angular/http";
+
 export class ConfigMock {
 
   public get(): any {
@@ -62,34 +68,57 @@ export class MenuMock {
   }
 }
 
-export class LoadingControllerMock{
-  public create():any{
+export class LoadingControllerMock {
+  public create(): any {
     return {
-      present:()=>{}
+      present: () => {
+      }
     }
   }
 
-  public present():any{
+  public present(): any {
     return ''
   }
 
-  public dismiss():any{
+  public dismiss(): any {
     return ''
   }
 
 }
 
-export class LoadingMock{
-  public create():any{
+export class LoadingMock {
+  public create(): any {
     return ''
   }
 
-  public present():any{
+  public present(): any {
     return ''
   }
 
-  public dismiss():any{
+  public dismiss(): any {
     return ''
   }
 
+}
+
+export class UserDAOMock {
+  create = jasmine.createSpy('create').and.callFake(
+    () => {
+      let r = new Response(new ResponseOptions());
+      return Observable.of(r);
+    });
+
+  setOptionalInfo = jasmine.createSpy('create').and.callFake(
+    () => {
+      return Observable.of(new User('usuariofalso'));
+    });
+}
+
+
+export class AlertCreatorMock {
+  showSimpleAlert() {
+  }
+
+  showCofirmationMessage() {
+  }
 }

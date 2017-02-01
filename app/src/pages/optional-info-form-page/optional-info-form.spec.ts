@@ -1,40 +1,20 @@
 import {ComponentFixture, TestBed, async, inject} from '@angular/core/testing';
 import {App, MenuController, NavController, Platform, Config, Keyboard, Form, IonicModule}  from 'ionic-angular';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {ConfigMock} from '../../mocks';
+import {ConfigMock, UserDAOMock, AlertCreatorMock} from '../../mocks';
 import {AlertCreator} from  '../../providers/alert-creator'
 import {AlertController} from "ionic-angular";
 import {UserDAO} from "../../providers/user-dao";
 import {OptionalInfoFormPagePage} from "./optional-info-form-page";
-import {Observable} from "rxjs";
-import {IUser} from "../../entity/user";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {IUser, User} from "../../entity/user";
 
 describe('OptionalInfoFormPage tests', () => {
 
   let optionalInfoFormPage: OptionalInfoFormPagePage;
   let fixture: ComponentFixture<OptionalInfoFormPagePage>;
-  let alertCreator: AlertCreator;
-  let userDAO: UserDAO;
-  let user: IUser;
-  let mockUserDAO = {
-    saveOptionalInfo: () => {
-
-    },
-    create: () => {
-      return Observable.of(new Object());
-    },
-    setOptionalInfo: () => {
-
-    }
-  };
-
-  let mockAlertCreator={
-    showSimpleAlert:()=>{
-
-    }
-  }
-
+  let mockRightUser: IUser = new User('Jose Julio Flores', 'juliov@gmail.com', '3214569865', 'juliozorra', '1245');
+  let mockWrongUser: IUser = new User('Jose Julio Flores 13', 'juliov@gmailcom', '321aa4569865', '#$#%', '124a');
+  let mockUserDao: UserDAO;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -47,11 +27,11 @@ describe('OptionalInfoFormPage tests', () => {
         },
         {
           provide: UserDAO,
-          useValue: mockUserDAO
+          useClass: UserDAOMock
         },
         {
           provide: AlertCreator,
-          useValue: mockAlertCreator
+          useClass: AlertCreatorMock
         }
       ],
       imports: [
@@ -65,59 +45,80 @@ describe('OptionalInfoFormPage tests', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(OptionalInfoFormPagePage);
     optionalInfoFormPage = fixture.componentInstance;
+    mockUserDao = fixture.debugElement.injector.get(UserDAO);
   });
 
-  beforeEach(inject([AlertCreator, UserDAO], (_alertCreator, _userDAO) => {
-    alertCreator = _alertCreator;
-    userDAO = _userDAO;
-
-    user = {
-      email: 'test@test.com',
-      phone: '3132456545',
-      pass: '1215',
-      username: 'user123',
-      name: 'Juan Valdez'
-    };
-
-  }));
-
-  /*it('checkFields should call setOptionalInfo if email is correct', () => {
-   spyOn(optionalInfoFormPage, 'setOptionalInfo');
-   optionalInfoFormPage.user.email = 'test@test.com';
-   expect(optionalInfoFormPage.setOptionalInfo).toHaveBeenCalled();
-   });
-
-   it('checkFields should call showSimpleAlert from AlertCreator if email is incorrect', () => {
-   spyOn(alertCreator, 'showSimpleAlert');
-   optionalInfoFormPage.user.email = 'test';
-   expect(alertCreator.showSimpleAlert).toHaveBeenCalled();
-   });*/
 
   it('isValidName should return true if the name is valid', () => {
-    optionalInfoFormPage.optionalInfoForm.controls['name'].setValue('name');
+    optionalInfoFormPage.form.controls['name'].setValue(mockRightUser.name);
     expect(optionalInfoFormPage.isValidName()).toBe(true);
   });
 
+
+  it('isValidName should return false if the name is invalid', () => {
+    optionalInfoFormPage.form.controls['name'].setValue(mockWrongUser.name);
+    expect(optionalInfoFormPage.isValidName()).toBe(false);
+  });
+
   it('isValidEmail should return true if the email is valid', () => {
-    optionalInfoFormPage.optionalInfoForm.controls['email'].setValue('a@bc.com');
-    expect(optionalInfoFormPage.isValidName(user)).toBe(true);
+    optionalInfoFormPage.form.controls['email'].setValue(mockRightUser.email);
+    expect(optionalInfoFormPage.isValidEmail()).toBe(true);
+  });
+
+  it('isValidEmail should return true if the email is invalid', () => {
+    optionalInfoFormPage.form.controls['email'].setValue('a@bc.');
+    expect(optionalInfoFormPage.isValidEmail()).toBe(false);
+
+    optionalInfoFormPage.form.controls['email'].setValue('abc');
+    expect(optionalInfoFormPage.isValidEmail()).toBe(false);
   });
 
   it('isValidPhone should return true if the phone is valid', () => {
-    optionalInfoFormPage.optionalInfoForm.controls['phone'].setValue('a@bc.com');
-    expect(optionalInfoFormPage.isValidName(user)).toBe(true);
+    optionalInfoFormPage.form.controls['phone'].setValue(mockRightUser.phone);
+    expect(optionalInfoFormPage.isValidPhone()).toBe(true);
   });
 
-  it('isValidName should return false if the email is invalid', () => {
-    optionalInfoFormPage.optionalInfoForm.controls['email'].setValue('a@b');
-    expect(optionalInfoFormPage.isValidName(user)).toBe(false);
+  it('isValidPhone should return false if the phone is invalid', () => {
+    optionalInfoFormPage.form.controls['phone'].setValue(mockWrongUser.phone);
+    expect(optionalInfoFormPage.isValidPhone()).toBe(false);
+
+    optionalInfoFormPage.form.controls['phone'].setValue('01234567891');
+    expect(optionalInfoFormPage.isValidPhone()).toBe(false);
   });
+
+  it('isUserDataValid should return false if any field is invalid', () => {
+    optionalInfoFormPage.form.controls['phone'].setValue(mockWrongUser.phone);
+    optionalInfoFormPage.form.controls['name'].setValue(mockWrongUser.name);
+    optionalInfoFormPage.form.controls['email'].setValue(mockWrongUser.email);
+
+    expect(optionalInfoFormPage.isUserDataValid()).toBe(false);
+  });
+
+  it('isUserDataValid should return true if all fields are valid', () => {
+    optionalInfoFormPage.form.controls['phone'].setValue(mockRightUser.phone);
+    optionalInfoFormPage.form.controls['name'].setValue(mockRightUser.name);
+    optionalInfoFormPage.form.controls['email'].setValue(mockRightUser.email);
+
+    expect(optionalInfoFormPage.isUserDataValid()).toBe(true);
+  });
+
 
   it('saveUser should call create from UserDAO', () => {
-    optionalInfoFormPage.user = user;
-    spyOn(userDAO, 'create').and.callThrough();
+    optionalInfoFormPage.form.controls['phone'].setValue(mockRightUser.phone);
+    optionalInfoFormPage.form.controls['name'].setValue(mockRightUser.name);
+    optionalInfoFormPage.form.controls['email'].setValue(mockRightUser.email);
+
     optionalInfoFormPage.saveUser();
-    expect(userDAO.create).toHaveBeenCalled();
+    expect(mockUserDao.create).toHaveBeenCalled();
+  });
+
+  it('saveUser should not call create from UserDAO', () => {
+    optionalInfoFormPage.form.controls['phone'].setValue(mockWrongUser.phone);
+    optionalInfoFormPage.form.controls['name'].setValue(mockWrongUser.name);
+    optionalInfoFormPage.form.controls['email'].setValue(mockWrongUser.email);
+
+    optionalInfoFormPage.saveUser();
+    expect(mockUserDao.create).not.toHaveBeenCalled();
   });
 
 });

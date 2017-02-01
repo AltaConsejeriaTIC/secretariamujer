@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
-import {IUser, User} from "../../entity/user";
+import {User} from "../../entity/user";
 import {UserDAO} from "../../providers/user-dao";
 import {AlertCreator} from "../../providers/alert-creator";
 import {ContactSelectionPage} from "../contact-selection/contact-selection";
@@ -11,7 +11,7 @@ import {FormBuilder, FormGroup, Validators, AbstractControl} from "@angular/form
   templateUrl: './optional-info-form-page.html'
 })
 export class OptionalInfoFormPagePage {
-  optionalInfoForm: FormGroup;
+  form: FormGroup;
 
   constructor(public navCtrl: NavController, public userDAO: UserDAO, public alertCreator: AlertCreator,
               private  formBuilder: FormBuilder) {
@@ -19,7 +19,7 @@ export class OptionalInfoFormPagePage {
   }
 
   private createForm(formBuilder: FormBuilder) {
-    this.optionalInfoForm = formBuilder.group({
+    this.form = formBuilder.group({
       name: ['', Validators.compose([Validators.pattern('[a-zA-Z ]*')])],
       email: ['', Validators.compose([Validators.pattern('(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*$)')])],
       phone: ['', Validators.compose([Validators.pattern('[0-9]*'), Validators.maxLength(10)])]
@@ -36,15 +36,15 @@ export class OptionalInfoFormPagePage {
   }
 
   isValidPhone() {
-    return this.isValidField(this.optionalInfoForm.controls['phone'], 'Verifica que el teléfono sea correcto');
+    return this.isValidField(this.form.controls['phone'], 'Verifica que el teléfono sea correcto');
   }
 
   isValidEmail() {
-    return this.isValidField(this.optionalInfoForm.controls['email'], 'Verifica que el correo sea correcto');
+    return this.isValidField(this.form.controls['email'], 'Verifica que el correo sea correcto');
   }
 
   isValidName() {
-    return this.isValidField(this.optionalInfoForm.controls['name'], 'Verifica que el nombre sea correcto');
+    return this.isValidField(this.form.controls['name'], 'Verifica que el nombre sea correcto');
   }
 
   isValidField(field: AbstractControl, message: string) {
@@ -65,14 +65,14 @@ export class OptionalInfoFormPagePage {
           this.goToContactPage()
         });
       }, err => {
-        console.log("ocurrio un error", err);
+        console.log("ocurrio un error", err.toString());
       });
     }
   }
 
   updateUserInDAO() {
-    let user = new User(this.optionalInfoForm.controls['name'].value, this.optionalInfoForm.controls['email'].value,
-      this.optionalInfoForm.controls['phone'].value);
+    let user = new User(this.form.controls['name'].value, this.form.controls['email'].value,
+      this.form.controls['phone'].value);
     this.userDAO.setOptionalInfo(user);
   }
 
@@ -81,7 +81,7 @@ export class OptionalInfoFormPagePage {
   }
 
   canUserContinue(): boolean {
-    return this.optionalInfoForm.controls['name'].valid && this.optionalInfoForm.controls['email'].valid && this.optionalInfoForm.controls['phone'].valid;
+    return this.form.controls['name'].valid && this.form.controls['email'].valid && this.form.controls['phone'].valid;
   }
 
 }
