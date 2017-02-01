@@ -16,11 +16,11 @@
       </ion-col>
       <ion-col width-80 class="data-container">
         <div class="data-container-labels">
-          <ion-label class="user-nickname">
-            nickname
+          <ion-label class="name-info">
+            {{usernameInfo}}
           </ion-label>
-          <ion-label class="user-name">
-            (name)
+          <ion-label class="username-info">
+            {{nameInfo}}
           </ion-label>
         </div>
       </ion-col>
@@ -38,9 +38,7 @@
       </ion-row>
 
       <ion-row class="contact-settings" *ngIf="isOptionVisible[0]">
-        <p>
-          contactos
-        </p>
+        <page-contact-selection></page-contact-selection>
       </ion-row>
     </div>
     <div>
@@ -55,11 +53,12 @@
         </ion-col>
       </ion-row>
 
-      <ion-row class="pin-change-settings" *ngIf="isOptionVisible[1]">
-        <p>
-          Cambiar PIN
-        </p>
-      </ion-row>
+      <div class="pin-change-settings" *ngIf="isOptionVisible[1]">
+        <ion-label text-center class="instruction-text">
+          Ingresa tu pin de 4 dígitos
+        </ion-label>
+        <ion-input text-center class="pin-input" type="tel" placeholder="1234" maxlength="4"></ion-input>
+      </div>
     </div>
     <div>
       <ion-row class="settings-item">

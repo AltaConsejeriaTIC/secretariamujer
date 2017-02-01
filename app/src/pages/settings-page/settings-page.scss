@@ -15,11 +15,11 @@ page-settings-page {
       margin: auto;
     }
 
-    .user-nickname {
+    .name-info {
       font-weight: bold;
     }
 
-    .user-nickname, .user-name {
+    .name-info, .username-info {
       margin: 0;
     }
   }
@@ -47,33 +47,166 @@ page-settings-page {
     }
   }
 
+  page-contact-selection {
+    width: 100%;
+
+    ion-grid > ion-row:first-child, ion-grid > ion-row:last-child {
+      display: none;
+    }
+
+    ion-content {
+      background: map_get($colors, primary) !important;
+    }
+
+    ion-grid > ion-row:nth-child(4) {
+      margin: 0 !important;
+    }
+  }
+
+  .pin-change-settings {
+    background: map_get($colors, primary) !important;
+
+    ion-label, ion-input {
+      color: map_get($colors, SofiaAppWhite);
+    }
+
+    .instruction-text {
+      margin: 0;
+      padding: 5% 5% 0;
+      font-weight: bold;
+    }
+
+    .pin-input {
+      font-weight: bold;
+      border-bottom: 2px solid white;
+      margin: 0 30vw 5vh;
+      display: inline-block;
+      width: 40vw;
+    }
+
+    input {
+      margin: 10px 8px 5px 8px;
+    }
+  }
+
+  .text-input::-moz-placeholder {
+    color: rgba(242, 242, 242, 0.2);
+  }
+
+  .text-input:-ms-input-placeholder {
+    color: rgba(242, 242, 242, 0.2);
+  }
+
+  .text-input::-webkit-input-placeholder {
+    text-indent: 0;
+    color: rgba(242, 242, 242, 0.2);
+  }
+
   @media (max-width: 479px) {
     .user-name-data {
       ion-icon {
-        font-size: 50px;
-      }
-
-      .user-nickname {
-        font-size: 18px;
-      }
-
-      .user-name {
-        font-size: 14px;
+        font-size: 53px;
       }
     }
 
-    .settings-item {
-      .text-container ion-label {
-        font-size: 16px;
+    .user-name-data .name-info,
+    .settings-item .text-container ion-label {
+      font-size: 16px;
+    }
+
+    .user-name-data .username-info,
+    .settings-item .icon-container > ion-icon {
+      font-size: 15px;
+    }
+
+    page-contact-selection {
+      height: 215px;
+
+      ion-grid > ion-row {
+        margin: 0 0 20px !important;
+      }
+    }
+
+    .pin-change-settings {
+      .instruction-text {
+        font-size: 12px;
+      }
+
+      .pin-input {
+        font-size: 17px;
       }
     }
   }
 
   @media (min-width: 480px) and (max-width: 767px) {
+    .user-name-data {
+      ion-icon {
+        font-size: 78px;
+      }
+    }
 
+    .user-name-data .name-info,
+    .settings-item .text-container ion-label {
+      font-size: 26px;
+    }
+
+    .user-name-data .username-info,
+    .settings-item .icon-container > ion-icon {
+      font-size: 22px;
+    }
+
+    page-contact-selection {
+      height: 280px;
+
+      ion-grid > ion-row {
+        margin: 0 0 28px !important;
+      }
+    }
+
+    .pin-change-settings {
+      .instruction-text {
+        font-size: 18px;
+      }
+
+      .pin-input {
+        font-size: 26px;
+      }
+    }
   }
 
   @media (min-width: 768px) {
+    .user-name-data {
+      ion-icon {
+        font-size: 85px;
+      }
+    }
 
+    .user-name-data .name-info {
+      font-size: 29px;
+    }
+
+    .user-name-data .username-info,
+    .settings-item .text-container ion-label,
+    .settings-item .icon-container > ion-icon {
+      font-size: 24px;
+    }
+
+    page-contact-selection {
+      height: 335px;
+
+      ion-grid > ion-row {
+        margin: 0 0 36px !important;
+      }
+    }
+
+    .pin-change-settings {
+      .instruction-text {
+        font-size: 20px;
+      }
+
+      .pin-input {
+        font-size: 29px;
+      }
+    }
   }
 }
