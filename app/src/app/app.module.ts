@@ -8,7 +8,7 @@ import {MapServices} from  '../providers/map-services'
 import {EventsServices} from "../providers/events-services";
 import {HomePage} from "../pages/home/home";
 import {RequiredInfoFormPage} from "../pages/required-info-form/required-info-form";
-import {OptionalInfoFormPagePage} from "../pages/optional-info-form-page/optional-info-form-page";
+import {RegisterOptionalInfoPage} from "../pages/register-optional-info/register-optional-info";
 import {TestPage} from "../pages/test-page/test-page";
 import {TestsService} from "../providers/tests-service";
 import {MenuPage} from "../pages/menu/menu";
@@ -32,7 +32,7 @@ import {SettingsPage} from "../pages/settings-page/settings-page";
     MyApp,
     HomePage,
     RequiredInfoFormPage,
-    OptionalInfoFormPagePage,
+    RegisterOptionalInfoPage,
     MenuPage,
     WelcomeTestPage,
     SelectTestCategoryPage,
@@ -58,7 +58,7 @@ import {SettingsPage} from "../pages/settings-page/settings-page";
     MyApp,
     HomePage,
     RequiredInfoFormPage,
-    OptionalInfoFormPagePage,
+    RegisterOptionalInfoPage,
     MenuPage,
     WelcomeTestPage,
     SelectTestCategoryPage,
@@ -79,5 +79,6 @@ import {SettingsPage} from "../pages/settings-page/settings-page";
       useClass: IonicErrorHandler
     }]
 })
+
 export class AppModule {
 }

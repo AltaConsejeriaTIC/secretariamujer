@@ -7,10 +7,10 @@ import {ContactSelectionPage} from "../contact-selection/contact-selection";
 import {FormBuilder, FormGroup, Validators, AbstractControl} from "@angular/forms";
 
 @Component({
-  selector: 'page-optional-info-form-page',
-  templateUrl: './optional-info-form-page.html'
+  selector: 'page-register-optional-info',
+  templateUrl: 'register-optional-info.html'
 })
-export class OptionalInfoFormPagePage {
+export class RegisterOptionalInfoPage {
   form: FormGroup;
 
   constructor(public navCtrl: NavController, public userDAO: UserDAO, public alertCreator: AlertCreator,

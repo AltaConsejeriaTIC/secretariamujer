@@ -1,26 +1,26 @@
-import {ComponentFixture, TestBed, async, inject} from '@angular/core/testing';
+import {ComponentFixture, TestBed, async} from '@angular/core/testing';
 import {App, MenuController, NavController, Platform, Config, Keyboard, Form, IonicModule}  from 'ionic-angular';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ConfigMock, UserDAOMock, AlertCreatorMock} from '../../mocks';
 import {AlertCreator} from  '../../providers/alert-creator'
 import {AlertController} from "ionic-angular";
 import {UserDAO} from "../../providers/user-dao";
-import {OptionalInfoFormPagePage} from "./optional-info-form-page";
+import {RegisterOptionalInfoPage} from "./register-optional-info";
 import {IUser, User} from "../../entity/user";
 
 describe('OptionalInfoFormPage tests', () => {
 
-  let optionalInfoFormPage: OptionalInfoFormPagePage;
-  let fixture: ComponentFixture<OptionalInfoFormPagePage>;
+  let optionalInfoFormPage: RegisterOptionalInfoPage;
+  let fixture: ComponentFixture<RegisterOptionalInfoPage>;
   let mockRightUser: IUser = new User('Jose Julio Flores', 'juliov@gmail.com', '3214569865', 'juliozorra', '1245');
   let mockWrongUser: IUser = new User('Jose Julio Flores 13', 'juliov@gmailcom', '321aa4569865', '#$#%', '124a');
   let mockUserDao: UserDAO;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [OptionalInfoFormPagePage],
+      declarations: [RegisterOptionalInfoPage],
       providers: [
-        App, Platform, Form, Keyboard, MenuController, NavController, AlertController, OptionalInfoFormPagePage,
+        App, Platform, Form, Keyboard, MenuController, NavController, AlertController, RegisterOptionalInfoPage,
         {
           provide: Config,
           useClass: ConfigMock
@@ -43,7 +43,7 @@ describe('OptionalInfoFormPage tests', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(OptionalInfoFormPagePage);
+    fixture = TestBed.createComponent(RegisterOptionalInfoPage);
     optionalInfoFormPage = fixture.componentInstance;
     mockUserDao = fixture.debugElement.injector.get(UserDAO);
   });

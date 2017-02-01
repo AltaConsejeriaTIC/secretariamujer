@@ -3,7 +3,7 @@ import { NavController } from 'ionic-angular';
 import {IUser} from '../../entity/user';
 import {AlertCreator} from "../../providers/alert-creator";
 import {UserDAO} from "../../providers/user-dao";
-import {OptionalInfoFormPagePage} from "../optional-info-form-page/optional-info-form-page";
+import {RegisterOptionalInfoPage} from "../register-optional-info/register-optional-info";
 
 
 @Component({
@@ -34,7 +34,7 @@ export class RequiredInfoFormPage {
 
     if(isPassCorrect && !isUserNameEmpty){
       this.saveRequiredInfo();
-      this.navCtrl.push(OptionalInfoFormPagePage);
+      this.navCtrl.push(RegisterOptionalInfoPage);
     }
   }
 
