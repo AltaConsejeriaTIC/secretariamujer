@@ -10,7 +10,7 @@ const CONFIRM_NEW_PIN = 3;
 
 @Component({
   selector: 'page-settings-page',
-  templateUrl: 'settings-page.html'
+  templateUrl: './settings-page.html'
 })
 export class SettingsPage {
 
@@ -98,6 +98,7 @@ export class SettingsPage {
   saveNewPin(){
     if (this.newPin == this.inputPin) {
       this.setPinState (this.instructionTextArray[0], WRITE_CURRENT_PIN);
+      this.currentPin = this.newPin;
       this.alertCreator.showSimpleAlert('Éxito','El PIN ha sido cambiado');
     }
     else

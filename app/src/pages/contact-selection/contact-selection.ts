@@ -14,7 +14,7 @@ const MAX_CONTACTS = 3;
 
 @Component({
   selector: 'page-contact-selection',
-  templateUrl: 'contact-selection.html'
+  templateUrl: './contact-selection.html'
 })
 export class ContactSelectionPage {
   contacts: IContact[];
