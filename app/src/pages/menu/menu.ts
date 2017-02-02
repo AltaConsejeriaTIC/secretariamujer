@@ -77,7 +77,7 @@ export class MenuPage {
 
   setInitialIconAndHintState() {
     for (let i = 0; i < this.menuOptions.length; i++) {
-      this.arrowIcon.push("icon-border-next-arrow");
+      this.arrowIcon.push("icon-border-question-mark");
       this.hintState.push("hiddenHint");
     }
   }
@@ -96,7 +96,7 @@ export class MenuPage {
 
   setIconAndHintState(itemNumber, isShowingHint){
     this.hintState[itemNumber] = (isShowingHint)? "hintVisible" : "hiddenHint";
-    this.arrowIcon[itemNumber] = (isShowingHint)? "icon-fill-back-arrow" : "icon-border-next-arrow";
+    this.arrowIcon[itemNumber] = (isShowingHint)? "icon-fill-question-mark" : "icon-border-question-mark";
   }
 
   makePhoneCall() {

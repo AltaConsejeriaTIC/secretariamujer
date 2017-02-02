@@ -38,12 +38,16 @@ page-settings-page {
     }
 
     .text-container ion-label {
-      margin: 0 0 0 2vw;
+      margin: 0 0 0 3vw;
       font-weight: bold;
     }
 
     .toggle-container{
       margin-right: 5vw;
+    }
+
+    .icon-container ion-icon {
+      margin: 0 3vw 0 0;
     }
   }
 
