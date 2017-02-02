@@ -41,11 +41,13 @@
 @include createIcon(icon-test, '\e907');
 @include createIcon(icon-download, '\e908');
 @include createIcon(icon-msj, '\e909');
-@include createIcon(icon-sofia, '\e90a');
 @include createIcon(icon-fill-back-arrow, '\e90b');
-@include createIcon(icon-fill-up-arrow, '\e90e');
 @include createIcon(icon-border-next-arrow, '\e90c');
+@include createIcon(icon-fill-up-arrow, '\e90e');
 @include createIcon(icon-border-up-arrow, '\e910');
 @include createIcon(icon-border-down-arrow, '\e911');
 @include createIcon(icon-girl, '\e912');
-@include createIcon(icon-go-menu, '\e91d');
+@include createIcon(icon-sofia, '\e91b');
+@include createIcon(icon-border-question-mark, '\e91c');
+@include createIcon(icon-fill-question-mark, '\e91d');
+@include createIcon(icon-go-menu, '\e91e');

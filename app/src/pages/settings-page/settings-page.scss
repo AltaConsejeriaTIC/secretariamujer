@@ -38,12 +38,16 @@ page-settings-page {
     }
 
     .text-container ion-label {
-      margin: 0 0 0 2vw;
+      margin: 0 0 0 3vw;
       font-weight: bold;
     }
 
     .toggle-container{
       margin-right: 5vw;
+    }
+
+    .icon-container ion-icon {
+      margin: 0 3vw 0 0;
     }
   }
 
@@ -133,6 +137,7 @@ page-settings-page {
 
   @media (max-width: 479px) {
     .user-name-data {
+      min-height: 85px;
       ion-icon {
         font-size: 53px;
       }
@@ -167,6 +172,11 @@ page-settings-page {
       }
     }
 
+    .settings-item,
+    .profile-settings > ion-col > ion-row{
+      min-height: 50px;
+    }
+
     .profile-settings {
       ion-icon {
         font-size: 30px;
@@ -180,6 +190,7 @@ page-settings-page {
 
   @media (min-width: 480px) and (max-width: 767px) {
     .user-name-data {
+      min-height: 150px;
       ion-icon {
         font-size: 78px;
       }
@@ -214,6 +225,11 @@ page-settings-page {
       }
     }
 
+    .settings-item,
+    .profile-settings > ion-col > ion-row{
+      min-height: 85px;
+    }
+
     .profile-settings {
       ion-icon {
         font-size: 46px;
@@ -227,6 +243,7 @@ page-settings-page {
 
   @media (min-width: 768px) {
     .user-name-data {
+      min-height: 185px;
       ion-icon {
         font-size: 85px;
       }
@@ -259,6 +276,11 @@ page-settings-page {
       .pin-input {
         font-size: 29px;
       }
+    }
+
+    .settings-item,
+    .profile-settings > ion-col > ion-row{
+      min-height: 105px;
     }
 
     .profile-settings {
