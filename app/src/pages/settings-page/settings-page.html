@@ -57,7 +57,7 @@
         <ion-label text-center class="instruction-text">
           {{instructionText}}
         </ion-label>
-        <ion-input text-center class="pin-input" type="tel" placeholder="1234" maxlength="4" [(ngModel)]="inputPin" (input)='changePin()'></ion-input>
+        <ion-input mode="md" text-center class="pin-input" type="tel" placeholder="1234" maxlength="4" [(ngModel)]="inputPin" (input)='changePin()'></ion-input>
       </div>
     </div>
     <div>
@@ -87,21 +87,21 @@
       <ion-row class="profile-settings" *ngIf="isOptionVisible[2]">
         <ion-col>
           <ion-row>
-            <ion-input class="profile-input" type="text" placeholder="Tu nombre & apellido">
+            <ion-input mode="md" class="profile-input" type="text" placeholder="Tu nombre & apellido">
             </ion-input>
             <ion-col width-10 class="icon-container justify-horizontally-right">
               <ion-icon name="add"></ion-icon>
             </ion-col>
           </ion-row>
           <ion-row>
-            <ion-input class="profile-input" type="email" placeholder="Tu correo electrónico">
+            <ion-input mode="md" class="profile-input" type="email" placeholder="Tu correo electrónico">
             </ion-input>
             <ion-col width-10 class="icon-container justify-horizontally-right">
               <ion-icon name="add"></ion-icon>
             </ion-col>
           </ion-row>
           <ion-row>
-            <ion-input class="profile-input" type="tel" placeholder="Tu teléfono móvil">
+            <ion-input mode="md" class="profile-input" type="tel" placeholder="Tu teléfono móvil">
             </ion-input>
             <ion-col width-10 class="icon-container justify-horizontally-right">
               <ion-icon name="add"></ion-icon>
