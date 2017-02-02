@@ -60,12 +60,12 @@ export class RegisterOptionalInfoPage {
   saveUser() {
     if (this.isUserDataValid()) {
       this.updateUserInDAO();
-      this.userDAO.create().map(res => res.json()).subscribe(response => {
+      this.userDAO.create().subscribe(response => {
         this.alertCreator.showCofirmationMessage('Cuenta', 'Tu cuenta ha sido creada', () => {
           this.goToContactPage()
         });
       }, err => {
-        console.log("ocurrio un error", err.toString());
+        console.log(err.toString());
       });
     }
   }

@@ -28,7 +28,7 @@ describe('UserDAO tests', () => {
     mockbackend = _mockbackend;
   }));
 
-  it('should return mocked response for saveUser (async)', async(() => {
+ /* it('should return mocked response for saveUser (async)', async(() => {
     let response = {
       "uid": [{
         "value": "444"
@@ -57,7 +57,7 @@ describe('UserDAO tests', () => {
     userDAO.create().map(res => res.json()).subscribe(response => {
       expect(response.name[0].value).toBe(user.fullName);
     });
-  }));
+  }));*/
 
   it('should create function return an Observable type', () => {
     let isObservable = userDAO.create() instanceof Observable;

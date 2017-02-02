@@ -1,8 +1,7 @@
 #!/bin/sh
-npm install
 sudo add-apt-repository ppa:ondrej/php
 sudo apt-get update
-sudo apt install php -y
+sudo apt install php7.0 -y
 sudo apt install php7.0-gd php7.0-mysql php7.0-dom -y
 sudo apt install mysql-server -y
 

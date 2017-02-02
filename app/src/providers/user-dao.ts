@@ -4,6 +4,7 @@ import 'rxjs/add/operator/map';
 import {IUser, User} from '../entity/user';
 import {Observable} from "rxjs";
 import {ApplicationConfig} from "../config";
+import {Contact} from "../entity/contact";
 
 @Injectable()
 export class UserDAO {
@@ -26,15 +27,27 @@ export class UserDAO {
     this.user.cellPhone = user.cellPhone;
   }
 
-  create(): Observable<Response> {
+  create(): Observable<any> {
+    let body = this.createHttpBody(this.user);
+    let headers = this.createHeaders();
+    let options = this.createRequestOptions(headers);
+    let observable = Observable.create((observer) => {
+      this.http.post(this.RESTUrl, body, options).map(response => response.json()).subscribe(user => {
+        observer.next(user.uid[0].value);
+        observer.complete();
+      });
+    });
+
+    return observable;
+  }
+
+  update() {
+    let url = this.config.getURL('/user/' + this.user.id + '?_format=json');
     let body = this.createHttpBody(this.user);
     let headers = this.createHeaders();
     let options = this.createRequestOptions(headers);
 
-    return this.http.post(this.RESTUrl, body, options);
-  }
-
-  update() {
+    return this.http.patch(url, body, options).map(response => response.json());
   }
 
   private createRequestOptions(headers: Headers) {
