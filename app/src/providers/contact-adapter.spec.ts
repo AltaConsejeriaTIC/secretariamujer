@@ -15,19 +15,19 @@ describe('ContacAdapter tests', () => {
     }]
   };
 
-  it('parseName should adapt the name of the selected contact', () => {
+  it('parseName should adapt the fullName of the selected contact', () => {
     let contactName = contactAdapter.parseName(selectedContact);
 
     expect(contactName).toBe(selectedContact.displayName);
   });
 
-  it('parsePhoneNumbers should adapt the name of the selected contact', () => {
+  it('parsePhoneNumbers should adapt the fullName of the selected contact', () => {
     let contactPhoneNumber = contactAdapter.parsePhoneNumber(selectedContact);
 
     expect(contactPhoneNumber).toBe(selectedContact.phoneNumbers[0].value);
   });
 
-  it('parseContact should adapt the selected contact in the phone to a instance of the class Contact', () => {
+  it('parseContact should adapt the selected contact in the cellPhone to a instance of the class Contact', () => {
     let expectedContact = new Contact(selectedContact.displayName, selectedContact.phoneNumbers[0].value);
     let contact = contactAdapter.parseContact(selectedContact);
 
@@ -35,7 +35,7 @@ describe('ContacAdapter tests', () => {
     expect(contact).toEqual(expectedContact);
   });
 
-  it('parseContact should return a contact with the number in the name if it does not have name', () => {
+  it('parseContact should return a contact with the number in the fullName if it does not have fullName', () => {
     let expectedContact = new Contact(selectedContact.phoneNumbers[0].value, selectedContact.phoneNumbers[0].value);
     selectedContact.displayName = null;
     let contact = contactAdapter.parseContact(selectedContact);
@@ -43,7 +43,7 @@ describe('ContacAdapter tests', () => {
     expect(contact).toEqual(expectedContact);
   });
 
-  it('parseContact should throw error if the selected contact does not have any phone number', () => {
+  it('parseContact should throw error if the selected contact does not have any cellPhone number', () => {
     selectedContact.phoneNumbers = null;
 
     expect(() => {

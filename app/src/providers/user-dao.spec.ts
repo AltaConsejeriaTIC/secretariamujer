@@ -35,7 +35,7 @@ describe('UserDAO tests', () => {
       }],
       "name": [
         {
-          "value": user.name
+          "value": user.fullName
         }
       ],
       "mail": [
@@ -55,7 +55,7 @@ describe('UserDAO tests', () => {
 
     userDAO.user = user;
     userDAO.create().map(res => res.json()).subscribe(response => {
-      expect(response.name[0].value).toBe(user.name);
+      expect(response.name[0].value).toBe(user.fullName);
     });
   }));
 
@@ -64,18 +64,18 @@ describe('UserDAO tests', () => {
     expect(isObservable).toBe(true);
   });
 
-  it('saveRequiredInfo should set user name and pass values', () => {
+  it('saveRequiredInfo should set user fullName and password values', () => {
     userDAO.user = user;
     userDAO.saveRequiredInfo('name', '123');
     expect(userDAO.user.username).toBe('name');
-    expect(userDAO.user.pass).toBe('123');
+    expect(userDAO.user.password).toBe('123');
   });
 
-  it('setOptionalInfo should set user name, email and phone values', () => {
+  it('setOptionalInfo should set user fullName, email and cellPhone values', () => {
     userDAO.setOptionalInfo(user);
-    expect(userDAO.user.name).toBe(user.name);
+    expect(userDAO.user.fullName).toBe(user.fullName);
     expect(userDAO.user.email).toBe(user.email);
-    expect(userDAO.user.phone).toBe(user.phone);
+    expect(userDAO.user.cellPhone).toBe(user.cellPhone);
   });
 
 
@@ -89,13 +89,12 @@ describe('UserDAO tests', () => {
     let expectedUser = JSON.parse(userDAO.createHttpBody(user));
 
     expect(expectedUser.name[0].value).toEqual(user.username);
-    expect(expectedUser.field_full_name).toEqual(user.name);
-    expect(expectedUser.field_password).toEqual(user.pass);
+    expect(expectedUser.field_full_name).toEqual(user.fullName);
+    expect(expectedUser.field_password).toEqual(user.password);
     expect(expectedUser.mail[0].value).toEqual(user.email);
-    expect(expectedUser.field_cellphone).toEqual(user.phone);
+    expect(expectedUser.field_cellphone).toEqual(user.cellPhone);
     expect(expectedUser.roles[0].target_id).toEqual("authenticated");
-    expect(expectedUser.field_contacts[0].name).toEqual(user.contacts[0].name);
-    expect(expectedUser.field_contacts[0].phoneNumber).toEqual(user.contacts[0].phoneNumber);
+    expect(expectedUser.field_contacts).toEqual(JSON.stringify(user.contacts));
   });
 
 

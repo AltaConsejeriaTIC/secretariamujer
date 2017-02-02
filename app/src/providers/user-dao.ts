@@ -15,35 +15,17 @@ export class UserDAO {
 
   saveRequiredInfo(username: string, pass: string) {
     this.user.username = username;
-    this.user.pass = pass;
+    this.user.password = pass;
   }
 
   setOptionalInfo(user: IUser) {
-    this.user.name = user.name;
+    this.user.fullName = user.fullName;
     this.user.email = user.email;
-    this.user.phone = user.phone;
+    this.user.cellPhone = user.cellPhone;
   }
 
   create(): Observable<Response> {
-
-    let contacts = {
-      "contact1": {"name": "brayan1", "phoneNumber": "789"},
-      "contact2": {"name": "kevin1", "phoneNumber": "321"}
-    };
-
-    let body = JSON.stringify({
-      "name": [{"value": this.user.username}],
-      "mail": [{"value": this.user.email}],
-      "roles": [{"target_id": "authenticated"}],
-      "status": [{"value": true}],
-      "pass": this.user.pass,
-      "field_cellphone": this.user.phone,
-      "field_password": this.user.pass,
-      "field_full_name": this.user.name,
-      //"field_contacts": [{"contact1":{"name":"brayan","phoneNumber":"789"}, "contact2":{"name":"kevin","phoneNumber":"321"} }]
-      "field_contacts": JSON.stringify(contacts)
-    });
-
+    let body = this.createHttpBody(this.user);
     let headers = new Headers({'Content-Type': 'application/json', 'Authorization': 'Basic ' + 'YXBwOmFwcA=='});
     let options = new RequestOptions({headers: headers});
 
@@ -56,11 +38,11 @@ export class UserDAO {
   }
 
   getName(): string {
-    return this.user.name;
+    return this.user.fullName;
   }
 
   getPass(): string {
-    return this.user.pass;
+    return this.user.password;
   }
 
   update() {
@@ -70,15 +52,15 @@ export class UserDAO {
 
   createHttpBody(user: User) {
     let body = JSON.stringify({
-      "name": [{"value": user.username}],
-      "mail": [{"value": user.email}],
-      "roles": [{"target_id": "authenticated"}],
-      "status": [{"value": true}],
-      "pass": user.pass,
-      "field_cellphone": user.phone,
-      "field_password": user.pass,
-      "field_full_name": user.name,
-      "field_contacts": user.contacts
+      name: [{value: user.username}],
+      mail: [{value: user.email}],
+      roles: [{target_id: 'authenticated'}],
+      status: [{value: true}],
+      pass: user.password,
+      field_cellphone: user.cellPhone,
+      field_password: user.password,
+      field_full_name: user.fullName,
+      field_contacts: JSON.stringify(user.contacts)
     });
 
     return body;

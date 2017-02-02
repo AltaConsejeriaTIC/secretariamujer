@@ -24,7 +24,7 @@ export class RequiredInfoFormPage {
 
   checkInputValues() {
     let isUserNameEmpty = this.validateEmptyField(this.user.username);
-    let isPassEmpty = this.validateEmptyField(this.user.pass);
+    let isPassEmpty = this.validateEmptyField(this.user.password);
     let isPassCorrect: boolean = false;
     this.throwMessageIfEmptyField(isUserNameEmpty, isPassEmpty);
 
@@ -53,7 +53,7 @@ export class RequiredInfoFormPage {
   }
 
   isPassValueOnlyNumber() {
-    if ((!this.user.pass.match(/^[0-9]*$/)) || (this.user.pass.length != 4)) {
+    if ((!this.user.password.match(/^[0-9]*$/)) || (this.user.password.length != 4)) {
       this.alertCreator.showSimpleAlert('Error', 'El PIN sólo puede contener números y debe ser de 4 dígitos');
       return false;
     } else {
@@ -62,7 +62,7 @@ export class RequiredInfoFormPage {
   }
 
   saveRequiredInfo() {
-    this.userDAO.saveRequiredInfo(this.user.username, this.user.pass);
+    this.userDAO.saveRequiredInfo(this.user.username, this.user.password);
   }
 
   goBack() {

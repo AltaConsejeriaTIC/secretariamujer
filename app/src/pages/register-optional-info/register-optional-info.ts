@@ -20,9 +20,9 @@ export class RegisterOptionalInfoPage {
 
   private createForm(formBuilder: FormBuilder) {
     this.form = formBuilder.group({
-      name: ['', Validators.compose([Validators.pattern('[a-zA-Z ]*')])],
+      fullName: ['', Validators.compose([Validators.pattern('[a-zA-Z ]*')])],
       email: ['', Validators.compose([Validators.pattern('(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*$)')])],
-      phone: ['', Validators.compose([Validators.pattern('[0-9]*'), Validators.maxLength(10)])]
+      cellPhone: ['', Validators.compose([Validators.pattern('[0-9]*'), Validators.maxLength(10)])]
     });
   }
 
@@ -36,7 +36,7 @@ export class RegisterOptionalInfoPage {
   }
 
   isValidPhone() {
-    return this.isValidField(this.form.controls['phone'], 'Verifica que el teléfono sea correcto');
+    return this.isValidField(this.form.controls['cellPhone'], 'Verifica que el teléfono sea correcto');
   }
 
   isValidEmail() {
@@ -44,7 +44,7 @@ export class RegisterOptionalInfoPage {
   }
 
   isValidName() {
-    return this.isValidField(this.form.controls['name'], 'Verifica que el nombre sea correcto');
+    return this.isValidField(this.form.controls['fullName'], 'Verifica que el nombre sea correcto');
   }
 
   isValidField(field: AbstractControl, message: string) {
@@ -71,8 +71,8 @@ export class RegisterOptionalInfoPage {
   }
 
   updateUserInDAO() {
-    let user = new User(this.form.controls['name'].value, this.form.controls['email'].value,
-      this.form.controls['phone'].value);
+    let user = new User(this.form.controls['fullName'].value, this.form.controls['email'].value,
+      this.form.controls['cellPhone'].value);
     this.userDAO.setOptionalInfo(user);
   }
 
@@ -81,7 +81,7 @@ export class RegisterOptionalInfoPage {
   }
 
   canUserContinue(): boolean {
-    return this.form.controls['name'].valid && this.form.controls['email'].valid && this.form.controls['phone'].valid;
+    return this.form.controls['fullName'].valid && this.form.controls['email'].valid && this.form.controls['cellPhone'].valid;
   }
 
 }

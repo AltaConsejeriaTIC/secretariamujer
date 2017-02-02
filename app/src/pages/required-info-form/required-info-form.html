@@ -8,7 +8,7 @@
         </ion-row>
 
         <ion-row>
-          <ion-input text-center [(ngModel)]="user.pass" class="input-border input-color" type="tel"  placeholder="1234" maxlength="4"></ion-input>
+          <ion-input text-center [(ngModel)]="user.password" class="input-border input-color" type="tel" placeholder="1234" maxlength="4"></ion-input>
         </ion-row>
 
         <ion-row>
@@ -21,7 +21,7 @@
             <button (click)="goBack()" class="app-button" ion-button outline>Atrás</button>
           </ion-col>
           <ion-col offset-10 width-45 class="no-padding">
-            <button (click)="checkInputValues()" [ngClass]="{'app-button': user.pass && user.username, 'disabled-button': !user.pass || !user.username}" ion-button outline>Continuar</button>
+            <button (click)="checkInputValues()" [ngClass]="{'app-button': user.password && user.username, 'disabled-button': !user.password || !user.username}" ion-button outline>Continuar</button>
           </ion-col>
 
         </ion-row>

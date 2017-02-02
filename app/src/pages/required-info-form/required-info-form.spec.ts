@@ -42,8 +42,8 @@ describe('RequiredInfoFormPage tests', () => {
   }));
 
   it('validateEmptyField should return true if field is empty', () => {
-    requiredInfoFormPage.user.name = null;
-    expect(requiredInfoFormPage.validateEmptyField(requiredInfoFormPage.user.name)).toBe(true);
+    requiredInfoFormPage.user.fullName = null;
+    expect(requiredInfoFormPage.validateEmptyField(requiredInfoFormPage.user.fullName)).toBe(true);
   });
 
   it('throwMessageIfEmptyField should call showSimpleAlert from AlertCreator if any field is empty', () => {
@@ -58,7 +58,7 @@ describe('RequiredInfoFormPage tests', () => {
 
   it('isPassValueOnlyNumber should call showSimpleAlert from AlertCreator if input contains characters different from numbers and return false', () => {
     spyOn(alertCreator, 'showSimpleAlert');
-    requiredInfoFormPage.user.pass = '123!';
+    requiredInfoFormPage.user.password = '123!';
     requiredInfoFormPage.isPassValueOnlyNumber();
     expect(requiredInfoFormPage.isPassValueOnlyNumber()).toBe(false);
     expect(alertCreator.showSimpleAlert).toHaveBeenCalled();

@@ -49,14 +49,14 @@ describe('OptionalInfoFormPage tests', () => {
   });
 
 
-  it('isValidName should return true if the name is valid', () => {
-    optionalInfoFormPage.form.controls['name'].setValue(mockRightUser.name);
+  it('isValidName should return true if the fullName is valid', () => {
+    optionalInfoFormPage.form.controls['fullName'].setValue(mockRightUser.fullName);
     expect(optionalInfoFormPage.isValidName()).toBe(true);
   });
 
 
-  it('isValidName should return false if the name is invalid', () => {
-    optionalInfoFormPage.form.controls['name'].setValue(mockWrongUser.name);
+  it('isValidName should return false if the fullName is invalid', () => {
+    optionalInfoFormPage.form.controls['fullName'].setValue(mockWrongUser.fullName);
     expect(optionalInfoFormPage.isValidName()).toBe(false);
   });
 
@@ -73,30 +73,30 @@ describe('OptionalInfoFormPage tests', () => {
     expect(optionalInfoFormPage.isValidEmail()).toBe(false);
   });
 
-  it('isValidPhone should return true if the phone is valid', () => {
-    optionalInfoFormPage.form.controls['phone'].setValue(mockRightUser.phone);
+  it('isValidPhone should return true if the cellPhone is valid', () => {
+    optionalInfoFormPage.form.controls['cellPhone'].setValue(mockRightUser.cellPhone);
     expect(optionalInfoFormPage.isValidPhone()).toBe(true);
   });
 
-  it('isValidPhone should return false if the phone is invalid', () => {
-    optionalInfoFormPage.form.controls['phone'].setValue(mockWrongUser.phone);
+  it('isValidPhone should return false if the cellPhone is invalid', () => {
+    optionalInfoFormPage.form.controls['cellPhone'].setValue(mockWrongUser.cellPhone);
     expect(optionalInfoFormPage.isValidPhone()).toBe(false);
 
-    optionalInfoFormPage.form.controls['phone'].setValue('01234567891');
+    optionalInfoFormPage.form.controls['cellPhone'].setValue('01234567891');
     expect(optionalInfoFormPage.isValidPhone()).toBe(false);
   });
 
   it('isUserDataValid should return false if any field is invalid', () => {
-    optionalInfoFormPage.form.controls['phone'].setValue(mockWrongUser.phone);
-    optionalInfoFormPage.form.controls['name'].setValue(mockWrongUser.name);
+    optionalInfoFormPage.form.controls['cellPhone'].setValue(mockWrongUser.cellPhone);
+    optionalInfoFormPage.form.controls['fullName'].setValue(mockWrongUser.fullName);
     optionalInfoFormPage.form.controls['email'].setValue(mockWrongUser.email);
 
     expect(optionalInfoFormPage.isUserDataValid()).toBe(false);
   });
 
   it('isUserDataValid should return true if all fields are valid', () => {
-    optionalInfoFormPage.form.controls['phone'].setValue(mockRightUser.phone);
-    optionalInfoFormPage.form.controls['name'].setValue(mockRightUser.name);
+    optionalInfoFormPage.form.controls['cellPhone'].setValue(mockRightUser.cellPhone);
+    optionalInfoFormPage.form.controls['fullName'].setValue(mockRightUser.fullName);
     optionalInfoFormPage.form.controls['email'].setValue(mockRightUser.email);
 
     expect(optionalInfoFormPage.isUserDataValid()).toBe(true);
@@ -104,8 +104,8 @@ describe('OptionalInfoFormPage tests', () => {
 
 
   it('saveUser should call create from UserDAO', () => {
-    optionalInfoFormPage.form.controls['phone'].setValue(mockRightUser.phone);
-    optionalInfoFormPage.form.controls['name'].setValue(mockRightUser.name);
+    optionalInfoFormPage.form.controls['cellPhone'].setValue(mockRightUser.cellPhone);
+    optionalInfoFormPage.form.controls['fullName'].setValue(mockRightUser.fullName);
     optionalInfoFormPage.form.controls['email'].setValue(mockRightUser.email);
 
     optionalInfoFormPage.saveUser();
@@ -113,8 +113,8 @@ describe('OptionalInfoFormPage tests', () => {
   });
 
   it('saveUser should not call create from UserDAO', () => {
-    optionalInfoFormPage.form.controls['phone'].setValue(mockWrongUser.phone);
-    optionalInfoFormPage.form.controls['name'].setValue(mockWrongUser.name);
+    optionalInfoFormPage.form.controls['cellPhone'].setValue(mockWrongUser.cellPhone);
+    optionalInfoFormPage.form.controls['fullName'].setValue(mockWrongUser.fullName);
     optionalInfoFormPage.form.controls['email'].setValue(mockWrongUser.email);
 
     optionalInfoFormPage.saveUser();
