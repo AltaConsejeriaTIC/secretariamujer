@@ -91,16 +91,44 @@ page-settings-page {
   }
 
   .text-input::-moz-placeholder {
-    color: rgba(242, 242, 242, 0.2);
+    color: rgba(242, 242, 242, 0.5);
   }
 
   .text-input:-ms-input-placeholder {
-    color: rgba(242, 242, 242, 0.2);
+    color: rgba(242, 242, 242, 0.5);
   }
 
   .text-input::-webkit-input-placeholder {
     text-indent: 0;
-    color: rgba(242, 242, 242, 0.2);
+    color: rgba(242, 242, 242, 0.5);
+  }
+
+  .profile-settings {
+    background: map_get($colors, primary) !important;
+
+    ion-icon, ion-input {
+      color: map_get($colors, SofiaAppWhite);
+    }
+
+    >ion-col {
+      margin-bottom: 3vh;
+    }
+
+    > ion-col > ion-row {
+      height: 10vh;
+      width: 90vw;
+      margin: auto;
+      border-bottom: 1px solid rgba(242, 242, 242, 0.5);
+    }
+
+    .icon-container {
+      display: flex;
+      align-items: flex-end;
+    }
+
+    ion-icon::before {
+      font-weight: bold;
+    }
   }
 
   @media (max-width: 479px) {
@@ -116,7 +144,8 @@ page-settings-page {
     }
 
     .user-name-data .username-info,
-    .settings-item .icon-container > ion-icon {
+    .settings-item .icon-container > ion-icon,
+    .profile-settings .profile-input {
       font-size: 15px;
     }
 
@@ -137,6 +166,16 @@ page-settings-page {
         font-size: 17px;
       }
     }
+
+    .profile-settings {
+      ion-icon {
+        font-size: 30px;
+      }
+
+      .profile-input input {
+        margin: 4vh 2vw 0;
+      }
+    }
   }
 
   @media (min-width: 480px) and (max-width: 767px) {
@@ -152,7 +191,8 @@ page-settings-page {
     }
 
     .user-name-data .username-info,
-    .settings-item .icon-container > ion-icon {
+    .settings-item .icon-container > ion-icon,
+    .profile-settings .profile-input {
       font-size: 22px;
     }
 
@@ -173,6 +213,16 @@ page-settings-page {
         font-size: 26px;
       }
     }
+
+    .profile-settings {
+      ion-icon {
+        font-size: 46px;
+      }
+
+      .profile-input input {
+        margin: 5vh 2vw 0;
+      }
+    }
   }
 
   @media (min-width: 768px) {
@@ -188,7 +238,8 @@ page-settings-page {
 
     .user-name-data .username-info,
     .settings-item .text-container ion-label,
-    .settings-item .icon-container > ion-icon {
+    .settings-item .icon-container > ion-icon,
+    .profile-settings .profile-input {
       font-size: 24px;
     }
 
@@ -207,6 +258,16 @@ page-settings-page {
 
       .pin-input {
         font-size: 29px;
+      }
+    }
+
+    .profile-settings {
+      ion-icon {
+        font-size: 51px;
+      }
+
+      .profile-input input {
+        margin: 6vh 2vw 0;
       }
     }
   }
