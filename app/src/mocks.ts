@@ -1,6 +1,4 @@
-import {UserDAO} from "./providers/user-dao";
 import {Observable} from "rxjs";
-import {Contact} from "./entity/contact";
 import {User} from "./entity/user";
 import {Response, ResponseOptions} from "@angular/http";
 

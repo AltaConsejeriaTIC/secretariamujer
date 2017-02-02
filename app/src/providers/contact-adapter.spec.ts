@@ -1,9 +1,7 @@
-import {TestBed, async, inject} from '@angular/core/testing';
-import {Observable} from "rxjs/Observable";
 import {ContactAdapter} from "./contact-adapter";
 import {ContactFactory} from "./factory/contact-factory";
 import {ErrorFactory} from "./factory/error-factory";
-import {IContact, Contact} from "../entity/contact";
+import {Contact} from "../entity/contact";
 
 
 describe('ContacAdapter tests', () => {
