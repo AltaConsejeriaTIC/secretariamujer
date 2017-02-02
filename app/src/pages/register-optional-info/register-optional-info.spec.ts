@@ -7,8 +7,9 @@ import {AlertController} from "ionic-angular";
 import {UserDAO} from "../../providers/user-dao";
 import {RegisterOptionalInfoPage} from "./register-optional-info";
 import {IUser, User} from "../../entity/user";
+import {ApplicationConfig} from "../../config";
 
-describe('OptionalInfoFormPage tests', () => {
+describe('RegisterOptionalInfoPage tests', () => {
 
   let optionalInfoFormPage: RegisterOptionalInfoPage;
   let fixture: ComponentFixture<RegisterOptionalInfoPage>;

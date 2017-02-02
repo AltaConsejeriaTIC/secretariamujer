@@ -1,7 +1,6 @@
 import {ComponentFixture, TestBed, async} from '@angular/core/testing';
 import {
-  App, MenuController, NavController, Platform, Config, Keyboard, Form, IonicModule,
-  NavParams, Haptic
+  App, MenuController, NavController, Platform, Config, Keyboard, Form, IonicModule, Haptic
 }  from 'ionic-angular';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ConfigMock} from '../../mocks';
@@ -11,17 +10,18 @@ import {SettingsPage} from "./settings-page";
 import {ContactSelectionPage} from "../contact-selection/contact-selection";
 import {UserDAO} from "../../providers/user-dao";
 import {AlertCreator} from "../../providers/alert-creator";
-
+import {ApplicationConfig} from "../../config";
 
 
 describe('settingsPage tests', () => {
 
   let settingsPage: SettingsPage;
   let fixture: ComponentFixture<SettingsPage>;
-  let stubAlertCreator={
-    showSimpleAlert:()=>{}
+  let stubAlertCreator = {
+    showSimpleAlert: () => {
+    }
   }
-  let stubHaptic={};
+  let stubHaptic = {};
 
   const SETTINGS_SLIDE_ITEMS = 3;
   const WRITE_CURRENT_PIN = 1;
@@ -32,8 +32,11 @@ describe('settingsPage tests', () => {
     TestBed.configureTestingModule({
       declarations: [SettingsPage, ContactSelectionPage],
       providers: [
-        App, Platform, Form, Keyboard, MenuController, NavController, Http, UserDAO,
-        {provide: Config, useClass: ConfigMock},{provide: ConnectionBackend, useClass: ConfigMock},{provide: AlertCreator, useValue: stubAlertCreator},{provide: Haptic, useValue: stubHaptic}
+        App, Platform, Form, Keyboard, MenuController, NavController, Http, ApplicationConfig, UserDAO,
+        {provide: Config, useClass: ConfigMock}, {
+          provide: ConnectionBackend,
+          useClass: ConfigMock
+        }, {provide: AlertCreator, useValue: stubAlertCreator}, {provide: Haptic, useValue: stubHaptic}
       ],
       imports: [
         FormsModule,
@@ -69,15 +72,15 @@ describe('settingsPage tests', () => {
   });
 
   it('when user digits his current pin number and it is correct, input label should be: enter new pin', () => {
-    settingsPage.inputPin="0000";
-    settingsPage.changePinState=WRITE_CURRENT_PIN;
+    settingsPage.inputPin = "0000";
+    settingsPage.changePinState = WRITE_CURRENT_PIN;
     settingsPage.changePin();
     expect(settingsPage.instructionText).toEqual(settingsPage.instructionTextArray[1]);
   });
 
   it('when user digits his new pin number and it is a number, input label should be: confirm new pin', () => {
-    settingsPage.inputPin="3333";
-    settingsPage.changePinState=WRITE_NEW_PIN;
+    settingsPage.inputPin = "3333";
+    settingsPage.changePinState = WRITE_NEW_PIN;
     settingsPage.changePin();
     expect(settingsPage.instructionText).toEqual(settingsPage.instructionTextArray[2]);
   });
@@ -85,7 +88,7 @@ describe('settingsPage tests', () => {
   it('when user digits his confirmation pin number and it is the same, input label should be: enter your four digits pin', () => {
     settingsPage.inputPin = "3333";
     settingsPage.newPin = "3333";
-    settingsPage.changePinState=CONFIRM_NEW_PIN;
+    settingsPage.changePinState = CONFIRM_NEW_PIN;
     settingsPage.changePin();
     expect(settingsPage.instructionText).toEqual(settingsPage.instructionTextArray[0]);
   });
@@ -93,7 +96,7 @@ describe('settingsPage tests', () => {
   it('when user digits his confirmation pin number and it is the same, current pin must be updated', () => {
     settingsPage.inputPin = "3333";
     settingsPage.newPin = "3333";
-    settingsPage.changePinState=CONFIRM_NEW_PIN;
+    settingsPage.changePinState = CONFIRM_NEW_PIN;
     settingsPage.changePin();
     expect(settingsPage.currentPin).toEqual(settingsPage.newPin);
   });

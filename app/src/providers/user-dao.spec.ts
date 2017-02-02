@@ -5,6 +5,7 @@ import {UserDAO} from "./user-dao";
 import {Observable} from "rxjs/Observable";
 import {User} from "../entity/user";
 import {Contact} from "../entity/contact";
+import {ApplicationConfig} from "../config";
 
 
 describe('UserDAO tests', () => {
@@ -16,8 +17,7 @@ describe('UserDAO tests', () => {
     TestBed.configureTestingModule({
       imports: [HttpModule],
       providers: [
-        UserDAO,
-        ConnectionBackend,
+        UserDAO, ConnectionBackend, ApplicationConfig
         {provide: XHRBackend, useClass: MockBackend}
       ]
     });

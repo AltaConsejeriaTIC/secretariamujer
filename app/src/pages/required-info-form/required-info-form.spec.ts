@@ -6,6 +6,7 @@ import {ConfigMock} from '../../mocks';
 import {AlertCreator} from  '../../providers/alert-creator'
 import {AlertController} from "ionic-angular";
 import {UserDAO} from "../../providers/user-dao";
+import {ApplicationConfig} from "../../config";
 
 
 describe('RequiredInfoFormPage tests', () => {
@@ -20,7 +21,8 @@ describe('RequiredInfoFormPage tests', () => {
     TestBed.configureTestingModule({
       declarations: [RequiredInfoFormPage],
       providers: [
-        App, Platform, Form, Keyboard, MenuController, NavController, AlertCreator, AlertController, RequiredInfoFormPage, UserDAO,
+        App, Platform, Form, Keyboard, MenuController, NavController, AlertCreator, AlertController, RequiredInfoFormPage,
+        UserDAO, ApplicationConfig,
         {provide: Config, useClass: ConfigMock}
       ],
       imports: [

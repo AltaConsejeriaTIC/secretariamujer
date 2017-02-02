@@ -10,6 +10,7 @@ import {AlertController} from "ionic-angular";
 import {TestPage} from "./test-page";
 import {TestsService} from "../../providers/tests-service";
 import {UserDAO} from "../../providers/user-dao";
+import {ApplicationConfig} from "../../config";
 
 
 describe('TestPage tests', () => {
@@ -18,11 +19,11 @@ describe('TestPage tests', () => {
   let fixture: ComponentFixture<TestPage>;
   let alertCreator: AlertCreator;
   let testService: TestsService;
-  let stubNavParams={
-    get:()=>{
-      return{
-        id:0,
-        labels:['Violencia', "Económica"]
+  let stubNavParams = {
+    get: () => {
+      return {
+        id: 0,
+        labels: ['Violencia', "Económica"]
       }
     }
   };
@@ -33,13 +34,14 @@ describe('TestPage tests', () => {
       declarations: [TestPage],
       providers: [
         App, Platform, Form, Keyboard, MenuController, NavController, AlertCreator, AlertController, TestPage,
+        ApplicationConfig,
         TestsService, UserDAO,
         {
           provide: Config, useClass: ConfigMock
         },
         {
           provide: Nav, useClass: NavMock
-        },{provide: NavParams, useValue: stubNavParams},
+        }, {provide: NavParams, useValue: stubNavParams},
       ],
       imports: [
         FormsModule,
@@ -66,9 +68,9 @@ describe('TestPage tests', () => {
   });
 
   it('answerCurrentQuestion should call addCurrentQuestionAnswerToTotalUserAnswers from TestsService', () => {
-    spyOn(testService,'addCurrentQuestionAnswerToTotalUserAnswers').and.callThrough();
-    testPage.buttonEnabled=true;
-    testPage.answerCheckBoxArray[0]=true;
+    spyOn(testService, 'addCurrentQuestionAnswerToTotalUserAnswers').and.callThrough();
+    testPage.buttonEnabled = true;
+    testPage.answerCheckBoxArray[0] = true;
     testPage.answerCurrentQuestion();
     expect(testService.addCurrentQuestionAnswerToTotalUserAnswers).toHaveBeenCalled();
   });

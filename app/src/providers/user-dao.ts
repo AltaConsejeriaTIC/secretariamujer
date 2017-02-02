@@ -3,14 +3,16 @@ import {Http, Headers, RequestOptions, Response} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {IUser, User} from '../entity/user';
 import {Observable} from "rxjs";
+import {ApplicationConfig} from "../config";
 
 @Injectable()
 export class UserDAO {
-
   user: IUser;
+  RESTUrl: string;
 
-  constructor(public http: Http) {
+  constructor(public http: Http, private config: ApplicationConfig) {
     this.user = new User();
+    this.RESTUrl = this.config.getURL('/entity/user?_format=json');
   }
 
   saveRequiredInfo(username: string, pass: string) {
@@ -26,10 +28,21 @@ export class UserDAO {
 
   create(): Observable<Response> {
     let body = this.createHttpBody(this.user);
-    let headers = new Headers({'Content-Type': 'application/json', 'Authorization': 'Basic ' + 'YXBwOmFwcA=='});
-    let options = new RequestOptions({headers: headers});
+    let headers = this.createHeaders();
+    let options = this.createRequestOptions(headers);
 
-    return this.http.post('http://192.168.88.245:9000/entity/user?_format=json', body, options);
+    return this.http.post(this.RESTUrl, body, options);
+  }
+
+  update() {
+  }
+
+  private createRequestOptions(headers: Headers) {
+    return new RequestOptions({headers: headers});
+  }
+
+  private createHeaders() {
+    return new Headers({'Content-Type': 'application/json', 'Authorization': 'Basic ' + 'YXBwOmFwcA=='});
   }
 
 
@@ -45,10 +58,6 @@ export class UserDAO {
     return this.user.password;
   }
 
-  update() {
-
-
-  }
 
   createHttpBody(user: User) {
     let body = JSON.stringify({
@@ -64,18 +73,5 @@ export class UserDAO {
     });
 
     return body;
-  }
-
-
-  encodeUsername(user: User): string {
-    return user.username + Math.floor(Date.now() / 1000);
-  }
-
-  encodeEmail(user: User): string {
-    if (!user.email) {
-      return Math.floor(Date.now() / 1000) + '@noregistra.com';
-    } else {
-      return this.user.email;
-    }
   }
 }

@@ -26,6 +26,7 @@ import {ContactAdapter} from "../providers/contact-adapter";
 import {ErrorFactory} from "../providers/factory/error-factory";
 import {ContactFactory} from "../providers/factory/contact-factory";
 import {SettingsPage} from "../pages/settings-page/settings-page";
+import {ApplicationConfig} from "../config";
 
 @NgModule({
   declarations: [
@@ -73,7 +74,7 @@ import {SettingsPage} from "../pages/settings-page/settings-page";
     SettingsPage
   ],
   providers: [UserDAO, AlertCreator, MapServices, EventsServices, TestsService, ContactDAO,
-    ContactAdapter, Storage, ErrorFactory, ContactFactory,
+    ContactAdapter, Storage, ErrorFactory, ContactFactory, ApplicationConfig,
     {
       provide: ErrorHandler,
       useClass: IonicErrorHandler

@@ -52,7 +52,7 @@ describe('RoutesDetailsPage tests', () => {
   });
 
 
-  it('downloadFile should call showNoFileAlert if route has no url File', () => {
+  it('downloadFile should call showNoFileAlert if route has no RESTUrl File', () => {
     routesDetailsPage.routesDetails=[{
       email: "",
       address: "",
@@ -66,7 +66,7 @@ describe('RoutesDetailsPage tests', () => {
     expect(routesDetailsPage.showNoFileAlert).toHaveBeenCalled();
   });
 
-  it('downloadFile should call openBrowser if route has url File', () => {
+  it('downloadFile should call openBrowser if route has RESTUrl File', () => {
     routesDetailsPage.routesDetails=[{
       email: "",
       address: "",
