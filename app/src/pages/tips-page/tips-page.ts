@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import {Http} from "@angular/http";
 import {TipsInfo} from "../../entity/tips-info";
 import {TipData} from "../../entity/tip-data";
+import {ApplicationConfig} from "../../config";
 
 @Component({
   selector: 'page-tips-page',
@@ -17,7 +18,7 @@ export class TipsPage {
   arrowIconArray:string[]= [];
   selectedTipCategory:TipData;
 
-  constructor(public navController: NavController, public navParams: NavParams, public http: Http) {
+  constructor(public navController: NavController, public navParams: NavParams, public http: Http, public applicationConfig: ApplicationConfig) {
     this.selectedTipCategory=this.navParams.get('selectedTipCategory');
     this.tipsClass = this.tipsClasses[this.selectedTipCategory.id];
     this.categoryTitle = this.getCategoryTitle();
@@ -37,7 +38,7 @@ export class TipsPage {
 
   getTips(){
     let RESTAddress=this.selectedTipCategory.RESTAddres;
-    this.http.get('http://192.168.88.245:9000/'+RESTAddress+'?_format=json').map(res => res.json()).subscribe(response => {
+    this.http.get(this.applicationConfig.getURL('/'+RESTAddress+'?_format=json')).map(res => res.json()).subscribe(response => {
       this.tipsArrayByCategory=response;
       this.setInitialTipState();
       console.log("la respuesta", this.tipsArrayByCategory);
