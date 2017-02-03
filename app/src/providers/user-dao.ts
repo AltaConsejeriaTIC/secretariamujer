@@ -35,6 +35,7 @@ export class UserDAO {
       this.http.post(restUrl, body, options)
         .map(response => response.json())
         .subscribe((user: any) => {
+          this.user.id = user.uid[0].value;
           observer.next(user.uid[0].value);
           observer.complete();
         }, error => {
@@ -88,18 +89,5 @@ export class UserDAO {
 
   private createRequestOptions(headers: Headers) {
     return new RequestOptions({headers: headers});
-  }
-
-  getUsername(): string {
-    return this.user.username;
-  }
-
-  getName(): string {
-    return this.user.fullName;
-  }
-
-
-  getPass(): string {
-    return this.user.password;
   }
 }

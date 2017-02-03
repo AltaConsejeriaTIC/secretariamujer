@@ -23,11 +23,11 @@ export class TestPage {
   resultTipFirstPhrase: string;
   resultTipThirdPhrase: string;
   resultTipFourthPhrase: string;
-  buttonEnabled:boolean=false;
-  buttonClass:string="next-question unabled-button";
-  selectedTestCategory:TestCategory;
+  buttonEnabled: boolean = false;
+  buttonClass: string = "next-question unabled-button";
+  selectedTestCategory: TestCategory;
 
-  constructor(public platform: Platform, private nav: Nav, public navController: NavController, public navParams:NavParams, public testService: TestsService, public alertCreator: AlertCreator, public userDAO: UserDAO) {
+  constructor(public platform: Platform, private nav: Nav, public navController: NavController, public navParams: NavParams, public testService: TestsService, public alertCreator: AlertCreator, public userDAO: UserDAO) {
     this.questionsObject = [
       {
         "pregunta": "",
@@ -36,9 +36,9 @@ export class TestPage {
         "respuesta3": "",
       },
     ];
-    this.selectedTestCategory=this.navParams.get('selectedTestCategory');
+    this.selectedTestCategory = this.navParams.get('selectedTestCategory');
     this.categoryTitle = this.getCategoryname();
-    this.userName = this.userDAO.getUsername() || "Yabushita Mai";
+    this.userName = this.userDAO.user.username || "Yabushita Mai";
     this.clearCheckboxArray();
     this.platform.registerBackButtonAction(() => {
       this.navController.popToRoot();
@@ -53,7 +53,7 @@ export class TestPage {
     this.loadQuestions();
   }
 
-  getCategoryname(){
+  getCategoryname() {
     let categoryTitle = "";
     for (let i = 0; i < this.selectedTestCategory.labels.length; i++) {
       categoryTitle += this.selectedTestCategory.labels[i] + " ";
@@ -71,7 +71,7 @@ export class TestPage {
     });
   }
 
-  answerCurrentQuestion(){
+  answerCurrentQuestion() {
     if (this.buttonEnabled && (this.answerCheckBoxArray[0] || this.answerCheckBoxArray[1] || this.answerCheckBoxArray[2])) {
       let answer = this.getAnswer();
       this.testService.addCurrentQuestionAnswerToTotalUserAnswers(answer);
@@ -81,9 +81,9 @@ export class TestPage {
     }
   }
 
-  setAnswerButtonState(enable:boolean){
-      this.buttonEnabled = enable;
-      this.buttonClass= (enable)? "next-question" : "next-question unabled-button";
+  setAnswerButtonState(enable: boolean) {
+    this.buttonEnabled = enable;
+    this.buttonClass = (enable) ? "next-question" : "next-question unabled-button";
   }
 
   getAnswer(): string {
@@ -101,10 +101,10 @@ export class TestPage {
   }
 
   setCheckBoxArray(checkBoxIndex: number) {
-    for(let i=0; i<this.answerCheckBoxArray.length; i++){
-      this.answerCheckBoxArray[i] = (i!=checkBoxIndex)? false : this.answerCheckBoxArray[i];
+    for (let i = 0; i < this.answerCheckBoxArray.length; i++) {
+      this.answerCheckBoxArray[i] = (i != checkBoxIndex) ? false : this.answerCheckBoxArray[i];
     }
-    this.answerCheckBoxArray[checkBoxIndex]=!this.answerCheckBoxArray[checkBoxIndex];
+    this.answerCheckBoxArray[checkBoxIndex] = !this.answerCheckBoxArray[checkBoxIndex];
     this.setAnswerButtonState(this.answerCheckBoxArray[checkBoxIndex]);
   }
 
@@ -135,7 +135,7 @@ export class TestPage {
   }
 
   goToTips() {
-    this.navController.push(TipsPage, {selectedTipCategory:this.navParams.get('selectedTipCategory')});
+    this.navController.push(TipsPage, {selectedTipCategory: this.navParams.get('selectedTipCategory')});
   }
 
   goToRoutes() {

@@ -14,7 +14,7 @@ export class WelcomeTestPage {
   userName: string;
 
   constructor(public navController: NavController, public userDAO: UserDAO) {
-    this.userName = this.userDAO.getUsername() || "Yabushita Mai";
+    this.userName = this.userDAO.user.username|| "Yabushita Mai";
   }
 
   ionViewDidLoad() {
