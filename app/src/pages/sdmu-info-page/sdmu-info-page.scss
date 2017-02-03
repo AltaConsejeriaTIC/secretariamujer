@@ -1,0 +1,12 @@
+page-sdmu-info-page {
+  .sdmu-title {
+    background: $sdmu-title-background;
+    height: 11vh;
+
+    ion-label {
+      color: map_get($colors, SofiaAppWhite);
+      margin: 0;
+      font-weight: bold;
+    }
+  }
+}

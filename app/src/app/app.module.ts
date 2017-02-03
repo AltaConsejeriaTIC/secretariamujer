@@ -28,6 +28,7 @@ import {ContactFactory} from "../providers/factory/contact-factory";
 import {SettingsPage} from "../pages/settings-page/settings-page";
 import {ApplicationConfig} from "../config";
 import {SelectInfoCategoryPage} from "../pages/select-info-category/select-info-category";
+import {SDMUInfoPage} from "../pages/sdmu-info-page/sdmu-info-page";
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import {SelectInfoCategoryPage} from "../pages/select-info-category/select-info-
     SelectTipsCategoryPage,
     TipsPage,
     SettingsPage,
-    SelectInfoCategoryPage
+    SelectInfoCategoryPage,
+    SDMUInfoPage
 
   ],
   imports: [
@@ -74,7 +76,8 @@ import {SelectInfoCategoryPage} from "../pages/select-info-category/select-info-
     SelectTipsCategoryPage,
     TipsPage,
     SettingsPage,
-    SelectInfoCategoryPage
+    SelectInfoCategoryPage,
+    SDMUInfoPage
   ],
   providers: [UserDAO, AlertCreator, MapServices, EventsServices, TestsService, ContactDAO,
     ContactAdapter, Storage, ErrorFactory, ContactFactory, ApplicationConfig,
