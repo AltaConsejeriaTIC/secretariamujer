@@ -4,6 +4,7 @@ import {AlertCreator} from "../../providers/alert-creator";
 import {WelcomeTestPage} from "../welcome-test/welcome-test";
 import {CallNumber} from 'ionic-native';
 import {SettingsPage} from "../settings-page/settings-page";
+import {SelectInfoCategoryPage} from "../select-info-category/select-info-category";
 
 @Component({
   selector: 'page-menu',
@@ -38,7 +39,7 @@ export class MenuPage {
         icon: 'icon-info',
         hint:  ['¿Qué debo saber si', 'me encuentro en una', 'situación violenta?'],
         goPage: function () {
-          alertCreator.showSimpleAlert("Info", "Ir a la página de info está en desarrollo");
+          navController.push(SelectInfoCategoryPage);
         }
       },
       {
