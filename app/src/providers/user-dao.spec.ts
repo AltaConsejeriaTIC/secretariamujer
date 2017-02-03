@@ -28,36 +28,36 @@ describe('UserDAO tests', () => {
     mockbackend = _mockbackend;
   }));
 
- /* it('should return mocked response for saveUser (async)', async(() => {
-    let response = {
-      "uid": [{
-        "value": "444"
-      }],
-      "name": [
-        {
-          "value": user.fullName
-        }
-      ],
-      "mail": [
-        {
-          "value": "test@testname.com"
-        }
-      ],
-      "field_cellphone": [
-        {
-          "value": "313246545"
-        }
-      ]
-    };
-    mockbackend.connections.subscribe(connection => {
-      connection.mockRespond(new Response(new ResponseOptions({body: JSON.stringify(response)})));
-    });
+  /* it('should return mocked response for saveUser (async)', async(() => {
+   let response = {
+   "uid": [{
+   "value": "444"
+   }],
+   "name": [
+   {
+   "value": user.fullName
+   }
+   ],
+   "mail": [
+   {
+   "value": "test@testname.com"
+   }
+   ],
+   "field_cellphone": [
+   {
+   "value": "313246545"
+   }
+   ]
+   };
+   mockbackend.connections.subscribe(connection => {
+   connection.mockRespond(new Response(new ResponseOptions({body: JSON.stringify(response)})));
+   });
 
-    userDAO.user = user;
-    userDAO.create().map(res => res.json()).subscribe(response => {
-      expect(response.name[0].value).toBe(user.fullName);
-    });
-  }));*/
+   userDAO.user = user;
+   userDAO.create().map(res => res.json()).subscribe(response => {
+   expect(response.name[0].value).toBe(user.fullName);
+   });
+   }));*/
 
   it('should create function return an Observable type', () => {
     let isObservable = userDAO.create() instanceof Observable;
@@ -78,11 +78,6 @@ describe('UserDAO tests', () => {
     expect(userDAO.user.cellPhone).toBe(user.cellPhone);
   });
 
-
-  it('getUsername should return user username', () => {
-    userDAO.user.username = 'Pepe';
-    expect(userDAO.getUsername()).toEqual('Pepe');
-  });
 
   it('createHttpBody should create the body of the request according to the user info', () => {
     user = new User('Julio Zorra', 'juliozorra@gmail.com', '3124569878', 'julio3456', '1234', [new Contact('brayan', '123')]);

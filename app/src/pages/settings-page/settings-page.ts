@@ -26,9 +26,9 @@ export class SettingsPage {
   newPin:string;
 
   constructor(public navController: NavController, public userDAO: UserDAO, public alertCreator:AlertCreator) {
-    this.usernameInfo = this.userDAO.getUsername() || "Yabushita Mai";
-    this.nameInfo = this.userDAO.getName() || "Anónima";
-    this.currentPin = this.userDAO.getPass() || "0000";
+    this.usernameInfo = this.userDAO.user.fullName || "Yabushita Mai";
+    this.nameInfo = this.userDAO.user.username || "Anónima";
+    this.currentPin = this.userDAO.user.password || "0000";
     this.instructionTextArray = ["Ingresa tu pin de 4 dígitos", "Ingresa tu nuevo PIN", "Confirma tu nuevo PIN"];
     this.instructionText = this.instructionTextArray[0];
     this.changePinState= WRITE_CURRENT_PIN;
