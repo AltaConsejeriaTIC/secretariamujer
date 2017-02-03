@@ -18,7 +18,7 @@ page-select-info-category {
       }
 
       .description {
-        font-weight: 500;
+        font-weight: bold;
         color: #f2f2f2;
       }
     }
@@ -67,6 +67,22 @@ page-select-info-category {
         font-size: 17px;
       }
     }
+
+    .icon-col{
+      flex-basis: 50px;
+      max-width: 50px;
+    }
+
+    .margin-col{
+      flex-basis: 50px;
+      max-width: 50px;
+    }
+
+    .labels-col{
+      flex-basis: 226px;
+      max-width: 226px;
+    }
+
   }
 
   @media (min-width: 480px) and (max-width: 767px) {
@@ -84,6 +100,21 @@ page-select-info-category {
       [class^="option-"] {
         font-size: 26px;
       }
+    }
+
+    .icon-col{
+      flex-basis: 50px;
+      max-width: 50px;
+    }
+
+    .margin-col{
+      flex-basis: 50px;
+      max-width: 50px;
+    }
+
+    .labels-col{
+      flex-basis: 240px;
+      max-width: 240px;
     }
   }
 
@@ -103,5 +134,21 @@ page-select-info-category {
         font-size: 31px;
       }
     }
+
+    .icon-col{
+      flex-basis: 62px;
+      max-width: 62px;
+    }
+
+    .margin-col{
+      flex-basis: 62px;
+      max-width: 62px;
+    }
+
+    .labels-col{
+      flex-basis: 295px;
+      max-width: 295px;
+    }
+
   }
 }
