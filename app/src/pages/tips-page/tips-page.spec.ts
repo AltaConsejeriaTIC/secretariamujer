@@ -8,6 +8,7 @@ import {ConfigMock} from '../../mocks';
 import {RoutesDetailsPage} from "./routes-details";
 import {Http, ConnectionBackend} from "@angular/http";
 import {TipsPage} from "./tips-page";
+import {ApplicationConfig} from "../../config";
 
 
 describe('tipsPage tests', () => {
@@ -28,7 +29,7 @@ describe('tipsPage tests', () => {
     TestBed.configureTestingModule({
       declarations: [TipsPage],
       providers: [
-        App, Platform, Form, Keyboard, MenuController, NavController, Http,
+        App, Platform, Form, Keyboard, MenuController, NavController, Http, ApplicationConfig,
         {provide: Config, useClass: ConfigMock}, {provide: NavParams, useValue: stubNavParams},{provide: ConnectionBackend, useClass: ConfigMock}
       ],
       imports: [
