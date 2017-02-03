@@ -20,7 +20,7 @@
     <ion-row *ngFor="let category of infoCategories;" (click)="beginTest(category.id)" [class]="category.class">
       <ion-col></ion-col>
       <ion-col class="icon-col">
-        <ion-icon class="phone-icon" name="icon-phone"></ion-icon>
+        <ion-icon class="phone-icon" name={{category.iconName}}></ion-icon>
       </ion-col>
       <ion-col class="margin-col"></ion-col>
       <ion-col class="labels-col">
