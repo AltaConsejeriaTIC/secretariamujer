@@ -1,11 +1,10 @@
 import {ContactAdapter} from "./contact-adapter";
-import {ContactFactory} from "./factory/contact-factory";
 import {ErrorFactory} from "./factory/error-factory";
 import {Contact} from "../entity/contact";
 
 
 describe('ContacAdapter tests', () => {
-  let contactAdapter = new ContactAdapter(new ErrorFactory, new ContactFactory());
+  let contactAdapter = new ContactAdapter();
   let selectedContact = {
     displayName: 'Carlos Agusto Santana',
     phoneNumbers: [{
@@ -48,7 +47,7 @@ describe('ContacAdapter tests', () => {
 
     expect(() => {
       contactAdapter.parseContact(selectedContact)
-    }).toThrow((new ErrorFactory()).createError('InvalidContactPhoneNumberError'));
+    }).toThrow(ErrorFactory.createError('InvalidContactPhoneNumberError'));
   });
 
 });

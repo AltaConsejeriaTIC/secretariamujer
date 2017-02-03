@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
-import {Http, Headers, RequestOptions, Response} from '@angular/http';
+import {Http, Headers, RequestOptions} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {IUser, User} from '../entity/user';
 import {Observable} from "rxjs";
 import {ApplicationConfig} from "../config";
-import {Contact} from "../entity/contact";
+import {ErrorFactory} from "./factory/error-factory";
 
 @Injectable()
 export class UserDAO {
@@ -38,7 +38,7 @@ export class UserDAO {
           observer.next(user.uid[0].value);
           observer.complete();
         }, error => {
-          observer.error(error.json());
+          observer.error(this.handleError(error));
         });
     });
 
@@ -52,6 +52,18 @@ export class UserDAO {
     let options = this.createRequestOptions(headers);
 
     return this.http.patch(restUrl, body, options).map(response => response.json());
+  }
+
+  private handleError(error): Error {
+    let message = error.json().message;
+
+    if (message.indexOf('mail') > -1) {
+      return ErrorFactory.createError('EmailAlreadyTaken');
+    }
+
+    if (message.indexOf('name') > -1) {
+      return ErrorFactory.createError('UsernameAlreadyTaken');
+    }
   }
 
   private createHttpBody(user: User) {
