@@ -1,18 +1,38 @@
-<!--
-  Generated template for the SOFIAInfo page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>SOFIAInfo</ion-title>
+<ion-header mode="ios">
+  <ion-navbar hideBackButton text-right>
+    <button ion-button icon-only menuToggle (click)="goToMenuPage()">
+      <ion-icon name="icon-go-menu"></ion-icon>
+    </button>
+    <label class="header-title">Información</label>
   </ion-navbar>
-
+  <div class="header-separator"></div>
 </ion-header>
 
-
-<ion-content padding>
-
+<ion-content no-bounce>
+  <ion-grid no-padding>
+    <ion-row class="sofia-info-title">
+      <ion-label>
+        Sobre la Secretaría de la Mujer
+      </ion-label>
+    </ion-row>
+    <ion-row class="sofia-info-content">
+      <ion-col>
+        <ion-row class="sofia-info-logo">
+        </ion-row>
+        <ion-row class="sofia-info-description">
+          <ion-col>
+            <ion-label class="title-2" text-uppercase>
+              Claves de la vida (titulo)
+            </ion-label>
+            <ion-label class="title-3">
+              Como sobrellevar una perdida
+            </ion-label>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris finibus purus elit, eget rutrum metus tristique commodo. Suspendisse consectetur nisl vitae odio pharetra tempus. Maecenas placerat dignissim tortor id venenatis. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+            </p>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

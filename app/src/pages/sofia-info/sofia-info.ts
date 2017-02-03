@@ -16,7 +16,11 @@ export class SOFIAInfoPage {
   constructor(public navCtrl: NavController) {}
 
   ionViewDidLoad() {
-    console.log('Hello SOFIAInfoPage Page');
+
+  }
+
+  goToMenuPage() {
+    this.navCtrl.pop();
   }
 
 }
