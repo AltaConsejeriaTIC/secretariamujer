@@ -18,9 +18,17 @@
       </ion-col>
     </ion-row>
     <ion-row *ngFor="let category of infoCategories;" (click)="beginTest(category.id)" [class]="category.class">
-      <ion-col>
-        <ion-label *ngFor="let label of category.labels">{{label}}</ion-label>
+      <ion-col></ion-col>
+      <ion-col class="icon-col">
+        <ion-icon class="phone-icon" name="icon-phone"></ion-icon>
       </ion-col>
+      <ion-col class="margin-col"></ion-col>
+      <ion-col class="labels-col">
+        <ion-row *ngFor="let label of category.labels;">
+          <label>{{label}}</label>
+        </ion-row>
+      </ion-col>
+      <ion-col></ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>
