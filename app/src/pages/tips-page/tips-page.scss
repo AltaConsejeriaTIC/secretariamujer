@@ -44,7 +44,7 @@ page-tips-page {
   }
 
   .tip-description {
-    background: #fbfaf0;
+    background: map_get($colors, SofiaAppBeige);
 
     .title-2, .title-3 {
       white-space: normal;
