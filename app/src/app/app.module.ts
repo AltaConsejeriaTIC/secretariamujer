@@ -29,6 +29,7 @@ import {SettingsPage} from "../pages/settings-page/settings-page";
 import {ApplicationConfig} from "../config";
 import {SelectInfoCategoryPage} from "../pages/select-info-category/select-info-category";
 import {SDMUInfoPage} from "../pages/sdmu-info-page/sdmu-info-page";
+import {SOFIAInfoPage} from "../pages/sofia-info/sofia-info";
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import {SDMUInfoPage} from "../pages/sdmu-info-page/sdmu-info-page";
     TipsPage,
     SettingsPage,
     SelectInfoCategoryPage,
-    SDMUInfoPage
+    SDMUInfoPage,
+    SOFIAInfoPage
 
   ],
   imports: [
@@ -77,7 +79,8 @@ import {SDMUInfoPage} from "../pages/sdmu-info-page/sdmu-info-page";
     TipsPage,
     SettingsPage,
     SelectInfoCategoryPage,
-    SDMUInfoPage
+    SDMUInfoPage,
+    SOFIAInfoPage
   ],
   providers: [UserDAO, AlertCreator, MapServices, EventsServices, TestsService, ContactDAO,
     ContactAdapter, Storage, ErrorFactory, ContactFactory, ApplicationConfig,
