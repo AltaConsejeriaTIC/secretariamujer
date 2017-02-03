@@ -4,13 +4,13 @@ import {InfoCategory} from "../../entity/info-categories";
 
 @Component({
   selector: 'page-select-info-category',
-  templateUrl: 'select-info-category.html'
+  templateUrl: './select-info-category.html'
 })
 export class SelectInfoCategoryPage {
 
   infoCategories:InfoCategory[];
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navController: NavController) {
     this.infoCategories = [
       {id: 0, labels: ['Sobre la Secretaria', 'de la Mujer'], class: 'option-0', RESTAddress:''},
       {id: 1, labels: ['Sobre SOFIA'], class: 'option-1', RESTAddress:''},
@@ -21,6 +21,10 @@ export class SelectInfoCategoryPage {
 
   ionViewDidLoad() {
 
+  }
+
+  goToMenuPage() {
+    this.navController.popToRoot();
   }
 
 }
