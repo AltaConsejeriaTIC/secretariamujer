@@ -64,9 +64,9 @@ describe('UserDAO tests', () => {
     expect(isObservable).toBe(true);
   });
 
-  it('saveRequiredInfo should set user fullName and password values', () => {
+  it('setRequiredInfo should set user fullName and password values', () => {
     userDAO.user = user;
-    userDAO.saveRequiredInfo('name', '123');
+    userDAO.setRequiredInfo('name', '123');
     expect(userDAO.user.username).toBe('name');
     expect(userDAO.user.password).toBe('123');
   });
@@ -90,7 +90,6 @@ describe('UserDAO tests', () => {
 
     expect(expectedUser.name[0].value).toEqual(user.username);
     expect(expectedUser.field_full_name).toEqual(user.fullName);
-    expect(expectedUser.field_password).toEqual(user.password);
     expect(expectedUser.mail[0].value).toEqual(user.email);
     expect(expectedUser.field_cellphone).toEqual(user.cellPhone);
     expect(expectedUser.roles[0].target_id).toEqual("authenticated");

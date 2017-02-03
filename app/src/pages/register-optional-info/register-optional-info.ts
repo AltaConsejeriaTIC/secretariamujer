@@ -60,13 +60,20 @@ export class RegisterOptionalInfoPage {
   saveUser() {
     if (this.isUserDataValid()) {
       this.updateUserInDAO();
-      this.userDAO.create().subscribe(response => {
-        this.alertCreator.showCofirmationMessage('Cuenta', 'Tu cuenta ha sido creada', () => {
-          this.goToContactPage()
+      this.userDAO.create()
+        .subscribe(response => {
+          this.alertCreator.showCofirmationMessage('Cuenta', 'Tu cuenta ha sido creada', () => {
+            this.goToContactPage()
+          })
+        }, error => {
+          if (error.message.indexOf('mail') > -1) {
+            this.alertCreator.showCofirmationMessage('Email', this.userDAO.user.email + 'ya ha sido registrado en el sistema');
+          }
+
+          if (error.message.indexOf('name') > -1) {
+            this.alertCreator.showCofirmationMessage('Usuario', this.userDAO.user.username + ' ya ha sido registrado en el sistema');
+          }
         });
-      }, err => {
-        console.log(err.toString());
-      });
     }
   }
 

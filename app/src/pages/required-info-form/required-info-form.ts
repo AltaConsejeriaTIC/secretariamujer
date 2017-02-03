@@ -62,7 +62,7 @@ export class RequiredInfoFormPage {
   }
 
   saveRequiredInfo() {
-    this.userDAO.saveRequiredInfo(this.user.username, this.user.password);
+    this.userDAO.setRequiredInfo(this.user.username, this.user.password);
   }
 
   goBack() {

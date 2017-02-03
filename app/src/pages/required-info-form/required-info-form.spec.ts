@@ -66,9 +66,9 @@ describe('RequiredInfoFormPage tests', () => {
     expect(alertCreator.showSimpleAlert).toHaveBeenCalled();
   });
 
-  it('saveRequiredInfo should call saveRequiredInfo from userDAO', () => {
-    spyOn(userDAO, 'saveRequiredInfo');
+  it('setRequiredInfo should call setRequiredInfo from userDAO', () => {
+    spyOn(userDAO, 'setRequiredInfo');
     requiredInfoFormPage.saveRequiredInfo();
-    expect(userDAO.saveRequiredInfo).toHaveBeenCalled();
+    expect(userDAO.setRequiredInfo).toHaveBeenCalled();
   });
 });
