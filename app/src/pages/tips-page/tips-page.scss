@@ -46,8 +46,28 @@ page-tips-page {
   .tip-description {
     background: #fbfaf0;
 
+    .title-2, .title-3 {
+      white-space: normal;
+    }
+
+    .title-2 {
+      color: map_get($colors, SofiaAppTipsTitle2);
+      font-weight: bold;
+      border-bottom: 2px solid map_get($colors, SofiaAppTipsTitle2);
+      padding-bottom: 1vh;
+    }
+
+    .title-3, p {
+      color: map_get($colors, SofiaAppGrayFont);
+    }
+
+    .title-3 {
+      font-weight: normal;
+      font-style: italic;
+    }
+
     p {
-      margin: 4vh 12vw;
+      margin: 0;
     }
   }
 
@@ -121,13 +141,26 @@ page-tips-page {
       }
     }
 
-    ion-icon {
+    .tip-description .title-3, ion-icon {
       font-size: 15px;
     }
 
     .tip-description {
+      > ion-col {
+        max-width: 252px;
+        margin: 17px auto;
+      }
+
+      .title-2, .title-3 {
+        margin: 0 0 17px;
+      }
+
+      .title-2 {
+        font-size: 18px;
+      }
+
       p {
-        font-size: 13px;
+        font-size: 14px;
       }
     }
   }
@@ -155,8 +188,25 @@ page-tips-page {
     }
 
     .tip-description {
+      > ion-col {
+        max-width: 368px;
+        margin: 13px auto;
+      }
+
+      .title-2, .title-3 {
+        margin: 0 0 25px;
+      }
+
+      .title-2 {
+        font-size: 22px;
+      }
+
+      .title-3 {
+        font-size: 18px;
+      }
+
       p {
-        font-size: 20px;
+        font-size: 17px;
       }
     }
   }
@@ -179,11 +229,24 @@ page-tips-page {
       }
     }
 
-    ion-icon {
+    .tip-description .title-2, ion-icon {
       font-size: 30px;
     }
 
     .tip-description {
+      > ion-col {
+        max-width: 583px;
+        margin: 35px auto;
+      }
+
+      .title-2, .title-3 {
+        margin: 0 0 40px;
+      }
+
+      .title-3 {
+        font-size: 26px;
+      }
+
       p {
         font-size: 24px;
       }

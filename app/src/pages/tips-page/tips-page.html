@@ -34,9 +34,17 @@
       </ion-row>
 
       <ion-row class="tip-description" *ngIf="isTipVisible[id]">
-        <p>
-          {{tip.description}}
-        </p>
+        <ion-col>
+          <ion-label class="title-2" text-uppercase>
+            {{tip.title_2}}
+          </ion-label>
+          <ion-label class="title-3">
+            {{tip.title_3}}
+          </ion-label>
+          <p>
+            {{tip.description}}
+          </p>
+        </ion-col>
       </ion-row>
     </div>
   </ion-grid>
