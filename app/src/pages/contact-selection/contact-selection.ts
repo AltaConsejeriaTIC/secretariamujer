@@ -20,13 +20,13 @@ export class ContactSelectionPage {
   contacts: IContact[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private contactAdapter: ContactAdapter,
-              private contactDAO: ContactDAO, private alertCreator: AlertCreator, private contactFactory: ContactFactory) {
+              private contactDAO: ContactDAO, private alertCreator: AlertCreator) {
     this.initContacts();
   }
 
   private initContacts() {
     this.contacts = new Array<IContact>(MAX_CONTACTS);
-    this.contacts.fill(this.contactFactory.createContact());
+    this.contacts.fill(ContactFactory.createContact());
   }
 
   ionViewDidLoad() {

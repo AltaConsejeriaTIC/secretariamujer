@@ -6,14 +6,14 @@ import {ContactFactory} from "./factory/contact-factory";
 
 @Injectable()
 export class ContactAdapter {
-  constructor(private errorFactory: ErrorFactory, private contactFactory: ContactFactory) {
+  constructor() {
   }
 
   parseContact(contactProperties: IContactProperties): IContact {
     let name = this.parseName(contactProperties);
     let phoneNumber = this.parsePhoneNumber(contactProperties);
 
-    return this.contactFactory.createContact(name, phoneNumber);
+    return ContactFactory.createContact(name, phoneNumber);
   }
 
   parseName(contactProperties) {
@@ -26,7 +26,7 @@ export class ContactAdapter {
     if (contactProperties.phoneNumbers != null) {
       phoneNumber = contactProperties.phoneNumbers[0].value;
     } else {
-      throw this.errorFactory.createError('InvalidContactPhoneNumberError');
+      ErrorFactory.fireError('InvalidContactPhoneNumberError');
     }
 
     return phoneNumber;

@@ -66,11 +66,11 @@ export class RegisterOptionalInfoPage {
             this.goToContactPage()
           })
         }, error => {
-          if (error.message.indexOf('mail') > -1) {
+          if (error.name == 'EmailAlreadyTaken') {
             this.alertCreator.showCofirmationMessage('Email', this.userDAO.user.email + 'ya ha sido registrado en el sistema');
           }
 
-          if (error.message.indexOf('name') > -1) {
+          if (error.name == 'UsernameAlreadyTaken') {
             this.alertCreator.showCofirmationMessage('Usuario', this.userDAO.user.username + ' ya ha sido registrado en el sistema');
           }
         });
