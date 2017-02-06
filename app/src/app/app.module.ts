@@ -31,6 +31,7 @@ import {SDMUInfoPage} from "../pages/sdmu-info-page/sdmu-info-page";
 import {SOFIAInfoPage} from "../pages/sofia-info/sofia-info";
 import {WarningMessageDAO} from "../providers/warning-message-dao";
 import {AboutAppPage} from "../pages/about-app-page/about-app-page";
+import {TutorialPage} from "../pages/tutorial-page/tutorial-page";
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import {AboutAppPage} from "../pages/about-app-page/about-app-page";
     SelectInfoCategoryPage,
     SDMUInfoPage,
     SOFIAInfoPage,
-    AboutAppPage
+    AboutAppPage,
+    TutorialPage
 
   ],
   imports: [
@@ -83,7 +85,8 @@ import {AboutAppPage} from "../pages/about-app-page/about-app-page";
     SelectInfoCategoryPage,
     SDMUInfoPage,
     SOFIAInfoPage,
-    AboutAppPage
+    AboutAppPage,
+    TutorialPage
   ],
   providers: [UserDAO, AlertCreator, MapServices, EventsServices, TestsService,
     ContactAdapter, Storage, ErrorFactory, ContactFactory, ApplicationConfig, WarningMessageDAO,
