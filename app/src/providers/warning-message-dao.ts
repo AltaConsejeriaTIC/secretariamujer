@@ -4,17 +4,10 @@ import 'rxjs/add/operator/map';
 import {ApplicationConfig} from "../config";
 
 
-/*
- Generated class for the WarningMessageDAO provider.
-
- See https://angular.io/docs/ts/latest/guide/dependency-injection.html
- for more info on providers and Angular 2 DI.
- */
 @Injectable()
 export class WarningMessageDAO {
 
   constructor(public http: Http, private config: ApplicationConfig) {
-    console.log('Hello WarningMessageDAO Provider');
   }
 
   query() {

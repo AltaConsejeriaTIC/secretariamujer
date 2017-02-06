@@ -7,6 +7,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ConfigMock} from '../../mocks';
 import {MenuPage} from "./menu";
 import {AlertCreator} from "../../providers/alert-creator";
+import {WarningMessageDAO} from "../../providers/warning-message-dao";
+import {UserDAO} from "../../providers/user-dao";
 
 
 describe('MenuPage tests', () => {
@@ -19,8 +21,10 @@ describe('MenuPage tests', () => {
     TestBed.configureTestingModule({
       declarations: [MenuPage],
       providers: [
-        App, Platform, Form, Keyboard, MenuController, NavController, AlertCreator, AlertController,
-        {provide: Config, useClass: ConfigMock}
+        App, Platform, Form, Keyboard, MenuController, NavController, AlertCreator, AlertController, WarningMessageDAO,
+        {provide: Config, useClass: ConfigMock},
+        {provide: UserDAO, useClass: ConfigMock},
+        {provide: WarningMessageDAO, useClass: ConfigMock}
       ],
       imports: [
         FormsModule,
