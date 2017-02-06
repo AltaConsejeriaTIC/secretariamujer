@@ -2,12 +2,11 @@ import {Component, trigger, state, style, transition, animate} from '@angular/co
 import {NavController} from 'ionic-angular';
 import {AlertCreator} from "../../providers/alert-creator";
 import {WelcomeTestPage} from "../welcome-test/welcome-test";
-import {CallNumber} from 'ionic-native';
+import {CallNumber, SMS} from 'ionic-native';
 import {SettingsPage} from "../settings-page/settings-page";
-import {SMS} from 'ionic-native';
+import {SelectInfoCategoryPage} from "../select-info-category/select-info-category";
 import {WarningMessageDAO} from "../../providers/warning-message-dao";
 import {UserDAO} from "../../providers/user-dao";
-
 
 @Component({
   selector: 'page-menu',
@@ -74,23 +73,8 @@ export class MenuPage {
 
   setInitialIconAndHintState() {
     for (let i = 0; i < this.menuOptions.length; i++) {
-      this.arrowIcon.push("icon-border-next-arrow");
+      this.arrowIcon.push("icon-border-question-mark");
       this.hintState.push("hiddenHint");
-    }
-  }
-
-  goToPage(index: number) {
-    switch (index) {
-      case 0:
-        break;
-      case 1:
-        break;
-      case 2:
-        this.navController.push(WelcomeTestPage);
-        break;
-      case 3:
-        this.navController.push(SettingsPage);
-        break;
     }
   }
 
@@ -108,7 +92,23 @@ export class MenuPage {
 
   setIconAndHintState(itemNumber, isShowingHint) {
     this.hintState[itemNumber] = (isShowingHint) ? "hintVisible" : "hiddenHint";
-    this.arrowIcon[itemNumber] = (isShowingHint) ? "icon-fill-back-arrow" : "icon-border-next-arrow";
+    this.arrowIcon[itemNumber] = (isShowingHint) ? "icon-fill-question-mark" : "icon-border-question-mark";
+  }
+
+  goToPage(index: number) {
+    switch (index) {
+      case 0:
+        this.navController.push(SelectInfoCategoryPage);
+        break;
+      case 1:
+        break;
+      case 2:
+        this.navController.push(WelcomeTestPage);
+        break;
+      case 3:
+        this.navController.push(SettingsPage);
+        break;
+    }
   }
 
   makePhoneCall() {
@@ -120,7 +120,7 @@ export class MenuPage {
       });
   }
 
-  sendWarningMessage() {
+  sendWarningMessages() {
     this.warningMessageDAO.query().subscribe(message => {
       for (let contact of this.userDAO.user.contacts) {
         this.sendMessageToContact(contact, message);
