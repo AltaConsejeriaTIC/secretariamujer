@@ -1,6 +1,6 @@
 import {Contact} from "./contact";
 export interface IUser {
-  id:string,
+  id: string,
   password: string,
   username: string,
   fullName: string,
@@ -11,7 +11,7 @@ export interface IUser {
 
 
 export class User implements IUser {
-  id:string;
+  id: string;
   password: string;
   username: string;
   email: string;
@@ -26,6 +26,6 @@ export class User implements IUser {
     this.cellPhone = phone;
     this.username = username;
     this.password = pass;
-    this.contacts = contacts;
+    this.contacts = contacts || [];
   }
 }

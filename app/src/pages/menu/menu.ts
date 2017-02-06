@@ -6,6 +6,7 @@ import {CallNumber} from 'ionic-native';
 import {SettingsPage} from "../settings-page/settings-page";
 import {SMS} from 'ionic-native';
 import {WarningMessageDAO} from "../../providers/warning-message-dao";
+import {UserDAO} from "../../providers/user-dao";
 
 
 @Component({
@@ -33,7 +34,8 @@ export class MenuPage {
   arrowIcon: string[] = [];
   hintState: string[] = [];
 
-  constructor(public navController: NavController, public alertCreator: AlertCreator, private warningMessageDAO: WarningMessageDAO) {
+  constructor(public navController: NavController, public alertCreator: AlertCreator,
+              private warningMessageDAO: WarningMessageDAO, private userDAO: UserDAO) {
     this.menuOptions = [
       {
         isShowingHint: false,
@@ -111,20 +113,26 @@ export class MenuPage {
       });
   }
 
-  sendMessage() {
-    var options = {
-      replaceLineBreaks: false, // true to replace \n by a new line, false by default
-      android: {
-        intent: ''
-      }
-    };
-
-
+  sendWarningMessage() {
     this.warningMessageDAO.query().subscribe(message => {
-      SMS.send('3132407531', message);
+      for (let contact of this.userDAO.user.contacts) {
+        this.sendMessageToContact(contact, message);
+      }
     }, err => {
       this.alertCreator.showSimpleAlert("Error", "El mensaje no pudo ser enviado");
     });
   }
 
+  private sendMessageToContact(contact, message) {
+    let options = {
+      replaceLineBreaks: false,
+      android: {
+        intent: ''
+      }
+    };
+
+    if (contact != null && contact.cellPhone != null) {
+      SMS.send(contact.cellPhone, message, options);
+    }
+  }
 }
