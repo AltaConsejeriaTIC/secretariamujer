@@ -17,7 +17,7 @@ export class SettingsPage {
 
   arrowIconArray:string[]= [];
   isOptionVisible:boolean[]=[];
-  usernameInfo:string
+  usernameInfo:string;
   nameInfo:string;
   inputPin:string;
   instructionTextArray:string[];
@@ -40,21 +40,26 @@ export class SettingsPage {
     this.instructionText = this.instructionTextArray[0];
     this.changePinState= WRITE_CURRENT_PIN;
     this.createForm(formBuilder);
-    this.loading=this.loadingController.create({
-      content:"Espera un momento",
-      dismissOnPageChange: true
-    });
+    this.loading=this.createLoading();
 
   }
 
   ionViewDidLoad() {
     this.setInitialIconState();
   }
+
   private createForm(formBuilder: FormBuilder) {
     this.form = formBuilder.group({
       fullName: [this.usernameInfo, Validators.compose([Validators.pattern('[a-zA-Z ]*')])],
       email: [this.userEmail, Validators.compose([Validators.pattern('(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*$)')])],
       cellPhone: [this.userCellPhone, Validators.compose([Validators.pattern('[0-9]*'), Validators.maxLength(10)])]
+    });
+  }
+
+  createLoading():Loading{
+    return this.loadingController.create({
+      content:"Espera un momento",
+      dismissOnPageChange: true
     });
   }
 
@@ -124,7 +129,9 @@ export class SettingsPage {
     if (this.newPin == this.inputPin) {
       this.setPinState (this.instructionTextArray[0], WRITE_CURRENT_PIN);
       this.currentPin = this.newPin;
-      this.alertCreator.showSimpleAlert('Éxito','El PIN ha sido cambiado');
+      this.userDAO.user.password=this.newPin;
+      this.loading.present();
+      this.makeUserUpdate('El PIN ha sido cambiado');
     }
     else
       this.alertCreator.showSimpleAlert('Error','El PIN ingresado no coincide con el que desea cambiar');
@@ -158,7 +165,12 @@ export class SettingsPage {
         console.log("El error es", error)
       }
     );
+    this.hideLoading();
+  }
+
+  hideLoading(){
     this.loading.dismiss();
+    this.loading=this.createLoading();
   }
 
   isUserDataValid(): boolean {
