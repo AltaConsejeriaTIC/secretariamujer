@@ -36,6 +36,10 @@ export class SelectTestCategoryPage {
     this.navController.push(TestPage,{selectedTestCategory:this.testCategories[categoryId], selectedTipCategory: this.tipsCategories[categoryId]});
   }
 
+  goBackPage(){
+    this.navController.pop();
+  }
+
   goToMenuPage() {
     this.navController.popToRoot();
   }
