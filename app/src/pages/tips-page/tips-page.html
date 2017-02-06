@@ -1,21 +1,20 @@
 <ion-header mode="ios">
-  <ion-navbar hideBackButton text-right>
-    <button ion-button icon-only menuToggle (click)="goToMenuPage()">
-      <ion-icon name="icon-go-menu"></ion-icon>
+  <ion-navbar hideBackButton>
+    <button start ion-button icon-only menuToggle (click)="goBackPage()">
+      <ion-icon name="icon-fill-back-arrow"></ion-icon>
     </button>
     <label class="header-title">Test / Tips y Rutas</label>
+    <button end ion-button icon-only menuToggle (click)="goToMenuPage()">
+      <ion-icon name="icon-go-menu"></ion-icon>
+    </button>
   </ion-navbar>
   <div class="header-separator"></div>
 </ion-header>
 
-
 <ion-content no-bounce [class]="tipsClass">
   <ion-grid no-padding>
     <ion-row class="tips-name">
-      <ion-col width-20 class="icon-container" (click)="goBackPage()">
-        <ion-icon name="icon-fill-back-arrow"></ion-icon>
-      </ion-col>
-      <ion-col width-80 class="category-title">
+      <ion-col class="category-title">
         <ion-label>
           {{categoryTitle}}
         </ion-label>
