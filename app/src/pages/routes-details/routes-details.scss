@@ -113,6 +113,12 @@ page-routes-details {
       height: 50px;
     }
 
+    [class*="background-subheader"] {
+      .location-name:first-child {
+        margin: auto 0 auto 20px;
+      }
+    }
+
     .location-name{
       font-size: 14px;
     }
@@ -219,6 +225,12 @@ page-routes-details {
       height: 75px;
     }
 
+    [class*="background-subheader"] {
+      .location-name:first-child {
+        margin: auto 0 auto 30px;
+      }
+    }
+
     .location-name{
       font-size: 22px;
     }
@@ -319,6 +331,12 @@ page-routes-details {
   @media (min-width: 768px) {
     [class^="background-subheader-option-"] {
       height: 90px;
+    }
+
+    [class*="background-subheader"] {
+      .location-name:first-child {
+        margin: auto 0 auto 30px;
+      }
     }
 
     .location-name{

@@ -48,8 +48,11 @@ export class SDMUInfoPage {
     }
   }
 
-  goToMenuPage() {
+  goBackPage(){
     this.navCtrl.pop();
   }
 
+  goToMenuPage() {
+    this.navCtrl.popToRoot();
+  }
 }

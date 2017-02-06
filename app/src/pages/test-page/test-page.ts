@@ -130,6 +130,10 @@ export class TestPage {
     }
   }
 
+  goBackPage(){
+    this.navController.pop();
+  }
+
   goToMenuPage() {
     this.navController.popToRoot();
   }

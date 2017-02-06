@@ -77,8 +77,12 @@ export class SettingsPage {
     this.arrowIconArray[optionNumber] = (optionState)? "icon-border-up-arrow" : "icon-border-down-arrow";
   }
 
-  goToMenuPage() {
+  goBackPage(){
     this.navController.pop();
+  }
+
+  goToMenuPage() {
+    this.navController.popToRoot();
   }
 
   changePin(){

@@ -26,6 +26,10 @@ export class SelectTipsCategoryPage {
     this.navController.push(TipsPage,{selectedTipCategory:this.tipsCategories[categoryId]});
   }
 
+  goBackPage(){
+    this.navController.pop();
+  }
+
   goToMenuPage() {
     this.navController.popToRoot();
   }

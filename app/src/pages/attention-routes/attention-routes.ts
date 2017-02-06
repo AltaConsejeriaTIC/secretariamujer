@@ -27,6 +27,10 @@ export class AttentionRoutesPage {
     this.navController.push(AttentionRoutesLocationPage,{attentionRoute:this.attentionRoutes[routeId]});
   }
 
+  goBackPage(){
+    this.navController.pop();
+  }
+
   goToMenuPage() {
     this.navController.popToRoot();
   }

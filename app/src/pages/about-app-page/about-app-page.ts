@@ -49,7 +49,11 @@ export class AboutAppPage {
     }
   }
 
-  goToMenuPage() {
+  goBackPage(){
     this.navCtrl.pop();
+  }
+
+  goToMenuPage() {
+    this.navCtrl.popToRoot();
   }
 }
