@@ -32,8 +32,12 @@ export class WelcomeTestPage {
     this.navController.push(AttentionRoutesPage);
   }
 
-  goToMenuPage() {
+  goBackPage(){
     this.navController.pop();
+  }
+
+  goToMenuPage() {
+    this.navController.popToRoot();
   }
 
 }
