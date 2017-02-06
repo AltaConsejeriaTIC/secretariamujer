@@ -42,8 +42,11 @@ export class SelectInfoCategoryPage {
     }
   }
 
+  goBackPage(){
+    this.navController.pop();
+  }
+
   goToMenuPage() {
     this.navController.popToRoot();
   }
-
 }
