@@ -1,9 +1,9 @@
 import {ComponentFixture, TestBed, async} from '@angular/core/testing';
 import {
-  App, MenuController, NavController, Platform, Config, Keyboard, Form, IonicModule, Haptic, LoadingController
+  App, MenuController, NavController, Platform, Config, Keyboard, Form, IonicModule, Haptic, LoadingController, Loading
 }  from 'ionic-angular';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {ConfigMock} from '../../mocks';
+import {ConfigMock, UserDAOMock} from '../../mocks';
 import {RoutesDetailsPage} from "./routes-details";
 import {Http, ConnectionBackend} from "@angular/http";
 import {SettingsPage} from "./settings-page";
@@ -22,6 +22,18 @@ describe('settingsPage tests', () => {
     }
   }
   let stubHaptic = {};
+  let stubLoading = {
+    present:()=>{}
+  };
+  let stubLoadingController={
+    createLoading:()=>{},
+    create:()=>{
+      return {
+        present:()=>{},
+        dismiss:()=>{}
+      }
+    }
+  };
 
   const SETTINGS_SLIDE_ITEMS = 3;
   const WRITE_CURRENT_PIN = 1;
@@ -32,11 +44,12 @@ describe('settingsPage tests', () => {
     TestBed.configureTestingModule({
       declarations: [SettingsPage, ContactSelectionPage],
       providers: [
-        App, Platform, Form, Keyboard, MenuController, NavController, Http, ApplicationConfig, UserDAO,LoadingController,
+        App, Platform, Form, Keyboard, MenuController, NavController, Http, ApplicationConfig,
         {provide: Config, useClass: ConfigMock}, {
           provide: ConnectionBackend,
           useClass: ConfigMock
-        }, {provide: AlertCreator, useValue: stubAlertCreator}, {provide: Haptic, useValue: stubHaptic}
+        }, {provide: AlertCreator, useValue: stubAlertCreator}, {provide: Haptic, useValue: stubHaptic}, {provide: Loading, useValue: stubLoading},
+        {provide: LoadingController, useValue: stubLoadingController}, {provide: UserDAO, useClass: UserDAOMock},
       ],
       imports: [
         FormsModule,

@@ -110,6 +110,16 @@ export class UserDAOMock {
     () => {
       return Observable.of(new User('usuariofalso'));
     });
+
+  update = jasmine.createSpy('update').and.callFake(
+    () => {
+      let r = new Response(new ResponseOptions());
+      return Observable.of(r);
+    });
+
+  user={
+    fullName:'fullName'
+  }
 }
 
 
