@@ -38,40 +38,32 @@ export class MenuPage {
               private warningMessageDAO: WarningMessageDAO, private userDAO: UserDAO) {
     this.menuOptions = [
       {
+        id: 0,
         isShowingHint: false,
         label: 'Información',
         icon: 'icon-info',
-        hint: ['¿Qué debo saber si', 'me encuentro en una', 'situación violenta?'],
-        goPage: function () {
-          alertCreator.showSimpleAlert("Info", "Ir a la página de info está en desarrollo");
-        }
+        hint: ['¿Qué debo saber si', 'me encuentro en una', 'situación violenta?']
       },
       {
+        id: 1,
         isShowingHint: false,
         label: 'Mapas',
         icon: 'icon-map',
-        hint: ['¿A dónde puedo ir', 'si estoy en una', 'situación violenta?'],
-        goPage: function () {
-          alertCreator.showSimpleAlert("Info", "Ir a la página de Mapas y rutas esta en desarrollo");
-        }
+        hint: ['¿A dónde puedo ir', 'si estoy en una', 'situación violenta?']
       },
       {
+        id: 2,
         isShowingHint: false,
         label: 'Test / Tips y rutas',
         icon: 'icon-test',
-        hint: ['¿Cómo puedo saber', 'si estoy en una', 'situación violenta?'],
-        goPage: function () {
-          navController.push(WelcomeTestPage);
-        }
+        hint: ['¿Cómo puedo saber', 'si estoy en una', 'situación violenta?']
       },
       {
+        id: 3,
         isShowingHint: false,
         label: 'Configuración',
         icon: 'icon-conf',
-        hint: ['¿A quién puedo dar', 'aviso si me encuentro', 'en riesgo?'],
-        goPage: function () {
-          navController.push(SettingsPage);
-        }
+        hint: ['¿A quién puedo dar', 'aviso si me encuentro', 'en riesgo?']
       }
     ];
   }
@@ -84,6 +76,21 @@ export class MenuPage {
     for (let i = 0; i < this.menuOptions.length; i++) {
       this.arrowIcon.push("icon-border-next-arrow");
       this.hintState.push("hiddenHint");
+    }
+  }
+
+  goToPage(index: number) {
+    switch (index) {
+      case 0:
+        break;
+      case 1:
+        break;
+      case 2:
+        this.navController.push(WelcomeTestPage);
+        break;
+      case 3:
+        this.navController.push(SettingsPage);
+        break;
     }
   }
 
@@ -119,7 +126,7 @@ export class MenuPage {
         this.sendMessageToContact(contact, message);
       }
     }, err => {
-      this.alertCreator.showSimpleAlert("Error", "El mensaje no pudo ser enviado");
+      this.alertCreator.showSimpleAlert("Error", "No es posible enviar los mensajes en este momento");
     });
   }
 
