@@ -48,17 +48,27 @@
     "typescript": "2.0.9"
   },
   "cordovaPlugins": [
-    "cordova-plugin-console",
+    "mx.ferreyra.callnumber",
     "cordova-plugin-device",
-    "cordova-plugin-whitelist",
-    "cordova-plugin-statusbar",
+    "cordova-plugin-console",
     "cordova-plugin-splashscreen",
+    "cordova-plugin-statusbar",
+    "cordova-plugin-whitelist",
     "ionic-plugin-keyboard",
     "call-number",
-    "cordova-plugin-contacts",
-    "cordova-sqlite-storage",
-    "cordova-plugin-inappbrowser"
+    "cordova-sms-plugin"
   ],
-  "cordovaPlatforms": [],
+  "cordovaPlatforms": [
+    {
+      "platform": "android",
+      "version": "",
+      "locator": "android"
+    },
+    {
+      "platform": "ios",
+      "version": "",
+      "locator": "ios"
+    }
+  ],
   "description": "Aplicación contra el maltrado de mujeres"
 }

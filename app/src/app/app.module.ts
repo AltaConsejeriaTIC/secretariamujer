@@ -30,6 +30,7 @@ import {ApplicationConfig} from "../config";
 import {SelectInfoCategoryPage} from "../pages/select-info-category/select-info-category";
 import {SDMUInfoPage} from "../pages/sdmu-info-page/sdmu-info-page";
 import {SOFIAInfoPage} from "../pages/sofia-info/sofia-info";
+import {WarningMessageDAO} from "../providers/warning-message-dao";
 import {AboutAppPage} from "../pages/about-app-page/about-app-page";
 
 @NgModule({
@@ -86,7 +87,7 @@ import {AboutAppPage} from "../pages/about-app-page/about-app-page";
     AboutAppPage
   ],
   providers: [UserDAO, AlertCreator, MapServices, EventsServices, TestsService, ContactDAO,
-    ContactAdapter, Storage, ErrorFactory, ContactFactory, ApplicationConfig,
+    ContactAdapter, Storage, ErrorFactory, ContactFactory, ApplicationConfig, WarningMessageDAO,
     {
       provide: ErrorHandler,
       useClass: IonicErrorHandler

@@ -2,18 +2,22 @@
   <ion-grid class="height-100 no-padding">
 
     <ion-row *ngFor="let menuOption of menuOptions; let id = index" class="flex-1 option-menu-row option">
-      <ion-col id="option-row" [@iconGroup]="hintState[id]" (click)="menuOption.goPage()">
+      <ion-col id="option-row" [@iconGroup]="hintState[id]" (click)="goToPage(menuOption.id)">
         <div id="group-icon">
-            <ion-row class="justify-center-row menu-icon-padding-container">
-              <ion-icon name="{{menuOption.icon}}"></ion-icon>
-            </ion-row>
+          <ion-row class="justify-center-row menu-icon-padding-container">
+            <ion-icon name="{{menuOption.icon}}"></ion-icon>
+          </ion-row>
 
-            <ion-row class="justify-center-row">
-              <ion-label [ngClass]="{'menu-option-label': !menuOption.isShowingHint, 'truncate-text':menuOption.isShowingHint}">{{menuOption.label}}</ion-label>
-            </ion-row>
+          <ion-row class="justify-center-row">
+            <ion-label
+              [ngClass]="{'menu-option-label': !menuOption.isShowingHint, 'truncate-text':menuOption.isShowingHint}">
+              {{menuOption.label}}
+            </ion-label>
+          </ion-row>
         </div>
       </ion-col>
-      <ion-icon id="menu-arrow" [name]="arrowIcon[id]" (click)="toggleisShowingHintParameter(id)" [ngClass]="{'menu-arrow-big': !menuOption.isShowingHint, 'menu-arrow-small':menuOption.isShowingHint}"></ion-icon>
+      <ion-icon id="menu-arrow" [name]="arrowIcon[id]" (click)="toggleisShowingHintParameter(id)"
+                [ngClass]="{'menu-arrow-big': !menuOption.isShowingHint, 'menu-arrow-small':menuOption.isShowingHint}"></ion-icon>
       <ion-row class="item-hint" [@menuItemHint]="hintState[id]">
         <div class="wrap-text-override">
           <ion-label *ngFor="let hint of menuOption.hint;" text-wrap class="center-menu-tip-text">
@@ -41,7 +45,7 @@
       </div>
 
 
-      <ion-col width-50 (click)="sendMessage()">
+      <ion-col width-50 (click)="sendWarningMessages()">
         <ion-row class="special-row-icon-container">
           <ion-icon class="mail-icon" name="icon-msj"></ion-icon>
         </ion-row>

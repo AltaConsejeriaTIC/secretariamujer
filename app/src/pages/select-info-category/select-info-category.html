@@ -20,18 +20,15 @@
         <ion-label class="description">una categoría</ion-label>
       </ion-col>
     </ion-row>
-    <ion-row *ngFor="let category of infoCategories;" (click)="goToSelectedcategory(category.nextPage)" [class]="category.class">
-      <ion-col></ion-col>
+    <ion-row *ngFor="let category of infoCategories;" tappable (click)="goToSelectedcategory(category.nextPage)" [class]="category.class">
       <ion-col class="icon-col">
         <ion-icon class="phone-icon" name={{category.iconName}}></ion-icon>
       </ion-col>
-      <ion-col class="margin-col"></ion-col>
       <ion-col class="labels-col">
         <ion-row *ngFor="let label of category.labels;">
           <label>{{label}}</label>
         </ion-row>
       </ion-col>
-      <ion-col></ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>
