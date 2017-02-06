@@ -1,0 +1,41 @@
+<ion-header mode="ios">
+  <ion-navbar hideBackButton>
+    <button start ion-button icon-only menuToggle (click)="goBackPage()">
+      <ion-icon name="icon-fill-back-arrow"></ion-icon>
+    </button>
+    <label class="header-title">Información</label>
+    <button end ion-button icon-only menuToggle (click)="goToMenuPage()">
+      <ion-icon name="icon-go-menu"></ion-icon>
+    </button>
+  </ion-navbar>
+  <div class="header-separator"></div>
+</ion-header>
+
+<ion-content no-bounce>
+  <ion-grid no-padding>
+    <ion-row class="app-info-title">
+      <ion-label>
+        Sobre la App
+      </ion-label>
+    </ion-row>
+    <ion-row class="app-info-content">
+      <ion-col>
+        <ion-row class="app-info-logo">
+        </ion-row>
+        <ion-row class="app-info-description">
+          <ion-col>
+            <ion-label class="title-2" text-uppercase>
+              {{aboutAppInfo[0].title}}
+            </ion-label>
+            <ion-label class="title-3">
+              {{aboutAppInfo[0].title_2}}
+            </ion-label>
+            <p>
+              {{aboutAppInfo[0].description}}
+            </p>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

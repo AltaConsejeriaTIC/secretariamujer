@@ -75,6 +75,12 @@ page-attention-routes-location {
       height: 50px;
     }
 
+    [class*="background-subheader"] {
+      .location-name:first-child {
+        margin: auto 0 auto 20px;
+      }
+    }
+
     .location-name{
       font-size: 14px;
     }
@@ -107,6 +113,12 @@ page-attention-routes-location {
       height: 91px;
     }
 
+    [class*="background-subheader"] {
+      .location-name:first-child {
+        margin: auto 0 auto 30px;
+      }
+    }
+
     .location-name{
       font-size: 22px;
     }
@@ -136,6 +148,12 @@ page-attention-routes-location {
 
     .location-row{
       height: 110px;
+    }
+
+    [class*="background-subheader"] {
+      .location-name:first-child {
+        margin: auto 0 auto 30px;
+      }
     }
 
     .location-name{

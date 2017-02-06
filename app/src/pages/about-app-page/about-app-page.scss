@@ -1,0 +1,154 @@
+page-about-app-page {
+  ion-content {
+    background: map_get($colors, SofiaAppBeige) !important;
+  }
+
+  .app-info-title {
+    background: $app-info-title-background;
+    height: 11vh;
+
+    ion-label {
+      color: map_get($colors, SofiaAppWhite);
+      margin: auto 6vw;
+      font-weight: bold;
+    }
+  }
+
+  .app-info-content {
+    .app-info-logo {
+      background: url(../assets/img/logo-alcbog.png) transparent no-repeat center / auto 90% !important;
+    }
+
+    .app-info-description {
+      margin: auto;
+      .title-2, .title-3 {
+        white-space: normal;
+      }
+
+      .title-2 {
+        color: map_get($colors, SofiaAppTipsTitle2);
+        font-weight: bold;
+        border-bottom: 2px solid map_get($colors, SofiaAppTipsTitle2);
+        padding-bottom: 1vh;
+      }
+
+      .title-3, p {
+        color: map_get($colors, SofiaAppGrayFont);
+      }
+
+      .title-3 {
+        font-weight: normal;
+        font-style: italic;
+      }
+
+      p {
+        margin: 0;
+      }
+    }
+  }
+
+  @media (max-width: 479px) {
+    .app-info-title {
+      ion-label {
+        font-size: 15px;
+      }
+    }
+
+    .app-info-content {
+      .app-info-logo {
+        height: 110px;
+        margin: 33px 0 35px;
+      }
+
+      .app-info-description {
+        max-width: 252px;
+
+        .title-2, .title-3, p {
+          margin: 0 0 17px;
+        }
+
+        .title-2 {
+          font-size: 18px;
+        }
+
+        .title-3 {
+          font-size: 15px;
+        }
+
+        p {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
+  @media (min-width: 480px) and (max-width: 767px) {
+    .app-info-title {
+      ion-label {
+        font-size: 22px;
+      }
+    }
+
+    .app-info-content {
+      .app-info-logo {
+        height: 110px;
+        margin: 30px 0 50px;
+      }
+
+      .app-info-description {
+        max-width: 368px;
+
+        .title-2, .title-3, p {
+          margin: 0 0 25px;
+        }
+
+        .title-2 {
+          font-size: 22px;
+        }
+
+        .title-3 {
+          font-size: 18px;
+        }
+
+        p {
+          font-size: 17px;
+        }
+      }
+    }
+  }
+
+  @media (min-width: 768px) {
+    .app-info-title {
+      ion-label {
+        font-size: 26px;
+      }
+    }
+
+    .app-info-content {
+      .app-info-logo {
+        height: 130px;
+        margin: 65px 0;
+      }
+
+      .app-info-description {
+        max-width: 583px;
+
+        .title-2, .title-3, p {
+          margin: 0 0 40px;
+        }
+
+        .title-2 {
+          font-size: 30px;
+        }
+
+        .title-3 {
+          font-size: 26px;
+        }
+
+        p {
+          font-size: 24px;
+        }
+      }
+    }
+  }
+}

@@ -1,13 +1,15 @@
 <ion-header mode="ios">
-  <ion-navbar hideBackButton text-right>
-    <button ion-button icon-only menuToggle (click)="goToMenuPage()">
-      <ion-icon name="icon-go-menu"></ion-icon>
+  <ion-navbar hideBackButton>
+    <button start ion-button icon-only menuToggle (click)="goBackPage()">
+      <ion-icon name="icon-fill-back-arrow"></ion-icon>
     </button>
     <label class="header-title">Información</label>
+    <button end ion-button icon-only menuToggle (click)="goToMenuPage()">
+      <ion-icon name="icon-go-menu"></ion-icon>
+    </button>
   </ion-navbar>
   <div class="header-separator"></div>
 </ion-header>
-
 
 <ion-content no-bounce>
   <ion-grid no-padding>
@@ -23,13 +25,13 @@
         <ion-row class="sdmu-description">
           <ion-col>
             <ion-label class="title-2" text-uppercase>
-              Claves de la vida (titulo)
+              {{aboutSDMUInfo[0].title}}
             </ion-label>
             <ion-label class="title-3">
-              Como sobrellevar una perdida
+              {{aboutSDMUInfo[0].title_2}}
             </ion-label>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris finibus purus elit, eget rutrum metus tristique commodo. Suspendisse consectetur nisl vitae odio pharetra tempus. Maecenas placerat dignissim tortor id venenatis. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+              {{aboutSDMUInfo[0].description}}
             </p>
           </ion-col>
         </ion-row>

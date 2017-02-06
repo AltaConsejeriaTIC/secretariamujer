@@ -47,6 +47,7 @@ export class UserDAO {
   }
 
   update() {
+    console.log("el ususario", this.user);
     let restUrl = this.config.getURL('/user/' + this.user.id + '?_format=json');
     let body = this.createHttpBody(this.user);
     let headers = this.createHeaders();
