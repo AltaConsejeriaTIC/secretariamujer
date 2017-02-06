@@ -121,7 +121,7 @@ export class MenuPage {
   }
 
   sendWarningMessages() {
-    this.warningMessageDAO.query().subscribe(message => {
+    this.warningMessageDAO.get().subscribe(message => {
       for (let contact of this.userDAO.user.contacts) {
         this.sendMessageToContact(contact, message);
       }

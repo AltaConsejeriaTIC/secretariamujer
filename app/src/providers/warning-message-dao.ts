@@ -10,7 +10,7 @@ export class WarningMessageDAO {
   constructor(public http: Http, private config: ApplicationConfig) {
   }
 
-  query() {
+  get() {
     let emergencyMessage = this.config.getURL('/emergency_message_rest');
     return this.http.get(emergencyMessage).map(res => {
         return res.json()[0].emergencyMessage;

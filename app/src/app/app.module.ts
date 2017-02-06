@@ -19,7 +19,6 @@ import {AttentionRoutesLocationPage} from "../pages/attention-routes-location/at
 import {RoutesDetailsPage} from "../pages/routes-details/routes-details";
 import {ContactSelectionPage} from "../pages/contact-selection/contact-selection";
 import {SelectTipsCategoryPage} from "../pages/select-tips-category/select-tips-category";
-import {ContactDAO} from "../providers/contact-dao";
 import {Storage} from '@ionic/storage';
 import {TipsPage} from "../pages/tips-page/tips-page";
 import {ContactAdapter} from "../providers/contact-adapter";
@@ -86,7 +85,7 @@ import {AboutAppPage} from "../pages/about-app-page/about-app-page";
     SOFIAInfoPage,
     AboutAppPage
   ],
-  providers: [UserDAO, AlertCreator, MapServices, EventsServices, TestsService, ContactDAO,
+  providers: [UserDAO, AlertCreator, MapServices, EventsServices, TestsService,
     ContactAdapter, Storage, ErrorFactory, ContactFactory, ApplicationConfig, WarningMessageDAO,
     {
       provide: ErrorHandler,

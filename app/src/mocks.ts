@@ -1,6 +1,7 @@
 import {Observable} from "rxjs";
-import {User} from "./entity/user";
+import {User, IUser} from "./entity/user";
 import {Response, ResponseOptions} from "@angular/http";
+import {IContact} from "./entity/contact";
 
 export class ConfigMock {
 
@@ -100,6 +101,8 @@ export class LoadingMock {
 }
 
 export class UserDAOMock {
+  user = {contacts: new Array<IContact>(3)};
+
   create = jasmine.createSpy('create').and.callFake(
     () => {
       let r = new Response(new ResponseOptions());
