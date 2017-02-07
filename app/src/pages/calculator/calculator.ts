@@ -9,6 +9,7 @@ import {Headers, RequestOptions, Http} from "@angular/http";
 export class CalculatorPage {
 
   equation:string;
+  hasShowedResult:boolean;
 
   constructor(public navCtrl: NavController, public http:Http) {
     this.clear()
@@ -19,25 +20,40 @@ export class CalculatorPage {
   }
 
   append(character:string){
+    this.cleanPreviousEquation();
     this.equation=this.equation+character;
+  }
+
+  cleanPreviousEquation(){
+    if(this.hasShowedResult){
+      this.hasShowedResult=false;
+      this.clear();
+    }
   }
 
   clear(){
     this.equation='';
+    this.hasShowedResult=false;
   }
 
   equal(){
-    this.isPin();
+    if(this.isPin()){
 
-
-    try{
-      this.equation=eval(this.equation);
-    }catch(e){
-      this.equation="Error - verifica tu operación";
+    }else{
+      this.solveEquation();
     }
   }
 
   isPin(){
     return !((this.equation.indexOf("+") >-1 || this.equation.indexOf("-") >-1 || this.equation.indexOf("*") >-1 || this.equation.indexOf("/") >-1) || this.equation.length>4);
+  }
+
+  solveEquation(){
+    try{
+      this.equation=eval(this.equation);
+    }catch(e){
+      this.equation="Error - verifica tu operación";
+    }
+    this.hasShowedResult=true;
   }
 }

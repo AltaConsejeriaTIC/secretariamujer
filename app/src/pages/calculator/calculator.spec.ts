@@ -85,5 +85,17 @@ describe('CalculatorPage tests', () => {
     calculatorPage.equal();
     expect(calculatorPage.equation).toEqual("Error - verifica tu operación");
   });
+
+  it('calculator should delete result after operation, and user begins new equation', () => {
+    calculatorPage.append('3');
+    calculatorPage.append('+');
+    calculatorPage.append('5');
+    calculatorPage.equal();
+    expect(calculatorPage.hasShowedResult).toEqual(true);
+    calculatorPage.append('5');
+    expect(calculatorPage.hasShowedResult).toEqual(false);
+
+  });
+
 });
 
