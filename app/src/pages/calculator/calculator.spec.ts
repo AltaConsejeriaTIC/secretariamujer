@@ -5,8 +5,9 @@ import {
 }  from 'ionic-angular';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AlertCreator} from "../../providers/alert-creator";
-import {ConfigMock} from "../../mocks";
+import {ConfigMock, NavMock} from "../../mocks";
 import {CalculatorPage} from "./calculator";
+import {UserNameFormPage} from "../user-name-form/user-name-form";
 
 
 
@@ -20,8 +21,8 @@ describe('CalculatorPage tests', () => {
     TestBed.configureTestingModule({
       declarations: [CalculatorPage],
       providers: [
-        App, Platform, Form, Keyboard, MenuController, NavController, AlertCreator, AlertController,
-        {provide: Config, useClass: ConfigMock},
+        App, Platform, Form, Keyboard, MenuController, AlertCreator, AlertController,UserNameFormPage,
+        {provide: Config, useClass: ConfigMock},{provide: NavController, useClass: NavMock},
       ],
       imports: [
         FormsModule,
@@ -73,7 +74,8 @@ describe('CalculatorPage tests', () => {
     calculatorPage.append('+');
     calculatorPage.append('5');
     calculatorPage.equal();
-    expect(calculatorPage.equation).toEqual(40);
+    expect(calculatorPage.equation).toEqual('40');
+    
   });
 
   it('equalFunction should display error message if the equation is wrong', () => {

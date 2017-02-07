@@ -34,6 +34,7 @@ import {AboutAppPage} from "../pages/about-app-page/about-app-page";
 import {TutorialPage} from "../pages/tutorial-page/tutorial-page";
 import {FormValidator} from "../providers/form-validator";
 import {CalculatorPage} from "../pages/calculator/calculator";
+import {UserNameFormPage} from "../pages/user-name-form/user-name-form";
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import {CalculatorPage} from "../pages/calculator/calculator";
     SOFIAInfoPage,
     AboutAppPage,
     TutorialPage,
-    CalculatorPage
+    CalculatorPage,
+    UserNameFormPage
 
   ],
   imports: [
@@ -90,7 +92,8 @@ import {CalculatorPage} from "../pages/calculator/calculator";
     SOFIAInfoPage,
     AboutAppPage,
     TutorialPage,
-    CalculatorPage
+    CalculatorPage,
+    UserNameFormPage
   ],
   providers: [UserDAO, AlertCreator, MapServices, EventsServices, TestsService,
     ContactAdapter, Storage, ErrorFactory, ContactFactory, ApplicationConfig, WarningMessageDAO,FormValidator,
