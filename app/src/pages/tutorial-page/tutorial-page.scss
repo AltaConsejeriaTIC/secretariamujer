@@ -1,15 +1,41 @@
-.ios, .md {
+page-tutorial-page {
+  background-color: map_get($colors, SofiaAppBeige);
 
-  page-tutorial-page {
+  ion-slides {
+    height: 90vh;
+  }
 
-    ion-slide {
-      background-color: #32db64;
+  ion-row {
+    height: 70vh;
+    background-color: black;
+  }
+
+  p {
+    height: 20vh;
+    margin: 2vh 10vw;
+  }
+
+  .button {
+    background-color: map_get($colors, SofiaAppRedButton);
+    margin: 0;
+    height: 10vh;
+  }
+
+  .swiper-pagination-bullet {
+    background-color: map_get($colors, backgroundPurple);
+  }
+
+  @media (max-width: 479px) {
+    p {
+      font-size: 15px;
     }
+  }
 
-    ion-slide img {
-      height: 70vh !important;
-      width: auto !important;
-    }
+  @media (min-width: 480px) and (max-width: 767px) {
+
+  }
+
+  @media (min-width: 768px) {
 
   }
 
