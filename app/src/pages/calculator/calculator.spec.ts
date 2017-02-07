@@ -34,12 +34,37 @@ describe('CalculatorPage tests', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(CalculatorPage);
     calculatorPage = fixture.componentInstance;
+    calculatorPage.clear();
   });
 
   it('appendFunction should append selected number to display', () => {
     calculatorPage.append('3');
     calculatorPage.append('5');
     expect(calculatorPage.equation).toEqual('35');
+  });
+
+  it('isPinFunction should return false if equation has math character', () => {
+    calculatorPage.append('3');
+    calculatorPage.append('+');
+    calculatorPage.append('5');
+    expect(calculatorPage.isPin()).toEqual(false);
+  });
+
+  it('isPinFunction should return false if equation has more than 4 characters', () => {
+    calculatorPage.append('3');
+    calculatorPage.append('6');
+    calculatorPage.append('5');
+    calculatorPage.append('5');
+    calculatorPage.append('5');
+    expect(calculatorPage.isPin()).toEqual(false);
+  });
+
+  it('isPinFunction should return true if equation has 4 digits only', () => {
+    calculatorPage.append('3');
+    calculatorPage.append('6');
+    calculatorPage.append('5');
+    calculatorPage.append('5');
+    expect(calculatorPage.isPin()).toEqual(true);
   });
 
   it('equalFunction should resolve the equation', () => {
@@ -60,8 +85,5 @@ describe('CalculatorPage tests', () => {
     calculatorPage.equal();
     expect(calculatorPage.equation).toEqual("Error - verifica tu operación");
   });
-
-
-
 });
 

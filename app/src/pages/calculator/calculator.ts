@@ -27,12 +27,17 @@ export class CalculatorPage {
   }
 
   equal(){
+    this.isPin();
+
+
     try{
       this.equation=eval(this.equation);
-
     }catch(e){
       this.equation="Error - verifica tu operación";
     }
   }
 
+  isPin(){
+    return !((this.equation.indexOf("+") >-1 || this.equation.indexOf("-") >-1 || this.equation.indexOf("*") >-1 || this.equation.indexOf("/") >-1) || this.equation.length>4);
+  }
 }
