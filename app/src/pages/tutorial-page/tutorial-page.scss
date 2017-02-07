@@ -6,24 +6,23 @@ page-tutorial-page {
   }
 
   .image-container {
-    height: 70vh;
     background-color: map_get($colors, backgroundPurple);
     background-repeat-x: no-repeat;
     background-repeat-y: no-repeat;
     background-position-x: center;
-    background-position-y: 100%;
-    background-size: auto 90%;
+    background-position-y: 105%;
+    background-size: auto 95%;
   }
 
   p {
-    height: 20vh;
-    margin: 2vh 10vw;
+    margin: 0 10vw;
   }
 
   .button {
     background-color: map_get($colors, SofiaAppRedButton);
     margin: 0;
     height: 10vh;
+    font-weight: bold;
   }
 
   .swiper-pagination-bullet {
@@ -31,17 +30,51 @@ page-tutorial-page {
   }
 
   @media (max-width: 479px) {
+    .image-container {
+      height: 60vh;
+    }
+
     p {
       font-size: 15px;
+      height: 30vh;
+      padding: 3vh 0 0;
+    }
+
+    .button {
+      font-size: 18px;
     }
   }
 
   @media (min-width: 480px) and (max-width: 767px) {
+    .image-container {
+      height: 70vh;
+    }
 
+    p {
+      font-size: 18px;
+      height: 20vh;
+      padding: 3vh 0 0;
+    }
+
+    .button {
+      font-size: 24px;
+    }
   }
 
   @media (min-width: 768px) {
+    .image-container {
+      height: 70vh;
+    }
 
+    p {
+      font-size: 22px;
+      height: 20vh;
+      padding: 4vh 0 0;
+    }
+
+    .button {
+      font-size: 28px;
+    }
   }
 
 }

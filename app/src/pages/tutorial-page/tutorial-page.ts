@@ -36,7 +36,7 @@ export class TutorialPage {
   }
 
   getURLImage(imageNumber):string {
-    return 'url(../assets/img/tutorial_images/tutorial_'+ imageNumber + '.png)';
+    return 'url(assets/img/tutorial_images/tutorial_'+ imageNumber + '.png)';
   }
 
   goToMenuPage() {
