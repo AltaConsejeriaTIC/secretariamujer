@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import {Headers, RequestOptions, Http} from "@angular/http";
 
 @Component({
   selector: 'page-calculator',
@@ -7,62 +8,30 @@ import { NavController } from 'ionic-angular';
 })
 export class CalculatorPage {
 
-  operations={Add:1,subtract:2, product:3, divide:4};
-  operation:number;
-  number1:number;
-  number2:number;
+  equation:string;
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public http:Http) {
     this.clear()
   }
 
   ionViewDidLoad() {
-    console.log('Hello CalculatorPage Page');
+
   }
 
-  add():number{
-    let result=this.number1 + this.number2;
-    this.clear();
-    return result;
-  }
-  subtract():number{
-    let result=this.number1- this.number2;
-    this.clear();
-    return result;
-  }
-  product():number{
-    let result=this.number1 * this.number2;
-    this.clear();
-    return result;
-  }
-  divide():number{
-    let result=this.number1 / this.number2;
-    this.clear();
-    return result;
+  append(character:string){
+    this.equation=this.equation+character;
   }
 
   clear(){
-    this.operation=null;
-    this.number1=null;
-    this.number2=null;
+    this.equation='';
   }
 
+  equal(){
+    try{
+      this.equation=eval(this.equation);
 
-  equal():number{
-    switch(this.operation){
-      case 1 :
-        return this.add();
-
-      case 2 :
-        return this.subtract();
-
-      case 3 :
-        return this.product();
-
-      case 4 :
-        return this.divide();
-
-      
+    }catch(e){
+      this.equation="Error - verifica tu operación";
     }
   }
 
