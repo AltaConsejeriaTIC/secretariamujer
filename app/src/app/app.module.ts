@@ -33,6 +33,7 @@ import {WarningMessageDAO} from "../providers/warning-message-dao";
 import {AboutAppPage} from "../pages/about-app-page/about-app-page";
 import {TutorialPage} from "../pages/tutorial-page/tutorial-page";
 import {FormValidator} from "../providers/form-validator";
+import {CalculatorPage} from "../pages/calculator/calculator";
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import {FormValidator} from "../providers/form-validator";
     SDMUInfoPage,
     SOFIAInfoPage,
     AboutAppPage,
-    TutorialPage
+    TutorialPage,
+    CalculatorPage
 
   ],
   imports: [
@@ -87,7 +89,8 @@ import {FormValidator} from "../providers/form-validator";
     SDMUInfoPage,
     SOFIAInfoPage,
     AboutAppPage,
-    TutorialPage
+    TutorialPage,
+    CalculatorPage
   ],
   providers: [UserDAO, AlertCreator, MapServices, EventsServices, TestsService,
     ContactAdapter, Storage, ErrorFactory, ContactFactory, ApplicationConfig, WarningMessageDAO,FormValidator,

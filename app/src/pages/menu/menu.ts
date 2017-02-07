@@ -7,6 +7,7 @@ import {SettingsPage} from "../settings-page/settings-page";
 import {SelectInfoCategoryPage} from "../select-info-category/select-info-category";
 import {WarningMessageDAO} from "../../providers/warning-message-dao";
 import {UserDAO} from "../../providers/user-dao";
+import {CalculatorPage} from "../calculator/calculator";
 
 @Component({
   selector: 'page-menu',
@@ -101,6 +102,7 @@ export class MenuPage {
         this.navController.push(SelectInfoCategoryPage);
         break;
       case 1:
+        this.navController.push(CalculatorPage);
         break;
       case 2:
         this.navController.push(WelcomeTestPage);
