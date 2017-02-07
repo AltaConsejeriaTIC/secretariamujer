@@ -5,9 +5,14 @@ page-tutorial-page {
     height: 90vh;
   }
 
-  ion-row {
+  .image-container {
     height: 70vh;
-    background-color: black;
+    background-color: map_get($colors, backgroundPurple);
+    background-repeat-x: no-repeat;
+    background-repeat-y: no-repeat;
+    background-position-x: center;
+    background-position-y: 100%;
+    background-size: auto 90%;
   }
 
   p {

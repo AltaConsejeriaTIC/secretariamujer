@@ -1,6 +1,6 @@
 <ion-slides [options]="sliderOptions">
-  <ion-slide *ngFor="let tutorialItem of tutorialItems;">
-    <ion-row>
+  <ion-slide *ngFor="let tutorialItem of tutorialItems; let id = index">
+    <ion-row [ngStyle]="{'background-image': tutorialBackgrounds[id]}" class="image-container">
     </ion-row>
     <p>{{tutorialItem.label}}</p>
   </ion-slide>
