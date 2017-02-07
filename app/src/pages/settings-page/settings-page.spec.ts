@@ -11,6 +11,7 @@ import {ContactSelectionPage} from "../contact-selection/contact-selection";
 import {UserDAO} from "../../providers/user-dao";
 import {AlertCreator} from "../../providers/alert-creator";
 import {ApplicationConfig} from "../../config";
+import {FormValidator} from "../../providers/form-validator";
 
 
 describe('settingsPage tests', () => {
@@ -44,7 +45,7 @@ describe('settingsPage tests', () => {
     TestBed.configureTestingModule({
       declarations: [SettingsPage, ContactSelectionPage],
       providers: [
-        App, Platform, Form, Keyboard, MenuController, NavController, Http, ApplicationConfig,
+        App, Platform, Form, Keyboard, MenuController, NavController, Http, ApplicationConfig,FormValidator,
         {provide: Config, useClass: ConfigMock}, {
           provide: ConnectionBackend,
           useClass: ConfigMock

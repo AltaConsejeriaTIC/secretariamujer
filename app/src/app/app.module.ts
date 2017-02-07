@@ -33,6 +33,7 @@ import {SOFIAInfoPage} from "../pages/sofia-info/sofia-info";
 import {WarningMessageDAO} from "../providers/warning-message-dao";
 import {AboutAppPage} from "../pages/about-app-page/about-app-page";
 import {TutorialPage} from "../pages/tutorial-page/tutorial-page";
+import {FormValidator} from "../providers/form-validator";
 
 @NgModule({
   declarations: [
@@ -90,7 +91,7 @@ import {TutorialPage} from "../pages/tutorial-page/tutorial-page";
     TutorialPage
   ],
   providers: [UserDAO, AlertCreator, MapServices, EventsServices, TestsService, ContactDAO,
-    ContactAdapter, Storage, ErrorFactory, ContactFactory, ApplicationConfig, WarningMessageDAO,
+    ContactAdapter, Storage, ErrorFactory, ContactFactory, ApplicationConfig, WarningMessageDAO,FormValidator,
     {
       provide: ErrorHandler,
       useClass: IonicErrorHandler

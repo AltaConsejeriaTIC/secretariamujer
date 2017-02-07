@@ -3,6 +3,7 @@ import {NavController, Loading, LoadingController} from 'ionic-angular';
 import {UserDAO} from "../../providers/user-dao";
 import {AlertCreator} from "../../providers/alert-creator";
 import {FormGroup, FormBuilder, Validators, AbstractControl} from "@angular/forms";
+import {FormValidator} from "../../providers/form-validator";
 
 const SETTINGS_SLIDE_ITEMS = 3;
 const WRITE_CURRENT_PIN = 1;
@@ -30,7 +31,7 @@ export class SettingsPage {
   userCellPhone:string;
   loading:Loading;
 
-  constructor(public navController: NavController, public userDAO: UserDAO, public alertCreator:AlertCreator, private  formBuilder: FormBuilder, public loadingController: LoadingController) {
+  constructor(public navController: NavController, public userDAO: UserDAO, public alertCreator:AlertCreator, private  formBuilder: FormBuilder, public loadingController: LoadingController, public formValidator:FormValidator) {
     this.usernameInfo = this.userDAO.user.fullName;
     this.userEmail = this.userDAO.user.email;
     this.nameInfo = this.userDAO.user.username || "Anónima";
@@ -174,30 +175,8 @@ export class SettingsPage {
   }
 
   isUserDataValid(): boolean {
-    let isDataValid: boolean = this.isValidName() && this.isValidEmail() && this.isValidPhone();
-
+    let isDataValid: boolean = this.formValidator.isValidName(this.form.controls['fullName'], 'Verifica que el nombre sea correcto') && this.formValidator.isValidEmail(this.form.controls['email'], 'Verifica que el correo sea correcto') && this.formValidator.isValidPhone(this.form.controls['cellPhone'], 'Verifica que el teléfono sea correcto');
     return isDataValid;
   }
 
-  isValidField(field: AbstractControl, message: string) {
-    let isValid = field.valid;
-
-    if (!isValid) {
-      this.alertCreator.showSimpleAlert('Error', message);
-    }
-
-    return isValid;
-  }
-
-  isValidName() {
-    return this.isValidField(this.form.controls['fullName'], 'Verifica que el nombre sea correcto');
-  }
-
-  isValidPhone() {
-    return this.isValidField(this.form.controls['cellPhone'], 'Verifica que el teléfono sea correcto');
-  }
-
-  isValidEmail() {
-    return this.isValidField(this.form.controls['email'], 'Verifica que el correo sea correcto');
-  }
 }
