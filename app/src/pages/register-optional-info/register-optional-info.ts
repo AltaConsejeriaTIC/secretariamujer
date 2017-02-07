@@ -5,6 +5,7 @@ import {UserDAO} from "../../providers/user-dao";
 import {AlertCreator} from "../../providers/alert-creator";
 import {ContactSelectionPage} from "../contact-selection/contact-selection";
 import {FormBuilder, FormGroup, Validators, AbstractControl} from "@angular/forms";
+import {FormValidator} from "../../providers/form-validator";
 
 @Component({
   selector: 'page-register-optional-info',
@@ -14,7 +15,7 @@ export class RegisterOptionalInfoPage {
   form: FormGroup;
 
   constructor(public navCtrl: NavController, public userDAO: UserDAO, public alertCreator: AlertCreator,
-              private  formBuilder: FormBuilder) {
+              private  formBuilder: FormBuilder, public formValidator:FormValidator) {
     this.createForm(formBuilder);
   }
 
@@ -30,31 +31,9 @@ export class RegisterOptionalInfoPage {
   }
 
   isUserDataValid(): boolean {
-    let isDataValid: boolean = this.isValidName() && this.isValidEmail() && this.isValidPhone();
+    let isDataValid: boolean = this.formValidator.isValidName(this.form.controls['cellPhone'], 'Verifica que el teléfono sea correcto') && this.formValidator.isValidEmail(this.form.controls['email'], 'Verifica que el correo sea correcto') && this.formValidator.isValidPhone(this.form.controls['fullName'], 'Verifica que el nombre sea correcto');
 
     return isDataValid;
-  }
-
-  isValidPhone() {
-    return this.isValidField(this.form.controls['cellPhone'], 'Verifica que el teléfono sea correcto');
-  }
-
-  isValidEmail() {
-    return this.isValidField(this.form.controls['email'], 'Verifica que el correo sea correcto');
-  }
-
-  isValidName() {
-    return this.isValidField(this.form.controls['fullName'], 'Verifica que el nombre sea correcto');
-  }
-
-  isValidField(field: AbstractControl, message: string) {
-    let isValid = field.valid;
-
-    if (!isValid) {
-      this.alertCreator.showSimpleAlert('Error', message);
-    }
-
-    return isValid;
   }
 
   saveUser() {

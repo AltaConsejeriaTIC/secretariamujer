@@ -89,7 +89,7 @@ describe('settingsPage tests', () => {
     settingsPage.inputPin = "0000";
     settingsPage.changePinState = WRITE_CURRENT_PIN;
     settingsPage.changePin();
-    expect(settingsPage.instructionText).toEqual(settingsPage.instructionTextArray[1]);
+    expect(settingsPage.instructionText).toEqual(settingsPage.instructionTextArray[0]);
   });
 
   it('when user digits his new pin number and it is a number, input label should be: confirm new pin', () => {
