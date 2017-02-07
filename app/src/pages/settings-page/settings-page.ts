@@ -159,14 +159,15 @@ export class SettingsPage {
 
   makeUserUpdate(message:string){
     this.userDAO.update().subscribe(response=>{
+        this.hideLoading();
         this.alertCreator.showSimpleAlert('Info', message);
       },
       error=>{
+        this.hideLoading();
         this.alertCreator.showSimpleAlert('Info', 'No se han podido actualizar tus datos, por favor intentalo más tarde');
         console.log("El error es", error)
       }
     );
-    this.hideLoading();
   }
 
   hideLoading(){

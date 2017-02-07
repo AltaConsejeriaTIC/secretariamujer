@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {NavController} from 'ionic-angular';
+import {NavController, Loading, LoadingController} from 'ionic-angular';
 import {User} from "../../entity/user";
 import {UserDAO} from "../../providers/user-dao";
 import {AlertCreator} from "../../providers/alert-creator";
@@ -9,14 +9,17 @@ import {FormValidator} from "../../providers/form-validator";
 
 @Component({
   selector: 'page-register-optional-info',
-  templateUrl: 'register-optional-info.html'
+  templateUrl: './register-optional-info.html'
 })
 export class RegisterOptionalInfoPage {
   form: FormGroup;
+  loading:Loading;
 
-  constructor(public navCtrl: NavController, public userDAO: UserDAO, public alertCreator: AlertCreator,
+
+  constructor(public navCtrl: NavController, public userDAO: UserDAO, public alertCreator: AlertCreator,public loadingController:LoadingController,
               private  formBuilder: FormBuilder, public formValidator:FormValidator) {
     this.createForm(formBuilder);
+    this.loading=this.createLoading();
   }
 
   private createForm(formBuilder: FormBuilder) {
@@ -30,6 +33,13 @@ export class RegisterOptionalInfoPage {
   ionViewDidLoad() {
   }
 
+  createLoading():Loading{
+    return this.loadingController.create({
+      content:"Espera un momento",
+      dismissOnPageChange: true
+    });
+  }
+
   isUserDataValid(): boolean {
     let isDataValid: boolean = this.formValidator.isValidName(this.form.controls['cellPhone'], 'Verifica que el teléfono sea correcto') && this.formValidator.isValidEmail(this.form.controls['email'], 'Verifica que el correo sea correcto') && this.formValidator.isValidPhone(this.form.controls['fullName'], 'Verifica que el nombre sea correcto');
 
@@ -39,12 +49,15 @@ export class RegisterOptionalInfoPage {
   saveUser() {
     if (this.isUserDataValid()) {
       this.updateUserInDAO();
+      this.loading.present();
       this.userDAO.create()
         .subscribe(response => {
           this.alertCreator.showCofirmationMessage('Cuenta', 'Tu cuenta ha sido creada', () => {
-            this.goToContactPage()
+            this.hideLoading();
+            this.goToContactPage();
           })
         }, error => {
+          this.hideLoading();
           if (error.name == 'EmailAlreadyTaken') {
             this.alertCreator.showCofirmationMessage('Email', this.userDAO.user.email + 'ya ha sido registrado en el sistema');
           }
@@ -68,6 +81,11 @@ export class RegisterOptionalInfoPage {
 
   canUserContinue(): boolean {
     return this.form.controls['fullName'].valid && this.form.controls['email'].valid && this.form.controls['cellPhone'].valid;
+  }
+
+  hideLoading(){
+    this.loading.dismiss();
+    this.loading=this.createLoading();
   }
 
 }

@@ -1,7 +1,10 @@
 import {ComponentFixture, TestBed, async} from '@angular/core/testing';
-import {App, MenuController, NavController, Platform, Config, Keyboard, Form, IonicModule}  from 'ionic-angular';
+import {
+  App, MenuController, NavController, Platform, Config, Keyboard, Form, IonicModule,
+  LoadingController, Loading
+}  from 'ionic-angular';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {ConfigMock, UserDAOMock, AlertCreatorMock} from '../../mocks';
+import {ConfigMock, UserDAOMock, AlertCreatorMock, LoadingMock, LoadingControllerMock} from '../../mocks';
 import {AlertCreator} from  '../../providers/alert-creator'
 import {AlertController} from "ionic-angular";
 import {UserDAO} from "../../providers/user-dao";
@@ -34,7 +37,8 @@ describe('RegisterOptionalInfoPage tests', () => {
         {
           provide: AlertCreator,
           useClass: AlertCreatorMock
-        }
+        },{provide: Loading, useClass: LoadingMock},
+        {provide: LoadingController, useClass: LoadingControllerMock},
       ],
       imports: [
         FormsModule,
