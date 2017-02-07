@@ -1,12 +1,12 @@
 import {Component} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
-import {Contacts, Contact} from 'ionic-native';
-import {ContactDAO} from "../../providers/contact-dao";
+import {Contacts, Contact, IContactProperties} from 'ionic-native';
 import {MenuPage} from "../menu/menu";
 import {IContact} from "../../entity/contact";
 import {ContactAdapter} from "../../providers/contact-adapter";
 import {AlertCreator} from "../../providers/alert-creator";
 import {ContactFactory} from "../../providers/factory/contact-factory";
+import {UserDAO} from "../../providers/user-dao";
 
 
 const MAX_CONTACTS = 3;
@@ -20,34 +20,42 @@ export class ContactSelectionPage {
   contacts: IContact[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private contactAdapter: ContactAdapter,
-              private contactDAO: ContactDAO, private alertCreator: AlertCreator) {
+              private userDAO: UserDAO, private alertCreator: AlertCreator) {
     this.initContacts();
+  }
+
+  ionViewDidLoad() {
   }
 
   private initContacts() {
     this.contacts = new Array<IContact>(MAX_CONTACTS);
-    this.contacts.fill(ContactFactory.createContact());
-  }
-
-  ionViewDidLoad() {
     this.loadSavedContacts();
   }
 
   private loadSavedContacts() {
-    this.contactDAO.getContacts().then(contacts => {
-      if (contacts != null) {
-        this.contacts = contacts;
-      }
-    });
+    for (let i = 0; i < MAX_CONTACTS; i++) {
+      let contact = this.userDAO.user.contacts[i];
+
+      this.contacts[i] = contact != null ? contact : ContactFactory.createContact();
+    }
   }
 
   selectContactFromDevice(index: number) {
     Contacts.pickContact().then((contactProperties: Contact) => {
-      this.contacts[index] = this.contactAdapter.parseContact(contactProperties);
-      this.contactDAO.saveContacts(this.contacts);
+      this.addContact(index, contactProperties);
     }).catch(error => {
       this.handleError(error);
     });
+  }
+
+  private addContact(index: number, contactProperties: IContactProperties) {
+    this.contacts[index] = this.contactAdapter.parseContact(contactProperties);
+    this.userDAO.user.contacts[index] = this.contacts[index];
+    this.userDAO.update().subscribe(response => {
+      this.alertCreator.showCofirmationMessage('Contacto Guardado', 'Contacto guardado exitosamente');
+    }, error => {
+      this.alertCreator.showCofirmationMessage('Error', 'No es posible guardar el contacto en este momento');
+    })
   }
 
   private handleError(error) {

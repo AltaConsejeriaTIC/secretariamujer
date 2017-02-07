@@ -4,13 +4,13 @@ import {
   AlertController, NavParams
 }  from 'ionic-angular';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {ConfigMock} from '../../mocks';
+import {ConfigMock, UserDAOMock} from '../../mocks';
 import {AlertCreator} from "../../providers/alert-creator";
 import {ContactSelectionPage} from "./contact-selection";
 import {ContactAdapter} from "../../providers/contact-adapter";
 import {ContactFactory} from "../../providers/factory/contact-factory";
 import {ErrorFactory} from "../../providers/factory/error-factory";
-import {ContactDAO} from "../../providers/contact-dao";
+import {UserDAO} from "../../providers/user-dao";
 
 
 describe('ContactSelection tests', () => {
@@ -33,8 +33,8 @@ describe('ContactSelection tests', () => {
           useClass: ConfigMock
         },
         {
-          provide: ContactDAO,
-          useClass: ConfigMock
+          provide: UserDAO,
+          useClass: UserDAOMock
         },
 
       ],
