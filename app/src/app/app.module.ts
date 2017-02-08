@@ -35,6 +35,7 @@ import {TutorialPage} from "../pages/tutorial-page/tutorial-page";
 import {FormValidator} from "../providers/form-validator";
 import {CalculatorPage} from "../pages/calculator/calculator";
 import {UserNameFormPage} from "../pages/user-name-form/user-name-form";
+import {LoginService} from "../providers/login-service";
 
 @NgModule({
   declarations: [
@@ -96,7 +97,7 @@ import {UserNameFormPage} from "../pages/user-name-form/user-name-form";
     UserNameFormPage
   ],
   providers: [UserDAO, AlertCreator, MapServices, EventsServices, TestsService,
-    ContactAdapter, Storage, ErrorFactory, ContactFactory, WarningMessageDAO, FormValidator,
+    ContactAdapter, Storage, WarningMessageDAO, FormValidator, LoginService,
     {
       provide: ErrorHandler,
       useClass: IonicErrorHandler

@@ -1,6 +1,7 @@
-import {Injectable} from '@angular/core';
-
 export class ErrorFactory {
+  private constructor(){
+  }
+
   static createError(errorName: string, errorMessage?: string): Error {
     let error = new Error(errorMessage);
     error.name = errorName;

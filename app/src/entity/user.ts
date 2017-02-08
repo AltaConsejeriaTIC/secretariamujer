@@ -28,4 +28,5 @@ export class User implements IUser {
     this.password = pass;
     this.contacts = contacts || [];
   }
+
 }

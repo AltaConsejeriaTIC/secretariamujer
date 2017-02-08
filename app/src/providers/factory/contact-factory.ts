@@ -1,4 +1,3 @@
-import {Injectable} from '@angular/core';
 import {IContact, Contact} from "../../entity/contact";
 
 export class ContactFactory {
