@@ -32,4 +32,9 @@ export class FormValidator {
     return this.isValidField(field, message);
   }
 
+  isValidUserName(field: AbstractControl, message:string){
+    return this.isValidField(field, message);
+
+  }
+
 }

@@ -28,7 +28,8 @@ describe('formValidator tests', () => {
     this.form = formBuilder.group({
       fullName: ['', Validators.compose([Validators.pattern('[a-zA-Z ]*')])],
       email: ['', Validators.compose([Validators.pattern('(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*$)')])],
-      cellPhone: ['', Validators.compose([Validators.pattern('[0-9]*'), Validators.maxLength(10)])]
+      cellPhone: ['', Validators.compose([Validators.pattern('[0-9]*'), Validators.maxLength(10)])],
+      username: ['', Validators.required],
     });
 
   }));
@@ -77,6 +78,16 @@ describe('formValidator tests', () => {
   it('isValidEmail should return false if the email is invalid',()=>{
     this.form.controls['email'].setValue('inorrectemail.com');
     expect(formValidator.isValidField(this.form.controls['email'],'Test')).toBe(false);
+  });
+
+  it('isValidUserName should return true if the username is not empty',()=>{
+    this.form.controls['username'].setValue('test@test.com');
+    expect(formValidator.isValidField(this.form.controls['username'],'Test')).toBe(true);
+  });
+
+  it('isValidUserName should return false if the username is empty',()=>{
+    this.form.controls['username'].setValue('');
+    expect(formValidator.isValidField(this.form.controls['username'],'Test')).toBe(false);
   });
 
 

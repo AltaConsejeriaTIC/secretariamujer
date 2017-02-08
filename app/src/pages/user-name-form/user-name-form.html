@@ -1,18 +1,29 @@
-<!--
-  Generated template for the UserNameForm page.
+<ion-content class="content-purple">
+  <ion-grid class="height-100">
+    <ion-row class="flex-1"></ion-row>
+    <ion-row class="flex-2">
+      <ion-col id="required-info-col" offset-10 width-80>
+        <ion-row>
+          <ion-label text-center class="app-subtitle">Introduce tu nombre en la aplicación</ion-label>
+        </ion-row>
+        <form [formGroup]="form" novalidate>
+          <ion-row>
+            <ion-input text-center type="text" formControlName="username" class="input-border input-color" placeholder="Tu nombre en la aplicación"></ion-input>
+          </ion-row>
+        </form>
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
+        <ion-row id="required-info-register-button-container">
 
-  <ion-navbar>
-    <ion-title>userNameForm</ion-title>
-  </ion-navbar>
+          <ion-col width-45 class="no-padding">
+            <button (click)="goBack()" class="app-button" ion-button outline>Atrás</button>
+          </ion-col>
+          <ion-col offset-10 width-45 class="no-padding">
+            <button (click)="login()" [ngClass]="{'app-button': form.valid, 'disabled-button': !form.valid}" ion-button outline>Continuar</button>
+          </ion-col>
 
-</ion-header>
+        </ion-row>
+      </ion-col>
+    </ion-row>
 
-
-<ion-content padding>
-
+  </ion-grid>
 </ion-content>

@@ -75,7 +75,7 @@ describe('CalculatorPage tests', () => {
     calculatorPage.append('5');
     calculatorPage.equal();
     expect(calculatorPage.equation).toEqual('40');
-    
+
   });
 
   it('equalFunction should display error message if the equation is wrong', () => {
