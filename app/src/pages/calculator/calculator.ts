@@ -58,7 +58,8 @@ export class CalculatorPage {
   }
 
   goToConfirmUserForm(){
-    this.clear();
     this.navCtrl.push(UserNameFormPage,{pinNumber:this.equation});
+    this.clear();
+
   }
 }

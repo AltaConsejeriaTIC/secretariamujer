@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {NavController, Loading} from 'ionic-angular';
+import {NavController, Loading, NavParams} from 'ionic-angular';
 import {FormGroup, FormBuilder, Validators} from "@angular/forms";
 import {FormValidator} from "../../providers/form-validator";
 
@@ -11,12 +11,14 @@ export class UserNameFormPage {
 
   loading:Loading;
   form:FormGroup;
+  userPassword:string;
 
 
-  constructor(public navCtrl: NavController, private  formBuilder: FormBuilder, public formValidator:FormValidator) {
+  constructor(public navCtrl: NavController, public navParams:NavParams, public  formBuilder: FormBuilder, public formValidator:FormValidator) {
     this.form = formBuilder.group({
       username: ['', Validators.required],
     });
+    this.userPassword=this.navParams.get('pinNumber');
   }
 
   ionViewDidLoad() {
@@ -24,7 +26,8 @@ export class UserNameFormPage {
 
   login(){
     if(this.isUserNameValid()){
-      console.log("COLOCAR ACA LOGICA DE LOGIN");
+      console.log("COLOCAR ACA LOGICA DE LOGIN", this.userPassword);
+      console.log("el pass", this.userPassword)
     }
   }
 
