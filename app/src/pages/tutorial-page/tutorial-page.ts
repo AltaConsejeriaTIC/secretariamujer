@@ -1,17 +1,22 @@
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
+import { NavController, Slides } from 'ionic-angular';
+import { Component, ViewChild } from "@angular/core";
+import {HomePage} from "../home/home";
 
 @Component({
   selector: 'page-tutorial-page',
   templateUrl: 'tutorial-page.html'
 })
 export class TutorialPage {
+  @ViewChild('mySlider') slider: Slides;
 
   sliderOptions: any;
   tutorialItems: any[];
   tutorialBackgrounds: string[] = [];
+  isVisibleButton: boolean;
+  buttonLabel: string;
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public storage: Storage) {
     this.sliderOptions = {
       pager: true
     };
@@ -27,6 +32,7 @@ export class TutorialPage {
 
   ionViewDidLoad() {
     this.setTutorialBackgroundImages();
+    this.setButtonVisibilityAndLabel();
   }
 
   setTutorialBackgroundImages() {
@@ -35,11 +41,42 @@ export class TutorialPage {
     }
   }
 
+  setButtonVisibilityAndLabel() {
+    this.storage.get('isFirstTimeOpen').then((isFirstTimeOpen) => {
+      this.isVisibleButton = this.isFirstTimeOpenOrEmpty(isFirstTimeOpen)? false: true;
+      this.buttonLabel = this.isFirstTimeOpenOrEmpty(isFirstTimeOpen)? "Finalizar" : "Omitir";
+    })
+  }
+
   getURLImage(imageNumber):string {
     return 'url(assets/img/tutorial_images/tutorial_'+ imageNumber + '.png)';
   }
 
   goToMenuPage() {
-    this.navCtrl.popToRoot();
+    this.storage.get('isFirstTimeOpen').then((isFirstTimeOpen) => {
+      if (this.isFirstTimeOpenOrEmpty(isFirstTimeOpen)) {
+        this.storage.set('isFirstTimeOpen', false);
+        this.navCtrl.setRoot(HomePage);
+      }
+      else {
+        this.navCtrl.pop();
+      }
+    })
+  }
+
+  onSlideChanged() {
+    this.storage.get('isFirstTimeOpen').then((isFirstTimeOpen) => {
+      if (this.isFirstTimeOpenOrEmpty(isFirstTimeOpen)) {
+        this.isVisibleButton = (this.isTheLastSlideVisible(this.slider.getActiveIndex() + 1, this.tutorialItems.length))? true : false;
+      }
+    })
+  }
+
+  isFirstTimeOpenOrEmpty(isFirstTimeOpen) {
+    return isFirstTimeOpen || isFirstTimeOpen == null;
+  }
+
+  isTheLastSlideVisible(currentSlide, lastSlidePosition){
+    return currentSlide == lastSlidePosition;
   }
 }
