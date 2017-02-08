@@ -141,7 +141,16 @@ export class MenuPage {
     };
 
     if (contact != null && contact.cellPhone != null) {
-      SMS.send(contact.cellPhone, message, options);
+      SMS.send(contact.cellPhone, message, options)
+        .then(()=>{
+            this.alertCreator.showSimpleAlert("Mensaje", "El mensaje fue enviado a "+contact.cellPhone);
+        },
+        ()=>{
+          this.alertCreator.showSimpleAlert("Mensaje", "No tiene saldo suficiente para enviar el mensaje");
+        })
+      ;
+
+
     }
   }
 }
