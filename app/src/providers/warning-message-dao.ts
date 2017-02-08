@@ -7,11 +7,11 @@ import {ApplicationConfig} from "../config";
 @Injectable()
 export class WarningMessageDAO {
 
-  constructor(public http: Http, private config: ApplicationConfig) {
+  constructor(public http: Http) {
   }
 
   get() {
-    let emergencyMessage = this.config.getURL('/emergency_message_rest');
+    let emergencyMessage = ApplicationConfig.getURL('/emergency_message_rest');
     return this.http.get(emergencyMessage).map(res => {
         return res.json()[0].emergencyMessage;
       }

@@ -10,7 +10,7 @@ import {ErrorFactory} from "./factory/error-factory";
 export class UserDAO {
   user: IUser;
 
-  constructor(public http: Http, private config: ApplicationConfig) {
+  constructor(public http: Http) {
     this.user = new User();
   }
 
@@ -26,7 +26,7 @@ export class UserDAO {
   }
 
   create(): Observable<any> {
-    let restUrl = this.config.getURL('/entity/user?_format=json');
+    let restUrl = ApplicationConfig.getURL('/entity/user?_format=json');
     let body = this.createHttpBody(this.user);
     let headers = this.createHeaders();
     let options = this.createRequestOptions(headers);
@@ -47,8 +47,7 @@ export class UserDAO {
   }
 
   update() {
-    console.log("el ususario", this.user);
-    let restUrl = this.config.getURL('/user/' + this.user.id + '?_format=json');
+    let restUrl = ApplicationConfig.getURL('/user/' + this.user.id + '?_format=json');
     let body = this.createHttpBody(this.user);
     let headers = this.createHeaders();
     let options = this.createRequestOptions(headers);

@@ -96,7 +96,7 @@ import {UserNameFormPage} from "../pages/user-name-form/user-name-form";
     UserNameFormPage
   ],
   providers: [UserDAO, AlertCreator, MapServices, EventsServices, TestsService,
-    ContactAdapter, Storage, ErrorFactory, ContactFactory, ApplicationConfig, WarningMessageDAO,FormValidator,
+    ContactAdapter, Storage, ErrorFactory, ContactFactory, WarningMessageDAO, FormValidator,
     {
       provide: ErrorHandler,
       useClass: IonicErrorHandler

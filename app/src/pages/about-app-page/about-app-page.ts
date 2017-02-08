@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {NavController, Loading, LoadingController} from 'ionic-angular';
 import {AppInfo} from "../../entity/app-info";
 import {Http} from "@angular/http";
@@ -11,17 +11,17 @@ import {AlertCreator} from "../../providers/alert-creator";
 })
 export class AboutAppPage {
 
-  aboutAppInfo:AppInfo[]=[{
-    title:'',
+  aboutAppInfo: AppInfo[] = [{
+    title: '',
     title_2: '',
     title_3: '',
     description: '',
   }];
-  loading:Loading;
+  loading: Loading;
 
-  constructor(public navCtrl: NavController, public http:Http, public applicationConfig:ApplicationConfig, public loadingController: LoadingController, public alertCreator: AlertCreator) {
-    this.loading=this.loadingController.create({
-      content:"Espera un momento",
+  constructor(public navCtrl: NavController, public http: Http, public loadingController: LoadingController, public alertCreator: AlertCreator) {
+    this.loading = this.loadingController.create({
+      content: "Espera un momento",
       dismissOnPageChange: true
     });
 
@@ -29,27 +29,27 @@ export class AboutAppPage {
   }
 
   ionViewDidLoad() {
-    let url=this.applicationConfig.getURL('/info-about-app-rest');
+    let url = ApplicationConfig.getURL('/info-about-app-rest');
     this.http.get(url).map(res => res.json()).subscribe(response => {
-      this.aboutAppInfo=response;
+      this.aboutAppInfo = response;
       this.loading.dismiss();
       this.checkIfEmptyResponse();
 
       console.log("la respuesta", this.aboutAppInfo);
     }, err => {
       this.loading.dismiss();
-      this.alertCreator.showSimpleAlert("Error","Asegurate de tener conexión a internet, o intentalo más tarde");
+      this.alertCreator.showSimpleAlert("Error", "Asegurate de tener conexión a internet, o intentalo más tarde");
       console.log("el error", err)
     });
   }
 
-  checkIfEmptyResponse(){
-    if(this.aboutAppInfo.length==0){
-      this.alertCreator.showSimpleAlert("Info","No hay información para mostrar");
+  checkIfEmptyResponse() {
+    if (this.aboutAppInfo.length == 0) {
+      this.alertCreator.showSimpleAlert("Info", "No hay información para mostrar");
     }
   }
 
-  goBackPage(){
+  goBackPage() {
     this.navCtrl.pop();
   }
 
