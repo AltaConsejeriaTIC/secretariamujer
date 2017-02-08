@@ -28,6 +28,10 @@ page-calculator {
     border-left: 1px solid map_get($colors,CalculatorLabels);
   }
 
+  .math-button{
+    background-color: map_get($colors,CalculatorMathButton);
+  }
+
   .math-button button{
     background-color: map_get($colors,CalculatorMathButton);
     color:white
@@ -38,6 +42,10 @@ page-calculator {
 
   .math-top-border{
     border-top: 1px solid white;
+  }
+
+  .CalculatorEqualButton{
+    background-color: map_get($colors,CalculatorEqualButton) !important;
   }
 
   .CalculatorEqualButton button{
