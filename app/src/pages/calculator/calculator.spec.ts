@@ -96,7 +96,13 @@ describe('CalculatorPage tests', () => {
     expect(calculatorPage.hasShowedResult).toEqual(true);
     calculatorPage.append('5');
     expect(calculatorPage.hasShowedResult).toEqual(false);
+  });
 
+  it('eraseFunction should delete last character', () => {
+    calculatorPage.append('3');
+    calculatorPage.append('5');
+    calculatorPage.erase();
+    expect(calculatorPage.equation).toEqual('3');
   });
 
 });

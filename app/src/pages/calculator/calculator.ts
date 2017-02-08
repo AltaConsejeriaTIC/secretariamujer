@@ -44,6 +44,10 @@ export class CalculatorPage {
     }
   }
 
+  erase(){
+    this.equation=this.equation.slice(0,-1);
+  }
+
   isPin(){
     return !((this.equation.indexOf("+") >-1 || this.equation.indexOf("-") >-1 || this.equation.indexOf("*") >-1 || this.equation.indexOf("/") >-1) || this.equation.length!=4);
   }
