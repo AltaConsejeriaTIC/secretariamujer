@@ -64,18 +64,6 @@
       </div>
     </div>
     <div>
-      <ion-row class="settings-item">
-        <ion-col class="text-container center-vertically">
-          <ion-label>
-            Modo Seguro
-          </ion-label>
-        </ion-col>
-        <ion-col class="toggle-container center-vertically justify-horizontally-right">
-          <ion-toggle mode="ios" [(ngModel)]="safeMode"></ion-toggle>
-        </ion-col>
-      </ion-row>
-    </div>
-    <div>
       <ion-row class="settings-item" (click)="toggleisShowingOptions(2)">
         <ion-col width-80 class="text-container center-vertically">
           <ion-label>
@@ -113,6 +101,15 @@
             </ion-row>
             </form>
           </ion-col>
+      </ion-row>
+    </div>
+    <div>
+      <ion-row class="settings-item" (click)="logout()" >
+        <ion-col class="text-container center-vertically">
+          <ion-label>
+            Cerrar sesión
+          </ion-label>
+        </ion-col>
       </ion-row>
     </div>
   </ion-grid>

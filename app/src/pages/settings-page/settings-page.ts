@@ -180,4 +180,8 @@ export class SettingsPage {
     return isDataValid;
   }
 
+  logout(){
+    this.alertCreator.showSimpleAlert('Info', 'cerrar sesión está en desarrollo');
+  }
+
 }
