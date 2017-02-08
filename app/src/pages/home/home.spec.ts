@@ -3,9 +3,10 @@ import {App, MenuController, NavController, Platform, Config, Keyboard, Form, Io
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ConfigMock} from '../../mocks';
 import {HomePage} from "./home";
+import {LoginService} from "../../providers/login-service";
 
 
-describe('RequiredInfoFormPage tests', () => {
+describe('HomePage tests', () => {
 
   let home2Page: HomePage;
   let fixture: ComponentFixture<HomePage>;
@@ -14,7 +15,7 @@ describe('RequiredInfoFormPage tests', () => {
     TestBed.configureTestingModule({
       declarations: [HomePage],
       providers: [
-        App, Platform, Form, Keyboard, MenuController, NavController,
+        App, Platform, Form, Keyboard, MenuController, NavController,LoginService,
         {provide: Config, useClass: ConfigMock}
       ],
       imports: [

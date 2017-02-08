@@ -9,7 +9,6 @@ export class UserFactory {
   }
 
   createUser(properties: {}) {
-    properties.fo
 
   }
 
