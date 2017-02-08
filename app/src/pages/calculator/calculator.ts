@@ -10,6 +10,7 @@ export class CalculatorPage {
 
   equation:string;
   hasShowedResult:boolean;
+  result:string;
 
   constructor(public navCtrl: NavController) {
     this.clear()
@@ -33,6 +34,7 @@ export class CalculatorPage {
 
   clear(){
     this.equation='';
+    this.result='';
     this.hasShowedResult=false;
   }
 
@@ -54,7 +56,7 @@ export class CalculatorPage {
 
   solveEquation(){
     try{
-      this.equation=eval(this.equation)+'';
+      this.result=eval(this.equation)+'';
     }catch(e){
       this.equation="Error - verifica tu operación";
     }

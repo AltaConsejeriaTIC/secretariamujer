@@ -74,7 +74,7 @@ describe('CalculatorPage tests', () => {
     calculatorPage.append('+');
     calculatorPage.append('5');
     calculatorPage.equal();
-    expect(calculatorPage.equation).toEqual('40');
+    expect(calculatorPage.result).toEqual('40');
 
   });
 

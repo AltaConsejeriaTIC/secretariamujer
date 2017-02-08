@@ -53,4 +53,17 @@ page-calculator {
     color: white !important;
   }
 
+  .display-division-container{
+    background-color: map_get($colors,backgroundPurple);
+  }
+
+  .display-division{
+    height: 1px;
+    width: 100%;
+    background-color: map_get($colors,CalculatorDisplayBorder);
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+
+
 }
