@@ -3,18 +3,38 @@
     <ion-row class="flex-1 display">
       <label>{{equation}}</label>
     </ion-row>
+    <ion-row class="display-division-container">
+      <div class="display-division"></div>
+    </ion-row>
+    <ion-row class="flex-1 display">
+      <label>{{result}}</label>
+    </ion-row>
     <ion-row class="flex-1">
       <ion-col no-padding>
-          <button (click)="append('7')">7</button>
+        <button (click)="clear()">C</button>
       </ion-col>
       <ion-col no-padding class="two-borders">
-        <button (click)="append('8')">8</button>
+        <button (click)="erase()">&#8592;</button>
       </ion-col>
       <ion-col no-padding>
-        <button (click)="append('9')">9</button>
+        <button (click)="append('.')">.</button>
       </ion-col>
       <ion-col no-padding class="math-button">
-        <button (click)="append('/')">/</button>
+        <button (click)="append('/')">&#247;</button>
+      </ion-col>
+    </ion-row>
+    <ion-row class="flex-1">
+      <ion-col no-padding class="top-border">
+          <button (click)="append('7')">7</button>
+      </ion-col>
+      <ion-col no-padding class="two-borders top-border">
+        <button (click)="append('8')">8</button>
+      </ion-col>
+      <ion-col no-padding class="top-border">
+        <button (click)="append('9')">9</button>
+      </ion-col>
+      <ion-col no-padding class="math-button math-top-border">
+        <button (click)="append('*')">X</button>
       </ion-col>
     </ion-row>
     <ion-row class="flex-1">
@@ -27,8 +47,8 @@
       <ion-col no-padding class="top-border">
         <button (click)="append('6')">6</button>
       </ion-col>
-      <ion-col no-padding class="math-button">
-        <button (click)="append('*')">*</button>
+      <ion-col no-padding class="math-button math-top-border">
+        <button (click)="append('+')">+</button>
       </ion-col>
     </ion-row>
     <ion-row class="flex-1">
@@ -41,24 +61,23 @@
       <ion-col no-padding class="top-border">
         <button (click)="append('3')">3</button>
       </ion-col>
-      <ion-col no-padding class="math-button">
+      <ion-col no-padding class="math-button math-top-border">
         <button (click)="append('-')">-</button>
       </ion-col>
     </ion-row>
     <ion-row class="flex-1">
       <ion-col no-padding class="top-border">
-        <button (click)="clear()">CLR</button>
-      </ion-col>
-      <ion-col no-padding class="three-borders">
         <button (click)="append('0')">0</button>
       </ion-col>
+      <ion-col no-padding class="three-borders">
+        <button (click)="append('(')">(</button>
+      </ion-col>
       <ion-col no-padding class="top-border">
+        <button (click)="append(')')">)</button>
+      </ion-col>
+      <ion-col no-padding class="math-button CalculatorEqualButton">
         <button (click)="equal()">=</button>
       </ion-col>
-      <ion-col no-padding class="math-button">
-        <button (click)="append('+')">+</button>
-      </ion-col>
     </ion-row>
-
   </ion-grid>
 </ion-content>

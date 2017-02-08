@@ -1,8 +1,8 @@
-<ion-slides [options]="sliderOptions">
+<ion-slides [options]="sliderOptions" #mySlider (ionDidChange)="onSlideChanged()">
   <ion-slide *ngFor="let tutorialItem of tutorialItems; let id = index">
     <ion-row [ngStyle]="{'background-image': tutorialBackgrounds[id]}" class="image-container">
     </ion-row>
     <p>{{tutorialItem.label}}</p>
   </ion-slide>
 </ion-slides>
-<button ion-button full (click)="goToMenuPage()" mode="ios" color="danger">Omitir</button>
+<button ion-button full (click)="goToMenuPage()" mode="ios" color="danger" *ngIf="isVisibleButton">{{buttonLabel}}</button>

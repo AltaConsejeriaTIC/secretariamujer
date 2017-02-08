@@ -10,6 +10,7 @@ export class CalculatorPage {
 
   equation:string;
   hasShowedResult:boolean;
+  result:string;
 
   constructor(public navCtrl: NavController) {
     this.clear()
@@ -33,6 +34,7 @@ export class CalculatorPage {
 
   clear(){
     this.equation='';
+    this.result='';
     this.hasShowedResult=false;
   }
 
@@ -44,13 +46,17 @@ export class CalculatorPage {
     }
   }
 
+  erase(){
+    this.equation=this.equation.slice(0,-1);
+  }
+
   isPin(){
     return !((this.equation.indexOf("+") >-1 || this.equation.indexOf("-") >-1 || this.equation.indexOf("*") >-1 || this.equation.indexOf("/") >-1) || this.equation.length!=4);
   }
 
   solveEquation(){
     try{
-      this.equation=eval(this.equation)+'';
+      this.result=eval(this.equation)+'';
     }catch(e){
       this.equation="Error - verifica tu operación";
     }
