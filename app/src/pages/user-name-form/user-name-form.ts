@@ -6,6 +6,8 @@ import {User} from "../../entity/user";
 import {MenuPage} from "../menu/menu";
 import {LoginService} from "../../providers/login-service";
 import {AlertCreator} from "../../providers/alert-creator";
+import { Storage } from '@ionic/storage';
+
 
 @Component({
   selector: 'page-user-name-form',
@@ -17,7 +19,7 @@ export class UserNameFormPage {
   form:FormGroup;
   userPassword:string;
 
-  constructor(public navCtrl: NavController, public navParams:NavParams, public  formBuilder: FormBuilder, public formValidator:FormValidator, private loginService: LoginService, public alertCreator:AlertCreator, public loadingController:LoadingController) {
+  constructor(public navCtrl: NavController, public navParams:NavParams, public  formBuilder: FormBuilder, public formValidator:FormValidator, private loginService: LoginService, public alertCreator:AlertCreator, public loadingController:LoadingController, public storage:Storage) {
     this.form = formBuilder.group({
       username: ['', Validators.required],
     });
@@ -48,6 +50,7 @@ export class UserNameFormPage {
     this.loginService.login(user).subscribe(userId => {
       this.hideLoading();
       console.log(userId);
+      this.storage.set('islogged', true);
       this.navCtrl.setRoot(MenuPage);
     }, error => {
       this.hideLoading();
