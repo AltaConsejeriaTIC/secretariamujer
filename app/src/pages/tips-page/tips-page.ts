@@ -38,7 +38,9 @@ export class TipsPage {
 
   getTips() {
     let RESTAddress = this.selectedTipCategory.RESTAddres;
-    this.http.get(ApplicationConfig.getURL('/' + RESTAddress + '?_format=json')).map(res => res.json()).subscribe(response => {
+    let url = ApplicationConfig.getURL('/' + RESTAddress + '?_format=json');
+    
+    this.http.get(url).map(res => res.json()).subscribe(response => {
       this.tipsArrayByCategory = response;
       this.setInitialTipState();
       console.log("la respuesta", this.tipsArrayByCategory);
