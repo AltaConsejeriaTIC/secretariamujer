@@ -1,8 +1,9 @@
 page-calculator {
   .display{
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     background-color: map_get($colors,backgroundPurple);
+    padding-right: 10%;
   }
 
   label{
@@ -65,5 +66,50 @@ page-calculator {
     margin-right: 10%;
   }
 
+  .result{
+    font-weight: bold;
+  }
+
+  @media (max-width: 479px) {
+    .equation{
+      font-size: 25px;
+    }
+
+    .result{
+      font-size: 30px;
+    }
+
+    button{
+      font-size: 20px;
+    }
+  }
+
+  @media (min-width: 480px) and (max-width: 767px) {
+    .equation{
+      font-size: 35px;
+    }
+
+    .result{
+      font-size: 40px;
+    }
+
+    button{
+      font-size: 30px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .equation{
+      font-size: 35px;
+    }
+
+    .result{
+      font-size: 40px;
+    }
+
+    button{
+      font-size: 30px;
+    }
+  }
 
 }
