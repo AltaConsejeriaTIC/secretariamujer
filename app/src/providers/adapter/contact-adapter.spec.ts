@@ -1,6 +1,6 @@
 import {ContactAdapter} from "./contact-adapter";
-import {ErrorFactory} from "./factory/error-factory";
-import {Contact} from "../entity/contact";
+import {ErrorFactory} from "../factory/error-factory";
+import {Contact} from "../../entity/contact";
 
 
 describe('ContacAdapter tests', () => {

@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {IContactProperties} from "ionic-native";
-import {IContact} from "../entity/contact";
-import {ErrorFactory} from "./factory/error-factory";
-import {ContactFactory} from "./factory/contact-factory";
+import {IContact} from "../../entity/contact";
+import {ErrorFactory} from "../factory/error-factory";
+import {ContactFactory} from "../factory/contact-factory";
 
 @Injectable()
 export class ContactAdapter {
