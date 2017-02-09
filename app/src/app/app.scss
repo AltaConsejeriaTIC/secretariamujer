@@ -219,6 +219,12 @@ body.platform-ios.platform-cordova.platform-webview {
   text-rendering: auto !important;
 }
 
+.ios {
+  label, ion-label, p, button {
+    letter-spacing: -1px !important;
+  }
+}
+
 // App Global Sass
 // --------------------------------------------------
 // Put style rules here that you want to apply globally. These
