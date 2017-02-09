@@ -14,30 +14,41 @@ export class MyApp {
   rootPage;
   openState;
 
-  constructor(platform: Platform, storage: Storage ) {
+  constructor(public platform: Platform, public storage: Storage ) {
     storage.get('isFirstTimeOpen').then((isFirstTimeOpen) => {
       this.openState = (isFirstTimeOpen == null)? true : false;
       storage.set('isFirstTimeOpen', this.openState);
-
-      if(isFirstTimeOpen || isFirstTimeOpen == null){
-        this.rootPage=TutorialPage;
-      }else{
-        storage.get('islogged').then((isLogged) => {
-         if(isLogged || isLogged!=null){
-           this.rootPage=CalculatorPage;
-         }else{
-           storage.set('isFirstTimeOpen', true);
-           this.rootPage=TutorialPage;
-         }
-        })
-      }
-
-
+      this.checkIfFirstTimeOpen(isFirstTimeOpen);
     });
+  }
 
-    platform.ready().then(() => {
+  checkIfFirstTimeOpen(isFirstTimeOpen:boolean){
+    if(isFirstTimeOpen || isFirstTimeOpen == null){
+      this.hideSplashScreen();
+      this.rootPage=TutorialPage;
+    }else{
+      this.storage.get('islogged').then((isLogged) => {
+        this.checkIfUserIsLogged(isLogged);
+      })
+    }
+  }
+
+  checkIfUserIsLogged(isLogged:boolean){
+    if(isLogged || isLogged!=null){
+      this.hideSplashScreen();
+      this.rootPage=CalculatorPage;
+    }else{
+      this.storage.set('isFirstTimeOpen', true);
+      this.hideSplashScreen();
+      this.rootPage=TutorialPage;
+    }
+  }
+
+  hideSplashScreen(){
+    this.platform.ready().then(() => {
       StatusBar.styleDefault();
       Splashscreen.hide();
     });
   }
+
 }
