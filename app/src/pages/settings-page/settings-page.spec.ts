@@ -12,6 +12,8 @@ import {UserDAO} from "../../providers/user-dao";
 import {AlertCreator} from "../../providers/alert-creator";
 import {ApplicationConfig} from "../../config";
 import {FormValidator} from "../../providers/form-validator";
+import { Storage } from '@ionic/storage';
+
 
 
 describe('settingsPage tests', () => {
@@ -45,7 +47,7 @@ describe('settingsPage tests', () => {
     TestBed.configureTestingModule({
       declarations: [SettingsPage, ContactSelectionPage],
       providers: [
-        App, Platform, Form, Keyboard, MenuController, NavController, Http, ApplicationConfig,FormValidator,
+        App, Platform, Form, Keyboard, MenuController, NavController, Http, ApplicationConfig,FormValidator,Storage,
         {provide: Config, useClass: ConfigMock}, {
           provide: ConnectionBackend,
           useClass: ConfigMock

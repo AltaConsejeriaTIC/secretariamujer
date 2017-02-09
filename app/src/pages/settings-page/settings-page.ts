@@ -4,6 +4,8 @@ import {UserDAO} from "../../providers/user-dao";
 import {AlertCreator} from "../../providers/alert-creator";
 import {FormGroup, FormBuilder, Validators, AbstractControl} from "@angular/forms";
 import {FormValidator} from "../../providers/form-validator";
+import { Storage } from '@ionic/storage';
+
 
 const SETTINGS_SLIDE_ITEMS = 3;
 const WRITE_CURRENT_PIN = 1;
@@ -31,7 +33,7 @@ export class SettingsPage {
   userCellPhone:string;
   loading:Loading;
 
-  constructor(public navController: NavController, public userDAO: UserDAO, public alertCreator:AlertCreator, private  formBuilder: FormBuilder, public loadingController: LoadingController, public formValidator:FormValidator) {
+  constructor(public navController: NavController, public userDAO: UserDAO, public alertCreator:AlertCreator, private  formBuilder: FormBuilder, public loadingController: LoadingController, public formValidator:FormValidator,  public storage: Storage) {
     this.usernameInfo = this.userDAO.user.fullName;
     this.userEmail = this.userDAO.user.email;
     this.nameInfo = this.userDAO.user.username || "Anónima";
@@ -182,6 +184,8 @@ export class SettingsPage {
 
   logout(){
     this.alertCreator.showSimpleAlert('Info', 'cerrar sesión está en desarrollo');
+    this.storage.set('islogged', false);
+    this.storage.set('isFirstTimeOpen', null);
   }
 
 }

@@ -27,13 +27,7 @@ page-select-info-category {
       font-weight: bold;
       color: #f2f2f2;
       align-items: center;
-      text-align: center;
       flex: 1;
-      justify-content: center;
-    }
-
-    [class^="option-"] > * {
-      padding: 0;
     }
   }
 
@@ -54,6 +48,16 @@ page-select-info-category {
   .option-3 {
     background-color: #346999;
     box-shadow: inset 0px 4px 4px 0px rgba(0, 0, 0, 0.14);
+  }
+
+  .item-container {
+    margin: auto;
+    display: flex;
+    align-items: center;
+  }
+
+  .item-container > * {
+    display: inline-block;
   }
 
   .labels-col {
@@ -79,11 +83,10 @@ page-select-info-category {
 
     .icon-col {
       margin-right: 34px;
-      max-width: 8vw;
     }
 
-    .labels-col {
-      max-width: 51vw;
+    .item-container {
+      width: 210px;
     }
   }
 
@@ -106,11 +109,10 @@ page-select-info-category {
 
     .icon-col {
       margin-right: 50px;
-      max-width: 8vw;
     }
 
-    .labels-col {
-      max-width: 51vw
+    .item-container {
+      width: 320px;
     }
   }
 
@@ -133,11 +135,10 @@ page-select-info-category {
 
     .icon-col {
       margin-right: 62px;
-      max-width: 45px;
     }
 
-    .labels-col {
-      max-width: 310px;
+    .item-container {
+      width: 390px;
     }
   }
 }

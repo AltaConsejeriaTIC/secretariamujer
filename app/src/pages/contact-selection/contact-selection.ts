@@ -3,7 +3,7 @@ import {NavController, NavParams} from 'ionic-angular';
 import {Contacts, Contact, IContactProperties} from 'ionic-native';
 import {MenuPage} from "../menu/menu";
 import {IContact} from "../../entity/contact";
-import {ContactAdapter} from "../../providers/contact-adapter";
+import {ContactAdapter} from "../../providers/adapter/contact-adapter";
 import {AlertCreator} from "../../providers/alert-creator";
 import {ContactFactory} from "../../providers/factory/contact-factory";
 import {UserDAO} from "../../providers/user-dao";
@@ -49,7 +49,7 @@ export class ContactSelectionPage {
   }
 
   private addContact(index: number, contactProperties: IContactProperties) {
-    this.contacts[index] = this.contactAdapter.parseContact(contactProperties);
+    this.contacts[index] = this.contactAdapter.adaptContact(contactProperties);
     this.userDAO.user.contacts[index] = this.contacts[index];
     this.userDAO.update().subscribe(response => {
       this.alertCreator.showCofirmationMessage('Contacto Guardado', 'Contacto guardado exitosamente');
