@@ -11,7 +11,6 @@ export class LoginService {
   constructor(private http: Http) {
   }
 
-
   login(user: IUser) {
     let url = ApplicationConfig.getURL('/user/login?_format=json');
     let body = this.createHttpBody(user);
@@ -19,7 +18,6 @@ export class LoginService {
 
     return this.http.post(url, body, options).map(response => response.json().current_user.uid);
   }
-
 
   private handleError(error): void {
     let message = error.json().message;
