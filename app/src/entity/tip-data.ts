@@ -1,6 +1,7 @@
 export interface TipData {
   id: number,
-  class: string,
   labels: string[],
+  class: string,
+  iconName:string,
   RESTAddres: string
 }
