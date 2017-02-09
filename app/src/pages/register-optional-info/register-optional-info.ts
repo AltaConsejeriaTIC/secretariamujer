@@ -6,6 +6,8 @@ import {AlertCreator} from "../../providers/alert-creator";
 import {ContactSelectionPage} from "../contact-selection/contact-selection";
 import {FormBuilder, FormGroup, Validators, AbstractControl} from "@angular/forms";
 import {FormValidator} from "../../providers/form-validator";
+import { Storage } from '@ionic/storage';
+
 
 @Component({
   selector: 'page-register-optional-info',
@@ -17,7 +19,7 @@ export class RegisterOptionalInfoPage {
 
 
   constructor(public navCtrl: NavController, public userDAO: UserDAO, public alertCreator: AlertCreator,public loadingController:LoadingController,
-              private  formBuilder: FormBuilder, public formValidator:FormValidator) {
+              private  formBuilder: FormBuilder, public formValidator:FormValidator, public storage:Storage) {
     this.createForm(formBuilder);
     this.loading=this.createLoading();
   }
@@ -76,6 +78,7 @@ export class RegisterOptionalInfoPage {
   }
 
   goToContactPage() {
+    this.storage.set('islogged', true);
     this.navCtrl.setRoot(ContactSelectionPage);
   }
 
