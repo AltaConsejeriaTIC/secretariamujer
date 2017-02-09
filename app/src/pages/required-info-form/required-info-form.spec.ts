@@ -8,6 +8,7 @@ import {AlertController} from "ionic-angular";
 import {UserDAO} from "../../providers/user-dao";
 import {ApplicationConfig} from "../../config";
 import {LoginService} from "../../providers/login-service";
+import {UserService} from "../../providers/user-service";
 
 
 describe('RequiredInfoFormPage tests', () => {
@@ -16,6 +17,7 @@ describe('RequiredInfoFormPage tests', () => {
   let fixture: ComponentFixture<RequiredInfoFormPage>;
   let alertCreator: AlertCreator;
   let userDAO: UserDAO;
+  let userService:UserService;
 
 
   beforeEach(async(() => {
@@ -23,7 +25,7 @@ describe('RequiredInfoFormPage tests', () => {
       declarations: [RequiredInfoFormPage],
       providers: [
         App, Platform, Form, Keyboard, MenuController, NavController, AlertCreator, AlertController, RequiredInfoFormPage,LoginService,
-        UserDAO, ApplicationConfig,
+        UserDAO, ApplicationConfig,UserService,
         {provide: Config, useClass: ConfigMock}
       ],
       imports: [
@@ -39,9 +41,10 @@ describe('RequiredInfoFormPage tests', () => {
     requiredInfoFormPage = fixture.componentInstance;
   });
 
-  beforeEach(inject([AlertCreator, UserDAO], (_alertCreator, _userDAO) => {
+  beforeEach(inject([AlertCreator, UserDAO, UserService], (_alertCreator, _userDAO, _UserService) => {
     alertCreator = _alertCreator;
     userDAO = _userDAO;
+    userService=_UserService;
   }));
 
   it('validateEmptyField should return true if field is empty', () => {
@@ -67,9 +70,11 @@ describe('RequiredInfoFormPage tests', () => {
     expect(alertCreator.showSimpleAlert).toHaveBeenCalled();
   });
 
-  it('setRequiredInfo should call setRequiredInfo from userDAO', () => {
-    spyOn(userDAO, 'setRequiredInfo');
+  it('setRequiredInfo should save username and password in userService', () => {
+    requiredInfoFormPage.user.username='test';
+    requiredInfoFormPage.user.password='1234';
     requiredInfoFormPage.saveRequiredInfo();
-    expect(userDAO.setRequiredInfo).toHaveBeenCalled();
+    expect(userService.user.username).toEqual('test');
+    expect(userService.user.password).toEqual('1234');
   });
 });

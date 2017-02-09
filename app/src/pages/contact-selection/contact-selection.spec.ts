@@ -11,6 +11,7 @@ import {ContactAdapter} from "../../providers/adapter/contact-adapter";
 import {ContactFactory} from "../../providers/factory/contact-factory";
 import {ErrorFactory} from "../../providers/factory/error-factory";
 import {UserDAO} from "../../providers/user-dao";
+import {UserService} from "../../providers/user-service";
 
 
 describe('ContactSelection tests', () => {
@@ -23,7 +24,7 @@ describe('ContactSelection tests', () => {
       declarations: [ContactSelectionPage],
       providers: [
         App, Platform, Form, Keyboard, MenuController, NavController, AlertCreator, AlertController, ContactAdapter,
-        ContactFactory, ErrorFactory,
+        ContactFactory, ErrorFactory,UserService,
         {
           provide: Config,
           useClass: ConfigMock

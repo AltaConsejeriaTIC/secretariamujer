@@ -4,6 +4,7 @@ import {SelectTestCategoryPage} from "../select-test-category/select-test-catego
 import {UserDAO} from "../../providers/user-dao";
 import {AttentionRoutesPage} from "../attention-routes/attention-routes";
 import {SelectTipsCategoryPage} from "../select-tips-category/select-tips-category";
+import {UserService} from "../../providers/user-service";
 
 @Component({
   selector: 'page-welcome-test',
@@ -13,8 +14,8 @@ export class WelcomeTestPage {
 
   userName: string;
 
-  constructor(public navController: NavController, public userDAO: UserDAO) {
-    this.userName = this.userDAO.user.username|| "Yabushita Mai";
+  constructor(public navController: NavController, public userDAO: UserDAO, private userService:UserService) {
+    this.userName = this.userService.user.username|| "Yabushita Mai";
   }
 
   ionViewDidLoad() {

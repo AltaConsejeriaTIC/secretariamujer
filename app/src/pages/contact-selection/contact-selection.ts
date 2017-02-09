@@ -7,6 +7,7 @@ import {ContactAdapter} from "../../providers/adapter/contact-adapter";
 import {AlertCreator} from "../../providers/alert-creator";
 import {ContactFactory} from "../../providers/factory/contact-factory";
 import {UserDAO} from "../../providers/user-dao";
+import {UserService} from "../../providers/user-service";
 
 
 const MAX_CONTACTS = 3;
@@ -20,7 +21,7 @@ export class ContactSelectionPage {
   contacts: IContact[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private contactAdapter: ContactAdapter,
-              private userDAO: UserDAO, private alertCreator: AlertCreator) {
+              private userDAO: UserDAO, private alertCreator: AlertCreator, private userService:UserService) {
     this.initContacts();
   }
 
@@ -34,7 +35,7 @@ export class ContactSelectionPage {
 
   private loadSavedContacts() {
     for (let i = 0; i < MAX_CONTACTS; i++) {
-      let contact = this.userDAO.user.contacts[i];
+      let contact = this.userService.user.contacts[i];
 
       this.contacts[i] = contact != null ? contact : ContactFactory.createContact();
     }
@@ -50,7 +51,7 @@ export class ContactSelectionPage {
 
   private addContact(index: number, contactProperties: IContactProperties) {
     this.contacts[index] = this.contactAdapter.adaptContact(contactProperties);
-    this.userDAO.user.contacts[index] = this.contacts[index];
+    this.userService.user.contacts[index] = this.contacts[index];
     this.userDAO.update().subscribe(response => {
       this.alertCreator.showCofirmationMessage('Contacto Guardado', 'Contacto guardado exitosamente');
     }, error => {

@@ -6,6 +6,7 @@ import {UserDAO} from "../../providers/user-dao";
 import {AttentionRoutesPage} from "../attention-routes/attention-routes";
 import {TipsPage} from "../tips-page/tips-page";
 import {TestCategory} from "../../entity/test-categories";
+import {UserService} from "../../providers/user-service";
 
 @Component({
   selector: 'page-test-page',
@@ -27,7 +28,7 @@ export class TestPage {
   buttonClass: string = "next-question unabled-button";
   selectedTestCategory: TestCategory;
 
-  constructor(public platform: Platform, private nav: Nav, public navController: NavController, public navParams: NavParams, public testService: TestsService, public alertCreator: AlertCreator, public userDAO: UserDAO) {
+  constructor(public platform: Platform, private nav: Nav, public navController: NavController, public navParams: NavParams, public testService: TestsService, public alertCreator: AlertCreator, public userDAO: UserDAO, private userService:UserService) {
     this.questionsObject = [
       {
         "pregunta": "",
@@ -38,7 +39,7 @@ export class TestPage {
     ];
     this.selectedTestCategory = this.navParams.get('selectedTestCategory');
     this.categoryTitle = this.getCategoryname();
-    this.userName = this.userDAO.user.username || "Yabushita Mai";
+    this.userName = this.userService.user.username || "Yabushita Mai";
     this.clearCheckboxArray();
     this.platform.registerBackButtonAction(() => {
       this.navController.popToRoot();

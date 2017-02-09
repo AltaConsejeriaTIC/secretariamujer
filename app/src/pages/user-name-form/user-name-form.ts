@@ -9,6 +9,7 @@ import {AlertCreator} from "../../providers/alert-creator";
 import {Storage} from '@ionic/storage';
 import {UserFactory} from "../../providers/user-factory";
 import {UserDAO} from "../../providers/user-dao";
+import {UserService} from "../../providers/user-service";
 
 
 @Component({
@@ -23,7 +24,7 @@ export class UserNameFormPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public  formBuilder: FormBuilder,
               public formValidator: FormValidator, private loginService: LoginService, public alertCreator: AlertCreator,
-              public loadingController: LoadingController, public storage: Storage, private userFactory: UserFactory,
+              public loadingController: LoadingController, public storage: Storage, private userFactory: UserFactory,private userService:UserService,
               private userDAO: UserDAO) {
 
     this.form = formBuilder.group({
@@ -57,7 +58,7 @@ export class UserNameFormPage {
     });
 
     this.loginService.login(user).subscribe(userId => {
-      this.userDAO.user.id = userId;
+      this.userService.user.id = userId;
       this.hideLoading();
       this.storage.set('islogged', true);
       this.navCtrl.setRoot(MenuPage);

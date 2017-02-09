@@ -9,6 +9,7 @@ import {MenuPage} from "./menu";
 import {AlertCreator} from "../../providers/alert-creator";
 import {WarningMessageDAO} from "../../providers/warning-message-dao";
 import {UserDAO} from "../../providers/user-dao";
+import {UserService} from "../../providers/user-service";
 
 
 describe('MenuPage tests', () => {
@@ -21,7 +22,7 @@ describe('MenuPage tests', () => {
     TestBed.configureTestingModule({
       declarations: [MenuPage],
       providers: [
-        App, Platform, Form, Keyboard, MenuController, NavController, AlertCreator, AlertController, WarningMessageDAO,
+        App, Platform, Form, Keyboard, MenuController, NavController, AlertCreator, AlertController, WarningMessageDAO,UserService,
         {provide: Config, useClass: ConfigMock},
         {provide: UserDAO, useClass: ConfigMock},
         {provide: WarningMessageDAO, useClass: ConfigMock}

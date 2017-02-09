@@ -5,24 +5,14 @@ import {IUser, User} from '../entity/user';
 import {Observable} from "rxjs";
 import {ApplicationConfig} from "../config";
 import {ErrorFactory} from "./factory/error-factory";
+import {UserService} from "./user-service";
 
 @Injectable()
 export class UserDAO {
   user: IUser;
 
-  constructor(public http: Http) {
+  constructor(public http: Http, private userService:UserService) {
     this.user = new User();
-  }
-
-  setRequiredInfo(username: string, pass: string) {
-    this.user.username = username;
-    this.user.password = pass;
-  }
-
-  setOptionalInfo(user: IUser) {
-    this.user.fullName = user.fullName;
-    this.user.email = user.email;
-    this.user.cellPhone = user.cellPhone;
   }
 
   get(userId: string) {
@@ -42,7 +32,7 @@ export class UserDAO {
       this.http.post(restUrl, body, options)
         .map(response => response.json())
         .subscribe((user: any) => {
-          this.user.id = user.uid[0].value;
+          this.userService.user.id = user.uid[0].value;
           observer.next(user.uid[0].value);
           observer.complete();
         }, error => {
@@ -54,8 +44,8 @@ export class UserDAO {
   }
 
   update() {
-    let restUrl = ApplicationConfig.getURL('/user/' + this.user.id + '?_format=json');
-    let body = this.createHttpBody(this.user);
+    let restUrl = ApplicationConfig.getURL('/user/' + this.userService.user.id + '?_format=json');
+    let body = this.createHttpBody(this.userService.user);
     let headers = this.createHeaders();
     let options = this.createRequestOptions(headers);
 

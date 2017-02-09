@@ -8,6 +8,7 @@ import {SelectInfoCategoryPage} from "../select-info-category/select-info-catego
 import {WarningMessageDAO} from "../../providers/warning-message-dao";
 import {UserDAO} from "../../providers/user-dao";
 import {CalculatorPage} from "../calculator/calculator";
+import {UserService} from "../../providers/user-service";
 
 @Component({
   selector: 'page-menu',
@@ -35,7 +36,7 @@ export class MenuPage {
   hintState: string[] = [];
 
   constructor(public navController: NavController, public alertCreator: AlertCreator,
-              private warningMessageDAO: WarningMessageDAO, private userDAO: UserDAO) {
+              private warningMessageDAO: WarningMessageDAO, private userDAO: UserDAO, private userService:UserService) {
     this.menuOptions = [
       {
         id: 0,
@@ -124,7 +125,7 @@ export class MenuPage {
 
   sendWarningMessages() {
     this.warningMessageDAO.get().subscribe(message => {
-      for (let contact of this.userDAO.user.contacts) {
+      for (let contact of this.userService.user.contacts) {
         this.sendMessageToContact(contact, message);
       }
     }, err => {

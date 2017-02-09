@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ConfigMock } from '../../mocks';
 import {WelcomeTestPage} from "./welcome-test";
 import {UserDAO} from "../../providers/user-dao";
+import {UserService} from "../../providers/user-service";
 
 describe('WelcomeTestPage tests', () => {
 
@@ -17,7 +18,7 @@ describe('WelcomeTestPage tests', () => {
     TestBed.configureTestingModule({
       declarations: [WelcomeTestPage],
       providers: [
-        App, Platform, Form, Keyboard, MenuController,WelcomeTestPage,UserDAO,
+        App, Platform, Form, Keyboard, MenuController,WelcomeTestPage,UserDAO,UserService,
         {provide: Config, useClass: ConfigMock},{provide:NavController, useValue:stubNavController}
       ],
       imports: [

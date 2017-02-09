@@ -11,6 +11,7 @@ import {TestPage} from "./test-page";
 import {TestsService} from "../../providers/tests-service";
 import {UserDAO} from "../../providers/user-dao";
 import {ApplicationConfig} from "../../config";
+import {UserService} from "../../providers/user-service";
 
 
 describe('TestPage tests', () => {
@@ -33,7 +34,7 @@ describe('TestPage tests', () => {
     TestBed.configureTestingModule({
       declarations: [TestPage],
       providers: [
-        App, Platform, Form, Keyboard, MenuController, NavController, AlertCreator, AlertController, TestPage,
+        App, Platform, Form, Keyboard, MenuController, NavController, AlertCreator, AlertController, TestPage,UserService,
         ApplicationConfig,
         TestsService, UserDAO,
         {

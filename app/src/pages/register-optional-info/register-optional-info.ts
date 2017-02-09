@@ -7,6 +7,7 @@ import {ContactSelectionPage} from "../contact-selection/contact-selection";
 import {FormBuilder, FormGroup, Validators, AbstractControl} from "@angular/forms";
 import {FormValidator} from "../../providers/form-validator";
 import { Storage } from '@ionic/storage';
+import {UserService} from "../../providers/user-service";
 
 
 @Component({
@@ -19,7 +20,7 @@ export class RegisterOptionalInfoPage {
 
 
   constructor(public navCtrl: NavController, public userDAO: UserDAO, public alertCreator: AlertCreator,public loadingController:LoadingController,
-              private  formBuilder: FormBuilder, public formValidator:FormValidator, public storage:Storage) {
+              private  formBuilder: FormBuilder, public formValidator:FormValidator, public storage:Storage, private userService:UserService) {
     this.createForm(formBuilder);
     this.loading=this.createLoading();
   }
@@ -61,20 +62,20 @@ export class RegisterOptionalInfoPage {
         }, error => {
           this.hideLoading();
           if (error.name == 'EmailAlreadyTaken') {
-            this.alertCreator.showCofirmationMessage('Email', this.userDAO.user.email + 'ya ha sido registrado en el sistema');
+            this.alertCreator.showCofirmationMessage('Email', this.userService.user.email + 'ya ha sido registrado en el sistema');
           }
 
           if (error.name == 'UsernameAlreadyTaken') {
-            this.alertCreator.showCofirmationMessage('Usuario', this.userDAO.user.username + ' ya ha sido registrado en el sistema');
+            this.alertCreator.showCofirmationMessage('Usuario', this.userService.user.username + ' ya ha sido registrado en el sistema');
           }
         });
     }
   }
 
   updateUserInDAO() {
-    let user = new User(this.form.controls['fullName'].value, this.form.controls['email'].value,
-      this.form.controls['cellPhone'].value);
-    this.userDAO.setOptionalInfo(user);
+    this.userService.user.fullName=this.form.controls['fullName'].value;
+    this.userService.user.email=this.form.controls['email'].value;
+    this.userService.user.cellPhone=this.form.controls['cellPhone'].value;
   }
 
   goToContactPage() {

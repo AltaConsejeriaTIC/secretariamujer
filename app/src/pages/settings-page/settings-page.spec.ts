@@ -13,6 +13,7 @@ import {AlertCreator} from "../../providers/alert-creator";
 import {ApplicationConfig} from "../../config";
 import {FormValidator} from "../../providers/form-validator";
 import { Storage } from '@ionic/storage';
+import {UserService} from "../../providers/user-service";
 
 
 
@@ -47,7 +48,7 @@ describe('settingsPage tests', () => {
     TestBed.configureTestingModule({
       declarations: [SettingsPage, ContactSelectionPage],
       providers: [
-        App, Platform, Form, Keyboard, MenuController, NavController, Http, ApplicationConfig,FormValidator,Storage,
+        App, Platform, Form, Keyboard, MenuController, NavController, Http, ApplicationConfig,FormValidator,Storage,UserService,
         {provide: Config, useClass: ConfigMock}, {
           provide: ConnectionBackend,
           useClass: ConfigMock
@@ -91,7 +92,7 @@ describe('settingsPage tests', () => {
     settingsPage.inputPin = "0000";
     settingsPage.changePinState = WRITE_CURRENT_PIN;
     settingsPage.changePin();
-    expect(settingsPage.instructionText).toEqual(settingsPage.instructionTextArray[0]);
+    expect(settingsPage.instructionText).toEqual(settingsPage.instructionTextArray[1]);
   });
 
   it('when user digits his new pin number and it is a number, input label should be: confirm new pin', () => {

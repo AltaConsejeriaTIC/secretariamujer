@@ -4,6 +4,7 @@ import {IUser, User} from '../../entity/user';
 import {AlertCreator} from "../../providers/alert-creator";
 import {UserDAO} from "../../providers/user-dao";
 import {RegisterOptionalInfoPage} from "../register-optional-info/register-optional-info";
+import {UserService} from "../../providers/user-service";
 
 
 @Component({
@@ -14,7 +15,7 @@ export class RequiredInfoFormPage {
 
   user: IUser;
 
-  constructor(public navCtrl: NavController, public alertCreator: AlertCreator, public userDAO: UserDAO) {
+  constructor(public navCtrl: NavController, public alertCreator: AlertCreator, public userDAO: UserDAO, private userService:UserService ) {
     this.user = new User();
   }
 
@@ -62,7 +63,8 @@ export class RequiredInfoFormPage {
   }
 
   saveRequiredInfo() {
-    this.userDAO.setRequiredInfo(this.user.username, this.user.password);
+    this.userService.user.username=this.user.username;
+    this.userService.user.password=this.user.password;
   }
 
   goBack() {

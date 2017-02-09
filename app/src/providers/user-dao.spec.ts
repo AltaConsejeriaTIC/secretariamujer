@@ -6,6 +6,7 @@ import {Observable} from "rxjs/Observable";
 import {User} from "../entity/user";
 import {Contact} from "../entity/contact";
 import {ApplicationConfig} from "../config";
+import {UserService} from "./user-service";
 
 
 describe('UserDAO tests', () => {
@@ -17,7 +18,7 @@ describe('UserDAO tests', () => {
     TestBed.configureTestingModule({
       imports: [HttpModule],
       providers: [
-        UserDAO, ConnectionBackend, ApplicationConfig
+        UserDAO, ConnectionBackend, ApplicationConfig, UserService,
         {provide: XHRBackend, useClass: MockBackend}
       ]
     });
@@ -63,21 +64,6 @@ describe('UserDAO tests', () => {
     let isObservable = userDAO.create() instanceof Observable;
     expect(isObservable).toBe(true);
   });
-
-  it('setRequiredInfo should set user fullName and password values', () => {
-    userDAO.user = user;
-    userDAO.setRequiredInfo('name', '123');
-    expect(userDAO.user.username).toBe('name');
-    expect(userDAO.user.password).toBe('123');
-  });
-
-  it('setOptionalInfo should set user fullName, email and cellPhone values', () => {
-    userDAO.setOptionalInfo(user);
-    expect(userDAO.user.fullName).toBe(user.fullName);
-    expect(userDAO.user.email).toBe(user.email);
-    expect(userDAO.user.cellPhone).toBe(user.cellPhone);
-  });
-
 
   it('createHttpBody should create the body of the request according to the user info', () => {
     user = new User('Julio Zorra', 'juliozorra@gmail.com', '3124569878', 'julio3456', '1234', [new Contact('brayan', '123')]);

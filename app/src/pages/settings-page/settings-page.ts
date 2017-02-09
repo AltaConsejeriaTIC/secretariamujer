@@ -5,6 +5,7 @@ import {AlertCreator} from "../../providers/alert-creator";
 import {FormGroup, FormBuilder, Validators, AbstractControl} from "@angular/forms";
 import {FormValidator} from "../../providers/form-validator";
 import { Storage } from '@ionic/storage';
+import {UserService} from "../../providers/user-service";
 
 
 const SETTINGS_SLIDE_ITEMS = 3;
@@ -33,12 +34,12 @@ export class SettingsPage {
   userCellPhone:string;
   loading:Loading;
 
-  constructor(public navController: NavController, public userDAO: UserDAO, public alertCreator:AlertCreator, private  formBuilder: FormBuilder, public loadingController: LoadingController, public formValidator:FormValidator,  public storage: Storage) {
-    this.usernameInfo = this.userDAO.user.fullName;
-    this.userEmail = this.userDAO.user.email;
-    this.nameInfo = this.userDAO.user.username || "Anónima";
-    this.currentPin = this.userDAO.user.password || "0000";
-    this.userCellPhone=this.userDAO.user.cellPhone;
+  constructor(public navController: NavController, public userDAO: UserDAO, public alertCreator:AlertCreator, private  formBuilder: FormBuilder, public loadingController: LoadingController, public formValidator:FormValidator,  public storage: Storage, private userService:UserService) {
+    this.usernameInfo = this.userService.user.fullName;
+    this.userEmail = this.userService.user.email;
+    this.nameInfo = this.userService.user.username || "Anónima";
+    this.currentPin = this.userService.user.password || "0000";
+    this.userCellPhone=this.userService.user.cellPhone;
     this.instructionTextArray = ["Ingresa tu pin de 4 dígitos", "Ingresa tu nuevo PIN", "Confirma tu nuevo PIN"];
     this.instructionText = this.instructionTextArray[0];
     this.changePinState= WRITE_CURRENT_PIN;
@@ -151,9 +152,9 @@ export class SettingsPage {
 
   updateUserData(){
     if(this.isUserDataValid()){
-      this.userDAO.user.fullName=this.form.controls['fullName'].value;
-      this.userDAO.user.cellPhone=this.form.controls['cellPhone'].value;
-      this.userDAO.user.email=this.form.controls['email'].value;
+      this.userService.user.fullName=this.form.controls['fullName'].value;
+      this.userService.user.cellPhone=this.form.controls['cellPhone'].value;
+      this.userService.user.email=this.form.controls['email'].value;
       this.loading.present();
       this.makeUserUpdate('Se han actualizado tus datos');
     }
