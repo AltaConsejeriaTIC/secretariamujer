@@ -12,6 +12,8 @@ import {RegisterOptionalInfoPage} from "./register-optional-info";
 import {IUser, User} from "../../entity/user";
 import {ApplicationConfig} from "../../config";
 import {FormValidator} from "../../providers/form-validator";
+import { Storage } from '@ionic/storage';
+
 
 describe('RegisterOptionalInfoPage tests', () => {
 
@@ -25,7 +27,7 @@ describe('RegisterOptionalInfoPage tests', () => {
     TestBed.configureTestingModule({
       declarations: [RegisterOptionalInfoPage],
       providers: [
-        App, Platform, Form, Keyboard, MenuController, NavController, AlertController, RegisterOptionalInfoPage,FormValidator,
+        App, Platform, Form, Keyboard, MenuController, NavController, AlertController, RegisterOptionalInfoPage,FormValidator,Storage,
         {
           provide: Config,
           useClass: ConfigMock
