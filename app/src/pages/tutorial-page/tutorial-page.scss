@@ -7,10 +7,8 @@ page-tutorial-page {
 
   .image-container {
     background-color: map_get($colors, backgroundPurple);
-    background-repeat-x: no-repeat;
-    background-repeat-y: no-repeat;
-    background-position-x: center;
-    background-position-y: 105%;
+    background-repeat: no-repeat !important;
+    background-position: center 105% !important;
     background-size: auto 95%;
   }
 
