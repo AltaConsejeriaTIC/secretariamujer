@@ -133,7 +133,7 @@ export class SettingsPage {
     if (this.newPin == this.inputPin) {
       this.setPinState (this.instructionTextArray[0], WRITE_CURRENT_PIN);
       this.currentPin = this.newPin;
-      this.userDAO.user.password=this.newPin;
+      this.userService.user.password=this.newPin;
       this.loading.present();
       this.makeUserUpdate('El PIN ha sido cambiado');
     }

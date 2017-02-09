@@ -24,7 +24,7 @@ export class UserDAO {
 
   create(): Observable<any> {
     let restUrl = ApplicationConfig.getURL('/entity/user?_format=json');
-    let body = this.createHttpBody(this.user);
+    let body = this.createHttpBody(this.userService.user);
     let headers = this.createHeaders();
     let options = this.createRequestOptions(headers);
 
