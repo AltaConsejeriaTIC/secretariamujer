@@ -21,7 +21,7 @@ import {ContactSelectionPage} from "../pages/contact-selection/contact-selection
 import {SelectTipsCategoryPage} from "../pages/select-tips-category/select-tips-category";
 import {Storage} from '@ionic/storage';
 import {TipsPage} from "../pages/tips-page/tips-page";
-import {ContactAdapter} from "../providers/contact-adapter";
+import {ContactAdapter} from "../providers/adapter/contact-adapter";
 import {ErrorFactory} from "../providers/factory/error-factory";
 import {ContactFactory} from "../providers/factory/contact-factory";
 import {SettingsPage} from "../pages/settings-page/settings-page";

@@ -7,7 +7,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ConfigMock, UserDAOMock} from '../../mocks';
 import {AlertCreator} from "../../providers/alert-creator";
 import {ContactSelectionPage} from "./contact-selection";
-import {ContactAdapter} from "../../providers/contact-adapter";
+import {ContactAdapter} from "../../providers/adapter/contact-adapter";
 import {ContactFactory} from "../../providers/factory/contact-factory";
 import {ErrorFactory} from "../../providers/factory/error-factory";
 import {UserDAO} from "../../providers/user-dao";

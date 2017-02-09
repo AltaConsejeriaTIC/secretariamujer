@@ -25,6 +25,13 @@ export class UserDAO {
     this.user.cellPhone = user.cellPhone;
   }
 
+  get(userId: string) {
+    let restUrl = ApplicationConfig.getURL('/user/' + userId + '?_format=json');
+
+    return this.http.get(restUrl)
+      .map(response => response.json())
+  }
+
   create(): Observable<any> {
     let restUrl = ApplicationConfig.getURL('/entity/user?_format=json');
     let body = this.createHttpBody(this.user);
@@ -66,6 +73,7 @@ export class UserDAO {
       return ErrorFactory.createError('UsernameAlreadyTaken');
     }
   }
+
 
   private createHttpBody(user: User) {
     let body = JSON.stringify({

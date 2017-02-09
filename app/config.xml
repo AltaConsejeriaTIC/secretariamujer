@@ -25,7 +25,9 @@
     <preference name="FadeSplashScreenDuration" value="300" />
     <preference name="Orientation" value="portrait" />
     <preference name="loadUrlTimeoutValue" value="700000" />
-    <feature name="StatusBar">
+    <preference name="AutoHideSplashScreen" value="false"/>
+
+  <feature name="StatusBar">
         <param name="ios-package" onload="true" value="CDVStatusBar" />
     </feature>
     <engine name="ios" spec="~4.3.1" />
