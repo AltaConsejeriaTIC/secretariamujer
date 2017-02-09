@@ -1,18 +1,24 @@
-import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import {Injectable} from '@angular/core';
 import 'rxjs/add/operator/map';
+import {IUser, User} from "../entity/user";
 
-/*
-  Generated class for the UserService provider.
-
-  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
-  for more info on providers and Angular 2 DI.
-*/
 @Injectable()
 export class UserService {
+  user: IUser;
 
-  constructor(public http: Http) {
-    console.log('Hello UserService Provider');
+  constructor() {
+    this.user = new User();
+  }
+
+  setRequiredInfo(username: string, pass: string) {
+    this.user.username = username;
+    this.user.password = pass;
+  }
+
+  setOptionalInfo(user: IUser) {
+    this.user.fullName = user.fullName;
+    this.user.email = user.email;
+    this.user.cellPhone = user.cellPhone;
   }
 
 }

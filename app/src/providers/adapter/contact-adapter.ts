@@ -9,18 +9,18 @@ export class ContactAdapter {
   constructor() {
   }
 
-  parseContact(contactProperties: IContactProperties): IContact {
-    let name = this.parseName(contactProperties);
-    let phoneNumber = this.parsePhoneNumber(contactProperties);
+  adaptContact(contactProperties: IContactProperties): IContact {
+    let name = this.adaptName(contactProperties);
+    let phoneNumber = this.adaptPhoneNumber(contactProperties);
 
     return ContactFactory.createContact(name, phoneNumber);
   }
 
-  parseName(contactProperties) {
-    return contactProperties.displayName != null ? contactProperties.displayName : this.parsePhoneNumber(contactProperties);
+  adaptName(contactProperties) {
+    return contactProperties.displayName != null ? contactProperties.displayName : this.adaptPhoneNumber(contactProperties);
   }
 
-  parsePhoneNumber(contactProperties): string {
+  adaptPhoneNumber(contactProperties): string {
     let phoneNumber: string;
 
     if (contactProperties.phoneNumbers != null) {

@@ -49,7 +49,7 @@ export class ContactSelectionPage {
   }
 
   private addContact(index: number, contactProperties: IContactProperties) {
-    this.contacts[index] = this.contactAdapter.parseContact(contactProperties);
+    this.contacts[index] = this.contactAdapter.adaptContact(contactProperties);
     this.userDAO.user.contacts[index] = this.contacts[index];
     this.userDAO.update().subscribe(response => {
       this.alertCreator.showCofirmationMessage('Contacto Guardado', 'Contacto guardado exitosamente');
