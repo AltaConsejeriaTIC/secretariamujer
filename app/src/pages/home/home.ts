@@ -10,7 +10,7 @@ import {MenuPage} from "../menu/menu";
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController, public storage: Storage) {
+  constructor(public navCtrl: NavController) {
   }
 
   ionViewDidLoad() {
