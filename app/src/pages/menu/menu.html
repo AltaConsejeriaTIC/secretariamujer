@@ -2,7 +2,7 @@
   <ion-grid class="height-100 no-padding">
 
     <ion-row *ngFor="let menuOption of menuOptions; let id = index" class="flex-1 option-menu-row option">
-      <ion-col id="option-row" [@iconGroup]="hintState[id]" (click)="goToPage(menuOption.id)">
+      <ion-col id="option-row" [@iconGroup]="hintState[id]" (click)="goToPage(menuOption.id)" tappable>
         <div id="group-icon">
           <ion-row class="justify-center-row menu-icon-padding-container">
             <ion-icon name="{{menuOption.icon}}"></ion-icon>
@@ -17,7 +17,7 @@
         </div>
       </ion-col>
       <ion-icon id="menu-arrow" [name]="arrowIcon[id]" (click)="toggleisShowingHintParameter(id)"
-                [ngClass]="{'menu-arrow-big': !menuOption.isShowingHint, 'menu-arrow-small':menuOption.isShowingHint}"></ion-icon>
+                [ngClass]="{'menu-arrow-big': !menuOption.isShowingHint, 'menu-arrow-small':menuOption.isShowingHint}" tappable></ion-icon>
       <ion-row class="item-hint" [@menuItemHint]="hintState[id]">
         <div class="wrap-text-override">
           <ion-label *ngFor="let hint of menuOption.hint;" text-wrap class="center-menu-tip-text">
@@ -29,7 +29,7 @@
 
 
     <ion-row class="flex-1 special-menu-row">
-      <ion-col width-49 (click)="makePhoneCall()">
+      <ion-col width-49 (click)="makePhoneCall()" tappable>
         <ion-row class="special-row-icon-container">
           <ion-icon class="phone-icon" name="icon-phone"></ion-icon>
         </ion-row>
@@ -45,7 +45,7 @@
       </div>
 
 
-      <ion-col width-50 (click)="sendWarningMessages()">
+      <ion-col width-50 (click)="sendWarningMessages()" tappable>
         <ion-row class="special-row-icon-container">
           <ion-icon class="mail-icon" name="icon-msj"></ion-icon>
         </ion-row>
