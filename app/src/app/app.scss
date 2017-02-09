@@ -215,6 +215,10 @@ ion-header {
   white-space: inherit;
 }
 
+body.platform-ios.platform-cordova.platform-webview {
+  text-rendering: auto !important;
+}
+
 // App Global Sass
 // --------------------------------------------------
 // Put style rules here that you want to apply globally. These
