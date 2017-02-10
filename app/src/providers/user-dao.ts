@@ -16,16 +16,6 @@ export class UserDAO {
     this.user = new User();
   }
 
-  get(userId: string) {
-    let restUrl = ApplicationConfig.getURL('/user/' + userId + '?_format=json');
-    let options = this.createRequestOptions();
-
-    return this.http.get(restUrl, options)
-      .map(response => {
-        return this.userAdapter.adaptUserFromServer(response.json())
-      });
-  }
-
   create(): Observable<any> {
     let restUrl = ApplicationConfig.getURL('/entity/user?_format=json');
     let body = this.createHttpBody(this.userService.user);
@@ -43,6 +33,16 @@ export class UserDAO {
     });
 
     return observable;
+  }
+
+  get(userId: string) {
+    let restUrl = ApplicationConfig.getURL('/user/' + userId + '?_format=json');
+    let options = this.createRequestOptions();
+
+    return this.http.get(restUrl, options)
+      .map(response => {
+        return this.userAdapter.adaptUserFromServer(response.json())
+      });
   }
 
   update() {
@@ -67,18 +67,7 @@ export class UserDAO {
 
 
   private createHttpBody(user: User) {
-    let body = JSON.stringify({
-      name: [{value: user.username}],
-      mail: [{value: user.email}],
-      roles: [{target_id: 'authenticated'}],
-      status: [{value: true}],
-      pass: user.password,
-      field_cellphone: user.cellPhone,
-      field_full_name: user.fullName,
-      field_contacts: JSON.stringify(user.contacts)
-    });
-
-    return body;
+    return JSON.stringify(this.userAdapter.adaptUserToServer(user));
   }
 
   private createRequestOptions() {

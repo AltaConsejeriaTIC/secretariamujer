@@ -22,6 +22,21 @@ export class UserAdapter {
     return user;
   }
 
+  adaptUserToServer(user: IUser): any {
+    let userInServer = {
+      name: [{value: user.username}],
+      mail: [{value: user.email}],
+      roles: [{target_id: 'authenticated'}],
+      status: [{value: true}],
+      pass: user.password,
+      field_cellphone: user.cellPhone,
+      field_full_name: user.fullName,
+      field_contacts: JSON.stringify(user.contacts)
+    };
+
+    return userInServer;
+  }
+
   private getPropertyValue(property: any) {
     let value;
 
