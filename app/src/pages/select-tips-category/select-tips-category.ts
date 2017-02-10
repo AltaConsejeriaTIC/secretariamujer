@@ -12,10 +12,10 @@ export class SelectTipsCategoryPage {
 
   constructor(public navController: NavController) {
     this.tipsCategories = [
-      {id: 0, labels: ['Violencia', 'Económica'], class: 'option-0', RESTAddres: "economic_violence_tips_rest" },
-      {id: 1, labels: ['Violencia', 'Física'], class: 'option-1', RESTAddres: "physical_violence_tips_rest"},
-      {id: 2, labels: ['Violencia', 'Psicológica'], class: 'option-2', RESTAddres: "psychological_violence_tips_rest"},
-      {id: 3, labels: ['Violencia', 'Sexual'], class: 'option-3', RESTAddres: "sexual_violence_tips_rest"}
+      {id: 0, labels: ['El dinero no es', 'razón de control'], class: 'option-0', iconName: "icon-economic-violence", RESTAddres: "economic_violence_tips_rest" },
+      {id: 1, labels: ['Las caricias', 'no duelen'], class: 'option-1', iconName: "icon-physical-violence", RESTAddres: "physical_violence_tips_rest"},
+      {id: 2, labels: ['Las palabras', 'también hieren'], class: 'option-2', iconName: "icon-psychological-violence", RESTAddres: "psychological_violence_tips_rest"},
+      {id: 3, labels: ['Hacer el amor', 'es cosa de iguales'], class: 'option-3', iconName: "icon-sexual-violence", RESTAddres: "sexual_violence_tips_rest"}
     ];
   }
 

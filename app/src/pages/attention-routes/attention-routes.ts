@@ -13,10 +13,10 @@ export class AttentionRoutesPage {
 
   constructor(public navController: NavController) {
     this.attentionRoutes = [
-      {id: 0, labels: ['Información'], class: 'option-0', RESTAddres:'info_routes_rest'},
-      {id: 1, labels: ['Medidas', 'de Protección'], class: 'option-1', RESTAddres:'protection_measures_routes_rest'},
-      {id: 2, labels: ['Salud'] , class: 'option-2', RESTAddres:'health_routes_rest'},
-      {id: 3, labels: ['Justicia'], class: 'option-3', RESTAddres:'justice_routes_rest'}
+      {id: 0, labels: ['Puntos de', 'Información'], class: 'option-0', iconName:'icon-info-places', RESTAddres:'info_routes_rest'},
+      {id: 1, labels: ['Puntos', 'de Salud'] , class: 'option-1', iconName:'icon-health-places', RESTAddres:'health_routes_rest'},
+      {id: 2, labels: ['Puntos', 'de Denuncia'], class: 'option-2', iconName:'icon-complaint-places', RESTAddres:'justice_routes_rest'},
+      {id: 3, labels: ['Solicitar medidas', 'de Protección'], class: 'option-3', iconName:'icon-protection-measures', RESTAddres:'protection_measures_routes_rest'}
     ]
   }
 
@@ -35,5 +35,3 @@ export class AttentionRoutesPage {
     this.navController.popToRoot();
   }
 }
-
-

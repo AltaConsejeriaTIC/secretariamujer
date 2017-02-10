@@ -103,7 +103,7 @@ export class MenuPage {
         this.navController.push(SelectInfoCategoryPage);
         break;
       case 1:
-        this.navController.push(CalculatorPage);
+        this.alertCreator.showSimpleAlert("Info", "Mapas está en desarrollo");
         break;
       case 2:
         this.navController.push(WelcomeTestPage);
