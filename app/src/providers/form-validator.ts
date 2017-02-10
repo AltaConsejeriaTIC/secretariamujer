@@ -34,7 +34,10 @@ export class FormValidator {
 
   isValidUserName(field: AbstractControl, message:string){
     return this.isValidField(field, message);
+  }
 
+  IsValidPassword(field: AbstractControl, message:string){
+    return this.isValidField(field, message);
   }
 
 }
