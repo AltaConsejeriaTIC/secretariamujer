@@ -24,7 +24,7 @@ export class UserNameFormPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public  formBuilder: FormBuilder,
               public formValidator: FormValidator, private loginService: LoginService, public alertCreator: AlertCreator,
-              public loadingController: LoadingController, public storage: Storage, private userFactory: UserFactory,private userService:UserService,
+              public loadingController: LoadingController, public storage: Storage, private userFactory: UserFactory, private userService: UserService,
               private userDAO: UserDAO) {
 
     this.form = formBuilder.group({
@@ -58,7 +58,7 @@ export class UserNameFormPage {
     });
 
     this.loginService.login(user).subscribe(userId => {
-      this.userService.user.id = userId;
+      this.setUserInfoInTheApp(userId);
       this.hideLoading();
       this.storage.set('islogged', true);
       this.navCtrl.setRoot(MenuPage);
@@ -79,6 +79,16 @@ export class UserNameFormPage {
 
   isUserNameValid() {
     return this.formValidator.isValidUserName(this.form.controls['username'], 'Por favor introduce tu nombre en la aplicación')
+  }
+
+  setUserInfoInTheApp(userId: string) {
+    this.userDAO.get(userId).subscribe(user => {
+      this.userService.user = user;
+    }, error => {
+      console.log(error);
+      this.alertCreator.showCofirmationMessage('Error', 'No fue posible obtener la informacion del usuario, intenta mas tarde');
+    });
+
   }
 
 }

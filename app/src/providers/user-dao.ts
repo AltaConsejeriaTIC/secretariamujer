@@ -6,33 +6,35 @@ import {Observable} from "rxjs";
 import {ApplicationConfig} from "../config";
 import {ErrorFactory} from "./factory/error-factory";
 import {UserService} from "./user-service";
+import {UserAdapter} from "./adapter/user-adapter";
 
 @Injectable()
 export class UserDAO {
   user: IUser;
 
-  constructor(public http: Http, private userService:UserService) {
+  constructor(public http: Http, private userService: UserService, private userAdapter: UserAdapter) {
     this.user = new User();
   }
 
   get(userId: string) {
     let restUrl = ApplicationConfig.getURL('/user/' + userId + '?_format=json');
+    let options = this.createRequestOptions();
 
-    return this.http.get(restUrl)
-      .map(response => response.json())
+    return this.http.get(restUrl, options)
+      .map(response => {
+        return this.userAdapter.adaptUserFromServer(response.json())
+      });
   }
 
   create(): Observable<any> {
     let restUrl = ApplicationConfig.getURL('/entity/user?_format=json');
     let body = this.createHttpBody(this.userService.user);
-    let headers = this.createHeaders();
-    let options = this.createRequestOptions(headers);
+    let options = this.createRequestOptions();
 
     let observable = Observable.create((observer) => {
       this.http.post(restUrl, body, options)
         .map(response => response.json())
         .subscribe((user: any) => {
-          this.userService.user.id = user.uid[0].value;
           observer.next(user.uid[0].value);
           observer.complete();
         }, error => {
@@ -46,8 +48,7 @@ export class UserDAO {
   update() {
     let restUrl = ApplicationConfig.getURL('/user/' + this.userService.user.id + '?_format=json');
     let body = this.createHttpBody(this.userService.user);
-    let headers = this.createHeaders();
-    let options = this.createRequestOptions(headers);
+    let options = this.createRequestOptions();
 
     return this.http.patch(restUrl, body, options).map(response => response.json());
   }
@@ -80,12 +81,11 @@ export class UserDAO {
     return body;
   }
 
-  private createHeaders() {
-    return new Headers({'Content-Type': 'application/json', 'Authorization': 'Basic ' + 'YXBwOmFwcA=='});
+  private createRequestOptions() {
+    return new RequestOptions({headers: this.createHeaders()});
   }
 
-
-  private createRequestOptions(headers: Headers) {
-    return new RequestOptions({headers: headers});
+  private createHeaders() {
+    return new Headers({'Content-Type': 'application/json', 'Authorization': 'Basic ' + 'YXBwOmFwcA=='});
   }
 }
