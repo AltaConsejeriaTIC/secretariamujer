@@ -12,45 +12,64 @@
 </ion-header>
 
 <ion-content class="content-blue" no-bounce>
-  <ion-grid class="height-welcome-page-grid" no-padding>
-    <div class="header-separator"></div>
-    <ion-row class="flex-1 test-info-section">
-      <ion-col offset-10="5%" width-90 class="welcome-test-button-section ">
-        <ion-row class="flex-1 justify-center-row" text-center>
+  <ion-grid class="height-100 height-welcome-page-grid" no-padding>
+    <ion-row class="test-info-section">
+      <ion-col>
+        <ion-row class="justify-center-row" text-center>
           <p>Bienvenida {{userName}}</p>
         </ion-row>
-        <ion-row class="flex-1 justify-center-row" text-center>
+        <ion-row class="justify-center-row" text-center>
           <p no-margin>A continuación Sofía quisiera</p>
         </ion-row>
-        <ion-row class="flex-1 justify-center-row" text-center>
+        <ion-row class="justify-center-row" text-center>
           <p no-margin>realizarte una serie de preguntas</p>
         </ion-row>
-        <ion-row class="flex-1 justify-center-row" text-center>
+        <ion-row class="justify-center-row" text-center>
           <p no-margin>para conocerte un poco más</p>
         </ion-row>
-        <ion-row class="flex-1 justify-center-row" text-center>
+        <ion-row class="justify-center-row" text-center>
           <p> Espero puedas ayudarnos.</p>
         </ion-row>
       </ion-col>
     </ion-row>
-    <ion-row class="flex-1">
-      <ion-col offset-20 width-60 class="welcome-test-button-section">
-        <ion-row style="justify-content: center" text-center>
-          <button ion-button outline color="light" (click)="goToTestSelectTestCategory()">Empezar test</button>
-        </ion-row>
-        <ion-row style="justify-content: center" text-center>
-          <div class="between-button-separator-container">
-            <div class="between-buttons-separator"></div>
-            <p class="text-between-separators">ó</p>
-            <div class="between-buttons-separator"></div>
-          </div>
-        </ion-row>
-        <ion-row style="justify-content: center" text-center>
-          <button ion-button outline color="light" (click)="goToTips()">Ver tips</button>
-        </ion-row>
-        <ion-row style="justify-content: center" text-center>
-          <button ion-button outline color="light" (click)="goToRoutes()">Ver rutas</button>
-        </ion-row>
+    <ion-row class="button-container">
+      <ion-col class="welcome-test-button-section">
+        <button mode="ios" ion-button color="default" (click)="goToTestSelectTestCategory()">
+          <ion-col>
+            <ion-icon class="icon-col" name="icon-start-test"></ion-icon>
+            <ion-label class="first-phrase">Empezar</ion-label>
+            <ion-label class="second-phrase">Test</ion-label>
+          </ion-col>
+        </button>
+      </ion-col>
+      <ion-col class="welcome-test-button-section">
+        <button mode="ios" ion-button color="default" (click)="goToTips()">
+          <ion-col>
+            <ion-icon class="icon-col" name="icon-see-tips"></ion-icon>
+            <ion-label class="first-phrase">Ver</ion-label>
+            <ion-label class="second-phrase">Tips</ion-label>
+          </ion-col>
+        </button>
+      </ion-col>
+      <ion-col class="welcome-test-button-section">
+        <button mode="ios" ion-button color="default" (click)="goToRoutes()">
+          <ion-col>
+            <ion-icon class="icon-col" name="icon-pin"></ion-icon>
+            <ion-label class="first-phrase">Rutas de</ion-label>
+            <ion-label class="second-phrase">Atención</ion-label>
+          </ion-col>
+        </button>
+      </ion-col>
+    </ion-row>
+    <ion-row class="purple-line-container">
+      <ion-col>
+        <button mode="ios" ion-button color="default">
+          <ion-col>
+            <ion-icon class="icon-col" name="icon-telephone"></ion-icon>
+            <ion-label class="first-phrase">Línea Púrpura</ion-label>
+            <ion-label class="second-phrase">Mujeres que escuchan mujeres</ion-label>
+          </ion-col>
+        </button>
       </ion-col>
     </ion-row>
   </ion-grid>
