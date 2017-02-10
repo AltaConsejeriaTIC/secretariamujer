@@ -1,5 +1,169 @@
 page-register-optional-info {
-  background-color: $backgroundPurple
+  ion-input{
+    font-weight: bold;
+  }
+
+  button{
+    font-weight: bold;
+  }
+
+  .label-row{
+    margin-top: 30%;
+  }
+
+  .email-row{
+    justify-content: center;
+  }
+
+  .fullname-row{
+    justify-content: center;
+  }
+
+  .cellphone-row{
+    justify-content: center;
+  }
+
+  .button-row{
+    margin-top: 40px;
+    justify-content: center;
+  }
+
+
+  @media (max-width: 479px) {
+
+    ion-input{
+      height: 40px !important;
+      font-size: 16px;
+    }
+
+    button{
+      width: 125px !important;
+      height: 40px !important;
+      font-size: 16px;
+    }
+
+    .email-row{
+      margin-top: 20px;
+    }
+
+    .label-register{
+      font-size: 13px;
+    }
+
+    .fullname-row{
+      margin-top: 20px;
+    }
+
+    .cellphone-row{
+      margin-top: 20px;
+    }
+
+    .input-container{
+      flex-basis: 272px !important;
+      max-width: 272px !important;
+    }
+
+    .button-row{
+      margin-top: 40px;
+    }
+
+    .login-button{
+      margin-left:20px;
+    }
+  }
+
+  @media (min-width: 480px) and (max-width: 767px) {
+
+    ion-input{
+      height: 60px !important;
+      font-size: 22px;
+    }
+
+    button{
+      width: 170px !important;
+      height: 56px !important;
+      font-size: 22px !important;
+    }
+
+    .email-row{
+      margin-top: 28px;
+    }
+
+    .cellphone-row{
+      margin-top: 28px;
+    }
+
+    .label-register{
+      font-size: 18px;
+    }
+
+    .fullname-row{
+      margin-top: 30px;
+    }
+
+    .input-container{
+      flex-basis: 370px !important;
+      max-width: 370px !important;
+    }
+
+    .button-row{
+      margin-top: 56px;
+    }
+
+    .login-button{
+      margin-left:30px;
+    }
+  }
+
+  @media (min-width: 768px) {
+
+    ion-input{
+      height: 70px !important;
+      font-size: 27px;
+    }
+
+    button{
+      width: 215px !important;
+      height: 70px !important;
+      font-size: 27px !important;
+    }
+
+    .email-row{
+      margin-top: 36px;
+    }
+
+    .cellphone-row{
+      margin-top: 36px;
+    }
+
+    .label-register{
+      font-size: 23px;
+    }
+
+    .fullname-row{
+      margin-top: 30px;
+    }
+
+    .input-container{
+      flex-basis: 467px !important;
+      max-width: 467px !important;
+    }
+
+    .button-row{
+      margin-top: 72px;
+    }
+
+    .login-button{
+      margin-left:37px;
+    }
+
+    .label-row{
+      margin-top: 30% !important;
+    }
+
+  }
+
+
 }
 
 #optional-info-col ion-row{
