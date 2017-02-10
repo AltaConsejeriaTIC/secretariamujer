@@ -38,6 +38,7 @@ import {UserNameFormPage} from "../pages/user-name-form/user-name-form";
 import {LoginService} from "../providers/login-service";
 import {UserFactory} from "../providers/user-factory";
 import {UserService} from "../providers/user-service";
+import {LoginPage} from "../pages/login/login";
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import {UserService} from "../providers/user-service";
     AboutAppPage,
     TutorialPage,
     CalculatorPage,
-    UserNameFormPage
+    UserNameFormPage,
+    LoginPage
 
   ],
   imports: [
@@ -96,7 +98,8 @@ import {UserService} from "../providers/user-service";
     AboutAppPage,
     TutorialPage,
     CalculatorPage,
-    UserNameFormPage
+    UserNameFormPage,
+    LoginPage
   ],
   providers: [UserDAO, AlertCreator, MapServices, EventsServices, TestsService,
     ContactAdapter, Storage, WarningMessageDAO, FormValidator, LoginService, UserFactory,UserService,

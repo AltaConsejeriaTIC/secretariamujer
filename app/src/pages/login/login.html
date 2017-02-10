@@ -1,0 +1,18 @@
+<ion-content  class="content-purple" no-bounce>
+    <ion-row class="pin-row">
+      <ion-col class="input-container" no-padding>
+        <ion-input text-center class="input-border input-color" type="tel" placeholder="Ingresa tu PIN" maxlength="4"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row class="username-row">
+      <ion-col class="input-container" no-padding>
+        <ion-input text-center type="text" class="input-border input-color" placeholder="Ingresa tu usuario"></ion-input>
+      </ion-col>
+    </ion-row>
+    <ion-row class="button-row">
+      <button (click)="goBack()" class="app-button" ion-button outline>Atrás</button>
+      <button (click)="checkInputValues()" class="login-button" ion-button outline>Continuar</button>
+    </ion-row>
+
+
+</ion-content>
