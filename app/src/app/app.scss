@@ -50,6 +50,10 @@ ion-header {
   .bar-buttons {
     margin: 0;
   }
+
+  button.activated {
+    background: map_get($colors, SofiaAppDarkBlue);
+  }
 }
 
 @media (max-width: 479px) {
@@ -66,12 +70,17 @@ ion-header {
       font-size: 20px !important;
     }
 
-    [name^="icon-go-menu"] {
-      margin-right: 5vw;
+    [start], [end] {
+      height: 45px;
+      width: 45px;
     }
 
-    [name^="icon-fill-back-arrow"] {
-      margin-left: 5vw;
+    [end] {
+      margin-right: 15px !important;
+    }
+
+    [start]  {
+      margin-left: 10px;
     }
   }
 }
@@ -90,12 +99,17 @@ ion-header {
       font-size: 30px !important;
     }
 
-    [name^="icon-go-menu"] {
-      margin-right: 6vw;
+    [start], [end] {
+      height: 55px;
+      width: 55px;
     }
 
-    [name^="icon-fill-back-arrow"] {
-      margin-left: 6vw;
+    [end] {
+      margin-right: 30px !important;
+    }
+
+    [start]  {
+      margin-left: 25px;
     }
   }
 }
@@ -114,12 +128,17 @@ ion-header {
       font-size: 35px !important;
     }
 
-    [name^="icon-go-menu"] {
-      margin-right: 5vw;
+    [start], [end] {
+      height: 65px;
+      width: 65px;
     }
 
-    [name^="icon-fill-back-arrow"] {
-      margin-left: 5vw;
+    [end] {
+      margin-right: 40px !important;
+    }
+
+    [start]  {
+      margin-left: 35px;
     }
   }
 }
