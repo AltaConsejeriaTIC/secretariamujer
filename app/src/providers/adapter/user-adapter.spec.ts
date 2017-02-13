@@ -5,7 +5,6 @@ import {UserFactory} from "../user-factory";
 
 describe('UserService tests', () => {
   let userAdapter = new UserAdapter(new UserFactory());
-  let user = {};
 
   it('adaptUser should recieve a user in the format of the server and return a user entity', () => {
     let response = {
