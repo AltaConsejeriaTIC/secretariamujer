@@ -23,7 +23,6 @@ import {Storage} from '@ionic/storage';
 import {TipsPage} from "../pages/tips-page/tips-page";
 import {ContactAdapter} from "../providers/adapter/contact-adapter";
 import {SettingsPage} from "../pages/settings-page/settings-page";
-import {ApplicationConfig} from "../config";
 import {SelectInfoCategoryPage} from "../pages/select-info-category/select-info-category";
 import {SDMUInfoPage} from "../pages/sdmu-info-page/sdmu-info-page";
 import {SOFIAInfoPage} from "../pages/sofia-info/sofia-info";

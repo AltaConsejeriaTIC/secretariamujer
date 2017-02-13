@@ -7,6 +7,8 @@ import {User} from "../entity/user";
 import {Contact} from "../entity/contact";
 import {ApplicationConfig} from "../config";
 import {UserService} from "./user-service";
+import {UserAdapter} from "./adapter/user-adapter";
+import {UserFactory} from "./user-factory";
 
 
 describe('UserDAO tests', () => {
@@ -18,7 +20,7 @@ describe('UserDAO tests', () => {
     TestBed.configureTestingModule({
       imports: [HttpModule],
       providers: [
-        UserDAO, ConnectionBackend, ApplicationConfig, UserService,
+        UserDAO, ConnectionBackend, ApplicationConfig, UserService, UserAdapter, UserFactory,
         {provide: XHRBackend, useClass: MockBackend}
       ]
     });

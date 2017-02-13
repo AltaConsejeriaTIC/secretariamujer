@@ -9,6 +9,8 @@ import {UserDAO} from "../../providers/user-dao";
 import {ApplicationConfig} from "../../config";
 import {LoginService} from "../../providers/login-service";
 import {UserService} from "../../providers/user-service";
+import {UserAdapter} from "../../providers/adapter/user-adapter";
+import {UserFactory} from "../../providers/user-factory";
 
 
 describe('RequiredInfoFormPage tests', () => {
@@ -25,7 +27,7 @@ describe('RequiredInfoFormPage tests', () => {
       declarations: [RequiredInfoFormPage],
       providers: [
         App, Platform, Form, Keyboard, MenuController, NavController, AlertCreator, AlertController, RequiredInfoFormPage,LoginService,
-        UserDAO, ApplicationConfig,UserService,
+        UserDAO, ApplicationConfig,UserService, UserAdapter, UserFactory,
         {provide: Config, useClass: ConfigMock}
       ],
       imports: [
