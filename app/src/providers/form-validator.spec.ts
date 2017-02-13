@@ -30,6 +30,8 @@ describe('formValidator tests', () => {
       email: ['', Validators.compose([Validators.pattern('(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*$)')])],
       cellPhone: ['', Validators.compose([Validators.pattern('[0-9]*'), Validators.maxLength(10)])],
       username: ['', Validators.required],
+      userPassword: ['', Validators.compose([Validators.pattern('[0-9]*'), Validators.maxLength(4),Validators.required])],
+
     });
 
   }));
@@ -88,6 +90,20 @@ describe('formValidator tests', () => {
   it('isValidUserName should return false if the username is empty',()=>{
     this.form.controls['username'].setValue('');
     expect(formValidator.isValidField(this.form.controls['username'],'Test')).toBe(false);
+  });
+
+  it('IsValidPassword should return true if the PIN has 4 digits only',()=>{
+    this.form.controls['userPassword'].setValue('1234');
+    expect(formValidator.isValidField(this.form.controls['userPassword'],'Test')).toBe(true);
+  });
+
+  it('IsValidPassword should return false if the PIN is empty or has letters, or has more than 4 digits',()=>{
+    this.form.controls['userPassword'].setValue('');
+    expect(formValidator.isValidField(this.form.controls['userPassword'],'Test')).toBe(false);
+    this.form.controls['userPassword'].setValue('abcd');
+    expect(formValidator.isValidField(this.form.controls['userPassword'],'Test')).toBe(false);
+    this.form.controls['userPassword'].setValue('12345');
+    expect(formValidator.isValidField(this.form.controls['userPassword'],'Test')).toBe(false);
   });
 
 

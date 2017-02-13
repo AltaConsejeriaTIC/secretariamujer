@@ -1,7 +1,21 @@
 page-welcome-test {
 
-  page-welcome-test label, p{
+  .content-blue {
+    background-color: map_get($colors, primary);
+  }
+
+  label, p, button{
     color: map_get($colors, SofiaAppWhite);
+  }
+
+  ion-label {
+    overflow: visible;
+  }
+
+  .test-info-section {
+    height: 49vh;
+    align-items: center;
+    justify-content: center;
   }
 
   .custom-header {
@@ -10,67 +24,87 @@ page-welcome-test {
     background-color: #5393cd;
   }
 
-  .height-welcome-page-grid {
-    height: 95%;
+  .button-container {
+    height: 21vh;
+    background: map_get($colors, SofiaAppDarkBlue);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .welcome-test-button-section:first-child button,
+  .welcome-test-button-section:nth-child(2) button {
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .welcome-test-button-section button,
+  .purple-line-container button {
+    background: transparent;
+    display: block;
+    padding: 0;
+    border-radius: 0;
+    width: 100%;
   }
 
   .welcome-test-button-section {
-    margin: auto !important;
+    padding: 0;
+    width: 33.3333vw;
+
+    button {
+      height: 90%;
+      margin: 5% auto !important;
+    }
+
+    ion-label, .icon-col {
+      width: 100%;
+    }
+
+    .first-phrase {
+      margin: 2vh 0 0.5vh;
+    }
+
+    .second-phrase {
+      margin: 0.5vh 0;
+    }
   }
 
-  .welcome-test-button-section button {
-    display: block;
-    color: map_get($colors, SofiaAppWhite);
+  .purple-line-container {
+    height: 21vh;
+    background: map_get($colors, backgroundPurple);
+
+    button {
+      margin: 0 !important;
+      height: 100%;
+    }
+
+    .first-phrase {
+      margin: 1vh 0;
+    }
+
+    .second-phrase {
+      margin: 0;
+    }
   }
 
-  .content-blue {
-    background-color: map_get($colors, primary);
-  }
-
-  .between-button-separator-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .between-buttons-separator {
-    display: inline-block;
-    height: 1px;
-    background-color: map_get($colors, SofiaAppWhite);
-  }
-
-  .text-between-separators {
-    display: inline-block;
-    margin: 0 5px 0 5px !important;
-  }
 
   @media (max-width: 479px) {
     .test-info-section p {
       font-size: 16px !important;
     }
 
-    .text-between-separators {
-      font-size: 13px !important;
-    }
-
-    .welcome-test-button-section button {
-      width: 200px;
-      height: 40px;
-      margin-bottom: 15px;
-      font-size: 17px;
-      font-weight: bold;
-    }
-
-    .between-button-separator-container {
-      margin-bottom: 15px;
-    }
-
-    .between-buttons-separator {
-      width: 92px;
-    }
-
-    .welcome-page-title {
+    .welcome-test-button-section button,
+    .purple-line-container .first-phrase {
       font-size: 13px;
+    }
+
+    .purple-line-container .second-phrase {
+      font-size: 10px;
+    }
+
+    .welcome-test-button-section .icon-col {
+      font-size: 25px;
+    }
+
+    .purple-line-container .icon-col {
+      font-size: 27px;
     }
   }
 
@@ -79,28 +113,21 @@ page-welcome-test {
       font-size: 24px !important;
     }
 
-    .text-between-separators {
-      font-size: 20px !important;
-    }
-
-    .welcome-test-button-section button {
-      width: 291px;
-      height: 60px;
-      margin-bottom: 30px;
-      font-size: 26px;
-      font-weight: bold;
-    }
-
-    .between-button-separator-container {
-      margin-bottom: 30px;
-    }
-
-    .between-buttons-separator {
-      width: 134px;
-    }
-
-    .welcome-page-title {
+    .welcome-test-button-section button,
+    .purple-line-container .first-phrase {
       font-size: 20px;
+    }
+
+    .purple-line-container .second-phrase {
+      font-size: 15px;
+    }
+
+    .welcome-test-button-section .icon-col {
+      font-size: 38px;
+    }
+
+    .purple-line-container .icon-col {
+      font-size: 40px;
     }
   }
 
@@ -109,28 +136,22 @@ page-welcome-test {
       font-size: 28px !important;
     }
 
-    .text-between-separators {
-      font-size: 20px !important;
-    }
-
-    .welcome-test-button-section button {
-      width: 342px;
-      height: 70px;
-      margin-bottom: 38px;
-      font-size: 26px;
-      font-weight: bold;
-    }
-
-    .between-button-separator-container {
-      margin-bottom: 38px;
-    }
-
-    .between-buttons-separator {
-      width: 159px;
-    }
-
-    .welcome-page-title {
+    .welcome-test-button-section button,
+    .purple-line-container .first-phrase {
       font-size: 24px;
     }
+
+    .purple-line-container .second-phrase {
+      font-size: 18px;
+    }
+
+    .welcome-test-button-section .icon-col {
+      font-size: 48px;
+    }
+
+    .purple-line-container .icon-col {
+      font-size: 50px;
+    }
+
   }
 }

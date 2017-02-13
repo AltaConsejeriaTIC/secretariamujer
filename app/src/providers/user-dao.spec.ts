@@ -1,5 +1,5 @@
-import {TestBed, inject, async} from "@angular/core/testing";
-import {HttpModule, XHRBackend, Response, ResponseOptions, ConnectionBackend} from "@angular/http";
+import {TestBed, inject} from "@angular/core/testing";
+import {HttpModule, XHRBackend, ConnectionBackend} from "@angular/http";
 import {MockBackend} from '@angular/http/testing';
 import {UserDAO} from "./user-dao";
 import {Observable} from "rxjs/Observable";
@@ -29,36 +29,6 @@ describe('UserDAO tests', () => {
     mockbackend = _mockbackend;
   }));
 
-  /* it('should return mocked response for saveUser (async)', async(() => {
-   let response = {
-   "uid": [{
-   "value": "444"
-   }],
-   "name": [
-   {
-   "value": user.fullName
-   }
-   ],
-   "mail": [
-   {
-   "value": "test@testname.com"
-   }
-   ],
-   "field_cellphone": [
-   {
-   "value": "313246545"
-   }
-   ]
-   };
-   mockbackend.connections.subscribe(connection => {
-   connection.mockRespond(new Response(new ResponseOptions({body: JSON.stringify(response)})));
-   });
-
-   userDAO.user = user;
-   userDAO.create().map(res => res.json()).subscribe(response => {
-   expect(response.name[0].value).toBe(user.fullName);
-   });
-   }));*/
 
   it('should create function return an Observable type', () => {
     let isObservable = userDAO.create() instanceof Observable;

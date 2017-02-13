@@ -1,44 +1,27 @@
-<ion-content class="content-purple">
-  <ion-grid class="height-100">
-    <ion-row class="flex-1"></ion-row>
-    <ion-row class="flex-5">
-      <ion-col id="optional-info-col" offset-10 width-80>
-
-        <form [formGroup]="form" novalidate>
-          <ion-row>
-            <ion-label text-center class="app-subtitle">Completa tus datos</ion-label>
-          </ion-row>
-
-          <ion-row>
-            <ion-input text-center class="input-border input-color no-padding" type="text"
-                       placeholder="Tu nombre & apellido" formControlName="fullName"></ion-input>
-          </ion-row>
-
-          <ion-row>
-            <ion-input text-center class="input-border input-color no-padding" type="email"
-                       placeholder="Tu correo electrónico" formControlName="email"></ion-input>
-          </ion-row>
-
-          <ion-row>
-            <ion-input text-center class="input-border input-color no-padding" type="tel"
-                       placeholder="Tu teléfono móvil" formControlName="cellPhone"></ion-input>
-          </ion-row>
-
-          <ion-row id="optional-info-register-button-container" class="button-section-margin">
-            <ion-col width-45 class="no-padding">
-              <button (click)="saveUser()" class="app-button" ion-button outline>Omitir</button>
-            </ion-col>
-
-            <ion-col offset-10 width-45 class="no-padding">
-              <button (click)="saveUser()"
-                      [ngClass]="{'app-button': canUserContinue(), 'disabled-button': !canUserContinue()}"
-                      ion-button outline>Continuar
-              </button>
-            </ion-col>
-          </ion-row>
-        </form>
+<ion-content  class="content-purple" no-bounce>
+  <form [formGroup]="form" novalidate>
+  <ion-row class="label-row">
+    <ion-label text-center class="app-subtitle label-register">Completa tus datos</ion-label>
+  </ion-row>
+  <ion-row class="fullname-row">
+    <ion-col class="input-container" no-padding>
+      <ion-input text-center class="input-border input-color no-padding" type="text" placeholder="Tu nombre & apellido" formControlName="fullName"></ion-input>
+    </ion-col>
+  </ion-row>
+  <ion-row class="email-row">
+    <ion-col class="input-container" no-padding>
+      <ion-input text-center class="input-border input-color no-padding" type="email" placeholder="Tu correo electrónico" formControlName="email"></ion-input>
+    </ion-col>
+  </ion-row>
+    <ion-row class="cellphone-row">
+      <ion-col class="input-container" no-padding>
+        <ion-input text-center class="input-border input-color no-padding" type="tel" placeholder="Tu teléfono móvil" formControlName="cellPhone"></ion-input>
       </ion-col>
     </ion-row>
-
-  </ion-grid>
+  <ion-row class="button-row">
+    <button (click)="saveUser ()" class="app-button" ion-button outline>Omitir</button>
+    <button (click)="saveUser()" [ngClass]="{'app-button': canUserContinue(), 'disabled-button': !canUserContinue()}" class="login-button" ion-button outline>Continuar</button>
+  </ion-row>
+  </form>
 </ion-content>
+

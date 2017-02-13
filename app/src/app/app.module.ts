@@ -22,8 +22,6 @@ import {SelectTipsCategoryPage} from "../pages/select-tips-category/select-tips-
 import {Storage} from '@ionic/storage';
 import {TipsPage} from "../pages/tips-page/tips-page";
 import {ContactAdapter} from "../providers/adapter/contact-adapter";
-import {ErrorFactory} from "../providers/factory/error-factory";
-import {ContactFactory} from "../providers/factory/contact-factory";
 import {SettingsPage} from "../pages/settings-page/settings-page";
 import {ApplicationConfig} from "../config";
 import {SelectInfoCategoryPage} from "../pages/select-info-category/select-info-category";
@@ -39,6 +37,7 @@ import {LoginService} from "../providers/login-service";
 import {UserFactory} from "../providers/user-factory";
 import {UserService} from "../providers/user-service";
 import {UserAdapter} from "../providers/adapter/user-adapter";
+import {LoginPage} from "../pages/login/login";
 
 @NgModule({
   declarations: [
@@ -64,7 +63,8 @@ import {UserAdapter} from "../providers/adapter/user-adapter";
     AboutAppPage,
     TutorialPage,
     CalculatorPage,
-    UserNameFormPage
+    UserNameFormPage,
+    LoginPage
 
   ],
   imports: [
@@ -97,7 +97,8 @@ import {UserAdapter} from "../providers/adapter/user-adapter";
     AboutAppPage,
     TutorialPage,
     CalculatorPage,
-    UserNameFormPage
+    UserNameFormPage,
+    LoginPage
   ],
   providers: [UserDAO, AlertCreator, MapServices, EventsServices, TestsService, UserAdapter,
     ContactAdapter, Storage, WarningMessageDAO, FormValidator, LoginService, UserFactory,UserService,

@@ -7,8 +7,8 @@ import {SettingsPage} from "../settings-page/settings-page";
 import {SelectInfoCategoryPage} from "../select-info-category/select-info-category";
 import {WarningMessageDAO} from "../../providers/warning-message-dao";
 import {UserDAO} from "../../providers/user-dao";
-import {CalculatorPage} from "../calculator/calculator";
 import {UserService} from "../../providers/user-service";
+import {LoginPage} from "../login/login";
 
 @Component({
   selector: 'page-menu',
@@ -103,7 +103,7 @@ export class MenuPage {
         this.navController.push(SelectInfoCategoryPage);
         break;
       case 1:
-        this.alertCreator.showSimpleAlert("Info", "Mapas está en desarrollo");
+        this.navController.push(LoginPage);
         break;
       case 2:
         this.navController.push(WelcomeTestPage);
