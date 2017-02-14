@@ -18,10 +18,10 @@ export class ContactAdapter {
 
   adaptName(contactProperties) {
     let name;
-    
+
     if (contactProperties.displayName != null) {
       name = contactProperties.displayName;
-    } else if (contactProperties.name.formatted != null) {
+    } else if (contactProperties.name != null && contactProperties.name.formatted != null) {
       name = contactProperties.name.formatted;
     } else {
       name = this.adaptPhoneNumber(contactProperties);
