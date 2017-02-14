@@ -1,8 +1,11 @@
 import {ComponentFixture, TestBed, async, inject} from '@angular/core/testing';
 import {RequiredInfoFormPage} from './required-info-form';
-import {App, MenuController, NavController, Platform, Config, Keyboard, Form, IonicModule}  from 'ionic-angular';
+import {
+  App, MenuController, NavController, Platform, Config, Keyboard, Form, IonicModule,
+  LoadingController
+}  from 'ionic-angular';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {ConfigMock} from '../../mocks';
+import {ConfigMock, LoadingControllerMock, AlertCreatorMock, UserDAOMock} from '../../mocks';
 import {AlertCreator} from  '../../providers/alert-creator'
 import {AlertController} from "ionic-angular";
 import {UserDAO} from "../../providers/user-dao";
@@ -26,9 +29,17 @@ describe('RequiredInfoFormPage tests', () => {
     TestBed.configureTestingModule({
       declarations: [RequiredInfoFormPage],
       providers: [
-        App, Platform, Form, Keyboard, MenuController, NavController, AlertCreator, AlertController, RequiredInfoFormPage,LoginService,
-        UserDAO, ApplicationConfig,UserService, UserAdapter, UserFactory,
-        {provide: Config, useClass: ConfigMock}
+        App, Platform, Form, Keyboard, MenuController, NavController, AlertController, RequiredInfoFormPage,LoginService,
+        ApplicationConfig,UserService, UserAdapter, UserFactory,
+        {provide: Config, useClass: ConfigMock}, {provide: LoadingController, useClass: LoadingControllerMock},
+        {
+          provide: AlertCreator,
+          useClass: AlertCreatorMock
+        },
+        {
+          provide: UserDAO,
+          useClass: UserDAOMock
+        },
       ],
       imports: [
         FormsModule,

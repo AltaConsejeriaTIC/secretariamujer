@@ -53,10 +53,9 @@ export class RegisterOptionalInfoPage {
     if (this.isUserDataValid()) {
       this.updateUserInDAO();
       this.loading.present();
-      this.userDAO.create()
-        .subscribe(userId => {
-          this.userService.user.id = userId;
-          this.alertCreator.showCofirmationMessage('Cuenta', 'Tu cuenta ha sido creada', () => {
+      this.userDAO.update()
+        .subscribe(response => {
+          this.alertCreator.showCofirmationMessage('Info', 'Se han actualizado tus datos', () => {
             this.hideLoading();
             this.goToContactPage();
           })
@@ -64,10 +63,6 @@ export class RegisterOptionalInfoPage {
           this.hideLoading();
           if (error.name == 'EmailAlreadyTaken') {
             this.alertCreator.showCofirmationMessage('Email', this.userService.user.email + 'ya ha sido registrado en el sistema');
-          }
-
-          if (error.name == 'UsernameAlreadyTaken') {
-            this.alertCreator.showCofirmationMessage('Usuario', this.userService.user.username + ' ya ha sido registrado en el sistema');
           }
         });
     }

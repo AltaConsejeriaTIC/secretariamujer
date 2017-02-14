@@ -74,22 +74,22 @@ describe('RegisterOptionalInfoPage tests', () => {
   });
 
 
-  it('saveUser should call create from UserDAO', () => {
+  it('saveUser should call update from UserDAO', () => {
     optionalInfoFormPage.form.controls['cellPhone'].setValue(mockRightUser.cellPhone);
     optionalInfoFormPage.form.controls['fullName'].setValue(mockRightUser.fullName);
     optionalInfoFormPage.form.controls['email'].setValue(mockRightUser.email);
 
     optionalInfoFormPage.saveUser();
-    expect(mockUserDao.create).toHaveBeenCalled();
+    expect(mockUserDao.update).toHaveBeenCalled();
   });
 
-  it('saveUser should not call create from UserDAO', () => {
+  it('saveUser should not call update from UserDAO', () => {
     optionalInfoFormPage.form.controls['cellPhone'].setValue(mockWrongUser.cellPhone);
     optionalInfoFormPage.form.controls['fullName'].setValue(mockWrongUser.fullName);
     optionalInfoFormPage.form.controls['email'].setValue(mockWrongUser.email);
 
     optionalInfoFormPage.saveUser();
-    expect(mockUserDao.create).not.toHaveBeenCalled();
+    expect(mockUserDao.update).not.toHaveBeenCalled();
   });
 
 });

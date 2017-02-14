@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {NavController} from 'ionic-angular';
+import {NavController, Loading, LoadingController} from 'ionic-angular';
 import {IUser, User} from '../../entity/user';
 import {AlertCreator} from "../../providers/alert-creator";
 import {UserDAO} from "../../providers/user-dao";
@@ -14,14 +14,30 @@ import {UserService} from "../../providers/user-service";
 export class RequiredInfoFormPage {
 
   user: IUser;
+  loading: Loading;
 
-  constructor(public navCtrl: NavController, public alertCreator: AlertCreator, public userDAO: UserDAO, private userService:UserService ) {
+
+  constructor(public navCtrl: NavController, public alertCreator: AlertCreator, public userDAO: UserDAO, private userService:UserService, public loadingController: LoadingController, ) {
     this.user = new User();
+    this.loading = this.createLoading();
+
   }
 
   ionViewDidLoad() {
 
   }
+  createLoading(): Loading {
+    return this.loadingController.create({
+      content: "Espera un momento",
+      dismissOnPageChange: true
+    });
+  }
+
+  hideLoading() {
+    this.loading.dismiss();
+    this.loading = this.createLoading();
+  }
+
 
   checkInputValues() {
     let isUserNameEmpty = this.validateEmptyField(this.user.username);
@@ -35,7 +51,6 @@ export class RequiredInfoFormPage {
 
     if (isPassCorrect && !isUserNameEmpty) {
       this.saveRequiredInfo();
-      this.navCtrl.push(RegisterOptionalInfoPage);
     }
   }
 
@@ -65,6 +80,23 @@ export class RequiredInfoFormPage {
   saveRequiredInfo() {
     this.userService.user.username=this.user.username;
     this.userService.user.password=this.user.password;
+    this.registerUser();
+  }
+
+  registerUser(){
+    this.userDAO.create()
+      .subscribe(userId => {
+        this.userService.user.id = userId;
+        this.alertCreator.showCofirmationMessage('Cuenta', 'Tu cuenta ha sido creada', () => {
+          this.hideLoading();
+          this.navCtrl.push(RegisterOptionalInfoPage);
+        })
+      }, error => {
+        this.hideLoading();
+        if (error.name == 'UsernameAlreadyTaken') {
+          this.alertCreator.showCofirmationMessage('Usuario', this.userService.user.username + ' ya ha sido registrado en el sistema');
+        }
+      });
   }
 
   goBack() {
