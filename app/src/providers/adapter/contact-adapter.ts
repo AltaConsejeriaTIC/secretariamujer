@@ -17,7 +17,17 @@ export class ContactAdapter {
   }
 
   adaptName(contactProperties) {
-    return contactProperties.displayName != null ? contactProperties.displayName : this.adaptPhoneNumber(contactProperties);
+    let name;
+    
+    if (contactProperties.displayName != null) {
+      name = contactProperties.displayName;
+    } else if (contactProperties.name.formatted != null) {
+      name = contactProperties.name.formatted;
+    } else {
+      name = this.adaptPhoneNumber(contactProperties);
+    }
+
+    return name;
   }
 
   adaptPhoneNumber(contactProperties): string {
@@ -32,7 +42,7 @@ export class ContactAdapter {
     return phoneNumber;
   }
 
-  adaptContactFromServer(contactFromServer:any) :IContact{
+  adaptContactFromServer(contactFromServer: any): IContact {
     let contact = ContactFactory.createContact(contactFromServer.name, contactFromServer.cellPhone);
 
     return contact;
