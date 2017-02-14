@@ -7,6 +7,7 @@ page-menu {
   .option-menu-row {
     background-color: map_get($colors, primary);
     height: 20vh;
+    overflow: hidden;
   }
 
   .menu-option-label, .truncate-text {
@@ -17,7 +18,7 @@ page-menu {
 
   #option-row {
     display: table;
-    height: 20vh;
+    height: 100%;
     margin: 0;
     background: transparent;
   }
@@ -31,8 +32,9 @@ page-menu {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
-    margin: 0;
+    height: 100% !important;
+    margin: 0 !important;
+    background: transparent;
   }
 
   .menu-arrow-big {
@@ -57,8 +59,8 @@ page-menu {
     color: map_get($colors, primary);
   }
 
-  button.activated {
-    background: rgba(0, 0, 0, 0.1) !important;
+  button {
+    border-radius: 0 !important;
   }
 
   .content {
@@ -89,7 +91,6 @@ page-menu {
         margin: 0;
         height: 100%;
         width: 100%;
-        border-radius: 0;
       }
 
       .first-line-text ion-label {

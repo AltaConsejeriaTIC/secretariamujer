@@ -2,6 +2,14 @@ page-select-info-category {
   .content {
     background-color: map_get($colors, primary);
 
+    button {
+      border-radius: 0;
+      background: transparent;
+      height: 100%;
+      width: 100%;
+      margin: 0;
+    }
+
     ion-label {
       margin: 0;
     }
@@ -24,10 +32,15 @@ page-select-info-category {
     }
 
     [class^="option-"] {
+      align-items: center;
+      height: 100%;
+      display: flex;
+      flex: 1;
+    }
+
+    [class^="option-"] label {
       font-weight: bold;
       color: #f2f2f2;
-      align-items: center;
-      flex: 1;
     }
   }
 
@@ -76,7 +89,7 @@ page-select-info-category {
         }
       }
 
-      [class^="option-"] {
+      [class^="option-"] label {
         font-size: 17px;
       }
     }
@@ -104,7 +117,7 @@ page-select-info-category {
         }
       }
 
-      [class^="option-"] {
+      [class^="option-"] label {
         font-size: 26px;
       }
     }
@@ -132,7 +145,7 @@ page-select-info-category {
         }
       }
 
-      [class^="option-"] {
+      [class^="option-"] label {
         font-size: 31px;
       }
     }
