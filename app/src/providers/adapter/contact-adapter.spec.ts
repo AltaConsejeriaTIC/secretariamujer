@@ -7,6 +7,9 @@ describe('ContacAdapter tests', () => {
   let contactAdapter = new ContactAdapter();
   let selectedContact = {
     displayName: 'Carlos Agusto Santana',
+    name: {
+      formatted: "Carlos Agusto"
+    },
     phoneNumbers: [{
       value: '3125645556'
     }, {
@@ -34,9 +37,18 @@ describe('ContacAdapter tests', () => {
     expect(contact).toEqual(expectedContact);
   });
 
-  it('adaptContact should return a contact with the number in the fullName if it does not have fullName', () => {
+  it('adaptContact should return a contact with the formatted name if it does not have fullName', () => {
+    let expectedContact = new Contact(selectedContact.name.formatted, selectedContact.phoneNumbers[0].value);
+    selectedContact.displayName = null;
+    let contact = contactAdapter.adaptContact(selectedContact);
+
+    expect(contact).toEqual(expectedContact);
+  });
+
+  it('adaptContact should return a contact with the number in the fullName if it does not have neither fullName nor formatted name', () => {
     let expectedContact = new Contact(selectedContact.phoneNumbers[0].value, selectedContact.phoneNumbers[0].value);
     selectedContact.displayName = null;
+    selectedContact.name.formatted = null;
     let contact = contactAdapter.adaptContact(selectedContact);
 
     expect(contact).toEqual(expectedContact);
