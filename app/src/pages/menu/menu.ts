@@ -22,7 +22,7 @@ import {MapPage} from "../map/map";
     ]),
     trigger('iconGroup', [
       state('hintVisible', style({width: "40vw", padding: "0 0 0 0"})),
-      state('hiddenHint', style({width: "85vw", padding: "0 0 0 18vw"})),
+      state('hiddenHint', style({width: "85vw", padding: "0 0 0 15vw"})),
       transition('hintVisible => hiddenHint', animate('100ms ease-out')),
       transition('hiddenHint => hintVisible', animate('100ms ease-in'))
     ]),
