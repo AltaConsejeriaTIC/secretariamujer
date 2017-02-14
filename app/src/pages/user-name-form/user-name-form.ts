@@ -59,13 +59,24 @@ export class UserNameFormPage {
 
     this.loginService.login(user).subscribe(userId => {
       this.setUserInfoInTheApp(userId);
-      this.hideLoading();
-      this.storage.set('islogged', true);
-      this.navCtrl.setRoot(MenuPage);
     }, error => {
       this.hideLoading();
       this.alertCreator.showSimpleAlert('Error', 'Usuario y/o contraseña incorrectos');
     });
+  }
+
+  setUserInfoInTheApp(userId: string) {
+    this.userDAO.get(userId).subscribe(user => {
+      this.userService.user = user;
+      this.hideLoading();
+      this.storage.set('islogged', true);
+      this.navCtrl.setRoot(MenuPage);
+    }, error => {
+      console.log("el error",error);
+      this.hideLoading();
+      this.alertCreator.showCofirmationMessage('Error', 'No fue posible obtener la informacion del usuario, intenta mas tarde');
+    });
+
   }
 
   hideLoading() {
@@ -79,16 +90,6 @@ export class UserNameFormPage {
 
   isUserNameValid() {
     return this.formValidator.isValidUserName(this.form.controls['username'], 'Por favor introduce tu nombre en la aplicación')
-  }
-
-  setUserInfoInTheApp(userId: string) {
-    this.userDAO.get(userId).subscribe(user => {
-      this.userService.user = user;
-    }, error => {
-      console.log(error);
-      this.alertCreator.showCofirmationMessage('Error', 'No fue posible obtener la informacion del usuario, intenta mas tarde');
-    });
-
   }
 
 }
