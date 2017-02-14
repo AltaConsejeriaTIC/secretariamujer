@@ -17,7 +17,7 @@ export class FormValidator {
 
   isValidInput(isValid:boolean, message: string){
     if (!isValid) {
-      this.alertCreator.showSimpleAlert('Error', message);
+      this.alertCreator.showSimpleAlert('', message);
     }
 
     return isValid;

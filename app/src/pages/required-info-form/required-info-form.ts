@@ -60,11 +60,11 @@ export class RequiredInfoFormPage {
 
   throwMessageIfEmptyField(isUserNameEmpty: boolean, isPassEmpty: boolean) {
     if (isUserNameEmpty && isPassEmpty) {
-      this.alertCreator.showSimpleAlert('Error', 'Por favor llena los campos antes de continuar');
+      this.alertCreator.showSimpleAlert('', 'Por favor llena los campos antes de continuar');
     } else if (isUserNameEmpty) {
-      this.alertCreator.showSimpleAlert('Error', 'Por favor ingresa un nombre de usuario');
+      this.alertCreator.showSimpleAlert('', 'Por favor ingresa un nombre de usuario');
     } else if (isPassEmpty) {
-      this.alertCreator.showSimpleAlert('Error', 'Por favor ingresa un PIN de 4 dígitos');
+      this.alertCreator.showSimpleAlert('', 'Por favor ingresa un PIN de 4 dígitos');
     }
   }
 
