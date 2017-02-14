@@ -12,6 +12,8 @@ import {TestsService} from "../../providers/tests-service";
 import {UserDAO} from "../../providers/user-dao";
 import {ApplicationConfig} from "../../config";
 import {UserService} from "../../providers/user-service";
+import {UserAdapter} from "../../providers/adapter/user-adapter";
+import {UserFactory} from "../../providers/user-factory";
 
 
 describe('TestPage tests', () => {
@@ -35,7 +37,7 @@ describe('TestPage tests', () => {
       declarations: [TestPage],
       providers: [
         App, Platform, Form, Keyboard, MenuController, NavController, AlertCreator, AlertController, TestPage,UserService,
-        ApplicationConfig,
+        ApplicationConfig, UserAdapter, UserFactory,
         TestsService, UserDAO,
         {
           provide: Config, useClass: ConfigMock

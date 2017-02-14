@@ -6,7 +6,7 @@ import {AlertCreator} from "../../providers/alert-creator";
 import {ContactSelectionPage} from "../contact-selection/contact-selection";
 import {FormBuilder, FormGroup, Validators, AbstractControl} from "@angular/forms";
 import {FormValidator} from "../../providers/form-validator";
-import { Storage } from '@ionic/storage';
+import {Storage} from '@ionic/storage';
 import {UserService} from "../../providers/user-service";
 
 
@@ -16,13 +16,13 @@ import {UserService} from "../../providers/user-service";
 })
 export class RegisterOptionalInfoPage {
   form: FormGroup;
-  loading:Loading;
+  loading: Loading;
 
 
-  constructor(public navCtrl: NavController, public userDAO: UserDAO, public alertCreator: AlertCreator,public loadingController:LoadingController,
-              private  formBuilder: FormBuilder, public formValidator:FormValidator, public storage:Storage, private userService:UserService) {
+  constructor(public navCtrl: NavController, public userDAO: UserDAO, public alertCreator: AlertCreator, public loadingController: LoadingController,
+              private  formBuilder: FormBuilder, public formValidator: FormValidator, public storage: Storage, private userService: UserService) {
     this.createForm(formBuilder);
-    this.loading=this.createLoading();
+    this.loading = this.createLoading();
   }
 
   private createForm(formBuilder: FormBuilder) {
@@ -36,9 +36,9 @@ export class RegisterOptionalInfoPage {
   ionViewDidLoad() {
   }
 
-  createLoading():Loading{
+  createLoading(): Loading {
     return this.loadingController.create({
-      content:"Espera un momento",
+      content: "Espera un momento",
       dismissOnPageChange: true
     });
   }
@@ -54,7 +54,8 @@ export class RegisterOptionalInfoPage {
       this.updateUserInDAO();
       this.loading.present();
       this.userDAO.create()
-        .subscribe(response => {
+        .subscribe(userId => {
+          this.userService.user.id = userId;
           this.alertCreator.showCofirmationMessage('Cuenta', 'Tu cuenta ha sido creada', () => {
             this.hideLoading();
             this.goToContactPage();
@@ -73,9 +74,9 @@ export class RegisterOptionalInfoPage {
   }
 
   updateUserInDAO() {
-    this.userService.user.fullName=this.form.controls['fullName'].value;
-    this.userService.user.email=this.form.controls['email'].value;
-    this.userService.user.cellPhone=this.form.controls['cellPhone'].value;
+    this.userService.user.fullName = this.form.controls['fullName'].value;
+    this.userService.user.email = this.form.controls['email'].value;
+    this.userService.user.cellPhone = this.form.controls['cellPhone'].value;
   }
 
   goToContactPage() {
@@ -87,9 +88,9 @@ export class RegisterOptionalInfoPage {
     return this.form.controls['fullName'].valid && this.form.controls['email'].valid && this.form.controls['cellPhone'].valid;
   }
 
-  hideLoading(){
+  hideLoading() {
     this.loading.dismiss();
-    this.loading=this.createLoading();
+    this.loading = this.createLoading();
   }
 
 }

@@ -31,4 +31,11 @@ export class ContactAdapter {
 
     return phoneNumber;
   }
+
+  adaptContactFromServer(contactFromServer:any) :IContact{
+    let contact = ContactFactory.createContact(contactFromServer.name, contactFromServer.cellPhone);
+
+    return contact;
+  }
+
 }
