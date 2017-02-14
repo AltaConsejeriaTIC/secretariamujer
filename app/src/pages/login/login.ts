@@ -4,6 +4,11 @@ import {FormGroup, FormBuilder, Validators} from "@angular/forms";
 import {FormValidator} from "../../providers/form-validator";
 import { Storage } from '@ionic/storage';
 import {MenuPage} from "../menu/menu";
+import {UserFactory} from "../../providers/user-factory";
+import {LoginService} from "../../providers/login-service";
+import {AlertCreator} from "../../providers/alert-creator";
+import {UserDAO} from "../../providers/user-dao";
+import {UserService} from "../../providers/user-service";
 
 
 @Component({
@@ -15,7 +20,7 @@ export class LoginPage {
   form: FormGroup;
   loading:Loading;
 
-  constructor(public navCtrl: NavController,  private  formBuilder: FormBuilder, public formValidator:FormValidator, public storage:Storage, public loadingController:LoadingController,) {
+  constructor(public navCtrl: NavController,  private  formBuilder: FormBuilder, public formValidator:FormValidator, public storage:Storage, public loadingController:LoadingController,private userFactory: UserFactory,private loginService: LoginService,public alertCreator: AlertCreator,private userDAO: UserDAO, private userService: UserService) {
     this.createForm(formBuilder);
     this.loading=this.createLoading();
 
@@ -47,8 +52,33 @@ export class LoginPage {
   checkInputValues(){
     if(this.isUserDataValid()){
       this.loading.present();
-      this.goToMenuPage();
+      this.makeLogin();
     }
+  }
+
+  makeLogin() {
+    let user = this.userFactory.createUser({
+      username: this.form.controls['username'].value,
+      password: this.form.controls['userPassword'].value,
+    });
+
+    this.loginService.login(user,(data)=>{
+      this.userService.user = data;
+      this.goToMenuPage();
+    },()=>{
+      this.hideLoading();
+    });
+  }
+
+  setUserInfoInTheApp(userId: string) {
+    this.userDAO.get(userId).subscribe(user => {
+
+    }, error => {
+      console.log(error);
+      this.hideLoading();
+      this.alertCreator.showCofirmationMessage('Error', 'No fue posible obtener la informacion del usuario, intenta mas tarde');
+    });
+
   }
 
   isUserDataValid(): boolean {

@@ -3,19 +3,33 @@ import {Http, Headers, RequestOptions} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {IUser} from "../entity/user";
 import {ApplicationConfig} from "../config";
+import {UserDAO} from "./user-dao";
+import {AlertCreator} from "./alert-creator";
 
 @Injectable()
 export class LoginService {
 
-  constructor(private http: Http) {
+  constructor(private http: Http, private userDAO: UserDAO, public alertCreator: AlertCreator) {
   }
 
-  login(user: IUser) {
+  login(user: IUser, successCallback:(data)=>void, errorCallback:()=>void) {
     let url = ApplicationConfig.getURL('/user/login?_format=json');
     let body = this.createHttpBody(user);
     let options = this.createRequestOptions();
 
-    return this.http.post(url, body, options).map(response => response.json().current_user.uid);
+    return this.http.post(url, body, options).map(response => response.json().current_user.uid).subscribe(userId => {
+      this.userDAO.get(userId).subscribe(user => {
+        successCallback(user);
+      }, error => {
+        console.log(error);
+        errorCallback();
+        this.alertCreator.showCofirmationMessage('Error', 'No fue posible obtener la informacion del usuario, intenta mas tarde');
+      });
+    }, error => {
+      console.log(error);
+      errorCallback();
+      this.alertCreator.showSimpleAlert('Error', 'Usuario y/o contraseña incorrectos');
+    });
   }
 
   private createHttpBody(user: IUser) {
