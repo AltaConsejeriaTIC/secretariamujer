@@ -48,6 +48,8 @@ export class UserAdapter {
   }
 
   adaptContactsFromServer(contactsFromServer: string) {
-    return JSON.parse(contactsFromServer);
+    let contacts = contactsFromServer != null ? JSON.parse(contactsFromServer) : null;
+
+    return contacts;
   }
 }
