@@ -80,7 +80,8 @@ export class RegisterOptionalInfoPage {
   }
 
   canUserContinue(): boolean {
-    return this.form.controls['fullName'].valid && this.form.controls['email'].valid && this.form.controls['cellPhone'].valid;
+    let emailRegExp=/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*$/;
+    return this.form.controls['fullName'].valid && this.form.controls['email'].valid && this.form.controls['cellPhone'].valid && emailRegExp.test(this.form.controls['email'].value);
   }
 
   hideLoading() {
