@@ -94,4 +94,8 @@ export class MapPage {
   }
 
 
+  goBackPage(){
+    this.navCtrl.pop()
+  }
+
 }
