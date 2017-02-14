@@ -33,7 +33,7 @@ export class FormValidator {
 
   isValidEmail(field: AbstractControl, message:string) {
     let emailRegExp=/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*$/;
-    let isValid:boolean=emailRegExp.test(field.value);
+    let isValid:boolean= (field.value=='' || emailRegExp.test(field.value)) ? true : false;
     return this.isValidInput(isValid, message);
   }
 
