@@ -58,8 +58,8 @@ export class LoginPage {
 
   goToMenuPage(){
     this.hideLoading();
-    //this.storage.set('islogged', true);
-    this.navCtrl.push(MenuPage);
+    this.storage.set('islogged', true);
+    this.navCtrl.setRoot(MenuPage);
   }
 
   goBack() {

@@ -8,7 +8,6 @@ import {SelectInfoCategoryPage} from "../select-info-category/select-info-catego
 import {WarningMessageDAO} from "../../providers/warning-message-dao";
 import {UserDAO} from "../../providers/user-dao";
 import {UserService} from "../../providers/user-service";
-import {LoginPage} from "../login/login";
 import {MapPage} from "../map/map";
 
 @Component({
