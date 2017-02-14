@@ -2,13 +2,11 @@ import {Component} from '@angular/core';
 import {NavController, Loading, NavParams, LoadingController} from 'ionic-angular';
 import {FormGroup, FormBuilder, Validators} from "@angular/forms";
 import {FormValidator} from "../../providers/form-validator";
-import {User} from "../../entity/user";
 import {MenuPage} from "../menu/menu";
 import {LoginService} from "../../providers/login-service";
 import {AlertCreator} from "../../providers/alert-creator";
 import {Storage} from '@ionic/storage';
 import {UserFactory} from "../../providers/user-factory";
-import {UserDAO} from "../../providers/user-dao";
 import {UserService} from "../../providers/user-service";
 
 
@@ -24,8 +22,7 @@ export class UserNameFormPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public  formBuilder: FormBuilder,
               public formValidator: FormValidator, private loginService: LoginService, public alertCreator: AlertCreator,
-              public loadingController: LoadingController, public storage: Storage, private userFactory: UserFactory, private userService: UserService,
-              private userDAO: UserDAO) {
+              public loadingController: LoadingController, public storage: Storage, private userFactory: UserFactory, private userService: UserService,) {
 
     this.form = formBuilder.group({
       username: ['', Validators.required],
@@ -57,26 +54,12 @@ export class UserNameFormPage {
       password: this.userPassword
     });
 
-    this.loginService.login(user).subscribe(userId => {
-      this.setUserInfoInTheApp(userId);
-    }, error => {
+    this.loginService.login(user,(data)=>{
+      this.userService.user = data;
+      this.goToMenuPage();
+    },()=>{
       this.hideLoading();
-      this.alertCreator.showSimpleAlert('Error', 'Usuario y/o contraseña incorrectos');
     });
-  }
-
-  setUserInfoInTheApp(userId: string) {
-    this.userDAO.get(userId).subscribe(user => {
-      this.userService.user = user;
-      this.hideLoading();
-      this.storage.set('islogged', true);
-      this.navCtrl.setRoot(MenuPage);
-    }, error => {
-      console.log("el error",error);
-      this.hideLoading();
-      this.alertCreator.showCofirmationMessage('Error', 'No fue posible obtener la informacion del usuario, intenta mas tarde');
-    });
-
   }
 
   hideLoading() {
@@ -90,6 +73,12 @@ export class UserNameFormPage {
 
   isUserNameValid() {
     return this.formValidator.isValidUserName(this.form.controls['username'], 'Por favor introduce tu nombre en la aplicación')
+  }
+
+  goToMenuPage(){
+    this.hideLoading();
+    this.storage.set('islogged', true);
+    this.navCtrl.setRoot(MenuPage);
   }
 
 }

@@ -62,19 +62,17 @@ export class LoginPage {
       password: this.form.controls['userPassword'].value,
     });
 
-    this.loginService.login(user).subscribe(userId => {
-      this.setUserInfoInTheApp(userId);
-    }, error => {
+    this.loginService.login(user,(data)=>{
+      this.userService.user = data;
+      this.goToMenuPage();
+    },()=>{
       this.hideLoading();
-      this.alertCreator.showSimpleAlert('Error', 'Usuario y/o contraseña incorrectos');
     });
   }
 
   setUserInfoInTheApp(userId: string) {
     this.userDAO.get(userId).subscribe(user => {
-      this.userService.user = user;
-      this.hideLoading();
-      this.goToMenuPage();
+
     }, error => {
       console.log(error);
       this.hideLoading();
