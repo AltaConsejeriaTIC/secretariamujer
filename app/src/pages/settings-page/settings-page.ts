@@ -194,7 +194,14 @@ export class SettingsPage {
   }
 
   logout(){
-    this.alertCreator.showSimpleAlert('Info', 'cerrar sesión está en desarrollo');
+
+    this.alertCreator.showSelectMessage('Info','Al cerrar sesión el modo seguro se desactivará',()=>{
+      this.closeSession();
+    },()=>{});
+
+  }
+
+  closeSession(){
     this.storage.set('islogged', false);
     this.storage.set('isFirstTimeOpen', null);
   }
