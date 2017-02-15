@@ -19,6 +19,10 @@ page-tips-page {
       display: flex;
       align-items: center;
     }
+
+    ion-label {
+      margin: auto 11vw;
+    }
   }
 
   .tips-item {
@@ -32,6 +36,15 @@ page-tips-page {
     ion-label {
       white-space: normal;
       margin: auto 0 auto 11vw;
+    }
+
+    button {
+      border-radius: 0;
+      background: transparent;
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      text-align: left;
     }
   }
 
@@ -125,7 +138,6 @@ page-tips-page {
 
       ion-label {
         font-size: 14px;
-        margin: auto 20px;
       }
     }
 
@@ -139,7 +151,7 @@ page-tips-page {
     }
 
     .tip-description .title-3, ion-icon {
-      font-size: 15px;
+      font-size: 15px !important;
     }
 
     .tip-description {
@@ -168,7 +180,6 @@ page-tips-page {
 
       ion-label {
         font-size: 22px;
-        margin: auto 30px;
       }
     }
 
@@ -182,7 +193,7 @@ page-tips-page {
     }
 
     ion-icon {
-      font-size: 25px;
+      font-size: 25px !important;
     }
 
     .tip-description {
@@ -215,7 +226,6 @@ page-tips-page {
 
       ion-label {
         font-size: 26px;
-        margin: auto 30px;
       }
     }
 
@@ -229,7 +239,7 @@ page-tips-page {
     }
 
     .tip-description .title-2, ion-icon {
-      font-size: 30px;
+      font-size: 30px !important;
     }
 
     .tip-description {

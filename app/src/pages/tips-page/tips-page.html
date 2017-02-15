@@ -21,15 +21,17 @@
       </ion-col>
     </ion-row>
     <div *ngFor="let tip of tipsArrayByCategory; let id = index">
-      <ion-row class="tips-item tip-item-{{id}}" (click)="toggleisShowingTipParameter(id)">
-        <ion-col width-80 class="text-container">
-          <ion-label>
-            {{tip.title}}
-          </ion-label>
-        </ion-col>
-        <ion-col width-20 class="icon-container">
-          <ion-icon [name]="arrowIconArray[id]"></ion-icon>
-        </ion-col>
+      <ion-row class="tips-item tip-item-{{id}}">
+        <button ion-button icon-only mode="ios" (click)="toggleisShowingTipParameter(id)">
+          <ion-col width-80 class="text-container">
+            <ion-label>
+              {{tip.title}}
+            </ion-label>
+          </ion-col>
+          <ion-col width-20 class="icon-container">
+            <ion-icon [name]="arrowIconArray[id]"></ion-icon>
+          </ion-col>
+        </button>
       </ion-row>
 
       <ion-row class="tip-description" *ngIf="isTipVisible[id]">
