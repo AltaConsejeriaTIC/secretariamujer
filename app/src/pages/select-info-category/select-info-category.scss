@@ -1,4 +1,9 @@
 page-select-info-category {
+
+  .scroll-content {
+    overflow: hidden;
+  }
+
   .content {
     background-color: map_get($colors, primary);
 
@@ -15,9 +20,9 @@ page-select-info-category {
     }
 
     .section-header {
-      flex: 1;
       align-items: center;
       text-align: center;
+      height: 20%;
 
       .title {
         font-weight: bold;
@@ -35,7 +40,7 @@ page-select-info-category {
       align-items: center;
       height: 100%;
       display: flex;
-      flex: 1;
+      height: 20%;
     }
 
     [class^="option-"] label {
