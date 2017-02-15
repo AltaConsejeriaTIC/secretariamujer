@@ -55,6 +55,7 @@ page-welcome-test {
     width: 33.3333vw;
     display: flex;
     align-items: center;
+    height: 100%;
 
     button {
       height: 100%;
@@ -85,6 +86,10 @@ page-welcome-test {
 
     ion-col {
       padding: 0;
+    }
+
+    .purple-button-container {
+      height: 100%;
     }
 
     .first-phrase {
