@@ -87,16 +87,20 @@
           </ion-col>
 
 
-          <ion-col class="download-col-container" (click)="downloadFileListener(id)" no-padding>
-            <ion-row>
-              <ion-icon class="icons-color icon-download-size" name="icon-download"></ion-icon>
-            </ion-row>
-            <ion-row class="download-labels-margin">
-              <label class="info-labels download-labels">Descargas</label>
-            </ion-row>
-            <ion-row>
-              <label class="info-labels download-labels">documentos</label>
-            </ion-row>
+          <ion-col class="download-col-container" no-padding>
+            <button ion-button icon-only mode="ios" (click)="downloadFileListener(id)">
+              <ion-col>
+                <ion-row>
+                  <ion-icon class="icons-color icon-download-size" name="icon-download"></ion-icon>
+                </ion-row>
+                <ion-row class="download-labels-margin">
+                  <label class="info-labels download-labels">Descargas</label>
+                </ion-row>
+                <ion-row>
+                  <label class="info-labels download-labels">documentos</label>
+                </ion-row>
+              </ion-col>
+            </button>
           </ion-col>
         </ion-row>
       </ion-col>
