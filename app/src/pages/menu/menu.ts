@@ -8,7 +8,7 @@ import {SelectInfoCategoryPage} from "../select-info-category/select-info-catego
 import {WarningMessageDAO} from "../../providers/warning-message-dao";
 import {UserDAO} from "../../providers/user-dao";
 import {UserService} from "../../providers/user-service";
-import {LoginPage} from "../login/login";
+import {MapPage} from "../map/map";
 
 @Component({
   selector: 'page-menu',
@@ -22,7 +22,7 @@ import {LoginPage} from "../login/login";
     ]),
     trigger('iconGroup', [
       state('hintVisible', style({width: "40vw", padding: "0 0 0 0"})),
-      state('hiddenHint', style({width: "85vw", padding: "0 0 0 18vw"})),
+      state('hiddenHint', style({width: "85vw", padding: "0 0 0 15vw"})),
       transition('hintVisible => hiddenHint', animate('100ms ease-out')),
       transition('hiddenHint => hintVisible', animate('100ms ease-in'))
     ]),
@@ -103,7 +103,7 @@ export class MenuPage {
         this.navController.push(SelectInfoCategoryPage);
         break;
       case 1:
-        this.navController.push(LoginPage);
+        this.navController.push(MapPage);
         break;
       case 2:
         this.navController.push(WelcomeTestPage);

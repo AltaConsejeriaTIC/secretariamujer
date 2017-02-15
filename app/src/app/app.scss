@@ -7,6 +7,14 @@
   font-style: normal;
 }
 
+button.activated {
+  background: rgba(0, 0, 0, 0.15) !important;
+}
+
+ion-label {
+  overflow: visible;
+}
+
 .header-ios {
   border-bottom: none;
 }
@@ -49,10 +57,6 @@ ion-header {
 
   .bar-buttons {
     margin: 0;
-  }
-
-  button.activated {
-    background: map_get($colors, SofiaAppDarkBlue);
   }
 }
 

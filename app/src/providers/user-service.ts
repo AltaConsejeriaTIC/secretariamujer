@@ -9,4 +9,14 @@ export class UserService {
   constructor() {
     this.user = new User();
   }
+
+  clearUserData(){
+    this.user.id=null;
+    this.user.password=null;
+    this.user.username=null;
+    this.user.email=null;
+    this.user.cellPhone=null;
+    this.user.fullName=null;
+    this.user.contacts=[];
+  }
 }

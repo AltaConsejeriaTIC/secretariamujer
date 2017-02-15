@@ -1,12 +1,16 @@
-<ion-header>
-  <ion-navbar color="primary">
-    <ion-title>
-      Demo 105
-    </ion-title>
+<ion-header mode="ios">
+  <ion-navbar hideBackButton>
+    <button start ion-button icon-only menuToggle (click)="goBackPage()">
+      <ion-icon name="icon-fill-back-arrow"></ion-icon>
+    </button>
+    <label class="header-title">Mapas</label>
+    <button end ion-button icon-only menuToggle (click)="goBackPage()">
+      <ion-icon name="icon-go-menu"></ion-icon>
+    </button>
   </ion-navbar>
+  <div class="header-separator"></div>
 </ion-header>
 
-<ion-content>
-  <button ion-button (click)="registerEvent()" [disabled]="!isEventPinOnMap()">Registrar Evento</button>
-  <div id="map"></div>
+<ion-content no-bounce>
+  <ion-label>Pronto estará disponible</ion-label>
 </ion-content>

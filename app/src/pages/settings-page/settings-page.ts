@@ -6,6 +6,7 @@ import {FormGroup, FormBuilder, Validators, AbstractControl} from "@angular/form
 import {FormValidator} from "../../providers/form-validator";
 import { Storage } from '@ionic/storage';
 import {UserService} from "../../providers/user-service";
+import {HomePage} from "../home/home";
 
 
 const SETTINGS_SLIDE_ITEMS = 3;
@@ -80,6 +81,16 @@ export class SettingsPage {
       this.isOptionVisible[i] = (index == i)? !this.isOptionVisible[index] : false;
       this.setOptionState(i, this.isOptionVisible[i]);
     }
+
+    if(index==2){
+      this.loadProfileData();
+    }
+  }
+
+  loadProfileData(){
+    this.form.controls['fullName'].setValue(this.userService.user.fullName);
+    this.form.controls['cellPhone'].setValue(this.userService.user.cellPhone);
+    this.form.controls['email'].setValue(this.userService.user.email);
   }
 
   setOptionState(optionNumber, optionState) {
@@ -184,9 +195,21 @@ export class SettingsPage {
   }
 
   logout(){
-    this.alertCreator.showSimpleAlert('Info', 'cerrar sesión está en desarrollo');
+    this.alertCreator.showSelectMessage('Info','Al cerrar sesión el modo seguro se desactivará',()=>{
+      this.closeSession();
+    },()=>{});
+
+  }
+
+  closeSession(){
     this.storage.set('islogged', false);
     this.storage.set('isFirstTimeOpen', null);
+    this.clearUserData();
+    this.navController.setRoot(HomePage);
+  }
+
+  clearUserData(){
+    this.userService.clearUserData();
   }
 
 }

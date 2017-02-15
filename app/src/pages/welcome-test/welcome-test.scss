@@ -1,5 +1,9 @@
 page-welcome-test {
 
+  .scroll-content {
+    overflow: hidden;
+  }
+
   .content-blue {
     background-color: map_get($colors, primary);
   }
@@ -30,8 +34,8 @@ page-welcome-test {
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   }
 
-  .welcome-test-button-section:first-child button,
-  .welcome-test-button-section:nth-child(2) button {
+  .welcome-test-button-section:first-child button .button-items,
+  .welcome-test-button-section:nth-child(2) button .button-items {
     border-right: 1px solid rgba(255, 255, 255, 0.2);
   }
 
@@ -42,15 +46,25 @@ page-welcome-test {
     padding: 0;
     border-radius: 0;
     width: 100%;
+    height: 100%;
+    margin: 0 !important;
   }
 
   .welcome-test-button-section {
     padding: 0;
     width: 33.3333vw;
+    display: flex;
+    align-items: center;
+    height: 100%;
 
     button {
-      height: 90%;
-      margin: 5% auto !important;
+      height: 100%;
+    }
+
+    .button-inner .button-items {
+      padding: 0;
+      height: 80%;
+      align-items: center;
     }
 
     ion-label, .icon-col {
@@ -70,8 +84,11 @@ page-welcome-test {
     height: 21vh;
     background: map_get($colors, backgroundPurple);
 
-    button {
-      margin: 0 !important;
+    ion-col {
+      padding: 0;
+    }
+
+    .purple-button-container {
       height: 100%;
     }
 

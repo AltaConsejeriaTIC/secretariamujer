@@ -1,12 +1,13 @@
 page-menu {
 
-  .option-menu-row {
-    background-color: map_get($colors, primary);
-
+  .scroll-content {
+    overflow: hidden;
   }
 
-  .special-menu-row {
-    background-color: map_get($colors, SofiaAppRedButton);
+  .option-menu-row {
+    background-color: map_get($colors, primary);
+    height: 20vh;
+    overflow: hidden;
   }
 
   .menu-option-label, .truncate-text {
@@ -17,7 +18,9 @@ page-menu {
 
   #option-row {
     display: table;
-    height: 20vh;
+    height: 100%;
+    margin: 0;
+    background: transparent;
   }
 
   #group-icon {
@@ -29,6 +32,9 @@ page-menu {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100% !important;
+    margin: 0 !important;
+    background: transparent;
   }
 
   .menu-arrow-big {
@@ -53,33 +59,47 @@ page-menu {
     color: map_get($colors, primary);
   }
 
-  .menu-separator-container {
-    height: 100%;
-    width: 2px;
-    padding: 2vh 0;
-  }
-
-  .menu-separator {
-    background-color: map_get($colors, SofiaAppWhite);
-    height: 100%;
-    width: 100%
-  }
-
-  .special-row-icon-container {
-    height: 50%;
-    justify-content: center;
-  }
-
-  .special-row-icon-container-text {
-    height: 25%;
-    justify-content: center;
-    align-items: center;
+  button {
+    border-radius: 0 !important;
   }
 
   .content {
     .special-menu-row {
+      background-color: map_get($colors, SofiaAppRedButton);
+      height: 20vh;
+
       .second-line {
         line-height: 120%;
+      }
+
+      .button-container {
+        height: 80%;
+        padding: 0;
+      }
+
+      .button-inner, .button-container {
+        align-items: center;
+        justify-content: center;
+      }
+
+      button:nth-child(2) .button-container{
+        border-left: 0.6vw solid map_get($colors, SofiaAppWhite);
+      }
+
+      button {
+        background: transparent;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+      }
+
+      .first-line-text ion-label {
+        margin: 7px 0 0;
+      }
+
+      .icon-container, ion-icon {
+        display: flex;
+        align-items: flex-end;
       }
     }
   }
@@ -123,8 +143,8 @@ page-menu {
           font-size: 29px;
         }
 
-        #menu-arrow {
-          font-size: 16px;
+        #menu-arrow ion-icon {
+          font-size: 18px;
         }
 
         .menu-option-label, .truncate-text {
@@ -133,6 +153,12 @@ page-menu {
 
         .wrap-text-override {
           font-size: 13px;
+        }
+      }
+
+      .special-menu-row {
+        .icon-container{
+          height: 40px;
         }
       }
     }
@@ -149,8 +175,8 @@ page-menu {
           font-size: 42px;
         }
 
-        #menu-arrow {
-          font-size: 30px;
+        #menu-arrow ion-icon {
+          font-size: 32px;
         }
 
         .menu-option-label, .truncate-text {
@@ -159,6 +185,12 @@ page-menu {
 
         .wrap-text-override {
           font-size: 18px;
+        }
+      }
+
+      .special-menu-row {
+        .icon-container{
+          height: 60px;
         }
       }
     }
@@ -175,8 +207,8 @@ page-menu {
           font-size: 50px;
         }
 
-        #menu-arrow {
-          font-size: 34px;
+        #menu-arrow ion-icon {
+          font-size: 36px;
         }
 
         .menu-option-label, .truncate-text {
@@ -185,6 +217,11 @@ page-menu {
 
         .wrap-text-override {
           font-size: 26px;
+        }
+      }
+      .special-menu-row {
+        .icon-container{
+          height: 70px;
         }
       }
     }

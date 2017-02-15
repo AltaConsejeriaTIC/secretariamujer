@@ -1,13 +1,12 @@
 <ion-content id="menu-page-content" no-bounce>
   <ion-grid class="height-100 no-padding">
 
-    <ion-row *ngFor="let menuOption of menuOptions; let id = index" class="flex-1 option-menu-row option">
-      <ion-col id="option-row" [@iconGroup]="hintState[id]" (click)="goToPage(menuOption.id)" tappable>
+    <ion-row *ngFor="let menuOption of menuOptions; let id = index" class="option-menu-row option">
+      <button ion-button icon-only mode="ios" id="option-row" [@iconGroup]="hintState[id]" (click)="goToPage(menuOption.id)">
         <div id="group-icon">
           <ion-row class="justify-center-row menu-icon-padding-container">
             <ion-icon name="{{menuOption.icon}}"></ion-icon>
           </ion-row>
-
           <ion-row class="justify-center-row">
             <ion-label
               [ngClass]="{'menu-option-label': !menuOption.isShowingHint, 'truncate-text':menuOption.isShowingHint}">
@@ -15,9 +14,10 @@
             </ion-label>
           </ion-row>
         </div>
-      </ion-col>
-      <ion-icon id="menu-arrow" [name]="arrowIcon[id]" (click)="toggleisShowingHintParameter(id)"
-                [ngClass]="{'menu-arrow-big': !menuOption.isShowingHint, 'menu-arrow-small':menuOption.isShowingHint}" tappable></ion-icon>
+      </button>
+      <button ion-button icon-only mode="ios" id="menu-arrow" (click)="toggleisShowingHintParameter(id)" [ngClass]="{'menu-arrow-big': !menuOption.isShowingHint, 'menu-arrow-small':menuOption.isShowingHint}" >
+        <ion-icon [name]="arrowIcon[id]"></ion-icon>
+      </button>
       <ion-row class="item-hint" [@menuItemHint]="hintState[id]">
         <div class="wrap-text-override">
           <ion-label *ngFor="let hint of menuOption.hint;" text-wrap class="center-menu-tip-text">
@@ -28,34 +28,37 @@
     </ion-row>
 
 
-    <ion-row class="flex-1 special-menu-row">
-      <ion-col width-49 (click)="makePhoneCall()" tappable>
-        <ion-row class="special-row-icon-container">
-          <ion-icon class="phone-icon" name="icon-phone"></ion-icon>
-        </ion-row>
-        <ion-row class="special-row-icon-container-text">
-          <ion-label class="menu-option-label no-margin">Llamar</ion-label>
-        </ion-row>
-        <ion-row class="special-row-icon-container-text align-start-vertically">
-          <ion-label class="menu-option-label no-margin second-line">123</ion-label>
-        </ion-row>
-      </ion-col>
-      <div class="menu-separator-container">
-        <div class="menu-separator"></div>
-      </div>
-
-
-      <ion-col width-50 (click)="sendWarningMessages()" tappable>
-        <ion-row class="special-row-icon-container">
-          <ion-icon class="mail-icon" name="icon-msj"></ion-icon>
-        </ion-row>
-        <ion-row class="special-row-icon-container-text">
-          <ion-label class="menu-option-label no-margin">Enviar</ion-label>
-        </ion-row>
-        <ion-row class="special-row-icon-container-text align-start-vertically">
-          <ion-label class="menu-option-label no-margin second-line">Mensaje</ion-label>
-        </ion-row>
-      </ion-col>
+    <ion-row class="special-menu-row">
+        <button ion-button icon-only mode="ios" (click)="makePhoneCall()" tappable>
+          <ion-row class="button-container">
+            <ion-col>
+              <ion-row class="icon-container">
+                <ion-icon class="phone-icon" name="icon-phone"></ion-icon>
+              </ion-row>
+              <ion-row class="first-line-text">
+                <ion-label class="menu-option-label">Llamar</ion-label>
+              </ion-row>
+              <ion-row>
+                <ion-label class="menu-option-label no-margin second-line">123</ion-label>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+        </button>
+        <button ion-button icon-only mode="ios" (click)="sendWarningMessages()" tappable>
+          <ion-row class="button-container">
+            <ion-col>
+              <ion-row class="icon-container">
+                <ion-icon class="mail-icon" name="icon-msj"></ion-icon>
+              </ion-row>
+              <ion-row class="first-line-text">
+                <ion-label class="menu-option-label">Enviar</ion-label>
+              </ion-row>
+              <ion-row>
+                <ion-label class="menu-option-label no-margin second-line">Mensaje</ion-label>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+        </button>
     </ion-row>
 
   </ion-grid>
