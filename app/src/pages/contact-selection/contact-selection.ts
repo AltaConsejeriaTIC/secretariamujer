@@ -21,7 +21,7 @@ export class ContactSelectionPage {
   contacts: IContact[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private contactAdapter: ContactAdapter,
-              private userDAO: UserDAO, private alertCreator: AlertCreator, private userService:UserService) {
+              private userDAO: UserDAO, private alertCreator: AlertCreator, private userService: UserService) {
     this.initContacts();
   }
 
@@ -35,7 +35,7 @@ export class ContactSelectionPage {
 
   private loadSavedContacts() {
     for (let i = 0; i < MAX_CONTACTS; i++) {
-      let contact = this.userService.user.contacts[i];
+      let contact = this.userService.user.contacts != null ? this.userService.user.contacts[i] : null;
 
       this.contacts[i] = contact != null ? contact : ContactFactory.createContact();
     }
