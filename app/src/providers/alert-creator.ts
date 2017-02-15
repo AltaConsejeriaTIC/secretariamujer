@@ -34,4 +34,22 @@ export class AlertCreator {
     alert.present();
   }
 
+  showSelectMessage(title: string, message: string, acceptHandler: any, cancelHandler: any){
+    let alert = this.alertCtrl.create({
+      title:title,
+      subTitle:message,
+      buttons:[
+        {
+          text:'Aceptar',
+          handler:acceptHandler
+        },
+        {
+          text:'Cancelar',
+          handler:cancelHandler
+        }
+      ]
+    });
+    alert.present();
+  }
+
 }
