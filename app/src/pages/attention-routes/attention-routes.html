@@ -20,15 +20,17 @@
         <ion-label class="description">una categoría</ion-label>
       </ion-col>
     </ion-row>
-    <ion-row *ngFor="let route of attentionRoutes;" (click)="goToRoute(route.id)" [class]="route.class" tappable>
-      <div class="item-container">
-        <ion-icon class="icon-col" name={{route.iconName}}></ion-icon>
-        <div class="labels-col">
-          <div *ngFor="let label of route.labels;">
-            <label>{{label}}</label>
+    <ion-row *ngFor="let route of attentionRoutes;" [class]="route.class">
+      <button ion-button icon-only mode="ios" (click)="goToRoute(route.id)">
+        <div class="item-container">
+          <ion-icon class="icon-col" name={{route.iconName}}></ion-icon>
+          <div class="labels-col">
+            <div *ngFor="let label of route.labels;">
+              <label>{{label}}</label>
+            </div>
           </div>
         </div>
-      </div>
+      </button>
     </ion-row>
   </ion-grid>
 </ion-content>
