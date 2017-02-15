@@ -32,6 +32,10 @@ export class LoginService {
     });
   }
 
+  logout(){
+    return this.http.get(ApplicationConfig.getURL('/user/logout'));
+  }
+
   private createHttpBody(user: IUser) {
     let body = JSON.stringify({
       name: user.username,

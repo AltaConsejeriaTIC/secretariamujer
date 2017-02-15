@@ -12,30 +12,34 @@ import {UserDAO} from "../../providers/user-dao";
 import {AlertCreator} from "../../providers/alert-creator";
 import {ApplicationConfig} from "../../config";
 import {FormValidator} from "../../providers/form-validator";
-import { Storage } from '@ionic/storage';
+import {Storage} from '@ionic/storage';
 import {UserService} from "../../providers/user-service";
-
+import {LoginService} from "../../providers/login-service";
 
 
 describe('settingsPage tests', () => {
 
   let settingsPage: SettingsPage;
   let fixture: ComponentFixture<SettingsPage>;
-  let userService:UserService;
+  let userService: UserService;
   let stubAlertCreator = {
     showSimpleAlert: () => {
     }
   }
   let stubHaptic = {};
   let stubLoading = {
-    present:()=>{}
+    present: () => {
+    }
   };
-  let stubLoadingController={
-    createLoading:()=>{},
-    create:()=>{
+  let stubLoadingController = {
+    createLoading: () => {
+    },
+    create: () => {
       return {
-        present:()=>{},
-        dismiss:()=>{}
+        present: () => {
+        },
+        dismiss: () => {
+        }
       }
     }
   };
@@ -49,11 +53,15 @@ describe('settingsPage tests', () => {
     TestBed.configureTestingModule({
       declarations: [SettingsPage, ContactSelectionPage],
       providers: [
-        App, Platform, Form, Keyboard, MenuController, NavController, Http, ApplicationConfig,FormValidator,Storage,UserService,
+        App, Platform, Form, Keyboard, MenuController, NavController, Http, ApplicationConfig, FormValidator,
+        Storage, UserService, LoginService,
         {provide: Config, useClass: ConfigMock}, {
           provide: ConnectionBackend,
           useClass: ConfigMock
-        }, {provide: AlertCreator, useValue: stubAlertCreator}, {provide: Haptic, useValue: stubHaptic}, {provide: Loading, useValue: stubLoading},
+        }, {provide: AlertCreator, useValue: stubAlertCreator}, {
+          provide: Haptic,
+          useValue: stubHaptic
+        }, {provide: Loading, useValue: stubLoading},
         {provide: LoadingController, useValue: stubLoadingController}, {provide: UserDAO, useClass: UserDAOMock},
       ],
       imports: [
@@ -70,7 +78,7 @@ describe('settingsPage tests', () => {
   });
 
   beforeEach(inject([UserService], (_UserService) => {
-    userService=_UserService;
+    userService = _UserService;
   }));
 
   it('all options should be hidden when page starts', () => {
@@ -124,7 +132,7 @@ describe('settingsPage tests', () => {
   });
 
   it('if user open profile, change data, dont save it and close profile, user data should be equal to the current user service value', () => {
-    userService.user.email="user@user.com";
+    userService.user.email = "user@user.com";
     settingsPage.toggleisShowingOptions(2);
     settingsPage.form.controls["email"].setValue("test@test.com");
     settingsPage.toggleisShowingOptions(2);
