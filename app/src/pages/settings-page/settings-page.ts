@@ -6,6 +6,7 @@ import {FormGroup, FormBuilder, Validators, AbstractControl} from "@angular/form
 import {FormValidator} from "../../providers/form-validator";
 import { Storage } from '@ionic/storage';
 import {UserService} from "../../providers/user-service";
+import {HomePage} from "../home/home";
 
 
 const SETTINGS_SLIDE_ITEMS = 3;
@@ -194,7 +195,6 @@ export class SettingsPage {
   }
 
   logout(){
-
     this.alertCreator.showSelectMessage('Info','Al cerrar sesión el modo seguro se desactivará',()=>{
       this.closeSession();
     },()=>{});
@@ -204,6 +204,12 @@ export class SettingsPage {
   closeSession(){
     this.storage.set('islogged', false);
     this.storage.set('isFirstTimeOpen', null);
+    this.clearUserData();
+    this.navController.setRoot(HomePage);
+  }
+
+  clearUserData(){
+    this.userService.clearUserData();
   }
 
 }
