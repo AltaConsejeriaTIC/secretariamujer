@@ -80,6 +80,16 @@ export class SettingsPage {
       this.isOptionVisible[i] = (index == i)? !this.isOptionVisible[index] : false;
       this.setOptionState(i, this.isOptionVisible[i]);
     }
+
+    if(index==2){
+      this.loadProfileData();
+    }
+  }
+
+  loadProfileData(){
+    this.form.controls['fullName'].setValue(this.userService.user.fullName);
+    this.form.controls['cellPhone'].setValue(this.userService.user.cellPhone);
+    this.form.controls['email'].setValue(this.userService.user.email);
   }
 
   setOptionState(optionNumber, optionState) {

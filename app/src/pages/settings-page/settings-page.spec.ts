@@ -1,4 +1,4 @@
-import {ComponentFixture, TestBed, async} from '@angular/core/testing';
+import {ComponentFixture, TestBed, async, inject} from '@angular/core/testing';
 import {
   App, MenuController, NavController, Platform, Config, Keyboard, Form, IonicModule, Haptic, LoadingController, Loading
 }  from 'ionic-angular';
@@ -21,6 +21,7 @@ describe('settingsPage tests', () => {
 
   let settingsPage: SettingsPage;
   let fixture: ComponentFixture<SettingsPage>;
+  let userService:UserService;
   let stubAlertCreator = {
     showSimpleAlert: () => {
     }
@@ -67,6 +68,10 @@ describe('settingsPage tests', () => {
     fixture = TestBed.createComponent(SettingsPage);
     settingsPage = fixture.componentInstance;
   });
+
+  beforeEach(inject([UserService], (_UserService) => {
+    userService=_UserService;
+  }));
 
   it('all options should be hidden when page starts', () => {
     settingsPage.setInitialIconState();
@@ -117,4 +122,13 @@ describe('settingsPage tests', () => {
     settingsPage.changePin();
     expect(settingsPage.currentPin).toEqual(settingsPage.newPin);
   });
+
+  it('if user open profile, change data, dont save it and close profile, user data should be equal to the current user service value', () => {
+    userService.user.email="user@user.com";
+    settingsPage.toggleisShowingOptions(2);
+    settingsPage.form.controls["email"].setValue("test@test.com");
+    settingsPage.toggleisShowingOptions(2);
+    expect(settingsPage.form.controls["email"].value).toEqual("user@user.com");
+  });
+
 });
