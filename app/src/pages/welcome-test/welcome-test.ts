@@ -30,8 +30,6 @@ export class WelcomeTestPage {
       .catch(() => {
         this.alertCreator.showSimpleAlert("Error", "No es posible hacer la llamada en este momento");
       });
-
-    console.log("llamar a la linea  018000 112137")
   }
 
   goToTestSelectTestCategory() {
