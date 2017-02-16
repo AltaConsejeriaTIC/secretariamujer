@@ -12,21 +12,13 @@ export class LoginService {
   constructor(private http: Http, private userDAO: UserDAO, public alertCreator: AlertCreator) {
   }
 
-  login(user: IUser, successCallback:(data)=>void, errorCallback:()=>void) {
-    let url = ApplicationConfig.getURL('/user/login?_format=json');
-    let body = this.createHttpBody(user);
-    let options = this.createRequestOptions();
+  login(username:string, successCallback:(response)=>void,errorCallback:()=>void) {
+    let RESTAddress= ApplicationConfig.getURL('/users_rest/') + username;
 
-    return this.http.post(url, body, options).map(response => response.json()).subscribe(userId => {
-      this.userDAO.CSRF_TOKEN = userId.csrf_token;
+    return this.http.get(RESTAddress).map(response => response.json()).subscribe(response => {
+      console.log("la respuesta", response);
 
-      this.userDAO.get(userId.current_user.uid).subscribe(user => {
-        successCallback(user);
-      }, error => {
-        console.log(error);
-        errorCallback();
-        this.alertCreator.showCofirmationMessage('Error', 'No fue posible obtener la informacion del usuario, intenta mas tarde');
-      });
+      successCallback(response);
     }, error => {
       console.log(error);
       errorCallback();
