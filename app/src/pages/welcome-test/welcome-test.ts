@@ -5,6 +5,8 @@ import {UserDAO} from "../../providers/user-dao";
 import {AttentionRoutesPage} from "../attention-routes/attention-routes";
 import {SelectTipsCategoryPage} from "../select-tips-category/select-tips-category";
 import {UserService} from "../../providers/user-service";
+import {CallNumber} from "ionic-native";
+import {AlertCreator} from "../../providers/alert-creator";
 
 @Component({
   selector: 'page-welcome-test',
@@ -14,11 +16,20 @@ export class WelcomeTestPage {
 
   userName: string;
 
-  constructor(public navController: NavController, public userDAO: UserDAO, private userService:UserService) {
+  constructor(public navController: NavController, public userDAO: UserDAO, private userService:UserService, public alertCreator: AlertCreator,) {
     this.userName = this.userService.user.username|| "Yabushita Mai";
   }
 
   ionViewDidLoad() {
+  }
+
+  callPurpleNumber(){
+    CallNumber.callNumber('018000112137', true)
+      .then(() => {
+      })
+      .catch(() => {
+        this.alertCreator.showSimpleAlert("Error", "No es posible hacer la llamada en este momento");
+      });
   }
 
   goToTestSelectTestCategory() {

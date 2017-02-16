@@ -35,7 +35,7 @@ export class LoginService {
   }
 
   logout(){
-    return this.http.get(ApplicationConfig.getURL('/user/logout'));
+    return this.http.get(ApplicationConfig.getURL('/?q=user/logout'));
   }
 
   private createHttpBody(user: IUser) {

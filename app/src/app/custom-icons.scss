@@ -41,8 +41,8 @@
 @include createIcon(icon-test, '\e907');
 @include createIcon(icon-download, '\e908');
 @include createIcon(icon-msj, '\e909');
-@include createIcon(icon-fill-back-arrow, '\e90b');
 @include createIcon(icon-border-next-arrow, '\e90c');
+@include createIcon(icon-fill-back-arrow, '\e90d');
 @include createIcon(icon-fill-up-arrow, '\e90e');
 @include createIcon(icon-border-up-arrow, '\e910');
 @include createIcon(icon-border-down-arrow, '\e911');
@@ -66,3 +66,4 @@
 @include createIcon(about-SOFIA, '\e924');
 @include createIcon(about-app, '\e925');
 @include createIcon(icon-tutorial, '\e926');
+@include createIcon(icon-save, '\e928');
