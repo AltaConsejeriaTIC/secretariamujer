@@ -206,11 +206,17 @@ export class SettingsPage {
   }
 
   closeSession() {
+    this.loading.present();
     this.storage.set('islogged', false);
     this.storage.set('isFirstTimeOpen', null);
-    this.loginService.logout();
-    this.clearUserData();
-    this.navController.setRoot(HomePage);
+    this.loginService.logout().subscribe(res=>{
+      this.clearUserData();
+      this.hideLoading();
+      this.navController.setRoot(HomePage);
+    }, err=>{
+      console.log(err);
+    });
+
   }
 
   clearUserData() {
