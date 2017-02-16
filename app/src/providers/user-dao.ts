@@ -11,6 +11,7 @@ import {UserAdapter} from "./adapter/user-adapter";
 @Injectable()
 export class UserDAO {
   user: IUser;
+  CSRF_TOKEN: string;
 
   constructor(public http: Http, private userService: UserService, private userAdapter: UserAdapter) {
     this.user = new User();
@@ -75,6 +76,10 @@ export class UserDAO {
   }
 
   private createHeaders() {
-    return new Headers({'Content-Type': 'application/json', 'Authorization': 'Basic ' + 'YXBwOmFwcA=='});
+    return new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': 'Basic ' + 'YXBwOmFwcA==',
+      'X-CSRF-Token': this.CSRF_TOKEN
+    });
   }
 }

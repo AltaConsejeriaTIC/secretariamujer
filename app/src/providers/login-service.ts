@@ -17,8 +17,10 @@ export class LoginService {
     let body = this.createHttpBody(user);
     let options = this.createRequestOptions();
 
-    return this.http.post(url, body, options).map(response => response.json().current_user.uid).subscribe(userId => {
-      this.userDAO.get(userId).subscribe(user => {
+    return this.http.post(url, body, options).map(response => response.json()).subscribe(userId => {
+      this.userDAO.CSRF_TOKEN = userId.csrf_token;
+
+      this.userDAO.get(userId.current_user.uid).subscribe(user => {
         successCallback(user);
       }, error => {
         console.log(error);
