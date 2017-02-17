@@ -214,7 +214,7 @@ ion-header {
 .disabled-button {
   color: $placeholderInputColor;
   font-weight: bold;
-  border: 1px solid $placeholderInputColor;
+  border: 1px solid $placeholderInputColor !important;
 }
 
 .text-input::-moz-placeholder {
