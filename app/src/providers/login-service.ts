@@ -14,13 +14,18 @@ export class LoginService {
   constructor(private http: Http, private userDAO: UserDAO, public alertCreator: AlertCreator, private userFactory: UserFactory, private userAdapter: UserAdapter) {
   }
 
-  login(username:string, successCallback:(response)=>void,errorCallback:()=>void) {
-    let RESTAddress= ApplicationConfig.getURL('/users_rest/') + username;
+  login(user, successCallback:(response)=>void,errorCallback:()=>void) {
+    let RESTAddress= ApplicationConfig.getURL('/users_rest/') + user.username+'/'+user.password;
     let options = this.createRequestOptions();
 
     return this.http.get(RESTAddress, options).map(response => response.json()).subscribe(response => {
-      let userData= this.userAdapter.adaptUserFromServer(response[0]);
-      successCallback(userData);
+      if(response.length==0){
+        this.alertCreator.showSimpleAlert('Error', 'Usuario y/o contraseña incorrectos');
+        errorCallback();
+      }else{
+        let userData= this.userAdapter.adaptUserFromServer(response[0]);
+        successCallback(userData);
+      }
     }, error => {
       console.log(error);
       errorCallback();
