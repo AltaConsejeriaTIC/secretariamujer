@@ -1,11 +1,12 @@
 page-home {
-  .sofia-logo {
-    color: map_get($colors, SofiaAppWhite);
+  .logo-container {
+    background: url(../assets/img/logo-sofia-app.png) transparent no-repeat center/ 75% auto !important;
+    height: 50vh;
   }
 
   button {
     line-height: 45px ;
-    text-transform: capitalize;
+    text-transform: capitalize !important;
     border-radius: 5px !important;
     font-weight: bold !important;
   }
@@ -20,11 +21,6 @@ page-home {
   }
 
   @media (max-width: 479px) {
-    .sofia-logo {
-      font-size: 55px;
-      margin: 17vh auto;
-    }
-
     #required-info-register-button-container {
       button {
         height: 40px;
@@ -43,11 +39,6 @@ page-home {
   }
 
   @media (min-width: 480px) and (max-width: 767px) {
-    .sofia-logo {
-      font-size: 85px;
-      margin: 21vh auto;
-    }
-
     #required-info-register-button-container {
       button {
         height: 56px;
@@ -66,11 +57,6 @@ page-home {
   }
 
   @media (min-width: 768px) {
-    .sofia-logo {
-      font-size: 110px;
-      margin: 18vh auto;
-    }
-
     #required-info-register-button-container {
       button {
         height: 70px;
