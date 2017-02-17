@@ -16,10 +16,17 @@ export class UserAdapter {
       fullName: userFromServer.field_full_name,
       email: userFromServer.mail,
       cellPhone: userFromServer.field_cellphone,
-      contacts: []
+      contacts: this.getContacts(userFromServer.field_contacts)
     });
 
     return user;
+  }
+
+  getContacts(contacts:string){
+    let div=contacts.split("<pre><code>");
+    let div2 = div[1].split("<\/code><\/pre>");
+    let contactsString=div2[0];
+    return JSON.parse(contactsString);
   }
 
   adaptUserToServer(user: IUser): any {

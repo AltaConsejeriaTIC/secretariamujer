@@ -56,6 +56,7 @@ export class UserNameFormPage {
 
     this.loginService.login(this.form.controls['username'].value,(data)=>{
       this.userService.user = data;
+      this.userService.user.password=this.userPassword;
       this.goToMenuPage();
     },()=>{
       this.hideLoading();
