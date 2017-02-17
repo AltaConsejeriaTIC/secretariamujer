@@ -15,6 +15,8 @@ import {FormValidator} from "../../providers/form-validator";
 import {Storage} from '@ionic/storage';
 import {UserService} from "../../providers/user-service";
 import {LoginService} from "../../providers/login-service";
+import {UserFactory} from "../../providers/user-factory";
+import {UserAdapter} from "../../providers/adapter/user-adapter";
 
 
 describe('settingsPage tests', () => {
@@ -53,7 +55,7 @@ describe('settingsPage tests', () => {
     TestBed.configureTestingModule({
       declarations: [SettingsPage, ContactSelectionPage],
       providers: [
-        App, Platform, Form, Keyboard, MenuController, NavController, Http, ApplicationConfig, FormValidator,
+        App, Platform, Form, Keyboard, MenuController, NavController, Http, ApplicationConfig, FormValidator,UserFactory,UserAdapter,
         Storage, UserService, LoginService,
         {provide: Config, useClass: ConfigMock}, {
           provide: ConnectionBackend,

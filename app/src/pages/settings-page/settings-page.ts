@@ -50,7 +50,6 @@ export class SettingsPage {
     this.changePinState = WRITE_CURRENT_PIN;
     this.createForm(formBuilder);
     this.loading = this.createLoading();
-
   }
 
   ionViewDidLoad() {

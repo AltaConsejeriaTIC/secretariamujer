@@ -11,12 +11,12 @@ export class UserAdapter {
 
   adaptUserFromServer(userFromServer: any): IUser {
     let user = this.userFactory.createUser({
-      id: this.getPropertyValue(userFromServer.uid),
-      username: this.getPropertyValue(userFromServer.name),
-      fullName: this.getPropertyValue(userFromServer.field_full_name),
-      email: this.getPropertyValue(userFromServer.mail),
-      cellPhone: this.getPropertyValue(userFromServer.field_cellphone),
-      contacts: this.adaptContactsFromServer(this.getPropertyValue(userFromServer.field_contacts))
+      id: userFromServer.uid,
+      username: userFromServer.name,
+      fullName: userFromServer.field_full_name,
+      email: userFromServer.mail,
+      cellPhone: userFromServer.field_cellphone,
+      contacts: []
     });
 
     return user;

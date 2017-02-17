@@ -5,20 +5,22 @@ import {IUser} from "../entity/user";
 import {ApplicationConfig} from "../config";
 import {UserDAO} from "./user-dao";
 import {AlertCreator} from "./alert-creator";
+import {UserFactory} from "./user-factory";
+import {UserAdapter} from "./adapter/user-adapter";
 
 @Injectable()
 export class LoginService {
 
-  constructor(private http: Http, private userDAO: UserDAO, public alertCreator: AlertCreator) {
+  constructor(private http: Http, private userDAO: UserDAO, public alertCreator: AlertCreator, private userFactory: UserFactory, private userAdapter: UserAdapter) {
   }
 
   login(username:string, successCallback:(response)=>void,errorCallback:()=>void) {
     let RESTAddress= ApplicationConfig.getURL('/users_rest/') + username;
+    let options = this.createRequestOptions();
 
-    return this.http.get(RESTAddress).map(response => response.json()).subscribe(response => {
-      console.log("la respuesta", response);
-
-      successCallback(response);
+    return this.http.get(RESTAddress, options).map(response => response.json()).subscribe(response => {
+      let userData= this.userAdapter.adaptUserFromServer(response[0]);
+      successCallback(userData);
     }, error => {
       console.log(error);
       errorCallback();
@@ -40,7 +42,7 @@ export class LoginService {
   }
 
   private createHeaders() {
-    return new Headers({'Content-Type': 'application/json'});
+    return new Headers({'Content-Type': 'application/json', 'Authorization': 'Basic ' + 'YXBwOmFwcA=='});
   }
 
   private createRequestOptions() {
