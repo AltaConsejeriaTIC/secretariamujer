@@ -5,4 +5,4 @@
     <p>{{tutorialItem.label}}</p>
   </ion-slide>
 </ion-slides>
-<button ion-button full (click)="goToMenuPage()" mode="ios" color="danger" *ngIf="isVisibleButton">{{buttonLabel}}</button>
+<button ion-button full (click)="goToMenuPage()" mode="ios" color="danger"  [ngClass]="{'button-opacity': isDisabledButton}">{{buttonLabel}}</button>

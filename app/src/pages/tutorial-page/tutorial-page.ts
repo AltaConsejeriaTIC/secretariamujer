@@ -13,8 +13,9 @@ export class TutorialPage {
   sliderOptions: any;
   tutorialItems: any[];
   tutorialBackgrounds: string[] = [];
-  isVisibleButton: boolean;
+  isDisabledButton: boolean;
   buttonLabel: string;
+  isFirstTimeOpen:boolean;
 
   constructor(public navCtrl: NavController, public storage: Storage) {
     this.sliderOptions = {
@@ -28,6 +29,8 @@ export class TutorialPage {
       {label: 'Encuentra tips especialmente pensados en ti para afrontar situaciones de violencia de género'},
       {label: 'Activa el modo seguro y entra a la App digitando tu PIN en la calculadora y dandole en el igual'},
     ];
+
+    this.isDisabledButton=false;
   }
 
   ionViewDidLoad() {
@@ -43,9 +46,16 @@ export class TutorialPage {
 
   setButtonVisibilityAndLabel() {
     this.storage.get('isFirstTimeOpen').then((isFirstTimeOpen) => {
-      this.isVisibleButton = this.isFirstTimeOpenOrEmpty(isFirstTimeOpen)? false: true;
-      this.buttonLabel = this.isFirstTimeOpenOrEmpty(isFirstTimeOpen)? "Finalizar" : "Omitir";
+      this.isFirstTimeOpen=isFirstTimeOpen;
+      if(isFirstTimeOpen){
+        this.setFirstTimeOpenStyles();
+      }
     })
+  }
+
+  setFirstTimeOpenStyles(){
+    this.isDisabledButton=true;
+    this.buttonLabel = "Finalizar";
   }
 
   getURLImage(imageNumber):string {
@@ -65,10 +75,11 @@ export class TutorialPage {
   }
 
   onSlideChanged() {
-    this.buttonLabel=(this.isTheLastSlideVisible(this.slider.getActiveIndex() + 1, this.tutorialItems.length))? "Finalizar" : "Omitir";
+    let isLastSlide=this.isTheLastSlideVisible(this.slider.getActiveIndex() + 1, this.tutorialItems.length);
+    //this.buttonLabel=(this.isTheLastSlideVisible(this.slider.getActiveIndex() + 1, this.tutorialItems.length))? "Finalizar" : "Omitir";
     this.storage.get('isFirstTimeOpen').then((isFirstTimeOpen) => {
       if (this.isFirstTimeOpenOrEmpty(isFirstTimeOpen)) {
-        this.isVisibleButton = (this.isTheLastSlideVisible(this.slider.getActiveIndex() + 1, this.tutorialItems.length))? true : false;
+       // this.isVisibleButton = (this.isTheLastSlideVisible(this.slider.getActiveIndex() + 1, this.tutorialItems.length))? true : false;
       }
     })
   }
@@ -81,3 +92,7 @@ export class TutorialPage {
     return currentSlide == lastSlidePosition;
   }
 }
+
+
+/*
+ */

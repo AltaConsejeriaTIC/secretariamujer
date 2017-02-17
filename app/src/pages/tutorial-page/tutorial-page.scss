@@ -23,6 +23,10 @@ page-tutorial-page {
     font-weight: bold;
   }
 
+  .button-opacity{
+    opacity: 0.8;
+  }
+
   .swiper-pagination-bullet {
     background-color: map_get($colors, backgroundPurple);
   }

@@ -64,4 +64,12 @@ describe('Tutorial page tests', () => {
     tutorialPage.setTutorialBackgroundImages();
     expect(tutorialPage.tutorialBackgrounds[0]).toEqual('url(assets/img/tutorial_images/tutorial_1.png)');
   });
+
+  it('setFirstTimeOpenStyles should set isDisabledButton to false and set buttonLabel to Finalizar', () => {
+    tutorialPage.setFirstTimeOpenStyles();
+    expect(tutorialPage.isDisabledButton).toEqual(true);
+    expect(tutorialPage.buttonLabel).toEqual("Finalizar");
+  });
+
+
 });
