@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
-import {Contacts, Contact, IContactProperties} from 'ionic-native';
+import {Contacts, Contact, IContactProperties, ContactError} from 'ionic-native';
 import {MenuPage} from "../menu/menu";
 import {IContact} from "../../entity/contact";
 import {ContactAdapter} from "../../providers/adapter/contact-adapter";
@@ -60,10 +60,12 @@ export class ContactSelectionPage {
   }
 
   private handleError(error) {
-    switch ((<Error>error).name) {
-      case 'InvalidContactPhoneNumberError':
-        this.alertCreator.showCofirmationMessage('Contacto No Permitido', 'El contacto seleccionado no tiene ningun numero de telefono. Por favor seleccione otro');
-        break;
+    if ((<Error>error).name == 'InvalidContactPhoneNumberError') {
+      this.alertCreator.showCofirmationMessage('Contacto No Permitido', 'El contacto seleccionado no tiene ningun numero de telefono. Por favor seleccione otro');
+    }
+
+    if (error == ContactError.PERMISSION_DENIED_ERROR) {
+      this.alertCreator.showCofirmationMessage('Permiso De Acceso', 'Ve a la configuración de tu celular y otórgale permisos a SofiApp para que pueda acceder a tus contactos');
     }
   }
 
