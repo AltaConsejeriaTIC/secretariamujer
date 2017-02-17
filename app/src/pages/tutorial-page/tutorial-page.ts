@@ -65,6 +65,7 @@ export class TutorialPage {
   }
 
   onSlideChanged() {
+    this.buttonLabel=(this.isTheLastSlideVisible(this.slider.getActiveIndex() + 1, this.tutorialItems.length))? "Finalizar" : "Omitir";
     this.storage.get('isFirstTimeOpen').then((isFirstTimeOpen) => {
       if (this.isFirstTimeOpenOrEmpty(isFirstTimeOpen)) {
         this.isVisibleButton = (this.isTheLastSlideVisible(this.slider.getActiveIndex() + 1, this.tutorialItems.length))? true : false;
