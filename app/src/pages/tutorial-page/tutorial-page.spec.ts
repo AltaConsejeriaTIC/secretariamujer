@@ -65,10 +65,25 @@ describe('Tutorial page tests', () => {
     expect(tutorialPage.tutorialBackgrounds[0]).toEqual('url(assets/img/tutorial_images/tutorial_1.png)');
   });
 
-  it('setFirstTimeOpenStyles should set isDisabledButton to false and set buttonLabel to Finalizar', () => {
+  it('setFirstTimeOpenStyles should set isDisabledButton to true and set buttonLabel to Finalizar', () => {
     tutorialPage.setFirstTimeOpenStyles();
     expect(tutorialPage.isDisabledButton).toEqual(true);
     expect(tutorialPage.buttonLabel).toEqual("Finalizar");
+  });
+
+  it('setLastSlideStyles should set isDisabledButton to true if lastSlide is false', () => {
+    tutorialPage.setLastSlideStyles(false);
+    expect(tutorialPage.isDisabledButton).toEqual(true);
+  });
+
+  it('setLastSlideStyles should set isDisabledButton to true if lastSlide is false', () => {
+    tutorialPage.setLastSlideStyles(true);
+    expect(tutorialPage.isDisabledButton).toEqual(false);
+  });
+
+  it('setSkipLabel should set button label to omitir', () => {
+    tutorialPage.setSkipLabel();
+    expect(tutorialPage.buttonLabel).toEqual("Omitir");
   });
 
 

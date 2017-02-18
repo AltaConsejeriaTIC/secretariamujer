@@ -49,6 +49,8 @@ export class TutorialPage {
       this.isFirstTimeOpen=isFirstTimeOpen;
       if(isFirstTimeOpen){
         this.setFirstTimeOpenStyles();
+      }else{
+        this.setSkipLabel();
       }
     })
   }
@@ -58,30 +60,32 @@ export class TutorialPage {
     this.buttonLabel = "Finalizar";
   }
 
+  setSkipLabel(){
+    this.buttonLabel = "Omitir";
+  }
+
   getURLImage(imageNumber):string {
     return 'url(assets/img/tutorial_images/tutorial_'+ imageNumber + '.png)';
   }
 
   goToMenuPage() {
-    this.storage.get('isFirstTimeOpen').then((isFirstTimeOpen) => {
-      if (this.isFirstTimeOpenOrEmpty(isFirstTimeOpen)) {
-        this.storage.set('isFirstTimeOpen', false);
-        this.navCtrl.setRoot(HomePage);
-      }
-      else {
-        this.navCtrl.pop();
-      }
-    })
+    if(this.isFirstTimeOpenOrEmpty(this.isFirstTimeOpen)){
+      this.storage.set('isFirstTimeOpen', false);
+      this.navCtrl.setRoot(HomePage);
+    }else{
+      this.navCtrl.pop();
+    }
   }
 
   onSlideChanged() {
-    let isLastSlide=this.isTheLastSlideVisible(this.slider.getActiveIndex() + 1, this.tutorialItems.length);
-    //this.buttonLabel=(this.isTheLastSlideVisible(this.slider.getActiveIndex() + 1, this.tutorialItems.length))? "Finalizar" : "Omitir";
-    this.storage.get('isFirstTimeOpen').then((isFirstTimeOpen) => {
-      if (this.isFirstTimeOpenOrEmpty(isFirstTimeOpen)) {
-       // this.isVisibleButton = (this.isTheLastSlideVisible(this.slider.getActiveIndex() + 1, this.tutorialItems.length))? true : false;
-      }
-    })
+    let isLastSlide:boolean=this.isTheLastSlideVisible(this.slider.getActiveIndex() + 1, this.tutorialItems.length);
+    if(this.isFirstTimeOpen){
+      this.setLastSlideStyles(isLastSlide);
+    }
+  }
+
+  setLastSlideStyles(isLastSlide:boolean){
+    this.isDisabledButton=!isLastSlide;
   }
 
   isFirstTimeOpenOrEmpty(isFirstTimeOpen) {
@@ -93,6 +97,3 @@ export class TutorialPage {
   }
 }
 
-
-/*
- */
