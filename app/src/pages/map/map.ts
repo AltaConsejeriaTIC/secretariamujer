@@ -9,7 +9,7 @@ import {Diagnostic} from 'ionic-native';
 
 
 @Component({
-  selector: 'page-home',
+  selector: 'page-map',
   templateUrl: './map.html'
 })
 export class MapPage {
