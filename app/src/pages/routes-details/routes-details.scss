@@ -122,7 +122,7 @@ page-routes-details {
 
     [class*="background-subheader"] {
       .location-name:first-child {
-        margin: auto 0 auto 20px;
+        margin: auto 0 auto 30px;
       }
     }
 
@@ -229,6 +229,9 @@ page-routes-details {
       font-size: 27px !important;
     }
 
+    .info-col-container{
+      margin: 0 30px;
+    }
   }
 
   @media (min-width: 480px) and (max-width: 767px) {
@@ -238,7 +241,7 @@ page-routes-details {
 
     [class*="background-subheader"] {
       .location-name:first-child {
-        margin: auto 0 auto 30px;
+        margin: auto 0 auto 60px;
       }
     }
 
@@ -345,6 +348,9 @@ page-routes-details {
       }
     }
 
+    .info-col-container{
+      margin: 0 60px;
+    }
   }
 
   @media (min-width: 768px) {
@@ -354,7 +360,7 @@ page-routes-details {
 
     [class*="background-subheader"] {
       .location-name:first-child {
-        margin: auto 0 auto 30px;
+        margin: auto 0 auto 80px;
       }
     }
 
@@ -399,8 +405,6 @@ page-routes-details {
     }
 
     .info-col-container{
-      flex-basis: 472px;
-      max-width: 472px;
       border-bottom: 2px solid map_get($colors,SofiaAppGrayFont);
     }
 
@@ -464,6 +468,8 @@ page-routes-details {
       font-size: 22px !important;
     }
 
+    .info-col-container{
+      margin: 0 80px;
+    }
   }
-
 }

@@ -19,10 +19,6 @@ page-tips-page {
       display: flex;
       align-items: center;
     }
-
-    ion-label {
-      margin: auto 11vw;
-    }
   }
 
   .tips-item {
@@ -35,7 +31,6 @@ page-tips-page {
 
     ion-label {
       white-space: normal;
-      margin: auto 0 auto 11vw;
     }
 
     button {
@@ -138,6 +133,7 @@ page-tips-page {
 
       ion-label {
         font-size: 14px;
+        margin: auto 35px;
       }
     }
 
@@ -147,6 +143,7 @@ page-tips-page {
       ion-label {
         font-size: 16px;
         max-width: 54vw;
+        margin: auto 0 auto 35px;
       }
     }
 
@@ -156,8 +153,8 @@ page-tips-page {
 
     .tip-description {
       > ion-col {
-        max-width: 252px;
-        margin: 17px auto;
+        margin: 17px 0;
+        padding: 0 40px;
       }
 
       .title-2, .title-3 {
@@ -180,6 +177,7 @@ page-tips-page {
 
       ion-label {
         font-size: 22px;
+        margin: auto 60px;
       }
     }
 
@@ -189,6 +187,7 @@ page-tips-page {
       ion-label {
         font-size: 24px;
         max-width: 52vw;
+        margin: auto 0 auto 60px;
       }
     }
 
@@ -198,8 +197,8 @@ page-tips-page {
 
     .tip-description {
       > ion-col {
-        max-width: 368px;
-        margin: 13px auto;
+        margin: 13px 0;
+        padding: 0 65px;
       }
 
       .title-2, .title-3 {
@@ -226,6 +225,7 @@ page-tips-page {
 
       ion-label {
         font-size: 26px;
+        margin: auto 80px;
       }
     }
 
@@ -235,6 +235,7 @@ page-tips-page {
       ion-label {
         font-size: 29px;
         max-width: 40vw;
+        margin: auto 0 auto 80px;
       }
     }
 
@@ -244,8 +245,8 @@ page-tips-page {
 
     .tip-description {
       > ion-col {
-        max-width: 583px;
-        margin: 35px auto;
+        margin: 35px 0;
+        padding: 0 85px;
       }
 
       .title-2, .title-3 {

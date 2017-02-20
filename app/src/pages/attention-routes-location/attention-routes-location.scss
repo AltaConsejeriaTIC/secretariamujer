@@ -38,6 +38,10 @@ page-attention-routes-location {
     }
   }
 
+  .location-row-margin{
+    padding-left: 0;
+  }
+
   [class^="background-subheader-option"] {
     align-items: center;
   }
@@ -86,7 +90,7 @@ page-attention-routes-location {
 
     [class*="background-subheader"] {
       .location-name:first-child {
-        margin: auto 0 auto 20px;
+        margin: auto 0 auto 35px;
       }
     }
 
@@ -124,7 +128,7 @@ page-attention-routes-location {
 
     [class*="background-subheader"] {
       .location-name:first-child {
-        margin: auto 0 auto 30px;
+        margin: auto 0 auto 60px;
       }
     }
 
@@ -142,7 +146,7 @@ page-attention-routes-location {
     }
 
     .location-row-margin{
-      margin-left: 56px;
+      margin-left: 60px;
     }
 
     .icon-back{
@@ -161,7 +165,7 @@ page-attention-routes-location {
 
     [class*="background-subheader"] {
       .location-name:first-child {
-        margin: auto 0 auto 30px;
+        margin: auto 0 auto 80px;
       }
     }
 
@@ -179,7 +183,7 @@ page-attention-routes-location {
     }
 
     .location-row-margin{
-      margin-left: 70px;
+      margin-left: 80px;
     }
 
     .icon-back{

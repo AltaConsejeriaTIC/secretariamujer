@@ -9,7 +9,6 @@ page-sofia-info {
 
     ion-label {
       color: map_get($colors, SofiaAppWhite);
-      margin: auto 6vw;
       font-weight: bold;
     }
   }
@@ -23,6 +22,10 @@ page-sofia-info {
       margin: auto;
       .title-2, .title-3 {
         white-space: normal;
+      }
+
+      ion-col {
+        padding: 0;
       }
 
       .title-2 {
@@ -51,6 +54,7 @@ page-sofia-info {
     .sofia-info-title {
       ion-label {
         font-size: 15px;
+        margin: auto 35px;
       }
     }
 
@@ -61,7 +65,7 @@ page-sofia-info {
       }
 
       .sofia-info-description {
-        max-width: 252px;
+        padding: 0 35px;
 
         .title-2, .title-3, p {
           margin: 0 0 17px;
@@ -86,6 +90,7 @@ page-sofia-info {
     .sofia-info-title {
       ion-label {
         font-size: 22px;
+        margin: auto 60px;
       }
     }
 
@@ -96,7 +101,7 @@ page-sofia-info {
       }
 
       .sofia-info-description {
-        max-width: 368px;
+        padding: 0 60px;
 
         .title-2, .title-3, p {
           margin: 0 0 25px;
@@ -121,6 +126,7 @@ page-sofia-info {
     .sofia-info-title {
       ion-label {
         font-size: 26px;
+        margin: auto 80px;
       }
     }
 
@@ -131,7 +137,7 @@ page-sofia-info {
       }
 
       .sofia-info-description {
-        max-width: 583px;
+        padding: 0 80px;
 
         .title-2, .title-3, p {
           margin: 0 0 40px;

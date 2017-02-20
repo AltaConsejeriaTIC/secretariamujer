@@ -20,8 +20,6 @@
     </ion-row>
 
     <ion-row *ngFor="let routeDetail of routesDetails; let id=index" no-padding>
-      <ion-col class="left-margin-col" no-padding></ion-col>
-
       <ion-col class="info-col-container" no-padding>
         <ion-row class="route-title-container">
           <label [class]="nameColor[attentionRoute.id]">{{routeDetail.title}}</label>
@@ -104,8 +102,6 @@
           </ion-col>
         </ion-row>
       </ion-col>
-
-      <ion-col class="right-margin-col" no-padding></ion-col>
     </ion-row>
 
   </ion-grid>
