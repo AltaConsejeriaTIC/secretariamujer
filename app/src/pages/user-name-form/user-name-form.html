@@ -2,7 +2,7 @@
   <ion-grid class="height-100">
     <ion-row class="flex-1"></ion-row>
     <ion-row class="flex-2">
-      <ion-col id="required-info-col" offset-10 width-80>
+      <ion-col id="required-info-col">
         <ion-row>
           <ion-label text-center class="app-subtitle">Introduce tu nombre en la aplicación</ion-label>
         </ion-row>
@@ -13,13 +13,8 @@
         </form>
 
         <ion-row id="required-info-register-button-container">
-
-          <ion-col width-45 class="no-padding">
-            <button (click)="goBack()" class="app-button" ion-button outline>Atrás</button>
-          </ion-col>
-          <ion-col offset-10 width-45 class="no-padding">
-            <button (click)="login()" [ngClass]="{'app-button': form.valid, 'disabled-button': !form.valid}" ion-button outline>Continuar</button>
-          </ion-col>
+          <button (click)="goBack()" class="app-button" ion-button outline>Atrás</button>
+          <button (click)="login()" [ngClass]="{'app-button': form.valid, 'disabled-button': !form.valid}" ion-button outline>Continuar</button>
 
         </ion-row>
       </ion-col>

@@ -1,3 +1,102 @@
 page-user-name-form {
+  ion-input, button {
+    font-weight: bold;
+    border-radius: 5px !important;
+  }
+
+  ion-label {
+    margin: 0 !important;
+  }
+
+  #required-info-register-button-container{
+    justify-content: center;
+  }
+
+  button {
+    text-transform: capitalize !important;
+  }
+
+  @media (max-width: 479px) {
+    ion-label {
+      font-size: 13px;
+    }
+
+    ion-input, button {
+      height: 40px !important;
+      border: 1px solid map_get($colors, SofiaAppWhite) !important;
+    }
+
+    ion-input {
+      flex-basis: 272px !important;
+      max-width: 272px !important;
+      font-size: 16px;
+      margin: 17px auto 40px;
+    }
+
+    button {
+      font-size: 18px !important;
+      width: 125px !important;
+    }
+
+    #required-info-register-button-container button:nth-child(2){
+      margin-left: 20px;
+    }
+  }
+
+  @media (min-width: 480px) and (max-width: 767px) {
+    ion-label {
+      font-size: 18px;
+    }
+
+    ion-input {
+      flex-basis: 370px !important;
+      max-width: 370px !important;
+      font-size: 22px;
+      margin: 23px auto 56px;
+      height: 60px !important;
+    }
+
+    ion-input, button {
+      border: 2px solid map_get($colors, SofiaAppWhite) !important;
+    }
+
+    button {
+      font-size: 26px !important;
+      width: 170px !important;
+      height: 56px !important;
+    }
+
+    #required-info-register-button-container button:nth-child(2){
+      margin-left: 30px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    ion-label {
+      font-size: 23px;
+    }
+
+    ion-input {
+      flex-basis: 467px !important;
+      max-width: 467px !important;
+      font-size: 27px;
+      margin: 36px auto 72px;
+    }
+
+    button {
+      font-size: 32px !important;
+      width: 215px !important;
+    }
+
+    ion-input, button {
+      height: 70px !important;
+      border: 2px solid map_get($colors, SofiaAppWhite) !important;
+    }
+
+    #required-info-register-button-container button:nth-child(2){
+      margin-left: 37px;
+    }
+
+  }
 
 }
