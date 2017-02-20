@@ -15,6 +15,127 @@ button.activated {
   background: rgba(0, 0, 0, 0.15) !important;
 }
 
+.sofia-alert {
+  * {
+    color: map_get($colors, primary) !important;
+  }
+
+  .alert-wrapper {
+    border-radius: 15px;
+    background: white !important;
+    max-width: 70%;
+  }
+
+  .alert-title {
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .alert-title, .alert-sub-title {
+    text-align: center;
+  }
+
+  .alert-button-group {
+    justify-content: center;
+    flex-wrap: nowrap;
+
+    button:not(:first-child) {
+      margin-left: 11px;
+    }
+  }
+
+  .alert-button {
+    font-weight: 500 !important;
+    text-transform: capitalize;
+    border-radius: 5px !important;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+
+    .button-inner {
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 479px) {
+    .alert-head {
+      padding: 20px 15px;
+    }
+
+    .alert-title {
+      font-size: 15px;
+      margin: 0 0 20px;
+    }
+
+    .alert-sub-title {
+      font-size: 14px !important;
+    }
+
+    .alert-button-group {
+      padding: 0 30px 20px;
+    }
+
+    .alert-button {
+      font-size: 17px;
+      border: 1px solid map_get($colors, primary) !important;
+      height: 37px;
+      width: 87px;
+    }
+  }
+
+  @media (min-width: 480px) and (max-width: 767px) {
+    .alert-head {
+      padding: 27px 20px;
+    }
+
+    .alert-title {
+      font-size: 22px;
+      margin: 0 0 27px;
+    }
+
+    .alert-sub-title {
+      font-size: 21px !important;
+    }
+
+    .alert-button-group {
+      padding: 0 30px 27px;
+    }
+
+    .alert-button {
+      font-size: 26px;
+      border: 2px solid map_get($colors, primary) !important;
+      height: 57px;
+      width: 131px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .alert-head {
+      padding: 30px 24px;
+    }
+
+    .alert-title {
+      font-size: 27px;
+      margin: 0 0 30px;
+    }
+
+    .alert-sub-title {
+      font-size: 25px !important;
+    }
+
+    .alert-button-group {
+      padding: 0 30px 30px;
+    }
+
+    .alert-button {
+      font-size: 31px;
+      border: 2px solid map_get($colors, primary) !important;
+      height: 66px;
+      width: 157px;
+    }
+  }
+}
+
 ion-label {
   overflow: visible;
 }

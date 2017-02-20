@@ -14,6 +14,7 @@ export class AlertCreator {
     let alert = this.alertCtrl.create({
       title: title,
       subTitle: message,
+      cssClass: 'sofia-alert',
       buttons: ['Aceptar']
     });
     alert.present();
@@ -23,6 +24,7 @@ export class AlertCreator {
     let alert = this.alertCtrl.create({
       title: title,
       subTitle: message,
+      cssClass: 'sofia-alert',
       buttons: [
         {
           text: 'Aceptar',
@@ -38,6 +40,7 @@ export class AlertCreator {
     let alert = this.alertCtrl.create({
       title:title,
       subTitle:message,
+      cssClass: 'sofia-alert',
       buttons:[
         {
           text:'Aceptar',
