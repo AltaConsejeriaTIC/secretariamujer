@@ -14,6 +14,7 @@ import {LoginService} from "../../providers/login-service";
 import {UserService} from "../../providers/user-service";
 import {UserAdapter} from "../../providers/adapter/user-adapter";
 import {UserFactory} from "../../providers/user-factory";
+import {FormValidator} from "../../providers/form-validator";
 
 
 describe('RequiredInfoFormPage tests', () => {
@@ -30,7 +31,7 @@ describe('RequiredInfoFormPage tests', () => {
       declarations: [RequiredInfoFormPage],
       providers: [
         App, Platform, Form, Keyboard, MenuController, NavController, AlertController, RequiredInfoFormPage,LoginService,
-        ApplicationConfig,UserService, UserAdapter, UserFactory,
+        ApplicationConfig,UserService, UserAdapter, UserFactory, FormValidator,
         {provide: Config, useClass: ConfigMock}, {provide: LoadingController, useClass: LoadingControllerMock},
         {
           provide: AlertCreator,
@@ -60,34 +61,13 @@ describe('RequiredInfoFormPage tests', () => {
     userService=_UserService;
   }));
 
-  it('validateEmptyField should return true if field is empty', () => {
-    requiredInfoFormPage.user.fullName = null;
-    expect(requiredInfoFormPage.validateEmptyField(requiredInfoFormPage.user.fullName)).toBe(true);
-  });
+  it('if UserData is valid should save user data', () => {
+    requiredInfoFormPage.form.controls['username'].setValue('username');
+    requiredInfoFormPage.form.controls['password'].setValue('1234');
+    requiredInfoFormPage.checkInputValues();
 
-  it('throwMessageIfEmptyField should call showSimpleAlert from AlertCreator if any field is empty', () => {
-    spyOn(alertCreator, 'showSimpleAlert');
-    requiredInfoFormPage.throwMessageIfEmptyField(true, true);
-    expect(alertCreator.showSimpleAlert).toHaveBeenCalled();
-    requiredInfoFormPage.throwMessageIfEmptyField(true, false);
-    expect(alertCreator.showSimpleAlert).toHaveBeenCalled();
-    requiredInfoFormPage.throwMessageIfEmptyField(false, true);
-    expect(alertCreator.showSimpleAlert).toHaveBeenCalled();
-  });
-
-  it('isPassValueOnlyNumber should call showSimpleAlert from AlertCreator if input contains characters different from numbers and return false', () => {
-    spyOn(alertCreator, 'showSimpleAlert');
-    requiredInfoFormPage.user.password = '123!';
-    requiredInfoFormPage.isPassValueOnlyNumber();
-    expect(requiredInfoFormPage.isPassValueOnlyNumber()).toBe(false);
-    expect(alertCreator.showSimpleAlert).toHaveBeenCalled();
-  });
-
-  it('setRequiredInfo should save username and password in userService', () => {
-    requiredInfoFormPage.user.username='test';
-    requiredInfoFormPage.user.password='1234';
-    requiredInfoFormPage.saveRequiredInfo();
-    expect(userService.user.username).toEqual('test');
+    expect(userService.user.username).toEqual('username');
     expect(userService.user.password).toEqual('1234');
   });
+
 });

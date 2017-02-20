@@ -5,6 +5,8 @@ import {AlertCreator} from "../../providers/alert-creator";
 import {UserDAO} from "../../providers/user-dao";
 import {RegisterOptionalInfoPage} from "../register-optional-info/register-optional-info";
 import {UserService} from "../../providers/user-service";
+import {FormGroup, FormBuilder, Validators} from "@angular/forms";
+import {FormValidator} from "../../providers/form-validator";
 
 
 @Component({
@@ -15,17 +17,30 @@ export class RequiredInfoFormPage {
 
   user: IUser;
   loading: Loading;
+  form: FormGroup;
+  username:string;
+  password:string;
 
 
-  constructor(public navCtrl: NavController, public alertCreator: AlertCreator, public userDAO: UserDAO, private userService:UserService, public loadingController: LoadingController, ) {
+
+  constructor(public navCtrl: NavController, public alertCreator: AlertCreator, public userDAO: UserDAO, private userService:UserService, public loadingController: LoadingController, private  formBuilder: FormBuilder, public formValidator: FormValidator,) {
     this.user = new User();
     this.loading = this.createLoading();
-
+    this.createForm(formBuilder);
   }
 
   ionViewDidLoad() {
 
   }
+
+  private createForm(formBuilder: FormBuilder) {
+    this.form = formBuilder.group({
+      username: ['', Validators.compose([Validators.maxLength(30), Validators.required])],
+      password: ['', Validators.compose([Validators.pattern('[0-9]*'), Validators.maxLength(4), Validators.minLength(4), Validators.required])]
+    });
+  }
+
+
   createLoading(): Loading {
     return this.loadingController.create({
       content: "Espera un momento",
@@ -40,46 +55,20 @@ export class RequiredInfoFormPage {
 
 
   checkInputValues() {
-    let isUserNameEmpty = this.validateEmptyField(this.user.username);
-    let isPassEmpty = this.validateEmptyField(this.user.password);
-    let isPassCorrect: boolean = false;
-    this.throwMessageIfEmptyField(isUserNameEmpty, isPassEmpty);
-
-    if (!isPassEmpty) {
-      isPassCorrect = this.isPassValueOnlyNumber();
-    }
-
-    if (isPassCorrect && !isUserNameEmpty) {
+    if (this.isUserDataValid()) {
+      this.loading.present();
       this.saveRequiredInfo();
     }
   }
 
-  validateEmptyField(input): boolean {
-    return !input;
-  }
-
-  throwMessageIfEmptyField(isUserNameEmpty: boolean, isPassEmpty: boolean) {
-    if (isUserNameEmpty && isPassEmpty) {
-      this.alertCreator.showSimpleAlert('', 'Por favor llena los campos antes de continuar');
-    } else if (isUserNameEmpty) {
-      this.alertCreator.showSimpleAlert('', 'Por favor ingresa un nombre de usuario');
-    } else if (isPassEmpty) {
-      this.alertCreator.showSimpleAlert('', 'Por favor ingresa un PIN de 4 dígitos');
-    }
-  }
-
-  isPassValueOnlyNumber() {
-    if ((!this.user.password.match(/^[0-9]*$/)) || (this.user.password.length != 4)) {
-      this.alertCreator.showSimpleAlert('Error', 'El PIN sólo puede contener números y debe ser de 4 dígitos');
-      return false;
-    } else {
-      return true;
-    }
+  isUserDataValid(){
+    let isDataValid: boolean = this.formValidator.isValidUserName(this.form.controls['username'], 'Por favor ingresa un nombre de usuario, máximo 30 caracteres') && this.formValidator.IsValidPassword(this.form.controls['password'], 'Por favor ingresa un PIN de 4 dígitos');
+    return isDataValid;
   }
 
   saveRequiredInfo() {
-    this.userService.user.username=this.user.username;
-    this.userService.user.password=this.user.password;
+    this.userService.user.username=this.form.controls['username'].value;
+    this.userService.user.password=this.form.controls['password'].value;
     this.registerUser();
   }
 
