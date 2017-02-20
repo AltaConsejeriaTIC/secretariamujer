@@ -37,6 +37,7 @@ import {UserFactory} from "../providers/user-factory";
 import {UserService} from "../providers/user-service";
 import {UserAdapter} from "../providers/adapter/user-adapter";
 import {LoginPage} from "../pages/login/login";
+import {CategoryTitles} from "../providers/category-titles";
 
 @NgModule({
   declarations: [
@@ -100,7 +101,7 @@ import {LoginPage} from "../pages/login/login";
     LoginPage
   ],
   providers: [UserDAO, AlertCreator, MapServices, EventsServices, TestsService, UserAdapter,
-    ContactAdapter, Storage, WarningMessageDAO, FormValidator, LoginService, UserFactory,UserService,
+    ContactAdapter, Storage, WarningMessageDAO, FormValidator, LoginService, UserFactory,UserService,CategoryTitles,
     {
       provide: ErrorHandler,
       useClass: IonicErrorHandler
