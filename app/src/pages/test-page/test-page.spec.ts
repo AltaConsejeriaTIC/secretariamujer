@@ -1,10 +1,10 @@
 import {ComponentFixture, TestBed, async, inject} from '@angular/core/testing';
 import {
   App, MenuController, NavController, Platform, Config, Keyboard, Form, IonicModule, Nav,
-  NavParams
+  NavParams, LoadingController, Loading
 }  from 'ionic-angular';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {ConfigMock, NavMock} from '../../mocks';
+import {ConfigMock, NavMock, LoadingMock, LoadingControllerMock, AlertCreatorMock} from '../../mocks';
 import {AlertCreator} from  '../../providers/alert-creator'
 import {AlertController} from "ionic-angular";
 import {TestPage} from "./test-page";
@@ -36,7 +36,7 @@ describe('TestPage tests', () => {
     TestBed.configureTestingModule({
       declarations: [TestPage],
       providers: [
-        App, Platform, Form, Keyboard, MenuController, NavController, AlertCreator, AlertController, TestPage,UserService,
+        App, Platform, Form, Keyboard, MenuController, NavController, TestPage,UserService,
         ApplicationConfig, UserAdapter, UserFactory,
         TestsService, UserDAO,
         {
@@ -44,7 +44,12 @@ describe('TestPage tests', () => {
         },
         {
           provide: Nav, useClass: NavMock
-        }, {provide: NavParams, useValue: stubNavParams},
+        }, {provide: NavParams, useValue: stubNavParams},{provide: Loading, useClass: LoadingMock},
+        {provide: LoadingController, useClass: LoadingControllerMock},
+        {
+          provide: AlertCreator,
+          useClass: AlertCreatorMock
+        },
       ],
       imports: [
         FormsModule,

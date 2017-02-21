@@ -71,7 +71,8 @@ export class LoadingControllerMock {
   public create(): any {
     return {
       present: () => {
-      }
+      },
+      dismiss:()=>{}
     }
   }
 

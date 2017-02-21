@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {NavController, Platform, Nav, NavParams} from 'ionic-angular';
+import {NavController, Platform, Nav, NavParams, Loading, LoadingController} from 'ionic-angular';
 import {TestsService} from "../../providers/tests-service";
 import {AlertCreator} from "../../providers/alert-creator";
 import {UserDAO} from "../../providers/user-dao";
@@ -29,8 +29,10 @@ export class TestPage {
   buttonEnabled: boolean = false;
   buttonClass: string = "next-question unabled-button";
   selectedTestCategory: TestCategory;
+  loading: Loading;
 
-  constructor(public platform: Platform, private nav: Nav, public navController: NavController, public navParams: NavParams, public testService: TestsService, public alertCreator: AlertCreator, public userDAO: UserDAO, private userService:UserService) {
+
+  constructor(public platform: Platform, private nav: Nav, public navController: NavController, public navParams: NavParams, public testService: TestsService, public alertCreator: AlertCreator, public userDAO: UserDAO, private userService:UserService,  public loadingController: LoadingController) {
     this.questionsObject = [
       {
         "pregunta": "",
@@ -46,6 +48,14 @@ export class TestPage {
     this.platform.registerBackButtonAction(() => {
       this.navController.popToRoot();
     });
+
+    this.loading = this.loadingController.create({
+      content: "Espera un momento",
+      dismissOnPageChange: true
+    });
+
+    this.loading.present();
+    this.loadQuestions();
   }
 
   ionViewWillEnter() {
@@ -53,7 +63,7 @@ export class TestPage {
   }
 
   ionViewDidLoad() {
-    this.loadQuestions();
+
   }
 
   getCategoryname() {
@@ -69,8 +79,12 @@ export class TestPage {
       console.log("la respuesta", response);
       this.questionsObject = response;
       this.questionsNumber = (this.questionsObject.length - 1);
+      this.loading.dismiss();
     }, err => {
       console.log("el error", err.toString())
+      this.alertCreator.showSimpleAlert('Error','En este momento no es posible cargar las preguntas, intentálo más tarde');
+      this.loading.dismiss();
+
     });
   }
 
