@@ -1,9 +1,10 @@
 import {Component} from '@angular/core';
-import {NavController, NavParams} from 'ionic-angular';
+import {NavController, NavParams, Loading, LoadingController} from 'ionic-angular';
 import {Http} from "@angular/http";
 import {TipsInfo} from "../../entity/tips-info";
 import {TipData} from "../../entity/tip-data";
 import {ApplicationConfig} from "../../config";
+import {AlertCreator} from "../../providers/alert-creator";
 
 @Component({
   selector: 'page-tips-page',
@@ -17,11 +18,20 @@ export class TipsPage {
   isTipVisible: boolean[] = [];
   arrowIconArray: string[] = [];
   selectedTipCategory: TipData;
+  loading: Loading;
 
-  constructor(public navController: NavController, public navParams: NavParams, public http: Http) {
+
+  constructor(public navController: NavController, public navParams: NavParams, public http: Http, public alertCreator: AlertCreator, public loadingController: LoadingController) {
     this.selectedTipCategory = this.navParams.get('selectedTipCategory');
     this.tipsClass = this.tipsClasses[this.selectedTipCategory.id];
     this.categoryTitle = this.getCategoryTitle();
+    this.loading = this.loadingController.create({
+      content: "Espera un momento",
+      dismissOnPageChange: true
+    });
+
+    this.loading.present();
+    this.getTips();
   }
 
   getCategoryTitle() {
@@ -33,7 +43,7 @@ export class TipsPage {
   }
 
   ionViewDidLoad() {
-    this.getTips();
+
   }
 
   getTips() {
@@ -43,9 +53,12 @@ export class TipsPage {
     this.http.get(url).map(res => res.json()).subscribe(response => {
       this.tipsArrayByCategory = response;
       this.setInitialTipState();
+      this.loading.dismiss();
       console.log("la respuesta", this.tipsArrayByCategory);
     }, err => {
-      console.log("el error", err)
+      console.log("el error", err);
+      this.alertCreator.showSimpleAlert('Error','En este momento no es posible cargar los tips, intentálo más tarde');
+      this.loading.dismiss();
     });
   }
 
