@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Http, Response} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {Observable} from "rxjs";
+import {ApplicationConfig} from "../config";
 
 @Injectable()
 export class TestsService {
@@ -18,7 +19,8 @@ export class TestsService {
   }
 
   getTestQuestions(RESTAddress):Observable<Response>{
-    return  this.http.get('http://192.168.88.245:9000/'+RESTAddress+'?_format=json')
+    let url = ApplicationConfig.getURL('/'+RESTAddress+'?_format=json');
+    return  this.http.get(url);
   }
 
   addCurrentQuestionAnswerToTotalUserAnswers(currentQuestionUserAnswers){

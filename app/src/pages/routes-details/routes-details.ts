@@ -5,6 +5,7 @@ import {Http} from "@angular/http";
 import {RouteInfo} from "../../entity/route-info";
 import {InAppBrowser} from "ionic-native"
 import {AlertCreator} from "../../providers/alert-creator";
+import {ApplicationConfig} from "../../config";
 
 @Component({
   selector: 'page-routes-details',
@@ -35,7 +36,8 @@ export class RoutesDetailsPage {
 
   getRoutes(){
     let RESTAddress=this.attentionRoute.RESTAddres+"/"+this.location;
-    this.http.get('http://192.168.88.245:9000/'+RESTAddress+'?_format=json').map(res => res.json()).subscribe(response => {
+    let url=ApplicationConfig.getURL('/'+RESTAddress+'?_format=json');
+    this.http.get(url).map(res => res.json()).subscribe(response => {
       this.routesDetails=response;
       this.loading.dismiss();
       this.checkIfEmptyResponse();
@@ -75,7 +77,7 @@ export class RoutesDetailsPage {
   }
 
   openBrowser(id:number){
-    let url= "http://192.168.88.245:9000"+this.routesDetails[id].file;
+    let url=ApplicationConfig.getURL(this.routesDetails[id].file);
     let browser= new InAppBrowser(url, "_system", "location=true");
   }
 

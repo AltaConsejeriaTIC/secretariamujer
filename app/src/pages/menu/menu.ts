@@ -43,28 +43,28 @@ export class MenuPage {
         isShowingHint: false,
         label: 'Información',
         icon: 'icon-info',
-        hint: ['¿Qué debo saber si', 'me encuentro en una', 'situación violenta?']
+        hint: ['Entérate sobre', 'la SDMU, SOFÍA', 'y SOFÍAPP']
       },
       {
         id: 1,
         isShowingHint: false,
         label: 'Mapas',
         icon: 'icon-map',
-        hint: ['¿A dónde puedo ir', 'si estoy en una', 'situación violenta?']
+        hint: ['Reporta si te', 'sientes segura o insegura', 'en una zona de tu ciudad']
       },
       {
         id: 2,
         isShowingHint: false,
         label: 'Test / Tips y rutas',
         icon: 'icon-test',
-        hint: ['¿Cómo puedo saber', 'si estoy en una', 'situación violenta?']
+        hint: ['Descubre', 'si estás en una', 'situación violenta']
       },
       {
         id: 3,
         isShowingHint: false,
         label: 'Configuración',
         icon: 'icon-conf',
-        hint: ['¿A quién puedo dar', 'aviso si me encuentro', 'en riesgo?']
+        hint: ['Ingresa tus', 'datos para que SOFIA', 'te pueda ayudar']
       }
     ];
   }

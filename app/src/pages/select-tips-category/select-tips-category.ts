@@ -41,16 +41,9 @@ export class SelectTipsCategoryPage {
   goToMenuPage() {
     this.navController.popToRoot();
   }
-  setTipsCategories(response) {
-    this.tipsCategories[0].labels[0] = response.field_title_test1;
-    this.tipsCategories[0].labels[1] = response.field_title_test1_line_2;
-    this.tipsCategories[1].labels[0] = response.field_title_test2_line_1;
-    this.tipsCategories[1].labels[1] = response.field_title_test2_line_2;
-    this.tipsCategories[2].labels[0] = response.field_title_test3_line_1;
-    this.tipsCategories[2].labels[1] = response.field_title_test3_line_2;
-    this.tipsCategories[3].labels[0] = response.field_title_test4_line_1;
-    this.tipsCategories[3].labels[1] = response.field_title_test4_line_2;
 
+  setTipsCategories(response) {
+    this.tipsCategories=this.categoryTitles.setTitles(this.tipsCategories, response);
   }
 
 

@@ -22,8 +22,10 @@ export class TestPage {
   answerCheckBoxArray: boolean[];
   userName: string;
   resultTipFirstPhrase: string;
+  resultTipSecondPhrase:string;
   resultTipThirdPhrase: string;
   resultTipFourthPhrase: string;
+  resultTipFifthPhrase:string;
   buttonEnabled: boolean = false;
   buttonClass: string = "next-question unabled-button";
   selectedTestCategory: TestCategory;
@@ -121,13 +123,18 @@ export class TestPage {
 
   setResultTipsMessages(result: string) {
     if (result == 'yes') {
-      this.resultTipFirstPhrase = 'Al parecer Sofía cree que';
-      this.resultTipThirdPhrase = 'y tiene';
-      this.resultTipFourthPhrase = 'unos consejos para tí'
+      this.resultTipFirstPhrase = 'SOFIApp cree que';
+      this.resultTipSecondPhrase = 'es importante buscar apoyo';
+      this.resultTipThirdPhrase = 'SOFIApp te apoya en la toma de decisiones';
+      this.resultTipFourthPhrase = 'para evitar o poner fin a las violencias';
+      this.resultTipFifthPhrase = 'y tiene unos consejos para tí'
     } else if (result == 'no') {
-      this.resultTipFirstPhrase = 'Al parecer Sofía no cree que';
-      this.resultTipThirdPhrase = 'pero';
-      this.resultTipFourthPhrase = 'tiene unos consejos para tí'
+      this.resultTipFirstPhrase = 'SOFIApp reconoce tus capacidades';
+      this.resultTipSecondPhrase = 'para poner límites frente a las violencias';
+      this.resultTipThirdPhrase = 'SOFIApp te ayuda a prevenir las violencias';
+      this.resultTipFourthPhrase = 'y tiene información';
+      this.resultTipFifthPhrase = 'muy importante para tí'
+
     }
   }
 

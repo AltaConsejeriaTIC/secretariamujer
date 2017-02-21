@@ -1,6 +1,6 @@
 export interface RouteInfo {
   email: string,
-  address: string,
+  addres: string,
   schedule: string,
   phone: string,
   location: string,

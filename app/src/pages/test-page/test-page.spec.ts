@@ -136,13 +136,17 @@ describe('TestPage tests', () => {
 
   it('setResultTipsMessages should set messages according to yes or no result', () => {
     testPage.setResultTipsMessages('yes');
-    expect(testPage.resultTipFirstPhrase).toEqual('Al parecer Sofía cree que');
-    expect(testPage.resultTipThirdPhrase).toEqual('y tiene');
-    expect(testPage.resultTipFourthPhrase).toEqual('unos consejos para tí');
+    expect(testPage.resultTipFirstPhrase).toEqual('SOFIApp cree que');
+    expect(testPage.resultTipSecondPhrase).toEqual('es importante buscar apoyo');
+    expect(testPage.resultTipThirdPhrase).toEqual('SOFIApp te apoya en la toma de decisiones');
+    expect(testPage.resultTipFourthPhrase).toEqual('para evitar o poner fin a las violencias');
+    expect(testPage.resultTipFifthPhrase).toEqual('y tiene unos consejos para tí');
     testPage.setResultTipsMessages('no');
-    expect(testPage.resultTipFirstPhrase).toEqual('Al parecer Sofía no cree que');
-    expect(testPage.resultTipThirdPhrase).toEqual('pero');
-    expect(testPage.resultTipFourthPhrase).toEqual('tiene unos consejos para tí');
+    expect(testPage.resultTipFirstPhrase).toEqual('SOFIApp reconoce tus capacidades');
+    expect(testPage.resultTipSecondPhrase).toEqual('para poner límites frente a las violencias');
+    expect(testPage.resultTipThirdPhrase).toEqual('SOFIApp te ayuda a prevenir las violencias');
+    expect(testPage.resultTipFourthPhrase).toEqual('y tiene información');
+    expect(testPage.resultTipFifthPhrase).toEqual('muy importante para tí');
   });
 
 });
