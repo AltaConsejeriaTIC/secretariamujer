@@ -4,6 +4,10 @@ page-menu {
     overflow: hidden;
   }
 
+  ion-grid .option-menu-row:not(:first-child) > *, .special-menu-row {
+    box-shadow: inset 0px 55px 10px -51px rgba(0, 0, 0, 0.14);
+  }
+
   .option-menu-row {
     background-color: map_get($colors, primary);
     height: 20vh;
