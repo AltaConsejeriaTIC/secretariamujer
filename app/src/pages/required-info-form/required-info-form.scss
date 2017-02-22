@@ -4,8 +4,8 @@ page-required-info-form {
     border-radius: 5px !important;
   }
 
-  .label-row{
-    margin-top: 60%;
+  form {
+    padding-top: 15%;
   }
 
   .pin-row, .username-row, .button-row {
@@ -136,10 +136,5 @@ page-required-info-form {
     .login-button{
       margin-left:37px;
     }
-
-    .label-row{
-      margin-top: 55% !important;
-    }
-
   }
 }

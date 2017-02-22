@@ -3,11 +3,7 @@ page-register-optional-info {
     font-weight: bold;
   }
 
-  .label-row{
-    margin-top: 30%;
-  }
-
-  .email-row, .fullname-row,
+ .email-row, .fullname-row,
   .cellphone-row, .button-row {
     justify-content: center;
   }
@@ -131,11 +127,6 @@ page-register-optional-info {
     .login-button{
       margin-left:37px;
     }
-
-    .label-row{
-      margin-top: 30% !important;
-    }
-
   }
 }
 

@@ -1,7 +1,28 @@
 page-settings-page {
+  .settings-items-container {
+    width: 100%;
+  }
+
+  ion-scroll {
+    height: 70vh;
+
+    .scroll-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .scroll-zoom-wrapper {
+      width: 100%;
+    }
+  }
+
+  ion-content {
+    overflow: hidden;
+  }
+
   .user-name-data {
     background: map_get($colors, primary);
-    height: 18vh;
 
     ion-label, ion-icon {
       color: map_get($colors, SofiaAppWhite);
@@ -40,8 +61,11 @@ page-settings-page {
     }
   }
 
+  .scroll-zoom-wrapper div:first-child .settings-item {
+    border-top: 1px solid rgba(0, 0, 0, 0.2)
+  }
+
   .settings-item {
-    height: 10vh;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 
 
@@ -99,7 +123,6 @@ page-settings-page {
     .pin-input {
       font-weight: bold;
       border-bottom: 2px solid white;
-      margin: 0 30vw 5vh;
       display: inline-block;
       width: 40vw;
     }
@@ -134,12 +157,7 @@ page-settings-page {
       color: map_get($colors, SofiaAppWhite);
     }
 
-    form > ion-row:nth-child(3) {
-      margin-bottom: 3vh;
-    }
-
     > ion-col form > ion-row {
-      height: 10vh;
       width: 90vw;
       margin: auto;
       border-bottom: 1px solid rgba(242, 242, 242, 0.5);
@@ -168,7 +186,7 @@ page-settings-page {
 
   @media (max-width: 479px) {
     .user-name-data {
-      min-height: 85px;
+      height: 90px;
       ion-icon {
         font-size: 53px;
       }
@@ -200,13 +218,12 @@ page-settings-page {
 
       .pin-input {
         font-size: 17px;
+        margin: 0 30vw 25px;
       }
     }
 
-    .settings-item,
-    .profile-settings > ion-col > ion-row,
-    .save-button {
-      min-height: 50px;
+    .settings-item {
+      height: 60px;
     }
 
     .profile-settings {
@@ -219,15 +236,25 @@ page-settings-page {
         max-width: 60px;
       }
 
+      .profile-settings > ion-col > ion-row,
+      .save-button,
+      > ion-col form > ion-row {
+        min-height: 50px;
+      }
+
       .profile-input input {
-        margin: 4vh 2vw 0;
+        margin: 20px 2vw 0;
+      }
+
+      form > ion-row:nth-child(3) {
+        margin-bottom: 15px;
       }
     }
   }
 
   @media (min-width: 480px) and (max-width: 767px) {
     .user-name-data {
-      min-height: 150px;
+      height: 155px;
       ion-icon {
         font-size: 78px;
       }
@@ -259,13 +286,12 @@ page-settings-page {
 
       .pin-input {
         font-size: 26px;
+        margin: 0 30vw 43px;
       }
     }
 
-    .settings-item,
-    .profile-settings > ion-col > ion-row,
-    .save-button {
-      min-height: 85px;
+    .settings-item {
+      height: 85px;
     }
 
     .profile-settings {
@@ -278,15 +304,25 @@ page-settings-page {
         max-width: 85px;
       }
 
+      .profile-settings > ion-col > ion-row,
+      .save-button,
+      > ion-col form > ion-row {
+        min-height: 75px;
+      }
+
       .profile-input input {
-        margin: 5vh 2vw 0;
+        margin: 40px 2vw 0;
+      }
+
+      form > ion-row:nth-child(3) {
+        margin-bottom: 25px;
       }
     }
   }
 
   @media (min-width: 768px) {
     .user-name-data {
-      min-height: 185px;
+      height: 185px;
       ion-icon {
         font-size: 85px;
       }
@@ -318,13 +354,12 @@ page-settings-page {
 
       .pin-input {
         font-size: 29px;
+        margin: 0 30vw 50px;
       }
     }
 
-    .settings-item,
-    .profile-settings > ion-col > ion-row,
-    .save-button {
-      min-height: 105px;
+    .settings-item {
+      height: 105px;
     }
 
     .profile-settings {
@@ -337,8 +372,18 @@ page-settings-page {
         max-width: 100px;
       }
 
+      .profile-settings > ion-col > ion-row,
+      .save-button,
+      > ion-col form > ion-row {
+        min-height: 95px;
+      }
+
       .profile-input input {
-        margin: 6vh 2vw 0;
+        margin: 60px 2vw 0;
+      }
+
+      form > ion-row:nth-child(3) {
+        margin-bottom: 30px;
       }
     }
   }

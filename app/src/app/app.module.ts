@@ -70,7 +70,9 @@ import {CategoryTitles} from "../providers/category-titles";
   imports: [
     IonicModule.forRoot(MyApp, {
       backButtonText: '',
-      backButtonIcon: 'md-arrow-dropleft'
+      backButtonIcon: 'md-arrow-dropleft',
+      scrollAssist: false,
+      autoFocusAssist: false
     })
   ],
   bootstrap: [IonicApp],

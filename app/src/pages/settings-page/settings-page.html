@@ -28,96 +28,100 @@
         </div>
       </ion-col>
     </ion-row>
-    <div>
-      <ion-row class="settings-item">
-        <button ion-button icon-only mode="ios" (click)="toggleisShowingOptions(0)">
-          <ion-col width-80 class="text-container center-vertically">
-            <ion-label>
-              Contactos
-            </ion-label>
-          </ion-col>
-          <ion-col width-20 class="icon-container center-vertically justify-horizontally-right">
-            <ion-icon [name]="arrowIconArray[0]"></ion-icon>
-          </ion-col>
-        </button>
-      </ion-row>
-
-      <ion-row class="contact-settings" *ngIf="isOptionVisible[0]">
-        <page-contact-selection></page-contact-selection>
-      </ion-row>
-    </div>
-    <div>
-      <ion-row class="settings-item">
-        <button ion-button icon-only mode="ios" (click)="toggleisShowingOptions(1)">
-          <ion-col width-80 class="text-container center-vertically">
-            <ion-label>
-              Cambiar PIN
-            </ion-label>
-          </ion-col>
-          <ion-col width-20 class="icon-container center-vertically justify-horizontally-right">
-            <ion-icon [name]="arrowIconArray[1]"></ion-icon>
-          </ion-col>
-        </button>
-      </ion-row>
-
-      <div class="pin-change-settings" *ngIf="isOptionVisible[1]">
-        <ion-label text-center class="instruction-text">
-          {{instructionText}}
-        </ion-label>
-        <ion-input mode="md" text-center class="pin-input" type="tel" placeholder="1234" maxlength="4" [(ngModel)]="inputPin" (input)='changePin()'></ion-input>
+    <ion-scroll scrollY="true">
+      <div>
+        <ion-row class="settings-item">
+          <button ion-button icon-only mode="ios" (click)="toggleisShowingOptions(0)">
+            <ion-col width-80 class="text-container center-vertically">
+              <ion-label>
+                Contactos
+              </ion-label>
+            </ion-col>
+            <ion-col width-20 class="icon-container center-vertically justify-horizontally-right">
+              <ion-icon [name]="arrowIconArray[0]"></ion-icon>
+            </ion-col>
+          </button>
+        </ion-row>
+        
+        <ion-row class="contact-settings" *ngIf="isOptionVisible[0]">
+          <page-contact-selection></page-contact-selection>
+        </ion-row>
       </div>
-    </div>
-    <div>
-      <ion-row class="settings-item">
-        <button ion-button icon-only mode="ios" (click)="toggleisShowingOptions(2)">
-          <ion-col width-80 class="text-container center-vertically">
-            <ion-label>
-              Perfil
-            </ion-label>
-          </ion-col>
-          <ion-col width-20 class="icon-container center-vertically justify-horizontally-right">
-            <ion-icon [name]="arrowIconArray[2]"></ion-icon>
-          </ion-col>
-        </button>
-      </ion-row>
+      <div>
+        <ion-row class="settings-item">
+          <button ion-button icon-only mode="ios" (click)="toggleisShowingOptions(1)">
+            <ion-col width-80 class="text-container center-vertically">
+              <ion-label>
+                Cambiar PIN
+              </ion-label>
+            </ion-col>
+            <ion-col width-20 class="icon-container center-vertically justify-horizontally-right">
+              <ion-icon [name]="arrowIconArray[1]"></ion-icon>
+            </ion-col>
+          </button>
+        </ion-row>
 
-      <ion-row class="profile-settings" *ngIf="isOptionVisible[2]">
-        <ion-col>
-          <form [formGroup]="form" novalidate>
-          <ion-row>
-            <ion-input mode="md" class="profile-input" type="text" placeholder="Tu nombre y apellido" formControlName="fullName">
-            </ion-input>
-          </ion-row>
-          <ion-row>
-            <ion-input mode="md" class="profile-input" type="email" placeholder="Tu correo electrónico" formControlName="email">
-            </ion-input>
-          </ion-row>
-          <ion-row>
-            <ion-input mode="md" class="profile-input" type="tel" placeholder="Tu teléfono móvil" formControlName="cellPhone">
-            </ion-input>
-          </ion-row>
-          </form>
-          <ion-row class="save-button-container">
-            <button ion-button icon-only mode="ios" class="save-button" (click)="updateUserData()">
-              <ion-col>
-                <ion-icon name="icon-save"></ion-icon>
-                <ion-label>Guardar</ion-label>
-              </ion-col>
-            </button>
-          </ion-row>
-        </ion-col>
-      </ion-row>
-    </div>
-    <div>
-      <ion-row class="settings-item" >
-        <button ion-button icon-only mode="ios" (click)="logout()">
-          <ion-col class="text-container center-vertically">
-            <ion-label>
-              Cerrar sesión
-            </ion-label>
+        <div class="pin-change-settings" *ngIf="isOptionVisible[1]">
+          <ion-label text-center class="instruction-text">
+            {{instructionText}}
+          </ion-label>
+          <ion-input mode="md" text-center class="pin-input" type="tel" placeholder="1234" maxlength="4" [(ngModel)]="inputPin" (input)='changePin()'></ion-input>
+        </div>
+      </div>
+      <div>
+        <ion-row class="settings-item">
+          <button ion-button icon-only mode="ios" (click)="toggleisShowingOptions(2)">
+            <ion-col width-80 class="text-container center-vertically">
+              <ion-label>
+                Perfil
+              </ion-label>
+            </ion-col>
+            <ion-col width-20 class="icon-container center-vertically justify-horizontally-right">
+              <ion-icon [name]="arrowIconArray[2]"></ion-icon>
+            </ion-col>
+          </button>
+        </ion-row>
+
+        <ion-row class="profile-settings" *ngIf="isOptionVisible[2]">
+          <ion-col>
+            <form [formGroup]="form" novalidate>
+            <ion-row>
+              <ion-input mode="md" class="profile-input" type="text" placeholder="Tu nombre y apellido" formControlName="fullName">
+              </ion-input>
+            </ion-row>
+            <ion-row>
+              <ion-input mode="md" class="profile-input" type="email" placeholder="Tu correo electrónico" formControlName="email">
+              </ion-input>
+            </ion-row>
+            <ion-row>
+              <ion-input mode="md" class="profile-input" type="tel" placeholder="Tu teléfono móvil" formControlName="cellPhone">
+              </ion-input>
+            </ion-row>
+            </form>
+            <ion-row class="save-button-container">
+              <button ion-button icon-only mode="ios" class="save-button" (click)="updateUserData()">
+                <ion-col>
+                  <ion-icon name="icon-save"></ion-icon>
+                  <ion-label>Guardar</ion-label>
+                </ion-col>
+              </button>
+            </ion-row>
           </ion-col>
-        </button>
-      </ion-row>
-    </div>
+        </ion-row>
+      </div>
+      <div>
+        <ion-row class="settings-item" >
+          <button ion-button icon-only mode="ios" (click)="logout()">
+            <ion-col class="text-container center-vertically">
+              <ion-label>
+                Cerrar sesión
+              </ion-label>
+            </ion-col>
+          </button>
+        </ion-row>
+      </div>
+    </ion-scroll>
   </ion-grid>
 </ion-content>
+
+

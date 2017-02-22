@@ -1,21 +1,23 @@
 <ion-content  class="content-purple" no-bounce>
-  <form [formGroup]="form" novalidate>
-    <ion-row class="label-row">
-      <ion-label text-center class="app-subtitle label-register">Crea tu PIN de 4 dígitos</ion-label>
-    </ion-row>
-    <ion-row class="pin-row">
-      <ion-col class="input-container" no-padding>
-        <ion-input text-center formControlName="password" class="input-border input-color" type="tel" placeholder="1234" maxlength="4"></ion-input>
-      </ion-col>
-    </ion-row>
-    <ion-row class="username-row">
-      <ion-col class="input-container" no-padding>
-        <ion-input text-center formControlName="username" type="text" class="input-border input-color" placeholder="Tu nombre en la aplicación"></ion-input>
-      </ion-col>
-    </ion-row>
-    <ion-row class="button-row">
-      <button (click)="goBack()" class="app-button" ion-button outline>Atrás</button>
-      <button (click)="checkInputValues()" [ngClass]="{'app-button': userCanContinue(), 'disabled-button': userCanNotContinue()}" class="login-button" ion-button outline>Continuar</button>
-    </ion-row>
+  <div class="form-container">
+    <form [formGroup]="form" novalidate>
+      <ion-row class="label-row">
+        <ion-label text-center class="app-subtitle label-register">Crea tu PIN de 4 dígitos</ion-label>
+      </ion-row>
+      <ion-row class="pin-row">
+        <ion-col class="input-container" no-padding>
+          <ion-input text-center formControlName="password" class="input-border input-color" type="tel" placeholder="1234" maxlength="4"></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row class="username-row">
+        <ion-col class="input-container" no-padding>
+          <ion-input text-center formControlName="username" type="text" class="input-border input-color" placeholder="Tu nombre en la aplicación"></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row class="button-row">
+        <button (click)="goBack()" class="app-button" ion-button outline>Atrás</button>
+        <button (click)="checkInputValues()" [ngClass]="{'app-button': userCanContinue(), 'disabled-button': userCanNotContinue()}" class="login-button" ion-button outline>Continuar</button>
+      </ion-row>
     </form>
+  </div>
 </ion-content>

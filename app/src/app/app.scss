@@ -140,6 +140,13 @@ ion-label {
   overflow: visible;
 }
 
+.form-container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .header-ios {
   border-bottom: none;
 }
