@@ -153,6 +153,7 @@ export class SettingsPage {
     }
     else
       this.alertCreator.showSimpleAlert('Error', 'El PIN ingresado no coincide con el que desea cambiar');
+      this.setPinState(this.instructionTextArray[0], WRITE_CURRENT_PIN);
   }
 
   isPinANumber() {
