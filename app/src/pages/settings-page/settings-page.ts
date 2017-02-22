@@ -171,6 +171,7 @@ export class SettingsPage {
       this.userService.user.email = this.form.controls['email'].value;
       this.loading.present();
       this.makeUserUpdate('Se han actualizado tus datos');
+      this.usernameInfo=this.form.controls['fullName'].value;
     }
   }
 
