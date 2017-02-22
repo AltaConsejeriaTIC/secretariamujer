@@ -88,6 +88,14 @@ export class RequiredInfoFormPage {
       });
   }
 
+  userCanContinue(){
+    return this.form.controls['username'].valid && this.form.controls['password'].valid
+  }
+
+  userCanNotContinue(){
+    return !this.form.controls['username'].valid || !this.form.controls['password'].valid
+  }
+
   goBack() {
     this.navCtrl.pop();
   }

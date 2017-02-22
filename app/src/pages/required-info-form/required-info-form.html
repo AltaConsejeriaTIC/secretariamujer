@@ -15,7 +15,7 @@
     </ion-row>
     <ion-row class="button-row">
       <button (click)="goBack()" class="app-button" ion-button outline>Atrás</button>
-      <button (click)="checkInputValues()" [ngClass]="{'app-button': user.password && user.username, 'disabled-button': !user.password || !user.username}" class="login-button" ion-button outline>Continuar</button>
+      <button (click)="checkInputValues()" [ngClass]="{'app-button': userCanContinue(), 'disabled-button': userCanNotContinue()}" class="login-button" ion-button outline>Continuar</button>
     </ion-row>
     </form>
 </ion-content>
