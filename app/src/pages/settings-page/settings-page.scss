@@ -3,18 +3,8 @@ page-settings-page {
     width: 100%;
   }
 
-  ion-scroll {
-    height: 70vh;
-
-    .scroll-content {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .scroll-zoom-wrapper {
-      width: 100%;
-    }
+  ion-grid {
+    height: 100%
   }
 
   ion-content {

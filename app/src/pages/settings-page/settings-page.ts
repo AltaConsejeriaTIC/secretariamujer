@@ -35,6 +35,7 @@ export class SettingsPage {
   userEmail: string;
   userCellPhone: string;
   loading: Loading;
+  keyboardStyle: string = "";
 
   constructor(public navController: NavController, public userDAO: UserDAO, public alertCreator: AlertCreator,
               private  formBuilder: FormBuilder, public loadingController: LoadingController,
@@ -88,6 +89,12 @@ export class SettingsPage {
     if (index == 2) {
       this.loadProfileData();
     }
+    this.setKeyboardStyle();
+  }
+
+
+  setKeyboardStyle(){
+      this.keyboardStyle = (this.isOptionVisible[2])? "form-container": "";
   }
 
   loadProfileData() {
