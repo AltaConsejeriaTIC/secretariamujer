@@ -17,7 +17,7 @@ page-welcome-test {
   }
 
   .test-info-section {
-    height: 49vh;
+    height: 58%;
     align-items: center;
     justify-content: center;
   }
@@ -29,7 +29,7 @@ page-welcome-test {
   }
 
   .button-container {
-    height: 21vh;
+    height: 21%;
     background: map_get($colors, SofiaAppDarkBlue);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   }
@@ -81,7 +81,7 @@ page-welcome-test {
   }
 
   .purple-line-container {
-    height: 21vh;
+    height: 21%;
     background: map_get($colors, backgroundPurple);
 
     ion-col {
