@@ -6,13 +6,15 @@
       </ion-col>
     </ion-row>
     <ion-row *ngFor="let contact of contacts; let index = index;" class="justify-center-row contact-row">
-      <button ion-button (click)="selectContactFromDevice(index)" class="add-button">
-        <ion-icon *ngIf="contact.name == null" name="add"></ion-icon>
-        <ion-icon *ngIf="contact.name != null" name="icon-edit-contact"></ion-icon>
+      <button class="contact-items" (click)="selectContactFromDevice(index)">
+        <ion-col class="add-button">
+          <ion-icon *ngIf="contact.name == null" name="add"></ion-icon>
+          <ion-icon *ngIf="contact.name != null" name="icon-edit-contact"></ion-icon>
+        </ion-col>
+        <ion-col center [class]="contact.name != null ? 'contact-name enabled' : 'contact-name disabled'">
+          <label ion-text>{{contact.name != null ? contact.name : 'Agregar Contacto'}}</label>
+        </ion-col>
       </button>
-      <ion-col center [class]="contact.name != null ? 'contact-name enabled' : 'contact-name disabled'">
-        <label ion-text>{{contact.name != null ? contact.name : 'Agregar Contacto'}}</label>
-      </ion-col>
     </ion-row>
     <ion-row>
       <ion-col text-center>

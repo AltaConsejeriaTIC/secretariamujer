@@ -2,24 +2,26 @@ page-contact-selection {
   ion-content {
     background: map_get($colors, backgroundPurple) !important;
 
-    p, label, .finish-button {
+    p, label, .finish-button, [name*="add"]:before {
       color: map_get($colors, SofiaAppWhite);
       font-weight: bold;
+    }
+
+    [name*="icon-edit-contact"]:before {
+      color: map_get($colors, SofiaAppWhite);
+      font-weight: 500;
     }
 
     .contact-selection-title {
       text-align: center;
     }
-    .add-button, .finish-button {
-      background: transparent;
-      border: 2px solid map_get($colors, SofiaAppWhite);
-    }
 
-    .enabled, .disabled {
+    .add-button, .finish-button,
+    .enabled, .disabled, .contact-items {
       background: transparent;
     }
 
-    .enabled {
+    .add-button, .finish-button, .enabled {
       border: 2px solid map_get($colors, SofiaAppWhite);
     }
 
@@ -36,14 +38,18 @@ page-contact-selection {
       border-bottom-left-radius: 10px;
       margin: 0 -0.3vw 0 0;
       padding: 0;
+      justify-content: center;
     }
 
     .contact-name {
       border-top-right-radius: 10px;
       border-bottom-right-radius: 10px;
-      align-items: center;
-      display: flex;
       border-left-width: 0px;
+    }
+
+    .add-button, .contact-name {
+      display: flex;
+      align-items: center;
     }
 
     .contact-name  label {
@@ -51,6 +57,7 @@ page-contact-selection {
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      text-align: left;
     }
 
     .finish-button {
@@ -62,8 +69,10 @@ page-contact-selection {
       margin: 0 0 4vh;
     }
 
-    ion-icon:before {
-      font-weight: bold !important;
+    .contact-items {
+      display: flex;
+      padding: 0;
+      border-radius: 10px;
     }
   }
 
@@ -82,7 +91,7 @@ page-contact-selection {
 
     .contact-name label {
       font-size: 16px;
-      max-width: 170px;
+      width: 170px;
     }
 
     .finish-button, .add-button {
@@ -117,7 +126,7 @@ page-contact-selection {
 
     .contact-name label {
       font-size: 22px;
-      max-width: 230px;
+      width: 230px;
     }
 
     .finish-button, .add-button {
@@ -152,7 +161,7 @@ page-contact-selection {
 
     .contact-name label {
       font-size: 27px;
-      max-width: 300px;
+      width: 300px;
     }
 
     .finish-button, .add-button {
