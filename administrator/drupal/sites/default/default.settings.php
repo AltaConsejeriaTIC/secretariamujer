@@ -1,6 +1,17 @@
 <?php
 
 /**
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
  * @file
  * Drupal site-specific configuration file.
  *
@@ -25,10 +36,6 @@
  * https://www.drupal.org:8080/mysite/test/, the 'settings.php' file is searched
  * for in the following directories:
  *
- * 
- * 
- * 
- * sddsd
  * - sites/8080.www.drupal.org.mysite.test
  * - sites/www.drupal.org.mysite.test
  * - sites/drupal.org.mysite.test
@@ -289,7 +296,7 @@ $config_directories = array();
  *   $settings['hash_salt'] = file_get_contents('/home/example/salt.txt');
  * @endcode
  */
-$settings['hash_salt'] = '';
+$settings['hash_salt'] = '-oy52IlQDSpNXUgGyyVjS_dz1cBZlKx-zNCL6Se2lcL1b9PIG5DrRxX-v0I27wt1MVKf0NdQfg';
 
 /**
  * Deployment identifier.
@@ -757,3 +764,15 @@ $settings['file_scan_ignore_directories'] = [
 # if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
 #   include $app_root . '/' . $site_path . '/settings.local.php';
 # }
+$databases['default']['default'] = array (
+  'database' => 'appsofia',
+  'username' => 'root',
+  'password' => 'Sdmujer2017##',
+  'prefix' => '',
+  'host' => 'localhost',
+  'port' => '3306',
+  'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
+  'driver' => 'mysql',
+);
+$settings['install_profile'] = 'standard';
+$config_directories['sync'] = 'sites/default/files/config_OqKV4ATa6n_iJqbFMMQWVvbvBjuBqNdEgpM9PMpu1-ULwnoEUVBhSJ3agZytBUJ8b7k-UCWlsQ/sync';
