@@ -210,6 +210,12 @@ page-test-page {
       width: 114px;
     }
 
+    .end-test-items {
+      .end-test-advice:nth-child(3) {
+        margin-top: 55px;
+      }
+    }
+
     .welcome-test-button-section button,
     .purple-line-container .first-phrase {
       font-size: 13px;
@@ -264,6 +270,12 @@ page-test-page {
       width: 171px;
     }
 
+    .end-test-items {
+      .end-test-advice:nth-child(3) {
+        margin-top: 122px;
+      }
+    }
+
     .welcome-test-button-section button,
     .purple-line-container .first-phrase {
       font-size: 20px;
@@ -316,6 +328,12 @@ page-test-page {
     .test-options .next-question {
       height: 67px;
       width: 207px;
+    }
+
+    .end-test-items {
+      .end-test-advice:nth-child(3) {
+        margin-top: 122px;
+      }
     }
 
     .welcome-test-button-section button,
