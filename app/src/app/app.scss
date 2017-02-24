@@ -399,7 +399,14 @@ body.platform-ios.platform-cordova.platform-webview {
   label, ion-label, p, button {
     letter-spacing: -1px !important;
   }
+
 }
+
+.input-ios .text-input {
+  padding: 0;
+  margin: 11px 0 11px 0;
+}
+
 
 // App Global Sass
 // --------------------------------------------------
