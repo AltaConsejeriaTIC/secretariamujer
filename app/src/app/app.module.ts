@@ -72,7 +72,8 @@ import {CategoryTitles} from "../providers/category-titles";
       backButtonText: '',
       backButtonIcon: 'md-arrow-dropleft',
       scrollAssist: false,
-      autoFocusAssist: false
+      autoFocusAssist: false,
+      statusbarPadding: false,
     })
   ],
   bootstrap: [IonicApp],

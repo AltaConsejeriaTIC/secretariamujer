@@ -192,9 +192,30 @@ ion-header {
   }
 }
 
+.ios ion-navbar,
+.ios ion-app > ion-toolbar:first-child,
+.ios ion-app > ion-toolbar:first-child ion-title,
+.ios ion-app > ion-toolbar:first-child ion-segment,
+.ios ion-menu > ion-toolbar:first-child,
+.ios ion-menu > ion-toolbar:first-child ion-title,
+.ios ion-menu > ion-toolbar:first-child ion-segment,
+.ios ion-page.modal > ion-toolbar:first-child,
+.ios ion-page.modal > ion-toolbar:first-child ion-title,
+.ios ion-page.modal > ion-toolbar:first-child ion-segment,
+.ios ion-navbar ion-title,
+.ios ion-navbar ion-segment {
+  padding-top: 0 !important;
+}
+
 @media (max-width: 479px) {
+  /*.ios {
+    ion-header + ion-content > * {
+      margin-top: 60px !important;
+    }
+  }*/
+
   ion-header, ion-header ion-navbar {
-    height: 50px;
+    height: 50px !important;
   }
 
   ion-header {
@@ -223,7 +244,7 @@ ion-header {
 
 @media (min-width: 480px) and (max-width: 767px) {
   ion-header, ion-header ion-navbar {
-    height: 76px;
+    height: 76px !important;
   }
 
   ion-header {
@@ -252,7 +273,7 @@ ion-header {
 
 @media (min-width: 768px) {
   ion-header, ion-header ion-navbar {
-    height: 90px;
+    height: 90px !important;
   }
 
   ion-header {

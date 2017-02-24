@@ -15,6 +15,20 @@ export class MyApp {
   openState;
 
   constructor(public platform: Platform, public storage: Storage ) {
+
+
+      this.platform.ready().then(() => {
+        StatusBar.overlaysWebView(false);
+        if (platform.is('ios')) {
+        StatusBar.hide();
+        }
+        document.addEventListener('resume',()=>{
+          if (platform.is('ios')) {
+            StatusBar.hide();
+          }
+        });
+      });
+
     storage.get('isFirstTimeOpen').then((isFirstTimeOpen) => {
       this.openState = (isFirstTimeOpen == null)? true : false;
       storage.set('isFirstTimeOpen', this.openState);
