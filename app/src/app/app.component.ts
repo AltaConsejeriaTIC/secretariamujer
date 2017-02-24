@@ -15,10 +15,7 @@ export class MyApp {
   openState;
 
   constructor(public platform: Platform, public storage: Storage ) {
-
-
       this.platform.ready().then(() => {
-        StatusBar.overlaysWebView(false);
         if (platform.is('ios')) {
         StatusBar.hide();
         }
