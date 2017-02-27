@@ -42,6 +42,12 @@ export class TutorialPage {
     for (let i = 0; i < this.tutorialItems.length; i++) {
       this.tutorialBackgrounds.push(this.getURLImage(i+1));
     }
+    this.quitMapTutorialImage();
+  }
+
+  quitMapTutorialImage() {
+    this.tutorialItems.splice(2, 1);
+    this.tutorialBackgrounds.splice(2, 1);
   }
 
   setButtonVisibilityAndLabel() {
