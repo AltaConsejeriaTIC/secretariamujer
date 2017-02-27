@@ -105,6 +105,10 @@ page-test-page {
     height: 21%;
     background: map_get($colors, SofiaAppDarkBlue);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+
+    .welcome-test-button-section:first-child button {
+      opacity: 0.4;
+    }
   }
 
   .welcome-test-button-section:first-child button .button-items,
