@@ -48,14 +48,13 @@
     "typescript": "2.0.9"
   },
   "cordovaPlugins": [
-    "mx.ferreyra.callnumber",
     "cordova-plugin-device",
     "cordova-plugin-console",
     "cordova-plugin-splashscreen",
     "cordova-plugin-statusbar",
     "cordova-plugin-whitelist",
     "ionic-plugin-keyboard",
-    "call-number",
+    "cordova-plugin-call-number",
     "cordova-sms-plugin"
   ],
   "cordovaPlatforms": [

@@ -6,17 +6,12 @@ mkdir www
 npm install -g plugman
 npm install
 ionic prepare
-cordova plugin remove mx.ferreyra.callnumber
+cordova plugin remove cordova-plugin-call-number
+cordova plugin add cordova-plugin-call-number
+cordova plugin remove cordova-sms-plugin
+cordova plugin add cordova-sms-plugin
 
-#wget https://github.com/Rohfosho/CordovaCallNumberPlugin/archive/master.zip
-#unzip master.zip
-#mv CordovaCallNumberPlugin-master CordovaCallNumberPlugin
-#rm master.zip
-
-plugman install --platform android --project platforms/android/ --plugin CordovaCallNumberPlugin/
-plugman install --platform ios --project platforms/ios/ --plugin CordovaCallNumberPlugin/
-
-#rm -rf CordovaCallNumberPlugin
-
-ionic build android
-mv ./platforms/android/build/outputs/apk/android-debug.apk ./sofiapp.apk
+#plugman install --platform android --project platforms/android/ --plugin CordovaCallNumberPlugin/
+#plugman install --platform ios --project platforms/ios/ --plugin CordovaCallNumberPlugin/
+#plugman install --platform android --project platforms/android/ --plugin cordova-sms-plugin-master/
+#plugman install --platform ios --project platforms/ios/ --plugin cordova-sms-plugin-master/
