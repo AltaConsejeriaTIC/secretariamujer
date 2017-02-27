@@ -12,7 +12,7 @@
 </ion-header>
 
 <ion-content no-bounce>
-  <ion-grid padding *ngIf="!isTestComplete"  class="full-height-ion-grid no-padding test-view">
+  <ion-grid *ngIf="!isTestComplete" class="height-100 test-view" no-padding>
     <div class="test-question" padding>
       <div>
         <ion-row text-center>
@@ -27,7 +27,7 @@
       </div>
     </div>
 
-    <ion-content class="test-options-container" no-padding no-bounce>
+    <ion-scroll scrollY="true" class="test-options-container" no-bounce>
       <div class="test-options">
         <ion-row (click)="setCheckBoxArray(0)">
           <ion-checkbox mode="md" (click)="setCheckBoxArray(0)" [(ngModel)]="answerCheckBoxArray[0]" ></ion-checkbox>
@@ -42,11 +42,16 @@
           <ion-label>{{questionsObject[currentQuestion].respuesta3}}</ion-label>
         </ion-row>
         <ion-row>
-          <button [class]="buttonClass" (click)="answerCurrentQuestion()">Siguiente</button>
+          <button [class]="buttonClass" (click)="answerCurrentQuestion()">
+            <ion-col>
+              <ion-label>Siguiente</ion-label>
+              <ion-icon name="icon-border-next-arrow"></ion-icon>
+            </ion-col>
+          </button>
         </ion-row>
       </div>
 
-    </ion-content>
+    </ion-scroll>
   </ion-grid>
 
 
