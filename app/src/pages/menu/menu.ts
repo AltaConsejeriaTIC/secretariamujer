@@ -125,6 +125,10 @@ export class MenuPage {
 
   sendWarningMessages() {
     this.warningMessageDAO.get().subscribe(message => {
+      console.log(this.userService.user.contacts);
+      if(this.userService.user.contacts.length == 0){
+        this.alertCreator.showSimpleAlert("Mensaje", "No tiene contactos agregados");
+      }
       for (let contact of this.userService.user.contacts) {
         this.sendMessageToContact(contact, message);
       }
@@ -142,6 +146,7 @@ export class MenuPage {
     };
 
     if (contact != null && contact.cellPhone != null) {
+
       SMS.send(contact.cellPhone, message, options)
         .then(()=>{
             this.alertCreator.showSimpleAlert("Mensaje", "El mensaje fue enviado a "+contact.cellPhone);
@@ -151,6 +156,9 @@ export class MenuPage {
         })
       ;
 
+    }else{
+
+      this.alertCreator.showSimpleAlert("Mensaje","No existen numeros para sus contactos");
 
     }
   }
