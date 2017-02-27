@@ -7,6 +7,7 @@ import {AttentionRoutesPage} from "../attention-routes/attention-routes";
 import {TipsPage} from "../tips-page/tips-page";
 import {TestCategory} from "../../entity/test-categories";
 import {UserService} from "../../providers/user-service";
+import {CallNumber} from "ionic-native";
 
 @Component({
   selector: 'page-test-page',
@@ -166,6 +167,15 @@ export class TestPage {
 
   goToRoutes() {
     this.navController.push(AttentionRoutesPage);
+  }
+
+  callPurpleNumber(){
+    CallNumber.callNumber('018000112137', true)
+      .then(() => {
+      })
+      .catch(() => {
+        this.alertCreator.showSimpleAlert("Error", "No es posible hacer la llamada en este momento");
+      });
   }
 
 }

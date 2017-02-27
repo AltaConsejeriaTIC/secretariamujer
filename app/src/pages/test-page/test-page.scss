@@ -86,6 +86,12 @@ page-test-page {
     min-height: 20px;
   }
 
+  .end-test-results {
+    height: 58%;
+    display: flex;
+    align-items: center;
+  }
+
   .end-test-thanks p {
     font-weight: bold;
   }
@@ -95,12 +101,77 @@ page-test-page {
     color: map_get($colors, SofiaAppWhite);
   }
 
-  .thanks-container {
-    margin: 8vh 0 0;
+  .button-container {
+    height: 21%;
+    background: map_get($colors, SofiaAppDarkBlue);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   }
 
-  .welcome-test-button-section button {
-    font-weight: bold;
+  .welcome-test-button-section:first-child button .button-items,
+  .welcome-test-button-section:nth-child(2) button .button-items {
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .welcome-test-button-section button,
+  .purple-line-container button {
+    background: transparent;
+    display: block;
+    padding: 0;
+    border-radius: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0 !important;
+  }
+
+  .welcome-test-button-section {
+    padding: 0;
+    width: 33.3333vw;
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    button {
+      height: 100%;
+    }
+
+    .button-inner .button-items {
+      padding: 0;
+      height: 80%;
+      align-items: center;
+    }
+
+    ion-label, .icon-col {
+      width: 100%;
+    }
+
+    .first-phrase {
+      margin: 2vh 0 0.5vh;
+    }
+
+    .second-phrase {
+      margin: 0.5vh 0;
+    }
+  }
+
+  .purple-line-container {
+    height: 21%;
+    background: map_get($colors, backgroundPurple);
+
+    ion-col {
+      padding: 0;
+    }
+
+    .purple-button-container {
+      height: 100%;
+    }
+
+    .first-phrase {
+      margin: 1vh 0;
+    }
+
+    .second-phrase {
+      margin: 0;
+    }
   }
 
   @media (max-width: 479px) {
@@ -139,10 +210,27 @@ page-test-page {
       width: 114px;
     }
 
-    .welcome-test-button-section button {
-      height: 40px;
-      width: 200px;
-      font-size: 17px;
+    .end-test-items {
+      .end-test-advice:nth-child(3) {
+        margin-top: 55px;
+      }
+    }
+
+    .welcome-test-button-section button,
+    .purple-line-container .first-phrase {
+      font-size: 13px;
+    }
+
+    .purple-line-container .second-phrase {
+      font-size: 12px;
+    }
+
+    .welcome-test-button-section .icon-col {
+      font-size: 25px;
+    }
+
+    .purple-line-container .icon-col {
+      font-size: 27px;
     }
   }
 
@@ -182,10 +270,27 @@ page-test-page {
       width: 171px;
     }
 
-    .welcome-test-button-section button {
-      height: 60px;
-      width: 291px;
-      font-size: 26px;
+    .end-test-items {
+      .end-test-advice:nth-child(3) {
+        margin-top: 122px;
+      }
+    }
+
+    .welcome-test-button-section button,
+    .purple-line-container .first-phrase {
+      font-size: 20px;
+    }
+
+    .purple-line-container .second-phrase {
+      font-size: 17px;
+    }
+
+    .welcome-test-button-section .icon-col {
+      font-size: 38px;
+    }
+
+    .purple-line-container .icon-col {
+      font-size: 40px;
     }
   }
 
@@ -225,10 +330,29 @@ page-test-page {
       width: 207px;
     }
 
-    .welcome-test-button-section button {
-      height: 70px;
-      width: 342px;
-      font-size: 30px;
+    .end-test-items {
+      .end-test-advice:nth-child(3) {
+        margin-top: 122px;
+      }
     }
+
+    .welcome-test-button-section button,
+    .purple-line-container .first-phrase {
+      font-size: 24px;
+    }
+
+    .purple-line-container .second-phrase {
+      font-size: 20px;
+    }
+
+    .welcome-test-button-section .icon-col {
+      font-size: 48px;
+    }
+
+    .purple-line-container .icon-col {
+      font-size: 50px;
+    }
+
+
   }
 }

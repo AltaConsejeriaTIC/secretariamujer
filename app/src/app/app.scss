@@ -192,28 +192,7 @@ ion-header {
   }
 }
 
-.ios ion-navbar,
-.ios ion-app > ion-toolbar:first-child,
-.ios ion-app > ion-toolbar:first-child ion-title,
-.ios ion-app > ion-toolbar:first-child ion-segment,
-.ios ion-menu > ion-toolbar:first-child,
-.ios ion-menu > ion-toolbar:first-child ion-title,
-.ios ion-menu > ion-toolbar:first-child ion-segment,
-.ios ion-page.modal > ion-toolbar:first-child,
-.ios ion-page.modal > ion-toolbar:first-child ion-title,
-.ios ion-page.modal > ion-toolbar:first-child ion-segment,
-.ios ion-navbar ion-title,
-.ios ion-navbar ion-segment {
-  padding-top: 0 !important;
-}
-
 @media (max-width: 479px) {
-  /*.ios {
-    ion-header + ion-content > * {
-      margin-top: 60px !important;
-    }
-  }*/
-
   ion-header, ion-header ion-navbar {
     height: 50px !important;
   }
@@ -399,7 +378,14 @@ body.platform-ios.platform-cordova.platform-webview {
   label, ion-label, p, button {
     letter-spacing: -1px !important;
   }
+
 }
+
+.input-ios .text-input {
+  padding: 0;
+  margin: 11px 0 11px 0;
+}
+
 
 // App Global Sass
 // --------------------------------------------------

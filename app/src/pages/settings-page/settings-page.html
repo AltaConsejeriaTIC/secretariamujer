@@ -87,15 +87,15 @@
               <ion-col>
                 <form [formGroup]="form" novalidate>
                 <ion-row>
-                  <ion-input mode="md" class="profile-input" type="text" placeholder="Tu nombre y apellido" formControlName="fullName">
+                  <ion-input mode="md" maxlength="30" class="profile-input" type="text" placeholder="Tu nombre y apellido" formControlName="fullName">
                   </ion-input>
                 </ion-row>
                 <ion-row>
-                  <ion-input mode="md" class="profile-input" type="email" placeholder="Tu correo electrónico" formControlName="email">
+                  <ion-input mode="md" maxlength="30" class="profile-input" type="email" placeholder="Tu correo electrónico" formControlName="email">
                   </ion-input>
                 </ion-row>
                 <ion-row>
-                  <ion-input mode="md" class="profile-input" type="tel" placeholder="Tu teléfono móvil" formControlName="cellPhone">
+                  <ion-input mode="md" maxlength="30" class="profile-input" type="tel" placeholder="Tu teléfono móvil" formControlName="cellPhone">
                   </ion-input>
                 </ion-row>
                 </form>
