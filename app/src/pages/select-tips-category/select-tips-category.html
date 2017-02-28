@@ -22,14 +22,22 @@
     </ion-row>
     <ion-row *ngFor="let category of tipsCategories;" [class]="category.class">
       <button ion-button icon-only mode="ios" (click)="showTipsPage(category.id)">
-        <div class="item-container">
-          <ion-icon class="icon-col" name={{category.iconName}}></ion-icon>
-          <div class="labels-col">
-            <div *ngFor="let label of category.labels;">
-              <label>{{label}}</label>
+        <ion-row class="text-container">
+          <ion-col>
+            <div class="item-container">
+              <div class="labels-col">
+                <div *ngFor="let label of category.labels;">
+                  <label class="category-title">{{label}}</label>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
+          </ion-col>
+          <ion-col class="category-subtitle">
+            <label>
+              Las palabras también hieren palabras también
+            </label>
+          </ion-col>
+        </ion-row>
       </button>
     </ion-row>
   </ion-grid>

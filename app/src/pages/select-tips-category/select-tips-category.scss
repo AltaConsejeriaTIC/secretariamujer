@@ -37,11 +37,22 @@ page-select-tips-category {
       height: 100%;
       display: flex;
       height: 20%;
-    }
 
-    [class^="option-"] label {
-      font-weight: bold;
-      color: #f2f2f2;
+      .category-title, .category-subtitle {
+        color: #f2f2f2;
+      }
+
+      .category-title {
+        font-weight: bold;
+      }
+
+      .category-subtitle {
+        white-space: normal;
+        text-align: left;
+        font-weight: 500;
+        font-style: italic;
+        padding-left: 5%;
+      }
     }
   }
 
@@ -65,7 +76,6 @@ page-select-tips-category {
   }
 
   .item-container {
-    margin: auto;
     display: flex;
     align-items: center;
   }
@@ -76,6 +86,19 @@ page-select-tips-category {
 
   .labels-col {
     text-align: left;
+  }
+
+  .text-container {
+    min-height: 60%;
+
+    > * {
+      align-items: center;
+      display: flex;
+    }
+
+    > *:first-child {
+      min-width: 55%;
+    }
   }
 
   @media (max-width: 479px) {
@@ -90,19 +113,20 @@ page-select-tips-category {
         }
       }
 
-      [class^="option-"] label {
-        font-size: 17px;
+      [class^="option-"] {
+        .category-title {
+          font-size: 14px;
+        }
+
+        .category-subtitle {
+          font-size: 13px;
+          border-left: 1px solid map_get($colors, SofiaAppWhite);
+        }
       }
     }
 
-    .icon-col {
-      margin-right: 34px;
-      font-size: 30px;
-      width: 30px;
-    }
-
-    .item-container {
-      width: 210px;
+    .text-container {
+      width: 290px;
     }
   }
 
@@ -118,19 +142,20 @@ page-select-tips-category {
         }
       }
 
-      [class^="option-"] label {
-        font-size: 26px;
+      [class^="option-"] {
+        .category-title {
+          font-size: 20px;
+        }
+
+        .category-subtitle {
+          font-size: 16px;
+          border-left: 2px solid map_get($colors, SofiaAppWhite);
+        }
       }
     }
 
-    .icon-col {
-      margin-right: 50px;
-      font-size: 40px;
-      width: 40px;
-    }
-
-    .item-container {
-      width: 320px;
+    .text-container {
+      width: 410px;
     }
   }
 
@@ -146,19 +171,20 @@ page-select-tips-category {
         }
       }
 
-      [class^="option-"] label {
-        font-size: 31px;
+      [class^="option-"] {
+        .category-title {
+          font-size: 28px;
+        }
+
+        .category-subtitle {
+          font-size: 23px;
+          border-left: 2px solid map_get($colors, SofiaAppWhite);
+        }
       }
     }
 
-    .icon-col {
-      margin-right: 62px;
-      font-size: 50px;
-      width: 50px;
-    }
-
-    .item-container {
-      width: 390px;
+    .text-container {
+      width: 600px;
     }
   }
 }
