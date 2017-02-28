@@ -34,7 +34,7 @@ export class ContactAdapter {
     let phoneNumber: string;
 
     if (contactProperties.phoneNumbers != null) {
-      phoneNumber = contactProperties.phoneNumbers[0].value;
+      phoneNumber = this.formatNumber(contactProperties.phoneNumbers[0].value);
     } else {
       ErrorFactory.fireError('InvalidContactPhoneNumberError');
     }
@@ -46,6 +46,16 @@ export class ContactAdapter {
     let contact = ContactFactory.createContact(contactFromServer.name, contactFromServer.cellPhone);
 
     return contact;
+  }
+
+  formatNumber(phoneNumber: string): string {
+    let number = phoneNumber.replace(/ /g, '')
+      .replace('-', '')
+      .replace('(', '')
+      .replace(')', '');
+
+
+    return number;
   }
 
 }
