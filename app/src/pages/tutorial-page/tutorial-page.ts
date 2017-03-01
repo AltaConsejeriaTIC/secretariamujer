@@ -23,11 +23,12 @@ export class TutorialPage {
     };
 
     this.tutorialItems = [
-      {label: 'Descubre si eres víctima de violencia de género por medio de la sección de Test'},
-      {label: 'Encuentra lugares donde podrás recibir atención por parte de personal profesional y capacitado casos de violencia de género'},
-      {label: 'Conoce y reporta los lugares más seguros de Bogotá en la sección de Mapa'},
-      {label: 'Encuentra tips especialmente pensados en ti para afrontar situaciones de violencia de género'},
-      {label: 'Activa el modo seguro y entra a la App digitando tu PIN en la calculadora y dandole en el igual'},
+      {label: 'SOFIApp te ayuda a prevenir las violencias y tiene información muy importante para ti. Responde los Test para identificar si estás en riesgo o estás siendo víctima de violencias.'},
+      {label: 'En Test, tips y rutas puedes encontrar también datos de lugares en donde recibirás orientación y atención. También puedes marcar a la Línea Púrpura Distrital "Mujeres que escuchan mujeres".'},
+      {label: 'Ingresa en contactos a personas de tu confianza, para enviarles un mensaje de texto presionando el botón de "Enviar Mensaje". No olvides informarles y repasa con ellos qué hacer en caso de peligro.'},
+      {label: 'En caso de una emergencia, también puedes presionar el botón de llamar al 123, para marcar rápidamente a la línea y avisar a las autoridades de tu emergencia.'},
+      {label: 'En la sección de configuración puedes completar tus datos, cambiar tu nombre en la aplicación o tu PIN y modificar los contactos de emergencia.'},
+      {label: 'Ingresa y recuerda un PIN de 4 números y un nombre dentro de la aplicación. Cuando abras de nuevo SOFIApp, encontrarás una calculadora en la que debes ingresar tu PIN y el botón igual.'},
     ];
 
     this.isDisabledButton=false;
@@ -42,12 +43,6 @@ export class TutorialPage {
     for (let i = 0; i < this.tutorialItems.length; i++) {
       this.tutorialBackgrounds.push(this.getURLImage(i+1));
     }
-    this.quitMapTutorialImage();
-  }
-
-  quitMapTutorialImage() {
-    this.tutorialItems.splice(2, 1);
-    this.tutorialBackgrounds.splice(2, 1);
   }
 
   setButtonVisibilityAndLabel() {
