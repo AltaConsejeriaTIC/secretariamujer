@@ -156,6 +156,7 @@ export class MenuPage {
     if (contact != null && contact.cellPhone != null) {
       promise = SMS.send(contact.cellPhone, message, options).then(() => {
         log += contact.cellPhone + index < contacts.length - 1 ? ', ' : '';
+        this.alertCreator.showSimpleAlert("Mensajes Enviados", "El mensaje ha sido enviado a: "+ contact.cellPhone);
         this.sendMessageToContact(contacts, message, index + 1, log);
       }, (error) => {
         this.alertCreator.showSimpleAlert("Mensaje", "No fue posible enviar el mensaje");
