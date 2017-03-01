@@ -1,28 +1,28 @@
-import {Component, trigger, state, style, transition, animate} from '@angular/core';
-import {NavController} from 'ionic-angular';
-import {AlertCreator} from "../../providers/alert-creator";
-import {WelcomeTestPage} from "../welcome-test/welcome-test";
-import {CallNumber, SMS} from 'ionic-native';
-import {SettingsPage} from "../settings-page/settings-page";
-import {SelectInfoCategoryPage} from "../select-info-category/select-info-category";
-import {WarningMessageDAO} from "../../providers/warning-message-dao";
-import {UserDAO} from "../../providers/user-dao";
-import {UserService} from "../../providers/user-service";
-import {MapPage} from "../map/map";
+import { Component, trigger, state, style, transition, animate } from '@angular/core';
+import { NavController } from 'ionic-angular';
+import { AlertCreator } from "../../providers/alert-creator";
+import { WelcomeTestPage } from "../welcome-test/welcome-test";
+import { CallNumber, SMS } from 'ionic-native';
+import { SettingsPage } from "../settings-page/settings-page";
+import { SelectInfoCategoryPage } from "../select-info-category/select-info-category";
+import { WarningMessageDAO } from "../../providers/warning-message-dao";
+import { UserDAO } from "../../providers/user-dao";
+import { UserService } from "../../providers/user-service";
+import { MapPage } from "../map/map";
 
 @Component({
   selector: 'page-menu',
   templateUrl: './menu.html',
   animations: [
     trigger('menuItemHint', [
-      state('hintVisible', style({width: "50vw"})),
-      state('hiddenHint', style({width: "0vw"})),
+      state('hintVisible', style({ width: "50vw" })),
+      state('hiddenHint', style({ width: "0vw" })),
       transition('hintVisible => hiddenHint', animate('100ms ease-in')),
       transition('hiddenHint => hintVisible', animate('100ms ease-out'))
     ]),
     trigger('iconGroup', [
-      state('hintVisible', style({width: "40vw", padding: "0 0 0 0"})),
-      state('hiddenHint', style({width: "85vw", padding: "0 0 0 15vw"})),
+      state('hintVisible', style({ width: "40vw", padding: "0 0 0 0" })),
+      state('hiddenHint', style({ width: "85vw", padding: "0 0 0 15vw" })),
       transition('hintVisible => hiddenHint', animate('100ms ease-out')),
       transition('hiddenHint => hintVisible', animate('100ms ease-in'))
     ]),
@@ -36,7 +36,7 @@ export class MenuPage {
   hintState: string[] = [];
 
   constructor(public navController: NavController, public alertCreator: AlertCreator,
-              private warningMessageDAO: WarningMessageDAO, private userDAO: UserDAO, private userService:UserService) {
+    private warningMessageDAO: WarningMessageDAO, private userDAO: UserDAO, private userService: UserService) {
     this.menuOptions = [
       {
         id: 0,
@@ -124,20 +124,28 @@ export class MenuPage {
   }
 
   sendWarningMessages() {
+    let success = true;
+
     this.warningMessageDAO.get().subscribe(message => {
-      console.log(this.userService.user.contacts);
-      if(this.userService.user.contacts.length == 0){
-        this.alertCreator.showSimpleAlert("Mensaje", "No tiene contactos agregados");
-      }
-      for (let contact of this.userService.user.contacts) {
-        this.sendMessageToContact(contact, message);
-      }
+      this.sendMessage(message);
     }, err => {
-      this.alertCreator.showSimpleAlert("Error", "No es posible enviar los mensajes en este momento");
+      this.sendMessage('Ayuda, estoy en peligro por favor ayúdame');
     });
   }
 
-  private sendMessageToContact(contact, message) {
+  private sendMessage(message: string) {
+    let contacts = this.userService.user.contacts;
+
+    if (contacts.length > 0) {
+      this.sendMessageToContact(contacts, message, 0, '');
+    } else {
+      this.alertCreator.showSimpleAlert("Error", "No es posible enviar el mensaje. Por favor agregue contactos en la configuración de la aplicación");
+    }
+  }
+
+  private sendMessageToContact(contacts, message, index, log) {
+    let contact = contacts[index];
+    let promise;
     let options = {
       replaceLineBreaks: false,
       android: {
@@ -146,20 +154,17 @@ export class MenuPage {
     };
 
     if (contact != null && contact.cellPhone != null) {
+      promise = SMS.send(contact.cellPhone, message, options).then(() => {
+        log += contact.cellPhone + index < contacts.length - 1 ? ', ' : '';
+        this.alertCreator.showSimpleAlert("Mensajes Enviados", "El mensaje ha sido enviado a: "+ contact.cellPhone);
+        this.sendMessageToContact(contacts, message, index + 1, log);
+      }, (error) => {
+        this.alertCreator.showSimpleAlert("Mensaje", "No fue posible enviar el mensaje");
+      });
+    }
 
-      SMS.send(contact.cellPhone, message, options)
-        .then(()=>{
-            this.alertCreator.showSimpleAlert("Mensaje", "El mensaje fue enviado a "+contact.cellPhone);
-        },
-        ()=>{
-          this.alertCreator.showSimpleAlert("Mensaje", "No tiene saldo suficiente para enviar el mensaje");
-        })
-      ;
-
-    }else{
-
-      this.alertCreator.showSimpleAlert("Mensaje","No existen numeros para sus contactos");
-
+    if (log != '') {
+      this.alertCreator.showSimpleAlert("Mensajes Enviados", "Los mensajes fueron enviados a " + log);
     }
   }
 }

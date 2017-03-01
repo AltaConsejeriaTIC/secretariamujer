@@ -27,7 +27,7 @@ export class MyApp {
       });
 
     storage.get('isFirstTimeOpen').then((isFirstTimeOpen) => {
-      this.openState = (isFirstTimeOpen == null)? true : false;
+      this.openState = (isFirstTimeOpen == null || isFirstTimeOpen==true)? true : false;
       storage.set('isFirstTimeOpen', this.openState);
       this.checkIfFirstTimeOpen(isFirstTimeOpen);
     });
