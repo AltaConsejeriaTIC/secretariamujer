@@ -29,7 +29,15 @@ export class CategoryTitles {
       response.field_title_test4_line_2,
     ];
 
+    let RESTSubtitlesFields=[
+      response.field_test_tip_1_subtitle,
+      response.field_test_tip_2_subtitle,
+      response.field_test_tip_3_subtitle,
+      response.field_test_tip_4_subtitle
+    ];
+
     for (let testCategory = 0; testCategory < 4; testCategory++) {
+      Categories[testCategory].subtitle= RESTSubtitlesFields[testCategory];
       for (let testLabel = 0; testLabel < 2; testLabel++) {
         responseField = responseField + 1;
         Categories[testCategory].labels[testLabel] = RESTFields[responseField];

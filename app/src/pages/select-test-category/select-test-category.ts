@@ -20,6 +20,7 @@ export class SelectTestCategoryPage {
       {
         id: 0,
         labels: ['', ''],
+        subtitle:'',
         class: 'option-0',
         iconName: "icon-economic-violence",
         RESTAddress: 'preguntas-violencia-economica'
@@ -27,6 +28,7 @@ export class SelectTestCategoryPage {
       {
         id: 1,
         labels: ['', ''],
+        subtitle:'',
         class: 'option-1',
         iconName: "icon-physical-violence",
         RESTAddress: 'preguntas-violencia-fisica'
@@ -34,6 +36,7 @@ export class SelectTestCategoryPage {
       {
         id: 2,
         labels: ['', ''],
+        subtitle:'',
         class: 'option-2',
         iconName: "icon-psychological-violence",
         RESTAddress: 'preguntas-violencia-psicologica'
@@ -41,6 +44,7 @@ export class SelectTestCategoryPage {
       {
         id: 3,
         labels: ['', ''],
+        subtitle:'',
         class: 'option-3',
         iconName: "icon-sexual-violence",
         RESTAddress: 'preguntas-violencia-sexual'
@@ -51,6 +55,7 @@ export class SelectTestCategoryPage {
       {
         id: 0,
         labels: ['', ''],
+        subtitle:'',
         class: 'option-0',
         iconName: "icon-economic-violence",
         RESTAddres: "economic_violence_tips_rest"
@@ -58,6 +63,7 @@ export class SelectTestCategoryPage {
       {
         id: 1,
         labels: ['', ''],
+        subtitle:'',
         class: 'option-1',
         iconName: "icon-physical-violence",
         RESTAddres: "physical_violence_tips_rest"
@@ -65,6 +71,7 @@ export class SelectTestCategoryPage {
       {
         id: 2,
         labels: ['', ''],
+        subtitle:'',
         class: 'option-2',
         iconName: "icon-psychological-violence",
         RESTAddres: "psychological_violence_tips_rest"
@@ -72,6 +79,7 @@ export class SelectTestCategoryPage {
       {
         id: 3,
         labels: ['', ''],
+        subtitle:'',
         class: 'option-3',
         iconName: "icon-sexual-violence",
         RESTAddres: "sexual_violence_tips_rest"
@@ -86,6 +94,7 @@ export class SelectTestCategoryPage {
     this.loading.present();
 
     this.categoryTitles.getTitles().map(res => res.json()).subscribe(response => {
+      console.log("la respuesta", response);
       this.setTestCategories(response[0]);
       this.setTipsCategories(response[0]);
       this.loading.dismiss();
