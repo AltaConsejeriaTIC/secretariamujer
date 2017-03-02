@@ -43,28 +43,28 @@ export class MenuPage {
         isShowingHint: false,
         label: 'Información',
         icon: 'icon-info',
-        hint: ['Entérate sobre', 'la SDMU, SOFÍA', 'y SOFÍAPP']
+        hint: ['SOFIApp te la mano para', 'reconocer y exigir tu derecho ', 'a vivir sin violencias']
       },
       {
         id: 1,
         isShowingHint: false,
         label: 'Mapas',
         icon: 'icon-map',
-        hint: ['Reporta si te', 'sientes segura o insegura', 'en una zona de tu ciudad']
+        hint:  ['Aquí ubicas los lugares a los ', 'que puedes acudir para la', 'protección de tus derechos']
       },
       {
         id: 2,
         isShowingHint: false,
         label: 'Test / Tips y rutas',
         icon: 'icon-test',
-        hint: ['Descubre', 'si estás en una', 'situación violenta']
+        hint:  ['Aquí identificas tu situación y', 'encuentras información útil', 'sobre tus derechos.']
       },
       {
         id: 3,
         isShowingHint: false,
         label: 'Configuración',
         icon: 'icon-conf',
-        hint: ['Ingresa tus', 'datos para que SOFIA', 'te pueda ayudar']
+        hint: ['Ingresa tus datos, registra tus', 'contactos de emergencia', 'y empieza a utilizar SOFIApp']
       }
     ];
   }
