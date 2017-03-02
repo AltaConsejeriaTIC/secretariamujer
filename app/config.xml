@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <widget id="com.vivelabbogota.appsofia" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>AppSofia</name>
+  <name>SOFIApp</name>
   <description>Applicación contra el maltrato de la mujer</description>
   <author email="vivelab_bog@unal.edu.co" href="http://www.vivelabbogota.com/">Vivelab Bogota</author>
   <content src="index.html"/>
