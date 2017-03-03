@@ -1,13 +1,13 @@
-import {Component} from '@angular/core';
-import {NavController, NavParams} from 'ionic-angular';
-import {Contacts, Contact, IContactProperties, ContactError} from 'ionic-native';
-import {MenuPage} from "../menu/menu";
-import {IContact} from "../../entity/contact";
-import {ContactAdapter} from "../../providers/adapter/contact-adapter";
-import {AlertCreator} from "../../providers/alert-creator";
-import {ContactFactory} from "../../providers/factory/contact-factory";
-import {UserDAO} from "../../providers/user-dao";
-import {UserService} from "../../providers/user-service";
+import { Component } from '@angular/core';
+import { NavController, NavParams } from 'ionic-angular';
+import { Contacts, Contact, IContactProperties, ContactError } from 'ionic-native';
+import { MenuPage } from "../menu/menu";
+import { IContact } from "../../entity/contact";
+import { ContactAdapter } from "../../providers/adapter/contact-adapter";
+import { AlertCreator } from "../../providers/alert-creator";
+import { ContactFactory } from "../../providers/factory/contact-factory";
+import { UserDAO } from "../../providers/user-dao";
+import { UserService } from "../../providers/user-service";
 
 
 const MAX_CONTACTS = 3;
@@ -21,7 +21,7 @@ export class ContactSelectionPage {
   contacts: IContact[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private contactAdapter: ContactAdapter,
-              private userDAO: UserDAO, private alertCreator: AlertCreator, private userService: UserService) {
+    private userDAO: UserDAO, private alertCreator: AlertCreator, private userService: UserService) {
     this.initContacts();
   }
 
@@ -60,12 +60,12 @@ export class ContactSelectionPage {
   }
 
   private handleError(error) {
-    if ((<Error>error).name == 'InvalidContactPhoneNumberError') {
-      this.alertCreator.showCofirmationMessage('Contacto No Permitido', 'El contacto seleccionado no tiene ningun numero de telefono. Por favor seleccione otro');
+    if (error == 20) {
+      this.alertCreator.showCofirmationMessage('Permiso De Acceso', 'Ve a la configuración de tu celular y otórgale permisos a SofiApp para que pueda acceder a tus contactos');
     }
 
-    if (error == ContactError.PERMISSION_DENIED_ERROR) {
-      this.alertCreator.showCofirmationMessage('Permiso De Acceso', 'Ve a la configuración de tu celular y otórgale permisos a SofiApp para que pueda acceder a tus contactos');
+    if ((<Error>error).name == 'InvalidContactPhoneNumberError') {
+      this.alertCreator.showCofirmationMessage('Contacto No Permitido', 'El contacto seleccionado no tiene ningun numero de telefono. Por favor seleccione otro');
     }
   }
 
