@@ -50,7 +50,7 @@ export class MenuPage {
         isShowingHint: false,
         label: 'Mapas',
         icon: 'icon-map',
-        hint:  ['Aquí ubicas los lugares a los ', 'que puedes acudir para la', 'protección de tus derechos']
+        hint:  ['Ubica sitios a los que puedes', 'acudir para la protección', 'de tus derechos']
       },
       {
         id: 2,
