@@ -43,7 +43,7 @@ export class MenuPage {
         isShowingHint: false,
         label: 'Información',
         icon: 'icon-info',
-        hint: ['SOFIApp te la mano para', 'reconocer y exigir tu derecho ', 'a vivir sin violencias']
+        hint: ['SOFIApp te da la mano para', 'reconocer y exigir tu derecho ', 'a vivir sin violencias']
       },
       {
         id: 1,
