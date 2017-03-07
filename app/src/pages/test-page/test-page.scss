@@ -4,9 +4,10 @@ page-test-page {
   }
 
   .test-question {
-    height: 45%;
+    height: 41%;
     width: 100%;
     display: table;
+    padding: 0;
 
     > * {
       display: table-cell;
@@ -31,6 +32,10 @@ page-test-page {
 
   .test-options-container .scroll-content {
     padding: 0;
+
+    &, .scroll-zoom-wrapper, .test-options {
+      height: 100%;
+    }
   }
 
   .test-view {
@@ -47,12 +52,12 @@ page-test-page {
 
   .test-options-container {
     background: map_get($colors, SofiaAppDarkBlue);
-    height: 55%;
+    height: 59%;
   }
 
   .test-options {
-    > *, .next-question {
-      min-height: 12vh;
+    > * {
+      min-height: 25%;
     }
 
     > * {
@@ -67,6 +72,7 @@ page-test-page {
 
     > *:last-child {
       background: map_get($colors, TestNextButton);
+      height: 25%;
     }
 
     ion-label {
@@ -74,6 +80,7 @@ page-test-page {
     }
 
     .next-question {
+      height: 100%;
       width: 100%;
       background: transparent;
 
