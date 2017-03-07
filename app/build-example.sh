@@ -40,3 +40,5 @@ fi
 #adb -d install app.apk
 
 #ionic build ios --prod --release
+ionic build ios --prod --device --buildFlag="DEVELOPMENT_TEAM=7636LBL49U"
+mv platforms/ios/build/device/SOFIApp.ipa $BUILD_FOLDER/
