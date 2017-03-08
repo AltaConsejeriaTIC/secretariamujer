@@ -90,6 +90,7 @@ export class LoginPage {
   goToMenuPage(){
     this.hideLoading();
     this.storage.set('islogged', true);
+    this.storage.set('isFirstTimeOpen', false);
     this.navCtrl.setRoot(MenuPage);
   }
 
