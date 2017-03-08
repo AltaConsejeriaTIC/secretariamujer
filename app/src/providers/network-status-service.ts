@@ -11,6 +11,15 @@ export class NetworkStatusService {
   }
 
   static isDeviceConnected() {
-    return navigator.connection.type != Connection.NONE;
+    let connected = false;
+
+    if (navigator.connection) {
+      connected = navigator.connection.type != Connection.NONE;
+    }
+    else {
+      connected = navigator.onLine;
+    }
+
+    return connected;
   }
 }
