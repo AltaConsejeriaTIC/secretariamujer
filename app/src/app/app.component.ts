@@ -14,52 +14,57 @@ export class MyApp {
   rootPage;
   openState;
 
-  constructor(public platform: Platform, public storage: Storage ) {
-      this.platform.ready().then(() => {
-        if (platform.is('ios')) {
-        StatusBar.hide();
-        }
-        document.addEventListener('resume',()=>{
-          if (platform.is('ios')) {
-            StatusBar.hide();
-          }
-        });
-      });
+  constructor(public platform: Platform, public storage: Storage) {
+    this.platform.ready().then(() => {
+      this.hideStatusBarOnIOS(this.platform);
+      this.getStoredData();
+    });
 
-    storage.get('isFirstTimeOpen').then((isFirstTimeOpen) => {
-      this.openState = (isFirstTimeOpen == null || isFirstTimeOpen==true)? true : false;
-      storage.set('isFirstTimeOpen', this.openState);
+    this.platform.resume.subscribe((event) => {
+      this.hideStatusBarOnIOS(this.platform);
+    });
+
+  }
+
+  private getStoredData() {
+    this.storage.get('isFirstTimeOpen').then((isFirstTimeOpen) => {
+      this.openState = isFirstTimeOpen == null || isFirstTimeOpen == true;
+      this.storage.set('isFirstTimeOpen', this.openState);
       this.checkIfFirstTimeOpen(isFirstTimeOpen);
     });
   }
 
-  checkIfFirstTimeOpen(isFirstTimeOpen:boolean){
-    if(isFirstTimeOpen || isFirstTimeOpen == null){
+  private hideStatusBarOnIOS(platform: Platform) {
+    if (platform.is('ios')) {
+      StatusBar.hide();
+    }
+  }
+
+  checkIfFirstTimeOpen(isFirstTimeOpen: boolean) {
+    if (isFirstTimeOpen || isFirstTimeOpen == null) {
       this.hideSplashScreen();
-      this.rootPage=TutorialPage;
-    }else{
+      this.rootPage = TutorialPage;
+    } else {
       this.storage.get('islogged').then((isLogged) => {
         this.checkIfUserIsLogged(isLogged);
       })
     }
   }
 
-  checkIfUserIsLogged(isLogged:boolean){
-    if(isLogged || isLogged!=null){
+  checkIfUserIsLogged(isLogged: boolean) {
+    if (isLogged || isLogged != null) {
       this.hideSplashScreen();
-      this.rootPage=CalculatorPage;
-    }else{
+      this.rootPage = CalculatorPage;
+    } else {
       this.storage.set('isFirstTimeOpen', true);
       this.hideSplashScreen();
-      this.rootPage=TutorialPage;
+      this.rootPage = TutorialPage;
     }
   }
 
-  hideSplashScreen(){
-    this.platform.ready().then(() => {
-      StatusBar.styleDefault();
-      Splashscreen.hide();
-    });
+  hideSplashScreen() {
+    StatusBar.styleDefault();
+    Splashscreen.hide();
   }
 
 }
