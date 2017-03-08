@@ -1,5 +1,7 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { Geolocation } from 'ionic-native';
+import {AlertCreator} from "../../providers/alert-creator";
 
 declare var google;
 
@@ -12,8 +14,11 @@ export class MapPage {
   @ViewChild('map') mapElement: ElementRef;
   map: any;
   sofiaPlaces: any[];
+  defaultPosition: any[];
+  currentPosition: any;
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public alertCreator: AlertCreator) {
+    this.defaultPosition = [{latitude: 4.6382109, longitude: -74.083969}];
     this.sofiaPlaces = [
       {placeName: 'Secretaría 1', coordinate: [4.6341285,-74.0893915]},
       {placeName: 'Secretaría 2', coordinate: [4.6305157,-74.079887]},
@@ -35,18 +40,35 @@ export class MapPage {
   }
 
   loadMap() {
-    this.setInitialMapSettings();
+    Geolocation.getCurrentPosition().then((position) => {
+      this.setInitialMapSettings(position.coords.latitude, position.coords.longitude);
+      this.setPinOnMap("Usted está aquí", position.coords.latitude, position.coords.longitude);
+    }, (err) => {
+      this.setInitialMapSettings(this.defaultPosition[0].latitude, this.defaultPosition[0].longitude);
+      this.alertCreator.showSimpleAlert('Error', 'No pudo ser detectada su ubicación actual');
+    });
+  }
+
+  setInitialMapSettings(currentLatitude, currentLongitude){
+    this.currentPosition = new google.maps.LatLng(currentLatitude, currentLongitude);
+    console.log(currentLatitude, currentLongitude);
+    let mapOptions = {
+      center: this.currentPosition,
+      zoom: 15,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+    this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
     this.putPinsOnMap();
   }
 
-  putPinsOnMap(){
+  putPinsOnMap() {
     for (let i = 0; i < this.sofiaPlaces.length; i++) {
-      this.setPinOnMap(this.sofiaPlaces[i]);
+      this.setPinOnMap(this.sofiaPlaces[i].placeName, this.sofiaPlaces[i].coordinate[0], this.sofiaPlaces[i].coordinate[1]);
     }
   }
 
-  setPinOnMap(place) {
-    let coordinateSite = new google.maps.LatLng(place.coordinate[0], place.coordinate[1]);
+  setPinOnMap(placeName, placeLatitude, placeLongitude) {
+    let coordinateSite = new google.maps.LatLng(placeLatitude, placeLongitude);
 
     let marker = new google.maps.Marker({
       map: this.map,
@@ -57,19 +79,8 @@ export class MapPage {
       }*/
     });
 
-    let content = "<h4>" + place.placeName + "</h4>";
-
+    let content = "<h4>" + placeName + "</h4>";
     this.addInfoWindow(marker, content);
-  }
-
-  setInitialMapSettings(){
-    let initialPosition = new google.maps.LatLng(4.6373802,-74.086619);
-    let mapOptions = {
-      center: initialPosition,
-      zoom: 15,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    }
-    this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
   }
 
   addInfoWindow(marker, content){
