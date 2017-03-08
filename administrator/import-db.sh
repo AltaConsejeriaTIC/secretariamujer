@@ -1,1 +1,1 @@
-mysql -u root -ptoor < db/db.sql
+mysql -u root -ptoor < db/db-prod.sql
