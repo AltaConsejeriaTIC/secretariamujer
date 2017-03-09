@@ -7,6 +7,7 @@ import {RegisterOptionalInfoPage} from "../register-optional-info/register-optio
 import {UserService} from "../../providers/user-service";
 import {FormGroup, FormBuilder, Validators} from "@angular/forms";
 import {FormValidator} from "../../providers/form-validator";
+import {NetworkStatusService} from "../../providers/network-status-service";
 
 
 @Component({
@@ -18,12 +19,11 @@ export class RequiredInfoFormPage {
   user: IUser;
   loading: Loading;
   form: FormGroup;
-  username:string;
-  password:string;
+  username: string;
+  password: string;
 
 
-
-  constructor(public navCtrl: NavController, public alertCreator: AlertCreator, public userDAO: UserDAO, private userService:UserService, public loadingController: LoadingController, private  formBuilder: FormBuilder, public formValidator: FormValidator,) {
+  constructor(public navCtrl: NavController, public alertCreator: AlertCreator, public userDAO: UserDAO, private userService: UserService, public loadingController: LoadingController, private  formBuilder: FormBuilder, public formValidator: FormValidator,) {
     this.user = new User();
     this.loading = this.createLoading();
     this.createForm(formBuilder);
@@ -61,18 +61,23 @@ export class RequiredInfoFormPage {
     }
   }
 
-  isUserDataValid(){
+  isUserDataValid() {
     let isDataValid: boolean = this.formValidator.isValidUserName(this.form.controls['username'], 'Por favor ingresa un nombre de usuario, máximo 30 caracteres') && this.formValidator.IsValidPassword(this.form.controls['password'], 'Por favor ingresa un PIN de 4 dígitos');
     return isDataValid;
   }
 
   saveRequiredInfo() {
-    this.userService.user.username=this.form.controls['username'].value;
-    this.userService.user.password=this.form.controls['password'].value;
+    this.userService.user.username = this.form.controls['username'].value;
+    this.userService.user.password = this.form.controls['password'].value;
     this.registerUser();
   }
 
-  registerUser(){
+  registerUser() {
+    if (!NetworkStatusService.isDeviceConnected()) {
+      this.alertCreator.showCofirmationMessage("Error", "Asegurate de tener conexión a internet, o intentalo más tarde");
+      return;
+    }
+
     this.userDAO.create()
       .subscribe(userId => {
         this.userService.user.id = userId;
@@ -88,11 +93,11 @@ export class RequiredInfoFormPage {
       });
   }
 
-  userCanContinue(){
+  userCanContinue() {
     return this.form.controls['username'].valid && this.form.controls['password'].valid
   }
 
-  userCanNotContinue(){
+  userCanNotContinue() {
     return !this.form.controls['username'].valid || !this.form.controls['password'].valid
   }
 

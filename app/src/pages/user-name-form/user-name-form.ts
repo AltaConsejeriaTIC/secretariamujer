@@ -8,6 +8,7 @@ import {AlertCreator} from "../../providers/alert-creator";
 import {Storage} from '@ionic/storage';
 import {UserFactory} from "../../providers/user-factory";
 import {UserService} from "../../providers/user-service";
+import {NetworkStatusService} from "../../providers/network-status-service";
 
 
 @Component({
@@ -54,11 +55,16 @@ export class UserNameFormPage {
       password: this.userPassword
     });
 
-    this.loginService.login(user,(data)=>{
+    if (!NetworkStatusService.isDeviceConnected()) {
+      this.alertCreator.showCofirmationMessage("Error", "Asegurate de tener conexión a internet, o intentalo más tarde");
+      return;
+    }
+
+    this.loginService.login(user, (data) => {
       this.userService.user = data;
-      this.userService.user.password=this.userPassword;
+      this.userService.user.password = this.userPassword;
       this.goToMenuPage();
-    },()=>{
+    }, () => {
       this.hideLoading();
     });
   }
@@ -76,7 +82,7 @@ export class UserNameFormPage {
     return this.formValidator.isValidUserName(this.form.controls['username'], 'Por favor introduce tu nombre en la aplicación')
   }
 
-  goToMenuPage(){
+  goToMenuPage() {
     this.hideLoading();
     this.storage.set('islogged', true);
     this.navCtrl.setRoot(MenuPage);
