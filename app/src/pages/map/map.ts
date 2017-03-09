@@ -15,12 +15,10 @@ export class MapPage {
   @ViewChild('map') mapElement: ElementRef;
   map: any;
   sofiaPlaces: any[];
-  defaultPosition: any[];
-  currentPosition: any;
+  centerPosition: any[];
   currentLocalityBoundaries: any[];
 
   constructor(public navCtrl: NavController, public alertCreator: AlertCreator, public http: Http) {
-    this.defaultPosition = [{latitude: 4.6382109, longitude: -74.083969}];
     this.sofiaPlaces = [
       {placeName: 'Secretaría 1', coordinate: [4.6341285,-74.0893915]},
       {placeName: 'Secretaría 2', coordinate: [4.6305157,-74.079887]},
@@ -30,7 +28,7 @@ export class MapPage {
   }
 
   ionViewDidLoad(){
-    this.loadMap();
+    this.loadMap("Teusaquillo");
   }
 
   goBackPage() {
@@ -41,21 +39,22 @@ export class MapPage {
     this.navCtrl.popToRoot();
   }
 
-  loadMap() {
-    Geolocation.getCurrentPosition().then((position) => {
-      this.setInitialMapSettings(position.coords.latitude, position.coords.longitude);
-      this.setPinOnMap("Usted está aquí", position.coords.latitude, position.coords.longitude);
-    }, (err) => {
-      this.setInitialMapSettings(this.defaultPosition[0].latitude, this.defaultPosition[0].longitude);
-      this.alertCreator.showSimpleAlert('Error', 'No pudo ser detectada su ubicación actual');
+  loadMap(localityName) {
+    this.getLocalityCenter().then((localitiesCenter) => {
+      for (let i = 0; i < localitiesCenter.length; i++) {
+        if (localitiesCenter[i].name == localityName) {
+          this.setInitialMapSettings(localitiesCenter[i]);
+        }
+      }
     });
   }
 
-  setInitialMapSettings(currentLatitude, currentLongitude){
-    this.currentPosition = new google.maps.LatLng(currentLatitude, currentLongitude);
+  setInitialMapSettings(locality){
+    console.log(locality.lat + " " + locality.lng + " " + locality.zoom);
+    let localityPosition = new google.maps.LatLng(locality.lat, locality.lng);
     let mapOptions = {
-      center: this.currentPosition,
-      zoom: 15,
+      center: localityPosition,
+      zoom: locality.zoom,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     }
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
@@ -63,8 +62,12 @@ export class MapPage {
     this.getMapStyle().then((style_array) => {
       this.map.setOptions({styles: style_array});
     });
-    this.drawLocality();
+    this.drawLocality(locality.name);
     this.putPinsOnMap();
+  }
+
+  getLocalityCenter(): any {
+    return this.doGet('assets/maps/localities-center.json');
   }
 
   getMapStyle(): any {
@@ -88,8 +91,8 @@ export class MapPage {
     });
   }
 
-  drawLocality() {
-    this.getLocalityBoundaries("Teusaquillo").then((boundaries) => {
+  drawLocality(localityName) {
+    this.getLocalityBoundaries(localityName).then((boundaries) => {
       this.currentLocalityBoundaries = boundaries;
       var flightPath = new google.maps.Polygon({
         paths: this.currentLocalityBoundaries,
