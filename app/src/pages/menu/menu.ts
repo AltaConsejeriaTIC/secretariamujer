@@ -9,6 +9,7 @@ import { WarningMessageDAO } from "../../providers/warning-message-dao";
 import { UserDAO } from "../../providers/user-dao";
 import { UserService } from "../../providers/user-service";
 import { MapPage } from "../map/map";
+import {MapLocationsPage} from "../map-locations/map-locations";
 
 @Component({
   selector: 'page-menu',
@@ -103,7 +104,7 @@ export class MenuPage {
         this.navController.push(SelectInfoCategoryPage);
         break;
       case 1:
-        this.navController.push(MapPage);
+        this.navController.push(MapLocationsPage);
         break;
       case 2:
         this.navController.push(WelcomeTestPage);

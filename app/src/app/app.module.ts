@@ -38,6 +38,7 @@ import {UserService} from "../providers/user-service";
 import {UserAdapter} from "../providers/adapter/user-adapter";
 import {LoginPage} from "../pages/login/login";
 import {CategoryTitles} from "../providers/category-titles";
+import {MapLocationsPage} from "../pages/map-locations/map-locations";
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import {CategoryTitles} from "../providers/category-titles";
     WelcomeTestPage,
     SelectTestCategoryPage,
     TestPage,
+    MapLocationsPage,
     MapPage,
     AttentionRoutesPage,
     AttentionRoutesLocationPage,
@@ -86,6 +88,7 @@ import {CategoryTitles} from "../providers/category-titles";
     WelcomeTestPage,
     SelectTestCategoryPage,
     TestPage,
+    MapLocationsPage,
     MapPage,
     AttentionRoutesPage,
     AttentionRoutesLocationPage,

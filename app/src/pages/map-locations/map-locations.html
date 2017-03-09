@@ -1,0 +1,29 @@
+<ion-header mode="ios">
+  <ion-navbar hideBackButton>
+    <button start ion-button icon-only menuToggle (click)="goBackPage()">
+      <ion-icon name="icon-fill-back-arrow"></ion-icon>
+    </button>
+    <label class="header-title">Mapas</label>
+    <button end ion-button icon-only menuToggle (click)="goToMenuPage()">
+      <ion-icon name="icon-go-menu"></ion-icon>
+    </button>
+  </ion-navbar>
+  <div class="header-separator"></div>
+</ion-header>
+
+<ion-content no-bounce class="background-option-0">
+  <ion-grid no-padding>
+    <ion-row class="location-row" *ngFor="let location of locationsLabels; let id = index">
+      <button ion-button icon-only mode="ios" (click)="goToLocalityMap(id)">
+        <ion-col class="location-row-margin">
+          <ion-row>
+            <label class="location-label">Localidad</label>
+          </ion-row>
+          <ion-row>
+            <label class="location-name">{{locationsLabels[id]}}</label>
+          </ion-row>
+        </ion-col>
+      </button>
+    </ion-row>
+  </ion-grid>
+</ion-content>
