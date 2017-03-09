@@ -30,7 +30,7 @@ export class MapPage {
   }
 
   ionViewDidLoad(){
-    this.loadMap('Suba');
+    this.loadMap(this.selectedLocality);
   }
 
   goBackPage() {

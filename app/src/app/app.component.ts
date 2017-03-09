@@ -5,7 +5,6 @@ import {HomePage} from "../pages/home/home";
 import {TutorialPage} from "../pages/tutorial-page/tutorial-page";
 import {Storage} from '@ionic/storage';
 import {CalculatorPage} from "../pages/calculator/calculator";
-import {MapPage} from "../pages/map/map";
 
 
 @Component({
@@ -44,7 +43,7 @@ export class MyApp {
   checkIfFirstTimeOpen(isFirstTimeOpen: boolean) {
     if (isFirstTimeOpen || isFirstTimeOpen == null) {
       this.hideSplashScreen();
-      this.rootPage = MapPage;
+      this.rootPage = TutorialPage;
     } else {
       this.storage.get('islogged').then((isLogged) => {
         this.checkIfUserIsLogged(isLogged);
@@ -55,11 +54,11 @@ export class MyApp {
   checkIfUserIsLogged(isLogged: boolean) {
     if (isLogged || isLogged != null) {
       this.hideSplashScreen();
-      this.rootPage = MapPage;
+      this.rootPage = CalculatorPage;
     } else {
       this.storage.set('isFirstTimeOpen', true);
       this.hideSplashScreen();
-      this.rootPage = MapPage;
+      this.rootPage = TutorialPage;
     }
   }
 
