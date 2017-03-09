@@ -1,6 +1,7 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Geolocation } from 'ionic-native';
+import {Http} from "@angular/http";
 import {AlertCreator} from "../../providers/alert-creator";
 
 declare var google;
@@ -16,8 +17,9 @@ export class MapPage {
   sofiaPlaces: any[];
   defaultPosition: any[];
   currentPosition: any;
+  currentLocalityBoundaries: any[];
 
-  constructor(public navCtrl: NavController, public alertCreator: AlertCreator) {
+  constructor(public navCtrl: NavController, public alertCreator: AlertCreator, public http: Http) {
     this.defaultPosition = [{latitude: 4.6382109, longitude: -74.083969}];
     this.sofiaPlaces = [
       {placeName: 'Secretaría 1', coordinate: [4.6341285,-74.0893915]},
@@ -51,14 +53,54 @@ export class MapPage {
 
   setInitialMapSettings(currentLatitude, currentLongitude){
     this.currentPosition = new google.maps.LatLng(currentLatitude, currentLongitude);
-    console.log(currentLatitude, currentLongitude);
     let mapOptions = {
       center: this.currentPosition,
       zoom: 15,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     }
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+
+    this.getMapStyle().then((style_array) => {
+      this.map.setOptions({styles: style_array});
+    });
+    this.drawLocality();
     this.putPinsOnMap();
+  }
+
+  getMapStyle(): any {
+    return this.doGet('assets/maps/map-style.json');
+  }
+
+  getLocalityBoundaries(locality): any {
+    return this.doGet('assets/maps/localitiesBoundaries/' + locality + '.json');
+  }
+
+  doGet(url : string) {
+    return new Promise(
+      resolve => { this.http.get(url).map(res => res.json()).subscribe(data =>
+        {
+          resolve(data);
+        },
+        err => {
+          console.log("Unable to resolve GET promise to url: " + url + "\n ERROR: " + err);
+        }
+      );
+    });
+  }
+
+  drawLocality() {
+    this.getLocalityBoundaries("Teusaquillo").then((boundaries) => {
+      this.currentLocalityBoundaries = boundaries;
+      var flightPath = new google.maps.Polygon({
+        paths: this.currentLocalityBoundaries,
+        strokeColor: '#FF0000',
+        strokeOpacity: 0,
+        strokeWeight: 3,
+        fillColor: '#FF0000',
+        fillOpacity: 0.1
+      });
+      flightPath.setMap(this.map);
+    });
   }
 
   putPinsOnMap() {
