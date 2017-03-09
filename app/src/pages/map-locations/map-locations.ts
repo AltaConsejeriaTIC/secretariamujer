@@ -9,17 +9,19 @@ import {Localities} from "../../providers/localities";
 })
 export class MapLocationsPage {
   locationsLabels:string[];
+  serverLocations:string[];
 
   constructor(public navCtrl: NavController, public locations:Localities) {
     this.locationsLabels= this.locations.getLocalitiesLabels();
+    this.serverLocations=this.locations.getLocalitiesServer();
   }
 
   ionViewDidLoad() {
 
   }
 
-  goToLocalityMap(id:any){
-    this.navCtrl.push(MapPage);
+  goToLocalityMap(id:number){
+    this.navCtrl.push(MapPage,{locality:this.serverLocations[id]});
   }
 
   goBackPage(){

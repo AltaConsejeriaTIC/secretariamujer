@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import {NavController, NavParams} from 'ionic-angular';
 import { Geolocation } from 'ionic-native';
 import {Http} from "@angular/http";
 import {AlertCreator} from "../../providers/alert-creator";
@@ -15,20 +15,22 @@ export class MapPage {
   @ViewChild('map') mapElement: ElementRef;
   map: any;
   sofiaPlaces: any[];
-  centerPosition: any[];
   currentLocalityBoundaries: any[];
+  selectedLocality:string;
 
-  constructor(public navCtrl: NavController, public alertCreator: AlertCreator, public http: Http) {
+  constructor(public navCtrl: NavController, public alertCreator: AlertCreator, public http: Http, public navParams: NavParams) {
     this.sofiaPlaces = [
       {placeName: 'Secretaría 1', coordinate: [4.6341285,-74.0893915]},
       {placeName: 'Secretaría 2', coordinate: [4.6305157,-74.079887]},
       {placeName: 'Secretaría 3', coordinate: [4.6293917,-74.0900739]},
       {placeName: 'Secretaría 4', coordinate: [4.6330481,-74.0871267]},
     ];
+
+    this.selectedLocality=this.navParams.get('locality');
   }
 
   ionViewDidLoad(){
-    this.loadMap("Teusaquillo");
+    this.loadMap('Suba');
   }
 
   goBackPage() {
@@ -88,7 +90,7 @@ export class MapPage {
           console.log("Unable to resolve GET promise to url: " + url + "\n ERROR: " + err);
         }
       );
-    });
+      });
   }
 
   drawLocality(localityName) {
@@ -120,8 +122,8 @@ export class MapPage {
       animation: google.maps.Animation.DROP,
       position: coordinateSite,
       /*icon: {
-        'url': 'assets/img/menu-icons/Info_pictograma_Azul.png'
-      }*/
+       'url': 'assets/img/menu-icons/Info_pictograma_Azul.png'
+       }*/
     });
 
     let content = "<h4>" + placeName + "</h4>";
