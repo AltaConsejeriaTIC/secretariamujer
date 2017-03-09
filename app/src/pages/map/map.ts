@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import {NavController, NavParams} from 'ionic-angular';
 import { Geolocation } from 'ionic-native';
 import {Http} from "@angular/http";
 import {AlertCreator} from "../../providers/alert-creator";
@@ -18,8 +18,9 @@ export class MapPage {
   defaultPosition: any[];
   currentPosition: any;
   currentLocalityBoundaries: any[];
+  selectedLocality:string;
 
-  constructor(public navCtrl: NavController, public alertCreator: AlertCreator, public http: Http) {
+  constructor(public navCtrl: NavController, public alertCreator: AlertCreator, public http: Http, public navParams: NavParams) {
     this.defaultPosition = [{latitude: 4.6382109, longitude: -74.083969}];
     this.sofiaPlaces = [
       {placeName: 'Secretaría 1', coordinate: [4.6341285,-74.0893915]},
@@ -27,6 +28,7 @@ export class MapPage {
       {placeName: 'Secretaría 3', coordinate: [4.6293917,-74.0900739]},
       {placeName: 'Secretaría 4', coordinate: [4.6330481,-74.0871267]},
     ];
+    this.selectedLocality=this.navParams.get('locality');
   }
 
   ionViewDidLoad(){
