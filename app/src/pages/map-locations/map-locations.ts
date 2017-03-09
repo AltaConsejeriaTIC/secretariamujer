@@ -42,4 +42,13 @@ export class MapLocationsPage {
     this.navCtrl.push(MapPage);
   }
 
+  goBackPage(){
+    this.navCtrl.pop();
+  }
+
+
+  goToMenuPage() {
+    this.navCtrl.popToRoot();
+  }
+
 }
