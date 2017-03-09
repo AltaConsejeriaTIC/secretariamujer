@@ -17,6 +17,7 @@ export class MapPage {
   sofiaPlaces: any[];
   currentLocalityBoundaries: any[];
   selectedLocality:string;
+  infoWindow:any;
 
   constructor(public navCtrl: NavController, public alertCreator: AlertCreator, public http: Http, public navParams: NavParams) {
     this.sofiaPlaces = [
@@ -27,6 +28,7 @@ export class MapPage {
     ];
 
     this.selectedLocality=this.navParams.get('locality');
+    this.infoWindow = new google.maps.InfoWindow();
   }
 
   ionViewDidLoad(){
@@ -60,6 +62,10 @@ export class MapPage {
       mapTypeId: google.maps.MapTypeId.ROADMAP
     }
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
+    google.maps.event.addListener(this.map, 'click', function() {
+      this.infoWindow.close();
+    });
+
 
     this.getMapStyle().then((style_array) => {
       this.map.setOptions({styles: style_array});
@@ -131,12 +137,9 @@ export class MapPage {
   }
 
   addInfoWindow(marker, content){
-    let infoWindow = new google.maps.InfoWindow({
-      content: content
-    });
-
     google.maps.event.addListener(marker, 'click', () => {
-      infoWindow.open(this.map, marker);
+      this.infoWindow.setContent(content);
+      this.infoWindow.open(this.map, marker);
     });
   }
 }
