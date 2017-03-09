@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
 import {AttentionRoute} from "../../entity/attention-route";
 import {RoutesDetailsPage} from "../routes-details/routes-details";
+import {Localities} from "../../providers/localities";
 
 @Component({
   selector: 'page-attention-routes-location',
@@ -15,53 +16,10 @@ export class AttentionRoutesLocationPage {
   locations:string[];
   locationsLabels:string[];
 
-  constructor(public navCtrl: NavController, public navParams:NavParams) {
+  constructor(public navCtrl: NavController, public navParams:NavParams, public localities:Localities) {
     this.attentionRoute=this.navParams.get('attentionRoute');
-    this.locations=[
-      'Usaquén',
-      'Chapinero',
-      'Santa Fé',
-      'San Cristóbal',
-      'Usme',
-      'Tunjuelito',
-      'Bosa',
-      'Ciudad Kennedy',
-      'Fontibón',
-      'Engativá',
-      'Suba',
-      'Barrios Unidos',
-      'Teusaquillo',
-      'Los Mártires',
-      'Antonio Nariño',
-      'Puente Aranda',
-      'Candelaria',
-      'Rafael Uribe',
-      'Ciudad Bolívar',
-      'Sumapáz'
-    ];
-
-    this.locationsLabels=[
-      'Usaquén',
-      'Chapinero',
-      'Santa Fe',
-      'San Cristóbal',
-      'Usme',
-      'Tunjuelito',
-      'Bosa',
-      'Kennedy',
-      'Fontibón',
-      'Engativá',
-      'Suba',
-      'Barrios Unidos',
-      'Teusaquillo',
-      'Los Mártires',
-      'Antonio Nariño',
-      'Puente Aranda',
-      'La Candelaria',
-      'Rafael Uribe Uribe',
-      'Ciudad Bolívar',
-      'Sumapaz'
-    ];
+    this.locations=this.localities.getLocalitiesServer();
+    this.locationsLabels=this.localities.getLocalitiesLabels();
   }
 
   ionViewDidLoad() {

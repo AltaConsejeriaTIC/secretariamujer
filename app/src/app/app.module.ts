@@ -39,6 +39,7 @@ import {UserAdapter} from "../providers/adapter/user-adapter";
 import {LoginPage} from "../pages/login/login";
 import {CategoryTitles} from "../providers/category-titles";
 import {MapLocationsPage} from "../pages/map-locations/map-locations";
+import {Localities} from "../providers/localities";
 
 @NgModule({
   declarations: [
@@ -108,6 +109,7 @@ import {MapLocationsPage} from "../pages/map-locations/map-locations";
   ],
   providers: [UserDAO, AlertCreator, MapServices, EventsServices, TestsService, UserAdapter,
     ContactAdapter, Storage, WarningMessageDAO, FormValidator, LoginService, UserFactory,UserService,CategoryTitles,
+    Localities,
     {
       provide: ErrorHandler,
       useClass: IonicErrorHandler
