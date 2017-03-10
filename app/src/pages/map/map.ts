@@ -64,7 +64,8 @@ export class MapPage {
       mapTypeId: google.maps.MapTypeId.ROADMAP
     }
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
-    google.maps.event.addListener(this.map, 'click', function() {
+
+    google.maps.event.addListener(this.map, 'click', ()=> {
       this.infoWindow.close();
     });
 
