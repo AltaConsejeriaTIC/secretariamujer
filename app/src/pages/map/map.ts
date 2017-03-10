@@ -110,8 +110,8 @@ export class MapPage {
         strokeColor: '#FF0000',
         strokeOpacity: 0,
         strokeWeight: 3,
-        fillColor: '#FF0000',
-        fillOpacity: 0.1
+        fillColor: '#664ba8',
+        fillOpacity: 0.15
       });
       flightPath.setMap(this.map);
     });
@@ -130,9 +130,9 @@ export class MapPage {
       map: this.map,
       animation: google.maps.Animation.DROP,
       position: coordinateSite,
-      /*icon: {
-       'url': 'assets/img/menu-icons/Info_pictograma_Azul.png'
-       }*/
+      icon: {
+        'url': 'assets/maps/pinImages/info_pin.png'
+      }
     });
 
     let content = "<h4>" + placeName + "</h4>";
