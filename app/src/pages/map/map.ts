@@ -16,7 +16,8 @@ export class MapPage {
   map: any;
   sofiaPlaces: any[];
   currentLocalityBoundaries: any[];
-  selectedLocality:string;
+  selectedLocalityServer:string;
+  selectedLocalityLabel:string;
   infoWindow:any;
 
   constructor(public navCtrl: NavController, public alertCreator: AlertCreator, public http: Http, public navParams: NavParams) {
@@ -27,12 +28,13 @@ export class MapPage {
       {placeName: 'Secretaría 4', coordinate: [4.6330481,-74.0871267]},
     ];
 
-    this.selectedLocality=this.navParams.get('locality');
+    this.selectedLocalityServer=this.navParams.get('localityServer');
+    this.selectedLocalityLabel=this.navParams.get('localityLabel');
     this.infoWindow = new google.maps.InfoWindow();
   }
 
   ionViewDidLoad(){
-    this.loadMap(this.selectedLocality);
+    this.loadMap(this.selectedLocalityLabel);
   }
 
   goBackPage() {

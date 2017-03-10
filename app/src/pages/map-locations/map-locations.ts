@@ -21,7 +21,10 @@ export class MapLocationsPage {
   }
 
   goToLocalityMap(id:number){
-    this.navCtrl.push(MapPage,{locality:this.serverLocations[id]});
+    this.navCtrl.push(MapPage,{
+      localityServer:this.serverLocations[id],
+      localityLabel:this.locationsLabels[id]
+    });
   }
 
   goBackPage(){
