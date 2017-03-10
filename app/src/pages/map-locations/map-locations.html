@@ -3,7 +3,7 @@
     <button start ion-button icon-only menuToggle (click)="goBackPage()">
       <ion-icon name="icon-fill-back-arrow"></ion-icon>
     </button>
-    <label class="header-title">Mapas</label>
+    <label class="header-title">Mapa</label>
     <button end ion-button icon-only menuToggle (click)="goToMenuPage()">
       <ion-icon name="icon-go-menu"></ion-icon>
     </button>
@@ -13,6 +13,9 @@
 
 <ion-content no-bounce class="background-option-0">
   <ion-grid no-padding>
+    <ion-row class="background-subheader-option-0">
+      <label class="location-name">Selecciona una Localidad</label>
+    </ion-row>
     <ion-row class="location-row" *ngFor="let location of locationsLabels; let id = index">
       <button ion-button icon-only mode="ios" (click)="goToLocalityMap(id)">
         <ion-col class="location-row-margin">
