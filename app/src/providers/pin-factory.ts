@@ -34,7 +34,8 @@ export class PinFactory {
       }
     });
 
-    let content = "<h4>" + placeName + "</h4>";
+    let iconPlus ="<ion-icon md='md-add-circle' name='add-circle' role='img' class='icon icon-md ion-md-add-circle' aria-label='add circle' ng-reflect-name='add-circle' ng-reflect-md='md-add-circle'></ion-icon>";
+    let content = "<h4>" + placeName + "</h4>" + iconPlus;
     this.addInfoWindow(marker, content, infoWindow, map);
   }
 
