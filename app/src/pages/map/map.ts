@@ -1,6 +1,6 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import {Component, ViewChild, ElementRef} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
-import { Geolocation } from 'ionic-native';
+import {Geolocation} from 'ionic-native';
 import {Http} from "@angular/http";
 import {AlertCreator} from "../../providers/alert-creator";
 import {ApplicationConfig} from "../../config";
@@ -17,34 +17,37 @@ export class MapPage {
 
   @ViewChild('map') mapElement: ElementRef;
   map: any;
-  selectedLocalityServer:string;
-  selectedLocalityLabel:string;
-  localityCenter:any;
-  localityBoundaries:any;
-  infoWindow:any;
+  selectedLocalityServer: string;
+  selectedLocalityLabel: string;
+  localityCenter: any;
+  localityBoundaries: any;
+  infoWindow: any;
 
-  constructor(public navCtrl: NavController, public alertCreator: AlertCreator, public http: Http, public navParams: NavParams, public mapService:MapServices, public pinFactory:PinFactory) {
-    this.selectedLocalityServer=this.navParams.get('localityServer');
-    this.selectedLocalityLabel=this.navParams.get('localityLabel');
-    this.localityCenter=this.navParams.get('localityCenter');
-    this.localityBoundaries=this.navParams.get('localityBoundaries');
+  constructor(public navCtrl: NavController, public alertCreator: AlertCreator, public http: Http, public navParams: NavParams, public mapService: MapServices, public pinFactory: PinFactory) {
+    this.selectedLocalityServer = this.navParams.get('localityServer');
+    this.selectedLocalityLabel = this.navParams.get('localityLabel');
+    this.localityCenter = this.navParams.get('localityCenter');
+    this.localityBoundaries = this.navParams.get('localityBoundaries');
     this.infoWindow = new google.maps.InfoWindow();
   }
 
-  ionViewDidLoad(){
-    this.map=this.mapService.loadMap(this.infoWindow, this.mapElement, this.localityCenter, this.localityBoundaries);
-    this.pinFactory.putPinsOnMap(this.infoWindow,this.map);
-    this.getInfoRoutes();
+  ionViewDidLoad() {
+    this.map = this.mapService.loadMap(this.infoWindow, this.mapElement, this.localityCenter, this.localityBoundaries);
+    this.showPlacesInMap();
   }
 
-  getInfoRoutes(){
-    let RESTAddress="info_routes_rest/"+this.selectedLocalityServer;
-    let url=ApplicationConfig.getURL('/'+RESTAddress+'?_format=json');
+  showPlacesInMap() {
+    let RESTAddress = "info_routes_rest/" + this.selectedLocalityServer;
+    let url = ApplicationConfig.getURL('/' + RESTAddress + '?_format=json');
     this.http.get(url).map(res => res.json()).subscribe(response => {
-
-      console.log("la respuesta", response);
+      response.forEach((place) => {
+        console.log(place)
+        if (place.latitude != null && place.latitude.length > 0 && place.longitude != null && place.longitude.length > 0) {
+          this.pinFactory.showPlaceOnMap(place, this.infoWindow, this.map);
+        }
+      });
     }, err => {
-      console.log(err)
+      this.alertCreator.showSimpleAlert("Error", "Asegurate de tener conexión a internet, o intentalo más tarde");
     });
   }
 
