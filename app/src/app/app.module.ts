@@ -40,7 +40,7 @@ import {LoginPage} from "../pages/login/login";
 import {CategoryTitles} from "../providers/category-titles";
 import {MapLocationsPage} from "../pages/map-locations/map-locations";
 import {Localities} from "../providers/localities";
-import {Teusaquillo} from "../providers/localitiesBoundaries/Teusaquillo";
+import {LocalitiesBoundaries} from "../providers/localities-boundaries";
 
 @NgModule({
   declarations: [
@@ -110,7 +110,7 @@ import {Teusaquillo} from "../providers/localitiesBoundaries/Teusaquillo";
   ],
   providers: [UserDAO, AlertCreator, MapServices, EventsServices, TestsService, UserAdapter,
     ContactAdapter, Storage, WarningMessageDAO, FormValidator, LoginService, UserFactory,UserService,CategoryTitles,
-    Localities,Teusaquillo,
+    Localities,LocalitiesBoundaries,
     {
       provide: ErrorHandler,
       useClass: IonicErrorHandler

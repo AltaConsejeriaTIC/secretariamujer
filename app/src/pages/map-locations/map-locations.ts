@@ -4,6 +4,7 @@ import {MapPage} from "../map/map";
 import {Localities} from "../../providers/localities";
 import {Http} from "@angular/http";
 import {Teusaquillo} from "../../providers/localitiesBoundaries/Teusaquillo";
+import {LocalitiesBoundaries} from "../../providers/localities-boundaries";
 
 @Component({
   selector: 'page-map-locations',
@@ -13,7 +14,7 @@ export class MapLocationsPage {
   locationsLabels:string[];
   serverLocations:string[];
 
-  constructor(public navCtrl: NavController, public locations:Localities,  public http: Http, public teusaquillo:Teusaquillo) {
+  constructor(public navCtrl: NavController, public locations:Localities,  public http: Http, public teusaquillo:Teusaquillo, public localityBoundaries:LocalitiesBoundaries) {
     this.locationsLabels= this.locations.getLocalitiesLabels();
     this.serverLocations=this.locations.getLocalitiesServer();
   }
@@ -39,18 +40,14 @@ export class MapLocationsPage {
         localityServer:this.serverLocations[id],
         localityLabel:this.locationsLabels[id],
         localityCenter:localityCenter,
-        localityBoundaries:this.teusaquillo.getTeusaquillo()
-    });
+        localityBoundaries:this.localityBoundaries.getlocalityBoundaries(this.serverLocations[id])
+      });
     });
   }
 
   getLocalitiesCenter(): any {
     return this.getFile('assets/maps/localities-center.json');
   }
-
-  /*getLocalityBoundaries(locality): any {
-    return this.getFile('assets/maps/localitiesBoundaries/' + locality + '.json');
-  }*/
 
   getFile(url : string) {
     return new Promise(
