@@ -12,23 +12,15 @@ import {Http} from "@angular/http";
 */
 @Injectable()
 export class MapServices {
-
-  currentLocalityBoundaries: any[];
-  sofiaPlaces: any[];
   map: any;
 
-
   constructor( public http: Http) {
-    this.sofiaPlaces = [
-      {placeName: 'Secretaría 1', coordinate: [4.6341285,-74.0893915]},
-      {placeName: 'Secretaría 2', coordinate: [4.6305157,-74.079887]},
-      {placeName: 'Secretaría 3', coordinate: [4.6293917,-74.0900739]},
-      {placeName: 'Secretaría 4', coordinate: [4.6330481,-74.0871267]},
-    ];
+
   }
 
   loadMap(infoWindow, mapElement, center,boundaries) {
     return this.setInitialMapSettings(center, infoWindow, mapElement, boundaries);
+
   }
 
   setInitialMapSettings(center, infoWindow, mapElement, boundaries){
@@ -50,7 +42,6 @@ export class MapServices {
       this.map.setOptions({styles: style_array});
     });
     this.drawLocality(boundaries);
-    this.putPinsOnMap(infoWindow);
     return this.map;
   }
 
@@ -64,36 +55,6 @@ export class MapServices {
       fillOpacity: 0.15
     });
     flightPath.setMap(this.map);
-  }
-
-  putPinsOnMap(infoWindow) {
-    for (let i = 0; i < this.sofiaPlaces.length; i++) {
-      this.setPinOnMap(this.sofiaPlaces[i].placeName, this.sofiaPlaces[i].coordinate[0], this.sofiaPlaces[i].coordinate[1],infoWindow);
-    }
-  }
-
-  setPinOnMap(placeName, placeLatitude, placeLongitude, infoWindow) {
-    console.log("pinte pines");
-    let coordinateSite = new google.maps.LatLng(placeLatitude, placeLongitude);
-
-    let marker = new google.maps.Marker({
-      map: this.map,
-      animation: google.maps.Animation.DROP,
-      position: coordinateSite,
-      icon: {
-        'url': 'assets/maps/pinImages/info_pin.png'
-      }
-    });
-
-    let content = "<h4>" + placeName + "</h4>";
-    this.addInfoWindow(marker, content, infoWindow);
-  }
-
-  addInfoWindow(marker, content, infoWindow){
-    google.maps.event.addListener(marker, 'click', () => {
-      infoWindow.setContent(content);
-      infoWindow.open(this.map, marker);
-    });
   }
 
   getFile(url : string) {

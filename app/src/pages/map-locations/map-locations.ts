@@ -3,7 +3,6 @@ import { NavController } from 'ionic-angular';
 import {MapPage} from "../map/map";
 import {Localities} from "../../providers/localities";
 import {Http} from "@angular/http";
-import {Teusaquillo} from "../../providers/localitiesBoundaries/Teusaquillo";
 import {LocalitiesBoundaries} from "../../providers/localities-boundaries";
 
 @Component({
@@ -14,7 +13,7 @@ export class MapLocationsPage {
   locationsLabels:string[];
   serverLocations:string[];
 
-  constructor(public navCtrl: NavController, public locations:Localities,  public http: Http, public teusaquillo:Teusaquillo, public localityBoundaries:LocalitiesBoundaries) {
+  constructor(public navCtrl: NavController, public locations:Localities,  public http: Http, public localityBoundaries:LocalitiesBoundaries) {
     this.locationsLabels= this.locations.getLocalitiesLabels();
     this.serverLocations=this.locations.getLocalitiesServer();
   }

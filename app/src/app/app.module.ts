@@ -41,6 +41,7 @@ import {CategoryTitles} from "../providers/category-titles";
 import {MapLocationsPage} from "../pages/map-locations/map-locations";
 import {Localities} from "../providers/localities";
 import {LocalitiesBoundaries} from "../providers/localities-boundaries";
+import {PinFactory} from "../providers/pin-factory";
 
 @NgModule({
   declarations: [
@@ -110,7 +111,7 @@ import {LocalitiesBoundaries} from "../providers/localities-boundaries";
   ],
   providers: [UserDAO, AlertCreator, MapServices, EventsServices, TestsService, UserAdapter,
     ContactAdapter, Storage, WarningMessageDAO, FormValidator, LoginService, UserFactory,UserService,CategoryTitles,
-    Localities,LocalitiesBoundaries,
+    Localities,LocalitiesBoundaries,PinFactory,
     {
       provide: ErrorHandler,
       useClass: IonicErrorHandler

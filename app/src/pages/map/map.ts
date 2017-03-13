@@ -5,6 +5,7 @@ import {Http} from "@angular/http";
 import {AlertCreator} from "../../providers/alert-creator";
 import {ApplicationConfig} from "../../config";
 import {MapServices} from "../../providers/map-services";
+import {PinFactory} from "../../providers/pin-factory";
 
 declare var google;
 
@@ -22,7 +23,7 @@ export class MapPage {
   localityBoundaries:any;
   infoWindow:any;
 
-  constructor(public navCtrl: NavController, public alertCreator: AlertCreator, public http: Http, public navParams: NavParams, public mapService:MapServices) {
+  constructor(public navCtrl: NavController, public alertCreator: AlertCreator, public http: Http, public navParams: NavParams, public mapService:MapServices, public pinFactory:PinFactory) {
     this.selectedLocalityServer=this.navParams.get('localityServer');
     this.selectedLocalityLabel=this.navParams.get('localityLabel');
     this.localityCenter=this.navParams.get('localityCenter');
@@ -31,7 +32,8 @@ export class MapPage {
   }
 
   ionViewDidLoad(){
-    this.mapService.loadMap(this.infoWindow, this.mapElement, this.localityCenter, this.localityBoundaries);
+    this.map=this.mapService.loadMap(this.infoWindow, this.mapElement, this.localityCenter, this.localityBoundaries);
+    this.pinFactory.putPinsOnMap(this.infoWindow,this.map);
     this.getInfoRoutes();
   }
 
