@@ -6,7 +6,7 @@ import {SiteInfoPage} from "../pages/site-info/site-info";
 export class PinFactory {
   sofiaPlaces: any[];
   navCtrl:any;
-
+  lastMarketClicked: any;
   pinCounter:number;
 
   constructor(public ngZone: NgZone) {
@@ -43,7 +43,9 @@ export class PinFactory {
         'url': 'assets/maps/pinImages/info_pin.png'
       }
     });
-    let content = this.getPinContent("health", placeName);
+
+    marker.set("category", "health") ;
+    let content = this.getPinContent(marker.get("category"), placeName);
     this.addInfoWindow(marker, content, infoWindow, map);
   }
 
@@ -111,9 +113,43 @@ export class PinFactory {
 
   addInfoWindow(marker, content, infoWindow, map){
     google.maps.event.addListener(marker, 'click', () => {
+      let pathPins = this.getPathPinsByCategory(marker.get("category"));
+      if (this.lastMarketClicked)
+        this.lastMarketClicked.setIcon(pathPins[0]);
+      marker.setIcon(pathPins[1]);
       infoWindow.setContent(content);
       infoWindow.open(map, marker);
+      this.lastMarketClicked = marker;
     });
+  }
+
+  getPathPinsByCategory(category) {
+    let defaulPin = "";
+    let selectedPin = "";
+    let pathImages = "assets/maps/pinImages/";
+    switch (category) {
+      case 'info': {
+        defaulPin = "info_pin.png";
+        selectedPin = "info_pin_selected.png";
+        break;
+      }
+      case 'justice': {
+        defaulPin = "justice_pin.png";
+        selectedPin = "justice_pin_selected.png";
+        break;
+      }
+      case 'protection_measures': {
+        defaulPin = "protection_pin.png";
+        selectedPin = "protection_pin_selected.png";
+        break;
+      }
+      case 'health': {
+        defaulPin = "health_pin.png";
+        selectedPin = "health_pin_selected.png";
+        break;
+      }
+    }
+    return [pathImages + defaulPin, pathImages + selectedPin];
   }
 
 }
