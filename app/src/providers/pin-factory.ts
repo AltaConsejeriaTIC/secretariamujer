@@ -11,12 +11,12 @@ export class PinFactory {
 
   constructor(public ngZone: NgZone) {
     this.sofiaPlaces = [
-      {placeName: 'Secretaría 1', coordinate: [4.6341285,-74.0893915]},
-      {placeName: 'Secretaría 2', coordinate: [4.6305157,-74.079887]},
-      {placeName: 'Instituto Nacional de Medicina Legal y Ciencias Forenses - UBAM (Valoración de menores de edad y casos de violencia sexual)', coordinate: [4.6293917,-74.0900739]},
-      {placeName: 'Secretaría 4', coordinate: [4.6330481,-74.0871267]},
+      {placeName: 'Secretaría 1', coordinate: [4.6341285,-74.0893915], addres:'direccion1', email:'correo1', file:'file1', neighbourhood:"barrio1", phone:'tel1', schedule:'horario1', title:'titulo1'},
+      {placeName: 'Secretaría 2', coordinate: [4.6305157,-74.079887], addres:'direccion2', email:'correo2', file:'file2', neighbourhood:"barrio2", phone:'tel2', schedule:'horario2', title:'titulo2'},
+      {placeName: 'Instituto Nacional de Medicina Legal y Ciencias Forenses - UBAM (Valoración de menores de edad y casos de violencia sexual)', coordinate: [4.6293917,-74.0900739], addres:'direccion3', email:'correo3', file:'file3', neighbourhood:"barrio3", phone:'tel3', schedule:'horario3', title:'titulo3'},
+      {placeName: 'Secretaría 4', coordinate: [4.6330481,-74.0871267], addres:'direccion4', email:'correo4', file:'', neighbourhood:"barrio4", phone:'tel4', schedule:'horario4', title:'titulo4'},
     ];
-    this.pinCounter=0;
+    this.pinCounter=-1;
 
     window["angularComponentRef"] = { component: this, zone: this.ngZone };
 
@@ -62,7 +62,7 @@ export class PinFactory {
 
   goToInfoWindow(selectedPin){
     console.log("hizo click", selectedPin);
-    this.pinCounter=0;
+    this.pinCounter=-1;
     this.navCtrl.push(SiteInfoPage, {placeInfo:this.sofiaPlaces[selectedPin]});
   }
 

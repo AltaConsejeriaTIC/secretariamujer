@@ -1,22 +1,47 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import {NavController, NavParams} from 'ionic-angular';
+import {AlertCreator} from "../../providers/alert-creator";
+import {ApplicationConfig} from "../../config";
+import {InAppBrowser} from "ionic-native";
+import {RouteInfo} from "../../entity/route-info";
 
-/*
-  Generated class for the SiteInfo page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-site-info',
   templateUrl: 'site-info.html'
 })
 export class SiteInfoPage {
 
-  constructor(public navCtrl: NavController) {}
+  site:RouteInfo;
+  constructor(public navCtrl: NavController, public  navparams:NavParams, public alertCreator: AlertCreator,) {
+    this.site=navparams.get('placeInfo');
+  }
 
   ionViewDidLoad() {
-    console.log('Hello SiteInfoPage Page');
+  }
+
+  goBackPage(){
+    this.navCtrl.pop();
+  }
+
+  goToMenuPage() {
+    this.navCtrl.popToRoot();
+  }
+
+  downloadFileListener(id:number){
+    if(this.site.file==""){
+      this.showNoFileAlert();
+    }else{
+      this.openBrowser();
+    }
+  }
+
+  showNoFileAlert(){
+    this.alertCreator.showSimpleAlert('Info','No hay archivos para descargar');
+  }
+
+  openBrowser(){
+    let url=ApplicationConfig.getURL(this.site.file);
+    let browser= new InAppBrowser(url, "_system", "location=true");
   }
 
 }
