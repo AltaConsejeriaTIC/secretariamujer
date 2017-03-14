@@ -20,6 +20,11 @@ page-map {
 
   #map {
     width: 100%;
+
+    .gm-style > div > div:nth-child(4) >  div:nth-child(4) >  div:nth-child(2) > div:first-child >  div:nth-child(2),
+    .gm-style > div > div:nth-child(4) >  div:nth-child(4) >  div:nth-child(2) > div:first-child >  div:nth-child(4){
+      border-radius: 12px !important;
+    }
   }
 
   .pin-infowindow {
@@ -55,10 +60,11 @@ page-map {
     .place-name {
       margin: 7px 0 5px;
       white-space: normal;
-      padding: 0 10%;
+      padding: 0 0 0 11%;
     }
 
     button {
+      margin-left: 11%;
       background: transparent;
       width: 80%;
 
