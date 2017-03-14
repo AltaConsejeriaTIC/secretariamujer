@@ -62,6 +62,7 @@ export class PinFactory {
 
   goToInfoWindow(selectedPin){
     console.log("hizo click", selectedPin);
+    this.pinCounter=0;
     this.navCtrl.push(SiteInfoPage, {placeInfo:this.sofiaPlaces[selectedPin]});
   }
 
