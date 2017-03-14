@@ -33,6 +33,7 @@ export class MapPage {
 
   ionViewDidLoad(){
     this.map=this.mapService.loadMap(this.infoWindow, this.mapElement, this.localityCenter, this.localityBoundaries);
+    this.pinFactory.setNavController(this.navCtrl);
     this.pinFactory.putPinsOnMap(this.infoWindow,this.map);
     this.getInfoRoutes();
   }
