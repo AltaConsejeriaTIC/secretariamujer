@@ -1,20 +1,21 @@
-import { Injectable } from '@angular/core';
+import {Injectable, NgZone} from '@angular/core';
 import 'rxjs/add/operator/map';
-
 
 @Injectable()
 export class PinFactory {
   sofiaPlaces: any[];
 
-  constructor() {
+  constructor(public ngZone: NgZone) {
     this.sofiaPlaces = [
       {placeName: 'Secretaría 1', coordinate: [4.6341285,-74.0893915]},
       {placeName: 'Secretaría 2', coordinate: [4.6305157,-74.079887]},
       {placeName: 'Instituto Nacional de Medicina Legal y Ciencias Forenses - UBAM (Valoración de menores de edad y casos de violencia sexual)', coordinate: [4.6293917,-74.0900739]},
       {placeName: 'Secretaría 4', coordinate: [4.6330481,-74.0871267]},
     ];
-  }
 
+    window["angularComponentRef"] = { component: this, zone: this.ngZone };
+
+  }
 
   putPinsOnMap(infoWindow, map) {
     for (let i = 0; i < this.sofiaPlaces.length; i++) {
@@ -46,7 +47,12 @@ export class PinFactory {
   getMoreInfoButton() {
     let moreInfoLabel = "<ion-label>Ver más</ion-label>";
     let plusIcon ="<ion-icon md='md-add-circle' name='add-circle' role='img' class='icon icon-md ion-md-add-circle' aria-label='add circle' ng-reflect-name='add-circle' ng-reflect-md='md-add-circle'></ion-icon>";
-    return "<button ion-button='' class='disable-hover button button-ios button-default button-default-ios'><span class='button-inner'>" + plusIcon + moreInfoLabel + "</span><div class='button-effect'></div></button>";
+
+    return '<button onclick="window.angularComponentRef.zone.run(() => {window.angularComponentRef.component.goToInfoWindow(\'' + 34 + '\');})" ion-button="" class="disable-hover button button-ios button-default button-default-ios"><span class="button-inner">' + plusIcon + moreInfoLabel + "</span><div class='button-effect'></div></button>";
+  }
+
+  goToInfoWindow(x){
+    console.log("hizo click", x)
   }
 
   getCategoryInfoStructure(category) {
