@@ -6,6 +6,7 @@ import {AlertCreator} from "../../providers/alert-creator";
 import {ApplicationConfig} from "../../config";
 import {MapServices} from "../../providers/map-services";
 import {PinFactory} from "../../providers/pin-factory";
+import {PlacesService} from "../../providers/places-service";
 
 declare var google;
 
@@ -23,7 +24,9 @@ export class MapPage {
   localityBoundaries: any;
   infoWindow: any;
 
-  constructor(public navCtrl: NavController, public alertCreator: AlertCreator, public http: Http, public navParams: NavParams, public mapService: MapServices, public pinFactory: PinFactory) {
+  constructor(public navCtrl: NavController, public alertCreator: AlertCreator, public http: Http,
+              public navParams: NavParams, public mapService: MapServices, public pinFactory: PinFactory,
+              private placesService: PlacesService) {
     this.selectedLocalityServer = this.navParams.get('localityServer');
     this.selectedLocalityLabel = this.navParams.get('localityLabel');
     this.localityCenter = this.navParams.get('localityCenter');
@@ -39,15 +42,28 @@ export class MapPage {
   showPlacesInMap() {
     let RESTAddress = "info_routes_rest/" + this.selectedLocalityServer;
     let url = ApplicationConfig.getURL('/' + RESTAddress + '?_format=json');
-    this.http.get(url).map(res => res.json()).subscribe(response => {
-      response.forEach((place) => {
-        console.log(place)
-        if (place.latitude != null && place.latitude.length > 0 && place.longitude != null && place.longitude.length > 0) {
-          this.pinFactory.showPlaceOnMap(place, this.infoWindow, this.map);
-        }
-      });
-    }, err => {
-      this.alertCreator.showSimpleAlert("Error", "Asegurate de tener conexión a internet, o intentalo más tarde");
+
+    this.placesService.getAllNeighborhoodPlaces(this.selectedLocalityLabel).subscribe(places => {
+      console.log(places);
+
+
+      /*this.http.get(url).map(res => res.json()).subscribe(response => {
+       response.forEach((place) => {
+       if (place.latitude != null && place.latitude.length > 0 && place.longitude != null && place.longitude.length > 0) {
+       this.pinFactory.showPlaceOnMap(place, this.infoWindow, this.map);
+       }
+       });
+       }, err => {
+       this.alertCreator.showSimpleAlert("Error", "Asegurate de tener conexión a internet, o intentalo más tarde");
+       });*/
+    });
+  }
+
+  paintPins(places) {
+    places.forEach((place) => {
+      if (place.latitude != null && place.latitude.length > 0 && place.longitude != null && place.longitude.length > 0) {
+        this.pinFactory.showPlaceOnMap(place, this.infoWindow, this.map);
+      }
     });
   }
 
