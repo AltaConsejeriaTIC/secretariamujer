@@ -22,6 +22,56 @@ page-map {
     width: 100%;
   }
 
+  .pin-infowindow {
+    text-align: center;
+    max-width: 250px;
+
+    * {
+      color: map_get($colors, primary) !important;
+      font-family: 'Open-Sans';
+    }
+
+    .category-title {
+      padding: 0 10%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      ion-label {
+        font-weight: 600;
+        padding-left: 5%;
+        white-space: normal;
+      }
+    }
+
+    ion-label {
+      font-size: 14px;
+    }
+
+    ion-icon {
+      font-size: 25px;
+    }
+
+    .place-name {
+      margin: 7px 0 5px;
+      white-space: normal;
+      padding: 0 10%;
+    }
+
+    button {
+      background: transparent;
+      width: 80%;
+
+      ion-label {
+        font-size: 12px;
+      }
+
+      .button-inner {
+        display: block;
+      }
+    }
+  }
+
   @media (max-width: 479px) {
     .locality-name {
       height: 50px;
