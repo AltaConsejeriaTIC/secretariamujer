@@ -1,11 +1,10 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import {Component, ViewChild, ElementRef} from '@angular/core';
 import {NavController, NavParams} from 'ionic-angular';
-import { Geolocation } from 'ionic-native';
 import {Http} from "@angular/http";
 import {AlertCreator} from "../../providers/alert-creator";
-import {ApplicationConfig} from "../../config";
 import {MapServices} from "../../providers/map-services";
 import {PinFactory} from "../../providers/pin-factory";
+import {PlacesService} from "../../providers/places-service";
 
 declare var google;
 
@@ -17,36 +16,41 @@ export class MapPage {
 
   @ViewChild('map') mapElement: ElementRef;
   map: any;
-  selectedLocalityServer:string;
-  selectedLocalityLabel:string;
-  localityCenter:any;
-  localityBoundaries:any;
-  infoWindow:any;
+  selectedLocalityServer: string;
+  selectedLocalityLabel: string;
+  localityCenter: any;
+  localityBoundaries: any;
+  infoWindow: any;
 
-  constructor(public navCtrl: NavController, public alertCreator: AlertCreator, public http: Http, public navParams: NavParams, public mapService:MapServices, public pinFactory:PinFactory) {
-    this.selectedLocalityServer=this.navParams.get('localityServer');
-    this.selectedLocalityLabel=this.navParams.get('localityLabel');
-    this.localityCenter=this.navParams.get('localityCenter');
-    this.localityBoundaries=this.navParams.get('localityBoundaries');
+  constructor(public navCtrl: NavController, public alertCreator: AlertCreator, public http: Http,
+              public navParams: NavParams, public mapService: MapServices, public pinFactory: PinFactory,
+              private placesService: PlacesService) {
+    this.selectedLocalityServer = this.navParams.get('localityServer');
+    this.selectedLocalityLabel = this.navParams.get('localityLabel');
+    this.localityCenter = this.navParams.get('localityCenter');
+    this.localityBoundaries = this.navParams.get('localityBoundaries');
     this.infoWindow = new google.maps.InfoWindow();
   }
 
-  ionViewDidLoad(){
-    this.map=this.mapService.loadMap(this.infoWindow, this.mapElement, this.localityCenter, this.localityBoundaries);
+  ionViewDidLoad() {
+    this.map = this.mapService.loadMap(this.infoWindow, this.mapElement, this.localityCenter, this.localityBoundaries);
     this.pinFactory.setNavController(this.navCtrl);
-    this.pinFactory.putPinsOnMap(this.infoWindow,this.map);
-    this.getInfoRoutes();
+    this.pinFactory.configCloseInfoWindow(this.infoWindow, this.map);
+    this.showPlacesInMap();
   }
 
-  getInfoRoutes(){
-    let RESTAddress="info_routes_rest/"+this.selectedLocalityServer;
-    let url=ApplicationConfig.getURL('/'+RESTAddress+'?_format=json');
-    this.http.get(url).map(res => res.json()).subscribe(response => {
+  private showPlacesInMap() {
+    this.placesService.getAllNeighborhoodPlaces(this.selectedLocalityLabel).subscribe(places => this.showPlaces(places));
+  }
 
-      console.log("la respuesta", response);
-    }, err => {
-      console.log(err)
-    });
+  private showPlaces(places) {
+    places.forEach(place => this.showPlace(place));
+  }
+
+  private showPlace(place) {
+    if (place.latitude != null && place.latitude.length > 0 && place.longitude != null && place.longitude.length > 0) {
+      this.pinFactory.setPinOnMap(place.title, place.latitude, place.longitude, this.infoWindow, this.map);
+    }
   }
 
   goBackPage() {

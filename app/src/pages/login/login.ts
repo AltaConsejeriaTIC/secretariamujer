@@ -66,18 +66,23 @@ export class LoginPage {
       password: this.form.controls['userPassword'].value,
     });
 
+    if (this.isDeviceConnected()) {
+      this.loginService.login(user, (data) => {
+        this.userService.user = data;
+        this.userService.user.password = this.form.controls['userPassword'].value;
+        this.goToMenuPage();
+      }, () => {
+        this.hideLoading();
+      });
+    }
+  }
+
+  isDeviceConnected() {
     if (!NetworkStatusService.isDeviceConnected()) {
       this.alertCreator.showCofirmationMessage("Error", "Asegurate de tener conexión a internet, o intentalo más tarde");
-      return;
     }
 
-    this.loginService.login(user, (data) => {
-      this.userService.user = data;
-      this.userService.user.password = this.form.controls['userPassword'].value;
-      this.goToMenuPage();
-    }, () => {
-      this.hideLoading();
-    });
+    return NetworkStatusService.isDeviceConnected();
   }
 
   setUserInfoInTheApp(userId: string) {
