@@ -8,6 +8,8 @@ export class PinFactory {
   navCtrl: any;
   lastMarketClicked: any;
   pinCounter: number;
+  INFO_CATEGORY = 'info';
+  JUSTICE_CATEGORY = 'justice';
 
   constructor(public ngZone: NgZone) {
     this.pinCounter = -1;
@@ -32,7 +34,7 @@ export class PinFactory {
     }
   }
 
-  setPinOnMap(placeName, placeLatitude, placeLongitude, infoWindow, map) {
+  setPinOnMap(placeName, placeLatitude, placeLongitude, infoWindow, map, category) {
     let coordinateSite = new google.maps.LatLng(placeLatitude, placeLongitude);
     this.pinCounter = this.pinCounter + 1;
     let marker = new google.maps.Marker({
@@ -41,7 +43,7 @@ export class PinFactory {
       position: coordinateSite
     });
 
-    marker.set("category", "info");
+    marker.set("category", category);
     let categoryInfo = this.getCategoryInfo(marker.get("category"));
     marker.setIcon(categoryInfo.defaulPin);
     let content = this.getPinContent(categoryInfo, placeName);
@@ -58,14 +60,14 @@ export class PinFactory {
 
   getInfoByCategory(category) {
     switch (category) {
-      case 'info':
+      case this.INFO_CATEGORY:
         return {
           categoryIcon: "icon-info-places",
           categoryName: "Puntos de Información",
           defaulPin: "info_pin.png",
           selectedPin: "info_pin_selected.png"
         };
-      case 'justice':
+      case this.JUSTICE_CATEGORY:
         return {
           categoryIcon: "icon-complaint-places",
           categoryName: "Puntos para el Acceso a la Justicia",

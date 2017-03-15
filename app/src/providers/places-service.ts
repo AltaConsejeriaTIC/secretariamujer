@@ -3,6 +3,7 @@ import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {ApplicationConfig} from "../config";
 import {Observable} from "rxjs";
+import {PinFactory} from "./pin-factory";
 
 
 @Injectable()
@@ -13,14 +14,14 @@ export class PlacesService {
   readonly HEALTH_ROUTE_ADDRESS = 'health_routes_rest';
 
 
-  constructor(private http: Http) {
+  constructor(private http: Http, private pinFactory: PinFactory) {
   }
 
   getAllNeighborhoodPlaces(neighborhood) {
-    let infoPlaces = this.getRoutePlaces(this.INFO_ROUTE_ADDRESS, neighborhood);
-    let justicePlaces = this.getRoutePlaces(this.JUSTICE_ROUTE_ADDRESS, neighborhood);
-    let protectionPlaces = this.getRoutePlaces(this.PROTECTION_ROUTE_ADDRESS, neighborhood);
-    let healthPlaces = this.getRoutePlaces(this.HEALTH_ROUTE_ADDRESS, neighborhood);
+    let infoPlaces = this.getRoutePlaces(this.INFO_ROUTE_ADDRESS, neighborhood, this.pinFactory.INFO_CATEGORY);
+    let justicePlaces = this.getRoutePlaces(this.JUSTICE_ROUTE_ADDRESS, neighborhood, this.pinFactory.JUSTICE_CATEGORY);
+    let protectionPlaces = this.getRoutePlaces(this.PROTECTION_ROUTE_ADDRESS, neighborhood, this.pinFactory.INFO_CATEGORY);
+    let healthPlaces = this.getRoutePlaces(this.HEALTH_ROUTE_ADDRESS, neighborhood, this.pinFactory.INFO_CATEGORY);
 
     let observable = Observable.forkJoin([infoPlaces, justicePlaces, protectionPlaces, healthPlaces]).map(routes => {
       let places = [];
@@ -35,9 +36,15 @@ export class PlacesService {
     return observable;
   }
 
-  getRoutePlaces(RESTAddress, neighborhood) {
+  getRoutePlaces(RESTAddress, neighborhood, category) {
     let url = ApplicationConfig.getURL('/' + RESTAddress + '/' + neighborhood);
 
-    return this.http.get(url).map(res => res.json());
+    return this.http.get(url).map(res => {
+      let response = res.json();
+
+      response.forEach(element => element.category = category);
+
+      return response;
+    });
   }
 }
