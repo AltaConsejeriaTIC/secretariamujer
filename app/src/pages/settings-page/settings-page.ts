@@ -8,6 +8,7 @@ import {Storage} from '@ionic/storage';
 import {UserService} from "../../providers/user-service";
 import {HomePage} from "../home/home";
 import {LoginService} from "../../providers/login-service";
+import {NetworkStatusService} from "../../providers/network-status-service";
 
 
 const SETTINGS_SLIDE_ITEMS = 3;
@@ -217,14 +218,22 @@ export class SettingsPage {
     this.loading.present();
     this.storage.set('islogged', false);
     this.storage.set('isFirstTimeOpen', null);
-    this.loginService.logout().subscribe(res=>{
-      this.clearUserData();
-      this.hideLoading();
-      this.navController.setRoot(HomePage);
-    }, err=>{
-      console.log(err);
-    });
+    if (NetworkStatusService.isDeviceConnected()) {
+      this.loginService.logout().subscribe(res => {
+        this.clearDataAndGoToHomePage;
+      }, err => {
+        console.log(err);
+      });
+    }
+    else {
+      this.clearDataAndGoToHomePage();
+    }
+  }
 
+  clearDataAndGoToHomePage(){
+    this.clearUserData();
+    this.hideLoading();
+    this.navController.setRoot(HomePage);
   }
 
   clearUserData() {
