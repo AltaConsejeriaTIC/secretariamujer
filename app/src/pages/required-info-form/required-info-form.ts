@@ -87,9 +87,15 @@ export class RequiredInfoFormPage {
         })
       }, error => {
         this.hideLoading();
+        console.log(error.name);
         if (error.name == 'UsernameAlreadyTaken') {
           this.alertCreator.showCofirmationMessage('Usuario', this.userService.user.username + ' ya ha sido registrado en el sistema');
         }
+
+        if (error.name == 'ForbiddenCharacter') {
+          this.alertCreator.showCofirmationMessage('Usuario','El nombre de usuario no puede contener caracteres especiales');
+        }
+
       });
   }
 
