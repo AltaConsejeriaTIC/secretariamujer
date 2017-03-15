@@ -20,8 +20,8 @@ export class PlacesService {
   getAllNeighborhoodPlaces(neighborhood) {
     let infoPlaces = this.getRoutePlaces(this.INFO_ROUTE_ADDRESS, neighborhood, this.pinFactory.INFO_CATEGORY);
     let justicePlaces = this.getRoutePlaces(this.JUSTICE_ROUTE_ADDRESS, neighborhood, this.pinFactory.JUSTICE_CATEGORY);
-    let protectionPlaces = this.getRoutePlaces(this.PROTECTION_ROUTE_ADDRESS, neighborhood, this.pinFactory.INFO_CATEGORY);
-    let healthPlaces = this.getRoutePlaces(this.HEALTH_ROUTE_ADDRESS, neighborhood, this.pinFactory.INFO_CATEGORY);
+    let protectionPlaces = this.getRoutePlaces(this.PROTECTION_ROUTE_ADDRESS, neighborhood, this.pinFactory.PROTECTION_MEASURES_CATEGORY);
+    let healthPlaces = this.getRoutePlaces(this.HEALTH_ROUTE_ADDRESS, neighborhood, this.pinFactory.HEALTH_CATEGORY);
 
     let observable = Observable.forkJoin([infoPlaces, justicePlaces, protectionPlaces, healthPlaces]).map(routes => {
       let places = [];

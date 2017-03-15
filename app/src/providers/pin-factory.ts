@@ -10,6 +10,8 @@ export class PinFactory {
   pinCounter: number;
   INFO_CATEGORY = 'info';
   JUSTICE_CATEGORY = 'justice';
+  PROTECTION_MEASURES_CATEGORY = 'protection_measures';
+  HEALTH_CATEGORY = 'health';
 
   constructor(public ngZone: NgZone) {
     this.pinCounter = -1;
@@ -35,19 +37,23 @@ export class PinFactory {
   }
 
   setPinOnMap(placeName, placeLatitude, placeLongitude, infoWindow, map, category) {
-    let coordinateSite = new google.maps.LatLng(placeLatitude, placeLongitude);
     this.pinCounter = this.pinCounter + 1;
+    let marker = this.createMarker(map, placeLatitude, placeLongitude, category);
+    let categoryInfo = this.getCategoryInfo(marker.get("category"));
+    marker.setIcon(categoryInfo.defaulPin);
+    let content = this.getPinContent(categoryInfo, placeName);
+    this.addInfoWindow(marker, content, infoWindow, map, categoryInfo);
+  }
+
+  createMarker(map, placeLatitude, placeLongitude, category) {
+    let coordinateSite = new google.maps.LatLng(placeLatitude, placeLongitude);
     let marker = new google.maps.Marker({
       map: map,
       animation: google.maps.Animation.DROP,
       position: coordinateSite
     });
-
     marker.set("category", category);
-    let categoryInfo = this.getCategoryInfo(marker.get("category"));
-    marker.setIcon(categoryInfo.defaulPin);
-    let content = this.getPinContent(categoryInfo, placeName);
-    this.addInfoWindow(marker, content, infoWindow, map, categoryInfo);
+    return marker;
   }
 
   getCategoryInfo(category) {
@@ -74,14 +80,14 @@ export class PinFactory {
           defaulPin: "justice_pin.png",
           selectedPin: "justice_pin_selected.png"
         };
-      case 'protection_measures':
+      case this.PROTECTION_MEASURES_CATEGORY:
         return {
           categoryIcon: "icon-protection-measures",
           categoryName: "Medidas de Protección",
           defaulPin: "protection_pin.png",
           selectedPin: "protection_pin_selected.png"
         };
-      case 'health':
+      case this.HEALTH_CATEGORY:
         return {
           categoryIcon: "icon-health-places",
           categoryName: "Puntos de Salud",
@@ -126,8 +132,7 @@ export class PinFactory {
 
   addInfoWindow(marker, content, infoWindow, map, categoryInfo) {
     google.maps.event.addListener(marker, 'click', () => {
-      if (this.lastMarketClicked)
-        this.lastMarketClicked.setIcon(categoryInfo.defaulPin);
+      this.setDefaultPinToLastSelected();
       marker.setIcon(categoryInfo.selectedPin);
       infoWindow.setContent(content);
       infoWindow.open(map, marker);
