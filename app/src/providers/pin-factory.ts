@@ -38,21 +38,41 @@ export class PinFactory {
     let marker = new google.maps.Marker({
       map: map,
       animation: google.maps.Animation.DROP,
-      position: coordinateSite,
-      icon: {
-        'url': 'assets/maps/pinImages/info_pin.png'
-      }
+      position: coordinateSite
     });
 
-    marker.set("category", "health") ;
-    let content = this.getPinContent(marker.get("category"), placeName);
-    this.addInfoWindow(marker, content, infoWindow, map);
+    marker.set("category", "info") ;
+    let categoryInfo = this.getCategoryInfo(marker.get("category"));
+    marker.setIcon(categoryInfo.defaulPin);
+    let content = this.getPinContent(categoryInfo, placeName);
+    this.addInfoWindow(marker, content, infoWindow, map, categoryInfo);
   }
 
-  getPinContent(category, placeName) {
-    let categoryInfo = this.getCategoryInfoStructure(category);
+  getCategoryInfo(category) {
+    let categoryInfo = this.getInfoByCategory(category);
+    let pathImages = "assets/maps/pinImages/";
+    categoryInfo.defaulPin = pathImages + categoryInfo.defaulPin;
+    categoryInfo.selectedPin = pathImages + categoryInfo.selectedPin;
+    return categoryInfo;
+  }
+
+  getInfoByCategory(category) {
+    switch (category) {
+      case 'info':
+        return { categoryIcon: "icon-info-places", categoryName: "Puntos de Información", defaulPin: "info_pin.png", selectedPin: "info_pin_selected.png" };
+      case 'justice':
+        return { categoryIcon: "icon-complaint-places", categoryName: "Puntos para el Acceso a la Justicia", defaulPin: "justice_pin.png", selectedPin: "justice_pin_selected.png" };
+      case 'protection_measures':
+        return { categoryIcon: "icon-protection-measures", categoryName: "Medidas de Protección", defaulPin: "protection_pin.png", selectedPin: "protection_pin_selected.png" };
+      case 'health':
+        return { categoryIcon: "icon-health-places", categoryName: "Puntos de Salud", defaulPin: "health_pin.png", selectedPin: "health_pin_selected.png" };
+    }
+  }
+
+  getPinContent(categoryInfo, placeName) {
+    let categoryInfoStructure = this.getCategoryInfoStructure(categoryInfo);
     let moreInfoButton = this.getMoreInfoButton();
-    return "<div class='pin-infowindow'>"+ categoryInfo + "<ion-label class='place-name'>" + placeName + "</ion-label>" + moreInfoButton + "</div>";
+    return "<div class='pin-infowindow'>"+ categoryInfoStructure + "<ion-label class='place-name'>" + placeName + "</ion-label>" + moreInfoButton + "</div>";
   }
 
   getMoreInfoButton() {
@@ -69,38 +89,9 @@ export class PinFactory {
   }
 
   getCategoryInfoStructure(category) {
-    let categoryInfoArray = this.getCategoryInfo(category);
-    let categoryIcon = this.getCategoryIconStructure(categoryInfoArray[0]);
-    let categoryName = this.getCategoryNameStructure(categoryInfoArray[1]);
+    let categoryIcon = this.getCategoryIconStructure(category.categoryIcon);
+    let categoryName = this.getCategoryNameStructure(category.categoryName);
     return "<div class='category-title'>" + categoryIcon + categoryName + "</div>";
-  }
-
-  getCategoryInfo(category) {
-    let categoryIcon = "";
-    let categoryName = "";
-    switch (category) {
-      case 'info': {
-        categoryIcon = "icon-info-places";
-        categoryName = "Puntos de Información";
-        break;
-      }
-      case 'justice': {
-        categoryIcon = "icon-complaint-places";
-        categoryName = "Puntos para el Acceso a la Justicia";
-        break;
-      }
-      case 'protection_measures': {
-        categoryIcon = "icon-protection-measures";
-        categoryName = "Medidas de Protección";
-        break;
-      }
-      case 'health': {
-        categoryIcon = "icon-health-places";
-        categoryName = "Puntos de Salud";
-        break;
-      }
-    }
-    return [categoryIcon, categoryName];
   }
 
   getCategoryIconStructure(categoryIcon) {
@@ -111,45 +102,15 @@ export class PinFactory {
     return "<ion-label>" + categoryName + "</ion-label>";
   }
 
-  addInfoWindow(marker, content, infoWindow, map){
+  addInfoWindow(marker, content, infoWindow, map, categoryInfo){
     google.maps.event.addListener(marker, 'click', () => {
-      let pathPins = this.getPathPinsByCategory(marker.get("category"));
       if (this.lastMarketClicked)
-        this.lastMarketClicked.setIcon(pathPins[0]);
-      marker.setIcon(pathPins[1]);
+        this.lastMarketClicked.setIcon(categoryInfo.defaulPin);
+      marker.setIcon(categoryInfo.selectedPin);
       infoWindow.setContent(content);
       infoWindow.open(map, marker);
       this.lastMarketClicked = marker;
     });
-  }
-
-  getPathPinsByCategory(category) {
-    let defaulPin = "";
-    let selectedPin = "";
-    let pathImages = "assets/maps/pinImages/";
-    switch (category) {
-      case 'info': {
-        defaulPin = "info_pin.png";
-        selectedPin = "info_pin_selected.png";
-        break;
-      }
-      case 'justice': {
-        defaulPin = "justice_pin.png";
-        selectedPin = "justice_pin_selected.png";
-        break;
-      }
-      case 'protection_measures': {
-        defaulPin = "protection_pin.png";
-        selectedPin = "protection_pin_selected.png";
-        break;
-      }
-      case 'health': {
-        defaulPin = "health_pin.png";
-        selectedPin = "health_pin_selected.png";
-        break;
-      }
-    }
-    return [pathImages + defaulPin, pathImages + selectedPin];
   }
 
 }
