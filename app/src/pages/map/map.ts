@@ -39,32 +39,18 @@ export class MapPage {
     this.showPlacesInMap();
   }
 
-  showPlacesInMap() {
-    let RESTAddress = "info_routes_rest/" + this.selectedLocalityServer;
-    let url = ApplicationConfig.getURL('/' + RESTAddress + '?_format=json');
-
-    this.placesService.getAllNeighborhoodPlaces(this.selectedLocalityLabel).subscribe(places => {
-      console.log(places);
-
-
-      /*this.http.get(url).map(res => res.json()).subscribe(response => {
-       response.forEach((place) => {
-       if (place.latitude != null && place.latitude.length > 0 && place.longitude != null && place.longitude.length > 0) {
-       this.pinFactory.showPlaceOnMap(place, this.infoWindow, this.map);
-       }
-       });
-       }, err => {
-       this.alertCreator.showSimpleAlert("Error", "Asegurate de tener conexión a internet, o intentalo más tarde");
-       });*/
-    });
+  private showPlacesInMap() {
+    this.placesService.getAllNeighborhoodPlaces(this.selectedLocalityLabel).subscribe(places => this.showPlaces(places));
   }
 
-  paintPins(places) {
-    places.forEach((place) => {
-      if (place.latitude != null && place.latitude.length > 0 && place.longitude != null && place.longitude.length > 0) {
-        this.pinFactory.showPlaceOnMap(place, this.infoWindow, this.map);
-      }
-    });
+  private showPlaces(places) {
+    places.forEach(place => this.showPlace(place));
+  }
+
+  private showPlace(place) {
+    if (place.latitude != null && place.latitude.length > 0 && place.longitude != null && place.longitude.length > 0) {
+      this.pinFactory.showPlaceOnMap(place, this.infoWindow, this.map);
+    }
   }
 
   goBackPage() {

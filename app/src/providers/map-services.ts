@@ -1,30 +1,21 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import 'rxjs/add/operator/map';
-import { Geolocation } from 'ionic-native';
 import {Http} from "@angular/http";
 
-
-/*
-  Generated class for the MapServices provider.
-
-  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
-  for more info on providers and Angular 2 DI.
-*/
 @Injectable()
 export class MapServices {
   map: any;
 
-  constructor( public http: Http) {
+  constructor(public http: Http) {
 
   }
 
-  loadMap(infoWindow, mapElement, center,boundaries) {
+  loadMap(infoWindow, mapElement, center, boundaries) {
     return this.setInitialMapSettings(center, infoWindow, mapElement, boundaries);
 
   }
 
-  setInitialMapSettings(center, infoWindow, mapElement, boundaries){
-    console.log(center.lat + " " + center.lng + " " + center.zoom);
+  setInitialMapSettings(center, infoWindow, mapElement, boundaries) {
     let localityPosition = new google.maps.LatLng(center.lat, center.lng);
     let mapOptions = {
       center: localityPosition,
@@ -33,7 +24,7 @@ export class MapServices {
     }
     this.map = new google.maps.Map(mapElement.nativeElement, mapOptions);
 
-    google.maps.event.addListener(this.map, 'click', ()=> {
+    google.maps.event.addListener(this.map, 'click', () => {
       infoWindow.close();
     });
 
@@ -57,16 +48,16 @@ export class MapServices {
     flightPath.setMap(this.map);
   }
 
-  getFile(url : string) {
+  getFile(url: string) {
     return new Promise(
-      resolve => { this.http.get(url).map(res => res.json()).subscribe(data =>
-        {
-          resolve(data);
-        },
-        err => {
-          console.log("Unable to resolve GET promise to url: " + url + "\n ERROR: " + err);
-        }
-      );
+      resolve => {
+        this.http.get(url).map(res => res.json()).subscribe(data => {
+            resolve(data);
+          },
+          err => {
+            console.log("Unable to resolve GET promise to url: " + url + "\n ERROR: " + err);
+          }
+        );
       });
   }
 

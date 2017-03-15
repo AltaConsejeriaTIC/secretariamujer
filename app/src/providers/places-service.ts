@@ -26,7 +26,7 @@ export class PlacesService {
       let places = [];
 
       for (let i = 0; i < routes.length; i++) {
-        places.concat(routes[i]);
+        places = places.concat(routes[i]);
       }
 
       return places;
