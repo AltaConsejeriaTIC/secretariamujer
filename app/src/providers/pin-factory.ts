@@ -27,8 +27,19 @@ export class PinFactory {
   }
 
   putPinsOnMap(infoWindow, map) {
+    google.maps.event.addListener(map, 'click', ()=> {
+      infoWindow.close();
+      this.setDefaultPinToLastSelected();
+    });
     for (let i = 0; i < this.sofiaPlaces.length; i++) {
       this.setPinOnMap(this.sofiaPlaces[i].placeName, this.sofiaPlaces[i].coordinate[0], this.sofiaPlaces[i].coordinate[1],infoWindow,map);
+    }
+  }
+
+  setDefaultPinToLastSelected() {
+    if (this.lastMarketClicked) {
+      let infoLastPinSelected = this.getCategoryInfo(this.lastMarketClicked.get("category"));
+      this.lastMarketClicked.setIcon(infoLastPinSelected.defaulPin);
     }
   }
 

@@ -33,11 +33,6 @@ export class MapServices {
     }
     this.map = new google.maps.Map(mapElement.nativeElement, mapOptions);
 
-    google.maps.event.addListener(this.map, 'click', ()=> {
-      infoWindow.close();
-    });
-
-
     this.getMapStyle().then((style_array) => {
       this.map.setOptions({styles: style_array});
     });
