@@ -3,7 +3,7 @@
     <button start ion-button icon-only menuToggle (click)="goBackPage()">
       <ion-icon name="icon-fill-back-arrow"></ion-icon>
     </button>
-    <label class="header-title">Test / Tips y Rutas</label>
+    <label class="header-title">Mapas</label>
     <button end ion-button icon-only menuToggle (click)="goToMenuPage()">
       <ion-icon name="icon-go-menu"></ion-icon>
     </button>
@@ -14,8 +14,10 @@
 
 <ion-content no-bounce class="routes-details-background">
   <ion-grid no-padding>
-    <ion-row class="background-subheader-option-0">
-      <label class="location-name location-title-margin">Info</label>
+    <ion-row class="locality-name">
+      <label>
+        Localidad {{site.location}}
+      </label>
     </ion-row>
 
     <ion-row no-padding>
