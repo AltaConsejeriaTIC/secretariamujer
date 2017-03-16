@@ -33,9 +33,10 @@ export class MapPage {
   }
 
   ionViewDidLoad() {
-    this.map = this.mapService.loadMap(this.infoWindow, this.mapElement, this.localityCenter, this.localityBoundaries);
+    let mapObject = this.mapService.loadMap(this.infoWindow, this.mapElement, this.localityCenter, this.localityBoundaries);
+    this.map = mapObject.map;
     this.pinFactory.setNavController(this.navCtrl);
-    this.pinFactory.configCloseInfoWindow(this.infoWindow, this.map);
+    this.pinFactory.configCloseInfoWindow(this.infoWindow, mapObject);
     this.showPlacesInMap();
   }
 

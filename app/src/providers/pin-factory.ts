@@ -19,15 +19,23 @@ export class PinFactory {
     this.navCtrl = navController;
   }
 
-  configCloseInfoWindow(infoWindow, map) {
-    google.maps.event.addListener(map, 'click', () => {
-      infoWindow.close();
-      this.setDefaultPinToLastSelected();
+  configCloseInfoWindow(infoWindow, mapObject) {
+    google.maps.event.addListener(mapObject.map, 'click', () => {
+      this.closeInfowindowAndPutDefaultPin(infoWindow);
     });
 
     google.maps.event.addListener(infoWindow,'closeclick',() => {
       this.setDefaultPinToLastSelected();
     });
+
+    google.maps.event.addListener(mapObject.polygon,'click',() => {
+      this.closeInfowindowAndPutDefaultPin(infoWindow);
+    });
+  }
+
+  closeInfowindowAndPutDefaultPin(infoWindow) {
+    infoWindow.close();
+    this.setDefaultPinToLastSelected();
   }
 
   setDefaultPinToLastSelected() {

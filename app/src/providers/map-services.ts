@@ -27,12 +27,12 @@ export class MapServices {
     this.getMapStyle().then((style_array) => {
       this.map.setOptions({styles: style_array});
     });
-    this.drawLocality(boundaries);
-    return this.map;
+    let localityPolygon = this.drawLocality(boundaries);
+    return { map: this.map, polygon: localityPolygon};
   }
 
   drawLocality(boundaries) {
-    var flightPath = new google.maps.Polygon({
+    var localityPolygon = new google.maps.Polygon({
       paths: boundaries,
       strokeColor: '#FF0000',
       strokeOpacity: 0,
@@ -40,7 +40,8 @@ export class MapServices {
       fillColor: '#664ba8',
       fillOpacity: 0.15
     });
-    flightPath.setMap(this.map);
+    localityPolygon.setMap(this.map);
+    return localityPolygon;
   }
 
   getFile(url: string) {
