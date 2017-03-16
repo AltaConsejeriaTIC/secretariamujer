@@ -100,7 +100,7 @@ export class SelectTestCategoryPage {
       this.loading.dismiss();
 
     }, err => {
-      this.alertCreator.showSimpleAlert('Error', 'En este momento no es posible cargar las categorías, intentálo más tarde');
+      this.alertCreator.showSimpleAlert('Info', 'En este momento no es posible cargar las categorías, asegúrate de tener conexión a internet e intentálo más tarde');
       this.loading.dismiss();
 
     });
