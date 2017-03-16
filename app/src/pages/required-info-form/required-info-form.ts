@@ -36,7 +36,7 @@ export class RequiredInfoFormPage {
   private createForm(formBuilder: FormBuilder) {
     this.form = formBuilder.group({
       username: ['', Validators.compose([Validators.maxLength(30), Validators.required])],
-      password: ['', Validators.compose([Validators.pattern('[0-9]*'), Validators.maxLength(4), Validators.minLength(4), Validators.required])]
+      password: ['', Validators.compose([Validators.maxLength(4), Validators.minLength(4), Validators.required])]
     });
   }
 
@@ -62,7 +62,7 @@ export class RequiredInfoFormPage {
   }
 
   isUserDataValid() {
-    let isDataValid: boolean = this.formValidator.isValidUserName(this.form.controls['username'], 'Por favor ingresa un nombre de usuario, máximo 30 caracteres') && this.formValidator.IsValidPassword(this.form.controls['password'], 'Por favor ingresa un PIN de 4 dígitos');
+    let isDataValid: boolean = this.formValidator.isValidUserName(this.form.controls['username'], 'Por favor ingresa un nombre de usuario, máximo 30 caracteres') && this.formValidator.IsValidPassword(this.form.controls['password'], 'Por favor ingresa un PIN de 4 dígitos') && this.formValidator.IsValidCharPassword(this.form.controls['password'], 'Por favor ingresa un PIN con caracteres numéricos');
     return isDataValid;
   }
 
