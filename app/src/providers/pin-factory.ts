@@ -24,6 +24,10 @@ export class PinFactory {
       infoWindow.close();
       this.setDefaultPinToLastSelected();
     });
+
+    google.maps.event.addListener(infoWindow,'closeclick',() => {
+      this.setDefaultPinToLastSelected();
+    });
   }
 
   setDefaultPinToLastSelected() {
