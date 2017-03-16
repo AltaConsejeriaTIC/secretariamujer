@@ -4,17 +4,14 @@ import {SiteInfoPage} from "../pages/site-info/site-info";
 
 @Injectable()
 export class PinFactory {
-  sofiaPlaces: any[];
   navCtrl: any;
   lastMarketClicked: any;
-  pinCounter: number;
   INFO_CATEGORY = 'info';
   JUSTICE_CATEGORY = 'justice';
   PROTECTION_MEASURES_CATEGORY = 'protection_measures';
   HEALTH_CATEGORY = 'health';
 
   constructor(public ngZone: NgZone) {
-    this.pinCounter = -1;
     window["angularComponentRef"] = {component: this, zone: this.ngZone};
   }
 
@@ -36,23 +33,23 @@ export class PinFactory {
     }
   }
 
-  setPinOnMap(placeName, placeLatitude, placeLongitude, infoWindow, map, category) {
-    this.pinCounter = this.pinCounter + 1;
-    let marker = this.createMarker(map, placeLatitude, placeLongitude, category);
+  setPinOnMap(place, infoWindow, map) {
+    let marker = this.createMarker(map, place);
     let categoryInfo = this.getCategoryInfo(marker.get("category"));
     marker.setIcon(categoryInfo.defaulPin);
-    let content = this.getPinContent(categoryInfo, placeName);
+    let content = this.getPinContent(categoryInfo, place.title);
     this.addInfoWindow(marker, content, infoWindow, map, categoryInfo);
   }
 
-  createMarker(map, placeLatitude, placeLongitude, category) {
-    let coordinateSite = new google.maps.LatLng(placeLatitude, placeLongitude);
+  createMarker(map, place) {
+    let coordinateSite = new google.maps.LatLng(place.latitude, place.longitude);
     let marker = new google.maps.Marker({
       map: map,
       animation: google.maps.Animation.DROP,
       position: coordinateSite
     });
-    marker.set("category", category);
+    marker.set("category", place.category);
+    marker.set("placeInfo", place);
     return marker;
   }
 
@@ -67,33 +64,13 @@ export class PinFactory {
   getInfoByCategory(category) {
     switch (category) {
       case this.INFO_CATEGORY:
-        return {
-          categoryIcon: "icon-info-places",
-          categoryName: "Puntos de Información",
-          defaulPin: "info_pin.png",
-          selectedPin: "info_pin_selected.png"
-        };
+        return { categoryIcon: "icon-info-places", categoryName: "Puntos de Información", defaulPin: "info_pin.png", selectedPin: "info_pin_selected.png" };
       case this.JUSTICE_CATEGORY:
-        return {
-          categoryIcon: "icon-complaint-places",
-          categoryName: "Puntos para el Acceso a la Justicia",
-          defaulPin: "justice_pin.png",
-          selectedPin: "justice_pin_selected.png"
-        };
+        return { categoryIcon: "icon-complaint-places", categoryName: "Puntos para el Acceso a la Justicia", defaulPin: "justice_pin.png", selectedPin: "justice_pin_selected.png" };
       case this.PROTECTION_MEASURES_CATEGORY:
-        return {
-          categoryIcon: "icon-protection-measures",
-          categoryName: "Medidas de Protección",
-          defaulPin: "protection_pin.png",
-          selectedPin: "protection_pin_selected.png"
-        };
+        return { categoryIcon: "icon-protection-measures", categoryName: "Medidas de Protección", defaulPin: "protection_pin.png", selectedPin: "protection_pin_selected.png" };
       case this.HEALTH_CATEGORY:
-        return {
-          categoryIcon: "icon-health-places",
-          categoryName: "Puntos de Salud",
-          defaulPin: "health_pin.png",
-          selectedPin: "health_pin_selected.png"
-        };
+        return { categoryIcon: "icon-health-places", categoryName: "Puntos de Salud", defaulPin: "health_pin.png", selectedPin: "health_pin_selected.png" };
     }
   }
 
@@ -107,13 +84,11 @@ export class PinFactory {
     let moreInfoLabel = "<ion-label>Ver más</ion-label>";
     let plusIcon = "<ion-icon md='md-add-circle' name='add-circle' role='img' class='icon icon-md ion-md-add-circle' aria-label='add circle' ng-reflect-name='add-circle' ng-reflect-md='md-add-circle'></ion-icon>";
 
-    return '<button onclick="window.angularComponentRef.zone.run(() => {window.angularComponentRef.component.goToInfoWindow(\'' + this.pinCounter + '\');})" ion-button="" class="disable-hover button button-ios button-default button-default-ios"><span class="button-inner">' + plusIcon + moreInfoLabel + "</span><div class='button-effect'></div></button>";
+    return '<button onclick="window.angularComponentRef.zone.run(() => {window.angularComponentRef.component.goToInfoWindow();})" ion-button="" class="disable-hover button button-ios button-default button-default-ios"><span class="button-inner">' + plusIcon + moreInfoLabel + "</span><div class='button-effect'></div></button>";
   }
 
-  goToInfoWindow(selectedPin) {
-    console.log("hizo click", selectedPin);
-    this.pinCounter = -1;
-    this.navCtrl.push(SiteInfoPage, {placeInfo: this.sofiaPlaces[selectedPin]});
+  goToInfoWindow() {
+    this.navCtrl.push(SiteInfoPage, {placeInfo: this.lastMarketClicked.get("placeInfo")});
   }
 
   getCategoryInfoStructure(category) {

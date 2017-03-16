@@ -49,7 +49,7 @@ export class MapPage {
 
   private showPlace(place) {
     if (place.latitude != null && place.latitude.length > 0 && place.longitude != null && place.longitude.length > 0) {
-      this.pinFactory.setPinOnMap(place.title, place.latitude, place.longitude, this.infoWindow, this.map, place.category);
+      this.pinFactory.setPinOnMap(place, this.infoWindow, this.map);
     }
   }
 
