@@ -19,16 +19,10 @@ page-site-info {
     color: white;
   }
 
-  .location-name{
-    color: map_get($colors,SofiaAppWhite);
-  }
-
-  .background-option-0{
-    background-color: #5393cd;
-  }
-
-  .background-subheader-option-0{
-    background-color: $map-title-background;
+  .locality-name {
+    background: $map-title-background;
+    color: map_get($colors, SofiaAppWhite);
+    font-weight: 600;
   }
 
   .color-0{
@@ -92,18 +86,13 @@ page-site-info {
   }
 
   @media (max-width: 479px) {
-    [class^="background-subheader-option-"] {
+    .locality-name {
       height: 50px;
-    }
 
-    [class*="background-subheader"] {
-      .location-name:first-child {
-        margin: auto 0 auto 30px;
+      label {
+        margin: auto 35px;
+        font-size: 14px;
       }
-    }
-
-    .location-name{
-      font-size: 14px;
     }
 
     .go-back-icon-margin{
@@ -211,13 +200,12 @@ page-site-info {
   }
 
   @media (min-width: 480px) and (max-width: 767px) {
-    [class^="background-subheader-option-"] {
+    .locality-name {
       height: 75px;
-    }
 
-    [class*="background-subheader"] {
-      .location-name:first-child {
-        margin: auto 0 auto 60px;
+      label {
+        margin: auto 60px;
+        font-size: 22px;
       }
     }
 
@@ -330,13 +318,12 @@ page-site-info {
   }
 
   @media (min-width: 768px) {
-    [class^="background-subheader-option-"] {
+    .locality-name {
       height: 90px;
-    }
 
-    [class*="background-subheader"] {
-      .location-name:first-child {
-        margin: auto 0 auto 80px;
+      label {
+        margin: auto 80px;
+        font-size: 26px;
       }
     }
 
