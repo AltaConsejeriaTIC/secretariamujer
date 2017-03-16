@@ -5,6 +5,7 @@ import {AlertCreator} from "../../providers/alert-creator";
 import {MapServices} from "../../providers/map-services";
 import {PinFactory} from "../../providers/pin-factory";
 import {PlacesService} from "../../providers/places-service";
+import {NetworkStatusService} from "../../providers/network-status-service";
 
 declare var google;
 
@@ -33,6 +34,8 @@ export class MapPage {
   }
 
   ionViewDidLoad() {
+    if (!NetworkStatusService.isDeviceConnected())
+      this.alertCreator.showSimpleAlert('Error', 'No es posible ver los sitios porque no tienes conexión a Internet');
     let mapObject = this.mapService.loadMap(this.infoWindow, this.mapElement, this.localityCenter, this.localityBoundaries);
     this.map = mapObject.map;
     this.pinFactory.setNavController(this.navCtrl);
