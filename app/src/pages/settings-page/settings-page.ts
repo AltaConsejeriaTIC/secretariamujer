@@ -220,7 +220,7 @@ export class SettingsPage {
     this.storage.set('isFirstTimeOpen', null);
     if (NetworkStatusService.isDeviceConnected()) {
       this.loginService.logout().subscribe(res => {
-        this.clearDataAndGoToHomePage;
+        this.clearDataAndGoToHomePage();
       }, err => {
         console.log(err);
       });
