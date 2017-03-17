@@ -30,15 +30,16 @@ export class SelectTipsCategoryPage {
     this.loading.present();
 
     this.categoryTitles.getTitles().map(res => res.json()).subscribe(response => {
-      this.setTipsCategories(response[0]);
-      this.loading.dismiss();
-
+        this.parseTipsCategories(response[0]);
     }, err => {
       this.alertCreator.showSimpleAlert('Info','En este momento no tienes conexión a internet, asegúrate de tener conexión para obtener los datos más recientes que Sofiapp tiene para tí.');
-      this.setTipsCategories(JSON.parse(this.offlineService.getOfflineCategoriesTitles())[0]);
-      this.loading.dismiss();
-
+      this.parseTipsCategories(JSON.parse(this.offlineService.getOfflineCategoriesTitles())[0]);
     });
+  }
+
+  parseTipsCategories(data){
+    this.setTipsCategories(data);
+    this.loading.dismiss();
   }
 
   ionViewDidLoad() {
