@@ -10,7 +10,10 @@ import {AlertCreator} from "../../providers/alert-creator";
 import {UserDAO} from "../../providers/user-dao";
 import {UserService} from "../../providers/user-service";
 import {NetworkStatusService} from "../../providers/network-status-service";
+import { File } from 'ionic-native';
+import {OfflineService} from "../../providers/offline-service";
 
+declare var cordova:any;
 
 @Component({
   selector: 'page-login',
@@ -20,11 +23,14 @@ export class LoginPage {
 
   form: FormGroup;
   loading: Loading;
+  dataDirectory: string;
+
 
   constructor(public navCtrl: NavController, private  formBuilder: FormBuilder, public formValidator: FormValidator,
               public storage: Storage, public loadingController: LoadingController, private userFactory: UserFactory,
               private loginService: LoginService, public alertCreator: AlertCreator, private userDAO: UserDAO,
-              private userService: UserService) {
+              private userService: UserService,public offlineService:OfflineService) {
+    this.dataDirectory=cordova.file.dataDirectory;
     this.createForm(formBuilder);
     this.loading = this.createLoading();
 
@@ -70,7 +76,7 @@ export class LoginPage {
       this.loginService.login(user, (data) => {
         this.userService.user = data;
         this.userService.user.password = this.form.controls['userPassword'].value;
-        this.goToMenuPage();
+        this.setOfflineContent();
       }, () => {
         this.hideLoading();
       });
@@ -99,6 +105,27 @@ export class LoginPage {
   isUserDataValid(): boolean {
     let isDataValid: boolean = this.formValidator.IsValidPassword(this.form.controls['userPassword'], 'Verifica que el PIN sea correcto') && this.formValidator.isValidUserName(this.form.controls['username'], 'Por favor ingresa tu nombre en la aplicación');
     return isDataValid;
+  }
+
+  setOfflineContent(){
+    let categoriesTitles='[{"field_title_test1":"Sobre tu relaci\u00f3n de","field_title_test1_line_2":"pareja o expareja\u2026","field_title_test2_line_1":"Sobre tu cuerpo y tu","field_title_test2_line_2":"sexualidad...","field_title_test3_line_1":"Sobre tu autonom\u00eda ","field_title_test3_line_2":"econ\u00f3mica","field_title_test4_line_1":"Otros espacios ","field_title_test4_line_2":"de tu vida cotidiana","field_test_tip_1_subtitle":"\u00bfC\u00f3mo la vives y la percibes? ","field_test_tip_2_subtitle":"\u00bfSon respetados y protegidos?","field_test_tip_3_subtitle":"\u00bfDecides con libertad?","field_test_tip_4_subtitle":"\u00bfTe sientes segura en tu cotidianidad?"}]'
+    File.createDir(this.dataDirectory,'categoriesTitles',true).then(()=>{
+      File.createFile(this.dataDirectory+'/categoriesTitles', 'categoriesTitles.txt', true).then(()=>{
+        File.writeFile(this.dataDirectory+'/categoriesTitles','categoriesTitles.txt',categoriesTitles,{replace:true}).then(()=>{
+          File.readAsText(this.dataDirectory+'/categoriesTitles','categoriesTitles.txt').then((data)=>{
+            this.offlineService.setOfflineCategoriesTitles(data);
+            this.goToMenuPage();
+          }).catch((err)=>{
+            this.goToMenuPage();
+          });
+        }).catch((err)=>{
+            this.goToMenuPage();
+        });
+      });
+
+    }).catch((err)=>{
+      this.goToMenuPage();
+    })
   }
 
   goToMenuPage() {

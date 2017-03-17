@@ -4,6 +4,7 @@ import {TipsPage} from "../tips-page/tips-page";
 import {TipData} from "../../entity/tip-data";
 import {CategoryTitles} from "../../providers/category-titles";
 import {AlertCreator} from "../../providers/alert-creator";
+import {OfflineService} from "../../providers/offline-service";
 
 @Component({
   selector: 'page-select-tips-category',
@@ -13,7 +14,7 @@ export class SelectTipsCategoryPage {
   tipsCategories: TipData[];
   loading: Loading;
 
-  constructor(public navController: NavController, public categoryTitles:CategoryTitles, public alertCreator:AlertCreator, public loadingController: LoadingController) {
+  constructor(public navController: NavController, public categoryTitles:CategoryTitles, public alertCreator:AlertCreator, public loadingController: LoadingController, public offlineService:OfflineService) {
     this.tipsCategories = [
       {id: 0, labels: ['', ''], subtitle:'', class: 'option-0', iconName: "icon-economic-violence", RESTAddres: "economic_violence_tips_rest" },
       {id: 1, labels: ['', ''], subtitle:'', class: 'option-1', iconName: "icon-physical-violence", RESTAddres: "physical_violence_tips_rest"},
@@ -33,7 +34,8 @@ export class SelectTipsCategoryPage {
       this.loading.dismiss();
 
     }, err => {
-      this.alertCreator.showSimpleAlert('Info','En este momento no es posible cargar las categorías, asegúrate de tener conexión a internet e intentálo más tarde');
+      this.alertCreator.showSimpleAlert('Info','En este momento no tienes conexión a internet, asegúrate de tener conexión para obtener los datos más recientes que Sofiapp tiene para tí.');
+      this.setTipsCategories(JSON.parse(this.offlineService.getOfflineCategoriesTitles())[0]);
       this.loading.dismiss();
 
     });
