@@ -4,6 +4,7 @@ import {Http} from "@angular/http";
 import {ApplicationConfig} from "../../config";
 import {SDMUInfo} from "../../entity/sdmu-info";
 import {AlertCreator} from "../../providers/alert-creator";
+import {InfoJsonService} from "../../providers/info-json-service";
 
 @Component({
   selector: 'page-sdmu-info-page',
@@ -18,7 +19,7 @@ export class SDMUInfoPage {
   }];
   loading: Loading;
 
-  constructor(public navCtrl: NavController, public http: Http, public loadingController: LoadingController, public alertCreator: AlertCreator) {
+  constructor(public navCtrl: NavController, public http: Http, public loadingController: LoadingController, public alertCreator: AlertCreator, public infoJsonService: InfoJsonService) {
     this.loading = this.loadingController.create({
       content: "Espera un momento",
       dismissOnPageChange: true
@@ -36,10 +37,16 @@ export class SDMUInfoPage {
 
       console.log("la respuesta", this.aboutSDMUInfo);
     }, err => {
-      this.loading.dismiss();
-      this.alertCreator.showSimpleAlert("Error", "Asegurate de tener conexión a internet, o intentalo más tarde");
-      console.log("el error", err)
+      this.getOfflineInfo(err);
     });
+  }
+
+  getOfflineInfo(err){
+    this.loading.dismiss();
+    this.infoJsonService.getJson("sdmuInfoJson").then((response) => {
+      this.aboutSDMUInfo = response;
+    });
+    console.log("el error", err);
   }
 
   checkIfEmptyResponse() {
