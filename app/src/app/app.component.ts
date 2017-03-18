@@ -5,7 +5,8 @@ import {HomePage} from "../pages/home/home";
 import {TutorialPage} from "../pages/tutorial-page/tutorial-page";
 import {Storage} from '@ionic/storage';
 import {CalculatorPage} from "../pages/calculator/calculator";
-
+import { File } from 'ionic-native';
+declare var cordova:any;
 
 @Component({
   templateUrl: 'app.html'
@@ -13,6 +14,8 @@ import {CalculatorPage} from "../pages/calculator/calculator";
 export class MyApp {
   rootPage;
   openState;
+  dataDirectory: string;
+
 
   constructor(public platform: Platform, public storage: Storage) {
     this.platform.ready().then(() => {
@@ -27,6 +30,7 @@ export class MyApp {
   }
 
   private getStoredData() {
+    this.dataDirectory=cordova.file.dataDirectory;
     this.storage.get('isFirstTimeOpen').then((isFirstTimeOpen) => {
       this.openState = isFirstTimeOpen == null || isFirstTimeOpen == true;
       this.storage.set('isFirstTimeOpen', this.openState);
@@ -42,13 +46,25 @@ export class MyApp {
 
   checkIfFirstTimeOpen(isFirstTimeOpen: boolean) {
     if (isFirstTimeOpen || isFirstTimeOpen == null) {
-      this.hideSplashScreen();
-      this.rootPage = TutorialPage;
+      this.createOfflineFiles();
     } else {
       this.storage.get('islogged').then((isLogged) => {
         this.checkIfUserIsLogged(isLogged);
       })
     }
+  }
+
+  createOfflineFiles(){
+    Promise.all([File.createFile(this.dataDirectory, 'categoriesTitles.txt', true)]).then(()=>{
+      this.goToRootPage();
+    }).catch(()=>{
+      this.goToRootPage();
+    })
+  }
+
+  goToRootPage(){
+    this.hideSplashScreen();
+    this.rootPage = TutorialPage;
   }
 
   checkIfUserIsLogged(isLogged: boolean) {

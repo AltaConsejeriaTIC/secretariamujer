@@ -99,7 +99,10 @@ export class SelectTestCategoryPage {
 
     }, err => {
       this.alertCreator.showSimpleAlert('Info','En este momento no tienes conexión a internet, asegúrate de tener conexión para obtener los datos más recientes que Sofiapp tiene para tí.');
-      this.parseTestCategories(JSON.parse(this.offlineService.getOfflineCategoriesTitles())[0]);
+      this.offlineService.readAsText('categoriesTitles.txt').then((data)=>{
+        this.offlineService.setOfflineCategoriesTitles(data);
+        this.parseTestCategories(JSON.parse(this.offlineService.getOfflineCategoriesTitles())[0]);
+      });
     });
   }
 

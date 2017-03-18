@@ -11,7 +11,6 @@ import {UserDAO} from "../../providers/user-dao";
 import {UserService} from "../../providers/user-service";
 import {NetworkStatusService} from "../../providers/network-status-service";
 import { File } from 'ionic-native';
-import {OfflineService} from "../../providers/offline-service";
 
 declare var cordova:any;
 
@@ -29,7 +28,7 @@ export class LoginPage {
   constructor(public navCtrl: NavController, private  formBuilder: FormBuilder, public formValidator: FormValidator,
               public storage: Storage, public loadingController: LoadingController, private userFactory: UserFactory,
               private loginService: LoginService, public alertCreator: AlertCreator, private userDAO: UserDAO,
-              private userService: UserService,public offlineService:OfflineService) {
+              private userService: UserService) {
     this.dataDirectory=cordova.file.dataDirectory;
     this.createForm(formBuilder);
     this.loading = this.createLoading();
@@ -108,29 +107,12 @@ export class LoginPage {
   }
 
   setOfflineContent(){
-    this.createFiles();
-  }
-
-  createFiles(){
-    Promise.all([File.createFile(this.dataDirectory, 'categoriesTitles.txt', true)]).then(()=>{
-      this.writeFiles();
-    }).catch(()=>{
-      this.goToMenuPage();
-    })
+    this.writeFiles();
   }
 
   writeFiles(){
     let categoriesTitles='[{"field_title_test1":"Sobre tu relaci\u00f3n de","field_title_test1_line_2":"pareja o expareja\u2026","field_title_test2_line_1":"Sobre tu cuerpo y tu","field_title_test2_line_2":"sexualidad...","field_title_test3_line_1":"Sobre tu autonom\u00eda ","field_title_test3_line_2":"econ\u00f3mica","field_title_test4_line_1":"Otros espacios ","field_title_test4_line_2":"de tu vida cotidiana","field_test_tip_1_subtitle":"\u00bfC\u00f3mo la vives y la percibes? ","field_test_tip_2_subtitle":"\u00bfSon respetados y protegidos?","field_test_tip_3_subtitle":"\u00bfDecides con libertad?","field_test_tip_4_subtitle":"\u00bfTe sientes segura en tu cotidianidad?"}]';
     Promise.all([File.writeFile(this.dataDirectory,'categoriesTitles.txt',categoriesTitles,{replace:true})]).then(()=>{
-      this.readAsText();
-    }).catch(()=>{
-      this.goToMenuPage();
-    })
-  }
-
-  readAsText(){
-    Promise.all([ File.readAsText(this.dataDirectory,'categoriesTitles.txt')]).then((data)=>{
-      this.offlineService.setOfflineCategoriesTitles(data);
       this.goToMenuPage();
     }).catch(()=>{
       this.goToMenuPage();

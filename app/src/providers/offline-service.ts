@@ -1,14 +1,17 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { File } from 'ionic-native';
 import 'rxjs/add/operator/map';
+declare var cordova:any;
 
 
 @Injectable()
 export class OfflineService {
   categoriesTitles:any;
+  dataDirectory: string;
+
 
   constructor() {
-
+    this.dataDirectory=cordova.file.dataDirectory;
   }
 
   setOfflineCategoriesTitles(data){
@@ -17,6 +20,10 @@ export class OfflineService {
 
   getOfflineCategoriesTitles(){
     return this.categoriesTitles;
+  }
+
+  readAsText(fileName:string){
+    return File.readAsText(this.dataDirectory,fileName);
   }
 
 }

@@ -14,19 +14,23 @@ import {UserFactory} from "../../providers/user-factory";
 import {UserDAO} from "../../providers/user-dao";
 import {UserService} from "../../providers/user-service";
 import {UserAdapter} from "../../providers/adapter/user-adapter";
+import {OfflineService} from "../../providers/offline-service";
+declare var cordova:any;
+
 
 
 describe('LoginPage tests', () => {
 
   let loginPage: LoginPage;
   let fixture: ComponentFixture<LoginPage>;
+  let cordova:any;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [LoginPage],
       providers: [
         App, Platform, Form, Keyboard, MenuController, NavController, LoginService, FormValidator, Storage,
-        LoadingController, UserFactory, LoginService, UserDAO, UserService, UserAdapter,
+        LoadingController, UserFactory, LoginService, UserDAO, UserService, UserAdapter,OfflineService,
         {provide: Config, useClass: ConfigMock},
         {provide: AlertCreator, useClass: ConfigMock}
       ],
