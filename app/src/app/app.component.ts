@@ -58,6 +58,9 @@ export class MyApp {
     Promise.all([
       File.createFile(this.dataDirectory, 'categoriesTitles.txt', true),
       File.createFile(this.dataDirectory, 'testOneQuestions.txt', true),
+      File.createFile(this.dataDirectory, 'testTwoQuestions.txt', true),
+      File.createFile(this.dataDirectory, 'testThreeQuestions.txt', true),
+      File.createFile(this.dataDirectory, 'testFourQuestions.txt', true)
     ]).then(()=>{
       this.goToRootPage();
     }).catch(()=>{

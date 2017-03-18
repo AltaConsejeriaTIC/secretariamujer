@@ -111,6 +111,7 @@ export class LoginPage {
 
   setOfflineContent(){
     this.offlineService.getAllAppData().subscribe((data)=>{
+      console.log("toda la data", data);
       this.writeFiles(data);
     },(err)=>{
       console.log("error get all data", err);
@@ -122,7 +123,10 @@ export class LoginPage {
   writeFiles(data){
     Promise.all([
       File.writeFile(this.dataDirectory,'categoriesTitles.txt',data[0],{replace:true}),
-      File.writeFile(this.dataDirectory,'testOneQuestions.txt',data[1],{replace:true})
+      File.writeFile(this.dataDirectory,'testOneQuestions.txt',data[1],{replace:true}),
+      File.writeFile(this.dataDirectory,'testTwoQuestions.txt',data[2],{replace:true}),
+      File.writeFile(this.dataDirectory,'testThreeQuestions.txt',data[3],{replace:true}),
+      File.writeFile(this.dataDirectory,'testFourQuestions.txt',data[4],{replace:true})
     ]).then(()=>{
       this.goToMenuPage();
     }).catch((err)=>{

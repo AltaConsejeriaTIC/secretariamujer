@@ -24,6 +24,9 @@ export class OfflineService {
     return Observable.forkJoin([
       this.http.get(ApplicationConfig.getURL('/category_titles_rest')).map((res:Response) => res.json()),
       this.http.get(ApplicationConfig.getURL('/preguntas-violencia-economica')).map((res:Response) => res.json()),
+      this.http.get(ApplicationConfig.getURL('/preguntas-violencia-fisica')).map((res:Response) => res.json()),
+      this.http.get(ApplicationConfig.getURL('/preguntas-violencia-psicologica')).map((res:Response) => res.json()),
+      this.http.get(ApplicationConfig.getURL('/preguntas-violencia-sexual')).map((res:Response) => res.json()),
     ]);
   }
 
