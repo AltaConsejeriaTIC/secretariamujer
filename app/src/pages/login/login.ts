@@ -108,20 +108,11 @@ export class LoginPage {
   }
 
   setOfflineContent(){
-    this.createDirs();
-  }
-  createDirs(){
-    Promise.all([
-      File.createDir(this.dataDirectory,'categoriesTitles',true)
-    ]).then(()=>{
-      this.createFiles();
-    }).catch(()=>{
-      this.goToMenuPage();
-    });
+    this.createFiles();
   }
 
   createFiles(){
-    Promise.all([File.createFile(this.dataDirectory+'/categoriesTitles', 'categoriesTitles.txt', true)]).then(()=>{
+    Promise.all([File.createFile(this.dataDirectory, 'categoriesTitles.txt', true)]).then(()=>{
       this.writeFiles();
     }).catch(()=>{
       this.goToMenuPage();
@@ -130,7 +121,7 @@ export class LoginPage {
 
   writeFiles(){
     let categoriesTitles='[{"field_title_test1":"Sobre tu relaci\u00f3n de","field_title_test1_line_2":"pareja o expareja\u2026","field_title_test2_line_1":"Sobre tu cuerpo y tu","field_title_test2_line_2":"sexualidad...","field_title_test3_line_1":"Sobre tu autonom\u00eda ","field_title_test3_line_2":"econ\u00f3mica","field_title_test4_line_1":"Otros espacios ","field_title_test4_line_2":"de tu vida cotidiana","field_test_tip_1_subtitle":"\u00bfC\u00f3mo la vives y la percibes? ","field_test_tip_2_subtitle":"\u00bfSon respetados y protegidos?","field_test_tip_3_subtitle":"\u00bfDecides con libertad?","field_test_tip_4_subtitle":"\u00bfTe sientes segura en tu cotidianidad?"}]';
-    Promise.all([File.writeFile(this.dataDirectory+'/categoriesTitles','categoriesTitles.txt',categoriesTitles,{replace:true})]).then(()=>{
+    Promise.all([File.writeFile(this.dataDirectory,'categoriesTitles.txt',categoriesTitles,{replace:true})]).then(()=>{
       this.readAsText();
     }).catch(()=>{
       this.goToMenuPage();
@@ -138,7 +129,7 @@ export class LoginPage {
   }
 
   readAsText(){
-    Promise.all([ File.readAsText(this.dataDirectory+'/categoriesTitles','categoriesTitles.txt')]).then((data)=>{
+    Promise.all([ File.readAsText(this.dataDirectory,'categoriesTitles.txt')]).then((data)=>{
       this.offlineService.setOfflineCategoriesTitles(data);
       this.goToMenuPage();
     }).catch(()=>{
