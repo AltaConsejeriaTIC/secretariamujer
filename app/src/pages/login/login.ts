@@ -12,6 +12,8 @@ import {UserService} from "../../providers/user-service";
 import {NetworkStatusService} from "../../providers/network-status-service";
 import { File } from 'ionic-native';
 import {CategoryTitles} from "../../providers/category-titles";
+import {TestsService} from "../../providers/tests-service";
+import {OfflineService} from "../../providers/offline-service";
 
 declare var cordova:any;
 
@@ -29,7 +31,7 @@ export class LoginPage {
   constructor(public navCtrl: NavController, private  formBuilder: FormBuilder, public formValidator: FormValidator,
               public storage: Storage, public loadingController: LoadingController, private userFactory: UserFactory,
               private loginService: LoginService, public alertCreator: AlertCreator, private userDAO: UserDAO,
-              private userService: UserService, public categoryTitles:CategoryTitles) {
+              private userService: UserService, public categoryTitles:CategoryTitles, public testService:TestsService, public offlineService:OfflineService) {
     this.dataDirectory=cordova.file.dataDirectory;
     this.createForm(formBuilder);
     this.loading = this.createLoading();
@@ -108,20 +110,25 @@ export class LoginPage {
   }
 
   setOfflineContent(){
-    this.writeFiles();
-  }
-
-  writeFiles(){
-    this.categoryTitles.getTitles().map(res => res.json()).subscribe(response => {
-        Promise.all([File.writeFile(this.dataDirectory,'categoriesTitles.txt',response,{replace:true})]).then(()=>{
-          this.goToMenuPage();
-        }).catch(()=>{
-          this.goToMenuPage();
-        })
-    }, err => {
+    this.offlineService.getAllAppData().subscribe((data)=>{
+      this.writeFiles(data);
+    },(err)=>{
+      console.log("error get all data", err);
       this.goToMenuPage();
     });
 
+  }
+
+  writeFiles(data){
+    Promise.all([
+      File.writeFile(this.dataDirectory,'categoriesTitles.txt',data[0],{replace:true}),
+      File.writeFile(this.dataDirectory,'testOneQuestions.txt',data[1],{replace:true})
+    ]).then(()=>{
+      this.goToMenuPage();
+    }).catch((err)=>{
+      console.log("error writeFiles", err);
+      this.goToMenuPage();
+    });
   }
 
   goToMenuPage() {

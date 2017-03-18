@@ -55,7 +55,10 @@ export class MyApp {
   }
 
   createOfflineFiles(){
-    Promise.all([File.createFile(this.dataDirectory, 'categoriesTitles.txt', true)]).then(()=>{
+    Promise.all([
+      File.createFile(this.dataDirectory, 'categoriesTitles.txt', true),
+      File.createFile(this.dataDirectory, 'testOneQuestions.txt', true),
+    ]).then(()=>{
       this.goToRootPage();
     }).catch(()=>{
       this.goToRootPage();

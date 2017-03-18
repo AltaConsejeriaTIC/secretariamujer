@@ -35,7 +35,7 @@ export class SelectTipsCategoryPage {
       this.alertCreator.showSimpleAlert('Info','En este momento no tienes conexión a internet, asegúrate de tener conexión para obtener los datos más recientes que Sofiapp tiene para tí.');
       this.offlineService.readAsText('categoriesTitles.txt').then((data)=>{
         this.offlineService.setOfflineCategoriesTitles(data);
-        this.parseTipsCategories(JSON.parse(this.offlineService.getOfflineCategoriesTitles())[0]);
+        this.parseTipsCategories(this.offlineService.getOfflineCategoriesTitles());
       });
 
     });
