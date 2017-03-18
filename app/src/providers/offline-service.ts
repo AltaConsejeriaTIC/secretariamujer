@@ -27,15 +27,6 @@ export class OfflineService {
     ]);
   }
 
-  setOfflineCategoriesTitles(data){
-    this.categoriesTitles=JSON.parse(data)[0];
-  }
-
-  getOfflineCategoriesTitles(){
-    return this.categoriesTitles;
-  }
-
-
   readAsText(fileName:string){
     return File.readAsText(this.dataDirectory,fileName);
   }

@@ -83,6 +83,9 @@ export class TestPage {
       this.loading.dismiss();
     }, err => {
       console.log("el error", err.toString())
+     /* switch(this.selectedTestCategory.RESTAddress){
+
+      }*/
       this.alertCreator.showSimpleAlert('Error','En este momento no es posible cargar las preguntas, intentálo más tarde');
       this.loading.dismiss();
 
