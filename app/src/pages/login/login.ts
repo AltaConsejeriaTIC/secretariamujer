@@ -126,7 +126,12 @@ export class LoginPage {
       File.writeFile(this.dataDirectory,'testOneQuestions.txt',data[1],{replace:true}),
       File.writeFile(this.dataDirectory,'testTwoQuestions.txt',data[2],{replace:true}),
       File.writeFile(this.dataDirectory,'testThreeQuestions.txt',data[3],{replace:true}),
-      File.writeFile(this.dataDirectory,'testFourQuestions.txt',data[4],{replace:true})
+      File.writeFile(this.dataDirectory,'testFourQuestions.txt',data[4],{replace:true}),
+      File.writeFile(this.dataDirectory,'tipsOne.txt',data[5],{replace:true}),
+      File.writeFile(this.dataDirectory,'tipsTwo.txt',data[6],{replace:true}),
+      File.writeFile(this.dataDirectory,'tipsThree.txt',data[7],{replace:true}),
+      File.writeFile(this.dataDirectory,'tipsFour.txt',data[8],{replace:true}),
+
     ]).then(()=>{
       this.goToMenuPage();
     }).catch((err)=>{

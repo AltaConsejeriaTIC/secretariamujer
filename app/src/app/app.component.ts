@@ -60,7 +60,11 @@ export class MyApp {
       File.createFile(this.dataDirectory, 'testOneQuestions.txt', true),
       File.createFile(this.dataDirectory, 'testTwoQuestions.txt', true),
       File.createFile(this.dataDirectory, 'testThreeQuestions.txt', true),
-      File.createFile(this.dataDirectory, 'testFourQuestions.txt', true)
+      File.createFile(this.dataDirectory, 'testFourQuestions.txt', true),
+      File.createFile(this.dataDirectory, 'tipsOne.txt', true),
+      File.createFile(this.dataDirectory, 'tipsTwo.txt', true),
+      File.createFile(this.dataDirectory, 'tipsThree.txt', true),
+      File.createFile(this.dataDirectory, 'tipsFour.txt', true)
     ]).then(()=>{
       this.goToRootPage();
     }).catch(()=>{

@@ -27,6 +27,11 @@ export class OfflineService {
       this.http.get(ApplicationConfig.getURL('/preguntas-violencia-fisica')).map((res:Response) => res.json()),
       this.http.get(ApplicationConfig.getURL('/preguntas-violencia-psicologica')).map((res:Response) => res.json()),
       this.http.get(ApplicationConfig.getURL('/preguntas-violencia-sexual')).map((res:Response) => res.json()),
+      this.http.get(ApplicationConfig.getURL('/economic_violence_tips_rest')).map((res:Response) => res.json()),
+      this.http.get(ApplicationConfig.getURL('/physical_violence_tips_rest')).map((res:Response) => res.json()),
+      this.http.get(ApplicationConfig.getURL('/psychological_violence_tips_rest')).map((res:Response) => res.json()),
+      this.http.get(ApplicationConfig.getURL('/sexual_violence_tips_rest')).map((res:Response) => res.json()),
+
     ]);
   }
 
