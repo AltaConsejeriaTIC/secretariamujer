@@ -6,6 +6,7 @@ import {RouteInfo} from "../../entity/route-info";
 import {InAppBrowser} from "ionic-native"
 import {AlertCreator} from "../../providers/alert-creator";
 import {ApplicationConfig} from "../../config";
+import {OfflineService} from "../../providers/offline-service";
 
 @Component({
   selector: 'page-routes-details',
@@ -20,7 +21,7 @@ export class RoutesDetailsPage {
   routesDetails:RouteInfo[];
   loading:Loading;
 
-  constructor(public navCtrl: NavController, public navParams:NavParams, public http: Http, public alertCreator: AlertCreator, public loadingController: LoadingController) {
+  constructor(public navCtrl: NavController, public navParams:NavParams, public http: Http, public alertCreator: AlertCreator, public loadingController: LoadingController, public offlineService:OfflineService) {
     this.location=this.navParams.get('location');
     this.attentionRoute=this.navParams.get('attentionRoute');
     this.loading=this.loadingController.create({
@@ -38,16 +39,50 @@ export class RoutesDetailsPage {
     let RESTAddress=this.attentionRoute.RESTAddres+"/"+this.location;
     let url=ApplicationConfig.getURL('/'+RESTAddress+'?_format=json');
     this.http.get(url).map(res => res.json()).subscribe(response => {
-      this.routesDetails=response;
-      this.loading.dismiss();
-      this.checkIfEmptyResponse();
-
+      this.setRoutes(response);
       console.log("la respuesta", this.routesDetails);
     }, err => {
-      this.loading.dismiss();
-      this.alertCreator.showSimpleAlert("Error","Asegurate de tener conexión a internet, o intentalo más tarde");
+      this.alertCreator.showSimpleAlert("Info","Asegurate de tener conexión a internet, para obtener las rutas más recientes");
+      this.getOfflineRoutes(this.attentionRoute.RESTAddres);
       console.log("el error", err)
     });
+  }
+
+  setRoutes(data){
+    this.routesDetails=data;
+    this.loading.dismiss();
+    this.checkIfEmptyResponse();
+  }
+
+  getOfflineRoutes(RESTAddress){
+    let offlineRoutesFile:string =this.getOfflineRoutesFile(RESTAddress);
+    this.offlineService.readAsText(offlineRoutesFile).then((data)=>{
+      let selectedLocationRoutes=this.getSelectedLocationOfflineRoutes(JSON.parse(data.toString()));
+      this.setRoutes(selectedLocationRoutes);
+    });
+  }
+
+  getOfflineRoutesFile(RESTAddress){
+    switch(RESTAddress){
+      case 'info_routes_rest':
+        return 'infoRoutes.txt';
+      case 'health_routes_rest':
+        return 'healthRoutes.txt';
+      case 'justice_routes_rest':
+        return 'justiceRoutes.txt';
+      case 'protection_measures_routes_rest':
+        return 'protectionRoutes.txt';
+    }
+  }
+
+  getSelectedLocationOfflineRoutes(data){
+    let selectedLocationRoutes=[];
+    for(let i=0; i<data.length; i++){
+      if(data[i].location==this.location){
+        selectedLocationRoutes.push(data[i]);
+      }
+    }
+    return selectedLocationRoutes;
   }
 
   checkIfEmptyResponse(){

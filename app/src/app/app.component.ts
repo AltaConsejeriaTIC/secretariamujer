@@ -64,7 +64,12 @@ export class MyApp {
       File.createFile(this.dataDirectory, 'tipsOne.txt', true),
       File.createFile(this.dataDirectory, 'tipsTwo.txt', true),
       File.createFile(this.dataDirectory, 'tipsThree.txt', true),
-      File.createFile(this.dataDirectory, 'tipsFour.txt', true)
+      File.createFile(this.dataDirectory, 'tipsFour.txt', true),
+      File.createFile(this.dataDirectory, 'infoRoutes.txt', true),
+      File.createFile(this.dataDirectory, 'healthRoutes.txt', true),
+      File.createFile(this.dataDirectory, 'justiceRoutes.txt', true),
+      File.createFile(this.dataDirectory, 'protectionRoutes.txt', true),
+
     ]).then(()=>{
       this.goToRootPage();
     }).catch(()=>{

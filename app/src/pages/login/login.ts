@@ -131,6 +131,10 @@ export class LoginPage {
       File.writeFile(this.dataDirectory,'tipsTwo.txt',data[6],{replace:true}),
       File.writeFile(this.dataDirectory,'tipsThree.txt',data[7],{replace:true}),
       File.writeFile(this.dataDirectory,'tipsFour.txt',data[8],{replace:true}),
+      File.writeFile(this.dataDirectory,'infoRoutes.txt',data[9],{replace:true}),
+      File.writeFile(this.dataDirectory,'healthRoutes.txt',data[10],{replace:true}),
+      File.writeFile(this.dataDirectory,'justiceRoutes.txt',data[11],{replace:true}),
+      File.writeFile(this.dataDirectory,'protectionRoutes.txt',data[12],{replace:true}),
 
     ]).then(()=>{
       this.goToMenuPage();
