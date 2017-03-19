@@ -35,7 +35,9 @@ export class OfflineService {
       this.http.get(ApplicationConfig.getURL('/health_routes_rest')).map((res:Response) => res.json()),
       this.http.get(ApplicationConfig.getURL('/justice_routes_rest')).map((res:Response) => res.json()),
       this.http.get(ApplicationConfig.getURL('/protection_measures_routes_rest')).map((res:Response) => res.json()),
-
+      this.http.get(ApplicationConfig.getURL('/info-about-sdmu-rest')).map((res:Response) => res.json()),
+      this.http.get(ApplicationConfig.getURL('/info-about-sofia-rest')).map((res:Response) => res.json()),
+      this.http.get(ApplicationConfig.getURL('/info-about-app-rest')).map((res:Response) => res.json()),
 
     ]);
   }

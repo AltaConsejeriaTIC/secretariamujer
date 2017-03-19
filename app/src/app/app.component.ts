@@ -69,6 +69,9 @@ export class MyApp {
       File.createFile(this.dataDirectory, 'healthRoutes.txt', true),
       File.createFile(this.dataDirectory, 'justiceRoutes.txt', true),
       File.createFile(this.dataDirectory, 'protectionRoutes.txt', true),
+      File.createFile(this.dataDirectory, 'aboutSDMU.txt', true),
+      File.createFile(this.dataDirectory, 'aboutSOFIA.txt', true),
+      File.createFile(this.dataDirectory, 'aboutApp.txt', true),
 
     ]).then(()=>{
       this.goToRootPage();

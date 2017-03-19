@@ -44,7 +44,6 @@ import {LocalitiesBoundaries} from "../providers/localities-boundaries";
 import {PinFactory} from "../providers/pin-factory";
 import {SiteInfoPage} from "../pages/site-info/site-info";
 import {PlacesService} from "../providers/places-service";
-import {InfoJsonService} from "../providers/info-json-service";
 import {OfflineService} from "../providers/offline-service";
 
 @NgModule({
@@ -117,7 +116,7 @@ import {OfflineService} from "../providers/offline-service";
   ],
   providers: [UserDAO, AlertCreator, MapServices, EventsServices, TestsService, UserAdapter,
     ContactAdapter, Storage, WarningMessageDAO, FormValidator, LoginService, UserFactory, UserService, CategoryTitles,
-    Localities, LocalitiesBoundaries, PinFactory, PlacesService, InfoJsonService,OfflineService,
+    Localities, LocalitiesBoundaries, PinFactory, PlacesService,OfflineService,
     {
       provide: ErrorHandler,
       useClass: IonicErrorHandler

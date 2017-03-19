@@ -4,7 +4,7 @@ import {Http} from "@angular/http";
 import {ApplicationConfig} from "../../config";
 import {SDMUInfo} from "../../entity/sdmu-info";
 import {AlertCreator} from "../../providers/alert-creator";
-import {InfoJsonService} from "../../providers/info-json-service";
+import {OfflineService} from "../../providers/offline-service";
 
 @Component({
   selector: 'page-sdmu-info-page',
@@ -19,7 +19,7 @@ export class SDMUInfoPage {
   }];
   loading: Loading;
 
-  constructor(public navCtrl: NavController, public http: Http, public loadingController: LoadingController, public alertCreator: AlertCreator, public infoJsonService: InfoJsonService) {
+  constructor(public navCtrl: NavController, public http: Http, public loadingController: LoadingController, public alertCreator: AlertCreator,  public offlineService:OfflineService) {
     this.loading = this.loadingController.create({
       content: "Espera un momento",
       dismissOnPageChange: true
@@ -31,22 +31,19 @@ export class SDMUInfoPage {
   ionViewDidLoad() {
     let url = ApplicationConfig.getURL('/info-about-sdmu-rest');
     this.http.get(url).map(res => res.json()).subscribe(response => {
-      this.aboutSDMUInfo = response;
-      this.loading.dismiss();
-      this.checkIfEmptyResponse();
-
-      console.log("la respuesta", this.aboutSDMUInfo);
+      this.setInfo(response);
     }, err => {
-      this.getOfflineInfo(err);
+      this.alertCreator.showSimpleAlert('Info','Recuerda conectarte a internet para obtener la información más reciente');
+      this.offlineService.readAsText('aboutSDMU.txt').then((data)=>{
+        this.setInfo(JSON.parse(data.toString()));
+      });
     });
   }
 
-  getOfflineInfo(err){
+  setInfo(data){
+    this.aboutSDMUInfo = data;
     this.loading.dismiss();
-    this.infoJsonService.getJson("sdmuInfoJson").then((response) => {
-      this.aboutSDMUInfo = response;
-    });
-    console.log("el error", err);
+    this.checkIfEmptyResponse();
   }
 
   checkIfEmptyResponse() {

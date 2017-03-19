@@ -135,7 +135,9 @@ export class LoginPage {
       File.writeFile(this.dataDirectory,'healthRoutes.txt',data[10],{replace:true}),
       File.writeFile(this.dataDirectory,'justiceRoutes.txt',data[11],{replace:true}),
       File.writeFile(this.dataDirectory,'protectionRoutes.txt',data[12],{replace:true}),
-
+      File.writeFile(this.dataDirectory,'aboutSDMU.txt',data[13],{replace:true}),
+      File.writeFile(this.dataDirectory,'aboutSOFIA.txt',data[14],{replace:true}),
+      File.writeFile(this.dataDirectory,'aboutApp.txt',data[15],{replace:true}),
     ]).then(()=>{
       this.goToMenuPage();
     }).catch((err)=>{
