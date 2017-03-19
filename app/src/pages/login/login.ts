@@ -14,6 +14,7 @@ import { File } from 'ionic-native';
 import {CategoryTitles} from "../../providers/category-titles";
 import {TestsService} from "../../providers/tests-service";
 import {OfflineService} from "../../providers/offline-service";
+import {Platform} from 'ionic-angular';
 
 declare var cordova:any;
 
@@ -31,7 +32,7 @@ export class LoginPage {
   constructor(public navCtrl: NavController, private  formBuilder: FormBuilder, public formValidator: FormValidator,
               public storage: Storage, public loadingController: LoadingController, private userFactory: UserFactory,
               private loginService: LoginService, public alertCreator: AlertCreator, private userDAO: UserDAO,
-              private userService: UserService, public categoryTitles:CategoryTitles, public testService:TestsService, public offlineService:OfflineService) {
+              private userService: UserService, public categoryTitles:CategoryTitles, public testService:TestsService, public offlineService:OfflineService, public platform: Platform) {
     this.dataDirectory=cordova.file.dataDirectory;
     this.createForm(formBuilder);
     this.loading = this.createLoading();
@@ -78,7 +79,11 @@ export class LoginPage {
       this.loginService.login(user, (data) => {
         this.userService.user = data;
         this.userService.user.password = this.form.controls['userPassword'].value;
-        this.setOfflineContent();
+        if(this.platform.is('cordova')){
+          this.setOfflineContent();
+        }else{
+          this.goToMenuPage();
+        }
       }, () => {
         this.hideLoading();
       });

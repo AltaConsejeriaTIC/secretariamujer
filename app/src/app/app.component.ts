@@ -30,7 +30,9 @@ export class MyApp {
   }
 
   private getStoredData() {
-    this.dataDirectory=cordova.file.dataDirectory;
+    if(this.platform.is('cordova')){
+      this.dataDirectory=cordova.file.dataDirectory;
+    }
     this.storage.get('isFirstTimeOpen').then((isFirstTimeOpen) => {
       this.openState = isFirstTimeOpen == null || isFirstTimeOpen == true;
       this.storage.set('isFirstTimeOpen', this.openState);
@@ -46,7 +48,11 @@ export class MyApp {
 
   checkIfFirstTimeOpen(isFirstTimeOpen: boolean) {
     if (isFirstTimeOpen || isFirstTimeOpen == null) {
-      this.createOfflineFiles();
+      if(this.platform.is('cordova')){
+        this.createOfflineFiles();
+      }else{
+        this.goToRootPage();
+      }
     } else {
       this.storage.get('islogged').then((isLogged) => {
         this.checkIfUserIsLogged(isLogged);

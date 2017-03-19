@@ -4,6 +4,8 @@ import 'rxjs/add/operator/map';
 import {Observable} from "rxjs";
 import {Http, Response} from '@angular/http';
 import {ApplicationConfig} from "../config";
+import {Platform} from 'ionic-angular';
+
 
 
 declare var cordova:any;
@@ -15,8 +17,10 @@ export class OfflineService {
   dataDirectory: string;
 
 
-  constructor(private http: Http) {
-    this.dataDirectory=cordova.file.dataDirectory;
+  constructor(private http: Http, public platform:Platform) {
+    if(this.platform.is('cordova')){
+      this.dataDirectory=cordova.file.dataDirectory;
+    }
   }
 
 
