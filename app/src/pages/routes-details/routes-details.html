@@ -24,11 +24,8 @@
         <ion-row class="route-title-container">
           <label [class]="nameColor[attentionRoute.id]">{{routeDetail.title}}</label>
         </ion-row>
-        <ion-row>
-
+        <ion-row class="info-container">
           <ion-col no-padding class="data-col-container">
-
-
             <ion-row>
               <ion-col no-padding>
                 <ion-row class="info-margin-bottom">
@@ -44,18 +41,16 @@
                     </ion-row>
                   </ion-col>
                 </ion-row>
-
                 <ion-row class="info-margin-bottom">
                   <ion-col class="icon-container" no-padding>
                     <ion-icon class="icons-color email-icon-size" name="icon-email"></ion-icon>
                   </ion-col>
                   <ion-col no-padding>
                     <ion-row>
-                      <label class="info-labels">{{routeDetail.email}}</label>
+                      <label class="info-labels email-label">{{routeDetail.email}}</label>
                     </ion-row>
                   </ion-col>
                 </ion-row>
-
                 <ion-row class="info-margin-bottom">
                   <ion-col class="icon-container" no-padding>
                     <ion-icon class="icons-color clock-icon-size" name="icon-clock"></ion-icon>
@@ -66,7 +61,6 @@
                     </ion-row>
                   </ion-col>
                 </ion-row>
-
                 <ion-row class="phone-info-margin-bottom">
                   <ion-col class="icon-container" no-padding>
                     <ion-icon class="icons-color phone-icon-size" name="icon-phone"></ion-icon>
@@ -78,12 +72,8 @@
                   </ion-col>
                 </ion-row>
               </ion-col>
-              <ion-col class="vertical-separator" no-padding></ion-col>
             </ion-row>
-
-
           </ion-col>
-
 
           <ion-col class="download-col-container" no-padding>
             <div class="button-container">
