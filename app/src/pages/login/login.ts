@@ -33,7 +33,10 @@ export class LoginPage {
               public storage: Storage, public loadingController: LoadingController, private userFactory: UserFactory,
               private loginService: LoginService, public alertCreator: AlertCreator, private userDAO: UserDAO,
               private userService: UserService, public categoryTitles:CategoryTitles, public testService:TestsService, public offlineService:OfflineService, public platform: Platform) {
-    this.dataDirectory=cordova.file.dataDirectory;
+
+    if(this.platform.is('cordova')){
+      this.dataDirectory=cordova.file.dataDirectory;
+    }
     this.createForm(formBuilder);
     this.loading = this.createLoading();
 

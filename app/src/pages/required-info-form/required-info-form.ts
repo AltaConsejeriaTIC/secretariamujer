@@ -28,7 +28,9 @@ export class RequiredInfoFormPage {
   dataDirectory: string;
 
   constructor(public navCtrl: NavController, public alertCreator: AlertCreator, public userDAO: UserDAO, private userService: UserService, public loadingController: LoadingController, private  formBuilder: FormBuilder, public formValidator: FormValidator,public offlineService:OfflineService, public platform: Platform) {
-    this.dataDirectory=cordova.file.dataDirectory;
+    if(this.platform.is('cordova')){
+      this.dataDirectory=cordova.file.dataDirectory;
+    }
     this.user = new User();
     this.loading = this.createLoading();
     this.createForm(formBuilder);

@@ -30,7 +30,9 @@ export class UserNameFormPage {
               public formValidator: FormValidator, private loginService: LoginService, public alertCreator: AlertCreator,
               public loadingController: LoadingController, public storage: Storage, private userFactory: UserFactory, private userService: UserService, public offlineService:OfflineService, public platform: Platform) {
 
-    this.dataDirectory=cordova.file.dataDirectory;
+    if(this.platform.is('cordova')){
+      this.dataDirectory=cordova.file.dataDirectory;
+    }
     this.form = formBuilder.group({
       username: ['', Validators.required],
     });
