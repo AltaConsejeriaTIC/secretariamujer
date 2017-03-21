@@ -10,6 +10,7 @@ import {Http, ConnectionBackend} from "@angular/http";
 import {HttpModule, XHRBackend} from "@angular/http";
 import {MockBackend} from '@angular/http/testing';
 import {AlertCreator} from "../../providers/alert-creator";
+import {OfflineService} from "../../providers/offline-service";
 
 
 describe('RoutesDetailsPage tests', () => {
@@ -32,7 +33,7 @@ describe('RoutesDetailsPage tests', () => {
     TestBed.configureTestingModule({
       declarations: [RoutesDetailsPage],
       providers: [
-        App, Platform, Form, Keyboard, MenuController, NavController, Http,
+        App, Platform, Form, Keyboard, MenuController, NavController, Http,OfflineService,
         {provide: Config, useClass: ConfigMock}, {provide: NavParams, useValue: stubNavParams},
         {provide: XHRBackend, useClass: MockBackend }, {provide: ConnectionBackend, useClass: MockBackend},
         {provide: AlertCreator, useValue: stubAlertCreator},{provide: LoadingController, useClass: LoadingControllerMock}
