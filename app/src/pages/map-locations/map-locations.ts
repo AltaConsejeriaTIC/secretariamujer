@@ -36,10 +36,12 @@ export class MapLocationsPage {
       }
 
       this.navCtrl.push(MapPage,{
+        titlePage: "Mapas",
         localityServer:this.serverLocations[id],
         localityLabel:this.locationsLabels[id],
         localityCenter:localityCenter,
-        localityBoundaries:this.localityBoundaries.getlocalityBoundaries(this.serverLocations[id])
+        localityBoundaries:this.localityBoundaries.getlocalityBoundaries(this.serverLocations[id]),
+        place: []
       });
     });
   }

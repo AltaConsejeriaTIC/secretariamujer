@@ -12,8 +12,11 @@ import {RouteInfo} from "../../entity/route-info";
 export class SiteInfoPage {
 
   site:RouteInfo;
+  titlePage: string;
+
   constructor(public navCtrl: NavController, public  navparams:NavParams, public alertCreator: AlertCreator,) {
-    this.site=navparams.get('placeInfo');
+    this.site = navparams.get('placeInfo');
+    this.titlePage = navparams.get('titlePage');
   }
 
   ionViewDidLoad() {

@@ -6,6 +6,7 @@ import {SiteInfoPage} from "../pages/site-info/site-info";
 export class PinFactory {
   navCtrl: any;
   lastMarketClicked: any;
+  titlePage: string;
   INFO_CATEGORY = 'info';
   JUSTICE_CATEGORY = 'justice';
   PROTECTION_MEASURES_CATEGORY = 'protection_measures';
@@ -45,7 +46,8 @@ export class PinFactory {
     }
   }
 
-  setPinOnMap(place, infoWindow, map) {
+  setPinOnMap(place, infoWindow, map, titlePage) {
+    this.titlePage = titlePage;
     let marker = this.createMarker(map, place);
     let categoryInfo = this.getCategoryInfo(marker.get("category"));
     marker.setIcon(categoryInfo.defaulPin);
@@ -100,7 +102,7 @@ export class PinFactory {
   }
 
   goToInfoWindow() {
-    this.navCtrl.push(SiteInfoPage, {placeInfo: this.lastMarketClicked.get("placeInfo")});
+    this.navCtrl.push(SiteInfoPage, {placeInfo: this.lastMarketClicked.get("placeInfo"), titlePage: this.titlePage});
   }
 
   getCategoryInfoStructure(category) {

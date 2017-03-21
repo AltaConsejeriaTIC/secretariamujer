@@ -7,6 +7,7 @@ import {InAppBrowser} from "ionic-native"
 import {AlertCreator} from "../../providers/alert-creator";
 import {ApplicationConfig} from "../../config";
 import {OfflineService} from "../../providers/offline-service";
+import {MapPage} from "../map/map";
 
 @Component({
   selector: 'page-routes-details',
@@ -89,6 +90,32 @@ export class RoutesDetailsPage {
     if(this.routesDetails.length==0){
       this.alertCreator.showSimpleAlert("Info","No hay rutas para mostrar");
     }
+  }
+
+  goToMap(id) {
+    let place = this.routesDetails[id];
+    place.category = this.attentionRoute.RESTAddres.replace("_routes_rest", "");
+    if (this.existCoordinateSite(place.latitude, place.longitude)) {
+      this.navCtrl.push(MapPage, {
+        titlePage: "Test / Tips y Rutas",
+        localityServer: "",
+        localityLabel: "",
+        localityCenter: {
+          "name": this.routesDetails[id].location,
+          "zoom": 15,
+          "lat": this.routesDetails[id].latitude,
+          "lng": this.routesDetails[id].longitude
+        },
+        localityBoundaries: [],
+        place: place
+      });
+    } else {
+      this.alertCreator.showSimpleAlert("Info","No hay información disponible para mostrar en el mapa");
+    }
+  }
+
+  existCoordinateSite(latitude, longitude) {
+    return latitude != null && latitude.length > 0 && longitude != null && longitude.length > 0;
   }
 
   goBackPage(){
