@@ -77,20 +77,22 @@
 
           <ion-col class="download-col-container" no-padding>
             <div class="button-container">
-              <button ion-button icon-only mode="ios" (click)="goToMap(id)">
-                <ion-col>
-                  <ion-row>
-                    <ion-icon class="icons-color icon-download-size" name="icon-site-in-map"></ion-icon>
-                  </ion-row>
-                  <ion-row class="download-labels-margin">
-                    <label class="info-labels download-labels">Ver en</label>
-                  </ion-row>
-                  <ion-row>
-                    <label class="info-labels download-labels">el mapa</label>
-                  </ion-row>
-                </ion-col>
-              </button>
-              <ion-row class="separator"></ion-row>
+              <div *ngIf="existCoordinateSite(routeDetail.latitude, routeDetail.longitude)">
+                <button ion-button icon-only mode="ios" (click)="goToMap(id)">
+                  <ion-col>
+                    <ion-row>
+                      <ion-icon class="icons-color icon-download-size" name="icon-site-in-map"></ion-icon>
+                    </ion-row>
+                    <ion-row class="download-labels-margin">
+                      <label class="info-labels download-labels">Ver en</label>
+                    </ion-row>
+                    <ion-row>
+                      <label class="info-labels download-labels">el mapa</label>
+                    </ion-row>
+                  </ion-col>
+                </button>
+                <ion-row class="separator"></ion-row>
+              </div>
               <button ion-button icon-only mode="ios" (click)="downloadFileListener(id)">
                 <ion-col>
                   <ion-row>
