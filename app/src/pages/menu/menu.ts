@@ -8,8 +8,10 @@ import { SelectInfoCategoryPage } from "../select-info-category/select-info-cate
 import { WarningMessageDAO } from "../../providers/warning-message-dao";
 import { UserDAO } from "../../providers/user-dao";
 import { UserService } from "../../providers/user-service";
-import { MapPage } from "../map/map";
+import { Geolocation } from 'ionic-native';
 import {MapLocationsPage} from "../map-locations/map-locations";
+import {InAppBrowser} from "ionic-native"
+
 
 @Component({
   selector: 'page-menu',
@@ -35,6 +37,7 @@ export class MenuPage {
   items: any[] = [];
   arrowIcon: string[] = [];
   hintState: string[] = [];
+  locationWarning:string='';
 
   constructor(public navController: NavController, public alertCreator: AlertCreator,
     private warningMessageDAO: WarningMessageDAO, private userDAO: UserDAO, private userService: UserService) {
@@ -125,12 +128,26 @@ export class MenuPage {
   }
 
   sendWarningMessages() {
+    Geolocation.getCurrentPosition().then((resp) => {
+      let urlCurrentPosition = ' Estoy en http://maps.google.com/maps?q='+resp.coords.latitude+','+resp.coords.longitude;
+      let browser= new InAppBrowser(urlCurrentPosition, "_system", "location=true");
+      this.beginSendingMessage(urlCurrentPosition);
+      this.locationWarning=' con tu ubicación actual.';
+    }).catch((error) => {
+      if(error.code==1){
+        this.locationWarning=" sin tu ubicación actual. Si deseas enviarlo con tu posición actual ve a la configuración de tu celular y otórgale permisos a SofiApp de Ubicación.";
+        this.beginSendingMessage('');
+      }
+    });
+  }
+
+  private beginSendingMessage(currentPosition){
     let success = true;
 
     this.warningMessageDAO.get().subscribe(message => {
-      this.sendMessage(message);
+      this.sendMessage(message + currentPosition);
     }, err => {
-      this.sendMessage('Ayuda, estoy en peligro por favor ayúdame');
+      this.sendMessage('Ayuda, estoy en peligro por favor ayúdame' + currentPosition);
     });
   }
 
@@ -157,7 +174,7 @@ export class MenuPage {
     if (contact != null && contact.cellPhone != null) {
       promise = SMS.send(contact.cellPhone, message, options).then(() => {
         log += contact.cellPhone + index < contacts.length - 1 ? ', ' : '';
-        this.alertCreator.showSimpleAlert("Mensajes Enviados", "El mensaje ha sido enviado a: "+ contact.cellPhone);
+        this.alertCreator.showSimpleAlert("Mensajes Enviados", "El mensaje ha sido enviado a: "+ contact.cellPhone + this.locationWarning);
         this.sendMessageToContact(contacts, message, index + 1, log);
       }, (error) => {
         this.alertCreator.showSimpleAlert("Mensaje", "No fue posible enviar el mensaje");
