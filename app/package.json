@@ -52,8 +52,15 @@
     "cordova-plugin-statusbar",
     "cordova-plugin-whitelist",
     "ionic-plugin-keyboard",
-    "cordova-plugin-call-number",
-    "cordova-sms-plugin"
+    "mx.ferreyra.callnumber",
+    "cordova-plugin-contacts",
+    "cordova-plugin-compat",
+    "cordova-sqlite-storage",
+    "cordova-plugin-inappbrowser",
+    "cordova-sms-plugin",
+    "cordova-plugin-network-information",
+    "cordova-plugin-geolocation",
+    "cordova-plugin-file"
   ],
   "cordovaPlatforms": [
     {
