@@ -197,12 +197,12 @@ export class SettingsPage {
         this.hideLoading();
         let message = error.json().message;
 
-        if (message.indexOf('mail') > -1) {
-          this.alertCreator.showCofirmationMessage('Email', this.userService.user.email + ' ya ha sido registrado en el sistema');
-        }
+
 
         if (!NetworkStatusService.isDeviceConnected()){
           this.alertCreator.showSimpleAlert('Info', 'No se han podido actualizar tus datos debido a que no hay conexión a internet, por favor intentalo más tarde');
+        }else if (message.indexOf('mail') > -1) {
+          this.alertCreator.showCofirmationMessage('Email', this.userService.user.email + ' ya ha sido registrado en el sistema');
         }
 
         this.form.controls['fullName'].setValue(this.currentUserFullName);
