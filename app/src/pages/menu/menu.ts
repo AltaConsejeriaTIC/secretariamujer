@@ -130,7 +130,6 @@ export class MenuPage {
   sendWarningMessages() {
     Geolocation.getCurrentPosition().then((resp) => {
       let urlCurrentPosition = ' Estoy en http://maps.google.com/maps?q='+resp.coords.latitude+','+resp.coords.longitude;
-      let browser= new InAppBrowser(urlCurrentPosition, "_system", "location=true");
       this.beginSendingMessage(urlCurrentPosition);
       this.locationWarning=' con tu ubicación actual.';
     }).catch((error) => {
