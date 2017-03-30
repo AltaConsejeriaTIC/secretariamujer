@@ -60,9 +60,10 @@ export class RegisterOptionalInfoPage {
             this.goToContactPage();
           })
         }, error => {
-          this.hideLoading();
-          if (error.name == 'EmailAlreadyTaken') {
-            this.alertCreator.showCofirmationMessage('Email', this.userService.user.email + 'ya ha sido registrado en el sistema');
+          let message = error.json().message;
+          console.log("el mensaje", message);
+          if (message.indexOf('mail') > -1) {
+            this.alertCreator.showCofirmationMessage('Email', this.userService.user.email + ' ya ha sido registrado en el sistema');
           }
         });
     }
