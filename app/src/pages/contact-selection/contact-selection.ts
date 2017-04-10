@@ -55,6 +55,8 @@ export class ContactSelectionPage {
     this.userDAO.update().subscribe(response => {
       this.alertCreator.showCofirmationMessage('Contacto Guardado', 'Contacto guardado exitosamente');
     }, error => {
+      this.contacts[index].name=null;
+      this.userService.user.contacts[index].name =null;
       this.alertCreator.showCofirmationMessage('Error', 'No es posible guardar el contacto en este momento');
     })
   }

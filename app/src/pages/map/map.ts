@@ -1,101 +1,77 @@
-import {Component} from '@angular/core';
-
-import {NavController} from 'ionic-angular';
-import {UserDAO} from  '../../providers/user-dao'
-import {MapServices} from  '../../providers/map-services'
-import {EventsServices} from "../../providers/events-services";
+import {Component, ViewChild, ElementRef} from '@angular/core';
+import {NavController, NavParams} from 'ionic-angular';
+import {Http} from "@angular/http";
 import {AlertCreator} from "../../providers/alert-creator";
-import {Diagnostic} from 'ionic-native';
+import {MapServices} from "../../providers/map-services";
+import {PinFactory} from "../../providers/pin-factory";
+import {PlacesService} from "../../providers/places-service";
+import {NetworkStatusService} from "../../providers/network-status-service";
 
+declare var google;
 
 @Component({
   selector: 'page-map',
   templateUrl: './map.html'
 })
 export class MapPage {
-  map: any;
-  markers: any[] = [];
-  mapElement: any;
 
-  constructor(public navCtrl: NavController, public adminApi: UserDAO, public mapService: MapServices, public eventsServices: EventsServices, public alertCreator: AlertCreator) {
+  @ViewChild('map') mapElement: ElementRef;
+  map: any;
+  selectedLocalityServer: string;
+  selectedLocalityLabel: string;
+  localityCenter: any;
+  localityBoundaries: any;
+  infoWindow: any;
+  place: any;
+  localityTitle: string;
+  titlePage: string;
+
+  constructor(public navCtrl: NavController, public alertCreator: AlertCreator, public http: Http,
+              public navParams: NavParams, public mapService: MapServices, public pinFactory: PinFactory,
+              private placesService: PlacesService) {
+    this.titlePage = this.navParams.get('titlePage');
+    this.selectedLocalityServer = this.navParams.get('localityServer');
+    this.selectedLocalityLabel = this.navParams.get('localityLabel');
+    this.localityCenter = this.navParams.get('localityCenter');
+    this.localityBoundaries = this.navParams.get('localityBoundaries');
+    this.infoWindow = new google.maps.InfoWindow();
+    this.place = this.navParams.get('place');
   }
 
   ionViewDidLoad() {
-    this.mapElement = document.getElementById('map');
-    this.createMap();
-    this.addMapOnClickListener();
-    this.isGPSEnabled();
-
-    google.maps.event.addListenerOnce(this.map, 'idle', () => {
-      this.mapElement.classList.add('show-map');
-      google.maps.event.trigger(this.mapElement, 'resize');
-    });
-
+    if (!NetworkStatusService.isDeviceConnected())
+      this.alertCreator.showSimpleAlert('Error', 'No es posible ver los sitios porque no tienes conexión a Internet');
+    this.localityTitle = this.selectedLocalityLabel || this.place.location;
+    let mapObject = this.mapService.loadMap(this.infoWindow, this.mapElement, this.localityCenter, this.localityBoundaries);
+    this.map = mapObject.map;
+    this.pinFactory.setNavController(this.navCtrl);
+    this.pinFactory.configCloseInfoWindow(this.infoWindow, mapObject);
+    this.showPlacesInMap();
   }
 
-  createMap() {
-    this.map = this.mapService.buildMap(this.mapElement);
+  private showPlacesInMap() {
+    if (this.selectedLocalityLabel)
+      this.placesService.getAllNeighborhoodPlaces(this.selectedLocalityLabel).subscribe(places => this.showPlaces(places));
+    else
+      this.showPlace(this.place);
   }
 
-  addMapOnClickListener() {
-    this.map.addListener('click', (event) => {
-      this.drawEventMarker(event);
-    });
+  private showPlaces(places) {
+    places.forEach(place => this.showPlace(place));
   }
 
-  drawEventMarker(event: any) {
-    if (this.isEventPinOnMap()) {
-      this.mapService.clearMarker(this.markers);
-    }
-    this.mapService.drawEventMarker(this.map, event.latLng, this.markers);
-  }
-
-  isGPSEnabled() {
-    Diagnostic.isLocationEnabled().then((res) => {
-      this.checkUserPosition(res);
-    }).catch((err) => {
-      this.alertCreator.showSimpleAlert("error", err);
-    });
-  }
-
-  checkUserPosition(isEnabled: boolean) {
-    if (isEnabled) {
-      this.getUserPosition();
-    } else {
-      this.alertCreator.showSimpleAlert('Error', 'Por favor activa el GPS');
+  private showPlace(place) {
+    if (place.latitude != null && place.latitude.length > 0 && place.longitude != null && place.longitude.length > 0) {
+      this.pinFactory.setPinOnMap(place, this.infoWindow, this.map, this.titlePage);
     }
   }
 
-
-  getUserPosition() {
-    this.mapService.getUserLocation().then((position) => {
-      this.drawUserPosition(position);
-    }, (err) => {
-      console.log('hubo un error en la posciione del ussuriao', err);
-    });
-
-  }
-
-  drawUserPosition(position: any) {
-    let userPosition = this.mapService.convertToLatLng(position);
-    this.mapService.drawUserPositionMarker(this.map, userPosition);
-  }
-
-  isEventPinOnMap() {
-    return this.markers.length > 0;
-  }
-
-  registerEvent() {
-    this.eventsServices.registerEvent().map(res => res.json()).subscribe(response => {
-      this.alertCreator.showSimpleAlert('Exito', 'Se ha registrado el evento');
-    }, err => {
-      //this.alertCreator.showSimpleAlert('Error','Ha habido un error por favor intentalo más tarde');
-    });
-  }
-
-
-  goBackPage(){
+  goBackPage() {
     this.navCtrl.pop()
+  }
+
+  goToMenuPage() {
+    this.navCtrl.popToRoot();
   }
 
 }

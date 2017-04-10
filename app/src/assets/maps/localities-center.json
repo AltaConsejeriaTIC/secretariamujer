@@ -1,0 +1,122 @@
+[
+  {
+    "name": "Usaquén",
+    "zoom": 11,
+    "lat": 4.7340457,
+    "lng": -74.0289697
+  },
+  {
+    "name": "Chapinero",
+    "zoom": 12,
+    "lat": 4.6383129,
+    "lng": -74.0305415
+  },
+  {
+    "name": "Santa Fe",
+    "zoom": 12,
+    "lat": 4.58531,
+    "lng": -74.0404865
+  },
+  {
+    "name": "San Cristóbal",
+    "zoom": 12,
+    "lat": 4.5406809,
+    "lng": -74.0665281
+  },
+  {
+    "name": "Usme",
+    "zoom": 11,
+    "lat": 4.3914531,
+    "lng": -74.1458454
+  },
+  {
+    "name": "Tunjuelito",
+    "zoom": 13,
+    "lat": 4.5662916,
+    "lng": -74.1380218
+  },
+  {
+    "name": "Bosa",
+    "zoom": 12,
+    "lat": 4.6111498,
+    "lng": -74.1877015
+  },
+  {
+    "name": "Kennedy",
+    "zoom": 12,
+    "lat": 4.6203359,
+    "lng": -74.1517064
+  },
+  {
+    "name": "Fontibón",
+    "zoom": 12,
+    "lat": 4.6667126,
+    "lng": -74.1395115
+  },
+  {
+    "name": "Engativá",
+    "zoom": 12,
+    "lat": 4.6904974,
+    "lng": -74.1180889
+  },
+  {
+    "name": "Suba",
+    "zoom": 11,
+    "lat": 4.7360759,
+    "lng": -74.0799031
+  },
+  {
+    "name": "Barrios Unidos",
+    "zoom": 13,
+    "lat": 4.6668655,
+    "lng": -74.0753037
+  },
+  {
+    "name": "Teusaquillo",
+    "zoom": 13,
+    "lat": 4.6373485,
+    "lng": -74.0868274
+  },
+  {
+    "name": "Los Mártires",
+    "zoom": 13,
+    "lat": 4.6061313,
+    "lng": -74.0901352
+  },
+  {
+    "name": "Antonio Nariño",
+    "zoom": 13,
+    "lat": 4.5837742,
+    "lng": -74.1081156
+  },
+  {
+    "name": "Puente Aranda",
+    "zoom": 12,
+    "lat": 4.6089056,
+    "lng": -74.1110549
+  },
+  {
+    "name": "La Candelaria",
+    "zoom": 14,
+    "lat": 4.5942592,
+    "lng": -74.0705597
+  },
+  {
+    "name": "Rafael Uribe Uribe",
+    "zoom": 13,
+    "lat": 4.5608755,
+    "lng": -74.1135632
+  },
+  {
+    "name": "Ciudad Bolívar",
+    "zoom": 11,
+    "lat": 4.4748141,
+    "lng": -74.1675809
+  },
+  {
+    "name": "Sumapaz",
+    "zoom": 10,
+    "lat": 3.9896513,
+    "lng": -74.275518
+  }
+]

@@ -14,6 +14,7 @@ import {ApplicationConfig} from "../../config";
 import {UserService} from "../../providers/user-service";
 import {UserAdapter} from "../../providers/adapter/user-adapter";
 import {UserFactory} from "../../providers/user-factory";
+import {OfflineService} from "../../providers/offline-service";
 
 
 describe('TestPage tests', () => {
@@ -37,7 +38,7 @@ describe('TestPage tests', () => {
       declarations: [TestPage],
       providers: [
         App, Platform, Form, Keyboard, MenuController, NavController, TestPage,UserService,
-        ApplicationConfig, UserAdapter, UserFactory,
+        ApplicationConfig, UserAdapter, UserFactory,OfflineService,
         TestsService, UserDAO,
         {
           provide: Config, useClass: ConfigMock

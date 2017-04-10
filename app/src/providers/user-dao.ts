@@ -56,14 +56,20 @@ export class UserDAO {
 
   private handleError(error): Error {
     let message = error.json().message;
+    console.log("el mensaje", message);
 
     if (message.indexOf('mail') > -1) {
       return ErrorFactory.createError('EmailAlreadyTaken');
     }
 
-    if (message.indexOf('name') > -1) {
+    if (message.indexOf('name') > -1 && message.indexOf('carácter no permitido.') == -1) {
       return ErrorFactory.createError('UsernameAlreadyTaken');
     }
+
+    if (message.indexOf('carácter no permitido.') > -1) {
+      return ErrorFactory.createError('ForbiddenCharacter');
+    }
+
   }
 
 

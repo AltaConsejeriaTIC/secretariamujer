@@ -5,6 +5,7 @@ import {TipsInfo} from "../../entity/tips-info";
 import {TipData} from "../../entity/tip-data";
 import {ApplicationConfig} from "../../config";
 import {AlertCreator} from "../../providers/alert-creator";
+import {OfflineService} from "../../providers/offline-service";
 
 @Component({
   selector: 'page-tips-page',
@@ -21,7 +22,7 @@ export class TipsPage {
   loading: Loading;
 
 
-  constructor(public navController: NavController, public navParams: NavParams, public http: Http, public alertCreator: AlertCreator, public loadingController: LoadingController) {
+  constructor(public navController: NavController, public navParams: NavParams, public http: Http, public alertCreator: AlertCreator, public loadingController: LoadingController, public offlineService:OfflineService) {
     this.selectedTipCategory = this.navParams.get('selectedTipCategory');
     this.tipsClass = this.tipsClasses[this.selectedTipCategory.id];
     this.categoryTitle = this.getCategoryTitle();
@@ -51,15 +52,40 @@ export class TipsPage {
     let url = ApplicationConfig.getURL('/' + RESTAddress + '?_format=json');
 
     this.http.get(url).map(res => res.json()).subscribe(response => {
-      this.tipsArrayByCategory = response;
-      this.setInitialTipState();
-      this.loading.dismiss();
+      this.setTips(response);
       console.log("la respuesta", this.tipsArrayByCategory);
     }, err => {
       console.log("el error", err);
-      this.alertCreator.showSimpleAlert('Error','En este momento no es posible cargar los tips, intentálo más tarde');
-      this.loading.dismiss();
+      this.alertCreator.showSimpleAlert('Info','Recuerda conectarte a internet para obtener los tips más recientes');
+      this.loadOfflineTips(this.selectedTipCategory.RESTAddres);
     });
+  }
+
+  setTips(data){
+    this.tipsArrayByCategory = data;
+    this.setInitialTipState();
+    this.loading.dismiss();
+  }
+
+  loadOfflineTips(RESTAddress){
+    let offlineTipsQuestionsFile:string =this.getOfflineTipsFile(RESTAddress);
+
+    this.offlineService.readAsText(offlineTipsQuestionsFile).then((data)=>{
+      this.setTips(JSON.parse(data.toString()));
+    });
+  }
+
+  getOfflineTipsFile(RESTAddress){
+    switch(RESTAddress){
+      case 'economic_violence_tips_rest':
+        return 'tipsOne.txt';
+      case 'physical_violence_tips_rest':
+        return 'tipsTwo.txt';
+      case 'psychological_violence_tips_rest':
+        return 'tipsThree.txt';
+      case 'sexual_violence_tips_rest':
+        return 'tipsFour.txt';
+    }
   }
 
   setInitialTipState() {

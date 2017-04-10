@@ -45,4 +45,10 @@ export class FormValidator {
     return this.isValidField(field, message);
   }
 
+  IsValidCharPassword(field: AbstractControl, message:string){
+    let passRegExp = /^[0-9]+$/;
+    let isValid:boolean= (passRegExp.test(field.value)) ? true : false;
+    return this.isValidInput(isValid , message);
+  }
+
 }

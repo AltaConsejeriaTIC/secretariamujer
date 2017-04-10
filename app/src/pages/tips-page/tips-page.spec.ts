@@ -10,6 +10,7 @@ import {Http, ConnectionBackend} from "@angular/http";
 import {TipsPage} from "./tips-page";
 import {ApplicationConfig} from "../../config";
 import {AlertCreator} from "../../providers/alert-creator";
+import {OfflineService} from "../../providers/offline-service";
 
 
 describe('tipsPage tests', () => {
@@ -40,7 +41,7 @@ describe('tipsPage tests', () => {
     TestBed.configureTestingModule({
       declarations: [TipsPage],
       providers: [
-        App, Platform, Form, Keyboard, MenuController, NavController, ApplicationConfig,
+        App, Platform, Form, Keyboard, MenuController, NavController, ApplicationConfig,OfflineService,
         {provide: Config, useClass: ConfigMock}, {provide: NavParams, useValue: stubNavParams},
         {provide: Loading, useClass: LoadingMock},
         {provide: LoadingController, useClass: LoadingControllerMock}, {provide: ConnectionBackend, useValue: stubConnectionBackend},{provide: Http, useValue: stubHttp},

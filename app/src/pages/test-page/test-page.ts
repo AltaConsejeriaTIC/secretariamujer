@@ -8,6 +8,7 @@ import {TipsPage} from "../tips-page/tips-page";
 import {TestCategory} from "../../entity/test-categories";
 import {UserService} from "../../providers/user-service";
 import {CallNumber} from "ionic-native";
+import {OfflineService} from "../../providers/offline-service";
 
 @Component({
   selector: 'page-test-page',
@@ -33,7 +34,7 @@ export class TestPage {
   loading: Loading;
 
 
-  constructor(public platform: Platform, private nav: Nav, public navController: NavController, public navParams: NavParams, public testService: TestsService, public alertCreator: AlertCreator, public userDAO: UserDAO, private userService:UserService,  public loadingController: LoadingController) {
+  constructor(public platform: Platform, private nav: Nav, public navController: NavController, public navParams: NavParams, public testService: TestsService, public alertCreator: AlertCreator, public userDAO: UserDAO, private userService:UserService,  public loadingController: LoadingController, public offlineService:OfflineService) {
     this.questionsObject = [
       {
         "pregunta": "",
@@ -77,16 +78,39 @@ export class TestPage {
 
   loadQuestions() {
     this.testService.getTestQuestions(this.selectedTestCategory.RESTAddress).map(res => res.json()).subscribe(response => {
-      console.log("la respuesta", response);
-      this.questionsObject = response;
-      this.questionsNumber = (this.questionsObject.length - 1);
-      this.loading.dismiss();
+      this.setQuestions(response);
     }, err => {
-      console.log("el error", err.toString())
-      this.alertCreator.showSimpleAlert('Error','En este momento no es posible cargar las preguntas, intentálo más tarde');
-      this.loading.dismiss();
-
+      console.log("el error", err.toString());
+      this.alertCreator.showSimpleAlert('Info','Recuerda conectarte a internet para obtener los cuestionarios más recientes');
+      this.loadOfflineQuestions(this.selectedTestCategory.RESTAddress);
     });
+  }
+
+  setQuestions(data){
+    this.questionsObject = data;
+    this.questionsNumber = (this.questionsObject.length - 1);
+    this.loading.dismiss();
+  }
+
+  loadOfflineQuestions(RESTAddress){
+    let offlineTestQuestionsFile:string =this.getOfflineTestQuestionsFile(RESTAddress);
+
+    this.offlineService.readAsText(offlineTestQuestionsFile).then((data)=>{
+      this.setQuestions(JSON.parse(data.toString()));
+    });
+  }
+
+  getOfflineTestQuestionsFile(RESTAddress:string):string{
+    switch(RESTAddress){
+      case 'preguntas-violencia-economica':
+        return 'testOneQuestions.txt';
+      case 'preguntas-violencia-fisica':
+        return 'testTwoQuestions.txt';
+      case 'preguntas-violencia-psicologica':
+        return 'testThreeQuestions.txt';
+      case 'preguntas-violencia-sexual':
+        return 'testFourQuestions.txt';
+    }
   }
 
   answerCurrentQuestion() {

@@ -38,6 +38,13 @@ import {UserService} from "../providers/user-service";
 import {UserAdapter} from "../providers/adapter/user-adapter";
 import {LoginPage} from "../pages/login/login";
 import {CategoryTitles} from "../providers/category-titles";
+import {MapLocationsPage} from "../pages/map-locations/map-locations";
+import {Localities} from "../providers/localities";
+import {LocalitiesBoundaries} from "../providers/localities-boundaries";
+import {PinFactory} from "../providers/pin-factory";
+import {SiteInfoPage} from "../pages/site-info/site-info";
+import {PlacesService} from "../providers/places-service";
+import {OfflineService} from "../providers/offline-service";
 
 @NgModule({
   declarations: [
@@ -49,6 +56,7 @@ import {CategoryTitles} from "../providers/category-titles";
     WelcomeTestPage,
     SelectTestCategoryPage,
     TestPage,
+    MapLocationsPage,
     MapPage,
     AttentionRoutesPage,
     AttentionRoutesLocationPage,
@@ -64,7 +72,8 @@ import {CategoryTitles} from "../providers/category-titles";
     TutorialPage,
     CalculatorPage,
     UserNameFormPage,
-    LoginPage
+    LoginPage,
+    SiteInfoPage
 
   ],
   imports: [
@@ -86,6 +95,7 @@ import {CategoryTitles} from "../providers/category-titles";
     WelcomeTestPage,
     SelectTestCategoryPage,
     TestPage,
+    MapLocationsPage,
     MapPage,
     AttentionRoutesPage,
     AttentionRoutesLocationPage,
@@ -101,10 +111,12 @@ import {CategoryTitles} from "../providers/category-titles";
     TutorialPage,
     CalculatorPage,
     UserNameFormPage,
-    LoginPage
+    LoginPage,
+    SiteInfoPage
   ],
   providers: [UserDAO, AlertCreator, MapServices, EventsServices, TestsService, UserAdapter,
-    ContactAdapter, Storage, WarningMessageDAO, FormValidator, LoginService, UserFactory,UserService,CategoryTitles,
+    ContactAdapter, Storage, WarningMessageDAO, FormValidator, LoginService, UserFactory, UserService, CategoryTitles,
+    Localities, LocalitiesBoundaries, PinFactory, PlacesService,OfflineService,
     {
       provide: ErrorHandler,
       useClass: IonicErrorHandler

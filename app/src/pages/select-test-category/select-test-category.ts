@@ -5,6 +5,7 @@ import { TestCategory } from "../../entity/test-categories"
 import {TipData} from "../../entity/tip-data";
 import {CategoryTitles} from "../../providers/category-titles";
 import {AlertCreator} from "../../providers/alert-creator";
+import {OfflineService} from "../../providers/offline-service";
 
 @Component({
   selector: 'page-select-test-category',
@@ -15,7 +16,7 @@ export class SelectTestCategoryPage {
   tipsCategories: TipData[];
   loading: Loading;
 
-  constructor(public navController: NavController, public categoryTitles: CategoryTitles, public alertCreator: AlertCreator, public loadingController: LoadingController) {
+  constructor(public navController: NavController, public categoryTitles: CategoryTitles, public alertCreator: AlertCreator, public loadingController: LoadingController, public offlineService:OfflineService) {
     this.testCategories = [
       {
         id: 0,
@@ -94,16 +95,20 @@ export class SelectTestCategoryPage {
     this.loading.present();
 
     this.categoryTitles.getTitles().map(res => res.json()).subscribe(response => {
-      console.log("la respuesta", response);
-      this.setTestCategories(response[0]);
-      this.setTipsCategories(response[0]);
-      this.loading.dismiss();
+      this.parseTestCategories(response[0]);
 
     }, err => {
-      this.alertCreator.showSimpleAlert('Error', 'En este momento no es posible cargar las categorías, intentálo más tarde');
-      this.loading.dismiss();
-
+      this.alertCreator.showSimpleAlert('Info','En este momento no tienes conexión a internet, asegúrate de tener conexión para obtener los datos más recientes que Sofiapp tiene para tí.');
+      this.offlineService.readAsText('categoriesTitles.txt').then((data)=>{
+        this.parseTestCategories(JSON.parse(data.toString())[0]);
+      });
     });
+  }
+
+  parseTestCategories(data){
+    this.setTestCategories(data);
+    this.setTipsCategories(data);
+    this.loading.dismiss();
   }
 
   ionViewDidLoad() {

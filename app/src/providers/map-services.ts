@@ -1,55 +1,64 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import 'rxjs/add/operator/map';
-import { Geolocation } from 'ionic-native';
+import {Http} from "@angular/http";
 
-
-/*
-  Generated class for the MapServices provider.
-
-  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
-  for more info on providers and Angular 2 DI.
-*/
 @Injectable()
 export class MapServices {
+  map: any;
 
-  constructor() {
+  constructor(public http: Http) {
+
   }
 
-  buildMap(element:any){
-    return new google.maps.Map(element, {
-      center: {lat: 4.649594, lng: -74.1149021},
-      zoom: 12
+  loadMap(infoWindow, mapElement, center, boundaries) {
+    return this.setInitialMapSettings(center, infoWindow, mapElement, boundaries);
+
+  }
+
+  setInitialMapSettings(center, infoWindow, mapElement, boundaries) {
+    let localityPosition = new google.maps.LatLng(center.lat, center.lng);
+    let mapOptions = {
+      center: localityPosition,
+      zoom: center.zoom,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+    this.map = new google.maps.Map(mapElement.nativeElement, mapOptions);
+
+    this.getMapStyle().then((style_array) => {
+      this.map.setOptions({styles: style_array});
     });
+    let localityPolygon = this.drawLocality(boundaries);
+    return { map: this.map, polygon: localityPolygon};
   }
 
-  getUserLocation():any{
-    return Geolocation.getCurrentPosition();
-  }
-
-  convertToLatLng(position:any){
-    return new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-  }
-
-  drawEventMarker(map:any, position:any, markers:any[]){
-    let marker=this.addMarker(map, position, true);
-    markers.push(marker);
-  }
-
-  drawUserPositionMarker(map:any, position:any){
-    this.addMarker(map,position,false);
-  }
-
-  addMarker(map:any, position:any, isDraggable:boolean){
-    return new google.maps.Marker({
-      map: map,
-      animation: google.maps.Animation.DROP,
-      position: position,
-      draggable:isDraggable
+  drawLocality(boundaries) {
+    var localityPolygon = new google.maps.Polygon({
+      paths: boundaries,
+      strokeColor: '#FF0000',
+      strokeOpacity: 0,
+      strokeWeight: 3,
+      fillColor: '#664ba8',
+      fillOpacity: 0.15
     });
+    localityPolygon.setMap(this.map);
+    return localityPolygon;
   }
 
-  clearMarker(markers:any[]){
-    markers[0].setMap(null);
-    markers.pop();
+  getFile(url: string) {
+    return new Promise(
+      resolve => {
+        this.http.get(url).map(res => res.json()).subscribe(data => {
+            resolve(data);
+          },
+          err => {
+            console.log("Unable to resolve GET promise to url: " + url + "\n ERROR: " + err);
+          }
+        );
+      });
   }
+
+  getMapStyle(): any {
+    return this.getFile('assets/maps/map-style.json');
+  }
+
 }

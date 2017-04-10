@@ -8,6 +8,7 @@ import {FormBuilder, FormGroup, Validators, AbstractControl} from "@angular/form
 import {FormValidator} from "../../providers/form-validator";
 import {Storage} from '@ionic/storage';
 import {UserService} from "../../providers/user-service";
+import {NetworkStatusService} from "../../providers/network-status-service";
 
 
 @Component({
@@ -61,8 +62,13 @@ export class RegisterOptionalInfoPage {
           })
         }, error => {
           this.hideLoading();
-          if (error.name == 'EmailAlreadyTaken') {
-            this.alertCreator.showCofirmationMessage('Email', this.userService.user.email + 'ya ha sido registrado en el sistema');
+          let message = error.json().message;
+          console.log("el mensaje", message);
+          if (!NetworkStatusService.isDeviceConnected()){
+            this.alertCreator.showSimpleAlert('Info', 'No se han podido actualizar tus datos debido a que no hay conexión a internet, por favor intentalo más tarde');
+            this.goToContactPage();
+          }else if (message.indexOf('mail') > -1) {
+            this.alertCreator.showCofirmationMessage('Email', this.userService.user.email + ' ya ha sido registrado en el sistema');
           }
         });
     }

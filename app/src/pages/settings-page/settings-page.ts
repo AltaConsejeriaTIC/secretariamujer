@@ -8,6 +8,7 @@ import {Storage} from '@ionic/storage';
 import {UserService} from "../../providers/user-service";
 import {HomePage} from "../home/home";
 import {LoginService} from "../../providers/login-service";
+import {NetworkStatusService} from "../../providers/network-status-service";
 
 
 const SETTINGS_SLIDE_ITEMS = 3;
@@ -36,6 +37,9 @@ export class SettingsPage {
   userCellPhone: string;
   loading: Loading;
   keyboardStyle: string = "";
+  currentUserFullName:string="";
+  currentUserCellphone:string="";
+  currentUserEmail:string="";
 
   constructor(public navController: NavController, public userDAO: UserDAO, public alertCreator: AlertCreator,
               private  formBuilder: FormBuilder, public loadingController: LoadingController,
@@ -51,6 +55,9 @@ export class SettingsPage {
     this.changePinState = WRITE_CURRENT_PIN;
     this.createForm(formBuilder);
     this.loading = this.createLoading();
+    this.currentUserFullName=this.usernameInfo;
+    this.currentUserCellphone=this.userCellPhone;
+    this.currentUserEmail=this.userEmail;
   }
 
   ionViewDidLoad() {
@@ -174,9 +181,7 @@ export class SettingsPage {
 
   updateUserData() {
     if (this.isUserDataValid()) {
-      this.userService.user.fullName = this.form.controls['fullName'].value;
-      this.userService.user.cellPhone = this.form.controls['cellPhone'].value;
-      this.userService.user.email = this.form.controls['email'].value;
+      this.setInputValuesInUserService();
       this.loading.present();
       this.makeUserUpdate('Se han actualizado tus datos');
       this.usernameInfo=this.form.controls['fullName'].value;
@@ -190,10 +195,28 @@ export class SettingsPage {
       },
       error => {
         this.hideLoading();
-        this.alertCreator.showSimpleAlert('Info', 'No se han podido actualizar tus datos, por favor intentalo más tarde');
-        console.log("El error es", error)
+        let message = error.json().message;
+
+
+
+        if (!NetworkStatusService.isDeviceConnected()){
+          this.alertCreator.showSimpleAlert('Info', 'No se han podido actualizar tus datos debido a que no hay conexión a internet, por favor intentalo más tarde');
+        }else if (message.indexOf('mail') > -1) {
+          this.alertCreator.showCofirmationMessage('Email', this.userService.user.email + ' ya ha sido registrado en el sistema');
+        }
+
+        this.form.controls['fullName'].setValue(this.currentUserFullName);
+        this.form.controls['cellPhone'].setValue(this.currentUserCellphone);
+        this.form.controls['email'].setValue(this.currentUserEmail);
+        this.setInputValuesInUserService();
       }
     );
+  }
+
+  setInputValuesInUserService(){
+    this.userService.user.fullName = this.form.controls['fullName'].value;
+    this.userService.user.cellPhone = this.form.controls['cellPhone'].value;
+    this.userService.user.email = this.form.controls['email'].value;
   }
 
   hideLoading() {
@@ -217,14 +240,22 @@ export class SettingsPage {
     this.loading.present();
     this.storage.set('islogged', false);
     this.storage.set('isFirstTimeOpen', null);
-    this.loginService.logout().subscribe(res=>{
-      this.clearUserData();
-      this.hideLoading();
-      this.navController.setRoot(HomePage);
-    }, err=>{
-      console.log(err);
-    });
+    if (NetworkStatusService.isDeviceConnected()) {
+      this.loginService.logout().subscribe(res => {
+        this.clearDataAndGoToHomePage();
+      }, err => {
+        console.log(err);
+      });
+    }
+    else {
+      this.clearDataAndGoToHomePage();
+    }
+  }
 
+  clearDataAndGoToHomePage(){
+    this.clearUserData();
+    this.hideLoading();
+    this.navController.setRoot(HomePage);
   }
 
   clearUserData() {

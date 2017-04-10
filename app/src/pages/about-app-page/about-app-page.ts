@@ -4,6 +4,7 @@ import {AppInfo} from "../../entity/app-info";
 import {Http} from "@angular/http";
 import {ApplicationConfig} from "../../config";
 import {AlertCreator} from "../../providers/alert-creator";
+import {OfflineService} from "../../providers/offline-service";
 
 @Component({
   selector: 'page-about-app-page',
@@ -19,7 +20,7 @@ export class AboutAppPage {
   }];
   loading: Loading;
 
-  constructor(public navCtrl: NavController, public http: Http, public loadingController: LoadingController, public alertCreator: AlertCreator) {
+  constructor(public navCtrl: NavController, public http: Http, public loadingController: LoadingController, public alertCreator: AlertCreator,public offlineService:OfflineService) {
     this.loading = this.loadingController.create({
       content: "Espera un momento",
       dismissOnPageChange: true
@@ -31,16 +32,19 @@ export class AboutAppPage {
   ionViewDidLoad() {
     let url = ApplicationConfig.getURL('/info-about-app-rest');
     this.http.get(url).map(res => res.json()).subscribe(response => {
-      this.aboutAppInfo = response;
-      this.loading.dismiss();
-      this.checkIfEmptyResponse();
-
-      console.log("la respuesta", this.aboutAppInfo);
+      this.setInfo(response);
     }, err => {
-      this.loading.dismiss();
-      this.alertCreator.showSimpleAlert("Error", "Asegurate de tener conexión a internet, o intentalo más tarde");
-      console.log("el error", err)
+      this.alertCreator.showSimpleAlert('Info','Recuerda conectarte a internet para obtener la información más reciente');
+      this.offlineService.readAsText('aboutApp.txt').then((data)=>{
+        this.setInfo(JSON.parse(data.toString()));
+      });
     });
+  }
+
+  setInfo(data){
+    this.aboutAppInfo = data;
+    this.loading.dismiss();
+    this.checkIfEmptyResponse();
   }
 
   checkIfEmptyResponse() {

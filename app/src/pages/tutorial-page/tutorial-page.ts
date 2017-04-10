@@ -29,6 +29,7 @@ export class TutorialPage {
       {label: 'En caso de una emergencia, también puedes presionar el botón de llamar al 123, para marcar rápidamente a la línea y avisar a las autoridades de tu emergencia.'},
       {label: 'En la sección de configuración puedes completar tus datos, cambiar tu nombre en la aplicación o tu PIN y modificar los contactos de emergencia.'},
       {label: 'Ingresa y recuerda un PIN de 4 números y un nombre dentro de la aplicación. Cuando abras de nuevo SOFIApp, encontrarás una calculadora en la que debes ingresar tu PIN y el botón igual.'},
+      {label: 'En la sección mapas puedes visualizar la ubicación de los diferentes puntos de atención.'},
     ];
 
     this.isDisabledButton=false;

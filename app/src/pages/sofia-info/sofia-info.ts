@@ -4,6 +4,7 @@ import {SOFIAInfo} from "../../entity/sofia-info";
 import {Http} from "@angular/http";
 import {ApplicationConfig} from "../../config";
 import {AlertCreator} from "../../providers/alert-creator";
+import {OfflineService} from "../../providers/offline-service";
 
 @Component({
   selector: 'page-sofia-info',
@@ -19,7 +20,7 @@ export class SOFIAInfoPage {
   }];
   loading: Loading;
 
-  constructor(public navCtrl: NavController, public http: Http, public loadingController: LoadingController, public alertCreator: AlertCreator) {
+  constructor(public navCtrl: NavController, public http: Http, public loadingController: LoadingController, public alertCreator: AlertCreator, public offlineService:OfflineService) {
     this.loading = this.loadingController.create({
       content: "Espera un momento",
       dismissOnPageChange: true
@@ -31,16 +32,19 @@ export class SOFIAInfoPage {
   ionViewDidLoad() {
     let url = ApplicationConfig.getURL('/info-about-sofia-rest');
     this.http.get(url).map(res => res.json()).subscribe(response => {
-      this.aboutSOFIAInfo = response;
-      this.loading.dismiss();
-      this.checkIfEmptyResponse();
-
-      console.log("la respuesta", this.aboutSOFIAInfo);
+      this.setInfo(response);
     }, err => {
-      this.loading.dismiss();
-      this.alertCreator.showSimpleAlert("Error", "Asegurate de tener conexión a internet, o intentalo más tarde");
-      console.log("el error", err)
+      this.alertCreator.showSimpleAlert('Info','Recuerda conectarte a internet para obtener la información más reciente');
+      this.offlineService.readAsText('aboutSOFIA.txt').then((data)=>{
+        this.setInfo(JSON.parse(data.toString()));
+      });
     });
+  }
+
+  setInfo(data){
+    this.aboutSOFIAInfo = data;
+    this.loading.dismiss();
+    this.checkIfEmptyResponse();
   }
 
   checkIfEmptyResponse() {

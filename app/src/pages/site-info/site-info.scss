@@ -1,0 +1,431 @@
+page-site-info {
+  label {
+    margin: 0;
+  }
+
+  .section-header {
+    flex: 1;
+    align-items: center;
+    text-align: center;
+
+    .title {
+      font-weight: bold;
+      color: #f2f2f2;
+      margin-bottom: 5px;
+    }
+  }
+
+  .icon-back{
+    color: white;
+  }
+
+  .locality-name {
+    background: $map-title-background;
+    color: map_get($colors, SofiaAppWhite);
+    font-weight: 600;
+  }
+
+  .color-0{
+    color: $map-title-background;
+  }
+
+  [class^="background-subheader-option"] {
+    align-items: center;
+  }
+
+  .routes-details-background{
+    background-color: map_get($colors,SofiaAppBeige);
+  }
+
+  .info-labels{
+    color: map_get($colors,SofiaAppGrayFont);
+  }
+
+  .email-label {
+    word-break: break-all;
+  }
+
+  .icons-color{
+    color: map_get($colors,SofiaAppGrayFont);
+  }
+
+  .icon-container{
+    display: flex;
+    align-items: center;
+  }
+
+  .info-col-container{
+    border-bottom: 1px solid map_get($colors,SofiaAppGrayFont);
+  }
+
+  .info-container {
+    margin-bottom: 7%;
+  }
+
+  .data-col-container {
+    padding-right: 2%;
+  }
+
+  .icon-download-size{
+    color: #8A8A8A;
+  }
+
+  .download-col-container {
+    justify-content: flex-end;
+    align-items: center;
+    display: flex;
+
+    .button-container {
+      width: 90%;
+
+      button:first-child {
+        margin-bottom: 10%;
+      }
+
+      button:last-child {
+        margin-top: 10%;
+      }
+
+      .separator {
+        border-bottom: 1px solid map_get($colors,SofiaAppGrayFont);
+      }
+    }
+
+    button {
+      border-radius: 0;
+      background: transparent;
+      width: 100%;
+      margin: 0;
+      text-align: left;
+    }
+
+    ion-row {
+      justify-content: center;
+    }
+  }
+  .download-labels{
+    font-style: italic;
+  }
+
+  @media (max-width: 479px) {
+    .locality-name {
+      height: 50px;
+
+      label {
+        margin: auto 35px;
+        font-size: 14px;
+      }
+    }
+
+    .go-back-icon-margin{
+      margin-left: 20px;
+      margin-right: 17px;
+    }
+
+    .location-row-margin{
+      margin-left: 35px;
+    }
+
+    .icon-back{
+      font-size: 20px;
+    }
+
+    .route-name-row{
+      margin: 17px 93px 14px 36px;
+    }
+
+    [class^="color-"] {
+      font-size: 16px;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    .right-margin-col{
+      flex-basis: 6.2%;
+      max-width: 6.2%;
+    }
+
+    .left-margin-col{
+      flex-basis: 11.2%;
+      max-width: 11.2%;
+    }
+
+    .info-margin-bottom{
+      margin-bottom: 14px;
+    }
+
+    .data-col-container{
+      flex-basis: 73.5%;
+      max-width: 73.5%;
+      border-right: 1px solid map_get($colors,SofiaAppGrayFont);
+    }
+
+    .route-title-container{
+      margin: 17px 0 14px;
+    }
+
+    .info-labels{
+      font-size: 12px;
+    }
+
+    .icon-container{
+      flex-basis: 21px;
+      max-width: 21px;
+    }
+
+    .pin-icon-size{
+      font-size: 18px;
+    }
+
+    .email-icon-size{
+      font-size: 15px !important;
+    }
+
+    .clock-icon-size{
+      font-size: 14px !important;
+    }
+
+    .phone-icon-size{
+      font-size: 16px !important;
+    }
+
+    .download-labels{
+      font-size: 10px;
+    }
+
+    .download-col-container{
+      button {
+        height: 65px;
+      }
+    }
+
+    .download-labels-margin{
+      margin-top: 8px !important;
+    }
+
+    .icon-download-size{
+      font-size: 27px !important;
+    }
+
+    .info-col-container{
+      margin: 0 30px;
+    }
+  }
+
+  @media (min-width: 480px) and (max-width: 767px) {
+    .locality-name {
+      height: 75px;
+
+      label {
+        margin: auto 60px;
+        font-size: 22px;
+      }
+    }
+
+    .location-name{
+      font-size: 22px;
+    }
+
+    .go-back-icon-margin{
+      margin-left: 30px;
+      margin-right: 17px;
+    }
+
+    .location-row-margin{
+      margin-left: 56px;
+    }
+
+    .icon-back{
+      font-size: 30px;
+    }
+
+    .route-name-row{
+      margin: 17px 137px 22px 56px;
+    }
+
+    [class^="color-"] {
+      font-size: 24px;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    .right-margin-col{
+      flex-basis: 30px;
+      max-width: 30px;
+    }
+
+    .left-margin-col{
+      flex-basis: 56px;
+      max-width: 56px;
+    }
+
+    .info-margin-bottom{
+      margin-bottom: 22px;
+    }
+
+    .data-col-container{
+      flex-basis: 73.5%;
+      max-width: 73.5%;
+      border-right: 1px solid map_get($colors,SofiaAppGrayFont);
+    }
+
+    .route-title-container{
+      margin: 17px 0 22px;
+    }
+
+    .info-labels{
+      font-size: 17px;
+    }
+
+    .icon-container{
+      flex-basis: 32px;
+      max-width: 32px;
+    }
+
+    .pin-icon-size{
+      font-size: 24px;
+    }
+
+    .email-icon-size{
+      font-size: 21px !important;
+    }
+
+    .clock-icon-size{
+      font-size: 19px !important;
+    }
+
+    .phone-icon-size{
+      font-size: 22px !important;
+    }
+
+    .download-labels{
+      font-size: 15px;
+    }
+
+    .download-labels-margin{
+      margin-top: 10px !important;
+    }
+
+    .icon-download-size{
+      font-size: 40px !important;
+    }
+
+    .download-col-container {
+      button {
+        height: 90px;
+      }
+    }
+
+    .info-col-container{
+      margin: 0 60px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .locality-name {
+      height: 90px;
+
+      label {
+        margin: auto 80px;
+        font-size: 26px;
+      }
+    }
+
+    .location-name{
+      font-size: 26px;
+    }
+
+    .go-back-icon-margin{
+      margin-left: 30px;
+      margin-right: 37px;
+    }
+
+    .location-row-margin{
+      margin-left: 70px;
+    }
+
+    .icon-back{
+      font-size: 35px;
+    }
+
+    .route-name-row{
+      margin-left: 1px;
+      margin-right: 1px;
+    }
+
+    .route-name-row{
+      margin: 34px 137px 26px 56px;
+    }
+
+    [class^="color-"] {
+      font-size: 24px;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    .info-margin-bottom{
+      margin-bottom: 26px;
+    }
+
+    .info-col-container{
+      border-bottom: 2px solid map_get($colors,SofiaAppGrayFont);
+    }
+
+    .data-col-container{
+      flex-basis: 347px;
+      max-width: 347px;
+      border-right: 2px solid map_get($colors,SofiaAppGrayFont);
+    }
+
+    .route-title-container{
+      margin: 34px 0 26px;
+    }
+
+    .info-labels{
+      font-size: 17px;
+    }
+
+    .icon-container{
+      flex-basis: 40px;
+      max-width: 40px;
+    }
+
+    .download-labels{
+      font-size: 13px;
+    }
+
+    .download-col-container{
+      button {
+        height: 100px;
+      }
+    }
+
+    .download-labels-margin{
+      margin-top: 15px !important;
+    }
+
+    .icon-download-size{
+      font-size: 45px !important;
+    }
+
+    .pin-icon-size{
+      font-size: 24px;
+    }
+
+    .email-icon-size{
+      font-size: 21px !important;
+    }
+
+    .clock-icon-size{
+      font-size: 19px !important;
+    }
+
+    .phone-icon-size{
+      font-size: 22px !important;
+    }
+
+    .info-col-container{
+      margin: 0 80px;
+    }
+  }
+}

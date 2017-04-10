@@ -20,7 +20,7 @@
         </ion-col>
       </ion-row>
     <ion-row class="button-row">
-      <button (click)="saveUser ()" class="app-button" ion-button outline>Omitir</button>
+      <button (click)="saveUser()" class="app-button" ion-button outline>Omitir</button>
       <button (click)="saveUser()" [ngClass]="{'app-button': canUserContinue(), 'disabled-button': !canUserContinue()}" class="login-button" ion-button outline>Continuar</button>
     </ion-row>
     </form>

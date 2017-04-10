@@ -1,0 +1,116 @@
+<ion-header mode="ios">
+  <ion-navbar hideBackButton>
+    <button start ion-button icon-only menuToggle (click)="goBackPage()">
+      <ion-icon name="icon-fill-back-arrow"></ion-icon>
+    </button>
+    <label class="header-title">{{titlePage}}</label>
+    <button end ion-button icon-only menuToggle (click)="goToMenuPage()">
+      <ion-icon name="icon-go-menu"></ion-icon>
+    </button>
+  </ion-navbar>
+  <div class="header-separator"></div>
+</ion-header>
+
+
+<ion-content no-bounce class="routes-details-background">
+  <ion-grid no-padding>
+    <ion-row class="locality-name">
+      <label>
+        Localidad {{site.location}}
+      </label>
+    </ion-row>
+
+    <ion-row no-padding>
+      <ion-col class="info-col-container" no-padding>
+        <ion-row class="route-title-container">
+          <label class="color-0">{{site.title}}</label>
+        </ion-row>
+        <ion-row class="info-container">
+          <ion-col no-padding class="data-col-container">
+            <ion-row>
+              <ion-col no-padding>
+                <ion-row class="info-margin-bottom">
+                  <ion-col class="icon-container" no-padding>
+                    <ion-icon class="icons-color pin-icon-size" name="icon-pin"></ion-icon>
+                  </ion-col>
+                  <ion-col no-padding>
+                    <ion-row>
+                      <label class="info-labels">{{site.addres}}</label>
+                    </ion-row>
+                    <ion-row>
+                      <label class="info-labels">{{site.neighbourhood}}</label>
+                    </ion-row>
+                  </ion-col>
+                </ion-row>
+                <ion-row class="info-margin-bottom">
+                  <ion-col class="icon-container" no-padding>
+                    <ion-icon class="icons-color email-icon-size" name="icon-email"></ion-icon>
+                  </ion-col>
+                  <ion-col no-padding>
+                    <ion-row>
+                      <label class="info-labels email-label">{{site.email}}</label>
+                    </ion-row>
+                  </ion-col>
+                </ion-row>
+                <ion-row class="info-margin-bottom">
+                  <ion-col class="icon-container" no-padding>
+                    <ion-icon class="icons-color clock-icon-size" name="icon-clock"></ion-icon>
+                  </ion-col>
+                  <ion-col no-padding>
+                    <ion-row>
+                      <label class="info-labels">{{site.schedule}}</label>
+                    </ion-row>
+                  </ion-col>
+                </ion-row>
+                <ion-row class="phone-info-margin-bottom">
+                  <ion-col class="icon-container" no-padding>
+                    <ion-icon class="icons-color phone-icon-size" name="icon-phone"></ion-icon>
+                  </ion-col>
+                  <ion-col no-padding>
+                    <ion-row>
+                      <label class="info-labels">{{site.phone}}</label>
+                    </ion-row>
+                  </ion-col>
+                </ion-row>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+
+          <ion-col class="download-col-container" no-padding>
+            <div class="button-container">
+              <button ion-button icon-only mode="ios" (click)="goBackPage()">
+                <ion-col>
+                  <ion-row>
+                    <ion-icon class="icons-color icon-download-size" name="icon-site-in-map"></ion-icon>
+                  </ion-row>
+                  <ion-row class="download-labels-margin">
+                    <label class="info-labels download-labels">Ver en</label>
+                  </ion-row>
+                  <ion-row>
+                    <label class="info-labels download-labels">el mapa</label>
+                  </ion-row>
+                </ion-col>
+              </button>
+              <ion-row class="separator"></ion-row>
+              <button ion-button icon-only mode="ios" (click)="downloadFileListener(id)">
+                <ion-col>
+                  <ion-row>
+                    <ion-icon class="icons-color icon-download-size" name="icon-download"></ion-icon>
+                  </ion-row>
+                  <ion-row class="download-labels-margin">
+                    <label class="info-labels download-labels">Descargar</label>
+                  </ion-row>
+                  <ion-row>
+                    <label class="info-labels download-labels">documentos</label>
+                  </ion-row>
+                </ion-col>
+              </button>
+            </div>
+          </ion-col>
+
+        </ion-row>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+</ion-content>
